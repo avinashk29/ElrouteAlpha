@@ -23,6 +23,22 @@ import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './StaticData/Footer/footer/footer.component';
 import { HelpComponent } from './StaticData/Help/help/help.component';
 import { AuthModule } from './Auth/auth.module';
+import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
+import {HomepageModule} from '../app/HomePage/homepage.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import {TabHeaderComponent} from '../app/Header/tab-header/tab-header.component';
+import {CompanySearchComponent } from '../app/Search/company-search/company-search.component';
+import { CompanyForm2Component } from './Company/company-form2/company-form2.component';
+import { CompanyForm3Component } from './Company/company-form3/company-form3.component';
+
+// <--------------Material Design Imports------------------------>
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { WithLoginComponent } from './HomePage/with-login/with-login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -45,14 +61,32 @@ import { AuthModule } from './Auth/auth.module';
     FeedComponent,
     HeaderComponent,
     FooterComponent,
-    HelpComponent
+    HelpComponent,
+    WithoutLoginComponent,
+    WithLoginComponent,
+    TabHeaderComponent,
+    CompanySearchComponent,
+    CompanyForm2Component,
+    CompanyForm3Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    HomepageModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    HttpModule,
+    StorageServiceModule
+
+  ],
+  entryComponents: [
+    SignupComponent,
+    LoginComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

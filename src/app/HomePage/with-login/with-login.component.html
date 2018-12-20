@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="search-bar">
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="SEARCH">
+        <!-- <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a> -->
+        <button><select>
+          <option>All</option>
+          <option>All</option>
+          <option>All</option>
+        </select></button>
+
+      <button class="toggleBtn" (click)="onToggle()" style="margin-left: 40px;"><h1>Show</h1></button>
+    </div>
+ </div>
+ <div *ngIf="show" class="filter">
+ </div>
+ <section>
+   <div class="userProfile">
+   <div class="Uname">
+    <h2>User Name</h2>
+   </div>
+   <div class="profile">
+  <img src="https://picsum.photos/200">
+     <span>Title</span>
+     </div>
+     <div class="following">
+        <h3>Following</h3>
+       <p>28</p>
+      </div>
+     <div class="bookmark">
+       <h3>Bookmarks</h3>
+      <p>74</p>
+     </div>
+   </div>
+
+   <div class="feed">
+     <div class="authorInfo">
+     <div class="details">
+       <div class="logo"></div>
+       <div class="info">
+      <h1>Company Name</h1>
+      <p>Industry</p>
+      <p>Location</p>
+    </div>
+     </div>
+     <div class="followBtn">
+      <button>Following</button>
+      <p>34,342 followers</p>
+     </div>
+     </div>
+     <div class="feed-img">
+     <img src="https://picsum.photos/500/300/?random">
+     </div>
+     <div class="feed-share">
+     <p  style="padding: 0; margin: 0;">Bookmark</p>
+     <p style="float:right; padding: 0; margin: 0; margin-top: -18px;">Share</p>
+     </div>
+     <div class="tagged">
+
+     </div>
+   </div>
+
+ </section>

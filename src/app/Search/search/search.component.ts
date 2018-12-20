@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+show = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+onClick() {
+  this.show = !this.show;
+}
 }

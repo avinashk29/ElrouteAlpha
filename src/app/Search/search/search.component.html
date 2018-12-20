@@ -1,3 +1,103 @@
-<p>
-  search works!
-</p>
+<app-header></app-header>
+<div class="search-bar">
+  <div class="search-container">
+      <input type="text" id="search-bar" placeholder="SEARCH">
+      <!-- <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a> -->
+      <button><select>
+        <option>All</option>
+        <option>All</option>
+        <option>All</option>
+      </select></button>
+
+    <button class="toggleBtn" style="margin-left: 40px;"><h1>Show</h1></button>
+  </div>
+</div>
+<div *ngIf="false" class="filter">
+</div>
+<app-tab-header></app-tab-header>
+<section>
+<div class="listing">
+  <div class="Card productCard">
+
+      <ul>
+        <li><img src="https://picsum.photos/200/150?image=0"></li>
+          <li>
+            <h2>Product Name</h2>
+            <div class="productDetails">
+              <p style="border-right: 1px solid #ccc;">Industry</p>
+              <p>Location</p>
+              <p style="float:right; margin-top:-17px">Price</p>
+            </div>
+          </li>
+          <li>
+              <h3>Company Name</h3>
+            </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+           <h3 style="height: 1px;">Description</h3>
+            <p>By making the open state default for when :checked isn't detected,</p>
+          </li>
+          <li>
+              <h3>Tagged Product</h3>
+            </li>
+        </ul>
+  </div>
+
+  <div class="Card serviceCard">
+
+      <ul>
+        <li><img src="https://picsum.photos/200/150?image=0"></li>
+          <li>
+            <h2>Service Name</h2>
+            <div class="productDetails">
+              <p style="border-right: 1px solid #ccc;">Industry</p>
+              <p>Location</p>
+              <p style="float:right; margin-top:-17px">Price</p>
+            </div>
+          </li>
+          <li>
+              <h3>Company Name</h3>
+            </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+           <h3 style="height: 1px;">Description</h3>
+            <p>By making the open state default for when :checked isn't detected,</p>
+          </li>
+          <li>
+              <h3>Tagged Product</h3>
+            </li>
+        </ul>
+  </div>
+
+  <div class="Card serviceIndvCard">
+
+      <ul>
+        <li><img src="https://picsum.photos/200/150?image=0"  style="border-radius:50%"></li>
+          <li>
+            <h2> Name</h2>
+            <div class="productDetails">
+              <p style="border-right: 1px solid #ccc;">Industry</p>
+              <p>Location</p>
+              <p style="float:right; margin-top:-17px">Price</p>
+            </div>
+          </li>
+          <li>
+              <h3>Assignments: 45</h3>
+            </li>
+          <li>
+            <input type="checkbox" checked>
+            <i></i>
+           <h3 style="height: 1px;">Description</h3>
+            <p>By making the open state default for when :checked isn't detected,</p>
+          </li>
+          <li>
+              <h3>Tagged Product</h3>
+            </li>
+        </ul>
+  </div>
+
+</div>
+
+</section>

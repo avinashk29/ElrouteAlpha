@@ -5,12 +5,12 @@
  justify-content: center;
  top:50%;
  left: 50%;
- transform: translate(13% ,25%);
+ transform: translate(33% ,25%);
  box-shadow: 0 0px 28px rgba(0,0,0,0.30), 0 15px 12px rgba(157, 157, 157, 0.22);
  border: 1px solid  rgba(157, 17, 17, 0.22);
 }
 .infoGraphic{
-  width: 60%;
+  width: 50%;
   height: 100%;
   background-color: black;
   border-right: 1px solid  rgba(157, 157, 157, 0.22);
@@ -20,7 +20,7 @@
   height: 100%;
 }
 .form{
-  width: 40%;
+  width: 50%;
   height: 100%;
 }
 .form ul{
@@ -61,4 +61,18 @@ li button{
   color: floralwhite;
   font-size: 20px;
   font-weight: 600;
+}
+li textarea{
+  width: 100%;
+  height: 6rem;
+  border: none;
+  color: black;
+  outline: none;
+  font-size: 15px;
+  border: 1px solid #333333;
+}
+
+textarea::placeholder {
+  color: black;
+  padding: 0 10px;
 }
