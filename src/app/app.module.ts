@@ -32,11 +32,13 @@ import {TabHeaderComponent} from '../app/Header/tab-header/tab-header.component'
 import {CompanySearchComponent } from '../app/Search/company-search/company-search.component';
 import { CompanyForm2Component } from './Company/company-form2/company-form2.component';
 import { CompanyForm3Component } from './Company/company-form3/company-form3.component';
-
+import {SideNavComponent} from './Header/side-nav/side-nav.component';
+import {ProductFormComponent} from './Product/product-form/product-form.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
+import { from } from 'rxjs';
 
 
 
@@ -67,7 +69,9 @@ import { WithLoginComponent } from './HomePage/with-login/with-login.component';
     TabHeaderComponent,
     CompanySearchComponent,
     CompanyForm2Component,
-    CompanyForm3Component
+    CompanyForm3Component,
+    SideNavComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

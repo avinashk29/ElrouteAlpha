@@ -7,6 +7,8 @@ import { CompanySearchComponent } from './Search/company-search/company-search.c
 import { CompanyFormComponent } from './Company/company-form/company-form.component';
 import { CompanyForm2Component } from './Company/company-form2/company-form2.component';
 import { CompanyForm3Component } from './Company/company-form3/company-form3.component';
+import { SideNavComponent } from './Header/side-nav/side-nav.component';
+import { ProductFormComponent } from './Product/product-form/product-form.component';
 
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
@@ -15,8 +17,10 @@ const routes: Routes = [
   {path: 'companyResults' , component: CompanySearchComponent},
   {path: 'B-page' , component: CompanyFormComponent},
   {path: 'B-page-step2' , component: CompanyForm2Component},
-  {path: 'B-page-step3' , component: CompanyForm3Component}
-  // {path: 'feed' , component: fee}
+  {path: 'B-page-step3' , component: CompanyForm3Component},
+  {path: 'sideNav' , component: SideNavComponent},
+  {path: 'productForm' , component: ProductFormComponent}
+  // {path: 'feed ' , component: fee}
 ];
 
 @NgModule({
