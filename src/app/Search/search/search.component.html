@@ -1,103 +1,91 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <div class="search-bar">
   <div class="search-container">
-      <input type="text" id="search-bar" placeholder="SEARCH">
-      <!-- <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a> -->
-      <button><select>
-        <option>All</option>
-        <option>All</option>
-        <option>All</option>
-      </select></button>
+      <input type="search" id="search-bar" placeholder="SEARCH">
+
+      <button>S</button>
 
     <button class="toggleBtn" style="margin-left: 40px;"><h1>Show</h1></button>
   </div>
 </div>
 <div *ngIf="false" class="filter">
 </div>
-<app-tab-header></app-tab-header>
+<app-tab-header></app-tab-header> -->
 <section>
 <div class="listing">
-  <div class="Card productCard">
+  <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
+<div class="Card" *ngFor="let card of cards; let i = index">
+  <div class="productCard" *ngIf="card.type == 1">
+<div class="productImage">
+  <div class="bookmark">
 
-      <ul>
-        <li><img src="https://picsum.photos/200/150?image=0"></li>
-          <li>
-            <h2>Product Name</h2>
-            <div class="productDetails">
-              <p style="border-right: 1px solid #ccc;">Industry</p>
-              <p>Location</p>
-              <p style="float:right; margin-top:-17px">Price</p>
-            </div>
-          </li>
-          <li>
-              <h3>Company Name</h3>
-            </li>
-          <li>
-            <input type="checkbox" checked>
-            <i></i>
-           <h3 style="height: 1px;">Description</h3>
-            <p>By making the open state default for when :checked isn't detected,</p>
-          </li>
-          <li>
-              <h3>Tagged Product</h3>
-            </li>
-        </ul>
   </div>
-
-  <div class="Card serviceCard">
-
-      <ul>
-        <li><img src="https://picsum.photos/200/150?image=0"></li>
-          <li>
-            <h2>Service Name</h2>
-            <div class="productDetails">
-              <p style="border-right: 1px solid #ccc;">Industry</p>
-              <p>Location</p>
-              <p style="float:right; margin-top:-17px">Price</p>
-            </div>
-          </li>
-          <li>
-              <h3>Company Name</h3>
-            </li>
-          <li>
-            <input type="checkbox" checked>
-            <i></i>
-           <h3 style="height: 1px;">Description</h3>
-            <p>By making the open state default for when :checked isn't detected,</p>
-          </li>
-          <li>
-              <h3>Tagged Product</h3>
-            </li>
-        </ul>
-  </div>
-
-  <div class="Card serviceIndvCard">
-
-      <ul>
-        <li><img src="https://picsum.photos/200/150?image=0"  style="border-radius:50%"></li>
-          <li>
-            <h2> Name</h2>
-            <div class="productDetails">
-              <p style="border-right: 1px solid #ccc;">Industry</p>
-              <p>Location</p>
-              <p style="float:right; margin-top:-17px">Price</p>
-            </div>
-          </li>
-          <li>
-              <h3>Assignments: 45</h3>
-            </li>
-          <li>
-            <input type="checkbox" checked>
-            <i></i>
-           <h3 style="height: 1px;">Description</h3>
-            <p>By making the open state default for when :checked isn't detected,</p>
-          </li>
-          <li>
-              <h3>Tagged Product</h3>
-            </li>
-        </ul>
-  </div>
+  <img src="https://picsum.photos/200/300/?random">
+</div>
+<div class="productContent" >
+<div class="content">
+<div class="productCategory">
+<h6>{{card.catogory}}</h6>
+</div>
+<div class="productName">
+  <h2>{{card.productName}}</h2>
+  <h5>{{card.company}}</h5>
+  <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
+</div>
+<div class="discription" style="margin-top:30px;">
+<p>{{card.discription}}</p>
+</div>
+<div class="tags">
 
 </div>
+<div class="other-info">
+  <div class="price">
+  <h4>Price</h4>
+</div>
+<div class="hits">
+  <p>24,354 hits</p>
+</div>
+</div>
+</div>
+</div>
+  </div>
+  <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
+  <div class="ServiceCard" *ngIf="card.type == 2" >
 
+      <div class="ServiceContent">
+      <div class="content">
+      <div class="ServiceCategory">
+      <h6>{{card.Servicecatogory}}</h6>
+      </div>
+      <div class="ServiceName">
+        <h2>{{card.serviceName}}</h2>
+        <h5>{{card.scompany}}</h5>
+        <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 8px">{{card.sdevice}}</span><span style= "padding-left: 8px">{{card.scountry}}</span></small>
+      </div>
+      <div class="discription" style="margin-top:30px;">
+      <p>{{card.sdiscription}}</p>
+      </div>
+      <div class="tags">
+
+      </div>
+      <div class="other-info">
+        <div class="price">
+        <h4>Price</h4>
+      </div>
+      <div class="hits">
+        <p>24,354 hits</p>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="ServiceImage">
+          <div class="bookmark">
+
+          </div>
+          <img src="https://picsum.photos/200/300/?random">
+        </div>
+        </div>
+</div>
+
+</div>
 </section>
