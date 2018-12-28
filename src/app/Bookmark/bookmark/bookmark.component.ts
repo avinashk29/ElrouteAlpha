@@ -8,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class BookmarkComponent implements OnInit {
 
   constructor() { }
-<<<<<<< HEAD
-
-=======
   cards = [
     {
     type: 1,
@@ -113,7 +110,6 @@ export class BookmarkComponent implements OnInit {
 
               }
   ];
->>>>>>> cdfaf3675290b3b2021892799bff45b11bb8355f
   ngOnInit() {
   }
 
