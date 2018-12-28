@@ -1,4 +1,4 @@
-.search-bar{
+/* .search-bar{
   width: 95%;
   display: flex;
 }
@@ -14,12 +14,12 @@
 input#search-bar {
   margin: 0 auto;
   width: 100%;
-  height: 13vh;
+  height: 7vh;
   padding: 0px 45px;
-  font-size: 3rem;
+  font-size: 1.5rem;
   border: 1px solid #D0CFCE;
   outline: none;
-  border-radius: 20px 0 0 20px;
+  border-radius: 10px 0 0 10px;
   outline: none;
 }
 input#search-bar:focus {
@@ -50,21 +50,19 @@ input#search-bar:focus:-ms-placeholder {
   position: relative;
   padding: 0;
   margin: 0;
-  height: 13.3vh;
-  width: 120px;
+  height: 2.3vh;
   border: none;
   cursor: pointer;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 10px 10px 0;
 }
-.search-container button select {
-  width: 120px;
+.search-container button  {
   margin-right: 10px;
-  height: 100%;
+  height: 70%;
   padding: 0;
   margin: 0;
   text-align: center;
   outline: none;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 10px 10px 0;
   padding: 0 40px;
   font-size: 16px;
 }
@@ -85,115 +83,140 @@ input#search-bar:focus:-ms-placeholder {
   height: 7vh;
   background-color: royalblue;
   margin-top: 30px;
-}
+} */
 section{
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 30px;
+
 }
 .listing{
   display: flex;
   flex-wrap: wrap;
 }
 .Card{
-  width: 20%;
-  height: auto;
-  border: 1px solid #ccc;
-  margin: 0 30px 20px 0;
+  width: 47%;
+  height: 15rem;
+  border-radius: 10px;
+  margin-right: 3%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
 }
-.Card ul li img{
-  width: 100%;
-  height: 35%;
-}
-
-.transition, p, ul li i:before, ul li i:after {
-  transition: all 0.25s ease-in-out;
-}
-h2 , h3{
-  margin: 0;
-  font-size: 20px;
-  padding: 2px 0 2px 7px;
-}
-h3{
-  font-size: 15px;
-}
-p {
-  color: rgba(48, 69, 92, 0.8);
-  font-size: 17px;
-  line-height: 12px;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-  max-height: 800px;
-  opacity: 1;
-  transform: translate(0, 0);
-  margin-top: 7px;
-  padding: 2px 5px 2px 7px;
-  z-index: 2;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-ul li {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  border-bottom: 1px solid #dce7eb;
-}
-ul li i {
-  position: absolute;
-  transform: translate(-6px, 0);
-  margin-top: 7px;
-  right: 0;
-}
-ul li i:before, ul li i:after {
-  content: "";
-  position: absolute;
-  background-color: #333333;
-  margin-left: -10px;
-  width: 3px;
-  height: 9px;
-}
-ul li i:before {
-  transform: translate(-2px, 0) rotate(45deg);
-}
-ul li i:after {
-  transform: translate(2px, 0) rotate(-45deg);
-}
-ul li input[type=checkbox] {
-  position: absolute;
-  cursor: pointer;
+.productCard, .ServiceCard{
+  display: flex;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  opacity: 0;
+  border: 1px solid #cccccccc;
+  border-radius: 10px 10px 10px 10px
 }
-ul li input[type=checkbox]:checked ~ p {
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  transform: translate(0, 50%);
+.productImage, .ServiceImage {
+  border-radius: 10px 0 0 10px;
+  width: 35%;
+  height: 100%;
 }
-ul li input[type=checkbox]:checked ~ i:before {
-  transform: translate(2px, 0) rotate(45deg);
+.bookmark{
+  width: 1%;
+  height: 3%;
+
+  background-color: red;
+  position: absolute;
+  margin-left: 10%;
 }
-ul li input[type=checkbox]:checked ~ i:after {
-  transform: translate(-2px, 0) rotate(-45deg);
-}
-li img{
+.productImage img , .ServiceImage img{
   width: 100%;
-  height: 40%;
-  padding: 0;
-  margin: 0;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
 }
-.productDetails p {
-  display: table-cell;
+.productContent{
+  width: 65%;
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+}
+.content{
+  width: 95%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.productContent .content .productCategory h6 ,.ServiceContent .content .ServiceCategory h6 {
+  float: right;
+  margin: 13px 15px 0 0;
   font-size: 13px;
+  font-weight: 100;
 }
-input[type="checkbox" i]{
+.productContent .content .productName , .ServiceContent .content .ServiceName{
+  width: 100%;
+
+}
+.productContent .content .productName h2 , .ServiceContent .content .ServiceName h2{
   margin: 0;
-  padding: 0;
+  width: 100%;
+  font-weight: 100;
+  font-size: 25px;
+  padding-top: 3px;
+  justify-content: flex-end;
+    display: flex
+}
+.productContent .content .productName h5 ,.ServiceContent .content .ServiceName h5{
+  margin: 0;
+  font-weight: 100;
+  text-align: right;
+
+}
+.productContent .content .productName small , .ServiceContent .content .ServiceName small{
+  font-size: 12px;
+  text-align: right;
+}
+.tags{
+  width: 100%;
+  float: right;
+  background-color: azure;
+  height: 20px;
+}
+.other-info{
+  width: 100%;
+  display: flex;
+}
+.price{
+  width: 30%;
+}
+.hits {
+  width: 70%;
+}
+.price h4{
+  margin: 0;
+}
+.hits p{
+  margin: 0;
+  float: right;
+}
+.ServiceContent{
+  width: 65%;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+}
+.ServiceImage{
+  border-radius: 0 10px 10px 0;
+}
+.ServiceImage img{
+  border-radius: 0 10px 10px 0;
+}
+.ServiceContent .content .ServiceCategory h6 {
+  float: right;
+  margin: 13px 0 0 15px;
+}
+.ServiceCard .price{
+  width: 70%;
+}
+.ServiceCard .hits {
+  width: 30%;
+}
+.ServiceCard .price h4{
+  margin: 0;
+}
+.ServiceCard .hits p{
+  margin: 0;
+  float: left;
 }

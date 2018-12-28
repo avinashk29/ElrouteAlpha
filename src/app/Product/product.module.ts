@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../Product/product-form/product-form.component';
 import { ReactiveFormsModule} from '@angular/forms';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { ProductListingComponent } from './product-listing/product-listing.component';
 @NgModule({
-  declarations: [ProductFormComponent],
+  declarations: [ProductFormComponent, ProductListingComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule
