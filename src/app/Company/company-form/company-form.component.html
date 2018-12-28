@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="companyForm">
+<div class="infoGraphic">
+<img src= "https://picsum.photos/1000/800/?random">
+</div>
+<div class="form">
+
+  <form [formGroup] = "companyForm" (ngSubmit)= "onSubmit()">
+      <ul>
+        <li><h1 style="margin:0;">Create Your B Face</h1>
+          <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
+        </li>
+          <li><input type="text" placeholder="Comapny Name" formControlName = "companyName" name="ComapnyName"></li>
+        <li>
+            <div class="location"  >
+                <input list="country" formControlName = "country" placeholder="country" style="width:45%;">
+                <datalist id="country">
+                <option value="country">
+                <option value="country">
+                <option value="country">
+                <option value="country">
+                </datalist>
+                  <input  style="width:45%; float: right;" type="text" placeholder="City(optional)" formControlName = "city" name="city">
+              </div>
+        </li>
+        <li><input type="email" placeholder="Company Email Address" formControlName = "companyEmail" name="companyEmail"></li>
+        <li>
+          <input list="industry" formControlName = "industry" placeholder="Industry">
+          <datalist id="industry">
+          <option value="industry">
+          <option value="industry">
+          <option value="industry">
+          <option value="industry">
+          </datalist>
+        </li>
+        <li>
+            <input list="category" formControlName = "category" placeholder="Category">
+            <datalist id="category">
+            <option value="category">
+            <option value="category">
+            <option value="category">
+            <option value="category">
+            </datalist>
+        </li>
+        <li><button>Next</button></li>
+        </ul>
+  </form>
+
+</div>
+</div>

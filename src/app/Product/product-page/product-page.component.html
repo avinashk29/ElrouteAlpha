@@ -1,0 +1,70 @@
+<app-header></app-header>
+<app-side-nav></app-side-nav>
+<div style="clear:both"></div>
+
+      <div class="product_detalis">
+            <div class="product">
+              <div class="product_1">
+                    <li><a href="#">{{tab1}}</a></li>
+                    <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{tab2}}</a></li>
+                    <li style="float:right;">{{model}}</li>
+              </div>
+              <div style="clear:both;"></div>
+              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{heading}}</h2>
+              <div class="service2">
+                  <p><span>24,125</span><img src="assets/images/bookmark.png" alt="image not found"></p>
+
+                  <div class="service2_img"><img src="assets/images/henna-powder.jpg" alt="image not found"></div>
+              </div>
+              <div class="tags">
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag2</span></li>
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag3</span></li>
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag4</span></li>
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag5</span></li>
+              </div>  
+              <p class="contact">
+                  <img src="assets/images/contact.png" alt="image not found"><span>Contact</span>
+              </p> 
+              <div class="USA_1">
+                  <li>USA:NA</li>
+                  <li style="margin-left:20px;">MOQ:5kg</li>
+            </div> 
+        </div>
+       </div>
+      <div class="Description_box">
+       <div class="des_box">
+         <h2>Description</h2>
+          
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged  .</p>
+      </div>
+          
+
+  <mat-accordion >
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" *ngFor="let product of products let i = index" >
+    <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
+      <mat-panel-title>
+          <h2 >Description</h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="speci_1" >
+      <div class="speci_details">
+        <P>{{product.setup}}</P>
+        <P>{{product.setup}}</P>
+        <P>{{product.setup}}</P>
+        <P>{{product.setup}}</P>
+      </div>
+      <div class="speci_details">
+          <P> {{product.punchline}}</P>
+          <P> {{product.punchline}}</P>
+          <P>{{product.punchline}}</P>
+          <P>{{product.punchline}}</P>
+        </div>
+
+    </div>
+  </mat-expansion-panel>
+  
+</mat-accordion>
+</div> 

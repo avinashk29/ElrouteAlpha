@@ -1,0 +1,19 @@
+
+.tab{
+  margin-top: 30px;
+  width: 100%;
+  height: 13vh;
+  border-top: 1px solid #cccccccc;
+  border-bottom: 1px solid #cccccccc;
+}
+.tab-elements{
+  display: flex;
+  margin-left: 100px;
+  height: 100%;
+  width: 30%;
+}
+.tab-elements h2{
+  padding: 20px  50px 0 0;
+  font-weight: 100;
+  font-size: 30px;
+}

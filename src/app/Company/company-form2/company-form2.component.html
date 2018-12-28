@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="companyForm">
+<div class="infoGraphic">
+<img src= "https://picsum.photos/1000/800/?random">
+</div>
+<div class="form">
+
+  <form [formGroup]="companyForm2" (ngSubmit)= "onSubmit()">
+      <ul>
+        <li><h1 style="margin:0;">Create Your B Face</h1>
+          <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
+        </li>
+        <li>
+            <div>
+                <input type="text" placeholder="website" formControlName = "website" name="website" style="width:55%; margin-bottom: 40px;">
+                <input list="company-type" formControlName = "companyType" placeholder="Company Type" style="width:55%;">
+                <datalist id="company-type">
+                <option value="company-type">
+                <option value="company-type">
+                <option value="company-type">
+                <option value="company-type">
+                </datalist>
+
+                <input  style="width:25%; float: right;" type="file" #filePicker (change)="onImagePick($event)">
+                <button  type="button" style="height:5pc;position: absolute" (click)="filePicker.click()">Pick Company Logo</button>
+                <div class="imagePreview" *ngIf="imagePreview!== '' && imagePreview">
+                    <img [src] = "imagePreview" [alt]="this.companyForm2.value.image.name">
+                  </div>
+
+              </div>
+        </li>
+        <li><textarea placeholder="Short Bio (200 characters)"></textarea></li>
+        <li>
+         <div>
+            <input list="company-size" formControlName = "companySize" placeholder="Company Size" style="width: 47%">
+          <datalist id="company-size">
+          <option value="company-size">
+          <option value="company-size">
+          <option value="company-size">
+          <option value="company-size">
+          </datalist>
+
+          <input list="year" formControlName = "yearEstd" placeholder=" Year Established" style="width: 47%; float: right;">
+          <datalist id="year">
+          <option value="yearEstd">
+          <option value="yearEstd">
+          <option value="yearEstd">
+          <option value="yearEstd">
+          </datalist>
+         </div>
+        </li>
+        <li><button>Next</button></li>
+        </ul>
+  </form>
+
+</div>
+</div>

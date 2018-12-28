@@ -1,0 +1,370 @@
+.homepage_withlogin
+{
+  height: -webkit-fill-available;
+  width: 80%;
+  margin: 0px auto;
+  box-shadow: 0 13px 15px 9px rgba(25,25,25,0.2);
+  margin-top: 1%;
+  
+}
+.with_login
+{
+  padding: 30px 72px;
+  width: 100%;
+}
+.login_user
+{
+  width: 15%;
+  float:left;
+  box-shadow: 0 5px 5px 5px rgba(25,25,25,0.2);
+}
+.user_name
+{
+
+
+  padding: 8px 15px;
+  height: 20px;
+  background-color: #8890A4;
+}
+.user_name h2
+{
+  font-size: 19px;
+  color: #FAF6F6;
+  margin-top: -2px;
+  float: left;
+}
+.user_name span
+{
+  margin-top: -2px;
+  float: right;
+}
+.user_img
+{
+  width: 40%;
+  
+  MARGIN: 0 AUTO;
+ 
+}
+.user_img img
+{
+  width: 100%;
+  MARGIN: 0 AUTO;
+  border-radius: 100%;
+}
+
+.user_details1
+{
+  padding: 8px 15px;
+  height: 20px;
+  border-bottom: solid 1px gray;
+}
+.user_details1 p
+{
+  font-size: 15px;
+  color: #707070;
+  margin-top: -2px;
+  float: left;
+}
+.user_details1 span
+{
+  color: #707070;
+  font-size: 12px;
+  margin-top: -2px;
+  float: right;
+}
+.user_following
+{
+  padding: 10px 30px;
+  height: 20px;
+  border-bottom: solid 1px gray;
+}
+.user_following p
+{
+  font-size: 15px;
+  color: #707070;
+  margin-top: -2px;
+  float: left;
+}
+.user_following span
+{
+  color: #707070;
+  font-size: 12px;
+  margin-top: -2px;
+  float: right;
+}
+.feeds
+{
+  
+  width: 60%;
+  float: left;
+  padding: 0 21px;
+}
+.add_feed
+{
+  border-radius: 24px 22px 0 0px;
+  width: 11%;
+  margin: 0 10px;
+  padding: 9px 22px;
+  height: 20px;
+  background-color: #8890A4;
+  color: #FDF9F9;
+}
+.about_feed
+{    margin: 0 10px;
+  box-shadow: 0px 5px 5px rgba(25,25,25,0.2);
+  border: solid 1px gray;
+  
+ }
+ .about_feed1
+ {
+   font-family: Segoe UI, Regular;
+ 
+   color: #707070;
+  padding: 7px 20px;
+  text-align: justify;
+ }
+.add_media
+{
+  
+  padding: 15px 53px;
+  height: 20px;
+  background-color: #F5F5F5;
+}
+.add_media h2
+{
+  font-size: 27px;
+  color: #707070;
+  margin-top: -3px;
+  float: left;
+}
+.add_media span
+{
+  font-size: 15px;
+  float: right;
+  color: #707070;
+} 
+.company_industry
+{
+  height: 280px;
+  border: solid 1px gray;
+  width:12%;
+  float: left;
+}
+
+
+/* border: 1px solid #cccccc; */
+/* .search-bar{
+  width: 95%;
+  display: flex;
+}
+.search-container {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 120px;
+  z-index: -1;
+}
+
+
+input#search-bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 13vh;
+  padding: 0px 45px;
+  font-size: 3rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+input#search-bar:focus {
+  transition: 0.35s ease;
+}
+input#search-bar:focus::-webkit-input-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus::-moz-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus:-ms-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+
+.search-icon {
+  position: relative;
+  float: left;
+  width: 75px;
+  height: 75px;
+  top: -62px;
+  right: 15px;
+}
+.search-container button{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 13.3vh;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 20px 20px 0;
+}
+.search-container button select {
+  width: 120px;
+  margin-right: 10px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  outline: none;
+  border-radius: 0 20px 20px 0;
+  padding: 0 40px;
+  font-size: 16px;
+}
+.toggleBtn{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0 !important ;
+  margin-right: -40px !important;
+
+}
+.filter{
+  width: 100%;
+  height: 7vh;
+  background-color: royalblue;
+  margin-top: 30px;
+}
+section{
+  width: 85%;
+  height: 100vh;
+  margin: 0 auto;
+  margin-top: 60px;
+display: flex;
+}
+.userProfile{
+  width: 20%;
+  height: 40%;
+
+}
+.Uname{
+  width: 100%;
+  height: auto;
+  border: 1px solid #cccccc;
+}
+.Uname h2{
+  padding: 0 0 0 20px;
+}
+.profile{
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-top: none;
+}
+.profile img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.profile span{
+  width: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  padding:  0 0 15px 0;
+}
+.bookmark , .following{
+  width: 100%;
+  display: flex;
+  border: 1px solid #cccccc;
+}
+.bookmark h3 , .following h3{
+  padding: 0 0 0 10px;
+  width: 85%;
+}
+.bookmark p , .following p{
+  width: 15%;
+  float: right;
+}
+.feed{
+  width: 50%;
+  height: 490px;
+  display: block;
+  margin-left: 5%;
+  margin-right: auto;
+  border: 1px solid #cccccc;
+}
+.authorInfo{
+width: 100%;
+display: flex;
+
+}
+.details{
+  width: 70%;
+  height: auto;
+  display: flex;
+  
+}
+.logo{
+  width: 20%;
+  height: 100%;
+  background-color: black;
+}
+.details h1, .details p{
+  margin: 0;
+  padding: 5px 0 0 15px;
+  line-height: 25px;
+
+}
+.details p{
+  padding: 0px 0 0 15px !important;
+}
+.followBtn{
+  width: 30%;
+  height: auto;
+  float: right;
+}
+.followBtn button{
+  width: 80%;
+  margin-top: 10px;
+  height: 25px;
+  border-radius: 10px;
+  border:none;
+  margin-left: 10px;
+}
+.followBtn p{
+  align-items: baseline;
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom:  0;
+}
+.feed-img{
+  width: 100%;
+  height: 70%;
+  background-color: orange;
+}
+.feed-img img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.feed-share{
+  width: 100%;
+  height: 7%;
+  background-color: burlywood;
+  display: block;
+}
+.tagged{
+  width: 100%;
+  height: 7%;
+  background-color: red;
+} */

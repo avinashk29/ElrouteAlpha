@@ -1,0 +1,182 @@
+.product_detalis
+{
+    padding-top:4%;
+    margin-left: 4%;
+}
+.product
+{
+    padding: 10px 20px;
+    background-color: #f5f2f2;
+    width: 30%;
+    float: left;
+}
+.product_1 
+{
+    font-size:15px;
+}
+
+.product_1 li
+{
+   display: inline;
+   font-family:  Segoe UI regular ;
+   color: #707070;
+}
+.product_1 a
+{
+    
+    text-decoration:none;
+    color:#707070;
+    
+}
+
+.service2 
+{
+  
+    padding: 0 24px 48px 20px;
+ 
+      box-shadow: 0 5px 5px rgba(25,25,25,0.2);
+      background-color: white;
+}
+
+.service2 p img
+{
+    float: right;
+    margin-top: -9px;
+    width:50px;
+}
+.service2 p
+{
+    font-family:  Segoe UI regular ;    
+    padding-top: 20px;
+	text-align:right;
+    font-size: 150%;
+    color: #707070;
+	
+}
+.service2_img
+{
+    
+    width: 100%;
+}
+.service2_img img
+{
+    
+   width:100%;
+    box-shadow: 0 5px 5px rgba(25,25,25,0.2);
+    
+}
+.tags
+{
+
+    margin-top: 10px;
+}
+.tags li
+{
+    
+    font-size: 20px;
+    margin: 10px;
+    display: inline;
+
+}
+.tags li img
+{
+
+    margin: 5px ;
+    width: 20px;
+}
+.contact
+{
+    text-align: right;
+}
+.contact span
+{
+    font-size:150%;
+    margin-left:20px;
+    border:solid 1px gray;
+    padding: 0px 15px;
+    color:#707070;
+    border-radius: 8px;
+
+}
+.contact img
+{
+    position: absolute;
+    width: 45px;
+    margin: -9px -9px;
+}
+.USA_1 li
+{
+    color: #707070;
+    display: inline;
+    font-size:150%;
+}
+.Description_box
+{
+    width: 45%;
+    float: left;
+   margin-left:2%; 
+   font-family:  Segoe UI regular ;
+}
+.des_box 
+{
+    padding: 0px 60px;   
+    font-family: Segoe UI, Regular;  
+    background-color: #F5F5F5;
+    
+    
+    
+}
+.des_box h2
+{
+    
+  color: #707070;
+  font-size: 25px;
+  font-weight: 400;
+  padding-top: 15px;
+   
+    
+}
+
+.des_box p
+{
+    color: #707070;
+    font-size: 20px;
+    border-top: solid 1px gray;
+
+    padding : 20px 0 30px;  
+    font-family: Segoe UI, Regular;
+}
+.speci
+{
+    padding: 7px 70px;   
+    font-family: Segoe UI, Regular;  
+    background-color: whitesmoke;
+}
+.speci span
+{
+    padding: 7px 40px;
+    border-bottom:solid 1px gray;
+    width: 92%;
+    border-top:solid 1px gray;
+    color: #707070;
+    font-size: 25px;
+    float: left;
+
+    
+}
+.speci_1
+{
+    padding: 7px 70px; 
+    background-color: white;
+    width: 100%;
+}
+.speci_details
+{
+    float: left;
+    margin: 0 10px;
+}
+.speci h2
+{
+    font-weight: 400;
+    color: #707070;
+}
