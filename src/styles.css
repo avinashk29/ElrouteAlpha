@@ -2,7 +2,7 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 body{
   margin: 0;
-
+  font-family: Segoe UI;
   padding: 0;
 }
 

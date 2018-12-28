@@ -1,0 +1,226 @@
+/* .search-bar{
+  width: 95%;
+  display: flex;
+}
+.search-container {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 120px;
+  z-index: -1;
+
+}
+
+
+input#search-bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 7vh;
+  padding: 0px 45px;
+  font-size: 1.5rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+}
+input#search-bar:focus {
+  transition: 0.35s ease;
+}
+input#search-bar:focus::-webkit-input-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus::-moz-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus:-ms-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+
+.search-icon {
+  position: relative;
+  float: left;
+  width: 75px;
+  height: 75px;
+  top: -62px;
+  right: 15px;
+}
+.search-container button{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 2.3vh;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 10px 10px 0;
+}
+.search-container button  {
+  margin-right: 10px;
+  height: 70%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  outline: none;
+  border-radius: 0 10px 10px 0;
+  padding: 0 40px;
+  font-size: 16px;
+}
+.toggleBtn{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 120px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0 !important ;
+  margin-right: -40px !important;
+
+}
+.filter{
+  width: 100%;
+  height: 7vh;
+  background-color: royalblue;
+  margin-top: 30px;
+} */
+section{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+
+}
+.listing{
+  display: flex;
+  flex-wrap: wrap;
+}
+.Card{
+  width: 30%;
+  border-radius: 10px;
+  margin-right: 3%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+}
+.productCard, .ServiceCard{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cccccccc;
+  border-radius: 10px 10px 10px 10px
+}
+.productImage, .ServiceImage {
+  border-radius: 10px 0 0 10px;
+  width: 35%;
+  height: 100%;
+}
+.bookmark{
+  width: 1%;
+  height: 3%;
+  background-color: red;
+  position: absolute;
+  margin-left: 10%;
+}
+.productImage img , .ServiceImage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+.productContent{
+  width: 65%;
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+}
+.content{
+  width: 95%;
+  margin: 0 auto;
+  height: 100%;
+}
+.discription{
+  font-size: 12px;
+}
+.productContent .content .productCategory h6 ,.ServiceContent .content .ServiceCategory h6 {
+  float: right;
+  margin: 13px 15px 0 0;
+  font-size: 7px;
+  font-weight: 100;
+}
+.productContent .content .productName , .ServiceContent .content .ServiceName{
+  width: 100%;
+
+}
+.productContent .content .productName h2 , .ServiceContent .content .ServiceName h2{
+  margin: 0;
+  width: 100%;
+  font-weight: 100;
+  font-size: 15px;
+  padding-top: 3px;
+  justify-content: flex-end;
+    display: flex
+}
+.productContent .content .productName h5 ,.ServiceContent .content .ServiceName h5{
+  margin: 0;
+  font-weight: 100;
+  text-align: right;
+  font-size: 10px;
+}
+.productContent .content .productName small , .ServiceContent .content .ServiceName small{
+  font-size: 8px;
+  text-align: right;
+}
+.tags{
+  width: 100%;
+  float: right;
+  background-color: azure;
+  height: 20px;
+  margin-bottom: 2px;
+}
+.other-info{
+  width: 100%;
+  display: flex;
+}
+.price{
+  width: 30%;
+}
+.hits {
+  width: 70%;
+}
+.price h4{
+  margin: 0;
+  font-size: 12px;
+}
+.hits p{
+  margin: 0;
+  float: right;
+  font-size: 12px;
+}
+.ServiceContent{
+  width: 65%;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+}
+.ServiceImage{
+  border-radius: 0 10px 10px 0;
+}
+.ServiceImage img{
+  border-radius: 0 10px 10px 0;
+}
+.ServiceContent .content .ServiceCategory h6 {
+  float: right;
+  margin: 13px 0 0 15px;
+}
+.ServiceCard .price{
+  width: 70%;
+}
+.ServiceCard .hits {
+  width: 30%;
+}
+.ServiceCard .price h4{
+  margin: 0;
+}
+.ServiceCard .hits p{
+  margin: 0;
+  float: left;
+}

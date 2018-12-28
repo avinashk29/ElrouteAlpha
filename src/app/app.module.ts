@@ -34,11 +34,14 @@ import { CompanyForm2Component } from './Company/company-form2/company-form2.com
 import { CompanyForm3Component } from './Company/company-form3/company-form3.component';
 import {SideNavComponent} from './Header/side-nav/side-nav.component';
 import {ProductFormComponent} from './Product/product-form/product-form.component';
+import { ServicePageComponent } from './serviceSection/service-page/service-page.component';
+import {ProductListingComponent} from './Product/product-listing/product-listing.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
-import { from } from 'rxjs';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 
@@ -71,7 +74,9 @@ import { from } from 'rxjs';
     CompanyForm2Component,
     CompanyForm3Component,
     SideNavComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ServicePageComponent,
+    ProductListingComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,8 @@ import { from } from 'rxjs';
     MatDialogModule,
     ReactiveFormsModule,
     HttpModule,
-    StorageServiceModule
+    StorageServiceModule,
+    MatExpansionModule
 
   ],
   entryComponents: [

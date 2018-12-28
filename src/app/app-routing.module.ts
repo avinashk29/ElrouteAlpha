@@ -9,7 +9,9 @@ import { CompanyForm2Component } from './Company/company-form2/company-form2.com
 import { CompanyForm3Component } from './Company/company-form3/company-form3.component';
 import { SideNavComponent } from './Header/side-nav/side-nav.component';
 import { ProductFormComponent } from './Product/product-form/product-form.component';
-
+import {ServicePageComponent} from './serviceSection/service-page/service-page.component';
+import {BookmarkComponent} from './Bookmark/bookmark/bookmark.component';
+import {ProductListingComponent} from './Product/product-listing/product-listing.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent},
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path: 'B-page-step2' , component: CompanyForm2Component},
   {path: 'B-page-step3' , component: CompanyForm3Component},
   {path: 'sideNav' , component: SideNavComponent},
-  {path: 'productForm' , component: ProductFormComponent}
+  {path: 'productForm' , component: ProductFormComponent},
+  {path: 'servicePage', component: ServicePageComponent},
+  {path: 'bookmark' , component: BookmarkComponent},
+  {path: 'product' , component: ProductListingComponent}
   // {path: 'feed ' , component: fee}
 ];
 
