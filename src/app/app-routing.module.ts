@@ -12,6 +12,7 @@ import { ProductFormComponent } from './Product/product-form/product-form.compon
  import { HeaderComponent } from './Header/header/header.component';
  import { SPageHeaderComponent } from './Header/s-page-header/s-page-header.component';
  import { SPageHeaderSearchComponent } from './Header/s-page-header-search/s-page-header-search.component';
+ import { FollowingComponent } from './User/following/following.component';
  
  
 
@@ -30,6 +31,7 @@ const routes: Routes = [
    {path: 'without-login' , component:WithoutLoginComponent },
    {path: 's-page-header' , component:SPageHeaderComponent},
    {path: 's-page-header-search' , component:SPageHeaderSearchComponent},
+   {path: 'Following' , component: FollowingComponent},
   // {path: 'feed ' , component: fee}
 ];
 

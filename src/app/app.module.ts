@@ -37,6 +37,7 @@ import {ProductFormComponent} from './Product/product-form/product-form.componen
 import {MatExpansionModule} from '@angular/material/expansion';
 import { SPageHeaderComponent } from './Header/s-page-header/s-page-header.component';
 import { SPageHeaderSearchComponent } from './Header/s-page-header-search/s-page-header-search.component';
+import { FollowingComponent } from './User/following/following.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -78,7 +79,8 @@ import { from } from 'rxjs';
     SideNavComponent,
     ProductFormComponent,
     SPageHeaderComponent,
-    SPageHeaderSearchComponent
+    SPageHeaderSearchComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,
