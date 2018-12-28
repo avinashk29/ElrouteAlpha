@@ -1,3 +1,22 @@
-<p>
-  followers works!
-</p>
+<section>
+<h2>Followers</h2>
+<div class="followers">
+<div class="card" *ngFor="let follower of followers">
+<div class="image">
+<img src="https://picsum.photos/200/300/?random">
+</div>
+<div class="info">
+<div class="content">
+  <div class="companyName">
+    <p>{{follower.comapny}}</p>
+  </div>
+  <div class="name">
+    <h4>{{follower.name}}</h4>
+    <small>{{follower.catogary}}</small>
+    <small style="text-transform:uppercase;margin-top: 8%;">{{follower.country}}</small>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
