@@ -1,6 +1,6 @@
 <body>
-<app-side-nav></app-side-nav>
- <app-header></app-header>
+<app-side-nav ></app-side-nav>
+<app-header></app-header>
 <!-- <app-side-nav></app-side-nav>
 <app-header style="position:fixed"></app-header>
 <app-s-page-header-search></app-s-page-header-search> -->
@@ -19,11 +19,11 @@
             <p >Nikhil Sharma</p>
             <span >jaipur</span>
           </div>
-          <div class="user_following">
+          <div class="user_following" routerLink="/Following">
               <p >Following</p>
               <span >30</span>
             </div>
-            <div class="user_following">
+            <div class="user_following" routerLink = "/bookmark">
                 <p >Bookmark</p>
                 <span >72</span>
               </div>
@@ -59,8 +59,8 @@
  <p style="line-height: 3px;margin-bottom: 10px;">Location</p>
 </div>
 </div>
-<div class="followBtn">
- <button>Following</button>
+<div class="followBtn" >
+ <button >Following</button>
  <p>34,342 followers</p>
 </div>
 </div>
