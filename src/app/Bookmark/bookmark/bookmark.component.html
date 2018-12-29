@@ -1,5 +1,5 @@
 <section>
-  <!-- <div class="bookmark_overview">
+  <div class="bookmark_overview">
     <div class="overview">
       <div class="profile">
           <div class="follower_user">
@@ -74,10 +74,18 @@
         <button>Create  Your B page</button>
     </div>
      </div>
-  </div> -->
+  </div>
+<h2>Bookmarks</h2>
+  <div class="header">
+      <div class="headerElements">
+      <div class="elements"><h4>Products</h4></div>
+      <div class="elements"><h4>Comapny</h4></div>
+      <div class="elements"><h4>Feed</h4></div>
+      </div>
+        </div>
 
-<app-header3></app-header3>
     <div class="listing">
+     <input type="search" placeholder="Enter Product/Service to Search">
       <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
     <div class="Card" *ngFor="let card of cards; let i = index">
       <div class="productCard" *ngIf="card.type == 1">

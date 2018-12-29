@@ -119,13 +119,13 @@ section{
 }
 .follower_location span
 {
-  
+
   float:right;
   color: white;
 }
 .follower_img
 {
-  
+
   margin: 0 auto;
   width: 28%;
 }
@@ -152,7 +152,7 @@ section{
   font-size: 20px;
   margin-bottom: auto;
   margin-top: auto
-  
+
 }
 
 .Bio
@@ -164,7 +164,7 @@ section{
 .follower_des
 {
   text-align: justify;
-  
+
 }
 .follower_des p
 {
@@ -172,7 +172,7 @@ section{
   width: 90%;
   text-align: justify;
   font-size: 12px;
-  
+
 }
 .follower_company
 {
@@ -183,8 +183,8 @@ display: flex;
 .company{
   width: 80%;
   display: flex;
-  margin: 0 auto; 
-  
+  margin: 0 auto;
+
 
 }
 .company_logo
@@ -201,7 +201,7 @@ display: flex;
 {
   margin-left: 4%;
   font-size: 13px;
-  
+
 }
 .links
 {
@@ -258,7 +258,7 @@ display: flex;
   padding: 0px 18px;
   box-shadow: 0px 2px 3px #5555;
 }
-.b_page_btn 
+.b_page_btn
 {
   width: 63%;
   margin: 0 auto;
@@ -267,7 +267,7 @@ display: flex;
 
 .b_page_btn button
 {
-  border-radius:20px; 
+  border-radius:20px;
   background-color: black;
   color: white;
   border: none;
@@ -408,4 +408,31 @@ display: flex;
 .ServiceCard .hits p{
   margin: 0;
   float: left;
+}
+.header{
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.headerElements{
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+}
+.elements{
+  width: 10%;
+  height: 100%;
+}
+.elements h4{
+  margin: 0;
+}
+.listing input{
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+  border:none;
+}
+h2{
+  margin-top: 10%;
 }
