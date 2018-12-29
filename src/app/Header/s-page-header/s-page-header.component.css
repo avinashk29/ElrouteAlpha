@@ -1,11 +1,19 @@
+header{
+  border: solid 1px gray;
+  border-right: none;
+  border-left: none;
+  margin-top: 20px;
+}
 .s_page_header
 {
-    border: solid 1px gray;
+
     width: 80%;
     margin: 0px auto;
     margin-top: 1%;
 }
-
+.s_page_details h1{
+  font-weight: 400;
+}
 .s_page_header_link
 {
     width: 100%;
@@ -20,7 +28,7 @@
 {
     font-size: 29px;
     text-decoration: none;
-    color: #707070; 
+    color: #707070;
 }
 .s_page_details
 {
@@ -29,7 +37,7 @@
 .s_page_details a
 {
     text-decoration: none;
-    color: #707070;    
+    color: #707070;
 }
 .s_page_links
 {
@@ -38,22 +46,22 @@
 }
 .s_page_links select
 {
-    font-size: 29px;    
+    font-size: 29px;
     border: none;
     color: #060606;
 }
 .s_page_links a
 {
-  
+
     font-size: 29px;
     text-decoration: none;
-    color: #707070; 
+    color: #707070;
 }
 .s_page_links1
 {
     float: left;
 }
-.s_page_links2 
+.s_page_links2
 {
     float: left;
     margin: 0px 20px;
