@@ -19,6 +19,7 @@ a {
 	text-transform: uppercase;
 	text-align: center;
   display: block;
+  color: white; 
 
 }
 
@@ -94,4 +95,19 @@ a {
   .main-nav a{
     color: black;
   } 
+
+}
+@media screen and (min-width: 767px) and (max-width: 1024px){
+ .main-nav {
+  display: flex;
+  font-size: 12px;
+}
+.logo a  {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  color: white;
+  margin-left: 9px;
+}
 }
