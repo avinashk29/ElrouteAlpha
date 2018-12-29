@@ -1,4 +1,8 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
+<header>
+  <h1>Create Your B Face</h1>
+  <p>Register and step into the business world</p>
+</header>
 <div class="companyForm">
 <div class="infoGraphic">
 <img src= "https://picsum.photos/1000/800/?random">
@@ -7,7 +11,7 @@
 
   <form [formGroup] = "companyForm" (ngSubmit)= "onSubmit()">
       <ul>
-        <li><h1 style="margin:0;">Create Your B Face</h1>
+        <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
           <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
         </li>
           <li><input type="text" placeholder="Comapny Name" formControlName = "companyName" name="ComapnyName"></li>

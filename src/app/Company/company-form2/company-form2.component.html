@@ -1,4 +1,7 @@
-<app-header></app-header>
+<header>
+  <h1>Create Your B Face</h1>
+  <p>Register and step into the business world</p>
+</header>
 <div class="companyForm">
 <div class="infoGraphic">
 <img src= "https://picsum.photos/1000/800/?random">
@@ -7,13 +10,13 @@
 
   <form [formGroup]="companyForm2" (ngSubmit)= "onSubmit()">
       <ul>
-        <li><h1 style="margin:0;">Create Your B Face</h1>
+        <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
           <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
         </li>
         <li>
             <div>
-                <input type="text" placeholder="website" formControlName = "website" name="website" style="width:55%; margin-bottom: 40px;">
-                <input list="company-type" formControlName = "companyType" placeholder="Company Type" style="width:55%;">
+                <input type="text" placeholder="website" formControlName = "website" name="website"  class="website">
+                <input list="company-type" formControlName = "companyType" placeholder="Company Type" class="company-type">
                 <datalist id="company-type">
                 <option value="company-type">
                 <option value="company-type">
@@ -21,8 +24,8 @@
                 <option value="company-type">
                 </datalist>
 
-                <input  style="width:25%; float: right;" type="file" #filePicker (change)="onImagePick($event)">
-                <button  type="button" style="height:5pc;position: absolute" (click)="filePicker.click()">Pick Company Logo</button>
+                <input type="file" #filePicker (change)="onImagePick($event)" class="picker">
+                <button  type="button" style="" (click)="filePicker.click()" class="btn">Pick Company Logo</button>
                 <div class="imagePreview" *ngIf="imagePreview!== '' && imagePreview">
                     <img [src] = "imagePreview" [alt]="this.companyForm2.value.image.name">
                   </div>
@@ -32,7 +35,7 @@
         <li><textarea placeholder="Short Bio (200 characters)"></textarea></li>
         <li>
          <div>
-            <input list="company-size" formControlName = "companySize" placeholder="Company Size" style="width: 47%">
+            <input list="company-size" formControlName = "companySize" placeholder="Company Size"  class="companySize">
           <datalist id="company-size">
           <option value="company-size">
           <option value="company-size">
@@ -40,7 +43,7 @@
           <option value="company-size">
           </datalist>
 
-          <input list="year" formControlName = "yearEstd" placeholder=" Year Established" style="width: 47%; float: right;">
+          <input list="year" formControlName = "yearEstd" placeholder=" Year Established"  class="yearEstd">
           <datalist id="year">
           <option value="yearEstd">
           <option value="yearEstd">
