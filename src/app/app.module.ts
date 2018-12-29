@@ -42,7 +42,7 @@ import {ServicePageComponent} from './serviceSection/service-page/service-page.c
 import { FollowingComponent } from './User/following/following.component';
 import {Header3Component} from './Header/header3/header3.component';
 import { FeedsComponent } from './Search/feeds/feeds.component';
-
+import {UserOverviewComponent} from './User/user-overview/user-overview.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -50,6 +50,7 @@ import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
 
 import { from } from 'rxjs';
+import { BPageComponent } from './Bpage/b-page/b-page.component';
 
 
 
@@ -89,7 +90,9 @@ import { from } from 'rxjs';
     ServicePageComponent,
     FollowingComponent,
     Header3Component,
-    FeedsComponent
+    FeedsComponent,
+    UserOverviewComponent,
+    BPageComponent
   ],
   imports: [
     BrowserModule,
