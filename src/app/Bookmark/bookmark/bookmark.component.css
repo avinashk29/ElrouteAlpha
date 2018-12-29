@@ -108,6 +108,7 @@ section{
 .follower_user
 {
   width: 100%;
+  height: fit-content;
   box-shadow: 0px 4px 3px #5555;
 }
 .follower_location
@@ -119,7 +120,7 @@ section{
 }
 .follower_location span
 {
-
+  margin-right: 10px;
   float:right;
   color: white;
 }
@@ -164,6 +165,7 @@ section{
 .follower_des
 {
   text-align: justify;
+  
 
 }
 .follower_des p
@@ -205,7 +207,7 @@ display: flex;
 }
 .links
 {
-  margin-top: 2%;
+  margin-top: 3%;
 }
 .follwers_links
 {
@@ -219,7 +221,6 @@ display: flex;
 }
 .bookmark_following
 {
-  box-shadow: 0px 2px 30px #5555;
   padding: 0px 10px;
 }
 .following_nub
@@ -239,10 +240,11 @@ display: flex;
 }
 .following_nub1
 {
-  font-size: 25px;
-  margin-top: 5%;
+  font-size: 52px;
+  margin-top: 3%;
   width: 44%;
   text-align: center;
+  color: #4d4f5c;
 }
 .following_btn
 {
@@ -254,7 +256,7 @@ display: flex;
   color: white;
   border: none;
   font-size: 24px;
-  margin-top: 23%;
+  margin-top: 30%;
   padding: 0px 18px;
   box-shadow: 0px 2px 3px #5555;
 }
@@ -267,12 +269,12 @@ display: flex;
 
 .b_page_btn button
 {
-  border-radius:20px;
+  border-radius:60px;
   background-color: black;
   color: white;
   border: none;
   font-size: 24px;
-  padding: 10px 18px;
+  padding: 10px 50px;
   box-shadow: 0px 2px 3px #5555;
 }
 
@@ -433,6 +435,4 @@ display: flex;
   padding: 10px;
   border:none;
 }
-h2{
-  margin-top: 10%;
-}
+
