@@ -14,6 +14,7 @@ import { ProductFormComponent } from './Product/product-form/product-form.compon
  import { SPageHeaderSearchComponent } from './Header/s-page-header-search/s-page-header-search.component';
 import { FollowersComponent } from './User/followers/followers.component';
 import { ServicePageComponent } from './serviceSection/service-page/service-page.component';
+import { FollowingComponent } from './User/following/following.component';
 
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
@@ -27,11 +28,12 @@ const routes: Routes = [
    {path: 'product-page' , component: ProductPageComponent},
    {path: 'header' , component: HeaderComponent},
    {path: 'with-login' , component: WithLoginComponent},
-   {path: 'without-login' , component:WithoutLoginComponent },
-   {path: 's-page-header' , component:SPageHeaderComponent},
-   {path: 's-page-header-search' , component:SPageHeaderSearchComponent},
+   {path: 'without-login' , component: WithoutLoginComponent },
+   {path: 's-page-header' , component: SPageHeaderComponent},
+   {path: 's-page-header-search' , component: SPageHeaderSearchComponent},
    {path: 'Followers', component: FollowersComponent },
-   {path: 'servicePage', component: ServicePageComponent }
+   {path: 'servicePage', component: ServicePageComponent },
+   {path: 'Following' , component: FollowingComponent},
   // {path: 'feed ' , component: fee}
 ];
 

@@ -2,10 +2,9 @@
 .with_login
 {
   margin: 0 auto;
-  width: 90%;
+  width: 75%;
   padding-top: 3%;
-  background-color: red;
-  height: 51%;
+
 
 }
 .login_user
@@ -113,11 +112,11 @@
  }
  .about_feed1
  {
-   font-family: Segoe UI, Regular;
-
    color: #707070;
   padding: 7px 20px;
   text-align: justify;
+  font-size: 12px;
+  line-height: 20px;
  }
 .add_media
 {
@@ -130,12 +129,13 @@
 {
   font-size: 27px;
   color: #707070;
-  margin-top: -3px;
+ margin-top: -10px;
   float: left;
+  font-weight: 500;
 }
 .add_media span
 {
-  font-size: 15px;
+  font-size: 12px;
   float: right;
   color: #707070;
 }
@@ -306,4 +306,56 @@ mat-panel-title h4{
   margin: 0;
   font-size: 14px;
   font-weight: 100;
+}
+@media screen and (max-width:700px){
+  .company_industry,.login_user{
+    display: none;
+  }
+  .with_login{
+    width: 100%;
+    margin: 0px;
+  }
+  .feeds{
+    width: 100%;
+    padding: 0px;
+  }
+  .add_media h2{
+    font-size: 15px;
+    margin-top: -5px;
+  }
+  .add_media span{
+    font-size: 10px;
+  }
+  .add_feed {
+    font-size: 11px;
+    width: 12%;
+  }
+  section{
+    width: 95%;
+  }
+  .followBtn button{
+    width: 100%;
+    font-size: 8px;
+  }
+  .followBtn p{
+    margin-right: 0;
+  }
+  .details h1{
+    font-size: 15px;
+  }
+  .details p{
+    font-size: 8px;
+  }
+  .feedInfo p{
+    font-size: 10px;
+    line-height: 15px;
+  }
+  mat-panel-title h4{
+    font-size: 11px;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 1440px){
+  .with_login{
+    width: 85%;
+  }
 }

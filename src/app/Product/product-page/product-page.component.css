@@ -10,7 +10,7 @@
     width: 30%;
     float: left;
 }
-.product_1 
+.product_1
 {
     font-size:15px;
 }
@@ -23,17 +23,17 @@
 }
 .product_1 a
 {
-    
+
     text-decoration:none;
     color:#707070;
-    
+
 }
 
-.service2 
+.service2
 {
-  
+
     padding: 0 24px 48px 20px;
- 
+
       box-shadow: 0 5px 5px rgba(25,25,25,0.2);
       background-color: white;
 }
@@ -46,24 +46,24 @@
 }
 .service2 p
 {
-    font-family:  Segoe UI regular ;    
+    font-family:  Segoe UI regular ;
     padding-top: 20px;
 	text-align:right;
     font-size: 150%;
     color: #707070;
-	
+
 }
 .service2_img
 {
-    
+
     width: 100%;
 }
 .service2_img img
 {
-    
+
    width:100%;
     box-shadow: 0 5px 5px rgba(25,25,25,0.2);
-    
+
 }
 .tags
 {
@@ -72,7 +72,7 @@
 }
 .tags li
 {
-    
+
     font-size: 20px;
     margin: 10px;
     display: inline;
@@ -114,27 +114,27 @@
 {
     width: 45%;
     float: left;
-   margin-left:2%; 
+   margin-left:2%;
    font-family:  Segoe UI regular ;
 }
-.des_box 
+.des_box
 {
-    padding: 0px 60px;   
-    font-family: Segoe UI, Regular;  
+    padding: 0px 60px;
+    font-family: Segoe UI, Regular;
     background-color: #F5F5F5;
-    
-    
-    
+
+
+
 }
 .des_box h2
 {
-    
+
   color: #707070;
   font-size: 25px;
   font-weight: 400;
   padding-top: 15px;
-   
-    
+
+
 }
 
 .des_box p
@@ -143,13 +143,13 @@
     font-size: 20px;
     border-top: solid 1px gray;
 
-    padding : 20px 0 30px;  
+    padding : 20px 0 30px;
     font-family: Segoe UI, Regular;
 }
 .speci
 {
-    padding: 7px 70px;   
-    font-family: Segoe UI, Regular;  
+    padding: 7px 70px;
+    font-family: Segoe UI, Regular;
     background-color: whitesmoke;
 }
 .speci span
@@ -162,11 +162,11 @@
     font-size: 25px;
     float: left;
 
-    
+
 }
 .speci_1
 {
-    padding: 7px 70px; 
+    padding: 7px 70px;
     background-color: white;
     width: 100%;
 }
@@ -180,3 +180,57 @@
     font-weight: 400;
     color: #707070;
 }
+ @media screen and (max-width: 700px){
+  .product_detalis{
+    margin-left: 0;
+    width: 90%;
+  }
+  .product{
+    width: 100%;
+    float: none;
+  }
+  .product_1{
+    font-size: 10px;
+  }
+  h2{
+    font-size: 18px !important;
+  }
+  .service2{
+    font-size: 60% !important;
+  }
+  .service2 p img{
+    width: 30px;
+    margin-top: -5px;
+  }
+  .tags li{
+    font-size: 16px;
+  }
+  .tags li img{
+    width: 15px;
+  }
+  .Description_box{
+    width: 100%;
+  }
+  .des_box{
+    padding: 0 20px;
+  }
+  .des_box p{
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .speci{
+    padding: 0 20px;
+  }
+  .speci_1{
+    padding: 0 20px;
+  }
+  .speci_details{
+    margin: 0;
+  }
+  .USA_1{
+    font-size: 12px;
+  }
+  .moq{
+    float: right;
+  }
+ }

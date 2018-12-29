@@ -1,0 +1,119 @@
+
+.user_following
+{
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 5px 5px 5px rgba(25,25,25,0.2);
+}
+.follow_search
+{
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+}
+.follow_search input[type="search"]
+{
+    font-size: 40px;
+    width: 100%;
+    border-radius:10px; 
+    background-color: #f5f5fa;
+}
+.following
+{
+    display: flex;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 5px 5px 5px rgba(25,25,25,0.2);
+    margin: 10px auto;
+    width: 94%;
+        border-radius: 10px;
+
+}
+.following_1
+{
+    width: 70%;
+    display: flex;
+    margin-left: 1%;    
+   
+}
+.following_image 
+{
+    width: 15%;
+
+}
+.following_image  img
+{
+
+    width: 100%;
+    border-radius: 100%;
+    padding: 10px 0px;
+}
+.following_name
+{
+    width: 50%;
+}
+.following_name h3
+{
+
+    margin-bottom: auto;
+} 
+.following_name span
+{
+    font-size: 15px;
+}
+.following_bookmark
+{
+    width: 15%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.following_bookmark img
+{
+    width: 40%;
+  
+}
+.following_bookmark span
+{
+    font-size: 15px;
+  
+}
+.following_2
+{
+    width: 30%;
+    display: flex;
+   
+}
+.followBtn{
+    width: 100%;
+    height: auto;
+    float: right;
+    text-align: right;
+    margin-top: 30%
+  }
+  .followBtn button{
+    width: 80%;
+    margin-top: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+  height: 25px;
+    border-radius: 15px;
+    border:none;
+    margin-left: 10px;
+  }
+  .followBtn svg
+  {
+      width: 15px;
+  }
+  .following_icon1 
+  {
+    width: 100%;
+    margin: 0px 10px;
+    padding: 10px 0px;
+  }
+  .following_icon1 img
+  {
+    width: 100%;
+        border-radius: 100%
+    
+  }

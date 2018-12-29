@@ -38,7 +38,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { SPageHeaderComponent } from './Header/s-page-header/s-page-header.component';
 import { SPageHeaderSearchComponent } from './Header/s-page-header-search/s-page-header-search.component';
 import {FollowersComponent} from './User/followers/followers.component';
-import {ServicePageComponent} from './serviceSection/service-page/service-page.component'
+import {ServicePageComponent} from './serviceSection/service-page/service-page.component';
+import { FollowingComponent } from './User/following/following.component'
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -82,7 +83,8 @@ import { from } from 'rxjs';
     SPageHeaderComponent,
     SPageHeaderSearchComponent,
     FollowersComponent,
-    ServicePageComponent
+    ServicePageComponent,
+    FollowingComponent
   ],
   imports: [
     BrowserModule,
