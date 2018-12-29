@@ -1,4 +1,10 @@
-
+.following_title h1
+{
+    width: 80%;
+    margin: 0 auto;
+    padding: 12px;
+    font-size: 25px;
+}
 .user_following
 {
     width: 80%;
@@ -38,7 +44,7 @@
 }
 .following_image 
 {
-    width: 15%;
+    width: 10%;
 
 }
 .following_image  img
@@ -50,13 +56,20 @@
 }
 .following_name
 {
+    margin-left: 1%;
     width: 50%;
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 50%;
+
 }
-.following_name h3
+.following_name h2
 {
 
-    margin-bottom: auto;
-} 
+        margin-bottom: auto;
+    margin-top: auto;
+}
+
 .following_name span
 {
     font-size: 15px;
@@ -88,7 +101,7 @@
     height: auto;
     float: right;
     text-align: right;
-    margin-top: 30%
+    margin-top: 20%
   }
   .followBtn button{
     width: 80%;
@@ -113,7 +126,7 @@
   }
   .following_icon1 img
   {
-    width: 100%;
+    width: 83%;
         border-radius: 100%
     
   }

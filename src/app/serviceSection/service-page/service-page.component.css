@@ -18,7 +18,7 @@
   font-weight: 600;
 }
 section{
-  width: 90%;
+  width: 95%;
   float: right;
   display: flex;
   flex-wrap: wrap;
@@ -242,7 +242,7 @@ section{
 }
 /* <--------------------------------------------------------FEED CARD-------------------------------------------> */
 .feed{
-  width: 100%;
+  width: 95%;
   height: 490px;
   display: block;
   margin-right: auto;
@@ -353,6 +353,43 @@ mat-panel-title h4{
   font-size: 14px;
   font-weight: 100;
 }
+@media screen and (max-width:768px)
+{
+  .details h1{
+    margin: 0;
+    padding: 5px 0 0 15px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .logo{
+    width: 36%;
+  }
+  section {
+    width: 94%;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+.followBtn {
+  width: 37%;
+  height: auto;
+  float: right;
+  text-align: right;
+}
+.followBtn  button 
+  {
+    font-size: 12px;
+  }
+
+.feed {
+  width: 94%;
+  height: 490px;
+  display: block;
+  
+  border: 1px solid #cccccc;
+}
+}
 @media screen and (max-width:700px){
   .company_industry,.login_user{
     display: none;
@@ -379,12 +416,19 @@ mat-panel-title h4{
   section{
     width: 95%;
   }
+  .followBtn {
+    width: 25%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
   .followBtn button{
     width: 100%;
     font-size: 8px;
   }
   .followBtn p{
     margin-right: 0;
+    
   }
   .details h1{
     font-size: 15px;

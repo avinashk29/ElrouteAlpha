@@ -121,7 +121,7 @@
 .add_media
 {
 
-  padding: 15px 53px;
+  padding: 15px 26px;
   height: 20px;
   background-color: #F5F5F5;
 }
@@ -143,7 +143,7 @@
 {
   height: 280px;
   border: solid 1px gray;
-  width:12%;
+  width:15%;
   float: left;
 }
 
@@ -354,8 +354,64 @@ mat-panel-title h4{
     font-size: 11px;
   }
 }
+
+@media screen and (min-width: 767px) and (max-width: 1024px){
+  
+  .login_user{
+  width: 26%;
+  }
+  .user_name h2
+{
+  font-size: 15px;
+  color: #FAF6F6;
+  margin-top: -2px;
+  float: left;
+}
+  .company_industry{
+    width: 25%;
+    }
+  .feeds{
+    width: 48%;
+    padding: 0px;
+  }
+  .add_media h2{
+    font-size: 15px;
+    margin-top: -5px;
+  }
+  .add_media span{
+    font-size: 10px;
+  }
+  .add_feed {
+    font-size: 15px;
+    width: 21%;
+  }
+  section{
+    width: 95%;
+  }
+  .followBtn button{
+    width: 100%;
+    font-size: 8px;
+  }
+  .followBtn p{
+    margin-right: 0;
+  }
+  .details h1{
+    font-size: 15px;
+  }
+  .details p{
+    font-size: 8px;
+  }
+  .feedInfo p{
+    font-size: 10px;
+    line-height: 15px;
+  }
+  mat-panel-title h4{
+    font-size: 11px;
+  }
+}
 @media screen and (min-width: 700px) and (max-width: 1440px){
   .with_login{
     width: 85%;
   }
 }
+
