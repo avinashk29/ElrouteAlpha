@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CompanySearchComponent implements OnInit {
 
   constructor() { }
-
+  panelOpenState = false;
   ngOnInit() {
   }
 

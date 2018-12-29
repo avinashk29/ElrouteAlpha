@@ -169,3 +169,67 @@ section{
   margin: 0;
   padding: 0px 0 15px 0;
 }
+.des
+{
+  display: none;
+}
+@media screen and (max-width: 700px){
+  section{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 7%;
+  }
+  .companyCard {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+
+}
+.storyBtn {
+  display: none;
+}
+.companyInfo h1 {
+  float: left;
+  margin: 0;
+  padding: 5px 0 0 0;
+  font-size: 16px;
+}
+.b1{
+  float: right;
+  margin-left: 29px;
+}
+.discription
+{
+  display: none;
+}
+.des
+{
+  display: block;
+}
+.cardFooter
+{
+  display: none;
+}
+.companyInfo  button{
+  width: 27%;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
+}
+
+}
+@media screen and (min-width: 767px) and (max-width: 1024px){
+  section{
+    width: 90%;
+    margin: 0 auto;
+
+    margin-top: 30px;
+  }
+  .storyBtn{
+    width: 26%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+}

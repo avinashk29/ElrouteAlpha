@@ -10,7 +10,7 @@
    <img src="https://picsum.photos/200/300/?random">
   </div>
   <div class="companyInfo">
-    <h1>Company Name <span style="font-size:13px;">Bookmark</span></h1>
+    <h1>Company Name <span style="font-size:13px;" class="b1">Bookmark</span></h1>
     <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >Location</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
     <button>Follow</button> <span style="margin-left:20px;">24,567 followers</span>
   </div>
@@ -21,6 +21,26 @@
 <div class="discription">
   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 </div>
+<mat-accordion  class="des">
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
+        <mat-panel-title>
+            <h2 >Description</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="speci_1"  >
+        <div class="speci_details">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+         
+        </div>
+        
+  
+      </div>
+    </mat-expansion-panel>
+  
+  </mat-accordion>
 <div class="cardFooter">
 <div class="tags">
 <p>Taggs</p>
