@@ -17,6 +17,7 @@ import { FollowersComponent } from './User/followers/followers.component';
 import { ServicePageComponent } from './serviceSection/service-page/service-page.component';
 import { FollowingComponent } from './User/following/following.component';
 import { FeedsComponent } from './Search/feeds/feeds.component';
+import { CompanyComponent } from './Bookmark/company/company.component';
 
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
    {path: 'Followers', component: FollowersComponent },
    {path: 'servicePage', component: ServicePageComponent },
    {path: 'Following' , component: FollowingComponent},
-   {path: 'feeds' , component: FeedsComponent}
+   {path: 'feeds' , component: FeedsComponent},
+   {path:'companyBookmark' , component: CompanyComponent}
   // {path: 'feed ' , component: fee}
 ];
 
