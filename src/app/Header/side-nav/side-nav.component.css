@@ -166,9 +166,24 @@ p.blink.mah span {
   top: 248px;
   left: 360px;
 }
+.logo{
+  display: none;
+}
+.menu2{
+display: none;
+}
 /*  */
 @media screen and (max-width: 700px){
 aside{
   width: 0px;
+}
+.menu1{
+  display: none;
+}
+.logo{
+  display: block;
+}
+.menu2{
+  display: block;
 }
 }

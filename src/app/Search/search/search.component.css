@@ -279,7 +279,9 @@ font-size: 13px;
   height:auto;
 }
 } */
-
+.mob-cards{
+  display: none;
+}
 @media screen and (max-width: 700px){
 .listing{display: none;}
 .mob-cards{
