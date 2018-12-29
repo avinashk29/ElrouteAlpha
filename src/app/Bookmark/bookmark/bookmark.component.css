@@ -409,24 +409,6 @@ display: flex;
   margin: 0;
   float: left;
 }
-.header{
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-.headerElements{
-  width: 90%;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-}
-.elements{
-  width: 10%;
-  height: 100%;
-}
-.elements h4{
-  margin: 0;
-}
 .listing input{
   width: 95%;
   margin: 0 auto;

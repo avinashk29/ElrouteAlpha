@@ -42,6 +42,7 @@ import {ServicePageComponent} from './serviceSection/service-page/service-page.c
 import { FollowingComponent } from './User/following/following.component';
 import {Header3Component} from './Header/header3/header3.component';
 import { FeedsComponent } from './Search/feeds/feeds.component';
+
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
