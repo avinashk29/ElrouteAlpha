@@ -39,7 +39,8 @@ import { SPageHeaderComponent } from './Header/s-page-header/s-page-header.compo
 import { SPageHeaderSearchComponent } from './Header/s-page-header-search/s-page-header-search.component';
 import {FollowersComponent} from './User/followers/followers.component';
 import {ServicePageComponent} from './serviceSection/service-page/service-page.component';
-import { FollowingComponent } from './User/following/following.component'
+import { FollowingComponent } from './User/following/following.component';
+import {Header3Component} from './Header/header3/header3.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -84,7 +85,8 @@ import { from } from 'rxjs';
     SPageHeaderSearchComponent,
     FollowersComponent,
     ServicePageComponent,
-    FollowingComponent
+    FollowingComponent,
+    Header3Component
   ],
   imports: [
     BrowserModule,
