@@ -24,14 +24,14 @@
 <div class="img"></div>
 </div>
 <div class="tabs">
-<div class="tab"><h1>INFO</h1></div>
-<div class="tab"><h1>PRODUCTS</h1></div>
-<div class="tab"><h1>CONTACT</h1></div>
+<div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
+<div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
+<div class="tab" (click)="showFour()" [ngClass]="{'tabClicked': four}"><h1>CONTACT</h1></div>
 </div>
 </div>
 </header>
-<div class="body">
-  <div class="infoSection">
+<div class="body" *ngIf="one">
+  <div class="infoSection1">
       <div class="shortBio">
           <div class="bio">
        <h2>SHORT BIO</h2>
@@ -105,4 +105,26 @@
        </div>
   </div>
 </div>
+<div class="body" *ngIf="two">
+  <div class="infoSection2">
+    <div class="infoImg">
+<img src="">
+    </div>
+    <div class="infoContent">
+      <h3>SHORT BIO</h3>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+<div class="infoSectonCard">
+<img src="" >
+<div class="content">
+<div class="Sectioncontent">
+<h2>SECTION TITLE</h2>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p>
+</div>
+</div>
+</div>
+  </div>
+</div>
+<div class="body" *ngIf="three"></div>
+<div class="body" *ngIf="four"></div>
 </section>

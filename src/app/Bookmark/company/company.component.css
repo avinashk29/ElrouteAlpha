@@ -166,3 +166,10 @@ section{
 
 }
 }
+input{
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  border:none;
+  margin-left: 10px;
+}
