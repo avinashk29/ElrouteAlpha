@@ -1,18 +1,144 @@
 section{
-  width: 80%;
+  width: 90%;
+  margin: 0 auto;
+
+}
+header{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  width: 30%;
+
+}
+.card h1{
+  text-align: center;
+  font-size: 35px;
+  font-weight: 400;
+}
+.iandl{
+width: 60%;
+margin: 0 auto;
+display: flex;
+}
+.iandl h3{
+  width: 48%;
+  text-align: center;
+  margin: 0;
+}
+.follow-btn{
+  width: 50%;
   margin: 0 auto;
   margin-top: 30px;
 }
+.follow-btn button{
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: #fff;
+  background-color: #333333;
+  font-size: 20px;
+}
+.extraInfo{
+  width: 80%;
+  margin: 0 auto;
+
+}
+.social{
+  width: 60%;
+  height: 40px;
+  margin: 0 auto;
+  background-color: cadetblue;
+  margin-bottom: 20px;
+}
+.card-left{
+  width: 70%;
+  height:52vh;
+
+}
+.card-left h3{
+  font-weight: 400;
+  margin: 0;
+  padding-top: 20px;
+}
+.headerImg{
+  width: 100%;
+  height: 34vh;
+  background-color: #fff;
+  display: flex;
+}
+.logoheader{
+  width: 10%;
+  height: 20%;
+  background-color: darkseagreen;
+  position: absolute;
+  top:50px;
+  left: 35%;
+}
+.img{
+  width: 100%;
+  height: 100%;
+  background-color: darkgreen;
+  margin-left: 5%;
+}
+.img img{
+  width: 100%;
+  height: 100%;
+}
+.tabs{
+  width: 100%;
+  margin-top: 3vh;
+  height: 15vh;
+  display: flex;
+}
+.tab{
+  height: 100%;
+  width: 30%;
+  background-color: crimson;
+  margin-left: 5%;
+  margin-right: 0%;
+}
+.tab h1{
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+}
+.body{
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+}
+.infoSection{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+}
+.shortBio{
+  width: 27%;
+
+  height: fit-content;
+}
+.bio{
+  width: 90%;
+  margin: 0 auto;
+
+}
+.bio h2{
+  margin-top: 0;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
 
 .feed{
-  width: 40%;
+  width: 38%;
   height: 490px;
   display: block;
   margin-right: auto;
   border: 1px solid #cccccc;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-top: 20px;
+  margin-right: 4%;
+  margin-left: 3%;
 }
 .authorInfo{
 width: 100%;
@@ -95,7 +221,6 @@ display: flex;
 .feed-share{
   width: 100%;
   height: 7%;
-  background-color: burlywood;
   display: block;
 }
 .tagged{
@@ -227,4 +352,26 @@ mat-panel-title h4{
     width: 85%;
   }
 }
-
+.otherInfocard{
+  width: 30%;
+  height: 10vh;
+}
+.infoCard{
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+}
+.info{
+  border-bottom: 1px solid #ccc;
+}
+label{
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.info h3{
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  font-weight: 500;
+  color: black;
+}

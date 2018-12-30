@@ -19,7 +19,7 @@ import { FollowingComponent } from './User/following/following.component';
 import { FeedsComponent } from './Search/feeds/feeds.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
 import { PostComponent } from './Bookmark/post/post.component';
-
+import { BPageComponent } from './Bpage/b-page/b-page.component';
 
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
@@ -41,8 +41,9 @@ const routes: Routes = [
    {path: 'servicePage', component: ServicePageComponent },
    {path: 'Following' , component: FollowingComponent},
    {path: 'feeds' , component: FeedsComponent},
-   {path:'companyBookmark' , component: CompanyComponent},
-   {path:'post' ,component: PostComponent}
+   {path: 'companyBookmark' , component: CompanyComponent},
+    {path: 'post' , component: PostComponent},
+    {path: 'companyPage' , component: BPageComponent}
   // {path: 'feed ' , component: fee}
 ];
 
