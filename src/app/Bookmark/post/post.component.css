@@ -166,6 +166,16 @@ mat-panel-title h4{
   mat-panel-title h4{
     font-size: 11px;
   }
+  .feed{
+    width: 90%;
+    height: 490px;
+    display: block;
+    margin-right: auto;
+    border: 1px solid #cccccc;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 20px;
+  }
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px){
