@@ -96,6 +96,7 @@ section{
 .listing{
   display: flex;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 .Card{
   width: 30%;
@@ -226,10 +227,10 @@ section{
   margin: 0;
   float: left;
 }
-.listing input{
-  width: 95%;
-  margin: 0 auto;
-  padding: 10px;
+ input{
+  width: 100%;
+  padding: 15px;
   border:none;
+  margin-left: 10px;
 }
 
