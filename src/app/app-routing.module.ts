@@ -18,6 +18,8 @@ import { ServicePageComponent } from './serviceSection/service-page/service-page
 import { FollowingComponent } from './User/following/following.component';
 import { FeedsComponent } from './Search/feeds/feeds.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
+import { PostComponent } from './Bookmark/post/post.component';
+
 
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
@@ -39,7 +41,8 @@ const routes: Routes = [
    {path: 'servicePage', component: ServicePageComponent },
    {path: 'Following' , component: FollowingComponent},
    {path: 'feeds' , component: FeedsComponent},
-   {path:'companyBookmark' , component: CompanyComponent}
+   {path:'companyBookmark' , component: CompanyComponent},
+   {path:'post' ,component: PostComponent}
   // {path: 'feed ' , component: fee}
 ];
 

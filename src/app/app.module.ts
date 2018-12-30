@@ -89,7 +89,8 @@ import { from } from 'rxjs';
     ServicePageComponent,
     FollowingComponent,
     Header3Component,
-    FeedsComponent
+    FeedsComponent,
+    
   ],
   imports: [
     BrowserModule,
