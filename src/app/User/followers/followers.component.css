@@ -76,6 +76,8 @@ section h2{
   margin: 0 auto;
   width: 50%;
   border: solid 5px gray;
+  height: fit-content ! important;
+  
 }
 .follower_user
 {
@@ -193,4 +195,92 @@ height: 25px;
 
 {
   width: 100%;
+}
+
+@media screen and (max-width:700px){
+  section {
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+    color: #111111;
+}
+  .follower_box {
+    height: fit-content ! important;
+    margin: 0 auto;
+    width: 90%;
+    border: solid 5px gray;
+}
+  .follower_img1 img
+{
+  border-radius: 100%;
+  width: 35%;
+  padding: 58px 0;
+}
+.follower_des p {
+  margin: 0 auto;
+  width: 90%;
+  text-align: justify;
+  padding: 10px 0;
+  font-size: 11px;
+}
+.followBtn button{
+  width: 100%;
+  margin-top: 10px;
+  background-color: #8cee53;
+  color: #ffffff;
+  font-weight: 600;
+  height: 25px;
+  border-radius: 15px;
+  border: none;
+  font-size: 12px;
+}
+.company_name {
+  margin-left: 4%;
+  font-size: 11px;
+}
+.card {
+  width: 46%;
+  margin-right: 2%;
+  height: 12%;
+  margin-left: 2%;
+  display: flex;
+  margin-top: 3%;
+  box-shadow: 0px 2px 3px #5555;
+}
+.name h4 {
+  bottom: 0;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+}
+@media screen and (min-width:767px)and (max-width:1024px){
+  section {
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+    color: #111111;
+}
+  .follower_box {
+    height: fit-content ! important;
+    margin: 0 auto;
+    width: 90%;
+    border: solid 5px gray;
+}
+.follower_img1 img
+{
+  border-radius: 100%;
+  width: 50%;
+  padding: 30px 0;
+}
+.card {
+  width: 29%;
+  margin-right: 2%;
+  height: 12%;
+  margin-left: 2%;
+  display: flex;
+  margin-top: 3%;
+  box-shadow: 0px 2px 3px #5555;
+}
+font-size: 13px;
+
 }
