@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormGroup , FormBuilder, FormArray} from '@angular/forms';
+import {ProductServiceService} from '../../Service/product-service.service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -10,7 +12,8 @@ export class ProductFormComponent implements OnInit {
   productForm:  FormGroup;
   productInfoForm: FormGroup;
   imagePreview;
-  constructor(private _fb: FormBuilder) { }
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+    private _fb: FormBuilder, public productService: ProductServiceService) { }
 
   ngOnInit() {
     this.productForm = this._fb.group({
@@ -26,6 +29,7 @@ export class ProductFormComponent implements OnInit {
      category: [],
      tfCode: []
     });
+    this.productService.token = this.storage.get('token');
   }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -64,5 +68,9 @@ export class ProductFormComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.productForm.value);
+    const productData = this.productForm.value;
+    this.productService.addProduct(productData).subscribe(res => {
+      console.log(JSON.parse(res['_body']));
+    });
   }
 }

@@ -422,12 +422,12 @@ label{
   display: flex;
 }
 .infoSectonCard img{
-  width: 55%;
+  width: 60%;
   background-color: beige;
   margin-right: 5%;
 }
  .content{
-  width: 30%;
+  width: 33%;
   background-color: yellow;
 }
 .Sectioncontent{

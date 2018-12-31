@@ -51,7 +51,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { from } from 'rxjs';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
-
+import {CompanyServiceService} from './Service/company-service.service';
+// import { CopmayService } from './Company/copmay.service';
+import {ProductServiceService } from './Service/product-service.service';
 
 
 @NgModule({
@@ -113,7 +115,7 @@ import { BPageComponent } from './Bpage/b-page/b-page.component';
     SignupComponent,
     LoginComponent
   ],
-  providers: [],
+  providers: [CompanyServiceService, ProductServiceService ],
   bootstrap: [AppComponent],
 
 })

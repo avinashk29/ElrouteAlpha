@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { error } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -13,9 +14,9 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 export class SignupComponent implements OnInit {
   signupForm = new FormGroup({
     UserName : new FormControl(''),
-    // location : new FormControl(''),
+    Location : new FormControl(''),
     Email: new FormControl(''),
-    // title: new FormControl (''),
+    Title: new FormControl (''),
     Password: new FormControl('')
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
@@ -34,15 +35,20 @@ export class SignupComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
 onSubmit() {
+  // if(error) {
+  //     console.log('jaio ho');
 
+  // }
      const SignupForm = this.signupForm.value;
     this.authService.signup(SignupForm).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       // this.authService.token = res.headers.get('x-auth');
-      this.authService.token = this.storage.set('token', JSON.parse(res['_body']).UserName);
+     this.storage.set('token', res.headers.get('x-auth'));
+     this.authService.token = this.storage.get('token');
       console.log(this.authService.token);
     });
     this.dialogRef.close(SignupComponent);
     this.router.navigate(['/Dashboard']);
+    console.log(this.signupForm.value);
   }
 }
