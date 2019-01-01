@@ -124,9 +124,9 @@
 </div>
 </div>
 <div class="certificate">
+  <h2>CERTIFICATES</h2>
   <div ng2-carouselamos class="slider-wrapper"
   [items]="items"
-  [width]="900"
   [$prev]="prev"
   [$next]="next"
   [$item]="item"
@@ -143,6 +143,26 @@
      </div>
     </ng-template>
   </div>
+  <div class="companyImg">
+      <h2>COMPANY IMAGES</h2>
+      <div ng2-carouselamos class="slider-wrapper"
+      [items]="items"
+      [$prev]="prev"
+      [$next]="next"
+      [$item]="item"
+      ></div>
+    <ng-template #prev>
+      <img src= "../../../assets/images/left-arrow.png">
+    </ng-template>
+    <ng-template #next>
+        <img src= "../../../assets/images/right-arrow.png">
+      </ng-template>
+      <ng-template #item let-item>
+         <div class="items">
+            <img src="{{ item.name }}">
+         </div>
+        </ng-template>
+      </div>
   </div>
 </div>
 <div class="body" *ngIf="three"></div>
