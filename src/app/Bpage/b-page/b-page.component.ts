@@ -10,7 +10,31 @@ one = true;
 two = false;
 three = false;
 four = false;
-  constructor() { }
+items;
+  constructor() {
+    this.items =  [
+        {name: 'https://picsum.photos/200/300'},
+        {name: 'https://picsum.photos/g/200/300'},
+        {name: 'https://picsum.photos/200/300?image=0'},
+        {name: 'https://picsum.photos/200/300/?blur'},
+        {name: 'https://picsum.photos/200/300/?random'},
+        {name: 'https://picsum.photos/200/300'},
+        {name: 'https://picsum.photos/g/200/300'},
+        {name: 'https://picsum.photos/200/300?image=0'},
+        {name: 'https://picsum.photos/200/300/?blur'},
+        {name: 'https://picsum.photos/200/300/?random'},
+        {name: 'https://picsum.photos/200/300'},
+        {name: 'https://picsum.photos/g/200/300'},
+        {name: 'https://picsum.photos/200/300?image=0'},
+        {name: 'https://picsum.photos/200/300/?blur'},
+        {name: 'https://picsum.photos/200/300/?random'},
+        {name: 'https://picsum.photos/200/300'},
+        {name: 'https://picsum.photos/g/200/300'},
+        {name: 'https://picsum.photos/200/300?image=0'},
+        {name: 'https://picsum.photos/200/300/?blur'},
+        {name: 'https://picsum.photos/200/300/?random'}
+    ];
+  }
 
   ngOnInit() {
   }

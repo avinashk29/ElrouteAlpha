@@ -25,14 +25,10 @@
        <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry."</p>
      </div>
      <div class="search-bar">
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="ENTER PRODUCT/SERVICE TO SEARCH">
+        <div class="search-container" [formGroup] = "searchForm" (ngSubmit)= "onSearch()" >
+            <input type="text" id="search-bar" placeholder="ENTER PRODUCT/SERVICE TO SEARCH" formControlName = "word" >
             <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-            <button><select>
-              <option>All</option>
-              <option>All</option>
-              <option>All</option>
-            </select></button>
+            <button (click)="onSearch()">Search</button>
           </div>
      </div>
     </div>

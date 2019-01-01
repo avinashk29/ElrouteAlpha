@@ -48,8 +48,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
+//
+// import { CarouselModule } from 'angular4-carousel';
 
-import { from } from 'rxjs';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
@@ -107,7 +109,8 @@ import {ProductServiceService } from './Service/product-service.service';
     HttpModule,
     StorageServiceModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    Ng2CarouselamosModule
 
 
   ],
