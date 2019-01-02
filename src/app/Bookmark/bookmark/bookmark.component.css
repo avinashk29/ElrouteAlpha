@@ -234,18 +234,21 @@ section{
   margin-left: 10px;
 }
 
-@media screen and (max-width:700px){
-  section {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
+@media screen and (max-width:700px) {
+section {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
 }
-  .Card {
-    width: 100%;
+.Card {
+  width: 100%;
 
-    
+  
 }
 }
+
+
+
 @media screen and  (min-width:767px)and (max-width:1024px){
   .Card {
     width: 47%;

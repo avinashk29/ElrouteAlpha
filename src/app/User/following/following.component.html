@@ -5,24 +5,24 @@
     <div class="follow_search">
         <input type="search" placeholder="search">
     </div>
-    <div class="following">
+    <div class="following"  *ngFor="let following of followings let i = index">
         <div class="following_1">
             <div class="following_image">
                 <img src="assets/images/user.png">
             </div>
             <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
+                <h2> {{ following .Company_name }}</h2>
+                <span style="border-right:solid 1px gray;padding: 0px 10px;">{{ following.location }}</span>
+                <span style="padding: 0px 10px;">{{following.industry }}</span>
             </div>
             <div class="following_bookmark">
                 <img src="assets/images/bookmark.png">
-                <span>21,100</span>
+                <span>{{following.follwers_nub}}</span>
             </div>
         </div>
         <div class="following_2">
             <div class="followBtn">
-                <button>Following</button>
+                <button>{{ following.Following}}</button>
             </div>
             <div class="following_icon1">
                 <img src="assets/images/fb.png">
@@ -34,155 +34,54 @@
             </div>
         </div>
     </div>
-    <div class="following">
-        <div class="following_1">
-            <div class="following_image">
-                <img src="assets/images/user.png">
-            </div>
-            <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
-            </div>
-            <div class="following_bookmark">
-                <img src="assets/images/bookmark.png">
-                <span>21,100</span>
-            </div>
-        </div>
-        <div class="following_2">
-            <div class="followBtn">
-                <button>Following</button>
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-        </div>
     </div>
-    <div class="following">
-        <div class="following_1">
-            <div class="following_image">
-                <img src="assets/images/user.png">
-            </div>
-            <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
-            </div>
-            <div class="following_bookmark">
-                <img src="assets/images/bookmark.png">
-                <span>21,100</span>
-            </div>
+    <section>
+    
+     
+        <div class="listing">
+        <div class="companyCard">
+        <div class="cardHeader">
+          <div class="logo">
+           <img src="https://picsum.photos/200/300/?random">
+          </div>
+          
+          <div class="companyInfo">
+            <h1>Company Name <span style="font-size:13px;" class="b1">Bookmark</span></h1>
+            <p style="font-size: 12px;"><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >Location</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
+            <button>Follow</button> <span style="margin-left:20px;">24,567 followers</span>
+            <div class="icons" style=" padding: 10px 0;">
+                <p>Website</p>&nbsp;&nbsp;&nbsp;
+                <p>contact</p>
+                </div>
+          </div>
+          
+          <div class="storyBtn">
+          <button>Know Our Story</button>
+          </div>
         </div>
-        <div class="following_2">
-            <div class="followBtn">
-                <button>Following</button>
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
+        <div class="discription">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
-
-    </div>
-
-    <div class="following">
-        <div class="following_1">
-            <div class="following_image">
-                <img src="assets/images/user.png">
-            </div>
-            <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
-            </div>
-            <div class="following_bookmark">
-                <img src="assets/images/bookmark.png">
-                <span>21,100</span>
-            </div>
+        <mat-accordion  class="des">
+    
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
+                <mat-panel-title>
+                    <h2 >Description</h2>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="speci_1"  >
+                <div class="speci_details">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    
+                </div>
+    
+    
+              </div>
+            </mat-expansion-panel>
+    
+          </mat-accordion>
         </div>
-        <div class="following_2">
-            <div class="followBtn">
-                <button>Following</button>
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
         </div>
-
-    </div>
-    <div class="following">
-        <div class="following_1">
-            <div class="following_image">
-                <img src="assets/images/user.png">
-            </div>
-            <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
-            </div>
-            <div class="following_bookmark">
-                <img src="assets/images/bookmark.png">
-                <span>21,100</span>
-            </div>
-        </div>
-        <div class="following_2">
-            <div class="followBtn">
-                <button>Following</button>
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-        </div>
-
-    </div>
-    <div class="following">
-        <div class="following_1">
-            <div class="following_image">
-                <img src="assets/images/user.png">
-            </div>
-            <div class="following_name">
-                <h2>Company Name</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">India</span>
-                <span style="padding: 0px 10px;">India</span>
-            </div>
-            <div class="following_bookmark">
-                <img src="assets/images/bookmark.png">
-                <span>21,100</span>
-            </div>
-        </div>
-        <div class="following_2">
-            <div class="followBtn">
-                <button>Following</button>
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-            <div class="following_icon1">
-                <img src="assets/images/fb.png">
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
+        </section>
