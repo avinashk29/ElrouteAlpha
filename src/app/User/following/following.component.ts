@@ -7,7 +7,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FollowingComponent implements OnInit {
 
-  constructor() { }
+  
+
+  followings;
+  constructor() { 
+    this.followings = [
+			{
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      {
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      {
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      {
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      {
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      {
+				Company_name: "Comapny Name",
+       location: "India",
+       industry: "Industry",
+       follwers_nub:"21,000",
+       Following:"Following",
+      },
+      
+		];
+
+  }
 
   ngOnInit() {
   }

@@ -122,3 +122,182 @@
     width: 83%;
     border-radius: 100%
 }
+
+
+
+
+
+section{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: none;
+  }
+  .listing{
+    width: 100%;
+    height: auto;
+  }
+  .companyCard{
+    width: 48%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    float: left;
+    margin-top: 40px;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+  .cardHeader{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .logo{
+    height: auto;
+  }
+  .logo img{
+    width: 120px;
+    height: 120px;
+    padding: 5px 0 0 0;
+    border-radius: 50%;
+  }
+  .companyInfo{
+    width: 65%;
+    margin-left: 20px;
+  }
+  .companyInfo h1{
+    margin: 0;
+    padding: 5px 0 0 0;
+  }
+  .companyInfo button{
+    width: 18%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+  }
+  .storyBtn{
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 20px;
+  }
+  .storyBtn button{
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border:none;
+  }
+  .discription{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .discription p{
+    width: 80%;
+  }
+  .cardFooter{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .tags{
+    width: 60%;
+  
+  }
+  .tags p{
+    margin: 0;
+    padding: 0px 0 15px 0;
+  }
+  .icons{
+    width: 20%;
+    display: flex;
+  }
+  .icons p{
+    margin: 0;
+    padding: 0px 0 15px 0;
+  }
+  .des
+  {
+    display: none;
+  }
+  @media screen and (max-width: 700px){
+
+    .user_following
+      {
+        display:none;
+
+      }
+    section{
+      width: 95%;
+      margin: 0 auto;
+      display: block;
+    }
+    .companyCard {
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      margin-top: 21px;
+  
+  }
+  .storyBtn {
+    display: none;
+  }
+  .companyInfo h1 {
+    float: left;
+    margin: 0;
+    padding: 5px 0 0 0;
+    font-size: 19px;
+  }
+  .b1{
+    margin-left: 13px;
+    font-size: 9px ! important;
+  }
+  .discription
+  {
+    display: none;
+  }
+  .des
+  {
+    display: block;
+  }
+  .cardFooter
+  {
+    dispay: none;
+  }
+  .companyInfo  button{
+    width: 27%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+  }
+  .listing input{
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    border:none;
+  }
+  }
+  @media screen and (min-width: 767px)and (max-width: 1024px){
+  .following_name h2 {
+    margin-bottom: auto;
+    margin-top: auto;
+    font-weight: 500;
+    margin-left: 8px;
+    font-size: 19px;
+}
+.following_2 {
+    width: 40%;
+    display: flex;
+}
+.following_1 {
+    width: 65%;
+    display: flex;
+    margin-left: 1%;
+}
+.followBtn {
+    width: 100%;
+    height: auto;
+    float: right;
+    text-align: left;
+    margin-top: 14%;
+}
+}

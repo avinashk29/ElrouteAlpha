@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 section{
   width: 90%;
   margin: 0 auto;

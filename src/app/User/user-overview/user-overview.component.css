@@ -1,4 +1,10 @@
+
 .bookmark_overview {
+    display: flex;
+    
+}
+.heading
+{
     display: flex;
 }
 
@@ -113,7 +119,7 @@
 .links {
     margin-bottom: auto;
     margin-top: auto;
-    width: 22%;
+    width: 13%;
 }
 
 .follwers_links {
@@ -185,6 +191,233 @@
     margin-top: 5%;
 }
 
+
+
+.follower_box {
+    margin: 0 auto;
+    width: 50%;
+    border: solid 5px gray;
+    height: fit-content ! important;
+    margin-top: 27px;
+    display: none;
+  }
+  
+  .follower_user {
+    width: 100%;
+    box-shadow: 0px 2px 3px #5555;
+  }
+  
+  .follower_location {
+    background-color: #111111;
+    width: 100%;
+    float: right;
+    height: 110px;
+  }
+  
+  .follower_location span {
+    float: right;
+    color: white;
+    margin: 5px 10px;
+  }
+  
+  .follower_img {
+    margin: 0 auto;
+    width: 28%;
+  }
+  
+  .follower_img1 {
+    position: absolute;
+  }
+  
+  .follower_img1 img {
+    border-radius: 100%;
+    width: 48%;
+    border: slo;
+    border: solid 5px white;
+    margin-top: 26px;
+  }
+  
+  .follower_name {
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .follower_name h2 {
+    margin-bottom: auto;
+    margin-top: auto
+  }
+  
+  .follower_name h5 {
+    margin-bottom: auto;
+    margin-top: auto
+  }
+  
+  .follower_des {
+    margin: 8px auto;
+    width: 90%;
+    text-align: justify;
+    box-shadow: 0px 2px 3px #5555;
+  }
+  
+  .follower_des p {
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    padding: 10px 0;
+  }
+  
+  .follower_company {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    padding: 10px 0;
+  }
+  
+  .company {
+    width: 70%;
+    display: flex;
+  }
+  
+  .company_logo {
+    width: 20%;
+  }
+  
+  .company_logo img {
+    border-radius: 100%;
+    width: 100%;
+  }
+  
+  .company_name {
+    margin-left: 4%;
+  }
+  
+  .followBtn {
+    width: 30%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
+  
+  .followBtn button {
+    width: 80%;
+    margin-top: 10px;
+    background-color: #8cee53;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 10px;
+  }
+  
+  .follwers_links1 {
+    margin: 0 auto;
+    width: 28%;
+    display: flex;
+  }
+  
+  .follwers_links1 img {
+    width: 100%;
+  }
+  
+  
+  
+ 
+  #overview1
+  {
+    display: none;
+
+  }
+  
+  .b_page_btn button {
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0px 2px 3px #5555;
+    font-weight: 600;
+    margin-top: 5%;
+  }
+  
+  @media screen and (max-width:700px) {
+    .heading
+    {
+        display: none;
+    }
+    .follower_name{
+        text-align: center;
+        padding-top: 40px;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .follower_box {
+        height: fit-content ! important;
+        margin: 0 auto;
+        width: 90%;
+        border: solid 5px gray;
+        display: block;
+    }
+    .follower_img1 img {
+        border-radius: 100%;
+        width: 44%;
+        border: slo;
+        border: solid 5px white;
+        margin-top: 35px;
+    }
+    .follower_des p {
+        margin: 0 auto;
+        width: 90%;
+        text-align: justify;
+        padding: 10px 0;
+        font-size: 11px;
+    }
+    .followBtn button {
+        width: 100%;
+        margin-top: 10px;
+        background-color: #8cee53;
+        color: #ffffff;
+        font-weight: 600;
+        height: 25px;
+        border-radius: 15px;
+        border: none;
+        font-size: 12px;
+    }
+    .company_name {
+        margin-left: 4%;
+        font-size: 11px;
+    }
+    .card {
+        width: 46%;
+        margin-right: 2%;
+        height: 12%;
+        margin-left: 2%;
+        display: flex;
+        margin-top: 3%;
+        box-shadow: 0px 2px 3px #5555;
+    }
+    .name h4 {
+        bottom: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+    #overview1
+  {
+    display: block;
+  }
+  .bookmark_overview
+  {
+      display: none;
+  }
+  .bookmark_following {
+    padding: 0px 10px;
+    width: 100%;
+    padding-top: 20px;
+  }
+
+}
 @media screen and (max-width:700px) {
     .Card {
         width: 100%;
