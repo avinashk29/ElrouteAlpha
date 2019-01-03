@@ -7,7 +7,9 @@ import { Event } from '@angular/router';
   styleUrls: ['./b-page.component.css']
 })
 export class BPageComponent implements OnInit {
-
+  getUrl() {
+    return "'url('assets/images/bk1.jpg'),linear-gradient(to right, gold 30%, transparent 80%)'"
+  }
 one = true;
 two = false;
 three = false;
