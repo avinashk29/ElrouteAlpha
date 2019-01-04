@@ -102,7 +102,7 @@
     background-color: green;
     color: #ffffff;
     font-weight: 600;
-    height: 20px;
+    height: 30px;
     border-radius: 15px;
     border: none;
     margin-left: 10px;
@@ -113,13 +113,13 @@
 }
 
 .following_icon1 {
-    width: 100%;
+    width: 60%;
     margin: 0px 10px;
     padding: 10px 0px;
 }
 
 .following_icon1 img {
-    width: 83%;
+    width: 80%;
     border-radius: 100%
 }
 

@@ -81,6 +81,14 @@ section{
   width: 20%;
   display: flex;
 }
+.icons span
+{
+  margin: -9% 1% 1%;
+}
+.icons img
+{
+  width: 80%;
+}
 .icons p{
   margin: 0;
   padding: 0px 0 15px 0;

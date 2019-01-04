@@ -94,8 +94,14 @@ display: flex;
 .feed-share{
   width: 100%;
   height: 7%;
-  background-color: burlywood;
+  /* background-color: burlywood; */
   display: block;
+}
+.feed-share img
+{
+  width: 4%;
+  margin-left: 1%;
+
 }
 .tagged{
   width: 100%;

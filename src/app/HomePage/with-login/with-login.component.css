@@ -290,6 +290,13 @@ section {
     height: 7%;
     background-color: burlywood;
     display: block;
+    padding-top: 1%;
+}
+.feed-share img
+{
+  width: 4%;
+  margin-left: 1%;
+
 }
 
 .tagged {
