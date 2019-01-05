@@ -288,7 +288,7 @@ section {
 .feed-share {
     width: 100%;
     height: 7%;
-    background-color: burlywood;
+    /* background-color: burlywood; */
     display: block;
     padding-top: 1%;
 }

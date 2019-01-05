@@ -2,6 +2,11 @@
   height: 100%;
   width: 100%;
 }
+#feed2
+{
+  display: none;
+
+}
 .banner{
   width: 100%;
   height: 20vh;
@@ -85,15 +90,27 @@ section{
 }
 .contact{
   width: 30%;
-  height: 5vh;
-  margin-top: 10%;
-  display: flex;
+ 
+  margin-top: 6%;
+  text-align: right;
   margin-left: 15%;
 }
-.contact button{
-  width: 100%;
-  border:none;
-  border-radius: 30px;
+
+.contact span
+{
+    font-size:150%;
+    margin-left:20px;
+    border:solid 1px gray;
+    padding: 0px 15px;
+    color:#707070;
+    border-radius: 8px;
+
+}
+.contact img
+{
+    position: absolute;
+    width: 45px;
+    margin: -6px -7px;
 }
 .tag{
   width: 100%;
@@ -116,6 +133,7 @@ mat-expansion-panel{
 
 }
 mat-expansion-panel-header{
+  background-color: #F3F3F3;
 
 }
 mat-expansion-panel-header h2{
@@ -202,6 +220,8 @@ section{
   margin: 0 auto;
   float: none;
 }
+#feed1{display:none;}
+#feed2{ display:block;}
 .rightSection{
   width: 100%;
 
@@ -242,11 +262,13 @@ section{
 }
 /* <--------------------------------------------------------FEED CARD-------------------------------------------> */
 .feed{
-  width: 95%;
+  width: 55%;
   height: 490px;
   display: block;
   margin-right: auto;
   border: 1px solid #cccccc;
+  margin: 0 auto;
+  margin-top: 2%;
 }
 .authorInfo{
 width: 100%;
@@ -338,7 +360,6 @@ display: flex;
 }
 mat-expansion-panel{
   border-radius: 0 !important;
-  background-color: #707070;
 
 }
 mat-expansion-panel{
