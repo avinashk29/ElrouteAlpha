@@ -450,22 +450,24 @@ label{
 .infoSectonCard{
   width: 90%;
   margin: 0 auto;
-  background-color: aqua;
+  /* background-color: aqua; */
   margin-top: 40px;
   display: flex;
 }
 .infoSectonCard img{
   width: 60%;
   background-color: beige;
-  margin-right: 5%;
+  /* margin-right: 5% */
 }
  .content{
   width: 33%;
+  box-shadow: 0px 3px 10px #5555;
 }
 .Sectioncontent{
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   height: 100%;
+
 }
 /* <----------------------------------------------------------------Slider-------------------------------------------------> */
 .certificate{
