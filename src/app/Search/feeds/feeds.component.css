@@ -96,6 +96,7 @@ display: flex;
   height: 7%;
   /* background-color: burlywood; */
   display: block;
+  display: flex;
 }
 .feed-share img
 {

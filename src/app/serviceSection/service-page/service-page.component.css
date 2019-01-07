@@ -247,13 +247,18 @@ section{
   width: 0%;
 }
 .contact{
-  width: 55%;
+  width: 100%;
   margin: 0 auto;
   height: 4vh;
-  position: fixed;
+  /* position: fixed; */
   bottom: 20px;
   left: 11vh;
   right: auto;
+}
+.contact img{
+  position: absolute;
+  width: 35px;
+  margin: -7px 0px;
 }
 .expnasion{
   width: 100%;

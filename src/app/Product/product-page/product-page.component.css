@@ -48,16 +48,14 @@
 {
     font-family:  Segoe UI regular ;
     padding-top: 20px;
-	text-align:right;
-    font-size: 150%;
+	
+    font-size: 18px;
     color: #707070;
+    display: flex;
+    float: right;
 
 }
-.service2_img
-{
 
-    width: 100%;
-}
 .service2_img img
 {
 
@@ -67,7 +65,7 @@
 }
 .tags
 {
-
+    width: 56%;
     margin-top: 10px;
 }
 .tags li
@@ -180,7 +178,137 @@
     font-weight: 400;
     color: #707070;
 }
+section{
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 5%;
+  }
+  
+  .feed{
+    width: 100%;
+    height: 490px;
+    display: block;
+    margin-right: auto;
+    border: 1px solid #cccccc;
+  }
+  .authorInfo{
+  width: 100%;
+  display: flex;
+  }
+  .details{
+    width: 70%;
+    height: auto;
+    display: flex;
+  }
+  .logo{
+    width: 20%;
+    height: 100%;
+    background-color: black;
+  }
+  .logo img{
+    width: 100%;
+    height: 100%;
+  }
+  .details h1{
+    margin: 0;
+    padding: 5px 0 0 15px;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .details p{
+    padding: 0px 0 0 15px !important;
+    font-size: 10px;
+  }
+  .feedInfo {
+    width: 95%;
+    margin: 0 auto;
+    height: 15%;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 5px 5px 0 0;
+    margin-top: 20px;
+  }
+  .feedInfo p{
+    font-size: 12px;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+  .followBtn{
+    width: 25%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
+  .followBtn button{
+    width: 80%;
+    margin-top: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    border:none;
+    margin-left: 10px;
+  }
+  .followBtn p{
+    align-items: baseline;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom:  0;
+    font-size: 10px;
+  }
+  .feed-img{
+    width: 100%;
+    height: 60%;
+  }
+  .feed-img img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+  .feed-share{
+    width: 100%;
+    height: 7%;
+    /* background-color: burlywood; */
+    display: block;
+    display: flex;
+  }
+  .tagged{
+    width: 100%;
+    height: 7%;
+  }
+  mat-expansion-panel{
+    border-radius: 0 !important;
+  
+  }
+  mat-expansion-panel{
+    /* box-shadow: 0 0 0 0!important; */
+  }
+  .tagged mat-expansion-panel-header{
+    height: 35px !important;
+    color: #ffffff !important;
+  }
+  mat-panel-title h4{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 100;
+  }
  @media screen and (max-width: 700px){
+    section{
+        width: 97%;
+        margin: 0 auto;
+        margin-top: 5%;
+      }
+      .feed{
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-right: auto;
+        border: 1px solid #cccccc;
+      }
   .product_detalis{
     margin-left: 0;
     width: 90%;
@@ -202,6 +330,10 @@
     width: 30px;
     margin-top: -5px;
   }
+  .tags[_ngcontent-c1] {
+    width: 100%;
+    margin-top: 10px;
+}
   .tags li{
     font-size: 16px;
   }
@@ -233,13 +365,31 @@
   .moq{
     float: right;
   }
+  .followBtn button{
+    width: 80%;
+    margin-top: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    font-size: 10px;
+}
  }
  @media screen and (min-width: 767px) and (max-width: 1024px){
+    .product_detalis[_ngcontent-c1] {
+        padding-top: 8%;
+        margin-left: 9%;
+    }
     .product {
         padding: 10px 20px;
         background-color: #f5f2f2;
-        width: 40%;
+        width: 42%;
         float: left;
+    }
+    .tags{
+        width: 100%;
+        margin-top: 10px;
     }
     .des_box {
         padding: 0px 20px;
@@ -247,7 +397,7 @@
         background-color: #F5F5F5;
     }
     .Description_box {
-        width: 49%;
+        width: 44%;
         float: left;
         margin-left: 2%;
         font-family: Segoe UI regular;
@@ -264,4 +414,16 @@
         background-color: white;
         width: 100%;
     }
+    section{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 5%;
+      }
+      .feed{
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-right: auto;
+        border: 1px solid #cccccc;
+      }
  }
