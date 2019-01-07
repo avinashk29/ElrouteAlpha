@@ -18,7 +18,7 @@
                 <button type="button" (click)="imagePicker.click()">ADD Product Image</button>
                </div>
                 <div class="image">
-                  <img [src]= "imagePreview" alt="">
+                  <img  *ngIf="imagePreview" [src]="imagePreview">
                 </div>
               </div>
            </div>
@@ -85,7 +85,7 @@
                   <input type= "text" placeholder="TF Code"  formControlName="tfCode">
                 </div>
            </div>
-           <button type="submit" (click)="onSubmit()">Finish</button>
+           <button type="submit">Finish</button>
           </form>
 
       </div>

@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-
+// <-----------------------------to open login------------------------------------>
   openLogin() {
     this.dialogRef.close(SignupComponent);
     const dialogConfig = new MatDialogConfig();
@@ -35,10 +35,6 @@ export class SignupComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
 onSubmit() {
-  // if(error) {
-  //     console.log('jaio ho');
-
-  // }
      const SignupForm = this.signupForm.value;
     this.authService.signup(SignupForm).subscribe(res => {
       console.log(JSON.parse(res['_body']));
