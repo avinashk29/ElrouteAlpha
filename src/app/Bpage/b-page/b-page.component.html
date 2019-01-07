@@ -17,8 +17,8 @@
             <img src="assets/images/logo.png">
             </div>
             <div class="user_profile">
-                <h2> Comapny Name </h2>
-                <p>Information  Technology and Service</p>
+                <h2>{{name}}</h2>
+                <p>{{industry}}</p>
 
                 <div class="follow-btn">
                     <button>FOLLOW</button>
@@ -44,7 +44,7 @@
 
       </div> -->
       <div class="headerImg">
-          <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div>
+          <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
              <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
 
       </div>
@@ -131,7 +131,7 @@
         <div class="infoCard">
         <div class="hq info">
           <label>HEADquarters</label>
-          <h3>LOCATION</h3>
+          <h3>{{country}} , {{city}}</h3>
         </div>
         <div class="estd info">
             <label>year estd.</label>

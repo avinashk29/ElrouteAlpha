@@ -54,11 +54,11 @@ export class CompanyServiceService {
   //   return this.http.get('http://localhost:3000/company',{headers: headers});
   // }
 
-  OneditCompany(company,id) {
-    const headers = new Headers();
-    headers.append('x-auth', this.token);
-    return this.http.patch('http://localhost:3000/company/update/' + id, company, {headers: headers});
-  }
+  // OneditCompany(company,id) {
+  //   const headers = new Headers();
+  //   headers.append('x-auth', this.token);
+  //   return this.http.patch('http://localhost:3000/company/update/' + id, company, {headers: headers});
+  // }
   GetCompany() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
