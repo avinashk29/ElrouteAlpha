@@ -88,17 +88,19 @@ section{
   width: 70%;
   margin: 0 auto;
   margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
 
 }
 .listing{
-  display: flex;
-  flex-wrap: wrap;
+  width: 47%;
+  margin-right: 3%;
 }
 .Card{
-  width: 47%;
+  width: 100%;
   height: 15rem;
   border-radius: 10px;
-  margin-right: 3%;
+
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
@@ -106,7 +108,7 @@ section{
 }
 .productCard, .ServiceCard{
   display: flex;
-  width: 100%;
+
   height: 100%;
   border: 1px solid #cccccccc;
   border-radius: 10px 10px 10px 10px
@@ -173,7 +175,7 @@ section{
   width: 100%;
   float: right;
   background-color: azure;
-  
+
 }
 .other-info{
   width: 100%;

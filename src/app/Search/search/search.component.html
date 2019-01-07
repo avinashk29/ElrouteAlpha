@@ -16,65 +16,37 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
-<div class="listing">
+<div class="listing" *ngFor="let result of results; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
-<div class="Card" *ngFor="let card of cards; let i = index">
-  <div class="productCard" *ngIf="card.type == 1">
-<div class="productImage">
-  <div class="bookmark">
+<div class="Card" *ngIf="result != null" >
 
-  </div>
-  <img src="https://picsum.photos/200/300/?random">
-</div>
-<div class="productContent" >
-<div class="content">
-<div class="productCategory">
-<h6>{{card.catogory}}</h6>
-</div>
-<div class="productName">
-  <h2>{{card.productName}}</h2>
-  <h5>{{card.company}}</h5>
-  <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
-</div>
-<div class="discription" style="margin-top:30px;">
-<p>{{card.discription}}</p>
-</div>
-<div class="tags">
+  <div>
 
-</div>
-<div class="other-info">
-  <div class="price">
-  <h4>Price</h4>
-</div>
-<div class="hits">
-  <p>24,354 hits</p>
-</div>
-</div>
-</div>
-</div>
-  </div>
-  <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
-  <div class="ServiceCard" *ngIf="card.type == 2" >
-
-      <div class="ServiceContent">
-      <div class="content">
-      <div class="ServiceCategory">
-      <h6>{{card.Servicecatogory}}</h6>
+    <div class="productCard" *ngIf="result.type == 1 && result._id != null" >
+      <div class="productImage">
+        <div class="bookmark">
+        </div>
+        <img src="https://picsum.photos/200/300/?random">
       </div>
-      <div class="ServiceName">
-        <h2>{{card.serviceName}}</h2>
-        <h5>{{card.scompany}}</h5>
-        <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 8px">{{card.sdevice}}</span><span style= "padding-left: 8px">{{card.scountry}}</span></small>
+      <div class="productContent" >
+      <div class="content">
+      <div class="productCategory">
+      <h6>{{result.catogory}}</h6>
+      </div>
+      <div class="productName">
+        <h2>{{result.productName}}</h2>
+        <h5>{{result.company}}</h5>
+        <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">Device</span><span style= "padding-left: 8px">country</span></small>
       </div>
       <div class="discription" style="margin-top:30px;">
-      <p>{{card.sdiscription}}</p>
+      <p>{{result.shortDescription}}</p>
       </div>
       <div class="tags">
 
       </div>
       <div class="other-info">
         <div class="price">
-        <h4>Price</h4>
+        <h4>{{result.minPrice}}</h4>
       </div>
       <div class="hits">
         <p>24,354 hits</p>
@@ -82,13 +54,44 @@
       </div>
       </div>
       </div>
-      <div class="ServiceImage">
-          <div class="bookmark">
+        </div>
+        <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
+        <div class="ServiceCard" *ngIf="result.type == 2 && result._id != null" >
 
-          </div>
-          <img src="https://picsum.photos/200/300/?random">
-        </div>
-        </div>
+            <div class="ServiceContent">
+            <div class="content">
+            <div class="ServiceCategory">
+            <h6>{{result.catogory}}</h6>
+            </div>
+            <div class="ServiceName">
+              <h2>{{result.serviceName}}</h2>
+              <h5>{{result.company}}</h5>
+              <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 8px">Device</span><span style= "padding-left: 8px">Country</span></small>
+            </div>
+            <div class="discription" style="margin-top:30px;">
+            <p>{{result.shortDescription}}</p>
+            </div>
+            <div class="tags">
+
+            </div>
+            <div class="other-info">
+              <div class="price">
+              <h4>{{result.minPrice}}</h4>
+            </div>
+            <div class="hits">
+              <p>24,354 hits</p>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="ServiceImage">
+                <div class="bookmark">
+
+                </div>
+                <img src="https://picsum.photos/200/300/?random">
+              </div>
+              </div>
+  </div>
 </div>
 
 </div>
