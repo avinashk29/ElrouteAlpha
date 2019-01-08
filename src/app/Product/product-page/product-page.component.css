@@ -1,7 +1,7 @@
 .product_detalis
 {
-    padding-top:4%;
-    margin-left: 4%;
+    padding-top:5%;
+    margin-left: 5%;
 }
 .product
 {
@@ -65,14 +65,14 @@
 }
 .tags
 {
-    width: 56%;
+    width: 98%;
     margin-top: 10px;
 }
 .tags li
 {
 
     font-size: 20px;
-    margin: 10px;
+    margin: 6px;
     display: inline;
 
 }

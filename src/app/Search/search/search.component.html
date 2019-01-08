@@ -16,7 +16,7 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
-<div class="listing" *ngFor="let result of results; let i = index;">
+<div class="listing" *ngFor="let result of this.search.searchResult; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null" >
 
