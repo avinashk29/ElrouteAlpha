@@ -1,3 +1,7 @@
+.following_title
+{
+  padding-top: 3%;
+}
 .following_title h1 {
     width: 80%;
     margin: 0 auto;
@@ -219,7 +223,10 @@ section{
     display: none;
   }
   @media screen and (max-width: 700px){
-
+    .following_title
+    {
+      padding-top: 10%;
+    }
     .user_following
       {
         display:none;
@@ -277,7 +284,11 @@ section{
   }
   }
   @media screen and (min-width: 767px)and (max-width: 1024px){
-  .following_name h2 {
+    .following_title
+    {
+      padding-top: 6%;
+    }
+    .following_name h2 {
     margin-bottom: auto;
     margin-top: auto;
     font-weight: 500;

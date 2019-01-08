@@ -10,6 +10,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 export class BPageComponent implements OnInit {
 
+
 one = true;
 two = false;
 three = false;

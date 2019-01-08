@@ -1,11 +1,13 @@
 
 .bookmark_overview {
     display: flex;
+    margin: 0 auto;width: 80%;
     
 }
 .heading
 {
     display: flex;
+    margin: 0 auto;width: 80%; margin-top: 2%;
 }
 
 .overview {
@@ -343,6 +345,10 @@
   }
   
   @media screen and (max-width:700px) {
+      section
+      {
+          margin-top: 10%;
+      }
     .heading
     {
         display: none;
@@ -422,6 +428,11 @@
 
 }
 @media screen and (min-width:767px) and (max-width:1024px) {
+    .heading
+{
+    display: flex;
+    margin: 0 auto;width: 80%; margin-top: 5%;
+}
     .overview {
         width: 60%;
         display: flex;
@@ -444,6 +455,10 @@
     .follower_img1 img {
         width: 25%;
         margin-top: 70px; 
+    }
+    .bookmark_following {
+        padding: 0px 10px;
+        width: 50%;
     }
     
 }

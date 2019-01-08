@@ -1,7 +1,39 @@
 <app-header></app-header>
 <app-side-nav></app-side-nav>
 <section>
- 
+  <div class="header_responsive">
+  
+        <div class="headerElements1">
+            <div class="elements"(click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>Products</h4></div>
+            <div class="elements"  (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>Comapny</h4></div>
+            <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>Feed</h4></div>
+            </div>
+        <div class="headerImg">
+            <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
+               <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
+  
+        </div>
+
+        <div class="card">
+            
+
+            <div class="logoheader">
+            <img src="assets/images/logo.png">
+            </div>
+            <div class="user_profile">
+                <h2>{{name}}</h2>
+                <p>{{industry}}</p>
+
+                <div class="follow-btn">
+                    <button>FOLLOW</button>
+                    <span>24,255</span>
+                </div>
+              </div>
+        </div>   
+
+
+      </div>
+  
 <header>
     <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
       <g id="location" transform="translate(-486.5 -340.5)">
@@ -48,6 +80,7 @@
              <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
 
       </div>
+      
 </header>
 <div class="card-left">
 <!-- <div class="headerImg">
@@ -67,7 +100,7 @@
         </div>
 
         <div class="social_bookmark">
-            <span><img src="assets/images/bookmark.png"></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
         </div>
       </div>
   </div>

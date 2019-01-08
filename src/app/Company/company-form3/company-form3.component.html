@@ -9,38 +9,7 @@
 <div class="form">
 
   <form [formGroup] = "companyForm" (ngSubmit)= "onSubmit()">
-      <ul>
-        <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
-          <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
-        </li>
-          <li><textarea placeholder="Complete Office Address" formControlName = "address"></textarea></li>
-        <li>
-            <div class="location"  >
-                <input type="text" formControlName = "city" placeholder="City"  class="city">
-                  <input   type="text" placeholder="Zip Code" formControlName = "zipCode" class="zip">
-              </div>
-        </li>
-        <li><input type="number" placeholder="Landline Number" formControlName = "landLine" name="companyEmail"></li>
-        <!-- <li>
-          <input list="industry" formControlName = "industry" placeholder="Industry">
-          <datalist id="industry">
-          <option value="industry">
-          <option value="industry">
-          <option value="industry">
-          <option value="industry">
-          </datalist>
-        </li> -->
-        <li>
-            <input type="number" formControlName = "mobile" placeholder="Mobile Number">
-            <!-- <datalist id="category">
-            <option value="category">
-            <option value="category">
-            <option value="category">
-            <option value="category">
-            </datalist> -->
-        </li>
-        <li><button>Finish</button></li>
-        </ul>
+
   </form>
 
 </div>

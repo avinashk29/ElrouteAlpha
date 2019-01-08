@@ -49,7 +49,7 @@ aside ul {
 }
 aside ul li {
   border-bottom: 1px solid #ccc;
-  padding: 10px 20px;
+  padding: 10px 27px;
   position: relative;
   cursor: pointer;
 
@@ -184,6 +184,6 @@ aside{
   display: block;
 }
 .menu2{
-  display: block;
+  display: inline-block;
 }
 }
