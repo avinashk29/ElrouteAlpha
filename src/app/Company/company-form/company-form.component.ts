@@ -4,6 +4,7 @@ import { Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { AuthServiceService } from 'src/app/Auth/auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+
 @Component({
   selector: 'app-company-form',
   templateUrl: './company-form.component.html',
@@ -11,6 +12,10 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 export class CompanyFormComponent implements OnInit {
   token;
+  Id;
+  one = true;
+  two = false;
+  three = false;
   companyForm = new FormGroup ({
    companyName: new FormControl(''),
    country: new FormControl(''),
@@ -18,31 +23,62 @@ export class CompanyFormComponent implements OnInit {
    companyEmail: new FormControl(''),
    industry: new FormControl(''),
    category: new FormControl(''),
-  }); 
-  submitted: boolean
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-  public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService) { }
+   website: new FormControl(''),
+   companyType: new FormControl(''),
+   image: new FormControl(''),
+   companySize: new FormControl(''),
+   yearEstd: new FormControl(''),
+   address: new FormControl(''),
+  // city: new FormControl(''),
+  zipCode: new FormControl(''),
+  landLine: new FormControl(''),
+  mobile: new FormControl('')
+  }) ;
+  submitted: boolean;
+  imagePreview;
+
+    constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+  public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService) {
+    this.storage.remove('companyId');
+   }
 
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
   }
+  Showtwo() {
+   this.one = false;
+  this.two = true;
+  this.three = false;
+  }
+  Showthree() {
+    this.one = false;
+   this.two = false;
+   this.three = true;
+   }
 
-
+   onImagePick(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.companyForm.patchValue({image: file});
+    this.companyForm.get('image').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
+   }
   onSubmit() {
     console.log(this.companyForm.value);
     const companyData = this.companyForm.value;
     console.log(this.token);
-    // this.storage.set('companyName',companyData.companyName);
-    // this.storage.set('country',companyData.country);
-    // this.storage.set('city',companyData.city);
-    // this.storage.set('companyEmail',companyData.companyEmail);
-    // this.storage.set('industry',companyData.industry);
-    // this.storage.set('category',companyData.category);
         this.companyService.addCompany(companyData).subscribe(res => {
+          this.Id =  this.storage.set('companyId' , JSON.parse(res['_body'])._id);
+          this.companyService.Id =  this.storage.get('comapnyId');
       console.log(JSON.parse(res['_body'])._id);
-      this.storage.set('companyId' , JSON.parse(res['_body'])._id);
+
     });
-    this.router.navigate(['/B-page-step2']);
+    this.router.navigate(['/companyPage']);
+
   }
+
 }

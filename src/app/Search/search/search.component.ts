@@ -13,7 +13,7 @@ results = [];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService) { }
   ngOnInit() {
     this.results = this.storage.get('searchResult');
-console.log(this.results.values = null);
+
   }
 
 }

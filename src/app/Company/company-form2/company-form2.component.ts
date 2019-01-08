@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { FormBuilder,FormControl,FormGroup} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
 // import {imageValidator} from './image.validator';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { Router } from '@angular/router';
@@ -14,16 +14,14 @@ export class CompanyForm2Component implements OnInit {
   imagePreview;
   token;
  Id;
- 
+
   constructor(public companyService: CompanyServiceService, public router: Router,
-    @Inject(LOCAL_STORAGE) private storage: WebStorageService , public _fb: FormBuilder) { }
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService , public _fb: FormBuilder) {
+      console.log(this.companyService.Id);
+    }
     companyForm2 = new FormGroup({
-      website: new FormControl(''),
-      companyType: new FormControl(''),
-      image: new FormControl(''),
-      companySize: new FormControl(''),
-      yearEstd: new FormControl('')
-      
+
+
     });
     // companyForm2= this._fb.group({
     //   website: [''],
@@ -33,10 +31,11 @@ export class CompanyForm2Component implements OnInit {
     //   yearEstd: ['']
     //  });
   ngOnInit() {
+
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
-    this.Id = this.storage.get('companyId');
-    console.log(this.Id);
+
+
   }
   onImagePick(event: Event) {
    const file = (event.target as HTMLInputElement).files[0];
@@ -62,10 +61,8 @@ export class CompanyForm2Component implements OnInit {
     //  });
     //  const companyData2 = this.companyForm2.value;
     //  console.log(companyData2);
-      this.companyService.addCompany2(companyData,this.Id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
-    });
-    console.log(this.Id)
+
+    console.log(this.Id);
     this.router.navigate(['/B-page-step3']);
   }
 }

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http , Headers} from '@angular/http';
-// import {User } from '../models/user';
-// import { Company } from '../models/company';
 
 @Injectable({
   providedIn: 'root'
@@ -9,25 +7,7 @@ import { Http , Headers} from '@angular/http';
 export class CompanyServiceService {
   token;
   companyName;
-//  user: User =
-//    {
-//      _id: '',
-//     UserName: '',
-//     Email: '',
-//     Password: ''
-//    };
-  //  company: Company = {
-  //   category: '',
-  //   companyName: '',
-  //   location: '',
-  //   website: '',
-  //   shortIntro: '',
-  //   yearEst: 0 ,
-  //   address: '',
-  //   employeeSize: 0,
-  //   about: '',
-  //  };
-
+  Id;
   constructor(private http: Http) { }
   // signup(user) {
   //  return this.http.post('http://localhost:3000/auth/signup', user);
@@ -42,42 +22,30 @@ export class CompanyServiceService {
   // }
   addCompany(company) {
     const headers = new Headers();
-    const companyFormData=new FormData();
-    //--------------------------------------Company's form data at first level--------------//
-    companyFormData.append('comapnyName',company.comapnyName);
-    companyFormData.append('country',company.country);
-    companyFormData.append('city',company.city);
-    companyFormData.append('companyEmail',company.companyEmail);
-    companyFormData.append('industry',company.industry);
-    companyFormData.append('category',company.category);
-  //--------------------------------------Company's form data at Second level--------------//
-    // companyFormData.append('website',company.website);
-    // companyFormData.append('companyType',company.companyType);
-    // companyFormData.append('image',company.image);
-    // companyFormData.append('companySize',company.companySize);
-    // companyFormData.append('yearEstd',company.yearEstd);
-      //--------------------------------------Company's form data at third level--------------//
-      // companyFormData.append('address',company.address);
-      // companyFormData.append('city',company.city);
-      // companyFormData.append('zipcode',company.zipCode);
-      // companyFormData.append('landline',company.landLine);
-      // companyFormData.append('mobile',company.mobile);
-      // headers.append('x-auth', this.token);
+const companyFormData = new FormData();
+
+    companyFormData.append('compayName', company.comapnyName);
+    companyFormData.append('country', company.country);
+    companyFormData.append('city', company.city);
+    companyFormData.append('companyEmail', company.companyEmail);
+    companyFormData.append('industry', company.industry);
+    companyFormData.append('category' , company.category);
+
+    companyFormData.append('website', company.website);
+    companyFormData.append('companyType', company.companyType);
+    companyFormData.append('image', company.image);
+    companyFormData.append('companySize', company.companySize);
+    companyFormData.append('yearEstd', company.yearEstd);
+
+      companyFormData.append('address', company.address);
+      companyFormData.append('city', company.city);
+      companyFormData.append('zipcode', company.zipCode);
+      companyFormData.append('landline', company.landLine);
+      companyFormData.append('mobile', company.mobile);
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:3000/company',companyFormData, {headers: headers});
+    return this.http.post('http://localhost:3000/company', companyFormData, {headers: headers});
 
-  }
-  addCompany2(company,id) {
-    const headers = new Headers();
-    headers.append('x-auth', this.token);
-    const companyFormData=new FormData();
-    companyFormData.append('website',company.website);
-    companyFormData.append('companyType',company.companyType);
-    companyFormData.append('image',company.image);
-    companyFormData.append('companySize',company.companySize);
-    companyFormData.append('yearEstd',company.yearEstd);
-     return this.http.patch('http://localhost:3000/company/update/'+id,companyFormData , {headers: headers});
   }
 // addCompany3(company){
 //   const headers=new Headers();
