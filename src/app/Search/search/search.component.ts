@@ -16,9 +16,11 @@ results = [];
    
   }
   ngOnInit() {
-    this.results = this.storage.get('searchResult');
     this.bookmarksService.token = this.storage.get('token');
     console.log(this.bookmarksService.token);
+    const formData = this.storage.get('query')
+   this.search.onSearch(formData);
+    console.log(this.search.searchValue);
   }
  
 bookmark(id){
