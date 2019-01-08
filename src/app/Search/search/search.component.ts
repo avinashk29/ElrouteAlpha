@@ -12,24 +12,25 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 export class SearchComponent implements OnInit {
 show = false;
 results = [];
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,private AuthService:AuthServiceService, public search: SearchService,private bookmarksService:BookmarkServices) { 
-   
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
+ public search: SearchService, private bookmarksService: BookmarkServices) {
+
   }
   ngOnInit() {
     this.results = this.storage.get('searchResult');
     this.bookmarksService.token = this.storage.get('token');
     console.log(this.bookmarksService.token);
   }
- 
-bookmark(id){
+
+bookmark(id) {
 console.log(id);
-this.bookmarksService.addProductBookmarks(id).subscribe(res=>{
+this.bookmarksService.addProductBookmarks(id).subscribe(res => {
   console.log(res);
 })
 }
 
 serviceBookmark(id){
-this.bookmarksService.addServiceBookmark(id).subscribe(res=>{
+this.bookmarksService.addServiceBookmark(id).subscribe(res => {
   console.log(res);
 })
 }
