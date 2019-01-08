@@ -123,6 +123,10 @@ section{
     margin-left: 10%;
     font-size: 13px;
     padding-top: 4px;
+    background-color: red;
+    height: 15px;
+    width:15px;
+    
 }
 .productImage img , .ServiceImage img{
   width: 100%;

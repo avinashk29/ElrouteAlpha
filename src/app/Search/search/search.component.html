@@ -24,7 +24,8 @@
 
     <div class="productCard" *ngIf="result.type == 1 && result._id != null" >
       <div class="productImage">
-        <div class="bookmark">
+        <div class="bookmark" (click)="bookmark(result._id)">
+      
         </div>
         <img src="https://picsum.photos/200/300/?random">
       </div>
@@ -85,7 +86,7 @@
             </div>
             </div>
             <div class="ServiceImage">
-                <div class="bookmark">
+                <div class="bookmark" (click)="serviceBookmark(result.id)">
 
                 </div>
                 <img src="https://picsum.photos/200/300/?random">
