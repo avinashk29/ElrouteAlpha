@@ -345,6 +345,10 @@
   }
   
   @media screen and (max-width:700px) {
+      section
+      {
+          margin-top: 10%;
+      }
     .heading
     {
         display: none;
