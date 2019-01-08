@@ -9,26 +9,30 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
   styleUrls: ['./company-form3.component.css']
 })
 export class CompanyForm3Component implements OnInit {
+  Id
 companyForm = new FormGroup({
   address: new FormControl(''),
   city: new FormControl(''),
   zipCode: new FormControl(''),
   landLine: new FormControl(''),
   mobile: new FormControl('')
+  
 });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public companyService: CompanyServiceService, public router: Router) { }
 
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
+    this.Id = this.storage.get('companyId');
   }
 
   onSubmit() {
     console.log(this.companyForm.value);
-    const formData = this.companyForm.value;
-    this.companyService.addCompany(formData).subscribe(res => {
+    const formData = this.companyForm.patchValue;
+        this.companyService.addCompany(formData).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
+    console.log(this.Id)
     this.router.navigate(['/companyPage']);
   }
 }

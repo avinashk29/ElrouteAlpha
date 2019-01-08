@@ -17,17 +17,17 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit() {
     this.productForm = this._fb.group({
-      productName: [],
-     productImage: [],
-     shortDescription: [],
+      productName: [''],
+     productImage: [''],
+     shortDescription: [''],
      productInfo: this._fb.array([this.addProductInfoGroup()]),
-     price: [],
-     minPrice: [],
-     maxPrice: [],
-     moq: [],
-     industry: [],
-     category: [],
-     tfCode: []
+     price: [''],
+     minPrice: [''],
+     maxPrice: [''],
+     moq: [''],
+     industry: [''],
+     category: [''],
+     tfCode: ['']
     });
     this.productService.token = this.storage.get('token');
   }
@@ -46,15 +46,15 @@ export class ProductFormComponent implements OnInit {
   }
   addProductInfoGroup() {
     return this.productInfoForm = this._fb.group({
-      productSpecification: [],
-      specificationContent: [],
+      productSpecification: [''],
+      specificationContent: [''],
       fileds: this._fb.array([this.addFiledsGroup()])
     });
   }
   addFiledsGroup() {
   return this._fb.group({
-    fieldName: [],
-    fieldDes: []
+    fieldName: [''],
+    fieldDes: ['']
   });
   }
   get productInfoArray() {

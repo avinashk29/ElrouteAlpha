@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {SearchService} from '../../Service/search.service';
+import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-search',
@@ -7,112 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 show = false;
-  constructor() { }
-cards = [
-  {
-  type: 1,
-  catogory: 'Laptp',
-  productName: 'Product Name',
-  company: 'Company ka Naam',
-  device: 'computer',
-  country: 'China',
-  discription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-
-  },
-  {
-    type: 2,
-    Servicecatogory: 'Service',
-    serviceName: 'Product Name',
-    scompany: 'Company ka Naam',
-    sdevice: 'computer',
-    scountry: 'China',
-    sdiscription: 'It is a ader will be distracted by the readable content of a page when looking at its layout.'
-
-    },
-    {
-      type: 2,
-      Servicecatogory: 'Service',
-      serviceName: 'Product Name',
-      scompany: 'Company ka Naam',
-      sdevice: 'computer',
-      scountry: 'China',
-      sdiscription: 'It is a ader will be distracted by the readable content of a page when looking at its layout.'
-
-      },
-      {
-        type: 2,
-        Servicecatogory: 'Service',
-        serviceName: 'Acer Aspire E5-574G 57T1',
-        scompany: 'by Jinan Kelunte Bearing Co., Ltd.',
-        sdevice: 'computer',
-        scountry: 'China',
-        sdiscription: 'It is a ader will be distracted by the readable content of a page when looking at its layout.'
-
-        },
-        {
-          type: 2,
-          Servicecatogory: 'Service',
-          serviceName: 'Product Name',
-          scompany: 'Company ka Naam',
-          sdevice: 'computer',
-          scountry: 'China',
-          sdiscription: 'It is a ader will be distracted by the readable content of a page when looking at its layout.'
-
-          },
-          {
-            type: 2,
-            Servicecatogory: 'Service',
-            serviceName: 'Product Name',
-            scompany: 'Company ka Naam',
-            sdevice: 'computer',
-            scountry: 'China',
-            sdiscription: 'It is a ader will be distracted by the readable content of a page when looking at its layout.'
-
-            },
-    {
-      type: 1,
-      catogory: 'Lap',
-      productName: 'Prot Name',
-      company: 'Company',
-      device: 'computer',
-      country: 'China',
-      discription: 'It is a long established fact that a reader will be d of a page when looking at its layout.'
-
-      },
-      {
-        type: 2,
-        Servicecatogory: 'Service',
-        serviceName: 'Product Name',
-        scompany: 'Company ka Naam',
-        sdevice: 'computer',
-        scountry: 'China',
-        sdiscription: 'It is a long established fact that a reader will be readable content of a page when looking at its layout.'
-
-        },
-        {
-          type: 1,
-          catogory: 'Laptp',
-          productName: 'Product Name',
-          company: 'Company ka Naam',
-          device: 'computer',
-          country: 'China',
-          discription: 'It is a long established fact that a reader will be distrable content of a page when looking at its layout.'
-
-          },
-          {
-            type: 2,
-            Servicecatogory: 'Service',
-            serviceName: 'Product Name',
-            scompany: 'Company ka Naam',
-            sdevice: 'computer',
-            scountry: 'China',
-            sdiscription: 'It is a long established fact that a reader will beble content of a page when looking at its layout.'
-
-            }
-];
+results = [];
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService) { }
   ngOnInit() {
-
-
+    this.results = this.storage.get('searchResult');
+console.log(this.results.values = null);
   }
 
 }
