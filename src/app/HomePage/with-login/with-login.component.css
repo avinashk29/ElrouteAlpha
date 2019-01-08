@@ -379,6 +379,12 @@ mat-panel-title h4 {
     .login_user {
         width: 26%;
     }
+    .with_login {
+        margin: 0 auto;
+        width: 75%;
+        padding-top: 9%;
+        margin-left: 10%;
+    }
     .user_name h2 {
         font-size: 15px;
         color: #FAF6F6;

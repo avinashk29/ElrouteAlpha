@@ -184,6 +184,6 @@ aside{
   display: block;
 }
 .menu2{
-  display: block;
+  display: inline-block;
 }
 }
