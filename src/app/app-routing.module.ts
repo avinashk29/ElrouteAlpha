@@ -43,7 +43,8 @@ const routes: Routes = [
    {path: 'feeds' , component: FeedsComponent},
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
-    {path: 'companyPage' , component: BPageComponent}
+    {path: 'companyPage' , component: BPageComponent},
+   
   // {path: 'feed ' , component: fee}
 ];
 

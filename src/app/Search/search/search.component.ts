@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 show = false;
   constructor() { }
+result=[]
 cards = [
   {
   type: 1,
@@ -112,7 +113,7 @@ cards = [
 ];
   ngOnInit() {
 
-
+ 
   }
 
 }

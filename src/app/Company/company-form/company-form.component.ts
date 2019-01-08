@@ -1,4 +1,4 @@
-import { Component, OnInit  , Inject} from '@angular/core';
+import { Component, OnInit  , Inject, Input} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
@@ -18,7 +18,8 @@ export class CompanyFormComponent implements OnInit {
    companyEmail: new FormControl(''),
    industry: new FormControl(''),
    category: new FormControl(''),
-  });
+  }); 
+  submitted: boolean
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService) { }
 
@@ -30,11 +31,17 @@ export class CompanyFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.companyForm.value);
-     const companyData = this.companyForm.value;
+    const companyData = this.companyForm.value;
     console.log(this.token);
-    this.companyService.addCompany(companyData).subscribe(res => {
-
-      console.log(JSON.parse(res['_body']));
+    // this.storage.set('companyName',companyData.companyName);
+    // this.storage.set('country',companyData.country);
+    // this.storage.set('city',companyData.city);
+    // this.storage.set('companyEmail',companyData.companyEmail);
+    // this.storage.set('industry',companyData.industry);
+    // this.storage.set('category',companyData.category);
+        this.companyService.addCompany(companyData).subscribe(res => {
+      console.log(JSON.parse(res['_body'])._id);
+      this.storage.set('companyId' , JSON.parse(res['_body'])._id);
     });
     this.router.navigate(['/B-page-step2']);
   }
