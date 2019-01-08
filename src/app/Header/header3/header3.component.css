@@ -3,6 +3,7 @@
   width: 100%;
   border: 1px solid #ccc;
   padding: 10px;
+  display: flex;
 }
 .headerElements{
   width: 90%;

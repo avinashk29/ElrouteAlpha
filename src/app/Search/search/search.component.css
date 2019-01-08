@@ -119,12 +119,10 @@ section{
   height: 100%;
 }
 .bookmark{
-  width: 1%;
-  height: 3%;
-
-  background-color: red;
-  position: absolute;
-  margin-left: 10%;
+   position: absolute;
+    margin-left: 10%;
+    font-size: 13px;
+    padding-top: 4px;
 }
 .productImage img , .ServiceImage img{
   width: 100%;

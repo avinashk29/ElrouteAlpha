@@ -416,10 +416,34 @@
     width: 100%;
     padding-top: 20px;
   }
+  .Card {
+    width: 100%;
+}
 
 }
-@media screen and (max-width:700px) {
-    .Card {
-        width: 100%;
+@media screen and (min-width:767px) and (max-width:1024px) {
+    .overview {
+        width: 60%;
+        display: flex;
     }
+    .following_nub1 {
+        font-size: 29px;
+     
+    }
+    .b_page_btn button {    
+       font-size: 20px;
+   }
+   .following_btn  button {
+    font-size: 15px;
+    margin-top: 35%;
+    }
+    .follower_img {
+        margin: 0 auto;
+        width: 40%;
+    }
+    .follower_img1 img {
+        width: 25%;
+        margin-top: 70px; 
+    }
+    
 }

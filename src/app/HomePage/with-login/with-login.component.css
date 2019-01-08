@@ -291,6 +291,7 @@ section {
     /* background-color: burlywood; */
     display: block;
     padding-top: 1%;
+    display: flex;
 }
 .feed-share img
 {
