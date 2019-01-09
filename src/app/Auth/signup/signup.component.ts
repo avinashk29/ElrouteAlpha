@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { ToastrService } from 'ngx-toastr';
 import { error } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-signup',
@@ -12,6 +13,7 @@ import { error } from '@angular/compiler/src/util';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  error = true;
   signupForm = new FormGroup({
     UserName : new FormControl(''),
     Location : new FormControl(''),
@@ -21,9 +23,10 @@ export class SignupComponent implements OnInit {
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
-     public router: Router) {
+     public router: Router, public notification: ToastrService) {
  }
   ngOnInit() {
+
   }
 
 // <-----------------------------to open login------------------------------------>
@@ -36,15 +39,28 @@ export class SignupComponent implements OnInit {
   }
 onSubmit() {
      const SignupForm = this.signupForm.value;
+
     this.authService.signup(SignupForm).subscribe(res => {
+      this.error = false;
+     if (this.error === false) {
       console.log(JSON.parse(res['_body']));
       // this.authService.token = res.headers.get('x-auth');
      this.storage.set('token', res.headers.get('x-auth'));
      this.authService.token = this.storage.get('token');
-      console.log(this.authService.token);
-    });
-    this.dialogRef.close(SignupComponent);
+     this.dialogRef.close(SignupComponent);
     this.router.navigate(['/Dashboard']);
-    console.log(this.signupForm.value);
+    this.notification.success('LogIn Successful');
+      console.log(this.authService.token);
+      console.log('1' + this.error);
+
+     }
+
+    });
+    if (this.error) {
+      this.notification.error('Cant LogIn Enter Valid Details');
+     console.log('3' + this.error);
+     this.error = true;
+   }
+ console.log(this.error);
   }
 }
