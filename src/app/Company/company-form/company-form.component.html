@@ -4,6 +4,7 @@
   <p>Register and step into the business world</p>
 </header>
 <form [formGroup] = "companyForm" (ngSubmit)= "onSubmit()">
+  <!--------------------------------------------------//First Level Form//-------------------------------------------------------->
 <div *ngIf="one">
   <div class="companyForm">
     <div class="infoGraphic">
@@ -11,13 +12,14 @@
     </div>
     <div class="form">
 
-
           <ul>
             <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
               <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
             </li>
-              <li><input type="text" placeholder="Comapny Name" formControlName = "companyName" name="comapnyName"></li>
-            <li>
+              <li><input type="text" placeholder="Company Name" formControlName = "companyName" name="companyName" ></li>
+              <span *ngIf="!companyForm.get('companyName').valid && companyForm.get('companyName').touched"><p>Please Enter Company</p></span>
+              
+              <li>
                 <div class="location"  >
                     <input list="country" formControlName = "country" placeholder="country" style="width:45%;">
                     <datalist id="country">
@@ -28,8 +30,11 @@
                     </datalist>
                       <input  style="width:45%; float: right;" type="text" placeholder="City(optional)" formControlName = "city" name="city">
                   </div>
+                  <span *ngIf="!companyForm.get('country').valid && companyForm.get('country').touched"><p>Please Select Country</p></span>
+
             </li>
             <li><input type="email" placeholder="Company Email Address" formControlName = "companyEmail" name="companyEmail"></li>
+            <span *ngIf="!companyForm.get('companyEmail').valid && companyForm.get('companyEmail').touched"><p>Please Enter Valid Email</p></span>
             <li>
               <input list="industry" formControlName = "industry" placeholder="Industry">
               <datalist id="industry">
@@ -39,6 +44,7 @@
               <option value="industry">
               </datalist>
             </li>
+            <span *ngIf="!companyForm.get('industry').valid && companyForm.get('industry').touched"><p>Please Select Industry</p></span>
             <li>
                 <input list="category" formControlName = "category" placeholder="Category">
                 <datalist id="category">
@@ -48,6 +54,7 @@
                 <option value="category">
                 </datalist>
             </li>
+            <span *ngIf="!companyForm.get('category').valid && companyForm.get('category').touched"><p>Please Select Requied Category</p></span>
             <li><button type="button" (click)="Showtwo()">Next</button></li>
             </ul>
 
@@ -56,6 +63,7 @@
     </div>
 </div>
 
+<!---------------------------------------------//Second Level Form//--------------------------------------->
 
 <div *ngIf="two">
   <div class="companyForm">
@@ -70,20 +78,18 @@
         <li>
             <div>
                 <input type="text" placeholder="website" formControlName = "website" name="website"  class="website">
-                <input list="company-type" formControlName = "companyType" placeholder="Company Type" class="company-type">
-                <datalist id="company-type">
+                                <input list="company-type" formControlName = "companyType" placeholder="Company Type" class="company-type">
+                                <datalist id="company-type">
                 <option value="company-type">
                 <option value="company-type">
                 <option value="company-type">
                 <option value="company-type">
                 </datalist>
-
                 <input type="file" #filePicker (change)="onImagePick($event)" class="picker">
                 <button  type="button" (click)="filePicker.click()" class="btn">Pick Company Logo</button>
                 <div class="imagePreview" *ngIf="imagePreview!== '' && imagePreview">
                     <img [src] = "imagePreview" [alt]="this.companyForm.value.image.name">
                   </div>
-
               </div>
         </li>
         <li><textarea placeholder="Short Bio (200 characters)"></textarea></li>
@@ -98,6 +104,7 @@
           </datalist>
 
           <input list="year" formControlName = "yearEstd" placeholder=" Year Established"  class="yearEstd">
+         
           <datalist id="year">
           <option value="yearEstd">
           <option value="yearEstd">
@@ -112,7 +119,7 @@
     </div>
     </div>
 </div>
-
+<!-------------------------//Third Level Form//---------------------------------------------------->
 <div *ngIf="three">
   <div class="companyForm">
     <div class="infoGraphic">
@@ -128,7 +135,9 @@
         <li>
             <div class="location"  >
                 <input type="text" formControlName = "city" placeholder="City"  class="city">
+                
                   <input   type="text" placeholder="Zip Code" formControlName = "zipCode" class="zip">
+                 
               </div>
         </li>
         <li><input type="number" placeholder="Landline Number" formControlName = "landLine" name="companyEmail"></li>
@@ -150,6 +159,7 @@
             <option value="category">
             </datalist> -->
         </li>
+        <span *ngIf="!companyForm.get('mobile').valid && companyForm.get('mobile').touched"><p>Please Enter Mobile Number</p></span>
         <li><button type="submit">Finish</button></li>
         </ul>
 

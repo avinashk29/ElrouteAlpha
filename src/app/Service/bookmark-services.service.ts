@@ -31,4 +31,10 @@ addServiceBookmark(id){
     return this.http.patch('http//localhost:3000/bookmark/service/'+id,id,{headers:headers});
 }
 
+BookmarkResult(){
+    const headers=new Headers();
+    headers.append('x-auth',this.token);
+    return this.http.get('http://localhost:3000/bookmarksave',{headers:headers});   
+}
+
 }

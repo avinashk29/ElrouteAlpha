@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { SignupComponent } from 'src/app/Auth/signup/signup.component';
-import {FormGroup , FormControl} from '@angular/forms';
+import {FormGroup , FormControl, Validators} from '@angular/forms';
 import { SearchService } from 'src/app/Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,12 +28,13 @@ export class WithoutLoginComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(SignupComponent, dialogConfig);
   }
-onSearch() {
-  const formData = this.searchForm.value;
-  this.searchService.onSearch(formData);
-  this.searchService.searchValue = formData;
-  this.storage.set('query', this.searchForm.value);
-  
-  this.router.navigate(['/Result']);
+onSearch(event) {
+  if(event.keyCode==13){
+    const formData = this.searchForm.value;
+    this.searchService.onSearch(formData);
+    this.searchService.searchValue = formData;
+    this.storage.set('query', this.searchForm.value);
+    this.router.navigate(['/Result']);
+  }
 }
 }

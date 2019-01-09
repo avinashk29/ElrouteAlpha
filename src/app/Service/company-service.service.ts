@@ -24,7 +24,7 @@ export class CompanyServiceService {
     const headers = new Headers();
 const companyFormData = new FormData();
 
-    companyFormData.append('compayName', company.comapnyName);
+    companyFormData.append('compayName', company.companyName);
     companyFormData.append('country', company.country);
     companyFormData.append('city', company.city);
     companyFormData.append('companyEmail', company.companyEmail);
@@ -128,4 +128,10 @@ const companyFormData = new FormData();
 
 //   return this.http.get('http://localhost:3000/bookmarksave', {headers: headers});
 // }
+
+companyFollowing(id){
+  const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.patch('http://localhost:3000/company/follow/'+id, {headers: headers});
+}
 }

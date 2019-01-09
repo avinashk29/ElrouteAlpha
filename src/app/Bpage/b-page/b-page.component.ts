@@ -488,6 +488,7 @@ email;
       this.expand[i] = false;
       console.log(this.expand[i]);
     }
+    this.companyService.token=this.storage.get('token');
 this.companyService.GetCompany().subscribe(res => {
   console.log(JSON.parse(res['_body'])[0].companyName);
   this.storage.set('companyName',  JSON.parse(res['_body'])[0].companyName);
@@ -502,6 +503,13 @@ this.companyService.GetCompany().subscribe(res => {
   this.email = this.storage.get('companyEmail');
   this.industry = this.storage.get('industry');
   this.category = this.storage.get('category');
+  console.log(this.storage.get('token'))
+  console.log(this.email)
+  console.log(this.city);
+  console.log(this.country);
+  console.log(this.name);
+  
+
 
 });
   }

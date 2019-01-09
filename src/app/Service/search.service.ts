@@ -12,7 +12,6 @@ searchValue;
   onSearch(word) {
     console.log(word);
     return this.http.get('http://localhost:3000/search/' + word.word + '/' + word.page ).subscribe(res =>{
-      //this.storage.get('query');
       console.log(JSON.parse(res['_body']));
       this.searchResult = JSON.parse(res['_body']);
     });

@@ -1,9 +1,10 @@
 import { Component, OnInit  , Inject, Input} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, EmailValidator } from '@angular/forms';
 import { Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { AuthServiceService } from 'src/app/Auth/auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-company-form',
@@ -17,12 +18,12 @@ export class CompanyFormComponent implements OnInit {
   two = false;
   three = false;
   companyForm = new FormGroup ({
-   companyName: new FormControl(''),
-   country: new FormControl(''),
-   city: new FormControl(''),
-   companyEmail: new FormControl(''),
-   industry: new FormControl(''),
-   category: new FormControl(''),
+   companyName: new FormControl('',[Validators.required]),
+   country: new FormControl('',[Validators.required]),
+   city: new FormControl('',[Validators.required]),
+   companyEmail: new FormControl('',[Validators.required,Validators.email]),
+   industry: new FormControl('',[Validators.required]),
+   category: new FormControl('',[Validators.required]),
    website: new FormControl(''),
    companyType: new FormControl(''),
    image: new FormControl(''),
@@ -41,7 +42,6 @@ export class CompanyFormComponent implements OnInit {
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService) {
     this.storage.remove('companyId');
    }
-
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
