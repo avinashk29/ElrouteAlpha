@@ -288,6 +288,63 @@
               </div>
                 </div>
               </div>
+              <div class="mob-cards" *ngIf="three">
+                  <div class="card-wrapper" *ngFor="let card of group.card; let i = index" >
+                      <div class="header">
+                          <div class="header-content" style="width:95%; display: flex">
+                            <h5 style="width:100%;">Product</h5>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+                        </div>
+                        <div class="header-content" style="width:95%; display: flex" *ngIf="false">
+                            <h5 style="width:50%;">Service</h5>
+                            <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
+                        </div>
+                      </div>
+              
+                    <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
+              
+                    <div class="main-content">
+                      <div class="content-details">
+                        <p>Something is here Some of the contnet</p>
+                      </div>
+                    </div>
+                    <div class="footer">
+                      <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
+                        <h6 style="width:35%;">Price</h6>
+                        <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
+                    </div>
+                  </div>
+              
+              </div>
+              
+              <div class="card-wrapper">
+                  <div class="header">
+                      <div class="header-content" style="width:95%; display: flex">
+                        <h5 style="width:100%;">Product</h5>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+                    </div>
+                    <div class="header-content" style="width:95%; display: flex" *ngIf="false">
+                        <h5 style="width:50%;">Service</h5>
+                        <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
+                    </div>
+                  </div>
+              
+                <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
+              
+                <div class="main-content">
+                  <div class="content-details">
+                    <p>Something is here Some of the contnet</p>
+                  </div>
+                </div>
+                <div class="footer">
+                  <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
+                    <h6 style="width:35%;">Price</h6>
+                    <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
+                </div>
+              </div>
+              
+              </div>
+              </div>
 
         </div>
         <button (click) = "onExpand(i)" >Expand</button>
@@ -295,4 +352,8 @@
 </div>
 </div>
 <div class="body" *ngIf="four"></div>
+
+
+
+
 </section>

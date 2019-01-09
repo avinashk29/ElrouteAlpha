@@ -48,21 +48,5 @@ export class CompanyForm2Component implements OnInit {
      reader.readAsDataURL(file);
   }
 
-  onSubmit() {
-    console.log(this.companyForm2.value);
-    const companyData = this.companyForm2.value;
-    console.log(companyData.value);
-    // this.companyForm2.patchValue({
-    //   website: [companyData.website],
-    //   companyType: [companyData.companyType],
-    //   image: [companyData.image],
-    //   companySize: [companyData.companySize],
-    //   yearEstd: [companyData.yearEstd]
-    //  });
-    //  const companyData2 = this.companyForm2.value;
-    //  console.log(companyData2);
 
-    console.log(this.Id);
-    this.router.navigate(['/B-page-step3']);
-  }
 }

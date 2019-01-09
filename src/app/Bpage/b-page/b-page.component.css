@@ -293,6 +293,71 @@ mat-panel-title h4{
     display:none;
 
 }
+
+.mob-cards{
+  display: none;
+}
+.mob-cards{
+  display:flex;
+  flex-wrap: wrap;
+ width: 100%;
+ margin: 0 auto;
+}
+.card-wrapper{
+  width: 46%;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+}
+.img-banner img{
+  max-width:100%;
+  height:auto;
+}
+
+.content-details p{
+margin-top: 0;
+font-size: 13px;
+}
+
+.footer-content{
+  margin: 0 auto;
+}
+.card-wrapper h6{
+  margin: 0;
+  margin-top:5px;
+  margin-bottom: 5px;
+}
+.card-wrapper h5{
+  margin: 0;
+  margin-bottom: 6px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+
+/* @media (max-width:1013px){
+  .card-wrapper{
+  max-width:400px;
+}
+  .header{
+  font-size:20px;
+}
+  .btn{
+  height:10px;
+  width:100px;
+  margin:20px;
+ align-items:center;
+}
+  .img-banner img{
+  max-width:400px;
+  height:auto;
+}
+} */
+.mob-cards{
+  display: none;
+}
+
 @media screen and (max-width:700px){
   .company_industry,.login_user{
     display: none;
@@ -357,21 +422,22 @@ mat-panel-title h4{
 }
 .header{
   width: 100%;
-  border: 1px solid #ccc;
-  padding: 10px;
+  /* border: 1px solid #ccc; */
+  padding: 15px 0;
   display: flex;
 }
 .headerElements1{
-  width: 90%;
+  width: 94%;
   margin: 0 auto;
-  height: 100%;
   display: flex;
   border: solid 1px gray;
-  margin-top: 10%;
+  margin-top: -11%;
+  position: fixed;
 }
 .elements{
   width: 100%;
   height: 100%;
+  padding:10px 30px;
   
 }
 .elements h4{
@@ -380,7 +446,7 @@ mat-panel-title h4{
 .headerImg {
   width: 100%;
   height: 34vh;
-  margin-top: 6%;
+  margin-top: 22%;
   background-color: #ec1818;
   display: flex;
 }
@@ -440,6 +506,21 @@ mat-panel-title h4{
 }
 .content{
   width: 100% ! important;
+}
+.Card {display:  none ! important;}
+.mob-cards{
+  display:flex;
+flex-wrap: wrap;
+padding-top:0px;
+
+}
+.infoImg img{
+  width: 100% ! important;
+   height: 20% ! important;
+}
+.infoContent p{
+  width: 100% ! important;
+  
 }
 }
 
@@ -535,12 +616,11 @@ label{
 }
 .infoImg{
   width: 100%;
-  height: 55vh;
+  
 
 }
 .infoImg img{
   width: 100%;
-  height: 100%;
 }
 .infoContent h3{
   text-align: center;
@@ -828,19 +908,8 @@ font-size: 13px;
   height:auto;
 }
 } */
-.mob-cards{
-  display: none;
-}
-@media screen and (max-width: 700px){
-.listing{display: none;}
-.mob-cards{
-  display:flex;
-flex-wrap: wrap;
-padding-top: 21px;
 
-}
 
-}
 @media screen and (min-width: 767px)and (max-width: 1024px){
   .Card{
     width: 100%;

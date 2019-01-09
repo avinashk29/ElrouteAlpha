@@ -18,7 +18,6 @@ export class CompanySearchComponent implements OnInit {
     this.word = this.storage.get('query');
     this.search.onSearchCompany(this.word).subscribe(res => {
       console.log(res);
-     
     });
     
   }

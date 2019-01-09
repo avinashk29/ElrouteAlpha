@@ -56,7 +56,7 @@ import { BPageComponent } from './Bpage/b-page/b-page.component';
 import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
 import {ProductServiceService } from './Service/product-service.service';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -110,8 +110,8 @@ import {ProductServiceService } from './Service/product-service.service';
     StorageServiceModule,
     MatExpansionModule,
     MatTabsModule,
-    Ng2CarouselamosModule
-
+    Ng2CarouselamosModule,
+    ToastrModule.forRoot()
 
   ],
   entryComponents: [

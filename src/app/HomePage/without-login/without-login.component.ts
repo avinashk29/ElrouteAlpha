@@ -5,21 +5,27 @@ import {FormGroup , FormControl, Validators} from '@angular/forms';
 import { SearchService } from 'src/app/Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-without-login',
   templateUrl: './without-login.component.html',
   styleUrls: ['./without-login.component.css']
 })
 export class WithoutLoginComponent implements OnInit {
-
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public dialog: MatDialog , public searchService: SearchService,private router:Router) { }
+  token;
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
+   public dialog: MatDialog , public searchService: SearchService, private router: Router) { }
   searchForm = new FormGroup({
      word: new FormControl(''),
      page: new FormControl('1')
   });
   ngOnInit() {
+   this.token = this.storage.get('token');
     this.storage.get('query');
-    
+    if (this.token) {
+      this.router.navigate(['/Dashboard']);
+      console.log(this.token);
+   }
   }
 
   openDialog() {

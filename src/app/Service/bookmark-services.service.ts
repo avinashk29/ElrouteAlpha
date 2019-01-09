@@ -13,7 +13,7 @@ addProductBookmarks(id){
     const headers = new Headers()
     headers.append('x-auth',this.token);
     console.log(this.token);
-    return this.http.patch('http://localhost:3000/bookmark/product/' +id , id ,{headers: headers});
+    return this.http.patch('http://localhost:3000/bookmark/product/' + id , id ,{headers: headers});
 }
 addCompanyBookmark(id){
     const headers=new Headers();
