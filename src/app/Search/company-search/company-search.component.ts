@@ -14,13 +14,15 @@ export class CompanySearchComponent implements OnInit {
   word;
   id;
   ngOnInit() {
-  
     this.word = this.storage.get('query');
     this.search.onSearchCompany(this.word).subscribe(res => {
       console.log(res);
     });
     
   }
-  
+   follow(){
+     console.log(this.id);
+    
+   }
 
 }

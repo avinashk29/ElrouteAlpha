@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
 import { error } from '@angular/compiler/src/util';
+import { UserService } from 'src/app/Service/user-services.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,6 +15,7 @@ import { error } from '@angular/compiler/src/util';
 })
 export class SignupComponent implements OnInit {
   error = true;
+  username
   signupForm = new FormGroup({
     UserName : new FormControl(''),
     Location : new FormControl(''),
@@ -23,7 +25,7 @@ export class SignupComponent implements OnInit {
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
-     public router: Router, public notification: ToastrService) {
+     public router: Router, public notification: ToastrService,public userService:UserService) {
  }
   ngOnInit() {
 
@@ -44,12 +46,23 @@ onSubmit() {
       this.error = false;
      if (this.error === false) {
       console.log(JSON.parse(res['_body']));
-      // this.authService.token = res.headers.get('x-auth');
      this.storage.set('token', res.headers.get('x-auth'));
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
-    this.router.navigate(['/Dashboard']);
-    this.notification.success('LogIn Successful');
+     /*-----------------------*/
+     
+      this.userService.getUserData().subscribe(res=>{
+   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+   this.storage.set('Location',JSON.parse(res['_body']).Location);
+   this.username=this.storage.get('UserName');
+   console.log(this.username);
+   console.log(JSON.parse(res['_body']));
+  })
+     
+     /*---------------------*/
+
+     this.router.navigate(['/Dashboard']);
+     this.notification.success('LogIn Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
 
