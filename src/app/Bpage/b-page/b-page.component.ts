@@ -497,6 +497,7 @@ this.companyService.GetCompany().subscribe(res => {
   this.storage.set('companyEmail',  JSON.parse(res['_body'])[0].companyEmail);
   this.storage.set('industry',  JSON.parse(res['_body'])[0].industry);
   this.storage.set('category',  JSON.parse(res['_body'])[0].category);
+  this.storage.set('companyId',JSON.parse(res['_body'])[0].companyId);
   this.name = this.storage.get('companyName');
   this.country = this.storage.get('country');
   this.city = this.storage.get('city');

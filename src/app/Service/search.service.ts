@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http} from '@angular/http';
-import  {Router} from '@angular/router';
+import {Router} from '@angular/router';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 @Injectable({
   providedIn: 'root'

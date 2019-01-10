@@ -21,6 +21,13 @@ export class UserService {
 
 });
 
+<<<<<<< HEAD
+=======
+    getUserData(){
+        const headers=new Headers();
+        headers.append('x-auth',this.token);
+        return this.http.get('http://localhost:3000/user',{headers:headers});
+>>>>>>> cab7eae895e644a895418c086f4fd7a2c7a51f6f
     }
 
 

@@ -13,7 +13,18 @@ export class UserOverviewComponent implements OnInit {
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService) { }
   overviewResult;
   ngOnInit() {
+<<<<<<< HEAD
   this.userService.token = this.storage.get('token');
   this.userService.getUserData();
+=======
+  this.userService.token=this.storage.get('token');
+  // this.userService.getUserData().subscribe(res=>{
+  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
+  //  this.username=this.storage.get('UserName');
+  //  console.log(this.username);
+  //  console.log(JSON.parse(res['_body']));
+  // })
+>>>>>>> cab7eae895e644a895418c086f4fd7a2c7a51f6f
   }
 }
