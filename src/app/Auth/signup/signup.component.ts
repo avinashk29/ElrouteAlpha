@@ -6,7 +6,6 @@ import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
-import { error } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -46,6 +45,7 @@ onSubmit() {
       console.log(JSON.parse(res['_body']));
       // this.authService.token = res.headers.get('x-auth');
      this.storage.set('token', res.headers.get('x-auth'));
+    //  this.storage.set('User', JSON.parse(res['_body']));
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
     this.router.navigate(['/Dashboard']);
@@ -59,7 +59,6 @@ onSubmit() {
     if (this.error) {
       this.notification.error('Cant LogIn Enter Valid Details');
      console.log('3' + this.error);
-     this.error = true;
    }
  console.log(this.error);
   }

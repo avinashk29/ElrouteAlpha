@@ -7,6 +7,7 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 })
 export class SearchService {
 searchResult: [];
+feedResult: [];
 searchValue;
   constructor(public http: Http, public router: Router,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
   onSearch(word) {
@@ -21,6 +22,10 @@ searchValue;
     return this.http.get('http://localhost:3000/searchCompany/' + word.word);
   }
   onSearchFeed(word) {
-    return this.http.get('http://localhost:3000/searchfeed/' + word.word + '/' + word.page);
+    return this.http.get('http://localhost:3000/searchfeed/' + word.word + '/' + word.page).subscribe( res => {
+      console.log(JSON.parse(res['_body']));
+      this.feedResult = JSON.parse(res['_body']);
+    });
+
   }
 }
