@@ -6,11 +6,8 @@ import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
-<<<<<<< HEAD
-=======
 import { error } from '@angular/compiler/src/util';
 import { UserService } from 'src/app/Service/user-services.service';
->>>>>>> cab7eae895e644a895418c086f4fd7a2c7a51f6f
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,7 +15,7 @@ import { UserService } from 'src/app/Service/user-services.service';
 })
 export class SignupComponent implements OnInit {
   error = true;
-  username
+  username;
   signupForm = new FormGroup({
     UserName : new FormControl(''),
     Location : new FormControl(''),
@@ -54,7 +51,7 @@ onSubmit() {
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
      /*-----------------------*/
-     
+
       this.userService.getUserData().subscribe(res=>{
    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
    this.storage.set('Location',JSON.parse(res['_body']).Location);
@@ -62,7 +59,7 @@ onSubmit() {
    console.log(this.username);
    console.log(JSON.parse(res['_body']));
   })
-     
+
      /*---------------------*/
 
      this.router.navigate(['/Dashboard']);

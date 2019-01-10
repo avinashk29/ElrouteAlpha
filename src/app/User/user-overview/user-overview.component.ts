@@ -10,21 +10,22 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 export class UserOverviewComponent implements OnInit {
   id;
   username;
-  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService) { }
+  title;
+  location;
+  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService) {
+    this.userService.token = this.storage.get('token');
+    this.userService.getUserData().subscribe(res => {
+      console.log(JSON.parse(res['_body']));
+
+      this.storage.set('Username' , JSON.parse(res['_body']).UserName);
+      this.storage.set('title' , JSON.parse(res['_body']).Title);
+      this.storage.set('location' , JSON.parse(res['_body']).Location);
+    });
+  }
   overviewResult;
   ngOnInit() {
-<<<<<<< HEAD
-  this.userService.token = this.storage.get('token');
-  this.userService.getUserData();
-=======
-  this.userService.token=this.storage.get('token');
-  // this.userService.getUserData().subscribe(res=>{
-  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
-  //  this.username=this.storage.get('UserName');
-  //  console.log(this.username);
-  //  console.log(JSON.parse(res['_body']));
-  // })
->>>>>>> cab7eae895e644a895418c086f4fd7a2c7a51f6f
+this.username = this.storage.get('Username');
+this.title = this.storage.get('title');
+this.location = this.storage.get('location');
   }
 }
