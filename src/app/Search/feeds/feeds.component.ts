@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {SearchService} from '../../Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
-import { FeedService } from 'src/app/Service/feed-service.service';
+import {BookmarkServices} from '../../Service/bookmark-services.service';
 @Component({
   selector: 'app-feeds',
   templateUrl: './feeds.component.html',
@@ -9,19 +9,18 @@ import { FeedService } from 'src/app/Service/feed-service.service';
 })
 export class FeedsComponent implements OnInit {
 
-  constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,private feed:FeedService) { }
-id
+  constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
+   public bookmark: BookmarkServices) { }
+
   ngOnInit() {
     const word = this.storage.get('query');
-    this.search.onSearchFeed(word).subscribe(res => {
-        console.log(res);
-    });
-console.log(this.storage.get('query'))
-    // this.feed.GetFeed().subscribe(res=>{
-    //   console.log(res);
-    
-    // });
-  
+    console.log(word);
+    this.search.onSearchFeed(word);
+    this.bookmark.token = this.storage.get('token');
+    console.log(this.bookmark.token);
+  }
+  onBookmark(id) {
+     this.bookmark.addPostBookmark(id);
   }
 
 }

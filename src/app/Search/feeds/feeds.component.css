@@ -3,15 +3,24 @@ section{
   margin: 0 auto;
   margin-top: 2%;
 }
-
+.results{
+  width: 100%;
+}
+.feedResult{
+  display: flex;
+  width: 47%;
+  margin: 0 auto;
+}
 .feed{
-  width: 48%;
-  height: 490px;
+  width: 100%;
+  max-height: 490px;
   display: block;
-  margin-right: auto;
+  margin: 0 auto;
   border: 1px solid #cccccc;
   margin-right: 1%;
   margin-left: 1%;
+  margin-bottom: 10%;
+
 }
 .authorInfo{
 width: 100%;
@@ -246,7 +255,7 @@ mat-panel-title h4{
     margin-right: 1%;
     margin-left: 9%;
 }
-  
+
 }
 @media screen and (min-width: 700px) and (max-width: 1440px){
   .with_login{
