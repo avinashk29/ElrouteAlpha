@@ -6,7 +6,6 @@ import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
-import { error } from '@angular/compiler/src/util';
 import { UserService } from 'src/app/Service/user-services.service';
 @Component({
   selector: 'app-signup',
