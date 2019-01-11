@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable, Inject } from '@angular/core';
+import { ProductServiceService } from 'src/app/Service/product-service.service';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-product-page',
@@ -12,7 +14,7 @@ export class ProductPageComponent implements OnInit {
   model='AB15520';
 
   products;
-  constructor() { 
+  constructor(private productService:ProductServiceService, @Inject(LOCAL_STORAGE) private storage:WebStorageService) { 
     this.products = [
 			{
 				setup: "What did the cheese say when it looked in the mirror?",
@@ -34,6 +36,10 @@ export class ProductPageComponent implements OnInit {
 
 
   ngOnInit() {
+    this.productService.token=this.storage.get('token');
+    this.productService.getProduct().subscribe(res=>{
+        console.log(res);
+    })
   }
 
 }

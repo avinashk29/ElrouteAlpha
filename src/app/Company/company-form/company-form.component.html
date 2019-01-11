@@ -113,9 +113,10 @@
           </datalist>
          </div>
         </li>
+        <li><button type="button" (click)="ShowPrev1()" class="bnt_1">Back</button></li>
         <li><button type="button" (click)="Showthree()" class="bnt_1">Next</button></li>
         </ul>
-
+       
     </div>
     </div>
 </div>
@@ -159,14 +160,11 @@
             <option value="category">
             </datalist> -->
         </li>
-<<<<<<< HEAD
         <span *ngIf="!companyForm.get('mobile').valid && companyForm.get('mobile').touched"><p>Please Enter Mobile Number</p></span>
+        <li><button type="button" (click)="ShowPrev2()" class="bnt_1">Back</button></li>
         <li><button type="submit">Finish</button></li>
-=======
-        <li><button type="submit" class="bnt_1">Finish</button></li>
->>>>>>> 574328e48c267885a7df56bf1f3b661ac7913f27
         </ul>
-
+       
     </div>
     </div>
 </div>

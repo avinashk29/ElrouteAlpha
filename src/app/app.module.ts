@@ -7,8 +7,9 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { BookmarkComponent } from './Bookmark/bookmark/bookmark.component';
-import { ProductComponent } from './Bookmark/product/product.component';
-import { PostComponent } from './Bookmark/post/post.component';
+import { ProductBookmarkComponent } from './Bookmark/product/product.component';
+import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
+import {PostsComponent} from './Post-feed/Post/posts/post.component'
 import { CompanyComponent } from './Bookmark/company/company.component';
 import { CompanyFormComponent } from './Company/company-form/company-form.component';
 import { CompanProfileComponent } from './Company/compan-profile/compan-profile.component';
@@ -19,12 +20,12 @@ import { EditComponent } from './User/Edit/edit.component';
 import { SearchComponent } from './Search/search/search.component';
 import { EditPostComponent } from './Post-feed/edit_Post/edit-post/edit-post.component';
 import { FeedComponent } from './Post-feed/Feed/feed/feed.component';
+import {FeedsComponent} from './Bookmark/feeds/feeds.component'
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './StaticData/Footer/footer/footer.component';
 import { HelpComponent } from './StaticData/Help/help/help.component';
-import { AuthModule } from './Auth/auth.module';
+
 import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
-import {HomepageModule} from '../app/HomePage/homepage.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
@@ -41,7 +42,7 @@ import {FollowersComponent} from './User/followers/followers.component';
 import {ServicePageComponent} from './serviceSection/service-page/service-page.component';
 import { FollowingComponent } from './User/following/following.component';
 import {Header3Component} from './Header/header3/header3.component';
-import { FeedsComponent } from './Search/feeds/feeds.component';
+import { FeedsSearchComponent } from './Search/Searchfeeds/feeds.component';
 import {UserOverviewComponent} from './User/user-overview/user-overview.component';
 // <--------------Material Design Imports------------------------>
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -57,6 +58,10 @@ import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
 import {ProductServiceService } from './Service/product-service.service';
 import { ToastrModule } from 'ngx-toastr';
+import { ProductListingComponent } from './Product/product-listing/product-listing.component';
+import { from } from 'rxjs';
+import { ProductComponent } from './Product/product/product.component';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +70,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     ForgetPasswordComponent,
     BookmarkComponent,
-    ProductComponent,
+    ProductBookmarkComponent,
     PostComponent,
     CompanyComponent,
     CompanyFormComponent,
@@ -94,15 +99,18 @@ import { ToastrModule } from 'ngx-toastr';
     ServicePageComponent,
     FollowingComponent,
     Header3Component,
-    FeedsComponent,
+   FeedsComponent,
     UserOverviewComponent,
-    BPageComponent
+    BPageComponent,
+    PostsComponent,
+    FeedsSearchComponent,
+    ProductListingComponent,
+    ProductComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
-    HomepageModule,
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,

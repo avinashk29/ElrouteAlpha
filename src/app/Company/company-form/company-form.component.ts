@@ -56,6 +56,16 @@ export class CompanyFormComponent implements OnInit {
    this.two = false;
    this.three = true;
    }
+ShowPrev1(){
+  this.one=true;
+  this.two=false;
+  this.three=false;
+}
+ShowPrev2(){
+  this.one=false;
+  this.two=true;
+  this.three=false;
+}
 
    onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];

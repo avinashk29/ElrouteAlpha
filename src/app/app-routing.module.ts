@@ -16,9 +16,9 @@ import { ProductFormComponent } from './Product/product-form/product-form.compon
 import { FollowersComponent } from './User/followers/followers.component';
 import { ServicePageComponent } from './serviceSection/service-page/service-page.component';
 import { FollowingComponent } from './User/following/following.component';
-import { FeedsComponent } from './Search/feeds/feeds.component';
+import { FeedsSearchComponent } from './Search/Searchfeeds/feeds.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
-import { PostComponent } from './Bookmark/post/post.component';
+import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 
 const routes: Routes = [
@@ -40,7 +40,7 @@ const routes: Routes = [
    {path: 'Followers', component: FollowersComponent },
    {path: 'servicePage', component: ServicePageComponent },
    {path: 'Following' , component: FollowingComponent},
-   {path: 'feeds' , component: FeedsComponent},
+   {path: 'feeds' , component: FeedsSearchComponent},
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
     {path: 'companyPage' , component: BPageComponent},

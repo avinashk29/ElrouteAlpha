@@ -28,4 +28,10 @@ token;
     console.log(this.token);
     return this.http.post('http://localhost:3000/product', productData, {headers: headers});
   }
+  getProduct(){
+    const headers=new Headers();
+    headers.append('x-auth',this.token);
+    console.log(this.token);
+    return this.http.get('http://localhost:3000/product', {headers:headers});
+  }
 }

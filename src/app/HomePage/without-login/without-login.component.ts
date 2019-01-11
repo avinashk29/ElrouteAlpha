@@ -34,7 +34,14 @@ export class WithoutLoginComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(SignupComponent, dialogConfig);
   }
-onSearch(event) {
+onSearch() {
+    const formData = this.searchForm.value;
+    this.searchService.onSearch(formData);
+    this.searchService.searchValue = formData;
+    this.storage.set('query', this.searchForm.value);
+    this.router.navigate(['/Result']);
+}
+onEnterKey(event){
   if(event.keyCode==13){
     const formData = this.searchForm.value;
     this.searchService.onSearch(formData);

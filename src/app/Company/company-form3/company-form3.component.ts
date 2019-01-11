@@ -35,7 +35,6 @@ companyForm = new FormGroup({
       landLine: (this.companyForm.value.landLine),
       mobile: (this.companyForm.value.mobile)
     });
-
     console.log(this.Id);
     this.router.navigate(['/companyPage']);
   }

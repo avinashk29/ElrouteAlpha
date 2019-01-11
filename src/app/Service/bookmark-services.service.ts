@@ -18,17 +18,17 @@ addProductBookmarks(id){
 addCompanyBookmark(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.patch('http//localhost:3000/bookmark/company/'+id,id,{headers:headers});
+    return this.http.patch('http://localhost:3000/bookmark/company/'+id,id,{headers:headers});
 }
 addPostBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('http//localhost:3000/bookmark/post/'+id,id,{headers:headers});
+    return this.http.patch('http://localhost:3000/bookmark/post/'+id,id,{headers:headers});
 }
 addServiceBookmark(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.patch('http//localhost:3000/bookmark/service/'+id,id,{headers:headers});
+    return this.http.patch('http://localhost:3000/bookmark/service/'+id,id,{headers:headers});
 }
 
 BookmarkResult(){
