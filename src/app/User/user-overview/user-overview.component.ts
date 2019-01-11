@@ -16,16 +16,13 @@ export class UserOverviewComponent implements OnInit {
     this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']));
-
-      this.storage.set('Username' , JSON.parse(res['_body']).UserName);
-      this.storage.set('title' , JSON.parse(res['_body']).Title);
-      this.storage.set('location' , JSON.parse(res['_body']).Location);
+      this.username = JSON.parse(res['_body']).UserName;
+      this.location = JSON.parse(res['_body']).Location;
+      this.title = JSON.parse(res['_body']).Title;
+      console.log(this.username);
     });
   }
   overviewResult;
   ngOnInit() {
-this.username = this.storage.get('Username');
-this.title = this.storage.get('title');
-this.location = this.storage.get('location');
   }
 }
