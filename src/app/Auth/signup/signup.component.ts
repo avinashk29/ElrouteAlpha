@@ -31,48 +31,48 @@ export class SignupComponent implements OnInit {
   }
 
 // <-----------------------------to open login------------------------------------>
-  openLogin() {
-    this.dialogRef.close(SignupComponent);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '30%';
-    this.dialog.open(LoginComponent, dialogConfig);
-  }
-onSubmit() {
-     const SignupForm = this.signupForm.value;
+//   openLogin() {
+//     this.dialogRef.close(SignupComponent);
+//     const dialogConfig = new MatDialogConfig();
+//     dialogConfig.autoFocus = true;
+//     dialogConfig.width = '30%';
+//     this.dialog.open(LoginComponent, dialogConfig);
+//   }
+// onSubmit() {
+//      const SignupForm = this.signupForm.value;
 
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
-     /*-----------------------*/
+//     this.authService.signup(SignupForm).subscribe(res => {
+//       this.error = false;
+//      if (this.error === false) {
+//       console.log(JSON.parse(res['_body']));
+//      this.storage.set('token', res.headers.get('x-auth'));
+//     //  this.storage.set('User', JSON.parse(res['_body']));
+//      this.authService.token = this.storage.get('token');
+//      this.dialogRef.close(SignupComponent);
+//      /*-----------------------*/
 
-      this.userService.getUserData().subscribe(res=>{
-   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-   this.storage.set('Location',JSON.parse(res['_body']).Location);
-   this.username=this.storage.get('UserName');
-   console.log(this.username);
-   console.log(JSON.parse(res['_body']));
-  })
+//       this.userService.getUserData().subscribe(res=>{
+//    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+//    this.storage.set('Location',JSON.parse(res['_body']).Location);
+//    this.username=this.storage.get('UserName');
+//    console.log(this.username);
+//    console.log(JSON.parse(res['_body']));
+//   })
 
-     /*---------------------*/
+//      /*---------------------*/
 
-     this.router.navigate(['/Dashboard']);
-     this.notification.success('LogIn Successful');
-      console.log(this.authService.token);
-      console.log('1' + this.error);
+//     //  this.router.navigate(['/Dashboard']);
+//     //  this.notification.success('LogIn Successful');
+//     //   console.log(this.authService.token);
+//     //   console.log('1' + this.error);
 
-     }
+//      }
 
-    });
-    if (this.error) {
-      this.notification.error('Cant LogIn Enter Valid Details');
-     console.log('3' + this.error);
-   }
- console.log(this.error);
-  }
-}
+//     });
+//     if (this.error) {
+//       this.notification.error('Cant LogIn Enter Valid Details');
+//      console.log('3' + this.error);
+//    }
+//  console.log(this.error);
+//   }
+ }

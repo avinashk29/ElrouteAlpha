@@ -78,6 +78,7 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 30px;
+    display: flex;
 }
 
 .following_bookmark img {
@@ -85,7 +86,8 @@
 }
 
 .following_bookmark span {
-    font-size: 12px;
+    font-size: 13px;
+    margin-left: 2%;
 }
 
 .following_2 {
