@@ -51,6 +51,7 @@ export class SignupComponent implements OnInit {
 //      this.dialogRef.close(SignupComponent);
 //      /*-----------------------*/
 
+<<<<<<< HEAD
 //       this.userService.getUserData().subscribe(res=>{
 //    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
 //    this.storage.set('Location',JSON.parse(res['_body']).Location);
@@ -58,6 +59,15 @@ export class SignupComponent implements OnInit {
 //    console.log(this.username);
 //    console.log(JSON.parse(res['_body']));
 //   })
+=======
+  //     this.userService.getUserData().subscribe(res=>{
+  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
+  //  this.username=this.storage.get('UserName');
+  //  console.log(this.username);
+  //  console.log(JSON.parse(res['_body']));
+  // })
+>>>>>>> ecf9aeecb1f25d864529b98053940e26bc0a563e
 
 //      /*---------------------*/
 
@@ -66,6 +76,7 @@ export class SignupComponent implements OnInit {
 //     //   console.log(this.authService.token);
 //     //   console.log('1' + this.error);
 
+<<<<<<< HEAD
 //      }
 
 //     });
@@ -76,3 +87,15 @@ export class SignupComponent implements OnInit {
 //  console.log(this.error);
 //   }
  }
+=======
+     }  if (this.error) {
+      this.notification.error('Cant LogIn Enter Valid Details');
+     console.log('3' + this.error);
+   }
+
+    });
+
+ console.log(this.error);
+  }
+}
+>>>>>>> ecf9aeecb1f25d864529b98053940e26bc0a563e
