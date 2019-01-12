@@ -38,7 +38,7 @@
       <h6>{{result.catogory}}</h6>
       </div>
       <div class="productName">
-        <h2>{{result.productName}}</h2>
+        <h2 (click) = "showProduct(result._id)">{{result.productName}}</h2>
         <h5>{{result.company}}</h5>
         <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">Device</span><span style= "padding-left: 8px">country</span></small>
       </div>

@@ -5,6 +5,7 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import {LoginComponent} from '../../Auth/login/login.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { UserService} from '../../Service/user-services.service';
+import { ProductServiceService } from 'src/app/Service/product-service.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -17,13 +18,14 @@ notlogin = true;
 token;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarksService: BookmarkServices,
- public dialog: MatDialog, public userService: UserService
+ public dialog: MatDialog, public userService: UserService, public product: ProductServiceService
  ) {
 
   }
   ngOnInit() {
     this.bookmarksService.token = this.storage.get('token');
     this.userService.token =  this.storage.get('token');
+    this.product.token = this.storage.get('token');
     this.token =  this.storage.get('token');
     const formData = this.storage.get('query');
    this.search.onSearch(formData);
@@ -61,6 +63,11 @@ openLogin() {
 serviceBookmark(id) {
 this.bookmarksService.addServiceBookmark(id).subscribe(res => {
   console.log(res);
+});
+}
+showProduct(id) {
+this.product.getOneproduct(id).subscribe(res => {
+ console.log(JSON.parse(res['_body']));
 });
 }
 }
