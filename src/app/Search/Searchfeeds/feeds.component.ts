@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {SearchService} from '../../Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import {BookmarkServices} from '../../Service/bookmark-services.service';
-import { FowllowService } from 'src/app/Service/follow-service.service';
+import { FollowService } from 'src/app/Service/follow-service.service';
 @Component({
   selector: 'app-feeds',
   templateUrl: './feeds.component.html',
@@ -11,7 +11,7 @@ import { FowllowService } from 'src/app/Service/follow-service.service';
 export class FeedsSearchComponent implements OnInit {
 
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
-   public bookmark: BookmarkServices,public follows:FowllowService) { }
+   public bookmark: BookmarkServices, public follows: FollowService) { }
 
   ngOnInit() {
     const word = this.storage.get('query');
@@ -21,12 +21,20 @@ export class FeedsSearchComponent implements OnInit {
    // console.log(this.bookmark.token);
   }
   onBookmark(id) {
-     this.bookmark.addPostBookmark(id);
+     this.bookmark.addPostBookmark(id).subscribe(res => {
+       console.log(res);
+     });
+     console.log(id);
   }
-     follow(id)
-     {
-       this.follows.addFollow(id).subscribe(res=>{
-         console.log(res);
-       });
-    }
+  follow(id) {
+      this.follows.addFollow(id).subscribe(res => {
+        console.log(res);
+      })
+  }
+    //  follow(id)
+    //  {
+    //    this.follows.addFollow(id).subscribe(res=>{
+    //      console.log(res);
+    //    });
+    // }
 }

@@ -5,7 +5,7 @@ import { Http,Headers } from "@angular/http";
 @Injectable({
     providedIn:'root'
 })
-export class FowllowService{
+export class FollowService{
     token;
 constructor(public http:Http){}
      addFollow(id){

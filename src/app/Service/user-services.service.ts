@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Http , Headers} from '@angular/http';
-import { JsonPipe } from '@angular/common';
+import {  } from 'angular-webstorage-service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
     token;
-    UserData;
-    Data;
     constructor(public http: Http) {}
 
-    getUserData(){
+    getUserData() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
         return this.http.get('http://localhost:3000/user', {headers: headers});

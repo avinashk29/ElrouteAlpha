@@ -53,6 +53,7 @@ onSubmit() {
       this.userService.getUserData().subscribe(res=>{
    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
    this.storage.set('Location',JSON.parse(res['_body']).Location);
+   this.storage.set('_id',JSON.parse(res['_body'])._id);
    this.username=this.storage.get('UserName');
    console.log(this.username);
    console.log(JSON.parse(res['_body']));
@@ -64,13 +65,13 @@ onSubmit() {
       console.log(this.authService.token);
       console.log('1' + this.error);
 
-     }
-
-    });
-    if (this.error) {
+     }  if (this.error) {
       this.notification.error('Cant LogIn Enter Valid Details');
      console.log('3' + this.error);
    }
+
+    });
+
  console.log(this.error);
   }
 }
