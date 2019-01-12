@@ -330,8 +330,8 @@ section{
     width: 30px;
     margin-top: -5px;
   }
-  .tags[_ngcontent-c1] {
-    width: 100%;
+  .tags {
+    width: 74%;
     margin-top: 10px;
 }
   .tags li{

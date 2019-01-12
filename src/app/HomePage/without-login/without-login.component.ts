@@ -22,10 +22,10 @@ export class WithoutLoginComponent implements OnInit {
   ngOnInit() {
    this.token = this.storage.get('token');
     this.storage.get('query');
-    if (this.token) {
-      this.router.navigate(['/Dashboard']);
-      console.log(this.token);
-   }
+  //   if (this.token) {
+  //     this.router.navigate(['/Dashboard']);
+  //     console.log(this.token);
+  //  }
   }
 
   openDialog() {

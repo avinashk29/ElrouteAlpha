@@ -13,7 +13,7 @@ header{
 }
 .card{
   display: flex;
-  width: 30%;
+  width: 40%;
   margin-top: 1%;
 }
 .card h1{
@@ -82,7 +82,7 @@ display: flex;
   padding-top: 20px;
 }
 .headerImg{
-  width: 70%;
+  width: 60%;
   height: 34vh;
   background-color: #fff;
   display: flex;
@@ -275,9 +275,6 @@ mat-expansion-panel{
   background-color: #707070;
 
 }
-mat-expansion-panel{
-  /* box-shadow: 0 0 0 0!important; */
-}
 .tagged mat-expansion-panel-header{
   height: 35px !important;
   color: #ffffff !important;
@@ -287,21 +284,18 @@ mat-panel-title h4{
   font-size: 14px;
   font-weight: 100;
 }
-
 .header_responsive
 {
     display:none;
 
 }
-
 .mob-cards{
-  display: none;
-}
-.mob-cards{
-  display:flex;
   flex-wrap: wrap;
  width: 100%;
  margin: 0 auto;
+}
+.mob-cards{
+  display: none;
 }
 .card-wrapper{
   width: 46%;
@@ -334,29 +328,91 @@ font-size: 13px;
   font-weight: 500;
   padding: 5px;
 }
+.body1
+{
+  box-shadow: 0px 3px 10px #5555;
+  margin-top: 6%;
+  padding: 20px 0;
+}
 
+.comapany_contact
+{
+  width: 80%;
+  margin: 0 auto;
 
-/* @media (max-width:1013px){
-  .card-wrapper{
-  max-width:400px;
 }
-  .header{
-  font-size:20px;
+.comapany_contact h2
+{
+  color: #070707;
+
 }
-  .btn{
-  height:10px;
-  width:100px;
-  margin:20px;
- align-items:center;
+.company_details
+{
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2%;
 }
-  .img-banner img{
-  max-width:400px;
-  height:auto;
+
+.company_details1
+{
+  width: 47%;
+  box-shadow: 0px 3px 10px #5555;
+  height: 175px;
+  padding-top:1%;
+  margin-left: 2%;
+
 }
-} */
-.mob-cards{
-  display: none;
+.company_email
+{
+  display: flex;
+  width: 45%;
+  MARGIN: 0 AUTO;
+  font-size: 28px;
 }
+.company_email p
+{
+  width: 15%;
+  color:#0A9AB1;
+}
+.company_email1
+{
+  text-align: center;
+}
+.company_email1 h2
+{
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: 500;
+}
+.company_address
+{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+.google_map
+{
+  background-color: red;
+  height: 500px;
+  width: 47%;
+  font-size: 25px;
+  color: wheat;
+}
+.complete_address
+{
+  font-size: 30px;
+  width: 34%;
+  margin-left: 5%;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+.complete_address p {
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-top: 3%;
+}
+
 
 @media screen and (max-width:700px){
   .company_industry,.login_user{
@@ -405,9 +461,7 @@ font-size: 13px;
   mat-panel-title h4{
     font-size: 11px;
   }
-
-
-  .body
+.body
   {
     margin-top: 0;
   }
@@ -417,9 +471,9 @@ font-size: 13px;
 
   }
   header
-{
-  display: none;
-}
+    {
+      display: none;
+    }
 .header{
   width: 100%;
   /* border: 1px solid #ccc; */
@@ -431,14 +485,20 @@ font-size: 13px;
   margin: 0 auto;
   display: flex;
   border: solid 1px gray;
-  margin-top: -11%;
+  margin-top: -13%;
   position: fixed;
+  background-color: white;
 }
 .elements{
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
   padding:10px 30px;
 
+=======
+  padding:10px 26px;
+
+>>>>>>> fd74167f85cbeb01e3fc2e9f488212031fe6c1d0
 }
 .elements h4{
   margin: 0;
@@ -458,6 +518,10 @@ font-size: 13px;
   margin-top: 3vh;
   height: 15vh;
   display: flex;
+}
+.follow-btn span {
+  margin-left: 7%;
+  font-size: 22px;
 }
 .card  {
   box-shadow: 0px 3px 10px #5555;
@@ -522,6 +586,56 @@ padding-top:0px;
   width: 100% ! important;
 
 }
+.comapany_contact[_ngcontent-c1] {
+  width: 96%;
+  margin: 0 auto;
+}
+.company_details[_ngcontent-c1] {
+  display: flex;
+width: 100%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+.company_details1[_ngcontent-c1] {
+  width: 47%;
+  box-shadow: 0px 3px 10px #5555;
+  height: 131px;
+  padding-top: 1%;
+  margin-left: 2%;
+}
+.company_email[_ngcontent-c1] {
+  display: flex;
+  width: 92%;
+  MARGIN: 0 AUTO;
+  font-size: 28px;
+}
+.company_email[_ngcontent-c1] p[_ngcontent-c1] {
+  width: 21%;
+  color: #0A9AB1;
+  font-size: 15px;
+}
+.company_email1 {
+  width: 83%;
+  MARGIN: 0 AUTO;
+}
+.company_email1   h2 {
+  font-size: 15px;
+  text-align: center;
+}
+.company_address {
+  width: 94%;
+  margin: 0 auto;
+   display: block;
+}
+.google_map {
+
+  width: 100%;
+  height: 300px;
+ }
+.complete_address{
+  font-size: 15px;
+  width: 100%;
+}
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px){
@@ -556,6 +670,8 @@ padding-top:0px;
   }
   section{
     width: 95%;
+    margin-left:9%;
+    margin-top: 8%;
   }
   .followBtn button{
     width: 100%;
@@ -577,11 +693,53 @@ padding-top:0px;
   mat-panel-title h4{
     font-size: 11px;
   }
+  .tab h1 {
+
+    font-size: 25px;
+  }
+  .extraInfo {
+    width: 40%;
+  }
+    .tab {
+
+      width: 26%;
+
+  }
+  .company_details {
+
+    width: 100%;
+}
+.comapany_contact {
+  width: 95%;
+  margin: 0 auto;
+}
+.company_email
+ {
+  width: 88%;
+}
+.company_email p {
+  width: 20%;
+}
+.company_email1 {
+  width: 100%;
+  text-align: center;
+}
+.company_address {
+  width: 96%;
+  margin: 0 auto;
+
+}
+.complete_address {
+  width: 40%;
+
+}
+
 }
 @media screen and (min-width: 700px) and (max-width: 1440px){
   .with_login{
     width: 85%;
   }
+
 }
 .otherInfocard{
   /* height: 10vh; */
@@ -862,15 +1020,7 @@ margin: 0 auto;
   margin: 0;
   float: left;
 }
-.mob-cards{
-  display: none;
-}
-.mob-cards{
-  display:flex;
-  flex-wrap: wrap;
- width: 100%;
- margin: 0 auto;
-}
+
 .card-wrapper{
   width: 46%;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
