@@ -18,7 +18,7 @@
             </li>
               <li><input type="text" placeholder="Company Name" formControlName = "companyName" name="companyName" ></li>
               <span *ngIf="!companyForm.get('companyName').valid && companyForm.get('companyName').touched"><p>Please Enter Company</p></span>
-              
+
               <li>
                 <div class="location"  >
                     <input list="country" formControlName = "country" placeholder="country" style="width:45%;">
@@ -85,7 +85,7 @@
                 <option value="company-type">
                 <option value="company-type">
                 </datalist>
-                <input type="file" #filePicker (change)="onImagePick($event)" class="picker">
+                <input type="file" #filePicker (change)="onImagePick($event)" class="picker" style="display: hiddne;">
                 <button  type="button" (click)="filePicker.click()" class="btn">Pick Company Logo</button>
                 <div class="imagePreview" *ngIf="imagePreview!== '' && imagePreview">
                     <img [src] = "imagePreview" [alt]="this.companyForm.value.image.name">
@@ -104,7 +104,7 @@
           </datalist>
 
           <input list="year" formControlName = "yearEstd" placeholder=" Year Established"  class="yearEstd">
-         
+
           <datalist id="year">
           <option value="yearEstd">
           <option value="yearEstd">
@@ -136,9 +136,9 @@
         <li>
             <div class="location"  >
                 <input type="text" formControlName = "city" placeholder="City"  class="city">
-                
+
                   <input   type="text" placeholder="Zip Code" formControlName = "zipCode" class="zip">
-                 
+
               </div>
         </li>
         <li><input type="number" placeholder="Landline Number" formControlName = "landLine" name="companyEmail"></li>

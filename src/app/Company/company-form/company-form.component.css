@@ -89,8 +89,12 @@ textarea
     height: 77px;
     margin-top: 44px;
 }
-
-
+.imagePreview{
+  width: 100px;
+}
+.imagePreview img{
+  width: 100%;
+}
 @media screen and (max-width: 700px){
   .companyForm{
     width: 100%;

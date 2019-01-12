@@ -4,7 +4,7 @@ import { Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { AuthServiceService } from 'src/app/Auth/auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-import { validateVerticalPosition } from '@angular/cdk/overlay';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-company-form',
@@ -18,7 +18,7 @@ export class CompanyFormComponent implements OnInit {
   two = false;
   three = false;
   companyForm = new FormGroup ({
-   companyName: new FormControl('',[Validators.required]),
+  companyName: new FormControl('',[Validators.required]),
    country: new FormControl('',[Validators.required]),
    city: new FormControl('',[Validators.required]),
    companyEmail: new FormControl('',[Validators.required,Validators.email]),
@@ -39,8 +39,11 @@ export class CompanyFormComponent implements OnInit {
   imagePreview;
 
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-  public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService) {
-    this.storage.remove('companyId');
+  public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
+   public notification: ToastrService) {
+ if (this.Id != null) {
+   this.router.navigate(['/companyPage']);
+ }
    }
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
@@ -78,16 +81,22 @@ ShowPrev2(){
       reader.readAsDataURL(file);
    }
   onSubmit() {
-    console.log(this.companyForm.value);
-    const companyData = this.companyForm.value;
-    console.log(this.token);
-        this.companyService.addCompany(companyData).subscribe(res => {
-          this.Id =  this.storage.set('companyId' , JSON.parse(res['_body'])._id);
-          this.companyService.Id =  this.storage.get('comapnyId');
-      console.log(JSON.parse(res['_body'])._id);
+    if (this.companyForm.valid) {
+      console.log(this.companyForm.value);
+      const companyData = this.companyForm.value;
+      console.log(this.token);
+          this.companyService.addCompany(companyData).subscribe(res => {
+            this.Id =  this.storage.set('companyId' , JSON.parse(res['_body'])[0]._id);
+            this.companyService.Id =  this.storage.get('comapnyId');
+        console.log(JSON.parse(res['_body'])._id);
 
-    });
-    this.router.navigate(['/companyPage']);
+      });
+      this.router.navigate(['/companyPage']);
+      this.notification.success('Welcome' + this.companyForm.value.companyName);
+    } else {
+      this.notification.error('Enter Valid Deatils');
+    }
+
 
   }
 

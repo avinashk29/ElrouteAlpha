@@ -7,6 +7,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import { UserService} from '../../Service/user-services.service';
 import { InnerSubscriber} from 'rxjs/InnerSubscriber';
 import { Subscription } from 'rxjs';
+import {ProductServiceService} from 'src/app/Service/product-service.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -19,13 +20,14 @@ notlogin = true;
 token;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarksService: BookmarkServices,
- public dialog: MatDialog, public userService: UserService
+ public dialog: MatDialog, public userService: UserService, public product: ProductServiceService
  ) {
 
   }
   ngOnInit() {
     this.bookmarksService.token = this.storage.get('token');
     this.userService.token =  this.storage.get('token');
+    this.product.token = this.storage.get('token');
     this.token =  this.storage.get('token');
     const formData = this.storage.get('query');
    this.search.onSearch(formData);

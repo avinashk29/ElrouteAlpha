@@ -24,7 +24,7 @@ export class CompanyServiceService {
     const headers = new Headers();
 const companyFormData = new FormData();
 
-    companyFormData.append('compayName', company.companyName);
+    companyFormData.append('companyName', company.companyName);
     companyFormData.append('country', company.country);
     companyFormData.append('city', company.city);
     companyFormData.append('companyEmail', company.companyEmail);

@@ -2,37 +2,37 @@
 <app-side-nav></app-side-nav>
 <section>
   <div class="header_responsive">
-  
+
         <div class="headerElements1">
-            <div class="elements"(click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>Products</h4></div>
-            <div class="elements"  (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>Comapny</h4></div>
-            <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>Feed</h4></div>
+            <div class="elements"(click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>INFO</h4></div>
+            <div class="elements"  (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>PRODUCTS</h4></div>
+            <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>CONTACT</h4></div>
             </div>
         <div class="headerImg">
             <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
                <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
-  
+
         </div>
 
         <div class="card">
-            
+
 
             <div class="logoheader">
-            <img src="assets/images/logo.png">
+            <img src="{{image}}">
             </div>
             <div class="user_profile">
-                <h2>{{name}}</h2>
-                
+                <h2>{{CompanyName}}</h2>
+
                      <div class="follow-btn">
                     <button>FOLLOW</button>
                     <span>24,255</span>
                 </div>
               </div>
-        </div>   
+        </div>
 
 
       </div>
-  
+
 <header>
     <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
       <g id="location" transform="translate(-486.5 -340.5)">
@@ -42,16 +42,16 @@
           <circle cx="3.778" cy="3.778" r="2.778" fill="none"/>
         </g>
       </g>
-    </svg><span style="margin-left:10px;">Location</span></h1>
+    </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader">
             <img src="assets/images/logo.png">
             </div>
             <div class="user_profile">
-                <h2>{{name}}</h2>
+                <h2>{{CompanyName}}</h2>
                 <p>{{industry}}</p>
                <p> {{city}}</p>
-               <p>{{email}}</p>
+               <p>{{companyEmail}}</p>
                 <div class="follow-btn">
                     <button>FOLLOW</button>
                     <span>24,255</span>
@@ -80,7 +80,7 @@
              <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
 
       </div>
-      
+
 </header>
 <div class="card-left">
 <!-- <div class="headerImg">
@@ -90,7 +90,7 @@
 </div> -->
 <div class="extraInfo">
     <p>9 A.M. - 5 P.M.</p>
-    <p>www.elroute.com</p>
+    <p>{{website}}</p>
 
     <div class="social">
         <div class="social_links">
@@ -168,15 +168,15 @@
         </div>
         <div class="estd info">
             <label>year estd.</label>
-            <h3>2016</h3>
+            <h3>{{yearEstd}}</h3>
           </div>
           <div class="estd info">
               <label>size</label>
-              <h3>50-100</h3>
+              <h3>{{companySize}}</h3>
             </div>
             <div class="add info">
                 <label>office address</label>
-                <h3>50-100</h3>
+                <h3>{{address}}</h3>
               </div>
               <div class="revenu info" style="border-bottom:none">
                   <label>Total Revenue</label>
@@ -248,47 +248,48 @@
 </div>
 <div class="body" *ngIf="three">
   <div class="infoSection3">
-      <div *ngFor= "let group of groups; let i = index;" class="conatiner">
+    <div class="productAddbutton"><button routerLink= "/productForm">ADD New Product</button></div>
+      <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
-          <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" >
+          <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
+              <div class="Card" *ngFor="let product of products; let i = index">
+                  <div class="productCard">
+                <div class="productImage">
+                  <!-- <div class="bookmark">
 
-            <div class="Card" *ngFor="let card of group.card; let i = index">
-                <div class="productCard">
-              <div class="productImage">
-                <!-- <div class="bookmark">
-
-                </div> -->
-                <img src="https://picsum.photos/200/300/?random">
-              </div>
-              <div class="productContent" >
-              <div class="content">
-              <div class="productCategory">
-              <h6>{{card.catogory}}</h6>
-              </div>
-              <div class="productName">
-                <h2>{{card.productName}}</h2>
-                <h5>{{card.company}}</h5>
-                <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
-              </div>
-              <div class="discription" style="margin-top:30px;">
-              <p>{{card.discription}}</p>
-              </div>
-              <div class="tags">
-
-              </div>
-              <div class="other-info">
-                <div class="price">
-                <h4>Price</h4>
-              </div>
-              <div class="hits">
-                <p>24,354 hits</p>
-              </div>
-              </div>
-              </div>
-              </div>
+                  </div> -->
+                  <img src="https://picsum.photos/200/300/?random">
                 </div>
-              </div>
-              <div class="mob-cards" *ngIf="three">
+                <div class="productContent" >
+                <div class="content">
+                <div class="productCategory">
+                <h6>{{product.catogory}}</h6>
+                </div>
+                <div class="productName">
+                  <h2>{{product.productName}}</h2>
+                  <h5>{{product.company}}</h5>
+                  <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span style= "padding-left: 8px">Country</span></small>
+                </div>
+                <div class="discription" style="margin-top:30px;">
+                <p>{{product.shortDescription}}</p>
+                </div>
+                <div class="tags">
+
+                </div>
+                <div class="other-info">
+                  <div class="price">
+                  <h4>{{product.price}}  {{product.minPrice}}</h4>
+                </div>
+                <div class="hits">
+                  <p>24,354 hits</p>
+                </div>
+                </div>
+                </div>
+                </div>
+                  </div>
+                </div>
+
+              <!-- <div class="mob-cards" *ngIf="three">
                   <div class="card-wrapper" *ngFor="let card of group.card; let i = index" >
                       <div class="header">
                           <div class="header-content" style="width:95%; display: flex">
@@ -300,9 +301,9 @@
                             <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
                         </div>
                       </div>
-              
+
                     <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
-              
+
                     <div class="main-content">
                       <div class="content-details">
                         <p>Something is here Some of the contnet</p>
@@ -314,9 +315,9 @@
                         <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
                     </div>
                   </div>
-              
+
               </div>
-              
+
               <div class="card-wrapper">
                   <div class="header">
                       <div class="header-content" style="width:95%; display: flex">
@@ -328,9 +329,9 @@
                         <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
                     </div>
                   </div>
-              
+
                 <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
-              
+
                 <div class="main-content">
                   <div class="content-details">
                     <p>Something is here Some of the contnet</p>
@@ -342,16 +343,84 @@
                     <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
                 </div>
               </div>
-              
+
               </div>
-              </div>
+              </div> -->
 
         </div>
-        <button (click) = "onExpand(i)" >Expand</button>
+        <!-- <button (click) = "onExpand(i)" >Expand</button> -->
+  </div>
+<<<<<<< HEAD
+<!-- </div>
+</div> -->
+<div class="body" *ngIf="four"></div>
+=======
+</div>
+</div>
+<div class="body1" *ngIf="four">
+
+  <div class="comapany_contact">
+          <h2>Company Divisions</h2>
+  </div> 
+<div class="company_details">
+    <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p>abc@infotech.com</p>
+       </div> 
+          <div class="company_email1">
+           <h2>Sales Division</h2>
+         </div> 
+     </div>
+     <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+               <p>abc@infotech.com</p>       
+       </div> 
+          <div class="company_email1">
+           <h2>Marketing Division</h2>
+         </div> 
+     </div>
+</div> 
+<div class="company_details">
+    <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p>abc@infotech.com</p>
+       </div> 
+          <div class="company_email1">
+           <h2>HR Division</h2>
+         </div> 
+     </div>
+     <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+               <p>abc@infotech.com</p>       
+       </div> 
+          <div class="company_email1">
+           <h2>Technical Division</h2>
+         </div> 
+     </div>
+      
+
+ </div>
+    <div class="comapany_contact">
+        <h2>Company Office</h2>
+      </div> 
+  <div class="company_address">
+      <div class="google_map">
+          Google Map here
+        </div> 
+        <div class="complete_address">
+          <p>India Address </p>
+          <p>277, Mahaveer Nagar 2, Maharani Farm, Gayatri Nagar A, Durgapura, Jaipur, Rajasthan 302020</p>
+          <p>Email:-</p>
+          <p>info@naturaldyes.in</p>
+          
+          </div>  
   </div>
 </div>
-</div>
-<div class="body" *ngIf="four"></div>
+>>>>>>> fd74167f85cbeb01e3fc2e9f488212031fe6c1d0
 
 
 
