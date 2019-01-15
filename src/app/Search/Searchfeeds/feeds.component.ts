@@ -9,12 +9,12 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './feeds.component.html',
   styleUrls: ['./feeds.component.css']
 })
-export class FeedsComponent implements OnInit {
-word;
-page;
+export class FeedsSearchComponent implements OnInit {
+
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
    public bookmark: BookmarkServices, public follows: FollowService, public route: ActivatedRoute) { }
-
+word;
+page;
   ngOnInit() {
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
@@ -35,5 +35,10 @@ page;
         console.log(res);
       });
   }
-
+    //  follow(id)
+    //  {
+    //    this.follows.addFollow(id).subscribe(res=>{
+    //      console.log(res);
+    //    });
+    // }
 }

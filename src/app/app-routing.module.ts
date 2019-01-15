@@ -11,9 +11,9 @@ import { ProductFormComponent } from './Product/product-form/product-form.compon
 import { FollowersComponent } from './User/followers/followers.component';
 import { ServicePageComponent } from './serviceSection/service-page/service-page.component';
 import { FollowingComponent } from './User/following/following.component';
-import { FeedsComponent } from './Search/feeds/feeds.component';
+import { FeedsSearchComponent } from './Search/Searchfeeds/feeds.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
-import { PostComponent } from './Bookmark/post/post.component';
+import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 import {AuthGuardService} from './guards/auth-guard.service';
 import {CompanyGuardService} from './guards/company-guard.service';
@@ -29,7 +29,7 @@ const routes: Routes = [
    {path: 'Followers', component: FollowersComponent , canActivate: [AuthGuardService]},
    {path: 'servicePage', component: ServicePageComponent },
    {path: 'Following' , component: FollowingComponent, canActivate: [AuthGuardService]},
-   {path: 'feeds/:word/:page' , component: FeedsComponent},
+   {path: 'feeds/:word/:page' , component: FeedsSearchComponent},
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
