@@ -20,21 +20,17 @@ location;
     this.userService.token = this.storage.get('token');
    this.userService.getUserData().subscribe(res => {
      console.log(JSON.parse(res['_body']));
-     this.username = JSON.parse(res['_body']).UserName;
-     this.following = JSON.parse(res['_body']).Following.company.length;
-     this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length +
-     JSON.parse(res['_body']).bookmarks.product.length +
-     JSON.parse(res['_body']).bookmarks.service.length;
+      this.username = JSON.parse(res['_body']).UserName;
+    //  this.following = JSON.parse(res['_body']).Following.company.length;
+    //  this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
-
-
    }
   show = false;
   ngOnInit() {
-    this.followers.token=this.storage.get('token');
-    this.followers.getFollowers().subscribe(res=>{
-      console.log(res);
-    })
+    // this.followers.token=this.storage.get('token');
+    // this.followers.getFollowers().subscribe(res=>{
+    //   console.log(res);
+    // })
   }
   onLogout() {
     this.storage.remove('token');

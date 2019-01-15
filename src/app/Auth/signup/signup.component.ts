@@ -59,7 +59,6 @@ onSubmit() {
   })
      /*---------------------*/
 
-<<<<<<< HEAD
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
      if (this.error === false) {
@@ -77,17 +76,6 @@ onSubmit() {
    console.log(this.username);
    console.log(JSON.parse(res['_body']));
   })
-=======
-      this.userService.getUserData().subscribe(res1 => {
-   this.storage.set('UserName', JSON.parse(res1['_body']).UserName);
-  //  this.storage.set('Location', JSON.parse(res['_body']).Location);
-   this.storage.set('companyId', JSON.parse(res1['_body']).Company_id[0]);
-
-  //  this.username = this.storage.get('UserName');
-  //  console.log(this.username);
-  //  console.log(JSON.parse(res['_body']).Company_id[0]);
-  });
->>>>>>> 58fb63f0b12e3601c3c92273556f83cea0351b03
 
 //      /*---------------------*/
 
@@ -95,7 +83,6 @@ onSubmit() {
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
-<<<<<<< HEAD
 
 
      }  if (this.error) {
@@ -106,18 +93,7 @@ onSubmit() {
 
     });
 
-
  console.log(this.error);
-=======
-      this.error = false;
-     }
-     this.error = false;
-    });
-    if (this.error === true) {
-      this.notification.error('Enter Valid Details');
-      console.log('2' + this.error);
-    }
->>>>>>> 58fb63f0b12e3601c3c92273556f83cea0351b03
   }
 })
 
