@@ -10,11 +10,12 @@ import { UserService } from 'src/app/Service/user-services.service';
 })
 export class CompanySearchComponent implements OnInit {
 
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService, private companyService:CompanyServiceService,private userService:UserService) { }
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
+   private companyService: CompanyServiceService, private userService: UserService) { }
   panelOpenState = false;
   word;
   id;
-  
+
   ngOnInit() {
     this.word = this.storage.get('query');
     this.userService.token=this.storage.get('token');
@@ -23,7 +24,7 @@ export class CompanySearchComponent implements OnInit {
   }
    follow(){
      console.log(this.id);
-    
+
    }
 
 }

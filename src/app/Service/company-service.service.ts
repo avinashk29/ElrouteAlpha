@@ -76,10 +76,8 @@ const companyFormData = new FormData();
     return this.http.get('http://localhost:3000/company', {headers: headers});
   }
   GetoneCompany(id) {
-    const headers = new Headers();
-    headers.append('x-auth', this.token);
     console.log(id);
-    return this.http.get('http://localhost:3000/company/' + id, {headers: headers});
+    return this.http.get('http://localhost:3000/company/' + id, id);
   }
 //   searchResult(query){
 //     return this.http.get('http://localhost:3000/search/'+query);

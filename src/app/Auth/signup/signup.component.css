@@ -89,3 +89,9 @@ input{
 .login-link h4{
   text-align: center;
 }
+.error{
+  border: 1px solid red;
+}
+.errorMsg{
+  font-size: 10px;
+}

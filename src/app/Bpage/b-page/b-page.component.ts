@@ -44,21 +44,21 @@ mycompanyId;
     this.productService.token = this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
     this.token = this.storage.get('token');
-    this.companyService.GetCompany().subscribe(res => {
-      console.log(JSON.parse(res['_body'])[0]._id);
-      this.CompanyName = JSON.parse(res['_body'])[0].companyName;
-      this.category = JSON.parse(res['_body'])[0].category;
-      this.city = JSON.parse(res['_body'])[0].city;
-      this.companyEmail = JSON.parse(res['_body'])[0].companyEmail;
-      this.companySize = JSON.parse(res['_body'])[0].companySize;
-      this.companyType = JSON.parse(res['_body'])[0].companyType;
-      this.country = JSON.parse(res['_body'])[0].country;
-      this.image = JSON.parse(res['_body'])[0].image;
-      this.industry = JSON.parse(res['_body'])[0].industry;
-      this.mobile = JSON.parse(res['_body'])[0].mobile;
-      this.address = JSON.parse(res['_body'])[0].address;
-      this.yearEstd = JSON.parse(res['_body'])[0].yearEstd;
-      this.website = JSON.parse(res['_body'])[0].website;
+    this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+      console.log(JSON.parse(res['_body'])._id);
+      this.CompanyName = JSON.parse(res['_body']).companyName;
+      this.category = JSON.parse(res['_body']).category;
+      this.city = JSON.parse(res['_body']).city;
+      this.companyEmail = JSON.parse(res['_body']).companyEmail;
+      this.companySize = JSON.parse(res['_body']).companySize;
+      this.companyType = JSON.parse(res['_body']).companyType;
+      this.country = JSON.parse(res['_body']).country;
+      this.image = JSON.parse(res['_body']).image;
+      this.industry = JSON.parse(res['_body']).industry;
+      this.mobile = JSON.parse(res['_body']).mobile;
+      this.address = JSON.parse(res['_body']).address;
+      this.yearEstd = JSON.parse(res['_body']).yearEstd;
+      this.website = JSON.parse(res['_body']).website;
       if (this.comapnyId === this.mycompanyId) {
         console.log('MY OWN COMPANY');
       } else {
@@ -88,7 +88,7 @@ mycompanyId;
         {name: 'https://picsum.photos/200/300/?random'}
     ];
 
-    this.productService.getProduct().subscribe(res => {
+    this.productService.getProduct(this.comapnyId).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body']);
     });

@@ -14,8 +14,10 @@ username;
 following;
 bookmark;
 location;
+token;
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService) {
+
     this.userService.token = this.storage.get('token');
    this.userService.getUserData().subscribe(res => {
      console.log(JSON.parse(res['_body']));
