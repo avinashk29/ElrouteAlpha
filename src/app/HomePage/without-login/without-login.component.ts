@@ -33,20 +33,8 @@ export class WithoutLoginComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(SignupComponent, dialogConfig);
   }
-<<<<<<< HEAD
 onSearch(event) {
-  if(event.keyCode === 13) {
-=======
-onSearch() {
-    const formData = this.searchForm.value;
-    this.searchService.onSearch(formData);
-    this.searchService.searchValue = formData;
-    this.storage.set('query', this.searchForm.value);
-    this.router.navigate(['/Result']);
-}
-onEnterKey(event){
-  if(event.keyCode==13){
->>>>>>> 20d0d70aa060eca5b14cfc2d7b2664b0e9a082e2
+  if (event.keyCode === 13) {
     const formData = this.searchForm.value;
     this.searchService.onSearch(formData.word , formData.page);
     this.searchService.searchValue = formData;

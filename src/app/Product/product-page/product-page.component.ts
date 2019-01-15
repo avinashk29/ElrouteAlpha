@@ -19,9 +19,9 @@ export class ProductPageComponent implements OnInit {
 id;
 
   ngOnInit() {
-this.product.getOneproduct(this.id).subscribe(res => {
-  console.log(JSON.parse(res['_body']));
-});
+// this.product.getOneproduct(this.id).subscribe(res => {
+//   console.log(JSON.parse(res['_body']));
+// });
   }
 
 }

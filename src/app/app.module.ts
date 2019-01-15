@@ -9,7 +9,7 @@ import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.
 import { BookmarkComponent } from './Bookmark/bookmark/bookmark.component';
 import { ProductBookmarkComponent } from './Bookmark/product/product.component';
 import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
-import {PostsComponent} from './Post-feed/Post/posts/post.component'
+import {PostsComponent} from './Post-feed/Post/posts/post.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
 import { CompanyFormComponent } from './Company/company-form/company-form.component';
 import { CompanProfileComponent } from './Company/compan-profile/compan-profile.component';
@@ -54,6 +54,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
+// import {ProductBookmarkComponent} from './Bookmark/product/product.component';
 import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
 import {ProductServiceService } from './Service/product-service.service';
