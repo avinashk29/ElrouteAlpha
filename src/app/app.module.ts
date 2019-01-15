@@ -57,6 +57,12 @@ import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
 import {ProductServiceService } from './Service/product-service.service';
 import { ToastrModule } from 'ngx-toastr';
+import {AuthGuardService} from './guards/auth-guard.service';
+import {CompanyGuardService} from './guards/company-guard.service';
+import {BookmarkServices} from './Service/bookmark-services.service';
+import {FeedService} from './Service/feed-service.service';
+import {FollowService} from './Service/follow-service.service';
+import {SearchService} from './Service/search.service';
 
 @NgModule({
   declarations: [
@@ -118,7 +124,8 @@ import { ToastrModule } from 'ngx-toastr';
     SignupComponent,
     LoginComponent
   ],
-  providers: [CompanyServiceService, ProductServiceService ],
+  providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
+     SearchService, CompanyGuardService],
   bootstrap: [AppComponent],
 
 })

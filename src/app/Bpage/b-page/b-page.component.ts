@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Event } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {ProductServiceService} from '../../Service/product-service.service';
+import {FeedService} from '../../Service/feed-service.service';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -33,13 +34,18 @@ address ;
 yearEstd;
 website;
 products;
+comapnyId;
+mycompanyId;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
-  public productService: ProductServiceService) {
+  public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute) {
+    this.comapnyId = this.route.snapshot.paramMap.get('id');
+    console.log(this.comapnyId);
     this.companyService.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
+    this.mycompanyId = this.storage.get('companyId');
     this.token = this.storage.get('token');
     this.companyService.GetCompany().subscribe(res => {
-      console.log(JSON.parse(res['_body'])[0]);
+      console.log(JSON.parse(res['_body'])[0]._id);
       this.CompanyName = JSON.parse(res['_body'])[0].companyName;
       this.category = JSON.parse(res['_body'])[0].category;
       this.city = JSON.parse(res['_body'])[0].city;
@@ -53,6 +59,11 @@ products;
       this.address = JSON.parse(res['_body'])[0].address;
       this.yearEstd = JSON.parse(res['_body'])[0].yearEstd;
       this.website = JSON.parse(res['_body'])[0].website;
+      if (this.comapnyId === this.mycompanyId) {
+        console.log('MY OWN COMPANY');
+      } else {
+        console.log('diffrent Company');
+      }
     });
     this.items =  [
         {name: 'https://picsum.photos/200/300'},

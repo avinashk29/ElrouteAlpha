@@ -78,10 +78,11 @@ export class CompanyFormComponent implements OnInit {
           this.companyService.addCompany(companyData).subscribe(res => {
             this.Id =  this.storage.set('companyId' , JSON.parse(res['_body'])[0]._id);
             this.companyService.Id =  this.storage.get('comapnyId');
-        console.log(JSON.parse(res['_body'])._id);
+        // console.log(JSON.parse(res['_body'])._id);
+        // // this.storage.set('companyId' , JSON.parse(res['_body'])._i;
 
       });
-      this.router.navigate(['/companyPage']);
+      this.router.navigate(['/companyPage/' +  this.Id]);
       this.notification.success('Welcome' + this.companyForm.value.companyName);
     } else {
       this.notification.error('Enter Valid Deatils');
