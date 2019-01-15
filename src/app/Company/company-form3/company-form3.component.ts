@@ -26,7 +26,6 @@ companyForm = new FormGroup({
   }
 
   onSubmit() {
-
     console.log(this.companyForm.value);
     const formData = this.companyForm.patchValue({
       address: (this.companyForm.value.address) ,

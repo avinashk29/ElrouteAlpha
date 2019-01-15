@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'Result/:word/:page', component: SearchComponent},
   {path: 'bookmark', component: BookmarkComponent},
   {path: 'companyResults/:word/:page' , component: CompanySearchComponent},
-  {path: 'B-page/:id' , component: CompanyFormComponent, canActivate: [AuthGuardService] },
+  {path: 'B-page' , component: CompanyFormComponent, canActivate: [AuthGuardService] },
   {path: 'productForm' , component: ProductFormComponent, canActivate: [AuthGuardService , CompanyGuardService]},
    {path: 'product-page/:_id' , component: ProductPageComponent},
    {path: 'Followers', component: FollowersComponent , canActivate: [AuthGuardService]},

@@ -21,10 +21,10 @@ export class WithoutLoginComponent implements OnInit {
   });
   ngOnInit() {
    this.token = this.storage.get('token');
-  //   if (this.token) {
-  //     this.router.navigate(['/Dashboard']);
-  //     console.log(this.token);
-  //  }
+    if (this.token) {
+      this.router.navigate(['/Dashboard']);
+      console.log(this.token);
+   }
   }
 
   openDialog() {
@@ -33,7 +33,13 @@ export class WithoutLoginComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(SignupComponent, dialogConfig);
   }
-onSearch(event) {
+onSearch() {
+  const formData = this.searchForm.value;
+  this.searchService.onSearch(formData.word , formData.page);
+  this.searchService.searchValue = formData;
+  this.router.navigate(['/Result/' + formData.word + '/' + formData.page ]);
+}
+onEnterKey(event){
   if (event.keyCode === 13) {
     const formData = this.searchForm.value;
     this.searchService.onSearch(formData.word , formData.page);
