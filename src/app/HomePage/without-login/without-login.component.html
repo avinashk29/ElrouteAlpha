@@ -26,7 +26,7 @@
      </div>
      <div class="search-bar">
         <div class="search-container" [formGroup] = "searchForm" (ngSubmit)= "onSearch()" >
-            <input type="text" id="search-bar" placeholder="ENTER PRODUCT/SERVICE TO SEARCH" formControlName = "word"  (keypress) = "onEnterKey($event)" >
+            <input type="text" id="search-bar" placeholder="ENTER PRODUCT/SERVICE TO SEARCH" formControlName = "word"  (keypress) = "onSearch($event)" >
             <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
             <button (click)="onSearch()">Search</button>
           </div>

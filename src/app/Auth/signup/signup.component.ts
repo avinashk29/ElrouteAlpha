@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { LoginComponent } from '../login/login.component';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthServiceService} from '../auth-service.service';
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -13,10 +13,10 @@ import { UserService } from 'src/app/Service/user-services.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  error = true;
+  error;
   username;
   signupForm = new FormGroup({
-    UserName : new FormControl(''),
+    UserName : new FormControl('', [Validators.required]),
     Location : new FormControl(''),
     Email: new FormControl(''),
     Title: new FormControl (''),
@@ -27,7 +27,6 @@ export class SignupComponent implements OnInit {
      public router: Router, public notification: ToastrService,public userService:UserService) {
  }
   ngOnInit() {
-
   }
 
 //<-----------------------------to open login------------------------------------>
@@ -39,6 +38,7 @@ export class SignupComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
 onSubmit() {
+  this.error = true;
      const SignupForm = this.signupForm.value;
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
@@ -59,6 +59,7 @@ onSubmit() {
   })
      /*---------------------*/
 
+<<<<<<< HEAD
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
      if (this.error === false) {
@@ -76,6 +77,17 @@ onSubmit() {
    console.log(this.username);
    console.log(JSON.parse(res['_body']));
   })
+=======
+      this.userService.getUserData().subscribe(res1 => {
+   this.storage.set('UserName', JSON.parse(res1['_body']).UserName);
+  //  this.storage.set('Location', JSON.parse(res['_body']).Location);
+   this.storage.set('companyId', JSON.parse(res1['_body']).Company_id[0]);
+
+  //  this.username = this.storage.get('UserName');
+  //  console.log(this.username);
+  //  console.log(JSON.parse(res['_body']).Company_id[0]);
+  });
+>>>>>>> 58fb63f0b12e3601c3c92273556f83cea0351b03
 
 //      /*---------------------*/
 
@@ -83,6 +95,7 @@ onSubmit() {
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
+<<<<<<< HEAD
 
 
      }  if (this.error) {
@@ -95,6 +108,16 @@ onSubmit() {
 
 
  console.log(this.error);
+=======
+      this.error = false;
+     }
+     this.error = false;
+    });
+    if (this.error === true) {
+      this.notification.error('Enter Valid Details');
+      console.log('2' + this.error);
+    }
+>>>>>>> 58fb63f0b12e3601c3c92273556f83cea0351b03
   }
 })
 
