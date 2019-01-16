@@ -28,7 +28,13 @@
 
             </div>
         <div class="bookmark" *ngIf="!notlogin" (click)="bookmark(result._id)" >
-        
+
+        </div>
+        <div class="bookmark" *ngIf="!notlogin && unbookmarked" (click)="bookmark(result._id)" >
+
+        </div>
+        <div class="bookmark unbookmark" *ngIf="!notlogin && !unbookmarked" (click)="unbookmark(result._id)" >
+
         </div>
         <img src="https://picsum.photos/200/300/?random">
       </div>
