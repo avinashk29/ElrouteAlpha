@@ -20,6 +20,7 @@ notlogin = true;
 token;
 word;
 page;
+unbookmarked = true;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarksService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
@@ -45,30 +46,14 @@ page;
 
 bookmark(id) {
 console.log(id);
-this.userService.getUserData().subscribe(res => {
-  // console.log(JSON.parse(res['_body']).bookmarks.product);
-  let length = JSON.parse(res['_body']).bookmarks.product.length;
-  if(length==0){
-    this.bookmarksService.addProductBookmarks(id).subscribe(res=>{})
-  }
-  for (let i = 0; i < length; i++) {
- //   console.log(JSON.parse(res['_body']).bookmarks.product[i]);
-     if (id === JSON.parse(res['_body']).bookmarks.product[i]) {
-      JSON.parse(res['_body']).bookmarks.product[i].pop;
-      console.log('removed');
-
-     } else{
-        this.bookmarksService.addProductBookmarks(id).subscribe(res=>{
-          console.log(res);
-        })
-     }
-  }
-
+this.bookmarksService.addPostBookmark(id).subscribe(res =>{
+  console.log(res);
 });
-// this.bookmarksService.addProductBookmarks(id).subscribe(res => {
-//   console.log(res);
-// });
+this.unbookmarked = false;
 }
+unbookmark(id) {
+  this.unbookmarked = true;
+  }
 openLogin() {
   const dialogConfig = new MatDialogConfig();
   dialogConfig.autoFocus = true;
