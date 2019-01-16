@@ -77,7 +77,7 @@ const companyFormData = new FormData();
   }
   GetoneCompany(id) {
     console.log(id);
-    return this.http.get('http://localhost:3000/company/'+id, id);
+    return this.http.get('http://localhost:3000/company/' + id, id);
   }
 //   searchResult(query){
 //     return this.http.get('http://localhost:3000/search/'+query);
