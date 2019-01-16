@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-// <-----------------------------to open login------------------------------------>
+//<-----------------------------to open login------------------------------------>
   openLogin() {
     this.dialogRef.close(SignupComponent);
     const dialogConfig = new MatDialogConfig();
@@ -40,7 +40,6 @@ export class SignupComponent implements OnInit {
 onSubmit() {
   this.error = true;
      const SignupForm = this.signupForm.value;
-
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
      if (this.error === false) {
@@ -50,16 +49,33 @@ onSubmit() {
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
      /*-----------------------*/
+      this.userService.getUserData().subscribe(res=>{
+   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+   this.storage.set('Location',JSON.parse(res['_body']).Location);
+   this.storage.set('_id',JSON.parse(res['_body'])._id);
+   this.username=this.storage.get('UserName');
+   console.log(this.username);
+   console.log(JSON.parse(res['_body']));
+  })
+     /*---------------------*/
 
-      this.userService.getUserData().subscribe(res1 => {
-   this.storage.set('UserName', JSON.parse(res1['_body']).UserName);
-  //  this.storage.set('Location', JSON.parse(res['_body']).Location);
-   this.storage.set('companyId', JSON.parse(res1['_body']).Company_id[0]);
+    this.authService.signup(SignupForm).subscribe(res => {
+      this.error = false;
+     if (this.error === false) {
+      console.log(JSON.parse(res['_body']));
+     this.storage.set('token', res.headers.get('x-auth'));
+    //  this.storage.set('User', JSON.parse(res['_body']));
+     this.authService.token = this.storage.get('token');
+     this.dialogRef.close(SignupComponent);
+//      /*-----------------------*/
 
-  //  this.username = this.storage.get('UserName');
-  //  console.log(this.username);
-  //  console.log(JSON.parse(res['_body']).Company_id[0]);
-  });
+      this.userService.getUserData().subscribe(res=>{
+   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+   this.storage.set('Location',JSON.parse(res['_body']).Location);
+   this.username=this.storage.get('UserName');
+   console.log(this.username);
+   console.log(JSON.parse(res['_body']));
+  })
 
 //      /*---------------------*/
 
@@ -67,13 +83,19 @@ onSubmit() {
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
-      this.error = false;
-     }
-     this.error = false;
+
+
+     }  if (this.error) {
+      this.notification.error('Cant LogIn Enter Valid Details');
+     console.log('3' + this.error);
+   }
+
+
     });
-    if (this.error === true) {
-      this.notification.error('Enter Valid Details');
-      console.log('2' + this.error);
-    }
+
+ console.log(this.error);
   }
+})
+
+}
 }
