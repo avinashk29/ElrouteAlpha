@@ -18,9 +18,7 @@ addProductBookmarks(id) {
 addCompanyBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-
     console.log(this.token);
-
     return this.http.patch('http://localhost:3000/bookmark/company/' + id , id , {headers: headers});
 }
 addPostBookmark(id) {
@@ -42,5 +40,10 @@ BookmarkResult(){
     headers.append('x-auth',this.token);
     return this.http.get('http://localhost:3000/bookmarksave',{headers:headers});
 }
-
+removeProduct(){
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    return this.http.patch('http://localhost:3000/bookmark/product/',{headers: headers});
+}
 }

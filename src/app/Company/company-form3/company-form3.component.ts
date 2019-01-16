@@ -26,7 +26,6 @@ companyForm = new FormGroup({
   }
 
   onSubmit() {
-
     console.log(this.companyForm.value);
     const formData = this.companyForm.patchValue({
       address: (this.companyForm.value.address) ,
@@ -35,7 +34,6 @@ companyForm = new FormGroup({
       landLine: (this.companyForm.value.landLine),
       mobile: (this.companyForm.value.mobile)
     });
-
     console.log(this.Id);
     this.router.navigate(['/companyPage']);
   }

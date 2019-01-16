@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormGroup , FormBuilder, FormArray} from '@angular/forms';
+import {FormGroup , FormBuilder, FormArray, Validator, Validators} from '@angular/forms';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -12,12 +14,15 @@ export class ProductFormComponent implements OnInit {
   productForm:  FormGroup;
   productInfoForm: FormGroup;
   imagePreview;
+  companyId;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-    private _fb: FormBuilder, public productService: ProductServiceService) { }
+    private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService) {
+      this.companyId =  this.storage.get('companyId');
+     }
 
   ngOnInit() {
     this.productForm = this._fb.group({
-      productName: [''],
+      productName: ['', [Validators.required] ],
      productImage: [''],
      shortDescription: [''],
      productInfo: this._fb.array([this.addProductInfoGroup()]),
@@ -67,10 +72,17 @@ export class ProductFormComponent implements OnInit {
     this.productInfoArray.push(this.addProductInfoGroup());
   }
   onSubmit() {
-    console.log(this.productForm.value);
-    const productData = this.productForm.value;
-    this.productService.addProduct(productData).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
-    });
+    if (this.productForm.valid) {
+      console.log(this.productForm.value);
+      const productData = this.productForm.value;
+      this.productService.addProduct(productData).subscribe(res => {
+        console.log(JSON.parse(res['_body']));
+      });
+      this.router.navigate(['/companyPage/' + this.companyId ]);
+  this.notification.success('Product Added');
+    } else {
+      this.notification.error('Enter Valid Deatils');
+    }
+
   }
 }

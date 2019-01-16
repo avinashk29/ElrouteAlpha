@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Http ,Headers} from '@angular/http';
-import { identifierModuleUrl } from '@angular/compiler';
+import { Injectable } from "@angular/core";
+import { Http,Headers } from "@angular/http";
+
 
 @Injectable({
-  providedIn:'root'
+    providedIn:'root'
 })
 export class FollowService{
-token;
-constructor(public http: Http){}
-addFollow(id) {
-const headers=new Headers();
-headers.append('x-auth',this.token);
-console.log(id);
-return this.http.patch('http://localhost:3000/company/follow/' + id, id, {headers: headers});
-}
+    token;
+constructor(public http:Http){}
+     addFollow(id){
+         const headers=new Headers();
+         headers.append('x-auth',this.token);
+         return this.http.get('http://localhost:3000/follow/'+id,{headers:headers});
+         
+     }
+
+    getFollowers(){
+        const headers=new Headers();
+        headers.append('x-auth',this.token);
+        return this.http.get('http://localhost:3000/followers',{headers:headers});
+
+    }
 }

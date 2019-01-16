@@ -24,7 +24,7 @@ export class CompanyServiceService {
     const headers = new Headers();
 const companyFormData = new FormData();
 
-    companyFormData.append('compayName', company.companyName);
+    companyFormData.append('companyName', company.companyName);
     companyFormData.append('country', company.country);
     companyFormData.append('city', company.city);
     companyFormData.append('companyEmail', company.companyEmail);
@@ -74,6 +74,10 @@ const companyFormData = new FormData();
     const headers = new Headers();
     headers.append('x-auth', this.token);
     return this.http.get('http://localhost:3000/company', {headers: headers});
+  }
+  GetoneCompany(id) {
+    console.log(id);
+    return this.http.get('http://localhost:3000/company/'+id, id);
   }
 //   searchResult(query){
 //     return this.http.get('http://localhost:3000/search/'+query);

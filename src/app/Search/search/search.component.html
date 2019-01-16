@@ -28,7 +28,7 @@
 
             </div>
         <div class="bookmark" *ngIf="!notlogin" (click)="bookmark(result._id)" >
-
+        
         </div>
         <img src="https://picsum.photos/200/300/?random">
       </div>
@@ -38,8 +38,8 @@
       <h6>{{result.catogory}}</h6>
       </div>
       <div class="productName">
-        <h2>{{result.productName}}</h2>
-        <h5>{{result.company}}</h5>
+        <h2 routerLink = "/product-page/{{result._id}}">{{result.productName}}</h2>
+        <h5 routerLink ="/companyPage/{{result.c_id}}">{{result.company}}</h5>
         <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">Device</span><span style= "padding-left: 8px">country</span></small>
       </div>
       <div class="discription" style="margin-top:30px;">

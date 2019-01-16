@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { Http,Headers } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
-export class FeedService{
+export class FeedService {
     token;
-    constructor(public http:Http){}
-    // GetFeed(){
-    //     const headers=new Headers();
-    //     headers.append('x-auth',this.token);
-    //     return this.http.get('http://localhost:3000/feed',{headers:headers});
-    // }
+    constructor(public http: Http) {}
+    GetFeed(id) {
+        const headers = new Headers();
+        headers.append('x-auth', this.token);
+        return this.http.get('http://localhost:3000/feed/' + id, {headers: headers});
+    }
 }

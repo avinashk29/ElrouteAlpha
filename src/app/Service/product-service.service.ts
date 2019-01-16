@@ -28,4 +28,8 @@ token;
     console.log(this.token);
     return this.http.post('http://localhost:3000/product', productData, {headers: headers});
   }
+  getProduct(id) {
+    return this.http.get('http://localhost:3000/product/company/'+id);
+  }
+
 }
