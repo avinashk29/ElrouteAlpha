@@ -27,7 +27,7 @@ onSubmit() {
   this.error = false;
   if (!this.error) {
     this.storage.set('token', res.headers.get('x-auth'));
-  this.storage.set('companyId', JSON.parse(res['_body']).Company_id[0]);
+  this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
   this.router.navigate(['/Dashboard']);
   this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);

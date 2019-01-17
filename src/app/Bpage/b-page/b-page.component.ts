@@ -33,7 +33,7 @@ mobile;
 address ;
 yearEstd;
 website;
-products;
+products=[];
 comapnyId;
 mycompanyId;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,

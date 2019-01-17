@@ -5,6 +5,9 @@ import { HomepageService } from '../homepage.service';
 import {Router} from '@angular/router';
 import {AuthServiceService} from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
+import {FormGroup , FormControl} from '@angular/forms';
+import {FeedService} from '../../Service/feed-service.service';
+import {CompanyServiceService} from '../../Service/company-service.service';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -15,15 +18,30 @@ username;
 following;
 bookmark;
 location;
+companyName;
+haveCompany;
+feed = new FormGroup({
+  Content: new FormControl(''),
+Image: new FormControl(' ')
+});
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
-  public homeService: HomepageService, public router: Router, public authService: AuthServiceService,private followers:FollowService) {
+  public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
+  public feedService: FeedService, public companyService: CompanyServiceService) {
     this.userService.token = this.storage.get('token');
+    this.haveCompany = this.storage.get('companyId');
    this.userService.getUserData().subscribe(res => {
      console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
+<<<<<<< HEAD
    //s/   this.following = JSON.parse(res['_body']).Following.company.length;
     //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+=======
+      this.following = JSON.parse(res['_body']).Following.company.length;
+    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length +
+     JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length +
+      JSON.parse(res['_body']).bookmarks.service.length;
+>>>>>>> 83ee9837ead3f6099b96a16aff0cc4dbf2ecd9de
    });
    }
   show = false;
@@ -32,11 +50,32 @@ location;
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
     // })
+    this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
+      this.companyName = (JSON.parse(res['_body']).companyName);
+    });
+    }
+  onImagePick(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.feed.patchValue({Image: file});
+    this.feed.get('Image').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.onload = () => {
+        // this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
+   }
+  onAddpost() {
+    this.feedService.token = this.storage.get('token');
+    this.feedService.AddFeed(this.feed.value).subscribe(res => {
+      console.log(JSON.parse(res['_body']));
+    });
+    this.feed.reset();
   }
   onLogout() {
     this.storage.remove('token');
     this.router.navigate(['/']);
   }
+
 }
 
 
