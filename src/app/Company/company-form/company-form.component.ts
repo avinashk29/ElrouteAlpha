@@ -37,13 +37,17 @@ export class CompanyFormComponent implements OnInit {
   }) ;
   submitted: boolean;
   imagePreview;
-
+companyId;
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
    public notification: ToastrService) {
- if (this.Id != null) {
-   this.router.navigate(['/companyPage']);
- }
+this.companyId = this.storage.get('companyId');
+if (this.companyId) {
+this.router.navigate(['/companyPage/' + this.companyId]);
+}
+//  if (this.Id != null) {
+//    this.router.navigate(['/companyPage']);
+//  }
    }
   ngOnInit() {
     this.companyService.token = this.storage.get('token');

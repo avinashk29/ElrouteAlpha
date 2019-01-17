@@ -25,7 +25,7 @@ feed = new FormGroup({
 Image: new FormControl(' ')
 });
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
-  public homeService: HomepageService, public router: Router, public authService: AuthServiceService,private followers:FollowService,
+  public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
