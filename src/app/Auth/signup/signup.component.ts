@@ -58,7 +58,6 @@ onSubmit() {
    console.log(JSON.parse(res['_body']));
   })
      /*---------------------*/
-
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
      if (this.error === false) {
@@ -68,7 +67,6 @@ onSubmit() {
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
 //      /*-----------------------*/
-
       this.userService.getUserData().subscribe(res=>{
    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
    this.storage.set('Location',JSON.parse(res['_body']).Location);
@@ -76,9 +74,7 @@ onSubmit() {
    console.log(this.username);
    console.log(JSON.parse(res['_body']));
   })
-
 //      /*---------------------*/
-
      this.router.navigate(['/Dashboard']);
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
@@ -89,7 +85,6 @@ onSubmit() {
       this.notification.error('Cant LogIn Enter Valid Details');
      console.log('3' + this.error);
    }
-
 
     });
 

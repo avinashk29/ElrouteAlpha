@@ -22,8 +22,8 @@ location;
      console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
-      this.following = JSON.parse(res['_body']).Following.company.length;
-    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+   //s/   this.following = JSON.parse(res['_body']).Following.company.length;
+    //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
   show = false;
