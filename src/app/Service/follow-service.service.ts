@@ -11,14 +11,14 @@ constructor(public http:Http){}
      addFollow(id){
          const headers=new Headers();
          headers.append('x-auth',this.token);
-         return this.http.get('http://localhost:3000/follow/'+id,{headers:headers});
+         return this.http.get('http://www.elroute.co.in/api/follow/'+id,{headers:headers});
          
      }
 
     getFollowers(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('http://localhost:3000/followers',{headers:headers});
+        return this.http.get('http://www.elroute.co.in/api/followers',{headers:headers});
 
     }
 }

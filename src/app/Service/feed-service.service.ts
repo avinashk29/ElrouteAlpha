@@ -10,6 +10,6 @@ export class FeedService {
     GetFeed(id) {
         const headers = new Headers();
         headers.append('x-auth', this.token);
-        return this.http.get('http://localhost:3000/feed/' + id, {headers: headers});
+        return this.http.get('http://www.elroute.co.in/api/feed/' + id, {headers: headers});
     }
 }
