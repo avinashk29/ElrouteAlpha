@@ -41,15 +41,8 @@ Image: new FormControl(' ')
      console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
-<<<<<<< HEAD
    //s/   this.following = JSON.parse(res['_body']).Following.company.length;
     //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
-=======
-      this.following = JSON.parse(res['_body']).Following.company.length;
-    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length +
-     JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length +
-      JSON.parse(res['_body']).bookmarks.service.length;
->>>>>>> 83ee9837ead3f6099b96a16aff0cc4dbf2ecd9de
    });
    }
   show = false;
