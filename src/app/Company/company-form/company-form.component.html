@@ -16,7 +16,7 @@
             <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
               <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
             </li>
-              <li><input type="text" placeholder="Company Name" formControlName = "companyName" name="companyName" ></li>
+              <li><input type="text" placeholder="Company Name" formControlName = "companyName" name="companyName"></li>
               <span *ngIf="!companyForm.get('companyName').valid && companyForm.get('companyName').touched"><p>Please Enter Company</p></span>
 
               <li>
@@ -56,15 +56,12 @@
             </li>
             <span *ngIf="!companyForm.get('category').valid && companyForm.get('category').touched"><p>Please Select Requied Category</p></span>
             <li><button type="button" (click)="Showtwo()">Next</button></li>
-            </ul>
-
-
+          </ul>
     </div>
     </div>
 </div>
 
 <!---------------------------------------------//Second Level Form//--------------------------------------->
-
 <div *ngIf="two">
   <div class="companyForm">
     <div class="infoGraphic">

@@ -58,6 +58,24 @@ onSubmit() {
   //  console.log(JSON.parse(res['_body']));
   // });
      /*---------------------*/
+<<<<<<< HEAD
+    this.authService.signup(SignupForm).subscribe(res => {
+      this.error = false;
+     if (this.error === false) {
+      console.log(JSON.parse(res['_body']));
+     this.storage.set('token', res.headers.get('x-auth'));
+    //  this.storage.set('User', JSON.parse(res['_body']));
+     this.authService.token = this.storage.get('token');
+     this.dialogRef.close(SignupComponent);
+//      /*-----------------------*/
+      this.userService.getUserData().subscribe(res=>{
+   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+   this.storage.set('Location',JSON.parse(res['_body']).Location);
+   this.username=this.storage.get('UserName');
+   console.log(this.username);
+   console.log(JSON.parse(res['_body']));
+  })
+=======
 
     // this.authService.signup(SignupForm).subscribe( res => {
     //   this.error = false;
@@ -77,8 +95,8 @@ onSubmit() {
   //  console.log(JSON.parse(res['_body']));
   // })
 
+>>>>>>> 83ee9837ead3f6099b96a16aff0cc4dbf2ecd9de
 //      /*---------------------*/
-
      this.router.navigate(['/Dashboard']);
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
@@ -89,7 +107,6 @@ onSubmit() {
       this.notification.error('Cant LogIn Enter Valid Details');
      console.log('3' + this.error);
    }
-
 
     });
 

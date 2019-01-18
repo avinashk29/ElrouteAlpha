@@ -24,7 +24,7 @@ export class CompanySearchComponent implements OnInit {
     this.userService.token=this.storage.get('token');
     this.search.onSearchCompany(this.word).subscribe(res=>{
       this.result = JSON.parse(res['_body']);
-      console.log(this.result);
+      console.log(this.result[0][0].companyName);
     });
   }
    follow(id){

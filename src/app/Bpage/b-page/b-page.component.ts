@@ -34,7 +34,7 @@ mobile;
 address ;
 yearEstd;
 website;
-products;
+products=[];
 comapnyId;
 mycompanyId;
 type;
