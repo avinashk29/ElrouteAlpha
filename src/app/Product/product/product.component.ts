@@ -2,7 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import {FormGroup , FormBuilder, FormArray, Validator, Validators} from '@angular/forms';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-import {Router } from '@angular/router';
+import {Router, ActivatedRoute } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -16,9 +16,11 @@ export class ProductComponent implements OnInit {
   productInfoForm: FormGroup;
   imagePreview;
   companyId;
+  productId;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-    private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService) {
+    private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService,private route:ActivatedRoute) {
       this.companyId =  this.storage.get('companyId');
+      this.productId=route.snapshot.paramMap.get('id');
      }
   ngOnInit() {
     this.editproductForm = this._fb.group({
@@ -35,7 +37,26 @@ export class ProductComponent implements OnInit {
      tfCode: ['']
     });
     this.productService.token = this.storage.get('token');
-    
+    this.productService.getOneProduct(this.productId).subscribe(res=>{
+        this.editproductForm.patchValue({
+          productName:JSON.parse(res['_body']).productName,
+          productImage:JSON.parse(res['_body']).productImage,
+          shortDescription:JSON.parse(res['_body']).shortDescription,
+          price:JSON.parse(res['_body']).price,
+          minPrice:JSON.parse(res['_body']).minPrice,
+          maxPrice:JSON.parse(res['_body']).maxPrice,
+          moq:JSON.parse(res['_body']).moq,
+          industry:JSON.parse(res['_body']).industry,
+          category:JSON.parse(res['_body']).category,
+          tfCode:JSON.parse(res['_body']).tfCode,
+
+        })
+        this.productInfoForm.patchValue({
+              productSpecification:JSON.parse(res['_body']).productSpecification,
+              specificationContent:JSON.parse(res['_body']).specificationContent
+        })
+    })
+   
   }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -74,16 +95,18 @@ export class ProductComponent implements OnInit {
   }
   onSubmit() {
     if (this.editproductForm.valid) {
-      console.log(this.editproductForm.value);
+      //console.log(this.editproductForm.value);
       const productData = this.editproductForm.value;
-      this.productService.addProduct(productData).subscribe(res => {
+      this.productService.UpdateProduct(this.productId,productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
+    
       });
-      this.router.navigate(['/companyPage/' + this.companyId ]);
-  this.notification.success('Product Added');
-    } else {
-      this.notification.error('Enter Valid Deatils');
-    }
+  //     this.router.navigate(['/companyPage/' + this.companyId ]);
+  // this.notification.success('Product Added');
+  //   } else {
+  //     this.notification.error('Enter Valid Deatils');
+  //   }
 
   }
+}
 }

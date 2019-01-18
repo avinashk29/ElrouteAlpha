@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {ProductServiceService} from '../../Service/product-service.service';
@@ -36,8 +36,9 @@ website;
 products=[];
 comapnyId;
 mycompanyId;
+productId;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
-  public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute) {
+  public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router:Router) {
     this.comapnyId = this.route.snapshot.paramMap.get('id');
     console.log(this.comapnyId);
     this.companyService.token = this.storage.get('token');
@@ -94,6 +95,9 @@ mycompanyId;
     });
   }
 
+  editProduct(id){
+  this.router.navigate(['/productEdit/' +id]);
+}
   ngOnInit() {
     // for (let i = 0; i < this.groups.length; i++) {
     //   this.expand[i] = false;

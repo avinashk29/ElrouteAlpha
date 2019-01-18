@@ -32,4 +32,28 @@ token;
     return this.http.get('http://www.elroute.co.in/api/product/company/'+id);
   }
 
+  getOneProduct(id){
+    return this.http.get('http://www.elroute.co.in/api/product/'+id);
+  }
+  UpdateProduct(id,product){
+    const headers = new Headers();
+    const productData = new FormData();
+    productData.append('productImage', product.productImage);
+    productData.append('productName', product.productName);
+    productData.append('shortDescription', product.shortDescription);
+    productData.append('price ', product.price);
+    productData.append('maxPrice', product.maxPrice);
+    productData.append('minPrice', product.minPrice);
+    productData.append('moq', product.moq);
+    productData.append(' industry', product.industry);
+    productData.append('category', product.category);
+    productData.append('tfCode', product.tfCode);
+    productData.append(' productSpecification', product.productSpecification);
+    productData.append('specificationContent', product.specificationContent);
+    productData.append('fieldName', product.fieldName);
+    productData.append('fieldDes', product.fieldDes);
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    return this.http.patch('http://www.elroute.co.in/api/product/update/'+id,productData, {headers:headers});
+  }
 }
