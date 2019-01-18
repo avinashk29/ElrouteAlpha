@@ -31,11 +31,13 @@
           </div>
           <div class="user_following" routerLink="/Following">
               <p >Following</p>
-              <span >{{following}}</span>
+              <span *ngIf = "following ">{{following}}</span>
+              <span *ngIf = "!following">0</span>
             </div>
             <div class="user_following" routerLink = "/bookmark">
                 <p >Bookmark</p>
-                <span >{{bookmark}}</span>
+                <span *ngIf = "bookmark">{{bookmark}}</span>
+                <span *ngIf = "!bookmark">0</span>
               </div>
       </div>
       <button type="button"(click)= "onLogout()">Logout</button>
@@ -45,7 +47,8 @@
      <form [formGroup] = "feed" (ngSubmit) = "onAddpost()" *ngIf="haveCompany">
       <div class="about_feed" >
         <div class="about_feed1">
-        <input type="text" placeholder="Write your post here" formControlName = "Content">
+        <!-- <input type="texta" placeholder="Write your post here" formControlName = "Content"> -->
+        <textarea placeholder="Write your post here" formControlName = "Content"></textarea>
          </div>
         <div class="add_media">
          <div class="add_media1">

@@ -1,15 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {FeedService} from '../../Service/feed-service.service';
+import 'rxjs/add/operator/filter';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
   styleUrls: ['./b-page.component.css']
 })
-export class BPageComponent implements OnInit {
+export class BPageComponent implements OnInit , OnDestroy{
 
 
 one = true;
@@ -36,14 +37,87 @@ website;
 products;
 comapnyId;
 mycompanyId;
+type;
+feeds;
+subscription;
+url;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
-  public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute) {
-    this.comapnyId = this.route.snapshot.paramMap.get('id');
+  public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
+    this.subscription = this.router.events.subscribe(()=>{
+      this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas =>{
+        console.log(paramas);
+        this.type = paramas.urltype;
+        console.log(this.type);
+        
+        
+      });
+      this.comapnyId = this.storage.get('companyId');
+      if (this.type ='product'){
+        this.productService.getProduct(this.comapnyId).subscribe(res => {
+            this.products = JSON.parse(res['_body']);
+            console.log(JSON.parse(res['_body']));
+            console.log("i am working")
+                });
+        this.type = 'product';
+      }
+    })
+      
+    
+    
+  }
+
+  ngOnInit() {
+    this.comapnyId = this.storage.get('companyId');
+    this.feedService.token = this.storage.get('token');
+ 
+    console.log(this.comapnyId)
     console.log(this.comapnyId);
     this.companyService.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
-    this.token = this.storage.get('token');
+    this.token = this.storage.get('token')
+    this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas =>{
+      console.log(paramas);
+      this.type = paramas.urltype;
+      console.log(this.type);
+      
+      
+    });
+
+    // if (this.type ='product'){
+    //   this.productService.getProduct(this.comapnyId).subscribe(res => {
+    //       this.products = JSON.parse(res['_body']);
+    //       console.log(JSON.parse(res['_body']));
+    //       console.log("i am working")
+    //           });
+    //   this.type = 'product';
+    // }
+    this.items =  [
+      {name: 'https://picsum.photos/200/300'},
+      {name: 'https://picsum.photos/g/200/300'},
+      {name: 'https://picsum.photos/200/300?image=0'},
+      {name: 'https://picsum.photos/200/300/?blur'},
+      {name: 'https://picsum.photos/200/300/?random'},
+      {name: 'https://picsum.photos/200/300'},
+      {name: 'https://picsum.photos/g/200/300'},
+      {name: 'https://picsum.photos/200/300?image=0'},
+      {name: 'https://picsum.photos/200/300/?blur'},
+      {name: 'https://picsum.photos/200/300/?random'},
+      {name: 'https://picsum.photos/200/300'},
+      {name: 'https://picsum.photos/g/200/300'},
+      {name: 'https://picsum.photos/200/300?image=0'},
+      {name: 'https://picsum.photos/200/300/?blur'},
+      {name: 'https://picsum.photos/200/300/?random'},
+      {name: 'https://picsum.photos/200/300'},
+      {name: 'https://picsum.photos/g/200/300'},
+      {name: 'https://picsum.photos/200/300?image=0'},
+      {name: 'https://picsum.photos/200/300/?blur'},
+      {name: 'https://picsum.photos/200/300/?random'}
+  ];
+  this.feedService.GetFeed().subscribe(res => {
+    console.log(JSON.parse(res['_body']));
+    this.feeds =  JSON.parse(res['_body']);
+    });
     this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
       console.log(JSON.parse(res['_body'])._id);
       this.CompanyName = JSON.parse(res['_body']).companyName;
@@ -65,59 +139,20 @@ mycompanyId;
         console.log('diffrent Company');
       }
     });
-    this.items =  [
-        {name: 'https://picsum.photos/200/300'},
-        {name: 'https://picsum.photos/g/200/300'},
-        {name: 'https://picsum.photos/200/300?image=0'},
-        {name: 'https://picsum.photos/200/300/?blur'},
-        {name: 'https://picsum.photos/200/300/?random'},
-        {name: 'https://picsum.photos/200/300'},
-        {name: 'https://picsum.photos/g/200/300'},
-        {name: 'https://picsum.photos/200/300?image=0'},
-        {name: 'https://picsum.photos/200/300/?blur'},
-        {name: 'https://picsum.photos/200/300/?random'},
-        {name: 'https://picsum.photos/200/300'},
-        {name: 'https://picsum.photos/g/200/300'},
-        {name: 'https://picsum.photos/200/300?image=0'},
-        {name: 'https://picsum.photos/200/300/?blur'},
-        {name: 'https://picsum.photos/200/300/?random'},
-        {name: 'https://picsum.photos/200/300'},
-        {name: 'https://picsum.photos/g/200/300'},
-        {name: 'https://picsum.photos/200/300?image=0'},
-        {name: 'https://picsum.photos/200/300/?blur'},
-        {name: 'https://picsum.photos/200/300/?random'}
-    ];
 
+  }
+  showTwo() {
+    this.type = 'info';
+  }
+  showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body']);
     });
-  }
-
-  ngOnInit() {
-    // for (let i = 0; i < this.groups.length; i++) {
-    //   this.expand[i] = false;
-    //   console.log(this.expand[i]);
-    // }
-
-  }
-  showTwo() {
-    this.one = false;
-    this.two = true;
-    this.three = false;
-    this.four = false;
-  }
-  showThree() {
-    this.one = false;
-    this.two = false;
-    this.three = true;
-    this.four = false;
+    this.type = 'product';
   }
   showFour() {
-    this.one = false;
-    this.two = false;
-    this.three = false;
-    this.four = true;
+    this.type = 'contact';
   }
 
   // onExpand(i) {
@@ -128,5 +163,7 @@ mycompanyId;
   //     this.expand[i] = true;
   //   }
   // }
+ngOnDestroy(){
+  this.subscription.unsubscribe();
 }
-
+}

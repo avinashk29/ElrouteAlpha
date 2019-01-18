@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
@@ -8,18 +8,20 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 import {FormGroup , FormControl} from '@angular/forms';
 import {FeedService} from '../../Service/feed-service.service';
 import {CompanyServiceService} from '../../Service/company-service.service';
+import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
   styleUrls: ['./with-login.component.css']
 })
-export class WithLoginComponent implements OnInit {
+export class WithLoginComponent implements OnInit , OnDestroy{
 username;
 following;
 bookmark;
 location;
 companyName;
 haveCompany;
+subscription;
 feed = new FormGroup({
   Content: new FormControl(''),
 Image: new FormControl(' ')
@@ -27,6 +29,12 @@ Image: new FormControl(' ')
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
+    this.feedService.token = this.storage.get('token');
+    this.subscription = this.router.events.subscribe(() =>{
+        this.feedService.Getpost().subscribe(res =>{
+          console.log(res);
+        })
+    });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
    this.userService.getUserData().subscribe(res => {
@@ -68,9 +76,12 @@ Image: new FormControl(' ')
   }
   onLogout() {
     this.storage.remove('token');
+    this.storage.remove('companyId');
     this.router.navigate(['/']);
   }
-
+ngOnDestroy(){
+  this.subscription.unsubscribe();
+}
 }
 
 
