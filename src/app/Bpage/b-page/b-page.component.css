@@ -2,19 +2,25 @@
 section{
   width: 90%;
   margin: 0 auto;
-  margin-top: 4%;
+  margin-top: 5%; 
 
 }
 header{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  box-shadow: 0px 3px 10px #5555;
+ /* box-shadow: 0px 1px 7px #5555; */
+}
+.card1{
+  
+  width: 35%;
+  box-shadow: 0px 1px 7px #5555;
 }
 .card{
   display: flex;
-  width: 40%;
+  width: 100%;
   margin-top: 1%;
+  margin: 0 auto;
 }
 .card h1{
   text-align: center;
@@ -37,21 +43,21 @@ display: flex;
 }
 .follow-btn button{
   width: 70%;
-  height: 50px;
+  height: 40px;
   border: none;
   color: #fff;
   background-color: #333333;
-  font-size: 20px;
+  font-size: 16px;
 }
 .follow-btn span
 {
-  margin-left: 18%;
+  margin-left: 7%;
   font-size: 26px;
 }
 
 .extraInfo{
- width: 30%;
-  box-shadow: 0px 3px 10px #5555;
+ width: 60%;
+  
   padding: 0px 25px;
 
 }
@@ -81,24 +87,28 @@ display: flex;
   margin: 0;
   padding-top: 20px;
 }
+.headerImg1
+{
+  width: 65%;
+}
 .headerImg{
-  width: 60%;
+  width: 100%;
   height: 34vh;
-  background-color: #fff;
+  background-color: red;
   display: flex;
 }
 .logoheader{
-  width: 35%;
+  width: 35%; 
   height: 20%;
   /* background-color: darkseagreen; */
-
+ 
   top:50px;
   /* left: 35%; */
   padding: 22px 22px;
-
+  
 }
 .logoheader img{
-width: 100%;
+ width: 100%; 
 box-shadow: 0px 3px 10px #5555;
 }
 .img{
@@ -123,10 +133,10 @@ box-shadow: 0px 3px 10px #5555;
   height: 100%;
   width: 30%;
   background-color: white;
-  margin-left: 5%;
+  margin-left: 3vh;
   margin-right: 0%;
   transition: .2s;
-  box-shadow: 0px 3px 10px #5555;
+  box-shadow: 0px -3px 5px -2px #5555;
 }
 .tabClicked{
   height: 150%;
@@ -151,12 +161,14 @@ box-shadow: 0px 3px 10px #5555;
 }
 .shortBio{
   width: 27%;
-  box-shadow: 0px 3px 10px #5555;
+ 
+  box-shadow: 0px 1px 7px #5555;
   height: fit-content;
 }
 .bio{
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
+  padding: 8px 0;
 
 }
 .bio h2{
@@ -171,7 +183,7 @@ box-shadow: 0px 3px 10px #5555;
   height: 490px;
   display: block;
   margin-right: auto;
-  border: 1px solid #cccccc;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
   margin-right: 4%;
   margin-left: 3%;
 }
@@ -187,11 +199,12 @@ display: flex;
 .logo{
   width: 20%;
   height: 100%;
-  background-color: black;
+  /* background-color: black; */
 }
 .logo img{
   width: 100%;
   height: 100%;
+  padding: 10px;
 }
 .details h1{
   margin: 0;
@@ -227,7 +240,7 @@ display: flex;
   text-align: right;
 }
 .followBtn button{
-  width: 80%;
+  width: 95%;
   margin-top: 10px;
   background-color: green;
   color: #ffffff;
@@ -243,6 +256,8 @@ display: flex;
   margin-right: 10px;
   margin-bottom:  0;
   font-size: 10px;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 .feed-img{
   width: 100%;
@@ -331,7 +346,7 @@ font-size: 13px;
 .body1
 {
   box-shadow: 0px 3px 10px #5555;
-  margin-top: 6%;
+  margin-top: 4%;
   padding: 20px 0;
 }
 
@@ -339,8 +354,13 @@ font-size: 13px;
 {
   width: 80%;
   margin: 0 auto;
-
+  margin-bottom: 2%;
+    margin-top: 2%;
 }
+
+
+
+
 .comapany_contact h2
 {
   color: #070707;
@@ -468,7 +488,7 @@ font-size: 13px;
   .header_responsive
   {
       display:block;
-
+  
   }
   header
     {
@@ -488,12 +508,13 @@ font-size: 13px;
   margin-top: -13%;
   position: fixed;
   background-color: white;
+  z-index: 5;
 }
 .elements{
   width: 100%;
   height: 100%;
-  padding:10px 30px;
-
+  padding:10px 26px;
+  
 }
 .elements h4{
   margin: 0;
@@ -501,7 +522,7 @@ font-size: 13px;
 .headerImg {
   width: 100%;
   height: 34vh;
-  margin-top: 22%;
+  margin-top:34%;
   background-color: #ec1818;
   display: flex;
 }
@@ -526,6 +547,8 @@ font-size: 13px;
 }
 .tabClicked{
   border: solid 1px gray;
+  width: 22%;
+  font-size: 21px;
 }
 .extraInfo{
   width: 100%;
@@ -547,17 +570,17 @@ font-size: 13px;
   margin-top:2%;
 }
 .otherInfocard {
-
+   
   width: 100% ! important;
   margin-top: 10%;
 }
 .Card {
   width: 100% ! important;
-
+  
 }
 .infoSectonCard {
 
- display: block ! important;
+ display: block ! important; 
 }
 .infoSectonCard img {
   width: 100% ! important;
@@ -579,7 +602,7 @@ padding-top:0px;
 }
 .infoContent p{
   width: 100% ! important;
-
+  
 }
 .comapany_contact[_ngcontent-c1] {
   width: 96%;
@@ -607,20 +630,20 @@ width: 100%;
 .company_email[_ngcontent-c1] p[_ngcontent-c1] {
   width: 21%;
   color: #0A9AB1;
-  font-size: 15px;
+  font-size: 14px;
 }
 .company_email1 {
   width: 83%;
   MARGIN: 0 AUTO;
 }
 .company_email1   h2 {
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
 }
 .company_address {
   width: 94%;
   margin: 0 auto;
-   display: block;
+   display: block; 
 }
 .google_map {
 
@@ -630,7 +653,7 @@ width: 100%;
 .complete_address{
   font-size: 15px;
   width: 100%;
-}
+} 
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px){
@@ -689,19 +712,19 @@ width: 100%;
     font-size: 11px;
   }
   .tab h1 {
-
+   
     font-size: 25px;
   }
   .extraInfo {
     width: 40%;
   }
     .tab {
-
+    
       width: 26%;
-
+   
   }
   .company_details {
-
+   
     width: 100%;
 }
 .comapany_contact {
@@ -722,11 +745,11 @@ width: 100%;
 .company_address {
   width: 96%;
   margin: 0 auto;
-
+ 
 }
 .complete_address {
   width: 40%;
-
+ 
 }
 
 }
@@ -734,13 +757,14 @@ width: 100%;
   .with_login{
     width: 85%;
   }
-
+  
 }
 .otherInfocard{
   /* height: 10vh; */
   width: 30%;
   height: fit-content;
-  box-shadow: 0px 3px 10px #5555;
+
+  box-shadow: 0px 1px 7px #5555;
 }
 .infoCard{
   width: 90%;
@@ -769,7 +793,7 @@ label{
 }
 .infoImg{
   width: 100%;
-
+  
 
 }
 .infoImg img{
@@ -804,7 +828,7 @@ label{
 }
  .content{
   width: 33%;
-   box-shadow: 0px 3px 10px #5555;
+   box-shadow: 0px 3px 10px #5555; 
 }
 .Sectioncontent{
   width: 90%;
@@ -853,19 +877,6 @@ margin: 0 auto;
   flex-wrap: wrap;
   overflow: hidden;
   transition-duration: .5s ease-in-out;
-}
-.productAddbutton{
-  width: 50%;
-  margin: 0 auto;
-  background-color: red;
-}
-.productAddbutton button{
-  width: 100%;
-  height: 40px;
-  color: #FAF6F6;
-  text-transform: uppercase;
-  border: 1px solid #FAF6F6;
-  background-color:  #333333;
 }
 .expand{
   height: fit-content;
@@ -1080,3 +1091,4 @@ font-size: 13px;
     box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
   }
 }
+

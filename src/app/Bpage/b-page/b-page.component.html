@@ -34,15 +34,16 @@
       </div>
 
 <header>
-    <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
-      <g id="location" transform="translate(-486.5 -340.5)">
-        <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z" transform="translate(487.5 341.5)" fill="#fff" stroke="#bcbccb" stroke-width="2"/>
-        <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(490.988 345.299)" fill="#bcbccb" stroke="#bcbccb" stroke-width="2">
-          <circle cx="3.778" cy="3.778" r="3.778" stroke="none"/>
-          <circle cx="3.778" cy="3.778" r="2.778" fill="none"/>
-        </g>
-      </g>
-    </svg><span style="margin-left:10px;">{{country}}</span></h1>
+    <div class="card1">
+        <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
+          <g id="location" transform="translate(-486.5 -340.5)">
+            <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z" transform="translate(487.5 341.5)" fill="#fff" stroke="#bcbccb" stroke-width="2"/>
+            <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(490.988 345.299)" fill="#bcbccb" stroke="#bcbccb" stroke-width="2">
+              <circle cx="3.778" cy="3.778" r="3.778" stroke="none"/>
+              <circle cx="3.778" cy="3.778" r="2.778" fill="none"/>
+            </g>
+          </g>
+        </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader">
             <img src="assets/images/logo.png">
@@ -58,6 +59,23 @@
                 </div>
               </div>
         </div>
+        <div class="extraInfo">
+            <p>9 A.M. - 5 P.M.</p>
+            <p>{{website}}</p>
+        
+            <div class="social">
+                <div class="social_links">
+                    <span><img src="assets/images/linkdin.png"></span>
+                    <span><img src="assets/images/linkdin.png"></span>
+                    <span><img src="assets/images/linkdin.png"></span>
+                </div>
+        
+                <div class="social_bookmark">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+                </div>
+              </div>
+          </div>
+        </div> 
 
             <!-- <div class="logoheader"></div>
       <h1>Company Ka Naam</h1>
@@ -75,41 +93,29 @@
       <div class="social">
 
       </div> -->
+      <div class="headerImg1">
       <div class="headerImg">
           <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
              <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
 
       </div>
+      <div class="card-left">
+          <!-- <div class="headerImg">
+              <h3>CATEGORY</h3>
+          
+          <div class="img"></div>
+          </div> -->
+          
+          <div class="tabs">
+          <div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
+          <div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
+          <div class="tab" (click)="showFour()" [ngClass]="{'tabClicked': four}"><h1>CONTACT</h1></div>
+          </div>
+          </div>
+         </div> 
 
 </header>
-<div class="card-left">
-<!-- <div class="headerImg">
-    <h3>CATEGORY</h3>
 
-<div class="img"></div>
-</div> -->
-<div class="extraInfo">
-    <p>9 A.M. - 5 P.M.</p>
-    <p>{{website}}</p>
-
-    <div class="social">
-        <div class="social_links">
-            <span><img src="assets/images/linkdin.png"></span>
-            <span><img src="assets/images/linkdin.png"></span>
-            <span><img src="assets/images/linkdin.png"></span>
-        </div>
-
-        <div class="social_bookmark">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
-        </div>
-      </div>
-  </div>
-<div class="tabs">
-<div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
-<div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
-<div class="tab" (click)="showFour()" [ngClass]="{'tabClicked': four}"><h1>CONTACT</h1></div>
-</div>
-</div>
 
 <div class="body" *ngIf="one">
   <div class="infoSection1">
@@ -126,8 +132,8 @@
                <div class="logo">
                  <img src="https://picsum.photos/500/300/?random">
                </div>
-               <div class="info">
-              <h1>Company Name</h1>
+               <div class="info" style="border:none;">
+              <h1>CompanyName</h1>
               <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">Industry</p>
               <p style="line-height: 3px;margin-bottom: 10px;">Location</p>
              </div>
@@ -352,9 +358,76 @@
   </div>
 <!-- </div>
 </div> -->
-<div class="body" *ngIf="four"></div>
+<div class="body1" *ngIf="four">
+
+  <div class="comapany_contact">
+          <h2>Company Divisions</h2>
+  </div> 
+<div class="company_details">
+    <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p>abc@infotech.com</p>
+       </div> 
+          <div class="company_email1">
+           <h2>Sales Division</h2>
+         </div> 
+     </div>
+     <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+               <p>abc@infotech.com</p>       
+       </div> 
+          <div class="company_email1">
+           <h2>Marketing Division</h2>
+         </div> 
+     </div>
+</div> 
+<div class="company_details">
+    <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p>abc@infotech.com</p>
+       </div> 
+          <div class="company_email1">
+           <h2>HR Division</h2>
+         </div> 
+     </div>
+     <div class="company_details1">
+        <div class="company_email">
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+               <p>abc@infotech.com</p>       
+       </div> 
+          <div class="company_email1">
+           <h2>Technical Division</h2>
+         </div> 
+     </div>
+      
+
+ </div>
+    <div class="comapany_contact">
+        <h2>Company Office</h2>
+      </div> 
+  <div class="company_address">
+      <div class="google_map">
+          Google Map here
+        </div> 
+        <div class="complete_address">
+          <p>India Address </p>
+          <p>277, Mahaveer Nagar 2, Maharani Farm, Gayatri Nagar A, Durgapura, Jaipur, Rajasthan 302020</p>
+          <p>Email:-</p>
+          <p>info@naturaldyes.in</p>
+          
+          </div>  
+  </div>
+</div>
 
 
 
 
 </section>
+
+
+
+
+

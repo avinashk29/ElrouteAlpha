@@ -75,9 +75,35 @@ const companyFormData = new FormData();
     headers.append('x-auth', this.token);
     return this.http.get('http://www.elroute.co.in/api/company', {headers: headers});
   }
+  //GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
     return this.http.get('http://www.elroute.co.in/api/company/'+id, id);
+  }
+  //updatCompany method is using to update data of company in database*/
+  UpdateCompany(id,company){
+    const headers = new Headers();
+    const companyFormData = new FormData();
+    companyFormData.append('companyName', company.companyName);
+    companyFormData.append('country', company.country);
+    companyFormData.append('city', company.city);
+    companyFormData.append('companyEmail', company.companyEmail);
+    companyFormData.append('industry', company.industry);
+    companyFormData.append('category' , company.category);
+
+    companyFormData.append('website', company.website);
+    companyFormData.append('companyType', company.companyType);
+    companyFormData.append('image', company.image);
+    companyFormData.append('companySize', company.companySize);
+    companyFormData.append('yearEstd', company.yearEstd);
+
+      companyFormData.append('address', company.address);
+      companyFormData.append('city', company.city);
+      companyFormData.append('zipcode', company.zipCode);
+      companyFormData.append('landline', company.landLine);
+      companyFormData.append('mobile', company.mobile);
+      headers.append('x-auth', this.token);
+    return this.http.patch('http://www.elroute.co.in/api/company/update/'+id,company,{headers:headers})
   }
 //   searchResult(query){
 //     return this.http.get('http://www.elroute.co.in/api/search/'+query);

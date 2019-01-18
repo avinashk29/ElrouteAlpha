@@ -17,6 +17,7 @@ import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 import {AuthGuardService} from './guards/auth-guard.service';
 import {CompanyGuardService} from './guards/company-guard.service';
+import { CompanEditComponent } from './Company/compan-edit/compan-edit.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
@@ -33,6 +34,7 @@ const routes: Routes = [
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
+    {path:'editcompany',component:CompanEditComponent}
 
   // {path: 'feed ' , component: fee}
 ];

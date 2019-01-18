@@ -97,10 +97,7 @@ ShowPrev2(){
             }
 
            });
-
-
            this.Id = this.storage.get('companyId');
-
       this.router.navigate(['/companyPage/' + this.Id]);
       this.notification.success('Welcome' + this.companyForm.value.companyName);
     } else {
