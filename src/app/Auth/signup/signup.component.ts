@@ -89,5 +89,7 @@ onSubmit() {
     });
 
  console.log(this.error);
+  }});
+    };
   }
-}
+
