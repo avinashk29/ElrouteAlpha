@@ -14,7 +14,7 @@ import { Route } from '@angular/compiler/src/core';
   templateUrl: './with-login.component.html',
   styleUrls: ['./with-login.component.css']
 })
-export class WithLoginComponent implements OnInit , OnDestroy{
+export class WithLoginComponent implements OnInit , OnDestroy {
 username;
 following;
 bookmark;
@@ -30,11 +30,11 @@ Image: new FormControl(' ')
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
-    this.subscription = this.router.events.subscribe(() =>{
-        this.feedService.Getpost().subscribe(res =>{
-          console.log(res);
-        })
-    });
+    // this.subscription = this.router.events.subscribe(() =>{
+    //     this.feedService.Getpost().subscribe(res =>{
+    //       console.log(res);
+    //     })
+    // });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
    this.userService.getUserData().subscribe(res => {

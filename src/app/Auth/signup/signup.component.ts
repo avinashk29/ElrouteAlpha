@@ -67,13 +67,13 @@ onSubmit() {
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
 //      /*-----------------------*/
-      this.userService.getUserData().subscribe(res=>{
-   this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-   this.storage.set('Location',JSON.parse(res['_body']).Location);
-   this.username=this.storage.get('UserName');
-   console.log(this.username);
-   console.log(JSON.parse(res['_body']));
-  })
+  //     this.userService.getUserData().subscribe(res=>{
+  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
+  //  this.username=this.storage.get('UserName');
+  //  console.log(this.username);
+  //  console.log(JSON.parse(res['_body']));
+  // })
 //      /*---------------------*/
      this.router.navigate(['/Dashboard']);
      this.notification.success('LogIn Successful');

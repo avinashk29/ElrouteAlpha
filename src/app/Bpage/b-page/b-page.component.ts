@@ -43,33 +43,33 @@ subscription;
 url;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
-    this.subscription = this.router.events.subscribe(()=>{
-      this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas =>{
+    this.subscription = this.router.events.subscribe(() => {
+      this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         console.log(paramas);
         this.type = paramas.urltype;
         console.log(this.type);
-        
-        
+
+
       });
       this.comapnyId = this.storage.get('companyId');
-      if (this.type ='product'){
+      if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
             console.log(JSON.parse(res['_body']));
-            console.log("i am working")
+            console.log('i am working');
                 });
         this.type = 'product';
       }
     })
-      
-    
-    
+
+
+
   }
 
   ngOnInit() {
     this.comapnyId = this.storage.get('companyId');
     this.feedService.token = this.storage.get('token');
- 
+
     console.log(this.comapnyId)
     console.log(this.comapnyId);
     this.companyService.token = this.storage.get('token');
@@ -80,8 +80,8 @@ url;
       console.log(paramas);
       this.type = paramas.urltype;
       console.log(this.type);
-      
-      
+
+
     });
 
     // if (this.type ='product'){
