@@ -48,9 +48,9 @@ onEdit() {
     Location : this.editForm.value.Location,
     Email: this.editForm.value.Email,
     Title: this.editForm.value.Title,
-    Facebook: new FormControl(''),
-    Linkedin: new FormControl(''),
-    Twitter: new FormControl('')
+    // Facebook: new FormControl(''),
+    // Linkedin: new FormControl(''),
+    // Twitter: new FormControl('')
   });
   console.log(this.editForm.value);
   this.userService.editUser(this.editForm.value).subscribe(res => {

@@ -14,7 +14,7 @@ import { Route } from '@angular/compiler/src/core';
   templateUrl: './with-login.component.html',
   styleUrls: ['./with-login.component.css']
 })
-export class WithLoginComponent implements OnInit , OnDestroy {
+export class WithLoginComponent implements OnInit {
 username;
 following;
 bookmark;
@@ -22,6 +22,7 @@ location;
 companyName;
 haveCompany;
 subscription;
+shortBio;
 feed = new FormGroup({
   Content: new FormControl(''),
 Image: new FormControl(' ')
@@ -37,10 +38,13 @@ Image: new FormControl(' ')
     // });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
-   this.userService.getUserData().subscribe(res => {
-     console.log(JSON.parse(res['_body']));
+    this.userService.getUserData().subscribe(res => {
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
+      console.log('location is '+this.location);
+      this.shortBio = JSON.parse(res['_body']).ShortBio;
+      console.log(JSON.parse(res['_body']));
+      console.log(this.shortBio)
    //s/   this.following = JSON.parse(res['_body']).Following.company.length;
     //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
@@ -51,9 +55,12 @@ Image: new FormControl(' ')
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
     // })
-    this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
-      this.companyName = (JSON.parse(res['_body']).companyName);
-    });
+    if (this.haveCompany){
+      this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
+        this.companyName = (JSON.parse(res['_body']).companyName);
+      });
+    }
+    
     }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -77,9 +84,9 @@ Image: new FormControl(' ')
     this.storage.remove('companyId');
     this.router.navigate(['/']);
   }
-ngOnDestroy(){
-  this.subscription.unsubscribe();
-}
+// ngOnDestroy(){
+//   this.subscription.unsubscribe();
+// }
 }
 
 
