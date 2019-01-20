@@ -8,9 +8,9 @@
     <div class="overview">
 
         <div class="profile">
-
             <div class="follower_user">
                 <div class="follower_location">
+                        <button (click) = "openDialog()" type="button"> Edit</button>
                     <span>{{location}}</span>
                 </div>
                 <div class="follower_img">
@@ -40,7 +40,7 @@
                         <img src="assets/images/user.png">
                     </div>
                     <div class="company_name">
-                        <h4> ELroute pvt.ltd.</h4>
+                        <h4>{{companyName}}</h4>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                           <img src="assets/images/user.png">
                     </div>
                     <div class="company_name">
-                        <h4> ELroute pvt.ltd.</h4>
+                        <h4>{{companyName}}</h4>
                   </div>
                 </div>
                     <div class="followBtn">

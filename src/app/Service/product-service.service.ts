@@ -26,10 +26,10 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://www.elroute.co.in/api/product', productData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/product', productData, {headers: headers});
   }
   getProduct(id) {
-    return this.http.get('http://www.elroute.co.in/api/product/company/'+id);
+    return this.http.get('http://localhost:8080/api/product/company/'+id);
   }
 
   getOneProduct(id){
@@ -54,6 +54,6 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.patch('http://www.elroute.co.in/api/product/update/'+id,productData, {headers:headers});
+    return this.http.patch('http://www.elroute.co.in/api/product/update/'+id,productData,{headers:headers});
   }
 }

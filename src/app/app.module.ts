@@ -128,7 +128,8 @@ import { ProductComponent } from './Product/product/product.component';
   ],
   entryComponents: [
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    EditComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService],
