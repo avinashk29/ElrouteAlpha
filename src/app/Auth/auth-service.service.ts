@@ -4,6 +4,7 @@ import { Http , Headers} from '@angular/http';
   providedIn: 'root'
 })
 export class AuthServiceService {
+<<<<<<< HEAD
 // token;
 //   constructor(private http: Http) { }
 //   signup(user) {
@@ -12,4 +13,14 @@ export class AuthServiceService {
 //   login(user) {
 //     return this.http.post('http://localhost:3000/auth/login', user);
 //   }
+=======
+token;
+  constructor(private http: Http) { }
+  signup(user) {
+    return this.http.post('http://localhost:8080/api/auth/signup', user);
+  }
+  login(user) {
+    return this.http.post('http://localhost:8080/api/auth/login', user);
+  }
+>>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
 }

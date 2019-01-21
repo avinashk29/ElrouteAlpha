@@ -31,19 +31,25 @@ export class CompanyFormComponent implements OnInit {
    yearEstd: new FormControl(''),
    address: new FormControl(''),
   // city: new FormControl(''),
+  shortIntro: new FormControl(''),
   zipCode: new FormControl(''),
   landLine: new FormControl(''),
   mobile: new FormControl('')
   }) ;
   submitted: boolean;
   imagePreview;
-
+companyId;
+urltype;
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
    public notification: ToastrService) {
- if (this.Id != null) {
-   this.router.navigate(['/companyPage']);
- }
+this.companyId = this.storage.get('companyId');
+if (this.companyId) {
+this.router.navigate(['/companyPage/' + this.companyId] ,{queryParams:{urltype:'default'}});
+}
+//  if (this.Id != null) {
+//    this.router.navigate(['/companyPage']);
+//  }
    }
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
@@ -86,13 +92,20 @@ ShowPrev2(){
       const companyData = this.companyForm.value;
       console.log(this.token);
           this.companyService.addCompany(companyData).subscribe(res => {
-           this.storage.set('companyId' , JSON.parse(res['_body'])._id);
-            console.log(this.Id);
-            this.companyService.Id =  this.storage.get('comapnyId');
+            if (res) {
+            
+              console.log(JSON.parse(res['_body']));
+              this.storage.set('companyId' , JSON.parse(res['_body'])._id);
+              this.Id = this.storage.get('companyId');
+              console.log(this.Id)
+              this.router.navigate(['/companyPage/' + this.Id ],{queryParams:{urltype:'default'}});
+            }
+          
            });
-           this.Id = this.storage.get('companyId');
-           console.log(this.Id);
-      this.router.navigate(['/companyPage/' + this.Id]);
+
+
+         
+     
       this.notification.success('Welcome' + this.companyForm.value.companyName);
     } else {
       this.notification.error('Enter Valid Deatils');

@@ -15,6 +15,7 @@ export class ProductFormComponent implements OnInit {
   productInfoForm: FormGroup;
   imagePreview;
   companyId;
+  urltype;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
@@ -78,7 +79,7 @@ export class ProductFormComponent implements OnInit {
       this.productService.addProduct(productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
       });
-      this.router.navigate(['/companyPage/' + this.companyId ]);
+      this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');
     } else {
       this.notification.error('Enter Valid Deatils');

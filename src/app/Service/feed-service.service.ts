@@ -7,9 +7,25 @@ import { Http, Headers } from '@angular/http';
 export class FeedService {
     token;
     constructor(public http: Http) {}
-    GetFeed(id) {
+    AddFeed(feed) {
+      const headers = new Headers();
+      headers.append('x-auth', this.token);
+      console.log(this.token);
+      const formData = new FormData();
+         formData.append('Content', feed.Content);
+         formData.append('Image' , feed.Image);
+         return this.http.post('http://localhost:8080/api/post', formData, {headers: headers});
+    }
+    GetFeed() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
-        return this.http.get('http://localhost:3000/feed/' + id, {headers: headers});
+        console.log(this.token);
+        return this.http.get('http://localhost:8080/api/post', {headers: headers})
+    }
+    Getpost(){
+        const headers = new Headers();
+        headers.append('x-auth', this.token);
+        console.log(this.token);
+        return this.http.get('http://localhost:8080/api/feed', {headers: headers})
     }
 }

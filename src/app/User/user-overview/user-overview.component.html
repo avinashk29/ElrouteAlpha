@@ -2,15 +2,15 @@
 <app-header></app-header>
 <div  class="heading">
     <h2 style="width: 70%;">Overview</h2>
-    <h2 style="width: 40%;">Following</h2>
+    <h2 style="width: 40%;" *ngIf = "haveCompany">Following</h2>
 </div>
 <div class="bookmark_overview" >
     <div class="overview">
 
         <div class="profile">
-
             <div class="follower_user">
                 <div class="follower_location">
+                        <button (click) = "openDialog()" type="button"> Edit</button>
                     <span>{{location}}</span>
                 </div>
                 <div class="follower_img">
@@ -29,18 +29,24 @@
             </div>
         </div>
         <div class="Bio">
+                <button (click)= "editBio()" style="float:right" type="button">Edit</button>
             <p style="text-align:center"> BIO</p>
-            <div class="follower_des">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book. </p>
+            
+            <div class="follower_des" *ngIf="!bioEdit"> 
+                <p>{{this.userBio}} </p>
             </div>
+            <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()"> 
+                    <textarea formControlName= "ShortBio" value = {{this.userBio}}></textarea>
+                    <button type="submit" (click) = "addBio()">Save Changes</button>
+            </div>
+
             <div class="follower_company">
                 <div class="company">
-                    <div class="company_logo">
+                    <div class="company_logo" *ngIf = "haveCompany">
                         <img src="assets/images/user.png">
                     </div>
                     <div class="company_name">
-                        <h4> ELroute pvt.ltd.</h4>
+                        <h4>{{companyName}}</h4>
                     </div>
                 </div>
             </div>
@@ -66,7 +72,7 @@
     </div>
     <div class="bookmark_following">
 
-        <div class="following_nub">
+        <div class="following_nub" *ngIf="haveCompany">
             <div class="user_img">
                 <img src="assets/images/following.png">
             </div>
@@ -79,11 +85,8 @@
 
         </div>
         <div class="b_page_btn">
-<<<<<<< HEAD
-            <button (click)="createBPage()">Create  Your B page</button>
-=======
-            <button routerLink = "/B-page">Create  Your B page</button>
->>>>>>> 93818d0423ca219aeafc61630a199f5dcb78d258
+            <button *ngIf = "!haveCompany" routerLink = "/B-page">Create  Your B page</button>
+            <button *ngIf = "haveCompany" routerLink = "/companyPage/{{companyId}}" [queryParams]="{ urltype: 'default'}">Go to  Company</button>
         </div>
     </div>
 
@@ -119,7 +122,7 @@
                           <img src="assets/images/user.png">
                     </div>
                     <div class="company_name">
-                        <h4> ELroute pvt.ltd.</h4>
+                        <h4>{{companyName}}</h4>
                   </div>
                 </div>
                     <div class="followBtn">

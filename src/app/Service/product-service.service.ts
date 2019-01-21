@@ -26,10 +26,10 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:3000/product', productData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/product', productData, {headers: headers});
   }
   getProduct(id) {
-    return this.http.get('http://localhost:3000/product/company/'+id);
+    return this.http.get('http://localhost:8080/api/product/company/'+id);
   }
 
 }

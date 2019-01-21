@@ -10,15 +10,15 @@ export class CompanyServiceService {
   Id;
   constructor(private http: Http) { }
   // signup(user) {
-  //  return this.http.post('http://localhost:3000/auth/signup', user);
+  //  return this.http.post('http://localhost:8080/api/auth/signup', user);
   // }
   // login(user) {
-  //   return this.http.post('http://localhost:3000/auth/login', user);
+  //   return this.http.post('http://localhost:8080/api/auth/login', user);
   // }
   // onEditUser(user) {
   // const headers = new Headers();
   // headers.append('x-auth', this.token);
-  //   return this.http.patch('http://localhost:3000/user/update', user, {headers: headers});
+  //   return this.http.patch('http://localhost:8080/api/user/update', user, {headers: headers});
   // }
   addCompany(company) {
     const headers = new Headers();
@@ -44,7 +44,7 @@ const companyFormData = new FormData();
       companyFormData.append('mobile', company.mobile);
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:3000/company', companyFormData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
 
   }
 // addCompany3(company){
@@ -57,19 +57,20 @@ const companyFormData = new FormData();
 //       companyFormData.append('landline',company.landLine);
 //       companyFormData.append('mobile',company.mobile);
 //       // headers.append('x-auth', this.token);
-//       return this.http.patch('http://localhost:3000/company/update/' ,companyFormData , {headers: headers});
+//       return this.http.patch('http://localhost:8080/api/company/update/' ,companyFormData , {headers: headers});
 // }
   // showComapny(){
   //   const headers=new Headers();
   //   headers.append('x-auth',this.token);
-  //   return this.http.get('http://localhost:3000/company',{headers: headers});
+  //   return this.http.get('http://localhost:8080/api/company',{headers: headers});
   // }
 
   // OneditCompany(company,id) {
   //   const headers = new Headers();
   //   headers.append('x-auth', this.token);
-  //   return this.http.patch('http://localhost:3000/company/update/' + id, company, {headers: headers});
+  //   return this.http.patch('http://localhost:8080/api/company/update/' + id, company, {headers: headers});
   // }
+<<<<<<< HEAD
                                                                             // GetCompany() {
                                                                             //   const headers = new Headers();
                                                                             //   headers.append('x-auth', this.token);
@@ -79,63 +80,74 @@ const companyFormData = new FormData();
                                                                             //   console.log(id);
                                                                             //   return this.http.get('http://localhost:3000/company/'+id, id);
                                                                             // }
+=======
+  GetCompany() {
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/company', {headers: headers});
+  }
+  GetoneCompany(id) {
+    console.log(id);
+    return this.http.get('http://localhost:8080/api/company/'+id, id);
+  }
+>>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
 //   searchResult(query){
-//     return this.http.get('http://localhost:3000/search/'+query);
+//     return this.http.get('http://localhost:8080/api/search/'+query);
 //   }
 
 //   addFeed(post){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.post('http://localhost:3000/post',post,{headers:headers});
+//     return this.http.post('http://localhost:8080/api/post',post,{headers:headers});
 //   }
 
 //   getFeed(){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:3000/post', {headers: headers});
+//     return this.http.get('http://localhost:8080/api/post', {headers: headers});
 //   }
 //   onEditPost(post,id){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.patch('http://localhost:3000/post/update/'+id,post, {headers: headers});
+//     return this.http.patch('http://localhost:8080/api/post/update/'+id,post, {headers: headers});
 //   }
 //   Followers(companyName){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.patch('http://localhost:3000/company/follow',companyName, {headers: headers});
+//     return this.http.patch('http://localhost:8080/api/company/follow',companyName, {headers: headers});
 //   }
 //   showFollowers(){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:3000/user/followers', {headers: headers});
+//     return this.http.get('http://localhost:8080/api/user/followers', {headers: headers});
 //   }
 //   GetServices(type){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:3000/service/'+type, {headers: headers});
+//     return this.http.get('http://localhost:8080/api/service/'+type, {headers: headers});
 
 //   }
 //   GetProduct(){
 //     const headers=new Headers();
 //     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:3000/product', {headers: headers});
+//     return this.http.get('http://localhost:8080/api/product', {headers: headers});
 //   }
 //   bookMark(id) {
 //     const headers = new Headers();
 //     headers.append('x-auth', this.token);
-//     return this.http.patch('http://localhost:3000/bookmark/product/'+id, {headers: headers});
+//     return this.http.patch('http://localhost:8080/api/bookmark/product/'+id, {headers: headers});
 //   }
 
 // download() {
 //   const headers = new Headers();
 //   headers.append('x-auth', this.token);
 
-//   return this.http.get('http://localhost:3000/bookmarksave', {headers: headers});
+//   return this.http.get('http://localhost:8080/api/bookmarksave', {headers: headers});
 // }
 
 companyFollowing(id){
   const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('http://localhost:3000/company/follow/'+id, {headers: headers});
+    return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
 }
 }
