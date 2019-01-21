@@ -5,9 +5,10 @@
 }
 
 .login_user {
-    width: 15%;
+    width: 16%;
     float: left;
-    box-shadow: 0 5px 5px 5px rgba(25, 25, 25, 0.2);
+    box-shadow: 0 2px 10px 2px rgba(25, 25, 25, 0.2);
+    
 }
 
 .user_name {
@@ -19,7 +20,6 @@
 .user_name h2 {
     font-size: 15px;
     color: #FAF6F6;
-    margin-top: -2px;
     float: left;
 }
 
@@ -41,7 +41,7 @@
 
 .user_details1 {
     padding: 8px 15px;
-    height: 20px;
+    display: flex;
     border-bottom: solid 1px gray;
 }
 
@@ -50,6 +50,7 @@
     color: #707070;
     margin-top: -2px;
     float: left;
+    width: 75%;
 }
 
 .user_details1 span {
@@ -61,7 +62,6 @@
 
 .user_following {
     padding: 10px 30px;
-    height: 20px;
     border-bottom: solid 1px gray;
 }
 
@@ -97,7 +97,7 @@
 
 .about_feed {
     margin: 0 10px;
-    box-shadow: 0px 5px 5px rgba(25, 25, 25, 0.2);
+    box-shadow: 0px 2px 5px rgba(25, 25, 25, 0.2);
     border: solid 1px gray;
 }
 
@@ -255,7 +255,7 @@ section {
 }
 
 .followBtn button {
-    width: 80%;
+    width: 100%;
     margin-top: 10px;
     background-color: green;
     color: #ffffff;
@@ -323,6 +323,21 @@ mat-panel-title h4 {
     margin: 0;
     font-size: 14px;
     font-weight: 100;
+}
+.logout_btn
+{
+   
+        width: 45%;
+        margin: 4px;
+        background-color: green;
+        color: #ffffff;
+        font-weight: 600;
+        height: 25px;
+        border-radius: 4px;
+        border: none;
+        /* margin-left: 10px; */
+        float: right;
+    
 }
 
 @media screen and (max-width:700px) {

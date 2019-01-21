@@ -2,7 +2,7 @@
 section{
   width: 90%;
   margin: 0 auto;
-  margin-top: 4%;
+  margin-top: 4%; 
 
 }
 header{
@@ -91,11 +91,11 @@ display: flex;
   width: 35%;
   height: 20%;
   /* background-color: darkseagreen; */
-
+ 
   top:50px;
   /* left: 35%; */
   padding: 22px 22px;
-
+  
 }
 .logoheader img{
 width: 100%;
@@ -468,7 +468,7 @@ font-size: 13px;
   .header_responsive
   {
       display:block;
-
+  
   }
   header
     {
@@ -492,8 +492,8 @@ font-size: 13px;
 .elements{
   width: 100%;
   height: 100%;
-  padding:10px 30px;
-
+  padding:10px 26px;
+  
 }
 .elements h4{
   margin: 0;
@@ -547,17 +547,17 @@ font-size: 13px;
   margin-top:2%;
 }
 .otherInfocard {
-
+   
   width: 100% ! important;
   margin-top: 10%;
 }
 .Card {
   width: 100% ! important;
-
+  
 }
 .infoSectonCard {
 
- display: block ! important;
+ display: block ! important; 
 }
 .infoSectonCard img {
   width: 100% ! important;
@@ -579,7 +579,7 @@ padding-top:0px;
 }
 .infoContent p{
   width: 100% ! important;
-
+  
 }
 .comapany_contact[_ngcontent-c1] {
   width: 96%;
@@ -620,7 +620,7 @@ width: 100%;
 .company_address {
   width: 94%;
   margin: 0 auto;
-   display: block;
+   display: block; 
 }
 .google_map {
 
@@ -630,7 +630,7 @@ width: 100%;
 .complete_address{
   font-size: 15px;
   width: 100%;
-}
+} 
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px){
@@ -689,19 +689,19 @@ width: 100%;
     font-size: 11px;
   }
   .tab h1 {
-
+   
     font-size: 25px;
   }
   .extraInfo {
     width: 40%;
   }
     .tab {
-
+    
       width: 26%;
-
+   
   }
   .company_details {
-
+   
     width: 100%;
 }
 .comapany_contact {
@@ -722,11 +722,11 @@ width: 100%;
 .company_address {
   width: 96%;
   margin: 0 auto;
-
+ 
 }
 .complete_address {
   width: 40%;
-
+ 
 }
 
 }
@@ -734,7 +734,7 @@ width: 100%;
   .with_login{
     width: 85%;
   }
-
+  
 }
 .otherInfocard{
   /* height: 10vh; */
@@ -769,7 +769,7 @@ label{
 }
 .infoImg{
   width: 100%;
-
+  
 
 }
 .infoImg img{
@@ -804,7 +804,7 @@ label{
 }
  .content{
   width: 33%;
-   box-shadow: 0px 3px 10px #5555;
+   box-shadow: 0px 3px 10px #5555; 
 }
 .Sectioncontent{
   width: 90%;
@@ -853,19 +853,6 @@ margin: 0 auto;
   flex-wrap: wrap;
   overflow: hidden;
   transition-duration: .5s ease-in-out;
-}
-.productAddbutton{
-  width: 50%;
-  margin: 0 auto;
-  background-color: red;
-}
-.productAddbutton button{
-  width: 100%;
-  height: 40px;
-  color: #FAF6F6;
-  text-transform: uppercase;
-  border: 1px solid #FAF6F6;
-  background-color:  #333333;
 }
 .expand{
   height: fit-content;
@@ -1080,3 +1067,7 @@ font-size: 13px;
     box-shadow: 0 2px 2px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
   }
 }
+
+
+
+

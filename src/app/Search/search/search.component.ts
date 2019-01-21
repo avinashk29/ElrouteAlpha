@@ -70,9 +70,9 @@ showProduct(id) {
 //  console.log(JSON.parse(res['_body']));
 // });
 }
-openCompany(id) {
-this.companyService.GetoneCompany(id).subscribe(res => {
-  console.log(res.json);
-});
-}
+// openCompany(id) {
+// this.companyService.GetoneCompany(id).subscribe(res => {
+//   console.log(res.json);
+// });
+// }
 }

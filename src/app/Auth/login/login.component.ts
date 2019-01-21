@@ -10,33 +10,33 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-login = new FormGroup({
-  Email: new FormControl(''),
-  Password: new FormControl('')
-});
-error = true;
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
-  public router: Router, public notification: ToastrService) { }
+// login = new FormGroup({
+//   Email: new FormControl(''),
+//   Password: new FormControl('')
+// });
+// error = true;
+//   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
+//   public router: Router, public notification: ToastrService) { }
 
   ngOnInit() {
   }
-onSubmit() {
- const loginValues = this.login.value;
- this.authService.login(loginValues).subscribe(res => {
-  console.log(JSON.parse(res['_body']));
-  this.error = false;
-  if (!this.error) {
-    this.storage.set('token', res.headers.get('x-auth'));
-  this.storage.set('companyId', JSON.parse(res['_body']).Company_id[0]);
-  this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
-  this.router.navigate(['/Dashboard']);
-  this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);
-  } else {
-    this.notification.error('Error Login');
-  }
+// onSubmit() {
+//  const loginValues = this.login.value;
+//  this.authService.login(loginValues).subscribe(res => {
+//   console.log(JSON.parse(res['_body']));
+//   this.error = false;
+//   if (!this.error) {
+//     this.storage.set('token', res.headers.get('x-auth'));
+//   this.storage.set('companyId', JSON.parse(res['_body']).Company_id[0]);
+//   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
+//   this.router.navigate(['/Dashboard']);
+//   this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);
+//   } else {
+//     this.notification.error('Error Login');
+//   }
 
- });
+//  });
 
-}
+// }
 
 }
