@@ -259,6 +259,9 @@ url;
     });
 
   }
+  editProduct(id){
+    this.router.navigate(['/productEdit/' +id]);
+  }
   showTwo() {
     this.type = 'info';
   }

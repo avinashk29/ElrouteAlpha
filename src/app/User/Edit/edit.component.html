@@ -1,4 +1,4 @@
-<div class="sigup-form">
+<!--<div class="sigup-form">
   <h2>
     EDIT
   </h2>
@@ -8,8 +8,13 @@
    <li>
   <div class="first-field">
     <div class="Uname">
+<<<<<<< HEAD
+    <input type="text" placeholder="NAME" formControlName="UserName" name="UserName" [ngClass]="{'error': !signupForm.get('UserName').valid && signupForm.get('UserName').touched }">
+    <span *ngIf="!signupForm.get('UserName').valid && signupForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span> 
+=======
     <input type="text" placeholder="NAME" formControlName="UserName" name="UserName" value = {{this.username}}>
     <!-- <span *ngIf="!editForm.get('UserName').valid && editForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span> -->
+>>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
     </div>
     <div class="Ulocation">
       <select formControlName="Location" name="Location" value = {{this.location}}>
@@ -20,14 +25,19 @@
 </li>
 <li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="Title" name="Title" value = {{this.title}}></li>
 
+<<<<<<< HEAD
+<li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="Email" name="Email" [ngClass]="{'error': !signupForm.get('Email').valid && signupForm.get('Email').touched }" ></li>
+ <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !signupForm.get('Password').valid && signupForm.get('Password').touched }" ></li> 
+=======
 <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="Email" name="Email"  value = {{this.email}}></li>
 <!-- <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !editForm.get('Password').valid && editForm.get('Password').touched }" ></li> -->
+>>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
 <li class="form-elements"><input type="text" placeholder="Facebook Link"  formControlName="Title" name="Title"></li>
 <li class="form-elements"><input type="text" placeholder="LinkedIn Link"  formControlName="Title" name="Title"></li>
 <li class="form-elements"><input type="text" placeholder="Twitter Link"  formControlName="Title" name="Title"></li>
-<!-- <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
+ <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
     <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
-  </div></li> -->
+  </div></li> 
 </ul>
 <button type="submit">Save Changes</button>
-  </form>
+  </form>-->

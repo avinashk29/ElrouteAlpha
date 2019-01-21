@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http , Headers} from '@angular/http';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -86,11 +87,47 @@ const companyFormData = new FormData();
     headers.append('x-auth', this.token);
     return this.http.get('http://localhost:8080/api/company', {headers: headers});
   }
+  //GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
     return this.http.get('http://localhost:8080/api/company/'+id, id);
   }
+<<<<<<< HEAD
 >>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
+=======
+  //updatCompany method is using to update data of company in database*/
+  UpdateCompany(id,company){
+    const headers = new Headers();
+    const companyFormData = new FormData();
+    companyFormData.append('companyName', company.companyName);
+    companyFormData.append('country', company.country);
+    companyFormData.append('city', company.city);
+    companyFormData.append('companyEmail', company.companyEmail);
+    companyFormData.append('industry', company.industry);
+    companyFormData.append('category' , company.category);
+
+    companyFormData.append('website', company.website);
+    companyFormData.append('companyType', company.companyType);
+    companyFormData.append('image', company.image);
+    companyFormData.append('companySize', company.companySize);
+    companyFormData.append('yearEstd', company.yearEstd);
+
+      companyFormData.append('address', company.address);
+      companyFormData.append('city', company.city);
+      companyFormData.append('zipcode', company.zipCode);
+      companyFormData.append('landline', company.landLine);
+      companyFormData.append('mobile', company.mobile);
+      headers.append('x-auth', this.token);
+    return this.http.patch('http://www.elroute.co.in/api/company/update/'+id,company,{headers:headers})
+  }
+
+  DeleteCompany(id){
+    const headers=new Headers();
+    headers.append('x-auth',this.token);
+    return this.http.delete('http://elroute.co.in/api/company/delete/'+id, {headers:headers});
+
+  }
+>>>>>>> 4ba78da09c3df68887b273843b2bf1872ae5b9f0
 //   searchResult(query){
 //     return this.http.get('http://localhost:8080/api/search/'+query);
 //   }

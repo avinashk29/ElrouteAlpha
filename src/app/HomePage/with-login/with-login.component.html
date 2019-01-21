@@ -26,21 +26,21 @@
     </div>
     <div class="user_details">
         <div class="user_details1">
-            <p >{{username}}</p>
-            <span >{{location}}</span>
+            <h3>{{username}}</h3>
+           <p class='location_1'>{{location}}</p>
           </div>
           <div class="user_following" routerLink="/Following">
               <p >Following</p>
               <span *ngIf = "following ">{{following}}</span>
               <span *ngIf = "!following">0</span>
             </div>
-            <div class="user_following" routerLink = "/bookmark">
+            <div class="user_following" routerLink = "/bookmark" style="border: none;">
                 <p >Bookmark</p>
                 <span *ngIf = "bookmark">{{bookmark}}</span>
                 <span *ngIf = "!bookmark">0</span>
               </div>
       </div>
-      <button type="button"(click)= "onLogout()">Logout</button>
+      <button type="button"(click)= "onLogout()" class="logout_btn">Logout</button>
   </div>
   <div class="feeds">
        <p class="add_feed" *ngIf="haveCompany">Add Feed</p>
@@ -55,7 +55,7 @@
            <input type="file" #filepick (change)="onImagePick($event)" >
           <h2 (click)="filepick.click()">Add Media</h2>
           </div>
-          <button type= "submit">Add Feed</button>
+          <button type= "submit" class="add_btn">Add Feed</button>
           <div class="add_media1">
           <span>{{companyName}}</span>
         </div>

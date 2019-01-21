@@ -17,10 +17,10 @@ export class AuthServiceService {
 token;
   constructor(private http: Http) { }
   signup(user) {
-    return this.http.post('http://localhost:8080/api/auth/signup', user);
+    return this.http.post('http://www.elroute.co.in/api/auth/signup', user);
   }
   login(user) {
-    return this.http.post('http://localhost:8080/api/auth/login', user);
+    return this.http.post('http://www.elroute.co.in/api/auth/login', user);
   }
 >>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
 }

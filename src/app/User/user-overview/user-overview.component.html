@@ -85,8 +85,8 @@
 
         </div>
         <div class="b_page_btn">
-            <button *ngIf = "!haveCompany" routerLink = "/B-page">Create  Your B page</button>
-            <button *ngIf = "haveCompany" routerLink = "/companyPage/{{companyId}}" [queryParams]="{ urltype: 'default'}">Go to  Company</button>
+            <button routerLink = "/B-page">Create  Your B page</button>
+            <button routerLink = "/editcompany">Edit Your B page</button>
         </div>
     </div>
 
