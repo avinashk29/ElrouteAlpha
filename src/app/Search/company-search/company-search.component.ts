@@ -31,9 +31,14 @@ export class CompanySearchComponent implements OnInit {
      this.follows.token=this.storage.get('token');
      this.follows.addFollow(id).subscribe(res=>{
        console.log(res);
-    
      })
     
    }
-
+   Unfollow(id){
+    this.follows.token=this.storage.get('token');
+    this.follows.Unfollow(id).subscribe(res=>{
+      console.log(res);
+    })
+   
+  }
 }

@@ -78,7 +78,6 @@ const companyFormData = new FormData();
   }
   //GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
-    console.log(id);
     return this.http.get('http://localhost:8080/api/company/'+id, id);
   }
   //updatCompany method is using to update data of company in database*/
@@ -98,19 +97,20 @@ const companyFormData = new FormData();
     companyFormData.append('companySize', company.companySize);
     companyFormData.append('yearEstd', company.yearEstd);
 
-      companyFormData.append('address', company.address);
-      companyFormData.append('city', company.city);
-      companyFormData.append('zipcode', company.zipCode);
-      companyFormData.append('landline', company.landLine);
-      companyFormData.append('mobile', company.mobile);
-      headers.append('x-auth', this.token);
-    return this.http.patch('http://www.elroute.co.in/api/company/update/'+id,company,{headers:headers})
+    companyFormData.append('address', company.address);
+    companyFormData.append('city', company.city);
+    companyFormData.append('zipcode', company.zipCode);
+    companyFormData.append('landline', company.landLine);
+    companyFormData.append('mobile', company.mobile);
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    return this.http.patch('http://localhost:8080/api/company/update/'+id,company,{headers:headers});
   }
 
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://elroute.co.in/api/company/delete/'+id, {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company/delete/'+id, {headers:headers});
 
   }
 //   searchResult(query){

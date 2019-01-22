@@ -6,6 +6,7 @@ import {CompanyServiceService} from '../../Service/company-service.service';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { EditComponent } from '../Edit/edit.component';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-overview',
@@ -23,7 +24,7 @@ export class UserOverviewComponent implements OnInit {
   userBio;
   bioEdit = false;
   bioForm;
-  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog ) {
+  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog,private notification:ToastrService ) {
     this.userService.token = this.storage.get('token');
     this.companyService.token = this.storage.get('token')
     this.haveCompany = this.storage.get('companyId');
@@ -70,5 +71,16 @@ export class UserOverviewComponent implements OnInit {
     this.userService.editUser(this.bioForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     })
+  }
+  editCompany(){
+    this.router.navigate(['/editcompany/'+this.haveCompany]);
+  }
+  DeleteCompany(){
+    this.companyService.DeleteCompany(this.companyId).subscribe(res=>{
+      console.log(res);
+    })
+    this.storage.remove('companyId')
+    this.notification.error('Your B page is delete');
+    this.router.navigate(['/Dashboard']);
   }
 }

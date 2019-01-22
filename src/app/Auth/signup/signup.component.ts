@@ -13,12 +13,12 @@ import { UserService } from 'src/app/Service/user-services.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  error;
+  error
   username;
   signupForm = new FormGroup({
     UserName : new FormControl('', [Validators.required]),
     Location : new FormControl(''),
-    Email: new FormControl(''),
+    Email: new FormControl('',[Validators.required,Validators.email]),
     Title: new FormControl (''),
     Password: new FormControl('')
   });
@@ -38,48 +38,64 @@ export class SignupComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
 onSubmit() {
-  this.error = true;
-     const SignupForm = this.signupForm.value;
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
-     /*-----------------------*/
-  //     this.userService.getUserData().subscribe(res=>{
-  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
-  //  this.storage.set('_id',JSON.parse(res['_body'])._id);
-  //  this.username = this.storage.get('UserName');
-  //  console.log(this.username);
-  //  console.log(JSON.parse(res['_body']));
-  // });
-     /*---------------------*/
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
-     this.router.navigate(['/Dashboard']);
-     this.notification.success('LogIn Successful');
-      console.log(this.authService.token);
-      console.log('1' + this.error);
 
+  const SignupForm = this.signupForm.value;
+     this.authService.signup(SignupForm).subscribe(res => {
+            console.log(res);
+            this.storage.set('token', res.headers.get('x-auth'));
+            this.dialogRef.close(SignupComponent);
+            this.router.navigate(['/Dashboard']);
+            this.notification.success('LogIn Successful');
+     })
+//       this.error = false;
+//      if (this.error == false) {
+//       console.log(JSON.parse(res['_body']));
+//      this.storage.set('token', res.headers.get('x-auth'));
+//     //  this.storage.set('User', JSON.parse(res['_body']));
+//      this.authService.token = this.storage.get('token');
+//      this.dialogRef.close(SignupComponent);
+//      /*-----------------------*/
+//       this.userService.getUserData().subscribe(res=>{
+//    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
+//    this.storage.set('Location',JSON.parse(res['_body']).Location);
+//    this.storage.set('_id',JSON.parse(res['_body'])._id);
+//    this.username = this.storage.get('UserName');
+//    console.log(this.username);
+//    console.log(JSON.parse(res['_body']));
 
-     }  if (this.error) {
-      this.notification.error('Cant LogIn Enter Valid Details');
-     console.log('3' + this.error);
-   }
+//   });
+//      /*---------------------*/
+//     this.authService.signup(SignupForm).subscribe(res => {
+//       this.error = false;
+//      if (this.error === false) {
+//       console.log(JSON.parse(res['_body']));
+//      this.storage.set('token', res.headers.get('x-auth'));
+//     //  this.storage.set('User', JSON.parse(res['_body']));
+//      this.authService.token = this.storage.get('token');
+//      this.dialogRef.close(SignupComponent);
+//      this.router.navigate(['/Dashboard']);
+//      this.notification.success('LogIn Successful');
+//       console.log(this.authService.token);
+//       console.log('1' + this.error);
+//     }  if (this.error) {
+//       this.notification.error('Cant LogIn Enter Valid Details');
+//      console.log('3' + this.error);
+//    }
 
-    });
+//     });
 
- console.log(this.error);
-  }});
-    };
+//  console.log(this.error);
+//   }});
+
+    }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   }
+

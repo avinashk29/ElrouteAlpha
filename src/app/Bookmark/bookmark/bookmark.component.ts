@@ -116,7 +116,7 @@ export class BookmarkComponent implements OnInit {
   ngOnInit() {
     this.bookmarkService.token=this.storage.get('token');
     this.bookmarkService.BookmarkResult().subscribe(res=>{
-      console.log(res);
+      console.log(res+'bookmark token');
     })
     
   }

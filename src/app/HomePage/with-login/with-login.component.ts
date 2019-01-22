@@ -14,7 +14,7 @@ import { Route } from '@angular/compiler/src/core';
   templateUrl: './with-login.component.html',
   styleUrls: ['./with-login.component.css']
 })
-export class WithLoginComponent implements OnInit {
+export class WithLoginComponent implements OnInit,OnDestroy {
 username;
 following;
 bookmark;
@@ -31,22 +31,37 @@ Image: new FormControl(' ')
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
-    // this.subscription = this.router.events.subscribe(() =>{
-    //     this.feedService.Getpost().subscribe(res =>{
-    //       console.log(res);
-    //     })
-    // });
-    this.userService.token = this.storage.get('token');
-    this.haveCompany = this.storage.get('companyId');
-    this.userService.getUserData().subscribe(res => {
-      this.username = JSON.parse(res['_body']).UserName;
-      this.location = JSON.parse(res['_body']).Location;
-      console.log('location is '+this.location);
-      this.shortBio = JSON.parse(res['_body']).ShortBio;
-      console.log(JSON.parse(res['_body']));
-      console.log(this.shortBio)
-   //s/   this.following = JSON.parse(res['_body']).Following.company.length;
-    //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+    this.subscription = this.router.events.subscribe(() =>{
+        this.feedService.Getpost().subscribe(res =>{
+          console.log(res);
+        })
+        this.userService.token = this.storage.get('token');
+        this.haveCompany = this.storage.get('companyId');
+        this.userService.getUserData().subscribe(res => {
+          this.username = JSON.parse(res['_body']).UserName;
+          this.location = JSON.parse(res['_body']).Location;
+          console.log('location is '+this.location);
+          this.shortBio = JSON.parse(res['_body']).ShortBio;
+          console.log(JSON.parse(res['_body']));
+          //console.log(this.shortBio)
+         
+        if(JSON.parse(res['_body']).Following.company.length===0){
+         console.log('length is zero')
+        /// this.following = JSON.parse(res['_body']).Following.company.length;
+        }else{
+          this.following=0;
+        }
+
+        // if(JSON.parse(res['_body']).bookmarks.company.length===0){
+        //   this.bookmark=0;
+        // }else{
+        //   this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+        // }
+         
+         
+    });
+   
+   
    });
    }
   show = false;
@@ -84,9 +99,9 @@ Image: new FormControl(' ')
     this.storage.remove('companyId');
     this.router.navigate(['/']);
   }
-// ngOnDestroy(){
-//   this.subscription.unsubscribe();
-// }
+ngOnDestroy(){
+  this.subscription.unsubscribe();
+}
 }
 
 

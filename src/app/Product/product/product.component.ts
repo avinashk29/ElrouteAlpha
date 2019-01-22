@@ -94,6 +94,7 @@ export class ProductComponent implements OnInit {
     this.productInfoArray.push(this.addProductInfoGroup());
   }
   onSubmit() {
+    console.log(this.storage.get('token'))
     if (this.editproductForm.valid) {
       //console.log(this.editproductForm.value);
       const productData = this.editproductForm.value;
@@ -106,6 +107,5 @@ export class ProductComponent implements OnInit {
     } else {
       this.notification.error('Enter Valid Deatils');
     }
-
   }
 }

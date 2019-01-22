@@ -33,7 +33,7 @@ token;
   }
 
   getOneProduct(id){
-    return this.http.get('http://www.elroute.co.in/api/product/'+id);
+    return this.http.get('http://localhost:8080/api/product/'+id);
   }
   UpdateProduct(id,product){
     const headers = new Headers();
@@ -54,6 +54,12 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.patch('http://www.elroute.co.in/api/product/update/'+id,productData,{headers:headers});
+    return this.http.patch('http://localhost:8080/api/product/update/'+id,productData,{headers:headers});
+  }
+  DeleteProduct(id){
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    return this.http.delete('http://localhost:8080/api/product/delete/'+id,{headers: headers});
   }
 }

@@ -264,6 +264,7 @@
                 </div>
                 <div class="productContent" >
                 <div class="content">
+                    <button (click)="DeleteProduct(product._id)">Delete</button>
                 <div class="productCategory">
                 <h6>{{product.catogory}}</h6>
                 </div>
@@ -281,7 +282,7 @@
                 </div>
                 <div class="other-info">
                   <div class="price">
-                  <h4>{{product.price}}  {{product.minPrice}}</h4>
+                  <h4>{{product.price}} {{product.minPrice}}</h4>
                 </div>
                 <div class="hits">
                   <p>24,354 hits</p>

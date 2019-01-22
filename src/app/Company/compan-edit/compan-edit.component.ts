@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {FormControl,FormGroup,Validators} from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { AuthServiceService } from 'src/app/Auth/auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -39,12 +39,15 @@ export class CompanEditComponent implements OnInit {
   }) ;
   submitted: boolean;
   imagePreview;
-companyId;
+  companyId;
+  urlcompanyId;
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
-   public notification: ToastrService) {
+   public notification: ToastrService,private route:ActivatedRoute) {
 this.companyId = this.storage.get('companyId');
-console.log(this.companyId)
+this.urlcompanyId=this.route.snapshot.paramMap.get('id');
+console.log(this.urlcompanyId+'company Id');
+
 // if (this.companyId) {
 // this.router.navigate(['/companyPage/' + this.companyId]);
 // }
@@ -59,6 +62,7 @@ console.log(this.companyId)
       console.log(res);
       this.companyName=JSON.parse(res['_body']).companyName;
       console.log(this.companyName);
+      console.log(this.companyId);
       this.editcompanyForm.patchValue({
         companyName:JSON.parse(res['_body']).companyName,
         country:JSON.parse(res['_body']).country,
@@ -75,8 +79,8 @@ console.log(this.companyId)
         landLine:JSON.parse(res['_body']).landLine,
         mobile:JSON.parse(res['_body']).mobile,
 
-      })
-    })
+      });
+    });
 
   }
   Showtwo() {
@@ -111,12 +115,14 @@ ShowPrev2(){
       reader.readAsDataURL(file);
    }
   onSubmit() {
+    this.companyService.token = this.storage.get('token');
+    console.log(this.storage.get('token'))
     if (this.editcompanyForm.valid) {
       //console.log(this.editcompanyForm.value);
       const companyData = this.editcompanyForm.value;
       console.log(this.token);
       console.log(this.companyId)
-          this.companyService.UpdateCompany(this.companyId,companyData).subscribe(res => {
+          this.companyService.UpdateCompany(this.urlcompanyId,companyData).subscribe(res => {
             // if (res) {
             //   this.storage.set('companyId' , JSON.parse(res['_body'])._id);
             //   console.log(JSON.parse(res['_body']));

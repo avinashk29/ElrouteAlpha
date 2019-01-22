@@ -48,8 +48,6 @@ url;
         console.log(paramas);
         this.type = paramas.urltype;
         console.log(this.type);
-
-
       });
       this.comapnyId = this.storage.get('companyId');
       if (this.type = 'product') {
@@ -60,10 +58,10 @@ url;
                 });
         this.type = 'product';
       }
+      this.companyService.GetoneCompany(this.comapnyId).subscribe(res=>{
+        console.log(res+'company response');
+      })
     })
-
-
-
   }
 
   ngOnInit() {
@@ -142,7 +140,7 @@ url;
 
   }
   editProduct(id){
-    this.router.navigate(['/productEdit/' +id]);
+    this.router.navigate(['/productEdit/'+id]);
   }
   showTwo() {
     this.type = 'info';
@@ -158,6 +156,11 @@ url;
     this.type = 'contact';
   }
 
+DeleteProduct(id){
+this.productService.DeleteProduct(id).subscribe(res=>{
+console.log(res);
+}) 
+ }
   // onExpand(i) {
   //   console.log(i);
   //   if (this.expand[i] === true) {
