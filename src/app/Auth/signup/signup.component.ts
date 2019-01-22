@@ -13,73 +13,22 @@ import { UserService } from 'src/app/Service/user-services.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-//   error;
-//   username;
-//   signupForm = new FormGroup({
-//     UserName : new FormControl('', [Validators.required]),
-//     Location : new FormControl(''),
-//     Email: new FormControl(''),
-//     Title: new FormControl (''),
-//     Password: new FormControl('')
-//   });
-//   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-//    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
-//      public router: Router, public notification: ToastrService,public userService:UserService) {
-//  }
+  error;
+  username;
+  signupForm = new FormGroup({
+    UserName : new FormControl('', [Validators.required]),
+    Location : new FormControl(''),
+    Email: new FormControl(''),
+    Title: new FormControl (''),
+    Password: new FormControl('')
+  });
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+   public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
+     public router: Router, public notification: ToastrService,public userService:UserService) {
+ }
   ngOnInit() {
   }
 
-<<<<<<< HEAD
-// //<-----------------------------to open login------------------------------------>
-//   openLogin() {
-//     this.dialogRef.close(SignupComponent);
-//     const dialogConfig = new MatDialogConfig();
-//     dialogConfig.autoFocus = true;
-//     dialogConfig.width = '30%';
-//     this.dialog.open(LoginComponent, dialogConfig);
-//   }
-// onSubmit() {
-//   this.error = true;
-//      const SignupForm = this.signupForm.value;
-//     this.authService.signup(SignupForm).subscribe(res => {
-//       this.error = false;
-//      if (this.error === false) {
-//       console.log(JSON.parse(res['_body']));
-//      this.storage.set('token', res.headers.get('x-auth'));
-//     //  this.storage.set('User', JSON.parse(res['_body']));
-//      this.authService.token = this.storage.get('token');
-//      this.dialogRef.close(SignupComponent);
-//      /*-----------------------*/
-//       this.userService.getUserData().subscribe(res=>{
-//    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-//    this.storage.set('Location',JSON.parse(res['_body']).Location);
-//    this.storage.set('_id',JSON.parse(res['_body'])._id);
-//    this.username=this.storage.get('UserName');
-//    console.log(this.username);
-//    console.log(JSON.parse(res['_body']));
-//   })
-//      /*---------------------*/
-
-//     this.authService.signup(SignupForm).subscribe(res => {
-//       this.error = false;
-//      if (this.error === false) {
-//       console.log(JSON.parse(res['_body']));
-//      this.storage.set('token', res.headers.get('x-auth'));
-//     //  this.storage.set('User', JSON.parse(res['_body']));
-//      this.authService.token = this.storage.get('token');
-//      this.dialogRef.close(SignupComponent);
-// //      /*-----------------------*/
-
-//       this.userService.getUserData().subscribe(res=>{
-//    this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-//    this.storage.set('Location',JSON.parse(res['_body']).Location);
-//    this.username=this.storage.get('UserName');
-//    console.log(this.username);
-//    console.log(JSON.parse(res['_body']));
-//   })
-
-// //      /*---------------------*/
-=======
 //<-----------------------------to open login------------------------------------>
   openLogin() {
     this.dialogRef.close(SignupComponent);
@@ -121,38 +70,18 @@ onSubmit() {
      this.notification.success('LogIn Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
->>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
-
-//      this.router.navigate(['/Dashboard']);
-//      this.notification.success('LogIn Successful');
-//       console.log(this.authService.token);
-//       console.log('1' + this.error);
+  }  if (this.error) {
+      this.notification.error('Cant LogIn Enter Valid Details');
+     console.log('3' + this.error);
+   }
 
 
-<<<<<<< HEAD
-//      }  if (this.error) {
-//       this.notification.error('Cant LogIn Enter Valid Details');
-//      console.log('3' + this.error);
-//    }
-
-
-//     });
-
-//  console.log(this.error);
-//   }
-// })
-
-// }
-}
-=======
     });
 
  console.log(this.error);
-  }});
-    };
   }
-<<<<<<< HEAD
+})
 
->>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
-=======
->>>>>>> 4ba78da09c3df68887b273843b2bf1872ae5b9f0
+}
+}
+

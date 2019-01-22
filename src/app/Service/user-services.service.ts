@@ -12,13 +12,13 @@ export class UserService {
     getUserData() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
-        return this.http.get('http://localhost:8080/api/user', {headers: headers});
+        return this.http.get('http://www.elroute.co.in/api/user', {headers: headers});
     }
 editUser(User){
     const headers = new Headers();
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.patch('http://localhost:8080/api/user/update', User, {headers: headers});
+    return this.http.patch('http://www.elroute.co.in/api/user/update', User, {headers: headers});
 }
 
 }

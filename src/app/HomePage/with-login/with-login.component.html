@@ -65,46 +65,52 @@
 <section>
 
 
-<div class="feed">
-<div class="authorInfo">
-<div class="details">
-  <div class="logo">
-    <img src="https://picsum.photos/500/300/?random">
-  </div>
-  <div class="info">
- <h1>Company Name</h1>
- <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">Industry</p>
- <p style="line-height: 3px;margin-bottom: 10px;">Location</p>
-</div>
-</div>
-<div class="followBtn" >
- <button >Following<span><svg xmlns="http://www.w3.org/2000/svg" width="20%" height="50%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
- <p>34,342 followers</p>
-</div>
-</div>
-<div class="feedInfo">
-  <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content </p>
-</div>
-<div class="feed-img">
-<img src="https://picsum.photos/500/300/?random">
-</div>
-<div class="feed-share">
-    <p  style="padding: 4px; margin: 0; display: flex;width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg><span><b style="margin-left: 5px;">24,244</b></span></p>
-    <p style=" padding: 0; margin:4px 0;     margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg></p>
-    </div>
-<div class="tagged">
-   <mat-expansion-panel style="background-color:white;">
-       <mat-expansion-panel-header style="background-color: #6E7892;">
-         <mat-panel-title >
-          <h4 style="  color: #fff">Tagged Products</h4>
-         </mat-panel-title>
-       </mat-expansion-panel-header>
+    <div class="feedCards" *ngIf = "!noFeeds">
+        <div class="feed" *ngFor = "let feed of feeds; let i = index">
+          <div class="authorInfo">
+          <div class="details">
+            <div class="logo">
+              <img src="https://picsum.photos/500/300/?random">
+            </div>
+            <div class="info">
+           <h1>{{this.CompanyName}}</h1>
+           <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{this.industry}}</p>
+           <p style="line-height: 3px;margin-bottom: 10px;">{{this.country}}</p>
+          </div>
+          </div>
+          <div class="followBtn">
+           <button>Following <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+           <p>34,342 followers</p>
+          </div>
+          </div>
+          <div class="feedInfo">
+            <p>{{feed.Content}} </p>
+          </div>
+          <div class="feed-img">
+          <img src = {{feed.Image}}>
+          </div>
+          <div class="feed-share">
+           <p  style="padding: 4px; margin: 0; display: flex;width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg><span><b style="margin-left: 5px;">24,244</b></span></p>
+           <p style=" padding: 0; margin:4px 0;     margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg></p>
+           </div>
+          <div class="tagged">
+             <mat-expansion-panel>
+                 <mat-expansion-panel-header style="background-color:#6E7892;">
+                   <mat-panel-title>
+                    <h4 style="  color: #fff">Tagged Products</h4>
+                   </mat-panel-title>
+                 </mat-expansion-panel-header>
 
-       <p>This is the primary content of the panel.</p>
+                 <p>This is the primary content of the panel.</p>
 
-     </mat-expansion-panel>
-</div>
-</div>
+               </mat-expansion-panel>
+          </div>
+          </div>
+         
+      </div>
+     <div  class="feedCards" *ngIf = "noFeeds">
+      <h1 style="text-align: center">No Feeds To Show</h1> 
+     </div>
 
 </section>
     </div>

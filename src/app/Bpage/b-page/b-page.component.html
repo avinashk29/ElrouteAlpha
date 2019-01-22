@@ -119,8 +119,8 @@
        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
           </div>
       </div>
-
-        <div class="feedCards">
+    
+        <div class="feedCards" *ngIf = "!noFeeds">
           <div class="feed" *ngFor = "let feed of feeds; let i = index">
             <div class="authorInfo">
             <div class="details">
@@ -161,7 +161,12 @@
                  </mat-expansion-panel>
             </div>
             </div>
+           
         </div>
+       <div  class="feedCards" *ngIf = "noFeeds">
+        <h1 style="text-align: center">No Feeds To Show</h1> 
+       </div>
+     
        <div class="otherInfocard">
         <div class="infoCard">
         <div class="hq info">
@@ -355,7 +360,6 @@
   </div>
 <!-- </div>
 </div> -->
-<<<<<<< HEAD
 <div class="body1" *ngIf="four">
 
   <div class="comapany_contact">
@@ -418,78 +422,11 @@
           
           </div>  
   </div>
-=======
-<div class="body1" *ngIf="this.type === 'contact'">
-  <div class="comapany_contact">
-    <h2>Company Divisions</h2>
-</div> 
-<div class="company_details">
-<div class="company_details1">
-  <div class="company_email">
-         <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
-         <p>abc@infotech.com</p>
- </div> 
-    <div class="company_email1">
-     <h2>Sales Division</h2>
-   </div> 
-</div>
-<div class="company_details1">
-  <div class="company_email">
-         <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
-         <p>abc@infotech.com</p>       
- </div> 
-    <div class="company_email1">
-     <h2>Marketing Division</h2>
-   </div> 
-</div>
-</div> 
-<div class="company_details">
-<div class="company_details1">
-  <div class="company_email">
-         <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
-         <p>abc@infotech.com</p>
- </div> 
-    <div class="company_email1">
-     <h2>HR Division</h2>
-   </div> 
-</div>
-<div class="company_details1">
-  <div class="company_email">
-         <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
-         <p>abc@infotech.com</p>       
- </div> 
-    <div class="company_email1">
-     <h2>Technical Division</h2>
-   </div> 
-</div>
-
-
-</div>
-<div class="comapany_contact">
-  <h2>Company Office</h2>
-</div> 
-<div class="company_address">
-<div class="google_map">
-    Google Map here
-  </div> 
-  <div class="complete_address">
-    <p>India Address </p>
-    <p>277, Mahaveer Nagar 2, Maharani Farm, Gayatri Nagar A, Durgapura, Jaipur, Rajasthan 302020</p>
-    <p>Email:-</p>
-    <p>info@naturaldyes.in</p>
-    
-    </div>  
-</div>
->>>>>>> a835fa41b653cd72a7b542200ece86c0607b2ee4
 </div>
 
 
 
 
 </section>
-SVG namespace
-http://www.w3.org/2000/svg is an XML namespace, first defined in the Scalable Vector Graphics (SVG) 1.0 Specification and subsequently added to by SVG 1.1, SVG 1.2 and SVG 2. The SVG namespace is mutable; names may be added over time by the W3C SVG Working Group by publication in W3C Technical Repor...
-w3.org
-Chat conversation end
-Type a message...
+
 

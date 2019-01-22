@@ -37,7 +37,7 @@
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()"> 
                     <textarea formControlName= "ShortBio" value = {{this.userBio}}></textarea>
-                    <button type="submit" (click) = "addBio()">Save Changes</button>
+                    <button type="submit" (click) = "addBio()" style="z-index: 12;">Save Changes</button>
             </div>
 
             <div class="follower_company">
@@ -77,7 +77,7 @@
                 <img src="assets/images/following.png">
             </div>
             <div class="following_nub1">
-                <span>244K</span>
+                <span>{{companyFollowers}}</span>
             </div>
             <div class="following_btn">
                 <button>Manage</button>
@@ -85,8 +85,8 @@
 
         </div>
         <div class="b_page_btn">
-            <button routerLink = "/B-page">Create  Your B page</button>
-            <button routerLink = "/editcompany">Edit Your B page</button>
+            <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
+            <button routerLink = "/editcompany" *ngIf = "haveCompany">Edit Your B page</button>
         </div>
     </div>
 
@@ -154,7 +154,7 @@
               <img src="assets/images/following.png">
           </div>
           <div class="following_nub1">
-              <span>244K</span>
+              <span>{{companyFollowers}}</span>
           </div>
           <div class="following_btn">
               <button>Mange</button>

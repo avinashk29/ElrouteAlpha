@@ -13,8 +13,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class WithoutLoginComponent implements OnInit {
   token;
+  noFeeds = false;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public dialog: MatDialog , public searchService: SearchService, private router: Router) { }
+   public dialog: MatDialog , public searchService: SearchService, private router: Router) { 
+     
+   }
   searchForm = new FormGroup({
      word: new FormControl(''),
      page: new FormControl('1')
