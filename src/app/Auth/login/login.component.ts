@@ -4,21 +4,30 @@ import {AuthServiceService} from '../auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
+import { SignupComponent } from '../signup/signup.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-login = new FormGroup({
-  Email: new FormControl(''),
-  Password: new FormControl('')
-});
-error = true;
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
-  public router: Router, public notification: ToastrService) { }
+ login = new FormGroup({
+   Email: new FormControl(''),
+   Password: new FormControl('')
+ });
+ error = true;
+   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
+  public router: Router, public notification: ToastrService, public dialog: MatDialog , public dialogRef: MatDialogRef<LoginComponent>,) { }
 
   ngOnInit() {
+  }
+  openSignup() {
+    this.dialogRef.close(LoginComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
+    this.dialog.open(SignupComponent, dialogConfig);
   }
 onSubmit() {
  const loginValues = this.login.value;

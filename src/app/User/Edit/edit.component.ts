@@ -2,6 +2,8 @@ import { Component, OnInit , Inject, inject} from '@angular/core';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import {UserService} from '../../Service/user-services.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -26,7 +28,9 @@ export class EditComponent implements OnInit {
     Twitter: new FormControl('')
   });
 
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public userService: UserService) { }
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public userService: UserService, public router: Router,public dialogRef: MatDialogRef<EditComponent>) { 
+    
+  }
 
   ngOnInit() {
     this.userService.token = this.storage.get('token');
@@ -40,22 +44,24 @@ export class EditComponent implements OnInit {
       // this.twitter = JSON.parse(res['_body']).Twitter;
       this.user = JSON.parse(res['_body']);
       console.log(this.user);
+      this.editForm.patchValue({
+        UserName:JSON.parse(res['_body']).UserName,
+        Location:JSON.parse(res['_body']).Location,
+        Title:JSON.parse(res['_body']).Title,
+      })
     });
+   
   }
 onEdit() {
-  this.editForm.patchValue({
-    UserName : this.editForm.value.UserName,
-    Location : this.editForm.value.Location,
-    Email: this.editForm.value.Email,
-    Title: this.editForm.value.Title,
-    // Facebook: new FormControl(''),
-    // Linkedin: new FormControl(''),
-    // Twitter: new FormControl('')
-  });
   console.log(this.editForm.value);
-  this.userService.editUser(this.editForm.value).subscribe(res => {
+  const formData = this.editForm.value;
+  this.userService.editUser(formData).subscribe(res => {
     console.log(JSON.parse(res['_body']));
     console.log(this.editForm.value.Title);
+
+  
+     this.dialogRef.close(EditComponent);
+     this.router.navigate(['/bookmark' ]); 
   });
 }
 }

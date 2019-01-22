@@ -38,9 +38,10 @@ products=[];
 comapnyId;
 mycompanyId;
 type;
-feeds;
+feeds = [];
 subscription;
 url;
+noFeeds = false;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
     this.subscription = this.router.events.subscribe(() => {
@@ -115,6 +116,9 @@ url;
   this.feedService.GetFeed().subscribe(res => {
     console.log(JSON.parse(res['_body']));
     this.feeds =  JSON.parse(res['_body']);
+    if (!this.feeds.length){
+      this.noFeeds = true;
+    }
     });
     this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
       console.log(JSON.parse(res['_body'])._id);

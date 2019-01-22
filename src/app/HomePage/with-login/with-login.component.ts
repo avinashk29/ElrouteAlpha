@@ -23,6 +23,9 @@ companyName;
 haveCompany;
 subscription;
 shortBio;
+feeds = [];
+noFeeds = true;
+
 feed = new FormGroup({
   Content: new FormControl(''),
 Image: new FormControl(' ')
@@ -31,37 +34,20 @@ Image: new FormControl(' ')
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
-    this.subscription = this.router.events.subscribe(() =>{
-        this.feedService.Getpost().subscribe(res =>{
-          console.log(res);
-        })
-        this.userService.token = this.storage.get('token');
-        this.haveCompany = this.storage.get('companyId');
-        this.userService.getUserData().subscribe(res => {
-          this.username = JSON.parse(res['_body']).UserName;
-          this.location = JSON.parse(res['_body']).Location;
-          console.log('location is '+this.location);
-          this.shortBio = JSON.parse(res['_body']).ShortBio;
-          console.log(JSON.parse(res['_body']));
-          //console.log(this.shortBio)
-         
-        if(JSON.parse(res['_body']).Following.company.length===0){
-         console.log('length is zero')
-        /// this.following = JSON.parse(res['_body']).Following.company.length;
-        }else{
-          this.following=0;
-        }
-
-        // if(JSON.parse(res['_body']).bookmarks.company.length===0){
-        //   this.bookmark=0;
-        // }else{
-        //   this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
-        // }
-         
-         
-    });
-   
-   
+    // this.subscription = this.router.events.subscribe(() =>{
+    //     this.feedService.Getpost().subscribe(res =>{
+    //       console.log(res);
+    //     })
+    // });
+    this.userService.token = this.storage.get('token');
+    this.haveCompany = this.storage.get('companyId');
+    this.userService.getUserData().subscribe(res => {
+      this.username = JSON.parse(res['_body']).UserName;
+      this.location = JSON.parse(res['_body']).Location;
+      this.shortBio = JSON.parse(res['_body']).ShortBio;
+    
+   //   this.following = JSON.parse(res['_body']).Following.company.length;
+    //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
   show = false;
@@ -70,6 +56,14 @@ Image: new FormControl(' ')
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
     // })
+    this.feedService.Getpost().subscribe(res =>{
+      console.log('Working');
+      console.log(JSON.parse(res['_body']));
+      this.feeds =  JSON.parse(res['_body']);
+      if (!this.feeds.length){
+        this.noFeeds = true;
+      }
+    });
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);

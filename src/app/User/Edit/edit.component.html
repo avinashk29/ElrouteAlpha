@@ -1,4 +1,5 @@
 <div class="sigup-form">
+<<<<<<< HEAD
   <h2>
     EDIT
   </h2>
@@ -34,3 +35,40 @@
 <button type="submit">Save Changes</button>
   </form>
   </div>
+=======
+    <h2>
+      EDIT
+    </h2>
+    <p>Register and step into the business world</p>
+    <form [formGroup]= "editForm" (ngSubmit)="onEdit()" >
+      <ul>
+     <li>
+    <div class="first-field">
+      <div class="Uname">
+      <input type="text" placeholder="NAME" formControlName="UserName" name="UserName">
+       <span *ngIf="!editForm.get('UserName').valid && editForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span>
+       
+      </div>
+    
+      <div class="Ulocation">
+        <select formControlName="Location" name="Location">
+          <option>LOCATION</option>
+        </select>
+      </div>
+    </div>
+  </li>
+  <li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="Title" name="Title"></li>
+  
+  <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="Email" name="Email"></li>
+  <!-- <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !editForm.get('Password').valid && editForm.get('Password').touched }" ></li> -->
+  <li class="form-elements"><input type="text" placeholder="Facebook Link"  formControlName="Title" name="Title"></li>
+  <li class="form-elements"><input type="text" placeholder="LinkedIn Link"  formControlName="Title" name="Title"></li>
+  <li class="form-elements"><input type="text" placeholder="Twitter Link"  formControlName="Title" name="Title"></li>
+   <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
+      <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
+    </div></li> 
+  </ul>
+  <button type="submit">Save Changes</button>
+    </form>
+    </div>
+>>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02

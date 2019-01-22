@@ -11,15 +11,15 @@ export class CompanyServiceService {
   Id;
   constructor(private http: Http) { }
   // signup(user) {
-  //  return this.http.post('http://localhost:8080/api/auth/signup', user);
+  //  return this.http.post('http://www.elroute.co.in/api/auth/signup', user);
   // }
   // login(user) {
-  //   return this.http.post('http://localhost:8080/api/auth/login', user);
+  //   return this.http.post('http://www.elroute.co.in/api/auth/login', user);
   // }
   // onEditUser(user) {
   // const headers = new Headers();
   // headers.append('x-auth', this.token);
-  //   return this.http.patch('http://localhost:8080/api/user/update', user, {headers: headers});
+  //   return this.http.patch('http://www.elroute.co.in/api/user/update', user, {headers: headers});
   // }
   addCompany(company) {
     const headers = new Headers();
@@ -45,41 +45,24 @@ const companyFormData = new FormData();
       companyFormData.append('mobile', company.mobile);
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
+    return this.http.post('http://www.elroute.co.in/api/company', companyFormData, {headers: headers});
 
   }
-// addCompany3(company){
-//   const headers=new Headers();
-//   headers.append('x-auth',this.token);
-//   const companyFormData=new FormData();
-//   companyFormData.append('address',company.address);
-//       companyFormData.append('city',company.city);
-//       companyFormData.append('zipcode',company.zipCode);
-//       companyFormData.append('landline',company.landLine);
-//       companyFormData.append('mobile',company.mobile);
-//       // headers.append('x-auth', this.token);
-//       return this.http.patch('http://localhost:8080/api/company/update/' ,companyFormData , {headers: headers});
-// }
-  // showComapny(){
-  //   const headers=new Headers();
-  //   headers.append('x-auth',this.token);
-  //   return this.http.get('http://localhost:8080/api/company',{headers: headers});
-  // }
-
-  // OneditCompany(company,id) {
-  //   const headers = new Headers();
-  //   headers.append('x-auth', this.token);
-  //   return this.http.patch('http://localhost:8080/api/company/update/' + id, company, {headers: headers});
-  // }
   GetCompany() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.get('http://localhost:8080/api/company', {headers: headers});
+    return this.http.get('http://www.elroute.co.in/api/company', {headers: headers});
   }
   //GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
+<<<<<<< HEAD
     return this.http.get('http://localhost:8080/api/company/'+id, id);
+=======
+    console.log(id);
+    return this.http.get('http://www.elroute.co.in/api/company/'+id, id);
+>>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
   }
+
   //updatCompany method is using to update data of company in database*/
   UpdateCompany(id,company){
     const headers = new Headers();
@@ -110,66 +93,16 @@ const companyFormData = new FormData();
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
+<<<<<<< HEAD
     return this.http.delete('http://localhost:8080/api/company/delete/'+id, {headers:headers});
+=======
+    return this.http.delete('http://www.elroute.co.in/api/company/delete/'+id, {headers:headers});
+>>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
 
   }
-//   searchResult(query){
-//     return this.http.get('http://localhost:8080/api/search/'+query);
-//   }
-
-//   addFeed(post){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.post('http://localhost:8080/api/post',post,{headers:headers});
-//   }
-
-//   getFeed(){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:8080/api/post', {headers: headers});
-//   }
-//   onEditPost(post,id){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.patch('http://localhost:8080/api/post/update/'+id,post, {headers: headers});
-//   }
-//   Followers(companyName){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.patch('http://localhost:8080/api/company/follow',companyName, {headers: headers});
-//   }
-//   showFollowers(){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:8080/api/user/followers', {headers: headers});
-//   }
-//   GetServices(type){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:8080/api/service/'+type, {headers: headers});
-
-//   }
-//   GetProduct(){
-//     const headers=new Headers();
-//     headers.append('x-auth',this.token);
-//     return this.http.get('http://localhost:8080/api/product', {headers: headers});
-//   }
-//   bookMark(id) {
-//     const headers = new Headers();
-//     headers.append('x-auth', this.token);
-//     return this.http.patch('http://localhost:8080/api/bookmark/product/'+id, {headers: headers});
-//   }
-
-// download() {
-//   const headers = new Headers();
-//   headers.append('x-auth', this.token);
-
-//   return this.http.get('http://localhost:8080/api/bookmarksave', {headers: headers});
-// }
-
 companyFollowing(id){
   const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
+    return this.http.patch('http://www.elroute.co.in/api/company/follow/'+id, {headers: headers});
 }
 }

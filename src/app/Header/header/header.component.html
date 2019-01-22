@@ -2,7 +2,7 @@
     <header class="header">
         <h1 class="logo"><a routerLink="/Dashboard">ELROUTE</a></h1>
         <p>Filter</p>
-        <div class="search" [formGroup] = "searchForm" (ngSubmit)= "onSearch()">
+        <div class="search" [formGroup] = "searchForm" (ngSubmit)= "onSearch($event)">
         
                <input type="search" placeholder="Enter Product/Service to Search"  formControlName = "word" (keypress) = "onSearch($event)" >
        
