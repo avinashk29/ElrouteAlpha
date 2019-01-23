@@ -6,7 +6,6 @@
 </div>
 <div class="bookmark_overview" >
     <div class="overview">
-
         <div class="profile">
             <div class="follower_user">
                 <div class="follower_location">
@@ -36,16 +35,15 @@
                 <p>{{this.userBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()"> 
-                    <textarea formControlName= "ShortBio" value = {{this.userBio}}></textarea>
+                    <textarea formControlName= "ShortBio"></textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;">Save Changes</button>
             </div>
-
             <div class="follower_company">
                 <div class="company">
                     <div class="company_logo" *ngIf = "haveCompany">
                         <img src="assets/images/user.png">
                     </div>
-                    <div class="company_name">
+                    <div class="company_name"> 
                         <h4>{{companyName}}</h4>
                     </div>
                 </div>
@@ -85,22 +83,12 @@
 
         </div>
         <div class="b_page_btn">
-<<<<<<< HEAD
-            <button routerLink = "/B-page">Create  Your B page</button>
-            <button  (click)="editCompany()" routerLink = "/editcompany">Edit Your B page</button>
-            <button  (click)="DeleteCompany()" routerLink = "/editcompany">Delete Your B page</button>
-=======
             <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
-            <button routerLink = "/editcompany" *ngIf = "haveCompany">Edit Your B page</button>
->>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
+            <button (click)="EditBpage()" *ngIf = "haveCompany">Edit Your B page</button>
         </div>
     </div>
 
 </div>
-
-
-
-
 <section>
 
 

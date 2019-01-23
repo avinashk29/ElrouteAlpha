@@ -34,11 +34,11 @@ Image: new FormControl(' ')
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
-    // this.subscription = this.router.events.subscribe(() =>{
-    //     this.feedService.Getpost().subscribe(res =>{
-    //       console.log(res);
-    //     })
-    // });
+    this.subscription = this.router.events.subscribe(() =>{
+        this.feedService.Getpost().subscribe(res =>{
+          console.log(res);
+        })
+    });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     this.userService.getUserData().subscribe(res => {
@@ -94,7 +94,7 @@ Image: new FormControl(' ')
     this.router.navigate(['/']);
   }
 ngOnDestroy(){
-  this.subscription.unsubscribe();
+ this.subscription.unsubscribe();
 }
 }
 

@@ -38,8 +38,6 @@ export class SignupComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
 onSubmit() {
-<<<<<<< HEAD
-
   const SignupForm = this.signupForm.value;
      this.authService.signup(SignupForm).subscribe(res => {
             console.log(res);
@@ -99,52 +97,4 @@ onSubmit() {
  
  
   }
-=======
-  this.error = true;
-     const SignupForm = this.signupForm.value;
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
-     /*-----------------------*/
-  //     this.userService.getUserData().subscribe(res=>{
-  //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
-  //  this.storage.set('Location',JSON.parse(res['_body']).Location);
-  //  this.storage.set('_id',JSON.parse(res['_body'])._id);
-  //  this.username = this.storage.get('UserName');
-  //  console.log(this.username);
-  //  console.log(JSON.parse(res['_body']));
-  // });
-     /*---------------------*/
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
-     this.router.navigate(['/Dashboard']);
-     this.notification.success('LogIn Successful');
-      console.log(this.authService.token);
-      console.log('1' + this.error);
-  }  if (this.error) {
-      this.notification.error('Cant LogIn Enter Valid Details');
-     console.log('3' + this.error);
-   }
-
-
-    });
-
- console.log(this.error);
-  }
-})
-
-}
-}
->>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
 

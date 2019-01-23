@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { EditComponent } from '../Edit/edit.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { equalParamsAndUrlSegments } from '@angular/router/src/router_state';
 
 @Component({
   selector: 'app-user-overview',
@@ -18,15 +19,14 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   username;
   title;
   location;
+  ShortBio;
   haveCompany;
   companyName;
   companyId;
   userBio;
   bioEdit = false;
+  saveChanges=true;
   bioForm;
-<<<<<<< HEAD
-  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog,private notification:ToastrService ) {
-=======
   companyFollowers = [];
   subscription;
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog , public route: ActivatedRoute,) {
@@ -40,13 +40,21 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
           this.location = JSON.parse(res['_body']).Location;
           this.title = JSON.parse(res['_body']).Title;
           console.log(this.username);
-          this.userBio = JSON.parse(res['_body']).ShortBio;
+         // this.ShortBio = JSON.parse(res['_body']).ShortBio;
           console.log(JSON.parse(res['_body']));
-    
-        });
-});
+      
+        }); 
+      });
     });
->>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
+
+    this.subscription = this.router.events.subscribe(() => {
+      this.route.queryParams.filter(paramas => paramas.bioEdit).subscribe(paramas => {
+       this.userService.getUserData().subscribe(res=>{
+         this.ShortBio=JSON.parse(res['_body']).ShortBio;
+       })
+      });
+    });
+
     this.userService.token = this.storage.get('token');
     this.companyService.token = this.storage.get('token')
     this.haveCompany = this.storage.get('companyId');
@@ -68,9 +76,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       this.location = JSON.parse(res['_body']).Location;
       this.title = JSON.parse(res['_body']).Title;
       console.log(this.username);
-      this.userBio = JSON.parse(res['_body']).ShortBio;
-      console.log(JSON.parse(res['_body']));
-
+  
     });
   }
   overviewResult;
@@ -80,6 +86,9 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   createBPage(){
     this.router.navigate(['/B-page'])
   }
+  EditBpage(){
+    this.router.navigate(['/editcompany/'+this.companyId])
+  }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
@@ -88,7 +97,8 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     this.router.navigate(['/bookmark' ],{queryParams:{edit:true}}); 
   }
   editBio(){
-    this.bioEdit = !this.bioEdit
+       this.bioEdit = !this.bioEdit
+        this.router.navigate(['/bookmark'],{queryParams:{bioEdit:true}});
    }
   addBio(){
     this.bioForm.patchValue({
@@ -97,22 +107,11 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     this.userService.editUser(this.bioForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       console.log('working');
-    })
+    });
+    this.router.navigate(['/bookmark']);
+    this.bioEdit = !this.bioEdit;
   }
-<<<<<<< HEAD
-  editCompany(){
-    this.router.navigate(['/editcompany/'+this.haveCompany]);
-  }
-  DeleteCompany(){
-    this.companyService.DeleteCompany(this.companyId).subscribe(res=>{
-      console.log(res);
-    })
-    this.storage.remove('companyId')
-    this.notification.error('Your B page is delete');
-    this.router.navigate(['/Dashboard']);
-=======
   ngOnDestroy(){
     this.subscription.unsubscribe();
->>>>>>> 66f733fd370af11f9815feed3c0eb5c9bcfdae02
   }
 }
