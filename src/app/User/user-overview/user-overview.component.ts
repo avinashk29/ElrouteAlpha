@@ -26,7 +26,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   companyFollowers = [];
   subscription;
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog , public route: ActivatedRoute,) {
-  
+
     console.log('working');
     this.subscription = this.router.events.subscribe(() => {
       this.route.queryParams.filter(paramas => paramas.edit).subscribe(paramas => {
@@ -38,20 +38,21 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
           console.log(this.username);
           this.userBio = JSON.parse(res['_body']).ShortBio;
           console.log(JSON.parse(res['_body']));
-    
+          this.subscription.unsubscribe();
         });
+
 });
     });
     this.userService.token = this.storage.get('token');
     this.companyService.token = this.storage.get('token')
     this.haveCompany = this.storage.get('companyId');
-    if(this.haveCompany){
+    if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
         this.companyId = JSON.parse(res['_body'])._id;
         this.userBio = JSON.parse(res['_body']).ShortBio;
          this.companyFollowers = JSON.parse(res['_body']).Followers.length;
-         console.log(JSON.parse(res['_body']));      
+         console.log(JSON.parse(res['_body']));
         });
     }
     this.bioForm = new FormGroup({
@@ -70,7 +71,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   }
   overviewResult;
   ngOnInit() {
-  
+
   }
   createBPage(){
     this.router.navigate(['/B-page'])
@@ -80,21 +81,24 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(EditComponent, dialogConfig);
-    this.router.navigate(['/bookmark' ],{queryParams:{edit:true}}); 
+    this.router.navigate(['/bookmark' ],{ queryParams: { edit: true}});
   }
   editBio(){
-    this.bioEdit = !this.bioEdit
+    this.bioEdit = !this.bioEdit;
+    this.router.navigate(['/bookmark' ],{ queryParams: { edit: true}});
    }
-  addBio(){
+  addBio() {
     this.bioForm.patchValue({
       ShortBio: this.bioForm.value.ShortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       console.log('working');
-    })
+    });
+    this.router.navigate(['/bookmark']);
+    this.bioEdit = !this.bioEdit;
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

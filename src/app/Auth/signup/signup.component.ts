@@ -40,14 +40,6 @@ export class SignupComponent implements OnInit {
 onSubmit() {
   this.error = true;
      const SignupForm = this.signupForm.value;
-    this.authService.signup(SignupForm).subscribe(res => {
-      this.error = false;
-     if (this.error === false) {
-      console.log(JSON.parse(res['_body']));
-     this.storage.set('token', res.headers.get('x-auth'));
-    //  this.storage.set('User', JSON.parse(res['_body']));
-     this.authService.token = this.storage.get('token');
-     this.dialogRef.close(SignupComponent);
      /*-----------------------*/
   //     this.userService.getUserData().subscribe(res=>{
   //  this.storage.set('UserName',JSON.parse(res['_body']).UserName);
@@ -80,8 +72,8 @@ onSubmit() {
 
  console.log(this.error);
   }
-})
+
 
 }
-}
+
 

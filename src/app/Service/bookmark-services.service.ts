@@ -8,7 +8,7 @@ import { Http , Headers} from '@angular/http';
 
 export class BookmarkServices {
 token;
-constructor(public http:Http) {}
+constructor(public http: Http) {}
 addProductBookmarks(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
@@ -29,7 +29,7 @@ addPostBookmark(id) {
     return this.http.patch('http://www.elroute.co.in/api/bookmark/post/' + id, id, {headers: headers});
 
 }
-addServiceBookmark(id){
+addServiceBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth',this.token);
     return this.http.patch('http://www.elroute.co.in/api/bookmark/service/'+id,id,{headers:headers});
@@ -40,10 +40,28 @@ BookmarkResult(){
     headers.append('x-auth',this.token);
     return this.http.get('http://www.elroute.co.in/api/bookmarksave',{headers:headers});
 }
-removeProduct(){
+removeProduct() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.patch('http://www.elroute.co.in/api/bookmark/product/',{headers: headers});
+    return this.http.patch('http://www.elroute.co.in/api/bookmark/product', {headers: headers});
+}
+getBookmarkProduct() {
+  const headers = new Headers();
+  headers.append('x-auth', this.token);
+  console.log(this.token);
+  return this.http.get('http://www.elroute.co.in/api/bookmark/product', {headers: headers});
+}
+getBookmarkCompany() {
+  const headers = new Headers();
+  headers.append('x-auth', this.token);
+  console.log(this.token);
+  return this.http.get('http://www.elroute.co.in/api/bookmark/company', {headers: headers});
+}
+getBookmarkPost() {
+  const headers = new Headers();
+  headers.append('x-auth', this.token);
+  console.log(this.token);
+  return this.http.get('http://www.elroute.co.in/api/bookmark/post', {headers: headers});
 }
 }
