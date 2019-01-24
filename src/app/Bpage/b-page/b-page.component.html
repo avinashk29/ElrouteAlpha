@@ -23,9 +23,13 @@
             <div class="user_profile">
                 <h2>{{CompanyName}}</h2>
 
-                     <div class="follow-btn">
-                    <button>FOLLOW</button>
+                     <div class="follow-btn" *ngIf = "!myCompany">
+                    <button> FOLLOW</button>
                     <span>24,255</span>
+                </div>
+                <div class="follow-btn" *ngIf = "myCompany"> 
+                    <button (click) = "EditBpage()">Edit</button>
+                 
                 </div>
               </div>
         </div>
@@ -54,9 +58,13 @@
                 <p>{{industry}}</p>
                <!-- <p> {{city}}</p>
                <p>{{companyEmail}}</p> -->
-                <div class="follow-btn">
+                <div class="follow-btn" *ngIf = "!myCompany"> 
                     <button>FOLLOW</button>
                     <span>24,255</span>
+                </div>
+                <div class="follow-btn" *ngIf = "myCompany"> 
+                    <button (click) = "EditBpage()">Edit</button>
+                 
                 </div>
               </div>
         </div>
@@ -261,7 +269,7 @@
 </div>
 <div class="body" *ngIf="this.type === 'product'">
   <div class="infoSection3">
-    <div class="productAddbutton"><button routerLink= "/productForm">ADD New Product</button></div>
+    <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div>
       <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
           <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
