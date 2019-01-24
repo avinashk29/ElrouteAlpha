@@ -35,7 +35,7 @@ const routes: Routes = [
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
-    {path:'editcompany',component:CompanEditComponent},
+    {path:'editcompany/:id',component:CompanEditComponent},
     {path:'productEdit/:id',component:ProductComponent}
 
   // {path: 'feed ' , component: fee}

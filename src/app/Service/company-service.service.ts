@@ -11,15 +11,15 @@ export class CompanyServiceService {
   Id;
   constructor(private http: Http) { }
   // signup(user) {
-  //  return this.http.post('http://www.elroute.co.in/api/auth/signup', user);
+  //  return this.http.post('http://localhost:8080/api/auth/signup', user);
   // }
   // login(user) {
-  //   return this.http.post('http://www.elroute.co.in/api/auth/login', user);
+  //   return this.http.post('http://localhost:8080/api/auth/login', user);
   // }
   // onEditUser(user) {
   // const headers = new Headers();
   // headers.append('x-auth', this.token);
-  //   return this.http.patch('http://www.elroute.co.in/api/user/update', user, {headers: headers});
+  //   return this.http.patch('http://localhost:8080/api/user/update', user, {headers: headers});
   // }
   addCompany(company) {
     const headers = new Headers();
@@ -45,18 +45,18 @@ const companyFormData = new FormData();
       companyFormData.append('mobile', company.mobile);
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://www.elroute.co.in/api/company', companyFormData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
 
   }
   GetCompany() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.get('http://www.elroute.co.in/api/company', {headers: headers});
+    return this.http.get('http://localhost:8080/api/company', {headers: headers});
   }
   //GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
-    return this.http.get('http://www.elroute.co.in/api/company/'+id, id);
+    return this.http.get('http://localhost:8080/api/company/'+id, id);
   }
 
   //updatCompany method is using to update data of company in database*/
@@ -82,18 +82,18 @@ const companyFormData = new FormData();
       companyFormData.append('landline', company.landLine);
       companyFormData.append('mobile', company.mobile);
       headers.append('x-auth', this.token);
-    return this.http.patch('http://www.elroute.co.in/api/company/update/'+id,company,{headers:headers})
+    return this.http.patch('http://localhost:8080/api/company/update/'+id,company,{headers:headers})
   }
 
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://www.elroute.co.in/api/company/delete/'+id, {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company/delete/'+id, {headers:headers});
 
   }
 companyFollowing(id){
   const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('http://www.elroute.co.in/api/company/follow/'+id, {headers: headers});
+    return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
 }
 }

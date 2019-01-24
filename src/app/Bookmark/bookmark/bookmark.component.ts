@@ -9,9 +9,17 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 })
 export class BookmarkComponent implements OnInit {
 
-  constructor(public bookmarkService:BookmarkServices,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
-  id;
-  cards = [
+  constructor(public bookmarkService:BookmarkServices,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { 
+
+    this.bookmarkService.token = this.storage.get('token');
+    this.bookmarkService.getBookmarkProduct().subscribe(res => {
+      console.log('sdfghj')
+         console.log('askjdhaskjd',res);
+    });
+
+  }
+
+  /*cards = [
     {
     type: 1,
     catogory: 'Laptp',
@@ -113,12 +121,9 @@ export class BookmarkComponent implements OnInit {
 
               }
   ];
+  */
   ngOnInit() {
-    this.bookmarkService.token=this.storage.get('token');
-    this.bookmarkService.BookmarkResult().subscribe(res=>{
-      console.log(res);
-    })
-    
+   
   }
 
 

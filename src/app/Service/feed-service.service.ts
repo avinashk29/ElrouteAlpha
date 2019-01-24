@@ -14,18 +14,18 @@ export class FeedService {
       const formData = new FormData();
          formData.append('Content', feed.Content);
          formData.append('Image' , feed.Image);
-         return this.http.post('http://www.elroute.co.in/api/post', formData, {headers: headers});
+         return this.http.post('http://localhost:8080/api/post', formData, {headers: headers});
     }
     GetFeed() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
         console.log(this.token);
-        return this.http.get('http://www.elroute.co.in/api/post', {headers: headers})
+        return this.http.get('http://localhost:8080/api/post', {headers: headers})
     }
     Getpost(){
         const headers = new Headers();
         headers.append('x-auth', this.token);
         console.log(this.token);
-        return this.http.get('http://www.elroute.co.in/api/feed', {headers: headers})
+        return this.http.get('http://localhost:8080/api/feed', {headers: headers})
     }
 }

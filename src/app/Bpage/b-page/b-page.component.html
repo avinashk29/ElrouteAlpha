@@ -34,15 +34,17 @@
       </div>
 
 <header>
-    <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
-      <g id="location" transform="translate(-486.5 -340.5)">
-        <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z" transform="translate(487.5 341.5)" fill="#fff" stroke="#bcbccb" stroke-width="2"/>
-        <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(490.988 345.299)" fill="#bcbccb" stroke="#bcbccb" stroke-width="2">
-          <circle cx="3.778" cy="3.778" r="3.778" stroke="none"/>
-          <circle cx="3.778" cy="3.778" r="2.778" fill="none"/>
-        </g>
-      </g>
-    </svg><span style="margin-left:10px;">{{country}}</span></h1>
+   
+    <div class="card1">
+        <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
+          <g id="location" transform="translate(-486.5 -340.5)">
+            <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z" transform="translate(487.5 341.5)" fill="#fff" stroke="#bcbccb" stroke-width="2"/>
+            <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(490.988 345.299)" fill="#bcbccb" stroke="#bcbccb" stroke-width="2">
+              <circle cx="3.778" cy="3.778" r="3.778" stroke="none"/>
+              <circle cx="3.778" cy="3.778" r="2.778" fill="none"/>
+            </g>
+          </g>
+        </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader">
             <img src="assets/images/logo.png">
@@ -50,13 +52,30 @@
             <div class="user_profile">
                 <h2>{{CompanyName}}</h2>
                 <p>{{industry}}</p>
-               <p> {{city}}</p>
-               <p>{{companyEmail}}</p>
+               <!-- <p> {{city}}</p>
+               <p>{{companyEmail}}</p> -->
                 <div class="follow-btn">
                     <button>FOLLOW</button>
                     <span>24,255</span>
                 </div>
               </div>
+        </div>
+        <div class="extraInfo">
+          <p>9 A.M. - 5 P.M.</p>
+          <p>{{website}}</p>
+      
+          <div class="social">
+              <div class="social_links">
+                  <span><img src="assets/images/linkdin.png"></span>
+                  <span><img src="assets/images/linkdin.png"></span>
+                  <span><img src="assets/images/linkdin.png"></span>
+              </div>
+      
+              <div class="social_bookmark">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+              </div>
+            </div>
+        </div>
         </div>
 
             <!-- <div class="logoheader"></div>
@@ -75,41 +94,28 @@
       <div class="social">
 
       </div> -->
-      <div class="headerImg">
+      
+      <div class="card-left">
+        <!-- <div class="headerImg">
+            <h3>CATEGORY</h3>
+        
+        <div class="img"></div>
+        </div> -->
+        <div class="headerImg">
           <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
-             <!-- <div class="img" ><img src="assets/images/bk1.jpg"></div>  -->
+          <img src="assets/images/bk.png"> 
 
       </div>
+        
+        <div class="tabs">
+        <div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
+        <div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
+        <div class="tab" (click)="showFour()" [ngClass]="{'tabClicked': four}"><h1>CONTACT</h1></div>
+        </div>
+        </div>
 
 </header>
-<div class="card-left">
-<!-- <div class="headerImg">
-    <h3>CATEGORY</h3>
 
-<div class="img"></div>
-</div> -->
-<div class="extraInfo">
-    <p>9 A.M. - 5 P.M.</p>
-    <p>{{website}}</p>
-
-    <div class="social">
-        <div class="social_links">
-            <span><img src="assets/images/linkdin.png"></span>
-            <span><img src="assets/images/linkdin.png"></span>
-            <span><img src="assets/images/linkdin.png"></span>
-        </div>
-
-        <div class="social_bookmark">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
-        </div>
-      </div>
-  </div>
-<div class="tabs">
-<div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
-<div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
-<div class="tab" (click)="showFour()" [ngClass]="{'tabClicked': four}"><h1>CONTACT</h1></div>
-</div>
-</div>
 
 <div class="body" *ngIf="this.type === 'default'">
   <div class="infoSection1">
