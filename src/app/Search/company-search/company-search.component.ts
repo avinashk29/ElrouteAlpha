@@ -22,8 +22,7 @@ export class CompanySearchComponent implements OnInit {
   haveFollow= false;
   result= [];
   userInfo = [];
-  companyfollow = [];
-  followLength;
+  companyfollow;
   ngOnInit() {
     this.userService.token = this.storage.get('token');
     this.follows.token = this.storage.get('token');
@@ -41,14 +40,7 @@ export class CompanySearchComponent implements OnInit {
       console.log(JSON.parse(res['_body']));
 
     })
-    console.log(this.companyfollow.length);
-for (let i=0; i < this.companyfollow.length; i++){
 
-  console.log(this.userInfo[i]);
-  if (this.userInfo[i] === this.companyfollow[i]._id){
-    this.companyfollow[i].follow = true; 
-  }
-}
   }
   onClick (id) { 
     console.log(this.userInfo.length);
@@ -63,7 +55,7 @@ for (let i=0; i < this.companyfollow.length; i++){
   else{
     for (let i = 0; i<this.userInfo.length; i++) {
       if (id === this.userInfo[i]){
-        this.companyfollow[i].follow = false; 
+        this.haveFollow = false;
         console.log('unfollow')
         console.log(id)
         this.follows.Unfollow(id).subscribe(res=>{
@@ -71,7 +63,7 @@ for (let i=0; i < this.companyfollow.length; i++){
         })
        }
        if (this.userInfo[i] != id) {
-        this.companyfollow[i].follow = true; 
+        this.haveFollow = true;
         console.log(id)
         console.log('follow')
         this.follows.addFollow(id).subscribe(res=>{
