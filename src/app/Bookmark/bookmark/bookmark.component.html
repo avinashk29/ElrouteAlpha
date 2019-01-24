@@ -6,7 +6,7 @@
 <input type="search" placeholder="Enter Product/Service to Search">
     <div class="listing">
      <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
-    <div class="Card" *ngFor="let card of cards;">
+    <div class="Card" *ngFor="let p of product; let i = index">
       <div class="productCard" *ngIf="card.type == 1">
     <div class="productImage">
       <img src="https://picsum.photos/200/300/?random">
@@ -17,7 +17,7 @@
     <h6>{{card.catogory}}</h6>
     </div>
     <div class="productName">
-      <h2>{{card.productName}}</h2>
+      <h2></h2>
       <h5>{{card.company}}</h5>
       <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
     </div>

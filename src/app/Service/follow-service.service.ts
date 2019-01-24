@@ -23,7 +23,7 @@ constructor(public http:Http){}
     Unfollow(id){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('http://localhost:8080/api/unfollow'+id,{headers:headers});
+        return this.http.get('http://localhost:8080/api/unfollow/'+id,{headers:headers});
 
     }
 

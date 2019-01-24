@@ -19,6 +19,7 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {CompanyGuardService} from './guards/company-guard.service';
 import { CompanEditComponent } from './Company/compan-edit/compan-edit.component';
 import { ProductComponent } from './Product/product/product.component';
+import { ProductListingComponent } from './Product/product-listing/product-listing.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
@@ -36,7 +37,8 @@ const routes: Routes = [
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
     {path:'editcompany/:id',component:CompanEditComponent},
-    {path:'productEdit/:id',component:ProductComponent}
+    {path:'productEdit/:id',component:ProductComponent},
+    {path:'product-listing',component:ProductListingComponent}
 
   // {path: 'feed ' , component: fee}
 ];
