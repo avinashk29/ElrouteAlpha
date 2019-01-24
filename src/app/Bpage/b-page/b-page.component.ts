@@ -45,6 +45,7 @@ noFeeds = false;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
     this.subscription = this.router.events.subscribe(() => {
+      this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         console.log(paramas);
         this.type = paramas.urltype;
@@ -52,7 +53,7 @@ noFeeds = false;
 
 
       });
-      this.comapnyId = this.storage.get('companyId');
+      // this.comapnyId = this.storage.get('companyId');
       if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
@@ -68,7 +69,7 @@ noFeeds = false;
   }
 
   ngOnInit() {
-    this.comapnyId = this.storage.get('companyId');
+    // this.comapnyId = this.storage.get('companyId');
     this.feedService.token = this.storage.get('token');
 
     console.log(this.comapnyId)

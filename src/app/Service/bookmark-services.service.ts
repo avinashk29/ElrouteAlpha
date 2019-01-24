@@ -8,6 +8,8 @@ import { Http , Headers} from '@angular/http';
 
 export class BookmarkServices {
 token;
+companyfollow;
+count=0;
 constructor(public http:Http) {}
 addProductBookmarks(id) {
     const headers = new Headers();
