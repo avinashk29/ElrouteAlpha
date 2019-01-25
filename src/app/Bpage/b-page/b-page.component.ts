@@ -42,16 +42,17 @@ feeds = [];
 subscription;
 url;
 noFeeds = false;
+myCompany = false;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
     this.subscription = this.router.events.subscribe(() => {
+      this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         console.log(paramas);
         this.type = paramas.urltype;
         console.log(this.type);
       });
-      this.comapnyId=this.route.snapshot.paramMap.get('id')
-     // this.comapnyId = this.storage.get('companyId');
+      this.mycompanyId = this.storage.get('companyId');
       if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
@@ -67,8 +68,7 @@ noFeeds = false;
   }
 
   ngOnInit() {
-
-    //this.comapnyId = this.storage.get('companyId');
+    // this.comapnyId = this.storage.get('companyId');
     this.feedService.token = this.storage.get('token');
 
     console.log(this.comapnyId)
@@ -139,14 +139,20 @@ noFeeds = false;
       this.website = JSON.parse(res['_body']).website;
       if (this.comapnyId === this.mycompanyId) {
         console.log('MY OWN COMPANY');
+        this.myCompany = true;
       } else {
         console.log('diffrent Company');
+        this.myCompany = false;
       }
     });
 
   }
   editProduct(id){
     this.router.navigate(['/productEdit/'+id]);
+  }
+  EditBpage(){
+    console.log(this.mycompanyId)
+    this.router.navigate(['/editcompany/'+ this.mycompanyId]);
   }
   showTwo() {
     this.type = 'info';
