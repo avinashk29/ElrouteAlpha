@@ -6,7 +6,6 @@
 </div>
 <div class="bookmark_overview" >
     <div class="overview">
-
         <div class="profile">
             <div class="follower_user">
                 <div class="follower_location">
@@ -33,15 +32,14 @@
                 <p> BIO</p>
                 <span (click)= "editBio()" style="float:right"  class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
             </div>
-            
-            <div class="follower_des" *ngIf="!bioEdit"> 
+
+            <div class="follower_des" *ngIf="!bioEdit">
                 <p>{{this.userBio}} </p>
             </div>
-            <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()"> 
+            <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
                     <textarea formControlName= "ShortBio">{{this.userBio}}</textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
-
             <div class="follower_company">
                 <div class="company">
                     <div class="company_logo" *ngIf = "haveCompany">
@@ -94,11 +92,7 @@
 
 </div>
 
-
-
 <section>
-
-
     <div class="follower_box">
       <div class="follower_user">
           <div class="follower_location">

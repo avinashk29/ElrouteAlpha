@@ -28,31 +28,31 @@ companyEmail;
 companyType ;
 companySize;
 country;
-image;
+Image;
 industry;
 mobile;
 address ;
 yearEstd;
 website;
-products=[];
+products = [];
 comapnyId;
 mycompanyId;
 type;
 feeds = [];
 subscription;
 url;
+shortIntro;
 noFeeds = false;
 myCompany = false;
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute,private router: Router) {
+    this.companyService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() => {
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         console.log(paramas);
         this.type = paramas.urltype;
         console.log(this.type);
-
-
       });
       this.mycompanyId = this.storage.get('companyId');
       if (this.type = 'product') {
@@ -63,10 +63,10 @@ myCompany = false;
                 });
         this.type = 'product';
       }
+      this.companyService.GetoneCompany(this.comapnyId).subscribe(res=>{
+        console.log(res+'company response');
+      })
     })
-
-
-
   }
 
   ngOnInit() {
@@ -125,7 +125,7 @@ myCompany = false;
     }
     });
     this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
-      console.log(JSON.parse(res['_body'])._id);
+      console.log(JSON.parse(res['_body']));
       this.CompanyName = JSON.parse(res['_body']).companyName;
       this.category = JSON.parse(res['_body']).category;
       this.city = JSON.parse(res['_body']).city;
@@ -133,12 +133,13 @@ myCompany = false;
       this.companySize = JSON.parse(res['_body']).companySize;
       this.companyType = JSON.parse(res['_body']).companyType;
       this.country = JSON.parse(res['_body']).country;
-      this.image = JSON.parse(res['_body']).image;
+      this.Image = JSON.parse(res['_body']).Image;
       this.industry = JSON.parse(res['_body']).industry;
       this.mobile = JSON.parse(res['_body']).mobile;
       this.address = JSON.parse(res['_body']).address;
       this.yearEstd = JSON.parse(res['_body']).yearEstd;
       this.website = JSON.parse(res['_body']).website;
+      this.shortIntro = JSON.parse(res['_body']).shortIntro;
       if (this.comapnyId === this.mycompanyId) {
         console.log('MY OWN COMPANY');
         this.myCompany = true;
@@ -150,7 +151,7 @@ myCompany = false;
 
   }
   editProduct(id){
-    this.router.navigate(['/productEdit/' +id]);
+    this.router.navigate(['/productEdit/'+id]);
   }
   EditBpage(){
     console.log(this.mycompanyId)
@@ -170,6 +171,14 @@ myCompany = false;
     this.type = 'contact';
   }
 
+DeleteProduct(id){
+this.productService.DeleteProduct(id).subscribe(res=>{
+console.log(res);
+}) 
+ }
+ GotoBpage(){
+   this.router.navigate(['/companyPage/'+this.comapnyId]);
+ }
   // onExpand(i) {
   //   console.log(i);
   //   if (this.expand[i] === true) {

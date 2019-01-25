@@ -6,6 +6,8 @@ import {CompanyServiceService} from '../../Service/company-service.service';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { EditComponent } from '../Edit/edit.component';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { equalParamsAndUrlSegments } from '@angular/router/src/router_state';
 
 @Component({
   selector: 'app-user-overview',
@@ -17,16 +19,18 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   username;
   title;
   location;
+  ShortBio;
   haveCompany;
   companyName;
   companyId;
   userBio;
   bioEdit = false;
+  saveChanges=true;
   bioForm;
   companyFollowers = [];
   subscription;
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog , public route: ActivatedRoute,) {
-  
+
     console.log('working');
     this.subscription = this.router.events.subscribe(() => {
       this.route.queryParams.filter(paramas => paramas.edit).subscribe(paramas => {
@@ -37,20 +41,20 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
           this.title = JSON.parse(res['_body']).Title;
           console.log(this.username);
           this.userBio = JSON.parse(res['_body']).ShortBio;
-          console.log(JSON.parse(res['_body']));
-    
+          console.log(JSON.parse(res['_body']).ShortBio);
         });
-});
+
+      });
     });
+
     this.userService.token = this.storage.get('token');
-    this.companyService.token = this.storage.get('token')
+    this.companyService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
-    if(this.haveCompany){
+    if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
-        this.userBio = JSON.parse(res['_body']).ShortBio;
          this.companyFollowers = JSON.parse(res['_body']).Followers.length;
-         console.log(JSON.parse(res['_body']));      
+         console.log(JSON.parse(res['_body']));
         });
     }
     this.bioForm = new FormGroup({
@@ -63,13 +67,12 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       this.title = JSON.parse(res['_body']).Title;
       console.log(this.username);
       this.userBio = JSON.parse(res['_body']).ShortBio;
-      console.log(JSON.parse(res['_body']));
-
+      console.log(this.userBio)
     });
   }
   overviewResult;
   ngOnInit() {
-  
+
   }
   createBPage(){
     this.router.navigate(['/B-page'])
@@ -83,13 +86,13 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(EditComponent, dialogConfig);
-    this.router.navigate(['/bookmark' ],{queryParams:{edit:true}}); 
+    this.router.navigate(['/bookmark' ],{queryParams:{edit:true}});
   }
   editBio(){
     this.bioEdit = !this.bioEdit;
-    this.router.navigate(['/bookmark' ],{queryParams:{edit:true}}); 
+    this.router.navigate(['/bookmark' ], {queryParams: {edit: true}});
    }
-  addBio(){
+  addBio() {
     this.bioForm.patchValue({
       ShortBio: this.bioForm.value.ShortBio
     });
@@ -98,9 +101,9 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       console.log('working');
     })
     this.bioEdit = !this.bioEdit;
-    this.router.navigate(['/bookmark' ]); 
+    this.router.navigate(['/bookmark']);
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

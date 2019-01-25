@@ -56,4 +56,10 @@ token;
     console.log(this.token);
     return this.http.patch('http://localhost:8080/api/product/update/'+id,productData,{headers:headers});
   }
+  DeleteProduct(id){
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    return this.http.delete('http://localhost:8080/api/product/delete/'+id,{headers: headers});
+  }
 }

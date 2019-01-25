@@ -1,18 +1,14 @@
+
 <app-user-overview style="margin: 0 auto;width: 80%;"></app-user-overview>
 <section>
-
 <h2>Bookmarks</h2>
 <app-header3></app-header3>
 <input type="search" placeholder="Enter Product/Service to Search">
     <div class="listing">
-
-      <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
-    <div class="Card" *ngFor="let card of cards; let i = index">
+     <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
+    <div class="Card" *ngFor="let card of cards;">
       <div class="productCard" *ngIf="card.type == 1">
     <div class="productImage">
-      <!-- <div class="bookmark">
-
-      </div> -->
       <img src="https://picsum.photos/200/300/?random">
     </div>
     <div class="productContent" >
@@ -22,7 +18,6 @@
     </div>
     <div class="productName">
       <h2>{{card.productName}}</h2>
-      <h5>{{card.company}}</h5>
       <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
     </div>
     <div class="discription" style="margin-top:30px;">
@@ -42,7 +37,7 @@
     </div>
     </div>
       </div>
-      <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
+       <!-------------------------------------------------------------------Service Card------------------------------------------------------------------------>
       <div class="ServiceCard" *ngIf="card.type == 2" >
 
           <div class="ServiceContent">
@@ -72,14 +67,12 @@
           </div>
           </div>
           <div class="ServiceImage">
-              <!-- <div class="bookmark">
+               <div class="bookmark">
 
-              </div> -->
+              </div> 
               <img src="https://picsum.photos/200/300/?random">
             </div>
             </div>
     </div>
-
     </div>
-  
 </section>

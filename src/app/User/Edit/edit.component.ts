@@ -53,13 +53,11 @@ export class EditComponent implements OnInit {
    
   }
 onEdit() {
-  console.log(this.editForm.value);
+ // console.log(this.editForm.value);
   const formData = this.editForm.value;
   this.userService.editUser(formData).subscribe(res => {
     console.log(JSON.parse(res['_body']));
-    console.log(this.editForm.value.Title);
-
-  
+   // console.log(this.editForm.value.Title);
      this.dialogRef.close(EditComponent);
      this.router.navigate(['/bookmark' ]); 
   });
