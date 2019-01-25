@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { JAN } from '@angular/material';
+
 @Component({
   selector: 'app-company-search',
   templateUrl: './company-search.component.html',
@@ -24,16 +25,19 @@ export class CompanySearchComponent implements OnInit {
   page;
   result= [];
   userInfo = [];
+  userInfoForBookmark=[]
   ngOnInit() {
+    this.bookmarkService.token=this.storage.get('token');
     this.userService.token = this.storage.get('token');
     this.follows.token = this.storage.get('token');
    this.word= this.route.snapshot.paramMap.get('word');
    this.page= this.route.snapshot.paramMap.get('page');
     this.userService.token=this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
+      console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).Following;
-      console.log( this.userInfo);
-      console.log(JSON.parse(res['_body']));
+       this.userInfoForBookmark=  JSON.parse(res['_body']).bookmarks.company;
+      console.log( JSON.parse(res['_body']).bookmarks.company);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
         this.result = JSON.parse(res1['_body']);
         this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0];
@@ -52,10 +56,29 @@ export class CompanySearchComponent implements OnInit {
           }
           
         }
+        //Deletion method for Bookmarks//
+        this.bookmarkService.CompanyBookmark=JSON.parse(res1['_body'])[0];
+        console.log(this.bookmarkService.CompanyBookmark);
+        for(let i=0;i<this.bookmarkService.CompanyBookmark.length;i++){
+          console.log(this.userInfoForBookmark.length+'dfghjk')
+          if(this.userInfoForBookmark.length === 0){
+            this.bookmarkService.CompanyBookmark[i].bookm=false;
+          }else{
+            console.log(this.bookmarkService.CompanyBookmark[i]._id);
+            console.log(this.userInfoForBookmark[i]);
+            if(this.bookmarkService.CompanyBookmark[i]._id === this.userInfoForBookmark[i]){
+              this.bookmarkService.CompanyBookmark[i].bookm=true;
+
+            }
+          }
+         
+        }
+
       });
  })
     
  
+
 
   }
   // onClick (id) { 
@@ -112,10 +135,18 @@ export class CompanySearchComponent implements OnInit {
            })
            console.log('i am working unfollow')
   }
- companyBookmark(id){
+ companyBookmark(i,id){
+     this.bookmarkService.CompanyBookmark[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
        console.log(res)
      });
+     console.log('done')
+ }
+ deletecompanyBookmark(i,id){
+   this.bookmarkService.CompanyBookmark[i].bookm=false;
+  this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
+    console.log(res)
+  });
  }
  GotoBpage(id){
    this.router.navigate(['/companyPage/'+this.id]);
