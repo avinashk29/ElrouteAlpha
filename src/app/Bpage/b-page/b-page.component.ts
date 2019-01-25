@@ -53,8 +53,6 @@ myCompany = false;
         console.log(paramas);
         this.type = paramas.urltype;
         console.log(this.type);
-
-
       });
       this.mycompanyId = this.storage.get('companyId');
       if (this.type = 'product') {
@@ -65,10 +63,10 @@ myCompany = false;
                 });
         this.type = 'product';
       }
+      this.companyService.GetoneCompany(this.comapnyId).subscribe(res=>{
+        console.log(res+'company response');
+      })
     })
-
-
-
   }
 
   ngOnInit() {
@@ -153,7 +151,7 @@ myCompany = false;
 
   }
   editProduct(id){
-    this.router.navigate(['/productEdit/' +id]);
+    this.router.navigate(['/productEdit/'+id]);
   }
   EditBpage(){
     console.log(this.mycompanyId)
@@ -173,6 +171,14 @@ myCompany = false;
     this.type = 'contact';
   }
 
+DeleteProduct(id){
+this.productService.DeleteProduct(id).subscribe(res=>{
+console.log(res);
+}) 
+ }
+ GotoBpage(){
+   this.router.navigate(['/companyPage/'+this.comapnyId]);
+ }
   // onExpand(i) {
   //   console.log(i);
   //   if (this.expand[i] === true) {

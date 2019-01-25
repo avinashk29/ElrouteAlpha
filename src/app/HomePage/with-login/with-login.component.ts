@@ -14,10 +14,10 @@ import { Route } from '@angular/compiler/src/core';
   templateUrl: './with-login.component.html',
   styleUrls: ['./with-login.component.css']
 })
-export class WithLoginComponent implements OnInit {
+export class WithLoginComponent implements OnInit,OnDestroy {
 username;
-following;
-bookmark;
+following = [];
+bookmark = [];
 location;
 companyName;
 haveCompany;
@@ -34,11 +34,11 @@ Image: new FormControl(' ')
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
-    // this.subscription = this.router.events.subscribe(() =>{
-    //     this.feedService.Getpost().subscribe(res =>{
-    //       console.log(res);
-    //     })
-    // });
+    this.subscription = this.router.events.subscribe(() =>{
+        // this.feedService.Getpost().subscribe(res =>{
+        //   console.log(res);
+        // })
+    });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     this.userService.getUserData().subscribe(res => {
@@ -46,8 +46,8 @@ Image: new FormControl(' ')
       this.location = JSON.parse(res['_body']).Location;
       this.shortBio = JSON.parse(res['_body']).ShortBio;
 
-   //   this.following = JSON.parse(res['_body']).Following.company.length;
-    //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+      this.following = JSON.parse(res['_body']).Following.length;
+    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
   show = false;
@@ -56,14 +56,14 @@ Image: new FormControl(' ')
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
     // })
-    this.feedService.Getpost().subscribe(res =>{
-      console.log('Working');
-      console.log(JSON.parse(res['_body']));
-      this.feeds =  JSON.parse(res['_body']);
-      if (!this.feeds.length){
-        this.noFeeds = true;
-      }
-    });
+    // this.feedService.Getpost().subscribe(res =>{
+    //   console.log('Working');
+    //   console.log(JSON.parse(res['_body']));
+    //   this.feeds =  JSON.parse(res['_body']);
+    //   if (!this.feeds.length){
+    //     this.noFeeds = true;
+    //   }
+    // });
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);
@@ -96,9 +96,9 @@ Image: new FormControl(' ')
     this.storage.remove('companyId');
     this.router.navigate(['/']);
   }
-// ngOnDestroy(){
-//   this.subscription.unsubscribe();
-// }
+ngOnDestroy(){
+ this.subscription.unsubscribe();
+}
 }
 
 

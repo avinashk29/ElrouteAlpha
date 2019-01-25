@@ -39,7 +39,6 @@ const companyFormData = new FormData();
     companyFormData.append('yearEstd', company.yearEstd);
     companyFormData.append('shortIntro', company.shortIntro);
       companyFormData.append('address', company.address);
-      companyFormData.append('city', company.city);
       companyFormData.append('zipcode', company.zipCode);
       companyFormData.append('landline', company.landLine);
       companyFormData.append('mobile', company.mobile);

@@ -19,6 +19,7 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {CompanyGuardService} from './guards/company-guard.service';
 import { CompanEditComponent } from './Company/compan-edit/compan-edit.component';
 import { ProductComponent } from './Product/product/product.component';
+import { ProductListingComponent } from './Product/product-listing/product-listing.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
