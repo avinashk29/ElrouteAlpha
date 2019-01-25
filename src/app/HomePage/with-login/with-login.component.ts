@@ -16,8 +16,8 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class WithLoginComponent implements OnInit {
 username;
-following;
-bookmark;
+following = [];
+bookmark = [];
 location;
 companyName;
 haveCompany;
@@ -42,12 +42,13 @@ Image: new FormControl(' ')
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     this.userService.getUserData().subscribe(res => {
+      console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
       this.shortBio = JSON.parse(res['_body']).ShortBio;
     
-   //   this.following = JSON.parse(res['_body']).Following.company.length;
-    //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+    this.following = JSON.parse(res['_body']).Following.length;
+    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
   show = false;
