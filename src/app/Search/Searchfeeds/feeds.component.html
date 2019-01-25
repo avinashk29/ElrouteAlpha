@@ -3,7 +3,7 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section>
-  <div class="results" *ngFor="let feed of this.search.feedResult">
+  <div class="results" *ngFor="let feed of this.search.feedResult; let i=index">
      <div class="feedResult">
         <div class="feed" *ngIf="feed.CompanyName != null" >
             <div class="authorInfo" >
@@ -16,6 +16,12 @@
                  <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.Industry}}</p>
                  <p style="line-height: 3px;margin-bottom: 10px;">{{feed.Location}}</p>
                 </div>
+                <div class="b_page_btn">
+                    <button  (click)= " onBookmark(i,feed._id) "  *ngIf = "!this.bookmarkService.CompanyBookmark[i].bookm else bloading">Bookmark</button>
+                    <ng-template #bloading>
+                        <button (click)="OndeleteBookmark(i,feed._id)" >Unbookmark</button>
+                    </ng-template>
+                  </div>
                 </div>
                 <div class="followBtn">
                  <button (click)="follow(feed._id)">Follow<span><svg xmlns="http://www.w3.org/2000/svg" width="20%" height="50%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>

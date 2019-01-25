@@ -44,6 +44,14 @@ addPostBookmark(id) {
     return this.http.patch('http://localhost:8080/api/bookmark/post/' + id, id, {headers: headers});
 
 }
+DeletePostBookmark(id) {
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    console.log(this.token);
+    console.log(id);
+    return this.http.delete('http://localhost:8080/api/bookmark/post/'+ id,{headers: headers});
+
+}
 addServiceBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth',this.token);
