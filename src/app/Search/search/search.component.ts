@@ -21,7 +21,7 @@ token;
 word;
 page;
 unbookmarked = true;
-userPostBookmark=[];
+userProductBookmark=[];
 postResult=[]
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
@@ -39,21 +39,21 @@ postResult=[]
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
     this.userService.getUserData().subscribe(res=>{
-   this.userPostBookmark=JSON.parse(res['_body']).bookmarks.post;
-    console.log(this.userPostBookmark);
+   this.userProductBookmark=JSON.parse(res['_body']).bookmarks.product;
+    console.log(this.userProductBookmark);
    
     ////////////////////////
    this.search.onSearch(this.word , this.page).subscribe(res=>{
      this.postResult=JSON.parse(res['_body']);
      this.bookmarkService.productBookmark=JSON.parse(res['_body'])[0];
      for(let i=0;i<this.bookmarkService.productBookmark.length;i++){
-      console.log(this.userPostBookmark.length+'dfghjk')
-      if(this.userPostBookmark.length === 0){
+      console.log(this.userProductBookmark.length+'dfghjk')
+      if(this.userProductBookmark.length === 0){
         this.bookmarkService.productBookmark[i].bookm=false;
       }else{
         console.log(this.bookmarkService.productBookmark[i]._id);
-        console.log(this.userPostBookmark[i]);
-        if(this.bookmarkService.productBookmark[i]._id === this.userPostBookmark[i]){
+        console.log(this.userProductBookmark[i]);
+        if(this.bookmarkService.productBookmark[i]._id === this.userProductBookmark[i]){
           this.bookmarkService.productBookmark[i].bookm=true;
 
         }

@@ -20,10 +20,6 @@ postBookmark
      
   }
   onSearchFeed(word , page) {
-    return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page).subscribe( res => {
-      console.log(JSON.parse(res['_body']));
-      this.feedResult = JSON.parse(res['_body']);
-    });
-
+    return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);
   }
 }

@@ -11,6 +11,7 @@ token;
 companyfollow;
 CompanyBookmark;
 productBookmark;
+feedBookmark;
 count=0;
 constructor(public http:Http) {}
 addProductBookmarks(id) {
