@@ -36,7 +36,7 @@
 
         </div>
       -->
-        <button  (click)= " addProductBookmark(i,result._id)"  *ngIf = "!this.bookmarkService.postBookmark[i].bookm else bloading">Bookmark</button>
+        <button  (click)= " addProductBookmark(i,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm else bloading">Bookmark</button>
             <ng-template #bloading>
                 <button (click)=" deleteProductBookmark(i,result._id)" >Unbookmark</button>
             </ng-template>

@@ -10,7 +10,7 @@ export class BookmarkServices {
 token;
 companyfollow;
 CompanyBookmark;
-postBookmark;
+productBookmark;
 count=0;
 constructor(public http:Http) {}
 addProductBookmarks(id) {

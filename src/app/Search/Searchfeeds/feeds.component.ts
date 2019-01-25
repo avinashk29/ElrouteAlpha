@@ -24,12 +24,7 @@ page;
     console.log(this.bookmark.token);
 
   }
-  onBookmark(id) {
-     this.bookmark.addPostBookmark(id).subscribe(res => {
-       console.log(res);
-     });
-     console.log(id);
-  }
+ 
   follow(id) {
       this.follows.addFollow(id).subscribe(res => {
         console.log(res);
@@ -41,4 +36,14 @@ page;
     //      console.log(res);
     //    });
     // }
+
+    onBookmark(id) {
+      this.bookmark.addPostBookmark(id).subscribe(res => {
+        console.log(res);
+      });
+      console.log(id);
+   }
+   OndeleteBookmark(){
+     
+   }
 }

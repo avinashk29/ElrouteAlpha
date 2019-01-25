@@ -45,16 +45,16 @@ postResult=[]
     ////////////////////////
    this.search.onSearch(this.word , this.page).subscribe(res=>{
      this.postResult=JSON.parse(res['_body']);
-     this.bookmarkService.postBookmark=JSON.parse(res['_body'])[0];
-     for(let i=0;i<this.bookmarkService.postBookmark.length;i++){
+     this.bookmarkService.productBookmark=JSON.parse(res['_body'])[0];
+     for(let i=0;i<this.bookmarkService.productBookmark.length;i++){
       console.log(this.userPostBookmark.length+'dfghjk')
       if(this.userPostBookmark.length === 0){
-        this.bookmarkService.postBookmark[i].bookm=false;
+        this.bookmarkService.productBookmark[i].bookm=false;
       }else{
-        console.log(this.bookmarkService.postBookmark[i]._id);
+        console.log(this.bookmarkService.productBookmark[i]._id);
         console.log(this.userPostBookmark[i]);
-        if(this.bookmarkService.postBookmark[i]._id === this.userPostBookmark[i]){
-          this.bookmarkService.postBookmark[i].bookm=true;
+        if(this.bookmarkService.productBookmark[i]._id === this.userPostBookmark[i]){
+          this.bookmarkService.productBookmark[i].bookm=true;
 
         }
       }
@@ -102,13 +102,13 @@ bookmark(id) {
   }
 
   addProductBookmark(i,id){
-    this.bookmarkService.postBookmark[i].bookm=true;
+    this.bookmarkService.productBookmark[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
       console.log(res);
     })
   }
   deleteProductBookmark(i,id){
-    this.bookmarkService.postBookmark[i].bookm=true;
+    this.bookmarkService.productBookmark[i].bookm=true;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       console.log(res);
     })
