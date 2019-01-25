@@ -9,17 +9,32 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 })
 export class BookmarkComponent implements OnInit {
 
-  product=[];
-  company=[];
-  post=[];
-  constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService) { }
-  id;
-  ngOnInit() {
+  product=[]
+  constructor(public bookmarkService:BookmarkServices,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { 
+
     this.bookmarkService.token = this.storage.get('token');
-    this.bookmarkService.getBookmarkCompany().subscribe(res => {
-        this.product=JSON.parse(res['_body']);
-        console.log(this.product)
+    this.bookmarkService.getBookmarkProduct().subscribe(res => {
+    this.product=JSON.parse(res['_body']);
+      console.log(this.product)
     });
+
+  }
+
+  cards = [
+    {
+    type: 1,
+    catogory: 'Laptp',
+    productName: 'Product Name',
+    company: 'Company ka Naam',
+    device: 'computer',
+    country: 'China',
+    discription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+
+    },
+  
+  ];
+  
+  ngOnInit() {
    
   }
 

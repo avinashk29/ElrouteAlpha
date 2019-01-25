@@ -54,7 +54,6 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
-        this.companyId = JSON.parse(res['_body'])._id;
         this.userBio = JSON.parse(res['_body']).ShortBio;
          this.companyFollowers = JSON.parse(res['_body']).Followers.length;
          console.log(JSON.parse(res['_body']));
@@ -80,7 +79,8 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     this.router.navigate(['/B-page'])
   }
   EditBpage(){
-    this.router.navigate(['/editcompany/'+this.companyId])
+    console.log(this.haveCompany)
+    this.router.navigate(['/editcompany/'+this.haveCompany]);
   }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -91,7 +91,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   }
   editBio(){
     this.bioEdit = !this.bioEdit;
-    this.router.navigate(['/bookmark' ],{ queryParams: { edit: true}});
+    this.router.navigate(['/bookmark' ],{queryParams:{edit:true}}); 
    }
   addBio() {
     this.bioForm.patchValue({
@@ -100,9 +100,9 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     this.userService.editUser(this.bioForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
       console.log('working');
-    });
-    this.router.navigate(['/bookmark']);
+    })
     this.bioEdit = !this.bioEdit;
+    this.router.navigate(['/bookmark' ]); 
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

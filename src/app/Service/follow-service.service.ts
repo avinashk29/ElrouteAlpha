@@ -17,13 +17,19 @@ constructor(public http:Http){}
     getFollowers(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('http://www.elroute.co.in/api/followers',{headers:headers});
+              return this.http.get('http://localhost:8080/api/followers',{headers:headers});
 
     }
     Unfollow(id){
         const headers=new Headers();
         headers.append('x-auth',this.token);
         return this.http.get('http://localhost:8080/api/unfollow/'+id,{headers:headers});
+
+    }
+    getFollowing(){
+        const headers=new Headers();
+        headers.append('x-auth',this.token);
+        return this.http.get('http://localhost:8080/api/user/following',{headers:headers});
 
     }
 

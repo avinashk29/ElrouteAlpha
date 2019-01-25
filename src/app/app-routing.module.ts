@@ -37,8 +37,7 @@ const routes: Routes = [
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
     {path:'editcompany/:id',component:CompanEditComponent},
-    {path:'productEdit/:id',component:ProductComponent},
-    {path:'product-listing',component:ProductListingComponent}
+    {path:'productEdit/:id',component:ProductComponent}
 
   // {path: 'feed ' , component: fee}
 ];

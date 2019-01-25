@@ -42,7 +42,7 @@ display: flex;
   display: flex;
 }
 .follow-btn button{
-  width: 70%;
+  width: 65%;
   height: 40px;
   border: none;
   color: #fff;
@@ -52,11 +52,14 @@ display: flex;
 .follow-btn span
 {
   margin-left: 7%;
-  font-size: 26px;
+    font-size: 20px;
+    width: 0%;
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .extraInfo{
- width: 60%;
+ width: 90%;
   
   padding: 0px 25px;
 
@@ -77,8 +80,7 @@ display: flex;
 }
 
 .card-left{
-  width: 100%;
-  display: flex;
+  width: 65%;
 
 }
 
@@ -93,12 +95,15 @@ display: flex;
 }
 .headerImg{
   width: 100%;
-  height: 34vh;
-  background-color: red;
+  height: 28vh;
   display: flex;
 }
+.headerImg img 
+{
+  width: 100%
+}
 .logoheader{
-  width: 35%; 
+  width: 52%; 
   height: 20%;
   /* background-color: darkseagreen; */
  
@@ -131,12 +136,12 @@ box-shadow: 0px 3px 10px #5555;
 }
 .tab{
   height: 100%;
-  width: 30%;
+  width: 32%;
   background-color: white;
   margin-left: 3vh;
   margin-right: 0%;
   transition: .2s;
-  box-shadow: 0px -3px 5px -2px #5555;
+  box-shadow: 0px 1px 5px 0px #5555;
 }
 .tabClicked{
   height: 150%;
@@ -438,6 +443,23 @@ font-size: 13px;
   margin-top: auto;
   margin-top: 3%;
 }
+.productAddbutton
+{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.productAddbutton button{
+  background-color: skyblue;
+  width: 100%;
+  border-radius: 20px;
+  height: 44px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 19px;
+}
+
 
 
 @media screen and (max-width:700px){
@@ -525,13 +547,13 @@ font-size: 13px;
 .elements h4{
   margin: 0;
 }
-.headerImg {
+/* .headerImg {
   width: 100%;
   height: 34vh;
   margin-top:34%;
   background-color: #ec1818;
   display: flex;
-}
+} */
 .tabs {
   display: none;
 }
@@ -555,6 +577,7 @@ font-size: 13px;
   border: solid 1px gray;
   width: 22%;
   font-size: 21px;
+  height: 50vh;
 }
 .extraInfo{
   width: 100%;

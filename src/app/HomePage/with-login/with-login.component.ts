@@ -35,9 +35,9 @@ Image: new FormControl(' ')
   public feedService: FeedService, public companyService: CompanyServiceService) {
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
-        this.feedService.Getpost().subscribe(res =>{
-          console.log(res);
-        })
+        // this.feedService.Getpost().subscribe(res =>{
+        //   console.log(res);
+        // })
     });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
@@ -56,14 +56,14 @@ Image: new FormControl(' ')
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
     // })
-    this.feedService.Getpost().subscribe(res =>{
-      console.log('Working');
-      console.log(JSON.parse(res['_body']));
-      this.feeds =  JSON.parse(res['_body']);
-      if (!this.feeds.length){
-        this.noFeeds = true;
-      }
-    });
+    // this.feedService.Getpost().subscribe(res =>{
+    //   console.log('Working');
+    //   console.log(JSON.parse(res['_body']));
+    //   this.feeds =  JSON.parse(res['_body']);
+    //   if (!this.feeds.length){
+    //     this.noFeeds = true;
+    //   }
+    // });
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);

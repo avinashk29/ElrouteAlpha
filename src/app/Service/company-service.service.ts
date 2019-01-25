@@ -11,15 +11,15 @@ export class CompanyServiceService {
   Id;
   constructor(private http: Http) { }
   // signup(user) {
-  //  return this.http.post('http://www.elroute.co.in/api/auth/signup', user);
+  //  return this.http.post('http://localhost:8080/api/auth/signup', user);
   // }
   // login(user) {
-  //   return this.http.post('http://www.elroute.co.in/api/auth/login', user);
+  //   return this.http.post('http://localhost:8080/api/auth/login', user);
   // }
   // onEditUser(user) {
   // const headers = new Headers();
   // headers.append('x-auth', this.token);
-  //   return this.http.patch('http://www.elroute.co.in/api/user/update', user, {headers: headers});
+  //   return this.http.patch('http://localhost:8080/api/user/update', user, {headers: headers});
   // }
   addCompany(company) {
     const headers = new Headers();

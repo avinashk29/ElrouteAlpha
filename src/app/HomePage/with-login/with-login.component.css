@@ -20,6 +20,8 @@
     font-size: 15px;
     color: #FAF6F6;
     float: left;
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 .user_name span {

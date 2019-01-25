@@ -50,7 +50,8 @@ noFeeds = false;
         this.type = paramas.urltype;
         console.log(this.type);
       });
-      this.comapnyId = this.storage.get('companyId');
+      this.comapnyId=this.route.snapshot.paramMap.get('id')
+     // this.comapnyId = this.storage.get('companyId');
       if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
@@ -66,7 +67,8 @@ noFeeds = false;
   }
 
   ngOnInit() {
-    this.comapnyId = this.storage.get('companyId');
+
+    //this.comapnyId = this.storage.get('companyId');
     this.feedService.token = this.storage.get('token');
 
     console.log(this.comapnyId)
@@ -164,6 +166,9 @@ DeleteProduct(id){
 this.productService.DeleteProduct(id).subscribe(res=>{
 console.log(res);
 }) 
+ }
+ GotoBpage(){
+   this.router.navigate(['/companyPage/'+this.comapnyId]);
  }
   // onExpand(i) {
   //   console.log(i);
