@@ -16,11 +16,11 @@ export class SignupComponent implements OnInit {
   error;
   username;
   signupForm = new FormGroup({
-    UserName : new FormControl('', [Validators.required]),
+    UserName : new FormControl('',[Validators.required]),
     Location : new FormControl(''),
     Email: new FormControl(''),
-    Title: new FormControl (''),
-    Password: new FormControl('')
+    Title: new FormControl (),
+    Password: new FormControl()
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,

@@ -27,9 +27,9 @@
                     <button> FOLLOW</button>
                     <span>24,255</span>
                 </div>
-                <div class="follow-btn" *ngIf = "myCompany"> 
+                <div class="follow-btn" *ngIf = "myCompany">
                     <button (click) = "EditBpage()">Edit</button>
-                 
+
                 </div>
               </div>
         </div>
@@ -38,7 +38,7 @@
       </div>
 
 <header>
-   
+
     <div class="card1">
         <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
           <g id="location" transform="translate(-486.5 -340.5)">
@@ -58,27 +58,27 @@
                 <p>{{industry}}</p>
                <!-- <p> {{city}}</p>
                <p>{{companyEmail}}</p> -->
-                <div class="follow-btn" *ngIf = "!myCompany"> 
+                <div class="follow-btn" *ngIf = "!myCompany">
                     <button>FOLLOW</button>
                     <span>24,255</span>
                 </div>
-                <div class="follow-btn" *ngIf = "myCompany"> 
+                <div class="follow-btn" *ngIf = "myCompany">
                     <button (click) = "EditBpage()">Edit</button>
-                 
+
                 </div>
               </div>
         </div>
         <div class="extraInfo">
           <p>9 A.M. - 5 P.M.</p>
           <p>{{website}}</p>
-      
+
           <div class="social">
               <div class="social_links">
                   <span><img src="assets/images/linkdin.png"></span>
                   <span><img src="assets/images/linkdin.png"></span>
                   <span><img src="assets/images/linkdin.png"></span>
               </div>
-      
+
               <div class="social_bookmark">
                   <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
               </div>
@@ -102,19 +102,19 @@
       <div class="social">
 
       </div> -->
-      
+
       <div class="card-left">
         <!-- <div class="headerImg">
             <h3>CATEGORY</h3>
-        
+
         <div class="img"></div>
         </div> -->
         <div class="headerImg">
           <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
-          <img src="assets/images/bk.png"> 
+          <img src="assets/images/bk.png">
 
       </div>
-        
+
         <div class="tabs">
         <div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
         <div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h1>PRODUCTS</h1></div>
@@ -130,10 +130,10 @@
       <div class="shortBio">
           <div class="bio">
        <h2>SHORT BIO</h2>
-       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+       <p>{{shortIntro}}</p>
           </div>
       </div>
-    
+
         <div class="feedCards" *ngIf = "!noFeeds">
           <div class="feed" *ngFor = "let feed of feeds; let i = index">
             <div class="authorInfo">
@@ -175,12 +175,12 @@
                  </mat-expansion-panel>
             </div>
             </div>
-           
+
         </div>
        <div  class="feedCards" *ngIf = "noFeeds">
-        <h1 style="text-align: center">No Feeds To Show</h1> 
+        <h1 style="text-align: center">No Feeds To Show</h1>
        </div>
-     
+
        <div class="otherInfocard">
         <div class="infoCard">
         <div class="hq info">
@@ -214,7 +214,7 @@
     </div>
     <div class="infoContent">
       <h3>SHORT BIO</h3>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <p>{{shortIntro}}</p>
     </div>
 <div class="infoSectonCard">
   <img src="assets/images/bk.png">
@@ -378,63 +378,63 @@
 
   <div class="comapany_contact">
           <h2>Company Divisions</h2>
-  </div> 
+  </div>
 <div class="company_details">
     <div class="company_details1">
         <div class="company_email">
-               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                <p>abc@infotech.com</p>
-       </div> 
+       </div>
           <div class="company_email1">
            <h2>Sales Division</h2>
-         </div> 
+         </div>
      </div>
      <div class="company_details1">
         <div class="company_email">
                <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
-               <p>abc@infotech.com</p>       
-       </div> 
+               <p>abc@infotech.com</p>
+       </div>
           <div class="company_email1">
            <h2>Marketing Division</h2>
-         </div> 
+         </div>
      </div>
-</div> 
+</div>
 <div class="company_details">
     <div class="company_details1">
         <div class="company_email">
-               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>        
+               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                <p>abc@infotech.com</p>
-       </div> 
+       </div>
           <div class="company_email1">
            <h2>HR Division</h2>
-         </div> 
+         </div>
      </div>
      <div class="company_details1">
         <div class="company_email">
                <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
-               <p>abc@infotech.com</p>       
-       </div> 
+               <p>abc@infotech.com</p>
+       </div>
           <div class="company_email1">
            <h2>Technical Division</h2>
-         </div> 
+         </div>
      </div>
-      
+
 
  </div>
     <div class="comapany_contact">
         <h2>Company Office</h2>
-      </div> 
+      </div>
   <div class="company_address">
       <div class="google_map">
           Google Map here
-        </div> 
+        </div>
         <div class="complete_address">
           <p>India Address </p>
           <p>277, Mahaveer Nagar 2, Maharani Farm, Gayatri Nagar A, Durgapura, Jaipur, Rajasthan 302020</p>
           <p>Email:-</p>
           <p>info@naturaldyes.in</p>
-          
-          </div>  
+
+          </div>
   </div>
 </div>
 

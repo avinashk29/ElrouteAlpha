@@ -34,15 +34,16 @@ const companyFormData = new FormData();
 
     companyFormData.append('website', company.website);
     companyFormData.append('companyType', company.companyType);
-    companyFormData.append('image', company.image);
+    companyFormData.append('Image', company.Image);
     companyFormData.append('companySize', company.companySize);
     companyFormData.append('yearEstd', company.yearEstd);
-
+    companyFormData.append('shortIntro', company.shortIntro);
       companyFormData.append('address', company.address);
       companyFormData.append('city', company.city);
       companyFormData.append('zipcode', company.zipCode);
       companyFormData.append('landline', company.landLine);
       companyFormData.append('mobile', company.mobile);
+
       headers.append('x-auth', this.token);
     console.log(this.token);
     return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
@@ -53,42 +54,44 @@ const companyFormData = new FormData();
     headers.append('x-auth', this.token);
     return this.http.get('http://localhost:8080/api/company', {headers: headers});
   }
-  //GetoneCompany  method is using to get one company using company id
+  // GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
-    return this.http.get('http://localhost:8080/api/company/'+id, id);
+    return this.http.get('http://localhost:8080/api/company/' + id, id);
   }
 
-  //updatCompany method is using to update data of company in database*/
-  UpdateCompany(id,company){
+  // updatCompany method is using to update data of company in database*/
+  UpdateCompany(id, company) {
     const headers = new Headers();
-    const companyFormData = new FormData();
-    companyFormData.append('companyName', company.companyName);
-    companyFormData.append('country', company.country);
-    companyFormData.append('city', company.city);
-    companyFormData.append('companyEmail', company.companyEmail);
-    companyFormData.append('industry', company.industry);
-    companyFormData.append('category' , company.category);
+    const companyFormData1 = new FormData();
 
-    companyFormData.append('website', company.website);
-    companyFormData.append('companyType', company.companyType);
-    companyFormData.append('image', company.image);
-    companyFormData.append('companySize', company.companySize);
-    companyFormData.append('yearEstd', company.yearEstd);
+        companyFormData1.append('companyName', company.companyName);
+        companyFormData1.append('country', company.country);
+        companyFormData1.append('city', company.city);
+        companyFormData1.append('companyEmail', company.companyEmail);
+        companyFormData1.append('industry', company.industry);
+        companyFormData1.append('category' , company.category);
 
-      companyFormData.append('address', company.address);
-      companyFormData.append('city', company.city);
-      companyFormData.append('zipcode', company.zipCode);
-      companyFormData.append('landline', company.landLine);
-      companyFormData.append('mobile', company.mobile);
-      headers.append('x-auth', this.token);
-    return this.http.patch('http://localhost:8080/api/company/update/'+id,company,{headers:headers})
+        companyFormData1.append('website', company.website);
+        companyFormData1.append('companyType', company.companyType);
+        companyFormData1.append('Image', company.Image);
+         companyFormData1.append('companySize', company.companySize);
+        companyFormData1.append('yearEstd', company.yearEstd );
+
+          companyFormData1.append('address', company.address);
+          companyFormData1.append('shortIntro', company.shortIntro);
+          companyFormData1.append('zipCode', company.zipCode);
+          companyFormData1.append('landline', company.landLine);
+          companyFormData1.append('mobile', company.mobile);
+          headers.append('x-auth', this.token);
+
+    return this.http.patch('http://localhost:8080/api/company/update' , companyFormData1,  {headers: headers});
   }
 
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://localhost:8080/api/company/delete/'+id, {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company/delete/' + id, {headers:headers});
 
   }
 companyFollowing(id){

@@ -13,8 +13,8 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class LoginComponent implements OnInit {
  login = new FormGroup({
-   Email: new FormControl(''),
-   Password: new FormControl('')
+   Email: new FormControl(),
+   Password: new FormControl()
  });
  error = true;
    constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,

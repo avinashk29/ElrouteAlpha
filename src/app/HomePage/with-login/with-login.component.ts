@@ -45,7 +45,7 @@ Image: new FormControl(' ')
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
       this.shortBio = JSON.parse(res['_body']).ShortBio;
-    
+
    //   this.following = JSON.parse(res['_body']).Following.company.length;
     //this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
@@ -69,7 +69,7 @@ Image: new FormControl(' ')
         this.companyName = (JSON.parse(res['_body']).companyName);
       });
     }
-    
+
     }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -80,6 +80,9 @@ Image: new FormControl(' ')
         // this.imagePreview = reader.result;
       };
       reader.readAsDataURL(file);
+      this.userService.editUser(Image).subscribe(res => {
+        console.log(JSON.parse(res['_body']));
+      });
    }
   onAddpost() {
     this.feedService.token = this.storage.get('token');

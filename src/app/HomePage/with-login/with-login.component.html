@@ -22,6 +22,8 @@
       </span>
     </div>
     <div class="user_img">
+        <!-- <input type="file" #filepicker (change)="onImagePick($event)" style="display: none">
+        <button (click)="filepicker.click()">open</button> -->
         <img src="assets/images/user_img.jpg"  >
     </div>
     <div class="user_details">
@@ -106,10 +108,10 @@
                </mat-expansion-panel>
           </div>
           </div>
-         
+
       </div>
      <div  class="feedCards" *ngIf = "noFeeds">
-      <h1 style="text-align: center">No Feeds To Show</h1> 
+      <h1 style="text-align: center">No Feeds To Show</h1>
      </div>
 
 </section>

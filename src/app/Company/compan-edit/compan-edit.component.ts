@@ -28,14 +28,15 @@ export class CompanEditComponent implements OnInit {
    category: new FormControl('',[Validators.required]),
    website: new FormControl(''),
    companyType: new FormControl(''),
-   image: new FormControl(''),
-   companySize: new FormControl(''),
-   yearEstd: new FormControl(''),
+   Image: new FormControl(''),
+   companySize: new FormControl(),
+   yearEstd: new FormControl(),
    address: new FormControl(''),
   // city: new FormControl(''),
-  zipCode: new FormControl(''),
-  landLine: new FormControl(''),
-  mobile: new FormControl('')
+  zipCode: new FormControl(),
+  landLine: new FormControl(),
+  mobile: new FormControl(),
+  shortIntro: new FormControl(),
   }) ;
   submitted: boolean;
   imagePreview;
@@ -44,7 +45,7 @@ companyId;
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
    public notification: ToastrService) {
 this.companyId = this.storage.get('companyId');
-console.log(this.companyId)
+console.log(this.companyId);
 // if (this.companyId) {
 // this.router.navigate(['/companyPage/' + this.companyId]);
 // }
@@ -55,28 +56,29 @@ console.log(this.companyId)
   ngOnInit() {
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
-    this.companyService.GetoneCompany(this.companyId).subscribe(res=>{
+    this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       console.log(res);
-      this.companyName=JSON.parse(res['_body']).companyName;
+      this.companyName= JSON.parse(res['_body']).companyName;
       console.log(this.companyName);
       this.editcompanyForm.patchValue({
-        companyName:JSON.parse(res['_body']).companyName,
-        country:JSON.parse(res['_body']).country,
-        companyEmail:JSON.parse(res['_body']).companyEmail,
-        city:JSON.parse(res['_body']).city,
-        industry:JSON.parse(res['_body']).industry,
-        category:JSON.parse(res['_body']).category,
-        website:JSON.parse(res['_body']).website,
-        companyType:JSON.parse(res['_body']).companyType,
-        companySize:JSON.parse(res['_body']).companySize,
-        yearEstd:JSON.parse(res['_body']).yearEstd,
-        address:JSON.parse(res['_body']).address,
-        zipCode:JSON.parse(res['_body']).zipCode,
-        landLine:JSON.parse(res['_body']).landLine,
-        mobile:JSON.parse(res['_body']).mobile,
-
-      })
-    })
+        companyName: JSON.parse(res['_body']).companyName,
+        country: JSON.parse(res['_body']).country,
+        companyEmail: JSON.parse(res['_body']).companyEmail,
+        city: JSON.parse(res['_body']).city,
+        industry: JSON.parse(res['_body']).industry,
+        category: JSON.parse(res['_body']).category,
+        website: JSON.parse(res['_body']).website,
+        companyType: JSON.parse(res['_body']).companyType,
+        companySize: JSON.parse(res['_body']).companySize,
+        yearEstd: JSON.parse(res['_body']).yearEstd,
+        address: JSON.parse(res['_body']).address,
+        zipCode: JSON.parse(res['_body']).zipCode,
+        landLine: JSON.parse(res['_body']).landLine,
+        mobile: JSON.parse(res['_body']).mobile,
+        shortIntro: JSON.parse(res['_body']).shortIntro,
+        Image: JSON.parse(res['_body']).Image
+      });
+    });
 
   }
   Showtwo() {
@@ -103,7 +105,7 @@ ShowPrev2(){
    onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.editcompanyForm.patchValue({image: file});
-    this.editcompanyForm.get('image').updateValueAndValidity();
+    this.editcompanyForm.get('Image').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
@@ -111,12 +113,13 @@ ShowPrev2(){
       reader.readAsDataURL(file);
    }
   onSubmit() {
+    this.companyService.token = this.storage.get('token');
     if (this.editcompanyForm.valid) {
-      //console.log(this.editcompanyForm.value);
+      // console.log(this.editcompanyForm.value);
       const companyData = this.editcompanyForm.value;
       console.log(this.token);
-      console.log(this.companyId)
-          this.companyService.UpdateCompany(this.companyId,companyData).subscribe(res => {
+      console.log(this.companyId);
+          this.companyService.UpdateCompany(this.companyId, companyData).subscribe(res => {
             // if (res) {
             //   this.storage.set('companyId' , JSON.parse(res['_body'])._id);
             //   console.log(JSON.parse(res['_body']));
@@ -125,8 +128,8 @@ ShowPrev2(){
                 console.log(res)
            });
            this.Id = this.storage.get('companyId');
-      this.router.navigate(['/companyPage/' + this.Id]);
-      //this.notification.success('Welcome' + this.companyForm.value.companyName);
+      this.router.navigate(['/companyPage/' + this.Id], {queryParams: {urltype : 'default'}});
+      //  this.notification.success('Welcome' + this.companyForm.value.companyName);
     } else {
       this.notification.error('Enter Valid Deatils');
     }
