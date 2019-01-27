@@ -155,7 +155,7 @@ myCompany = false;
   }
   EditBpage(){
     console.log(this.mycompanyId)
-    this.router.navigate(['/editcompany/'+ this.mycompanyId]);
+    this.router.navigate(['editcompany']);
   }
   showTwo() {
     this.type = 'info';

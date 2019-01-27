@@ -67,7 +67,7 @@ BookmarkResult(){
 //     const headers = new Headers();
 //     headers.append('x-auth', this.token);
 //     console.log(this.token);
-//     return this.http.patch('http://www.elroute.co.in/api/bookmark/product', {headers: headers});
+//     return this.http.patch('http://www.elroute.co.inhttp://localhost:8080/api/bookmark/product', {headers: headers});
 // }
     getBookmarkProduct() {
     const headers = new Headers();

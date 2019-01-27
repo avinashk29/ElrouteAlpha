@@ -19,6 +19,7 @@ token;
     productData.append('moq', product.moq);
     productData.append(' industry', product.industry);
     productData.append('category', product.category);
+    productData.append('Image', product.productImage);
     productData.append('tfCode', product.tfCode);
     productData.append(' productSpecification', product.productSpecification);
     productData.append('specificationContent', product.specificationContent);
@@ -26,6 +27,7 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
+    console.log(product.productImage)
     return this.http.post('http://localhost:8080/api/product', productData, {headers: headers});
   }
   getProduct(id) {
@@ -54,12 +56,12 @@ token;
     productData.append('fieldDes', product.fieldDes);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.patch('http://localhost:8080/api/product/update/'+id,productData,{headers:headers});
+    return this.http.patch('http://localhost:8080/api/product/update',productData,{headers:headers});
   }
   DeleteProduct(id){
     const headers = new Headers();
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.delete('http://localhost:8080/api/product/delete/'+id,{headers: headers});
+    return this.http.delete('http://localhost:8080/api/product/delete',{headers: headers});
   }
 }

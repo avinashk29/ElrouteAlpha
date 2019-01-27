@@ -56,20 +56,20 @@ const companyFormData = new FormData();
   // GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
-    return this.http.get('http://localhost:8080/api/company/' + id, id);
+    return this.http.get('http://localhost:8080/api/company/' + id);
   }
 
   // updatCompany method is using to update data of company in database*/
-  UpdateCompany(id, company) {
+  UpdateCompany(company) {
     const headers = new Headers();
     const companyFormData1 = new FormData();
 
         companyFormData1.append('companyName', company.companyName);
-        companyFormData1.append('country', company.country);
-        companyFormData1.append('city', company.city);
-        companyFormData1.append('companyEmail', company.companyEmail);
-        companyFormData1.append('industry', company.industry);
-        companyFormData1.append('category' , company.category);
+         companyFormData1.append('country', company.country);
+         companyFormData1.append('city', company.city);
+         companyFormData1.append('companyEmail', company.companyEmail);
+         companyFormData1.append('industry', company.industry);
+         companyFormData1.append('category' , company.category);
 
         companyFormData1.append('website', company.website);
         companyFormData1.append('companyType', company.companyType);
@@ -90,7 +90,7 @@ const companyFormData = new FormData();
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://localhost:8080/api/company/delete/' + id, {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company/delete', {headers:headers});
 
   }
 companyFollowing(id){

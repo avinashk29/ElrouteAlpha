@@ -58,10 +58,10 @@ console.log(this.companyId);
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
-      console.log(res);
+      //console.log(res);
       this.companyName= JSON.parse(res['_body']).companyName;
-      console.log(this.companyName);
-      console.log(this.companyId);
+      //console.log(this.companyName);
+      //console.log(this.companyId);
       this.editcompanyForm.patchValue({
         companyName: JSON.parse(res['_body']).companyName,
         country: JSON.parse(res['_body']).country,
@@ -116,25 +116,25 @@ ShowPrev2(){
    }
   onSubmit() {
     this.companyService.token = this.storage.get('token');
-    if (this.editcompanyForm.valid) {
+   /// if (this.editcompanyForm.valid) {
       // console.log(this.editcompanyForm.value);
-      const companyData = this.editcompanyForm.value;
-      console.log(this.token);
-      console.log(this.companyId);
-          this.companyService.UpdateCompany(this.companyId, companyData).subscribe(res => {
+      //const companyData = this.editcompanyForm.value;
+      //console.log(this.editcompanyForm.value);
+      console.log('Hello')
+          this.companyService.UpdateCompany(this.editcompanyForm.value).subscribe(res => {
             // if (res) {
             //   this.storage.set('companyId' , JSON.parse(res['_body'])._id);
-            //   console.log(JSON.parse(res['_body']));
+             console.log(JSON.parse(res['_body']));
             //   this.companyService.Id =  this.storage.get('comapnyId');
             // }
-                console.log(res)
+               // console.log(res);
            });
            this.Id = this.storage.get('companyId');
       this.router.navigate(['/companyPage/' + this.Id], {queryParams: {urltype : 'default'}});
       //  this.notification.success('Welcome' + this.companyForm.value.companyName);
-    } else {
-      this.notification.error('Enter Valid Deatils');
-    }
+   // } //else {
+     // this.notification.error('Enter Valid Deatils');
+    //}
 
 
   }

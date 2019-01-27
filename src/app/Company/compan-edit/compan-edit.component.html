@@ -85,7 +85,7 @@
                 <input type="file" #filePicker (change)="onImagePick($event)" class="picker" style="display: hidden;">
                 <button  type="button" (click)="filePicker.click()" class="btn">Pick Company Logo</button>
                 <div class="imagePreview" *ngIf="imagePreview!== '' && imagePreview">
-                    <img [src] = "imagePreview" [alt]="this.companyForm.value.image.name">
+                    <img [src] = "imagePreview" alt="this.companyForm.value.Image.name">
                   </div>
               </div>
         </li>
