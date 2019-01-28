@@ -78,8 +78,8 @@ ShowPrev2(){
 
    onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.companyForm.patchValue({image: file});
-    this.companyForm.get('image').updateValueAndValidity();
+    this.companyForm.patchValue({Image: file});
+    this.companyForm.get('Image').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;

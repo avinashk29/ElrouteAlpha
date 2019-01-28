@@ -25,14 +25,14 @@ export class CompanySearchComponent implements OnInit {
   page;
   result= [];
   userInfo = [];
-  userInfoForBookmark=[]
+  userInfoForBookmark = [];
   ngOnInit() {
-    this.bookmarkService.token=this.storage.get('token');
+    this.bookmarkService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
     this.follows.token = this.storage.get('token');
-   this.word= this.route.snapshot.paramMap.get('word');
-   this.page= this.route.snapshot.paramMap.get('page');
-    this.userService.token=this.storage.get('token');
+   this.word = this.route.snapshot.paramMap.get('word');
+   this.page = this.route.snapshot.paramMap.get('page');
+    this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).Following;
@@ -54,7 +54,7 @@ export class CompanySearchComponent implements OnInit {
             console.log(this.bookmarkService.companyfollow[i].follow)
           }
           }
-          
+
         }
         //Deletion method for Bookmarks//
         this.bookmarkService.CompanyBookmark=JSON.parse(res1['_body'])[0];
@@ -71,21 +71,21 @@ export class CompanySearchComponent implements OnInit {
 
             }
           }
-         
+
         }
 
       });
  })
-    
- 
+
+
 
 
   }
-  // onClick (id) { 
+  // onClick (id) {
   //   this.bookmarkService.count+=1;
   //   console.log(this.userInfo.length);
   //   if (!this.userInfo.length){
-      
+
   //   console.log(id)
   //   console.log('1');
   //   this.follows.addFollow(id).subscribe(res=>{
@@ -93,7 +93,7 @@ export class CompanySearchComponent implements OnInit {
   //   })
   //   console.log( this.bookmarkService.companyfollow[id].follow );
   //   this.bookmarkService.companyfollow[id].follow = !this.bookmarkService.companyfollow[id].follow;
-    
+
   //   }else{
   //   for (let i = 0; i<this.userInfo.length; i++) {
   //     console.log(this.userInfo[i]);
@@ -103,7 +103,7 @@ export class CompanySearchComponent implements OnInit {
   //       console.log(this.bookmarkService.companyfollow[i].follow)
   //       console.log('2')
   //       console.log(id)
-        
+
   //       this.follows.Unfollow(id).subscribe(res=>{
   //         console.log(res);
   //       })
@@ -119,7 +119,7 @@ export class CompanySearchComponent implements OnInit {
   //      }
   //     }
   // }
-   
+
   // }
   onfollow(i,id){
     this.bookmarkService.companyfollow[i].follow = true;

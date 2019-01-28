@@ -18,13 +18,14 @@
 
 
             <div class="logoheader">
-            <img src="{{image}}">
+            <img src="{{Image}}">
             </div>
             <div class="user_profile">
                 <h2>{{CompanyName}}</h2>
 
                      <div class="follow-btn" *ngIf = "!myCompany">
-                    <button> FOLLOW</button>
+                    <button (click)="onCompanyFollow()"> FOLLOW</button>
+                    <button (click)="onCompanyUnfollow()"> UNFOLLOW</button>
                     <span>24,255</span>
                 </div>
                 <div class="follow-btn" *ngIf = "myCompany">
@@ -51,7 +52,7 @@
         </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader">
-            <img src="assets/images/logo.png">
+            <img src="{{Image}}">
             </div>
             <div class="user_profile">
                 <h2>{{CompanyName}}</h2>
