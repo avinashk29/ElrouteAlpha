@@ -18,13 +18,14 @@
 
 
             <div class="logoheader">
-            <img src="{{image}}">
+            <img src="{{Image}}">
             </div>
             <div class="user_profile">
                 <h2>{{CompanyName}}</h2>
 
                      <div class="follow-btn" *ngIf = "!myCompany">
-                    <button> FOLLOW</button>
+                    <button (click)="onCompanyFollow()"> FOLLOW</button>
+                    <button (click)="onCompanyUnfollow()"> UNFOLLOW</button>
                     <span>24,255</span>
                 </div>
                 <div class="follow-btn" *ngIf = "myCompany">
