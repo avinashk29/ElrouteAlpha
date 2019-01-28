@@ -13,14 +13,14 @@ import { UserService } from 'src/app/Service/user-services.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  error
+  error;
   username;
   signupForm = new FormGroup({
     UserName : new FormControl('',[Validators.required]),
-    Location : new FormControl(''),
-    Email: new FormControl(''),
-    Title: new FormControl (),
-    Password: new FormControl()
+    Location : new FormControl('', [Validators.required]),
+    Email: new FormControl('' , [Validators.required]),
+    Title: new FormControl ('', [Validators.required]),
+    Password: new FormControl('' , [Validators.required])
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-//<-----------------------------to open login------------------------------------>
+// <-----------------------------to open login------------------------------------>
   openLogin() {
     this.dialogRef.close(SignupComponent);
     const dialogConfig = new MatDialogConfig();
@@ -52,7 +52,7 @@ onSubmit() {
      /*---------------------*/
     this.authService.signup(SignupForm).subscribe(res => {
       this.error = false;
-     if (this.error === false) {
+     if (this.signupForm.valid) {
       console.log(JSON.parse(res['_body']));
      this.storage.set('token', res.headers.get('x-auth'));
     //  this.storage.set('User', JSON.parse(res['_body']));
@@ -89,7 +89,7 @@ onSubmit() {
 //     });
 
  console.log(this.error);
-  })
+  });
 
 }
 }
