@@ -42,6 +42,7 @@ Image: new FormControl(' ')
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     this.userService.getUserData().subscribe(res => {
+      console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
       this.shortBio = JSON.parse(res['_body']).ShortBio;
