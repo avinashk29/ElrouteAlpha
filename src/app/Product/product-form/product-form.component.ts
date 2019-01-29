@@ -24,7 +24,7 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {
     this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
-     productImage: [''],
+     Image: [''],
      shortDescription: [''],
      productInfo: this._fb.array([this.addProductInfoGroup()]),
      price: [''],
@@ -39,8 +39,8 @@ export class ProductFormComponent implements OnInit {
   }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.productForm.patchValue({productImage: file});
-    this.productForm.get('productImage').updateValueAndValidity();
+    this.productForm.patchValue({Image: file});
+    this.productForm.get('Image').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;

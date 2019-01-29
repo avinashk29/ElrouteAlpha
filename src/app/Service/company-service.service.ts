@@ -11,15 +11,15 @@ export class CompanyServiceService {
   Id;
   constructor(private http: Http) { }
   // signup(user) {
-  //  return this.http.post('http://localhost:8080/api/auth/signup', user);
+  //  return this.http.post('/auth/signup', user);
   // }
   // login(user) {
-  //   return this.http.post('http://localhost:8080/api/auth/login', user);
+  //   return this.http.post('/auth/login', user);
   // }
   // onEditUser(user) {
   // const headers = new Headers();
   // headers.append('x-auth', this.token);
-  //   return this.http.patch('http://localhost:8080/api/user/update', user, {headers: headers});
+  //   return this.http.patch('/user/update', user, {headers: headers});
   // }
   addCompany(company) {
     const headers = new Headers();
@@ -45,18 +45,18 @@ const companyFormData = new FormData();
 
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
+    return this.http.post('/company', companyFormData, {headers: headers});
 
   }
   GetCompany() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.get('http://localhost:8080/api/company', {headers: headers});
+    return this.http.get('/company', {headers: headers});
   }
   // GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
     console.log(id);
-    return this.http.get('http://localhost:8080/api/company/' + id);
+    return this.http.get('/company/' + id);
   }
 
   // updatCompany method is using to update data of company in database*/
@@ -84,18 +84,18 @@ const companyFormData = new FormData();
           companyFormData1.append('mobile', company.mobile);
           headers.append('x-auth', this.token);
 
-    return this.http.patch('http://localhost:8080/api/company/update' , companyFormData1,  {headers: headers});
+    return this.http.patch('/company/update' , companyFormData1,  {headers: headers});
   }
 
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://localhost:8080/api/company/delete', {headers:headers});
+    return this.http.delete('/company/delete', {headers:headers});
 
   }
 companyFollowing(id){
   const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
+    return this.http.patch('/company/follow/'+id, {headers: headers});
 }
 }

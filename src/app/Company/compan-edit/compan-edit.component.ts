@@ -42,6 +42,7 @@ export class CompanEditComponent implements OnInit {
   imagePreview;
   companyId;
   urlcompanyId;
+  Image;
     constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
   public router: Router, public companyService: CompanyServiceService , public authService: AuthServiceService,
    public notification: ToastrService,private route:ActivatedRoute) {
@@ -59,7 +60,8 @@ console.log(this.companyId);
     this.token =  this.storage.get('token');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       //console.log(res);
-      this.companyName= JSON.parse(res['_body']).companyName;
+      this.Image = JSON.parse(res['_body']).Image;
+      console.log(JSON.parse(res['_body']).Image)
       //console.log(this.companyName);
       //console.log(this.companyId);
       this.editcompanyForm.patchValue({
@@ -79,6 +81,7 @@ console.log(this.companyId);
         mobile: JSON.parse(res['_body']).mobile,
         shortIntro: JSON.parse(res['_body']).shortIntro,
         Image: JSON.parse(res['_body']).Image
+       
       });
     });
 

@@ -10,21 +10,21 @@ export class PostService{
     addPost(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.post('http://localhost:8080/api/post',{headers:headers});
+        return this.http.post('/post',{headers:headers});
     }
     getPost(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('http://localhost:8080/api/post',{headers:headers});
+        return this.http.get('/post',{headers:headers});
     }
     updatePost(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.patch('http://localhost:8080/api/post',{headers:headers});
+        return this.http.patch('/post',{headers:headers});
     }
     deletePost(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.delete('http://localhost:8080/api/post',{headers:headers});
+        return this.http.delete('/post',{headers:headers});
     }
 }

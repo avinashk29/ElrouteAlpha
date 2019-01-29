@@ -13,13 +13,13 @@ postBookmark
   constructor(public http: Http, public router: Router,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
   onSearch(word , page) {
     console.log(word);
-    return this.http.get('http://localhost:8080/api/search/' + word + '/' + page )
+    return this.http.get('/search/' + word + '/' + page )
   }
   onSearchCompany(word) {
-    return this.http.get('http://localhost:8080/api/searchCompany/'+ word);
+    return this.http.get('/searchCompany/'+ word);
      
   }
   onSearchFeed(word , page) {
-    return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);
+    return this.http.get('/searchfeed/' + word + '/' + page);
   }
 }

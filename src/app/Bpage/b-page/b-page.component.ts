@@ -65,7 +65,6 @@ myCompany = false;
                 });
         this.type = 'product';
       }
-
       this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
         this.CompanyName = JSON.parse(res['_body']).companyName;
         this.category = JSON.parse(res['_body']).category;
@@ -153,7 +152,8 @@ myCompany = false;
     this.router.navigate(['/productEdit/' + id]);
   }
   EditBpage(){
-    this.router.navigate(['/editcompany/' + this.mycompanyId]);
+    console.log(this.mycompanyId)
+    this.router.navigate(['editcompany']);
   }
   showTwo() {
     this.type = 'info';

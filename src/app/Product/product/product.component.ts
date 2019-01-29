@@ -29,18 +29,20 @@ export class ProductComponent implements OnInit {
      shortDescription: [''],
      productInfo: this._fb.array([this.addProductInfoGroup()]),
      price: [''],
-     minPrice: [''],
-     maxPrice: [''],
-     moq: [''],
+     minPrice: [null],
+     Image: [''],
+     maxPrice: [null],
+     moq: [ null],
      industry: [''],
      category: [''],
      tfCode: ['']
     });
     this.productService.token = this.storage.get('token');
     this.productService.getOneProduct(this.productId).subscribe(res=>{
+      console.log(JSON.parse(res['_body']));
         this.editproductForm.patchValue({
           productName:JSON.parse(res['_body']).productName,
-          productImage:JSON.parse(res['_body']).productImage,
+          Image:JSON.parse(res['_body']).Image,
           shortDescription:JSON.parse(res['_body']).shortDescription,
           price:JSON.parse(res['_body']).price,
           minPrice:JSON.parse(res['_body']).minPrice,
@@ -60,8 +62,8 @@ export class ProductComponent implements OnInit {
   }
   onImagePick(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.editproductForm.patchValue({productImage: file});
-    this.editproductForm.get('productImage').updateValueAndValidity();
+    this.editproductForm.patchValue({Image: file});
+    this.editproductForm.get('Image').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
@@ -98,12 +100,13 @@ export class ProductComponent implements OnInit {
     if (this.editproductForm.valid) {
       //console.log(this.editproductForm.value);
       const productData = this.editproductForm.value;
-      this.productService.UpdateProduct(this.productId,productData).subscribe(res => {
+      console.log(productData)
+      this.productService.UpdateProduct(productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
         
       });
-      this.router.navigate(['/companyPage/' + this.companyId ]);
-  this.notification.success('Product updated');
+       this.router.navigate(['/companyPage/' + this.companyId ]);
+    this.notification.success('Product updated');
     } else {
       this.notification.error('Enter Valid Deatils');
     }

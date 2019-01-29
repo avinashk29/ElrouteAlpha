@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(SignupComponent, dialogConfig);
   }
 onSubmit() {
+  this.dialogRef.close(LoginComponent);
  const loginValues = this.login.value;
  this.authService.login(loginValues).subscribe(res => {
   console.log(JSON.parse(res['_body']));
