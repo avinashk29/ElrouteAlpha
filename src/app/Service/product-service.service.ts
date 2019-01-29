@@ -23,14 +23,14 @@ token;
     //  productData.append('productInfo', product.productInfo);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('/product', productData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/product', productData, {headers: headers});
   }
   getProduct(id) {
-    return this.http.get('/product/company/'+id);
+    return this.http.get('http://localhost:8080/api/product/company/'+id);
   }
 
   getOneProduct(id){
-    return this.http.get('/product/'+id);
+    return this.http.get('http://localhost:8080/api/product/'+id);
   }
   UpdateProduct(product){
     const headers = new Headers();
@@ -51,12 +51,12 @@ token;
     headers.append('x-auth', this.token);
     console.log(this.token);
     console.log(product);
-    return this.http.patch('/product/update',productData,{headers:headers});
+    return this.http.patch('http://localhost:8080/api/product/update',productData,{headers:headers});
   }
   DeleteProduct(id){
     const headers = new Headers();
     headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.delete('/product/delete',{headers: headers});
+    return this.http.delete('http://localhost:8080/api/product/delete',{headers: headers});
   }
 }

@@ -11,25 +11,25 @@ constructor(public http:Http){}
      addFollow(id){
          const headers=new Headers();
          headers.append('x-auth',this.token);
-         return this.http.get('/follow/'+id,{headers:headers});
+         return this.http.get('http://localhost:8080/api/follow/'+id,{headers:headers});
      }
 
     getFollowers(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-              return this.http.get('/followers',{headers:headers});
+              return this.http.get('http://localhost:8080/api/followers',{headers:headers});
 
     }
     Unfollow(id){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('/unfollow/'+id,{headers:headers});
+        return this.http.get('http://localhost:8080/api/unfollow/'+id,{headers:headers});
 
     }
     getFollowing(){
         const headers=new Headers();
         headers.append('x-auth',this.token);
-        return this.http.get('/user/following',{headers:headers});
+        return this.http.get('http://localhost:8080/api/user/following',{headers:headers});
 
     }
 

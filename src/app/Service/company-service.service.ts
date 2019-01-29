@@ -90,12 +90,12 @@ const companyFormData = new FormData();
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('/company/delete', {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company/delete', {headers:headers});
 
   }
 companyFollowing(id){
   const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.patch('/company/follow/'+id, {headers: headers});
+    return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
 }
 }
