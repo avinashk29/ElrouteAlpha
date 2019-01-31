@@ -14,9 +14,6 @@ import {ToastrService} from 'ngx-toastr';
 export class CompanyFormComponent implements OnInit {
   token;
   Id;
-  one = true;
-  two = false;
-  three = false;
   companyForm = new FormGroup ({
   companyName: new FormControl('',[Validators.required]),
    country: new FormControl('',[Validators.required]),
@@ -24,17 +21,17 @@ export class CompanyFormComponent implements OnInit {
    companyEmail: new FormControl('',[Validators.required,Validators.email]),
    industry: new FormControl('',[Validators.required]),
    category: new FormControl('',[Validators.required]),
-   website: new FormControl(''),
-   companyType: new FormControl(''),
-   companySize: new FormControl(),
-   yearEstd: new FormControl(),
-   address: new FormControl(''),
-  // city: new FormControl(''),
-  shortIntro: new FormControl(''),
-  zipCode: new FormControl(),
-  landLine: new FormControl(),
-  mobile: new FormControl(),
-  Image: new FormControl()
+  //  website: new FormControl(''),
+  //  companyType: new FormControl(''),
+  //  companySize: new FormControl(),
+  //  yearEstd: new FormControl(),
+  //  address: new FormControl(''),
+  // // city: new FormControl(''),
+  // shortIntro: new FormControl(''),
+  // zipCode: new FormControl(),
+  // landLine: new FormControl(),
+  // mobile: new FormControl(),
+  // Image: new FormControl()
   }) ;
   submitted: boolean;
   imagePreview;
@@ -55,37 +52,17 @@ this.router.navigate(['/companyPage/' + this.companyId] ,{queryParams:{urltype:'
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
   }
-  Showtwo() {
-   this.one = false;
-  this.two = true;
-  this.three = false;
-  }
-  Showthree() {
-    this.one = false;
-   this.two = false;
-   this.three = true;
-   }
-ShowPrev1(){
-  this.one=true;
-  this.two=false;
-  this.three=false;
-}
-ShowPrev2(){
-  this.one=false;
-  this.two=true;
-  this.three=false;
-}
 
-   onImagePick(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.companyForm.patchValue({Image: file});
-    this.companyForm.get('Image').updateValueAndValidity();
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
-   }
+  //  onImagePick(event: Event) {
+  //   const file = (event.target as HTMLInputElement).files[0];
+  //   this.companyForm.patchValue({Image: file});
+  //   this.companyForm.get('Image').updateValueAndValidity();
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imagePreview = reader.result;
+  //     };
+  //     reader.readAsDataURL(file);
+  //  }
   onSubmit() {
     if (this.companyForm.valid) {
       console.log(this.companyForm.value);

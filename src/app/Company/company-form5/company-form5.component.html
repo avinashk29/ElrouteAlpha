@@ -1,0 +1,102 @@
+<app-side-nav></app-side-nav>
+<app-header></app-header>
+<section>
+    <div class="company_form1">
+        <div class="company_form_genral">
+            <app-edit-side-nav style="width:30%;"></app-edit-side-nav>
+            <!-- <div class="tabs">
+                <div class="tab">
+                    <a routerLink = "/company-form2"> GENERAL
+                     </a>
+                </div>
+                <div class="tab">
+                    <a routerLink = "/company-form3"> BASIC DETAILS
+                    </a>
+                </div>
+                <div class="tab">
+                    <a routerLink = "/company-form4"> MARKET
+                    </a>
+                </div>
+                <div class="tab" style="border:none;"  style="background-color: #ececee;">
+                    <a routerLink = "/company-form5" style="color: #43425d;font-weight: 600;"> CONTACT
+                    </a>
+                </div>
+            </div> -->
+            <div class="comapany_form">
+                <div>
+                    <div class="companyForm">
+                       <div class="form" [formGroup] = "companyForm" (ngSubmit) = "onSubmit()">
+                         <ul>
+                          <label>Complete Office Address</label>
+                            <li><textarea placeholder="Complete Office Address" formControlName = "address"></textarea></li>
+                            <div class="location">
+
+                                <label style="width:53%;">City</label>
+                                <label>Zip Code</label>
+
+
+                              </div>
+                          <li>
+                              <div class="location"  >
+
+                                  <input type="text" formControlName = "city"   class="city" style=" margin: 4px 24px 0 0;">
+
+                                    <input   type="number"  formControlName = "zipCode" class="zip" style=" margin: 4px 0px 0 0;">
+
+                                </div>
+                          </li>
+                          <label>Landline Number</label>
+                          <li>
+                              <div class="nub">
+
+                                  <select>
+                                  <option>+91</option>
+                                  <option>+12</option>
+                                  <option>+12</option>
+                                </select>
+                                <select>
+                                    <option>0141</option>
+                                    <option>0141</option>
+                                    <option>0141</option>
+                                  </select>
+                                <input type="tel"  formControlName = "landLine">
+                              </div>
+
+
+                          </li>
+                          <label>Mobile Number</label>
+                          <li>
+                              <div class="mob_nub">
+
+                                  <select>
+                                  <option>+91</option>
+                                  <option>+12</option>
+                                  <option>+12</option>
+                                </select>
+
+                                  <input type="tel" formControlName = "mobile" >
+                              </div>
+
+
+                          </li>
+                           <li class="email_heading"> <h3>Enter Email Addresses Of Your Company's Divison</h3></li>
+                          <!-- <div formArrayName = "contactDevision">
+                           <li><input type="text" formControlName = "DevisionName" placeholder="Division Name" style="border:none;" > <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"style="float:right;fill:#aaa8a8;position:absolute;top:96%;left: 84%;" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span></li>
+                           <li><input type="email" formControlName = "DevisionEmail"></li>
+                          <li> <button type="button" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Division</button></li>
+                        </div> -->
+                          <li>
+                              <div class="submit_btn">
+                                <button type="submit">UPDATE</button>
+                               </div>
+                            </li>
+                          </ul>
+
+                      </div>
+                      </div>
+                  </div>
+
+            </div>
+          </div>
+        </div>
+      </section>

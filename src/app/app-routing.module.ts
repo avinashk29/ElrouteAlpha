@@ -20,6 +20,10 @@ import {CompanyGuardService} from './guards/company-guard.service';
 import { CompanEditComponent } from './Company/compan-edit/compan-edit.component';
 import { ProductComponent } from './Product/product/product.component';
 import { ProductListingComponent } from './Product/product-listing/product-listing.component';
+import {CompanyForm2Component} from './Company/company-form2/company-form2.component';
+import {CompanyForm3Component} from './Company/company-form3/company-form3.component';
+import {CompanyForm4Component} from './Company/company-form4/company-form4.component';
+import {CompanyForm5Component} from './Company/company-form5/company-form5.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
@@ -37,7 +41,11 @@ const routes: Routes = [
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
     {path:'editcompany',component:CompanEditComponent},
-    {path:'productEdit/:id',component:ProductComponent}
+    {path:'productEdit/:id',component:ProductComponent},
+    {path: 'company-form2' , component: CompanyForm2Component},
+    {path: 'company-form3' , component: CompanyForm3Component},
+    {path: 'company-form4' , component: CompanyForm4Component},
+    {path: 'company-form5' , component: CompanyForm5Component},
 
   // {path: 'feed ' , component: fee}
 ];

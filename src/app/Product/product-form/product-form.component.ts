@@ -33,7 +33,8 @@ export class ProductFormComponent implements OnInit {
      moq: [''],
      industry: [''],
      category: [''],
-     tfCode: ['']
+     tfCode: [''],
+
     });
     this.productService.token = this.storage.get('token');
   }

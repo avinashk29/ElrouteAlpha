@@ -67,6 +67,9 @@ import {FollowService} from './Service/follow-service.service';
 import {SearchService} from './Service/search.service';
 import { ProductListingComponent } from './Product/product-listing/product-listing.component';
 import { ProductComponent } from './Product/product/product.component';
+import { CompanyForm4Component } from './Company/company-form4/company-form4.component';
+import { CompanyForm5Component } from './Company/company-form5/company-form5.component';
+import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +112,10 @@ import { ProductComponent } from './Product/product/product.component';
     PostsComponent,
     FeedsSearchComponent,
     ProductListingComponent,
-    ProductComponent
+    ProductComponent,
+    CompanyForm4Component,
+    CompanyForm5Component,
+    EditSideNavComponent
 
   ],
   imports: [

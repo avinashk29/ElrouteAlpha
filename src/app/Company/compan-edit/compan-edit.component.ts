@@ -59,11 +59,8 @@ console.log(this.companyId);
     this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
-      //console.log(res);
       this.Image = JSON.parse(res['_body']).Image;
       console.log(JSON.parse(res['_body']).Image)
-      //console.log(this.companyName);
-      //console.log(this.companyId);
       this.editcompanyForm.patchValue({
         companyName: JSON.parse(res['_body']).companyName,
         country: JSON.parse(res['_body']).country,
@@ -81,7 +78,7 @@ console.log(this.companyId);
         mobile: JSON.parse(res['_body']).mobile,
         shortIntro: JSON.parse(res['_body']).shortIntro,
         Image: JSON.parse(res['_body']).Image
-       
+
       });
     });
 
@@ -119,11 +116,7 @@ ShowPrev2(){
    }
   onSubmit() {
     this.companyService.token = this.storage.get('token');
-   /// if (this.editcompanyForm.valid) {
-      // console.log(this.editcompanyForm.value);
-      //const companyData = this.editcompanyForm.value;
-      //console.log(this.editcompanyForm.value);
-      console.log('Hello')
+      console.log('Hello');
           this.companyService.UpdateCompany(this.editcompanyForm.value).subscribe(res => {
             // if (res) {
             //   this.storage.set('companyId' , JSON.parse(res['_body'])._id);
