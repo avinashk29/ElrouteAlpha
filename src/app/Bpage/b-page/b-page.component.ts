@@ -252,8 +252,7 @@ this.productService.DeleteProduct(id).subscribe(res => {
   this.editwebsite = false;
   this.editworkingHours = false;
   this.editshortIntro = false;
-  this.bioEdit=false;
-
+  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
  }
 //  updateLogo(key,content:HTMLInputElement){
 //   const fdata=new FormData();
