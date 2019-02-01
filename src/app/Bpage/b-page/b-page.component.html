@@ -60,7 +60,7 @@
                 <p>{{industry}}</p>
                <!-- <p> {{city}}</p>
                <p>{{companyEmail}}</p> -->
-               <div class="follow-btn" *ngIf = "!myCompany">
+               <div class="follow-btn" *ngIf = "!myCompany" >
                 <button (click)="onCompanyFollow()" *ngIf="!Follower"> FOLLOW</button>
                 <button (click)="onCompanyUnfollow()" *ngIf="Follower"> UNFOLLOW</button>
                 <span><p>{{companyFollowers }}</p></span>
@@ -73,18 +73,18 @@
         </div>
         <div class="extraInfo">
           <!-- <p>9 A.M. - 5 P.M.</p> -->
-          <button type="button" *ngIf= "!workingHours && !editworkingHours " (click) = "editworkingHours = true"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Your Working Hours</button>
+          <button type="button" *ngIf= "!workingHours && !editworkingHours && myCompany " (click) = "editworkingHours = true"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Your Working Hours</button>
           <!-- <p>{{website}}</p> -->
           <p *ngIf = "workingHours && !editworkingHours">{{workingHours}}</p>
           <div *ngIf="editworkingHours">
             <input type="number"  placeholder="Enter Working Hours"  formControlName = "workingHours"  trim #workingHours >
-            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)">Save</button>
+            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)" *ngIf = "myCompany">Save</button>
           </div>
-          <button type="button" *ngIf="!website && !editwebsite" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
+          <button type="button" *ngIf="!website && !editwebsite && myCompany" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
           <a *ngIf="website && !editwebsite"  target="_blank">{{website}}</a>
           <div *ngIf="editwebsite">
             <input type="text"    placeholder="Enter Website"  formControlName = "website"  trim #website >
-            <button type="submit" (click) = "onEditBpage('website',website)">Save</button>
+            <button type="submit" (click) = "onEditBpage('website',website)" >Save</button>
           </div>
 
           <div class="social">
@@ -150,7 +150,8 @@
        <!-- <p>{{shortIntro}}</p> -->
        <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
        <p *ngIf= "shortIntro">{{shortIntro}}</p>
-       <button type="button" (click)="editshortIntro = true"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
+
+       <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
           </div>
           <div *ngIf = "editshortIntro">
           <textarea placeholder="Enter Bio" formControlName = "shortIntro" #shortIntro></textarea>

@@ -228,6 +228,7 @@ this.productService.DeleteProduct(id).subscribe(res => {
   this.editwebsite = false;
   this.editworkingHours = false;
   this.editshortIntro = false;
+  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
  }
  onCompanyFollow() {
   this.follow.addFollow(this.comapnyId).subscribe(res => {

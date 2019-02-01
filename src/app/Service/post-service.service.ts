@@ -18,7 +18,7 @@ export class PostService{
         return this.http.get('http://localhost:8080/api/post',{headers:headers});
     }
     updatePost(){
-        const headers=new Headers();
+        const headers = new Headers();
         headers.append('x-auth',this.token);
         return this.http.patch('http://localhost:8080/api/post',{headers:headers});
     }
