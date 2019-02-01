@@ -8,7 +8,7 @@ import { Http , Headers} from '@angular/http';
 
 export class BookmarkServices {
 token;
-companyfollow;
+companyfollow = [];
 CompanyBookmark;
 productBookmark;
 feedBookmark;
@@ -88,5 +88,5 @@ BookmarkResult(){
     return this.http.get('http://localhost:8080/api/bookmark/post', {headers: headers});
   }
 
-  
+
 }

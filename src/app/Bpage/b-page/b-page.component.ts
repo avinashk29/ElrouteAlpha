@@ -7,6 +7,7 @@ import {FeedService} from '../../Service/feed-service.service';
 import 'rxjs/add/operator/filter';
 import {UserService} from '../../Service/user-services.service';
 import { FormControl , FormGroup} from '@angular/forms';
+import { FollowService } from 'src/app/Service/follow-service.service';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -51,6 +52,12 @@ myCompany = false;
 editwebsite = false;
 editworkingHours = false;
 editshortIntro = false;
+address;
+companySize;
+yearEstd;
+revenue;
+companyFollowers = [];
+Follower = false;
 BForm = new FormGroup ({
    website: new FormControl(''),
    Image: new FormControl(''),
@@ -62,7 +69,7 @@ BForm = new FormGroup ({
   });
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute, private router: Router,
-   public userService: UserService) {
+   public userService: UserService, public follow: FollowService) {
     this.companyService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
 
@@ -80,12 +87,19 @@ BForm = new FormGroup ({
           this.website = JSON.parse(res['_body']).website;
           this.workingHours = JSON.parse(res['_body']).workingHours;
           this.shortIntro = JSON.parse(res['_body']).shortIntro,
+          this.address = JSON.parse(res['_body']).address,
+          this.companySize = JSON.parse(res['_body']).companySize,
+          this.yearEstd = JSON.parse(res['_body']).yearEstd,
+          this.revenue = JSON.parse(res['_body']).revenue,
+          this.companyFollowers =  JSON.parse(res['_body']).Followers.length;
+          console.log(this.companyFollowers);
           console.log(JSON.parse(res['_body']));
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
            Image: JSON.parse(res['_body']).Image,
            workingHours: JSON.parse(res['_body']).workingHours,
            shortIntro: JSON.parse(res['_body']).shortIntro,
+
           //  facebook: JSON.parse(res['_body']).socialLinks.facebook,
           //  linkedin: JSON.parse(res['_body']).socialLinks.linkedin,
           //  google: JSON.parse(res['_body']).socialLinks.google,
@@ -97,7 +111,6 @@ BForm = new FormGroup ({
           } else {
             this.myCompany = false;
           }
-
         });
       });
       this.mycompanyId = this.storage.get('companyId');
@@ -113,18 +126,26 @@ BForm = new FormGroup ({
 
   ngOnInit() {
     // this.comapnyId = this.storage.get('companyId');
-    this.feedService.token = this.storage.get('token');
+    this.follow.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']).Following);
       this.userInfo = JSON.parse(res['_body']).Following;
       for (let i = 0; i < this.userInfo.length; i++) {
-        if (this.userInfo[i] === this.comapnyId) {
+        if(this.userInfo.length === 0){
+          this.Follower = false;
+        } else{
+          if (this.userInfo[i] === this.comapnyId) {
             console.log('You Have to unfollow the company right now');
+            this.Follower = true;
         } else {
+          this.Follower = false;
           console.log('You have to follow the company');
         }
+        }
+
       }
     });
+    this.feedService.token = this.storage.get('token');
     this.companyService.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
@@ -207,6 +228,20 @@ this.productService.DeleteProduct(id).subscribe(res => {
   this.editwebsite = false;
   this.editworkingHours = false;
   this.editshortIntro = false;
+ }
+ onCompanyFollow() {
+  this.follow.addFollow(this.comapnyId).subscribe(res => {
+    console.log(res);
+})
+console.log('i am working follow');
+this.Follower = true;
+ }
+ onCompanyUnfollow() {
+  this.follow.Unfollow(this.comapnyId).subscribe(res => {
+    console.log(res);
+})
+console.log('i am working unfollow');
+this.Follower = false;
  }
 ngOnDestroy() {
   this.subscription.unsubscribe();

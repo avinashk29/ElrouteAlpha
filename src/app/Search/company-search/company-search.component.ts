@@ -19,11 +19,11 @@ export class CompanySearchComponent implements OnInit {
   panelOpenState = false;
   word;
   id;
-  notlogin=true;
+  notlogin = true;
   unbookmarked = true;
-  haveFollow=true;
+  haveFollow = true;
   page;
-  result= [];
+  result = [];
   userInfo = [];
   userInfoForBookmark = [];
   ngOnInit() {
@@ -46,7 +46,7 @@ export class CompanySearchComponent implements OnInit {
           if (this.userInfo.length === 0){
             this.bookmarkService.companyfollow[i].follow = false;
             console.log(this.bookmarkService.companyfollow[i])
-          }else{
+          } else {
             console.log(this.bookmarkService.companyfollow[i]._id);
           console.log( this.userInfo[i]);
           if (this.bookmarkService.companyfollow[i]._id === this.userInfo[i]){

@@ -25,7 +25,7 @@
             <div class="comapany_form">
                 <div>
                     <div class="companyForm">
-                       <div class="form" [formGroup] = "companyForm" (ngSubmit) = "onSubmit()">
+                       <div class="form" [formGroup] = "companyForm">
                          <ul>
                           <label>Complete Office Address</label>
                             <li><textarea placeholder="Complete Office Address" formControlName = "address"></textarea></li>
@@ -74,7 +74,7 @@
                                   <option>+12</option>
                                 </select>
 
-                                  <input type="tel" formControlName = "mobile" >
+                                  <input type="number" formControlName = "mobile">
                               </div>
 
 
@@ -87,7 +87,7 @@
                         </div> -->
                           <li>
                               <div class="submit_btn">
-                                <button type="submit">UPDATE</button>
+                                <button type="submit" (click)= "onSubmit()">UPDATE</button>
                                </div>
                             </li>
                           </ul>

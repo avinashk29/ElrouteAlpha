@@ -24,9 +24,9 @@
                 <h2>{{CompanyName}}</h2>
 
                      <div class="follow-btn" *ngIf = "!myCompany">
-                    <button (click)="onCompanyFollow()"> FOLLOW</button>
-                    <button (click)="onCompanyUnfollow()"> UNFOLLOW</button>
-                    <span>24,255</span>
+                    <button (click)="onCompanyFollow()" *ngIf="!Follower"> FOLLOW</button>
+                    <button (click)="onCompanyUnfollow()" *ngIf="Follower"> UNFOLLOW</button>
+                    <span><p>{{companyFollowers }}</p></span>
                 </div>
                 <div class="follow-btn" *ngIf = "myCompany">
                     <button (click) = "EditBpage()">Edit</button>
@@ -60,10 +60,11 @@
                 <p>{{industry}}</p>
                <!-- <p> {{city}}</p>
                <p>{{companyEmail}}</p> -->
-                <div class="follow-btn" *ngIf = "!myCompany">
-                    <button>FOLLOW</button>
-                    <span>24,255</span>
-                </div>
+               <div class="follow-btn" *ngIf = "!myCompany">
+                <button (click)="onCompanyFollow()" *ngIf="!Follower"> FOLLOW</button>
+                <button (click)="onCompanyUnfollow()" *ngIf="Follower"> UNFOLLOW</button>
+                <span><p>{{companyFollowers }}</p></span>
+            </div>
                 <div class="follow-btn" *ngIf = "myCompany">
                     <button (click) = "EditBpage()">Edit</button>
 
@@ -79,10 +80,10 @@
             <input type="number"  placeholder="Enter Working Hours"  formControlName = "workingHours"  trim #workingHours >
             <button type="submit" (click) = "onEditBpage('workingHours', workingHours)">Save</button>
           </div>
-          <button type="button" *ngIf="!website && !editWebsite" (click) = "!editWebsite" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
-          <a *ngIf="website && !editWebsite"  target="_blank">{{website}}</a>
+          <button type="button" *ngIf="!website && !editwebsite" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
+          <a *ngIf="website && !editwebsite"  target="_blank">{{website}}</a>
           <div *ngIf="editwebsite">
-            <input type="text"  placeholder="Enter Website"  formControlName = "website"  trim #website >
+            <input type="text"    placeholder="Enter Website"  formControlName = "website"  trim #website >
             <button type="submit" (click) = "onEditBpage('website',website)">Save</button>
           </div>
 
@@ -171,9 +172,11 @@
              <p style="line-height: 3px;margin-bottom: 10px;">{{this.country}}</p>
             </div>
             </div>
-            <div class="followBtn">
-             <button>Following <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
-             <p>34,342 followers</p>
+            <div class="followBtn" *ngIf = "!myCompany">
+             <button (click)="onCompanyUnfollow()" *ngIf="Follower">Following <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+             <p>{{companyFollowers }}</p>
+             <button (click)="onCompanyFollow()" *ngIf="!Follower">Follow <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+             <p>{{companyFollowers }}</p>
             </div>
             </div>
             <div class="feedInfo">
@@ -211,21 +214,21 @@
           <label>HEADquarters</label>
           <h3>{{country}} , {{city}}</h3>
         </div>
-        <div class="estd info">
+        <div class="estd info" *ngIf="yearEstd">
             <label>year estd.</label>
             <h3>{{yearEstd}}</h3>
           </div>
-          <div class="estd info">
+          <div class="estd info" *ngIf= "companySize">
               <label>size</label>
               <h3>{{companySize}}</h3>
             </div>
-            <div class="add info">
+            <div class="add info" *ngIf= "address">
                 <label>office address</label>
                 <h3>{{address}}</h3>
               </div>
-              <div class="revenu info" style="border-bottom:none">
-                  <label>Total Revenue</label>
-                  <h3>50-100</h3>
+              <div class="revenu info" style="border-bottom:none" *ngIf= "revenue">
+                  <label>Total revenue</label>
+                  <h3>{{revenue}}</h3>
                 </div>
         </div>
        </div>

@@ -23,7 +23,7 @@
                         </div>
                     </div> -->
                     <app-edit-side-nav style="width:30%;"></app-edit-side-nav>
-            <div class="comapany_form" [formGroup] = "companyForm" (ngSubmit) = "onSubmit()">
+            <div class="comapany_form" [formGroup] = "companyForm">
                 <div >
                     <div class="form">
 
@@ -54,7 +54,7 @@
 
                             </li>
 
-                            <li><button type="submit">UPDATE</button></li>
+                            <li><button type="submit" (click)= "onSubmit()">UPDATE</button></li>
                         </ul>
                     </div>
                 </div>

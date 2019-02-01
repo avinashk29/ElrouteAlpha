@@ -25,7 +25,7 @@
 
             <div class="comapany_form">
                 <div>
-                    <div class="form" [formGroup] = "companyForm" (ngSubmit) = "onSubmit()">
+                    <div class="form" [formGroup] = "companyForm" >
 
                         <ul>
 
@@ -64,7 +64,7 @@
                             <li>  <input type= "number"   formControlName="revenu"></li>
 
 
-                            <li><button type="submit">UPDATE</button></li>
+                            <li><button type="submit" (click)= "onSubmit()">UPDATE</button></li>
                         </ul>
                     </div>
                 </div>

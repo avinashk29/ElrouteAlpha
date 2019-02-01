@@ -51,6 +51,7 @@ companyForm: FormGroup;
   }
   onSubmit() {
     console.log(this.companyForm.value);
+    console.log(this.companyForm.value);
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
