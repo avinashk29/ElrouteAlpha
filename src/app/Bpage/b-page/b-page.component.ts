@@ -7,7 +7,6 @@ import {FeedService} from '../../Service/feed-service.service';
 import 'rxjs/add/operator/filter';
 import {UserService} from '../../Service/user-services.service';
 import { FormControl , FormGroup} from '@angular/forms';
-import { FollowService } from 'src/app/Service/follow-service.service';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -28,11 +27,13 @@ groups;
 CompanyName;
 category;
 city;
+file
+
 companyEmail;
 // companyType ;
 // companySize;
 country;
-// Image;
+ Image;
 industry;
 // mobile;
 // address ;
@@ -42,22 +43,24 @@ workingHours;
 products = [];
 comapnyId;
 mycompanyId;
+companyLogo;
 type;
 feeds = [];
 subscription;
 url;
+logo=false;
+infoImg=false;
+img=false;
 shortIntro;
+shortbioEdit=false;
 noFeeds = false;
 myCompany = false;
 editwebsite = false;
 editworkingHours = false;
 editshortIntro = false;
-address;
-companySize;
-yearEstd;
-revenue;
-companyFollowers = [];
-Follower = false;
+imagePreview;
+infoImage;
+bioEdit=false;
 BForm = new FormGroup ({
    website: new FormControl(''),
    Image: new FormControl(''),
@@ -69,7 +72,7 @@ BForm = new FormGroup ({
   });
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute, private router: Router,
-   public userService: UserService, public follow: FollowService) {
+   public userService: UserService) {
     this.companyService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
 
@@ -87,23 +90,18 @@ BForm = new FormGroup ({
           this.website = JSON.parse(res['_body']).website;
           this.workingHours = JSON.parse(res['_body']).workingHours;
           this.shortIntro = JSON.parse(res['_body']).shortIntro,
-          this.address = JSON.parse(res['_body']).address,
-          this.companySize = JSON.parse(res['_body']).companySize,
-          this.yearEstd = JSON.parse(res['_body']).yearEstd,
-          this.revenue = JSON.parse(res['_body']).revenue,
-          this.companyFollowers =  JSON.parse(res['_body']).Followers.length;
-          console.log(this.companyFollowers);
+          this.Image=JSON.parse(res['_body']).Image;
+          this.companyLogo=JSON.parse(res['_body']).companyLogo;
+          this.infoImage=JSON.parse(res['_body']).infoImage;
           console.log(JSON.parse(res['_body']));
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
            Image: JSON.parse(res['_body']).Image,
            workingHours: JSON.parse(res['_body']).workingHours,
            shortIntro: JSON.parse(res['_body']).shortIntro,
-
           //  facebook: JSON.parse(res['_body']).socialLinks.facebook,
           //  linkedin: JSON.parse(res['_body']).socialLinks.linkedin,
           //  google: JSON.parse(res['_body']).socialLinks.google,
-
           });
 
           if (this.comapnyId === this.mycompanyId) {
@@ -111,41 +109,45 @@ BForm = new FormGroup ({
           } else {
             this.myCompany = false;
           }
+          
+      if(this.companyLogo){
+        this.logo=true;
+      }
+      if(this.infoImage){
+        this.infoImg=true;
+      }
+      if(this.Image){
+        this.img=true;
+      }
+    
         });
       });
       this.mycompanyId = this.storage.get('companyId');
+      console.log(this.comapnyId+'companyId')
       if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
-
                 });
         this.type = 'product';
       }
     });
+     
   }
 
   ngOnInit() {
     // this.comapnyId = this.storage.get('companyId');
-    this.follow.token = this.storage.get('token');
+    this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']).Following);
       this.userInfo = JSON.parse(res['_body']).Following;
       for (let i = 0; i < this.userInfo.length; i++) {
-        if(this.userInfo.length === 0){
-          this.Follower = false;
-        } else{
-          if (this.userInfo[i] === this.comapnyId) {
+        if (this.userInfo[i] === this.comapnyId) {
             console.log('You Have to unfollow the company right now');
-            this.Follower = true;
         } else {
-          this.Follower = false;
           console.log('You have to follow the company');
         }
-        }
-
       }
     });
-    this.feedService.token = this.storage.get('token');
     this.companyService.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
@@ -159,28 +161,28 @@ BForm = new FormGroup ({
     });
 
 
-    this.items =  [
-      {name: 'https://picsum.photos/200/300'},
-      {name: 'https://picsum.photos/g/200/300'},
-      {name: 'https://picsum.photos/200/300?image=0'},
-      {name: 'https://picsum.photos/200/300/?blur'},
-      {name: 'https://picsum.photos/200/300/?random'},
-      {name: 'https://picsum.photos/200/300'},
-      {name: 'https://picsum.photos/g/200/300'},
-      {name: 'https://picsum.photos/200/300?image=0'},
-      {name: 'https://picsum.photos/200/300/?blur'},
-      {name: 'https://picsum.photos/200/300/?random'},
-      {name: 'https://picsum.photos/200/300'},
-      {name: 'https://picsum.photos/g/200/300'},
-      {name: 'https://picsum.photos/200/300?image=0'},
-      {name: 'https://picsum.photos/200/300/?blur'},
-      {name: 'https://picsum.photos/200/300/?random'},
-      {name: 'https://picsum.photos/200/300'},
-      {name: 'https://picsum.photos/g/200/300'},
-      {name: 'https://picsum.photos/200/300?image=0'},
-      {name: 'https://picsum.photos/200/300/?blur'},
-      {name: 'https://picsum.photos/200/300/?random'}
-  ];
+  //   this.items =  [
+  //     {name: 'https://picsum.photos/200/300'},
+  //     {name: 'https://picsum.photos/g/200/300'},
+  //     {name: 'https://picsum.photos/200/300?image=0'},
+  //     {name: 'https://picsum.photos/200/300/?blur'},
+  //     {name: 'https://picsum.photos/200/300/?random'},
+  //     {name: 'https://picsum.photos/200/300'},
+  //     {name: 'https://picsum.photos/g/200/300'},
+  //     {name: 'https://picsum.photos/200/300?image=0'},
+  //     {name: 'https://picsum.photos/200/300/?blur'},
+  //     {name: 'https://picsum.photos/200/300/?random'},
+  //     {name: 'https://picsum.photos/200/300'},
+  //     {name: 'https://picsum.photos/g/200/300'},
+  //     {name: 'https://picsum.photos/200/300?image=0'},
+  //     {name: 'https://picsum.photos/200/300/?blur'},
+  //     {name: 'https://picsum.photos/200/300/?random'},
+  //     {name: 'https://picsum.photos/200/300'},
+  //     {name: 'https://picsum.photos/g/200/300'},
+  //     {name: 'https://picsum.photos/200/300?image=0'},
+  //     {name: 'https://picsum.photos/200/300/?blur'},
+  //     {name: 'https://picsum.photos/200/300/?random'}
+  // ];
   this.feedService.GetFeed().subscribe(res => {
     this.feeds =  JSON.parse(res['_body']);
     if (!this.feeds.length){
@@ -189,6 +191,27 @@ BForm = new FormGroup ({
     });
 
   }
+  editbio(){
+    this.bioEdit = !this.bioEdit;
+  }
+ 
+  onImagePick(event,name) {
+     this.file = <File>event.target.files[0];
+      const fdata=new FormData()
+      fdata.append(name,this.file)
+      this.companyService.UpdateCompany(fdata).subscribe(res=>{
+        console.log(res);
+      })
+
+   }
+  //  onImagePick2(event,name) {
+  //   const file = <File>event.target.files[0];
+  //     const fdata=new FormData()
+  //     fdata.append(name,file)
+  //     this.companyService.UpdateCompany(fdata).subscribe(res=>{
+  //       console.log(res);
+  //     })
+  //  }
   editProduct(id) {
     this.router.navigate(['/productEdit/' + id]);
   }
@@ -208,7 +231,9 @@ BForm = new FormGroup ({
   showFour() {
     this.type = 'contact';
   }
-
+  editshortBio(){
+    
+  }
 DeleteProduct(id) {
 this.productService.DeleteProduct(id).subscribe(res => {
 });
@@ -218,31 +243,26 @@ this.productService.DeleteProduct(id).subscribe(res => {
  }
  onEditBpage(key, content: HTMLInputElement ) {
    console.log(key);
-  console.log(content.value);
    const formData = new FormData();
     formData.append(key, content.value);
   this.companyService.UpdateCompany(formData).subscribe(res => {
      console.log(JSON.parse(res['_body']));
    });
-  console.log(this.BForm.value);
+ // console.log(this.BForm.value);
   this.editwebsite = false;
   this.editworkingHours = false;
   this.editshortIntro = false;
+  this.bioEdit=false;
+
  }
- onCompanyFollow() {
-  this.follow.addFollow(this.comapnyId).subscribe(res => {
-    console.log(res);
-})
-console.log('i am working follow');
-this.Follower = true;
- }
- onCompanyUnfollow() {
-  this.follow.Unfollow(this.comapnyId).subscribe(res => {
-    console.log(res);
-})
-console.log('i am working unfollow');
-this.Follower = false;
- }
+//  updateLogo(key,content:HTMLInputElement){
+//   const fdata=new FormData();
+//   fdata.append(key,content.value);
+//   this.companyService.UpdateCompany(fdata).subscribe(res=>{
+//     console.log(res);
+//   });
+// }
+
 ngOnDestroy() {
   this.subscription.unsubscribe();
 }

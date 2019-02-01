@@ -1213,3 +1213,16 @@ label {
  float: right;
  margin: 13px 0
 }
+input[type="file"]{
+    width: 77%;
+    height: 40px;
+    border: none;
+    color: black;
+    outline: none;
+    font-size: 15px;
+    border: 1px solid #333333;
+    margin-top: 28px;
+    padding: 10px;
+    border-color: #c7c7c7;
+    display: none;
+  }
