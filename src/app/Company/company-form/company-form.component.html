@@ -1,0 +1,74 @@
+<!-- <app-header></app-header> -->
+<header>
+
+
+  <form [formGroup] = "companyForm" (ngSubmit)= "onSubmit()">
+    <!--------------------------------------------------//First Level Form//-------------------------------------------------------->
+  <div>
+    <div class="companyForm">
+      <div class="infoGraphic">
+      <img src= "https://picsum.photos/1000/800/?random">
+      </div>
+  <div class="header_heading" id="b_face">
+              <h1>Create Your B Face</h1>
+              <p>Register and step into the business world</p>
+            </div>
+
+      <div class="form">
+          <div class="header_heading">
+              <h1>Create Your B Face</h1>
+              <p>Register and step into the business world</p>
+            </div>
+
+                <!-- <p class="submit_page">1 of 3</p> -->
+
+            <ul>
+              <!-- <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
+                <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
+              </li> -->
+                <li><input type="text" placeholder="Company Name" formControlName = "companyName" name="companyName" ></li>
+                <span *ngIf="!companyForm.get('companyName').valid && companyForm.get('companyName').touched"><p>Please Enter Company</p></span>
+
+                <li>
+                  <div class="location"  >
+                      <input list="country" formControlName = "country" placeholder="Country" style="width:45%;">
+                      <datalist id="country">
+                      <option value="country">
+                      <option value="country">
+                      <option value="country">
+                      <option value="country">
+                      </datalist>
+                        <input  style="width:45%; float: right;margin-left: 9%;" type="text" placeholder="City (optional)" formControlName = "city" name="city">
+                    </div>
+                    <span *ngIf="!companyForm.get('country').valid && companyForm.get('country').touched"><p>Please Select Country</p></span>
+
+              </li>
+              <li><input type="email" placeholder="Company Email Address" formControlName = "companyEmail" name="companyEmail"></li>
+              <span *ngIf="!companyForm.get('companyEmail').valid && companyForm.get('companyEmail').touched"><p>Please Enter Valid Email</p></span>
+              <li>
+                <input list="industry" formControlName = "industry" placeholder="Industry">
+                <datalist id="industry">
+                <option value="industry">
+                <option value="industry">
+                <option value="industry">
+                <option value="industry">
+                </datalist>
+              </li>
+              <span *ngIf="!companyForm.get('industry').valid && companyForm.get('industry').touched"><p>Please Select Industry</p></span>
+              <li>
+                  <input list="category" formControlName = "category" placeholder="Category">
+                  <datalist id="category">
+                  <option value="category">
+                  <option value="category">
+                  <option value="category">
+                  <option value="category">
+                  </datalist>
+              </li>
+              <span *ngIf="!companyForm.get('category').valid && companyForm.get('category').touched"><p>Please Select Requied Category</p></span>
+              <li><button type="button" (click)=" onSubmit()">Finish</button></li>
+            </ul>
+      </div>
+      </div>
+  </div>
+  </form>
+  </header>

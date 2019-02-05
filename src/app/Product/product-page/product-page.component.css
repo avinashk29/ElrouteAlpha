@@ -1,0 +1,429 @@
+.product_detalis
+{
+    padding-top:5%;
+    margin-left: 5%;
+}
+.product
+{
+    padding: 10px 20px;
+    background-color: #f5f2f2;
+    width: 30%;
+    float: left;
+}
+.product_1
+{
+    font-size:15px;
+}
+
+.product_1 li
+{
+   display: inline;
+   font-family:  Segoe UI regular ;
+   color: #707070;
+}
+.product_1 a
+{
+
+    text-decoration:none;
+    color:#707070;
+
+}
+
+.service2
+{
+
+    padding: 0 24px 48px 20px;
+
+      box-shadow: 0 5px 5px rgba(25,25,25,0.2);
+      background-color: white;
+}
+
+.service2 p img
+{
+    float: right;
+    margin-top: -9px;
+    width: 7%;
+}
+.service2 p
+{
+    font-family:  Segoe UI regular ;
+    padding-top: 20px;
+	
+    font-size: 18px;
+    color: #707070;
+    display: flex;
+    float: right;
+
+}
+
+.service2_img img
+{
+
+   width:100%;
+    box-shadow: 0 5px 5px rgba(25,25,25,0.2);
+
+}
+.tags
+{
+    width: 98%;
+    margin-top: 10px;
+}
+.tags li
+{
+
+    font-size: 20px;
+    margin: 6px;
+    display: inline;
+
+}
+.tags li img
+{
+
+    margin: 5px ;
+    width: 20px;
+}
+.contact
+{
+    text-align: right;
+}
+.contact span
+{
+    font-size:150%;
+    margin-left:20px;
+    border:solid 1px gray;
+    padding: 0px 15px;
+    color:#707070;
+    border-radius: 8px;
+
+}
+.contact img
+{
+    position: absolute;
+    width: 45px;
+    margin: -9px -9px;
+}
+.USA_1 li
+{
+    color: #707070;
+    display: inline;
+    font-size:150%;
+}
+.Description_box
+{
+    width: 45%;
+    float: left;
+   margin-left:2%;
+   font-family:  Segoe UI regular ;
+}
+.des_box
+{
+    padding: 0px 60px;
+    font-family: Segoe UI, Regular;
+    background-color: #F5F5F5;
+
+
+
+}
+.des_box h2
+{
+
+  color: #707070;
+  font-size: 25px;
+  font-weight: 400;
+  padding-top: 15px;
+
+
+}
+
+.des_box p
+{
+    color: #707070;
+    font-size: 20px;
+    border-top: solid 1px gray;
+
+    padding : 20px 0 30px;
+    font-family: Segoe UI, Regular;
+}
+.speci
+{
+    padding: 7px 70px;
+    font-family: Segoe UI, Regular;
+    background-color: whitesmoke;
+}
+.speci span
+{
+    padding: 7px 40px;
+    border-bottom:solid 1px gray;
+    width: 92%;
+    border-top:solid 1px gray;
+    color: #707070;
+    font-size: 25px;
+    float: left;
+
+
+}
+.speci_1
+{
+    padding: 7px 70px;
+    background-color: white;
+    width: 100%;
+}
+.speci_details
+{
+    float: left;
+    margin: 0 10px;
+}
+.speci h2
+{
+    font-weight: 400;
+    color: #707070;
+}
+section{
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 5%;
+  }
+  
+  .feed{
+    width: 100%;
+    height: 490px;
+    display: block;
+    margin-right: auto;
+    border: 1px solid #cccccc;
+  }
+  .authorInfo{
+  width: 100%;
+  display: flex;
+  }
+  .details{
+    width: 70%;
+    height: auto;
+    display: flex;
+  }
+  .logo{
+    width: 20%;
+    height: 100%;
+    background-color: black;
+  }
+  .logo img{
+    width: 100%;
+    height: 100%;
+  }
+  .details h1{
+    margin: 0;
+    padding: 5px 0 0 15px;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .details p{
+    padding: 0px 0 0 15px !important;
+    font-size: 10px;
+  }
+  .feedInfo {
+    width: 95%;
+    margin: 0 auto;
+    height: 15%;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 5px 5px 0 0;
+    margin-top: 20px;
+  }
+  .feedInfo p{
+    font-size: 12px;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+  .followBtn{
+    width: 25%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
+  .followBtn button{
+    width: 80%;
+    margin-top: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    border:none;
+    margin-left: 10px;
+  }
+  .followBtn p{
+    align-items: baseline;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom:  0;
+    font-size: 10px;
+  }
+  .feed-img{
+    width: 100%;
+    height: 60%;
+  }
+  .feed-img img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+  .feed-share{
+    width: 100%;
+    height: 7%;
+    /* background-color: burlywood; */
+    display: block;
+    display: flex;
+  }
+  .tagged{
+    width: 100%;
+    height: 7%;
+  }
+  mat-expansion-panel{
+    border-radius: 0 !important;
+  
+  }
+  mat-expansion-panel{
+    /* box-shadow: 0 0 0 0!important; */
+  }
+  .tagged mat-expansion-panel-header{
+    height: 35px !important;
+    color: #ffffff !important;
+  }
+  mat-panel-title h4{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 100;
+  }
+ @media screen and (max-width: 700px){
+    section{
+        width: 97%;
+        margin: 0 auto;
+        margin-top: 5%;
+      }
+      .feed{
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-right: auto;
+        border: 1px solid #cccccc;
+      }
+  .product_detalis{
+    margin-left: 0;
+    width: 90%;
+  }
+  .product{
+    width: 100%;
+    float: none;
+  }
+  .product_1{
+    font-size: 10px;
+  }
+  h2{
+    font-size: 18px !important;
+  }
+  .service2{
+    font-size: 60% !important;
+  }
+  .service2 p img{
+    width: 30px;
+    margin-top: -5px;
+  }
+  .tags {
+    width: 74%;
+    margin-top: 10px;
+}
+  .tags li{
+    font-size: 16px;
+  }
+  .tags li img{
+    width: 15px;
+  }
+  .Description_box{
+    width: 100%;
+  }
+  .des_box{
+    padding: 0 20px;
+  }
+  .des_box p{
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .speci{
+    padding: 0 20px;
+  }
+  .speci_1{
+    padding: 0 20px;
+  }
+  .speci_details{
+    margin: 0;
+  }
+  .USA_1{
+    font-size: 12px;
+  }
+  .moq{
+    float: right;
+  }
+  .followBtn button{
+    width: 80%;
+    margin-top: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    font-size: 10px;
+}
+ }
+ @media screen and (min-width: 767px) and (max-width: 1024px){
+    .product_detalis[_ngcontent-c1] {
+        padding-top: 8%;
+        margin-left: 9%;
+    }
+    .product {
+        padding: 10px 20px;
+        background-color: #f5f2f2;
+        width: 42%;
+        float: left;
+    }
+    .tags{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .des_box {
+        padding: 0px 20px;
+        font-family: Segoe UI, Regular;
+        background-color: #F5F5F5;
+    }
+    .Description_box {
+        width: 44%;
+        float: left;
+        margin-left: 2%;
+        font-family: Segoe UI regular;
+    }
+    .des_box p {
+        color: #707070;
+        font-size: 16px;
+        border-top: solid 1px gray;
+        padding: 20px 0 30px;
+        font-family: Segoe UI, Regular;
+    }
+    .speci_1 {
+        padding: 7px 38px;
+        background-color: white;
+        width: 100%;
+    }
+    section{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 5%;
+      }
+      .feed{
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-right: auto;
+        border: 1px solid #cccccc;
+      }
+ }

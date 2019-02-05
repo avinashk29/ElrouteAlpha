@@ -1,0 +1,531 @@
+.bookmark_overview {
+    display: flex;
+    margin: 0 auto;width: 80%;
+    
+}
+.heading
+{
+    display: flex;
+    margin: 0 auto;width: 80%; margin-top: 4%;
+}
+
+.overview {
+    width: 70%;
+    display: flex;
+}
+
+.profile {
+    width: 40%;
+    display: flex;
+}
+
+.follower_user {
+    width: 100%;
+    box-shadow: 0px 4px 3px #5555;
+}
+
+.follower_location {
+    background-color: #111111;
+    width: 100%;
+    height: 95px;
+}
+.follower_location button
+{
+  background-color: #34c334;
+    width: 25%;
+    /* height: 20%; */
+    border: none;
+    height: 24px;
+    border-radius:20px;
+    color: white;
+    margin: 11px 11px;
+}
+.follower_location span {
+    margin-right: 10px;
+    float: right;
+    color: white;
+}
+
+.follower_img {
+    margin: 0 auto;
+    width: 35%;
+}
+
+.follower_img1 {
+    position: absolute;
+    top: 18%;
+    left: 16%;
+    width: 7%
+}
+
+.follower_img1 img {
+    border-radius: 100%;
+    width: 100%;
+}
+
+.follower_name {
+    text-align: center;
+    padding: 45px 0px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.follower_name h2 {
+    font-size: 20px;
+    margin-bottom: auto;
+    margin-top: auto
+}
+
+.follower_name h5 {
+    margin-bottom: auto;
+    margin-top: auto
+}
+
+.Bio {
+    margin-bottom: auto;
+    margin-top: auto;
+    box-shadow: 0px 2px 5px #5555;
+    width: 39%;
+    font-size: 15px;
+}
+.bio_btn
+{
+
+    /* height: 20%; */
+   
+    margin: 11px 11px;
+     
+}
+
+.follower_des {
+    text-align: justify;
+}
+
+.follower_des p {
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    font-size: 12px;
+}
+.follower_des textarea{
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    font-size: 12px;
+    border-radius: 6px;
+    margin-left: 4%;
+}
+.follower_company {
+    display: flex;
+    padding: 10px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+.bio_save
+{
+    width: 36%;
+    margin: 4px 12px;
+    background-color: #34c334;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 13px;
+    border: none;
+    float: right;
+    font-size: 12px;
+    display: flex;
+
+}
+.Bio_heading
+{
+    display: flex;
+}
+.Bio_heading p
+{
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: auto;    
+    margin-top: auto;
+    font-weight: 400;
+    margin-left: 4%;;
+}
+
+.company {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.company_logo {
+    width: 20%;
+    height: 14%;
+}
+.company_logo img {
+    border-radius: 100%;
+    width: 100%;
+}
+
+.company_name {
+    margin-left: 4%;
+    font-size: 12px;
+}
+
+.links {
+    margin-bottom: auto;
+    margin-top: auto;
+    width: 13%;
+}
+
+.follwers_links {
+    box-shadow: 0px 2px 10px #5555;
+    width: 44%;
+}
+
+.follwers_links img {
+    width: 100%;
+}
+
+.bookmark_following {
+    padding: 0px 10px;
+    width: 41%;
+}
+
+.following_nub {
+    box-shadow: 0px 2px 10px #5555;
+    display: flex;
+}
+
+.user_img {
+    width: 15%;
+    padding: 10px 20px;
+}
+
+.user_img img {
+    width: 100%;
+}
+
+.following_nub1 {
+    font-size: 45px;
+    margin-top: 3%;
+    width: 44%;
+    text-align: center;
+    color: #4d4f5c;
+    font-weight: 600;
+}
+
+.following_btn {
+    width: 20%;
+}
+
+.following_btn button {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 24px;
+    margin-top: 30%;
+    box-shadow: 0px 2px 3px #5555;
+}
+
+.b_page_btn {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+
+.b_page_btn button {
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0px 2px 3px #5555;
+    font-weight: 600;
+    margin-top: 5%;
+}
+
+
+
+.follower_box {
+    margin: 0 auto;
+    width: 50%;
+    border: solid 5px gray;
+    height: fit-content ! important;
+    margin-top: 27px;
+    display: none;
+  }
+  
+  
+  
+  
+  
+ 
+  #overview1
+  {
+    display: none;
+
+  }
+  
+  .b_page_btn button {
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0px 2px 3px #5555;
+    font-weight: 600;
+    margin-top: 5%;
+  }
+  
+  @media screen and (max-width:700px) {
+      section
+      {
+          margin-top: 10%;
+      }
+    .heading
+    {
+        display: none;
+    }
+    .follower_name{
+        text-align: center;
+        padding-top: 40px;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .follower_box {
+        height: fit-content ! important;
+        margin: 0 auto;
+        width: 90%;
+        border: solid 5px gray;
+        display: block;
+    }
+
+    .follower_img1 img {
+        border-radius: 100%;
+        width: 44%;
+        border: slo;
+        border: solid 5px white;
+        margin-top: 35px;
+    }
+    .follower_des p {
+        margin: 0 auto;
+        width: 90%;
+        text-align: justify;
+        padding: 10px 0;
+        font-size: 11px;
+    }
+    .followBtn button {
+        width: 100%;
+        margin-top: 10px;
+        background-color: #8cee53;
+        color: #ffffff;
+        font-weight: 600;
+        height: 25px;
+        border-radius: 15px;
+        border: none;
+        font-size: 12px;
+    }
+    .company_name {
+        margin-left: 4%;
+        font-size: 11px;
+    }
+    .card {
+        width: 46%;
+        margin-right: 2%;
+        height: 12%;
+        margin-left: 2%;
+        display: flex;
+        margin-top: 3%;
+        box-shadow: 0px 2px 3px #5555;
+    }
+    .name h4 {
+        bottom: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+    #overview1
+  {
+    display: block;
+  }
+  .bookmark_overview
+  {
+      display: none;
+  }
+  .bookmark_following {
+    padding: 0px 10px;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .Card {
+    width: 100%;
+}
+.follower_user {
+    width: 100%;
+    box-shadow: 0px 2px 3px #5555;
+  }
+  
+  .follower_location {
+    background-color: #111111;
+    width: 100%;
+    float: right;
+    height: 110px;
+  }
+  
+  .follower_location span {
+    float: right;
+    color: white;
+    margin: 5px 10px;
+  }
+  
+  .follower_img {
+    margin: 0 auto;
+    width: 40%;
+  }
+  
+  .follower_img1 {
+    position: absolute;
+  }
+  .follower_img1[_ngcontent-c2] {
+    position: absolute;
+    top: 8%;
+    left: 38%;
+    width: 45%;
+}
+  
+  .follower_img1 img {
+    border-radius: 100%;
+    width: 48%;
+    border: slo;
+    border: solid 5px white;
+    margin-top: 26px;
+  }
+  
+  .follower_name {
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .follower_name h2 {
+    margin-bottom: auto;
+    margin-top: auto
+  }
+  
+  .follower_name h5 {
+    margin-bottom: auto;
+    margin-top: auto
+  }
+  
+  .follower_des {
+    margin: 8px auto;
+    width: 90%;
+    text-align: justify;
+    box-shadow: 0px 2px 3px #5555;
+  }
+  
+  .follower_des p {
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    padding: 10px 0;
+  }
+  
+  .follower_company {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    padding: 10px 0;
+  }
+  
+  .company {
+    width: 70%;
+    display: flex;
+  }
+  
+  .company_logo {
+    width: 24%;
+  }
+  
+  .company_logo img {
+    border-radius: 100%;
+    width: 100%;
+  }
+  
+  .company_name {
+    margin-left: 4%;
+  }
+  
+  .followBtn {
+    width: 30%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
+  
+  .followBtn button {
+    width: 80%;
+    margin-top: 10px;
+    background-color: #8cee53;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 10px;
+  }
+  
+  .follwers_links1 {
+    margin: 0 auto;
+    width: 28%;
+    display: flex;
+  }
+  
+  .follwers_links1 img {
+    width: 100%;
+  }
+
+
+}
+@media screen and (min-width:767px) and (max-width:1024px) {
+    .heading
+{
+    display: flex;
+    margin: 0 auto;width: 80%; margin-top: 5%;
+}
+    .overview {
+        width: 60%;
+        display: flex;
+    }
+    .following_nub1 {
+        font-size: 29px;
+     
+    }
+    .b_page_btn button {    
+       font-size: 20px;
+   }
+   .following_btn  button {
+    font-size: 15px;
+    margin-top: 35%;
+    }
+    .follower_img {
+        margin: 0 auto;
+        width: 40%;
+    }
+    .follower_img1 img {
+        width: 25%;
+        margin-top: 70px; 
+    }
+    .bookmark_following {
+        padding: 0px 10px;
+        width: 50%;
+    }
+    .follower_img1[_ngcontent-c2] {
+        position: absolute;
+        top: 13%;
+        left: 15%;
+        width: 28%;
+    }
+    
+}

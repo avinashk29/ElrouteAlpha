@@ -1,0 +1,19 @@
+<div class="head">
+    <header class="header">
+        <h1 class="logo"><a routerLink="/Dashboard">ELROUTE</a></h1>
+        <p>Filter</p>
+        <div class="search" [formGroup] = "searchForm" (ngSubmit)= "onSearch($event)">
+        
+               <input type="search" placeholder="Enter Product/Service to Search"  formControlName = "word" (keypress) = "onSearch($event)" >
+       
+          
+        </div>
+          <ul class="main-nav">
+              <li class="book_mark"><a routerLink="/bookmark">Bookmark</a></li>
+              <li class="book_mark"><a>Location</a></li>
+              <li><a href="#">User</a></li>
+              <!-- <li><a href="#">Contact</a></li> -->
+          </ul>
+      </header>
+
+</div>

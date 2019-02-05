@@ -1,0 +1,98 @@
+.sigup-form{
+    border: 10px solid #cccccc;
+    padding: 20px;
+    margin: 0;
+  }
+  .sigup-form h2, .sigup-form p{
+    padding: 0 10px;
+  }
+  .sigup-form p{
+    margin-top: -15px;
+  }
+  ul{
+    width: 80%;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+  .first-field{
+    display: flex;
+    width: 100%;
+  }
+  li{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  
+  }
+  .form-elements{
+    margin-left: -40px;
+  }
+  li input{
+   margin-top: 20px;
+  }
+  input{
+    height: 5vh;
+    padding: 0 20px;
+    width: 100%;
+    outline: none;
+  }
+  .first-field .Uname{
+    width: 44%;
+    margin-left: -40px;
+  
+  }
+  .first-field .Ulocation{
+    position: relative;
+    width: 50%;
+    height: 5.5vh;
+    margin-left: 70px;
+    margin-top: 20px;
+  }
+  .first-field .Ulocation select{
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+  .sigup-form button{
+    width: 30%;
+    height: 6vh;
+    margin-left: 25px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+  }
+  .other_option h6{
+    text-align: center;
+    font-size: 15px;
+  }
+  .social_icon_signup{
+    width: 50%;
+    height: 6vh;
+    display: flex;
+    margin: 0 auto;
+    margin-top: -20px;
+  }
+  .social_icon{
+    width: 32%;
+    margin-left: 5px;
+  }
+  .social_icon img{
+    width: 100%;
+    height: 100%;
+  }
+  .login-link{
+    width: 70%;
+    margin: 0 auto;
+    height: 3vh;
+    margin-top: 10px;
+  }
+  .login-link h4{
+    text-align: center;
+  }
+  .error{
+    border: 1px solid red;
+  }
+  .errorMsg{
+    font-size: 10px;
+  }
+  

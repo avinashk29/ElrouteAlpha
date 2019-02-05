@@ -1,0 +1,76 @@
+<app-side-nav></app-side-nav>
+<app-header></app-header>
+<section>
+    <div class="company_form1">
+        <div class="company_form_genral">
+            <!-- <div class="tabs">
+                <div class="tab">
+                    <a routerLink = "/company-form2"> GENERAL
+                     </a>
+                </div>
+                <div class="tab">
+                    <a routerLink = "/company-form3"> BASIC DETAILS
+                    </a>
+                </div>
+                <div class="tab"  style="background-color: #ececee;">
+                    <a routerLink = "/company-form4"  style="color: #43425d;font-weight: 600;"> MARKET
+                    </a>
+                </div>
+                <div class="tab" style="border:none;">
+                    <a routerLink = "/company-form5"> CONTACT
+                    </a>
+                </div>
+            </div> -->
+            <app-edit-side-nav style="width:30%;"></app-edit-side-nav>
+
+            <div class="comapany_form">
+                <div>
+                    <div class="form" [formGroup] = "companyForm" >
+
+                        <ul>
+
+
+                             <label>Main Products</label>
+                            <li><input type="text" formControlName="mainProduct"></li>
+                            <label>Specialities</label>
+
+                            <li>
+                              <div class="specialites">
+                                <input list="country" formControlName="specialities" >
+
+                                </div>
+                                <button type="button" class="specialites_btn">good<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span></button>
+                                <button type="button" class="specialites_btn">good<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span></button>
+                             </li>
+
+                            <label>Main Market</label>
+                            <li><input  type="text"
+                                formControlName="mainMarket" name="city"></li>
+
+
+                            <label>Industry</label>
+                            <li>
+                                <input list="industry" formControlName="industry">
+
+                            </li>
+                            <label>Category</label>
+                            <li>
+                                <input list="Category" formControlName="category" >
+
+                            </li>
+                            <label>TF Code</label>
+                            <li>  <input type= "text"   formControlName="hsCode"></li>
+                            <label> Total Revenue</label>
+                            <li>  <input type= "number"   formControlName="revenu"></li>
+
+
+                            <li><button type="submit" (click)= "onSubmit()">UPDATE</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,96 @@
+
+<div>
+  <section>
+
+    <div class="productForm">
+        <form [formGroup] = "editproductForm" (ngSubmit)= "onSubmit()">
+            <div class="header">
+                <h1>PRODUCT</h1>
+                <small>Register and step into business world </small>
+            </div>
+         <div class="listingSection">
+            <h2>Listing Details</h2>
+            <label>Enter Product Name</label>
+            <input type="text" placeholder="Product Name" formControlName="productName">
+            <div class="productImg">
+             <div class="addButton">
+                <input type="file" #imagePicker (change)="onImagePick($event)">
+              <button type="button" (click)="imagePicker.click()">ADD Product Image</button>
+             </div>
+              <div class="image">
+                <img  *ngIf="imagePreview" [src]="imagePreview">
+              </div>
+            </div>
+         </div>
+         <div class="discription">
+           <h2>Description</h2>
+           <textarea placeholder="Short Description"  formControlName="shortDescription"></textarea>
+           <div class="chips">
+
+           </div>
+         </div>
+         <div class="category" formArrayName = "productInfo" >
+           <div *ngFor="let group of productInfoArray.controls; let i = index;" [formGroupName]="i">
+              <input list="category"  placeholder="Product Specification" formControlName = "productSpecification">
+              <datalist id="category">
+                <option value="Category">
+                   <option value="Category">
+                       <option value="Category">
+                           <option value="Category">
+                               <option value="Category">
+              </datalist>
+              <textarea placeholder="Specification Content" formControlName = "specificationContent"></textarea>
+              <div class="fields" style="width: 100%;margin-top: 5px" formArrayName = "fileds">
+
+                 <div *ngFor = "let list of filedsArray.controls; let i = index; " [formGroupName] = "i">
+                  <input type="text" placeholder="Enter Field Name " style="width: 43%" formControlName = "fieldName">
+                <input type="text" placeholder="Enter Field Name " style="width: 43%; margin-left: 7.55555%" formControlName = "fieldDes">
+
+                  </div>
+              </div>
+              <button type="button" (click) = "onAdd()">Add More</button>
+              <button type="button" style="float:right;margin-top: 30px;" (click)="addProductInfo()" >Apply</button>
+           </div>
+         </div>
+         <div class="otherSection">
+         <div class="price" style="margin-top:60px;">
+           <input list="price"  placeholder="Price" style="width: 15%;height: 30px;margin-left: 0" formControlName="price">
+           <datalist id="price">
+             <option value="price">
+                <option value="price">
+                    <option value="price">
+                        <option value="price">
+                            <option value="price">
+           </datalist>
+           <input type="number" placeholder="min"  formControlName="minPrice">
+           <input type="number" placeholder="max"  formControlName="maxPrice">
+         </div>
+         <div class="moq">
+           <input type= "number" placeholder="MOQ"  formControlName="moq">
+         </div>
+         <div class="industry">
+            <input list="Industry"  placeholder="Industry"  formControlName="industry">
+           <datalist id="Industry">
+             <option value="Industry">
+                <option value="Industry">
+                    <option value="Industry">
+                        <option value="Industry">
+                            <option value="Industry">
+                            </datalist>
+          </div>
+          <div class="proCategory">
+              <input type= "text" placeholder="Category"  formControlName="category">
+            </div>
+            <div class="Tf">
+                <input type= "text" placeholder="TF Code"  formControlName="tfCode">
+              </div>
+         </div>
+         <button type="submit">Finish</button>
+        </form>
+
+    </div>
+    <div class="static">
+
+    </div>
+  </section>
+</div>

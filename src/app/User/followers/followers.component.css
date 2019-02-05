@@ -1,0 +1,298 @@
+section {
+    width: 60%;
+    height: 100vh;
+    margin: 0 auto;
+    color: #111111;
+}
+
+section h2 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 5%;
+}
+
+.followers {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    border: 1px solid #ccc;
+}
+
+.card {
+    width: 21%;
+    margin-right: 2%;
+    height: 14%;
+    margin-left: 2%;
+    display: flex;
+    margin-top: 3%;
+    box-shadow: 0px 2px 3px #5555;
+}
+
+.image {
+    width: 40%;
+    height: 80%;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: black;
+    /* margin-top: auto;
+  margin-bottom: auto; */
+    margin: auto;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.info {
+    width: 55%;
+    height: 100%;
+    margin-left: 2%;
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.companyName p {
+    margin: 0;
+    font-size: 10px;
+    text-align: right;
+}
+
+.name h4 {
+    bottom: 0;
+    margin-bottom: 0;
+}
+
+.name small {
+    font-size: 8px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.follower_box {
+    margin: 0 auto;
+    width: 50%;
+    border: solid 5px gray;
+    height: fit-content ! important;
+    margin-top: 27px;
+}
+
+.follower_user {
+    width: 100%;
+    box-shadow: 0px 2px 3px #5555;
+}
+
+.follower_location {
+    background-color: #111111;
+    width: 100%;
+    float: right;
+    height: 110px;
+}
+
+.follower_location span {
+    float: right;
+    color: white;
+    margin: 5px 10px;
+}
+
+.follower_img {
+    margin: 0 auto;
+    width: 28%;
+}
+
+.follower_img1 {
+    position: absolute;
+}
+
+.follower_img1 img {
+    border-radius: 100%;
+    width: 48%;
+    border: slo;
+    border: solid 5px white;
+    margin-top: 26px;
+}
+
+.follower_name {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.follower_name h2 {
+    margin-bottom: auto;
+    margin-top: auto
+}
+
+.follower_name h5 {
+    margin-bottom: auto;
+    margin-top: auto
+}
+
+.follower_des {
+    margin: 8px auto;
+    width: 90%;
+    text-align: justify;
+    box-shadow: 0px 2px 3px #5555;
+}
+
+.follower_des p {
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    padding: 10px 0;
+}
+
+.follower_company {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    padding: 10px 0;
+}
+
+.company {
+    width: 70%;
+    display: flex;
+}
+
+.company_logo {
+    width: 20%;
+}
+
+.company_logo img {
+    border-radius: 100%;
+    width: 100%;
+}
+
+.company_name {
+    margin-left: 4%;
+}
+
+.followBtn {
+    width: 30%;
+    height: auto;
+    float: right;
+    text-align: right;
+}
+
+.followBtn button {
+    width: 80%;
+    margin-top: 10px;
+    background-color: #8cee53;
+    color: #ffffff;
+    font-weight: 600;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 10px;
+}
+
+.follwers_links {
+    margin: 0 auto;
+    width: 28%;
+    display: flex;
+}
+
+.follwers_links img {
+    width: 100%;
+}
+
+@media screen and (max-width:700px) {
+    section {
+        width: 90%;
+        height: 100vh;
+        margin: 0 auto;
+        color: #111111;
+    }
+    .follower_box {
+        height: fit-content ! important;
+        margin: 0 auto;
+        width: 90%;
+        border: solid 5px gray;
+    }
+    .follower_img1 img {
+        border-radius: 100%;
+        width: 44%;
+        border: slo;
+        border: solid 5px white;
+        margin-top: 35px;
+    }
+    .follower_des p {
+        margin: 0 auto;
+        width: 90%;
+        text-align: justify;
+        padding: 10px 0;
+        font-size: 11px;
+    }
+    .followBtn button {
+        width: 100%;
+        margin-top: 10px;
+        background-color: #8cee53;
+        color: #ffffff;
+        font-weight: 600;
+        height: 25px;
+        border-radius: 15px;
+        border: none;
+        font-size: 12px;
+    }
+    .company_name {
+        margin-left: 4%;
+        font-size: 11px;
+    }
+    .card {
+        width: 46%;
+        margin-right: 2%;
+        height: 12%;
+        margin-left: 2%;
+        display: flex;
+        margin-top: 3%;
+        box-shadow: 0px 2px 3px #5555;
+    }
+    .name h4 {
+        bottom: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width:767px)and (max-width:1024px) {
+    section {
+        width: 90%;
+        height: 100vh;
+        margin: 0 auto;
+        color: #111111;
+    }
+    .follower_box {
+        height: fit-content ! important;
+        margin: 0 auto;
+        width: 90%;
+        border: solid 5px gray;
+    }
+    .follower_img {
+        margin: 0 auto;
+        width: 20%;
+    }
+    .follower_img1 img {
+        border-radius: 100%;
+        border: solid 5px white;
+        margin-top: 26px;
+        width: 50%;
+    }
+    .card {
+        width: 29%;
+        margin-right: 2%;
+        height: 17%;
+        margin-left: 2%;
+        display: flex;
+        margin-top: 3%;
+        box-shadow: 0px 2px 3px #5555;
+    }
+    font-size: 13px;
+}

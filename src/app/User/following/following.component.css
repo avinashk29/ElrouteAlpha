@@ -1,0 +1,316 @@
+.following_title
+{
+  padding-top: 3%;
+}
+.following_title h1 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 12px;
+    font-size: 25px;
+}
+
+.user_following {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 1px 5px 2px rgba(25, 25, 25, 0.2);
+}
+
+.follow_search {
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.follow_search input[type="search"] {
+    font-size: 26px;
+    width: 100%;
+    background-color: #f5f5fa;
+    border: none;
+}
+
+.following {
+    display: flex;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px 0px rgba(25, 25, 25, 0.2);
+    margin: 10px auto;
+    width: 94%;
+    border-radius: 10px;
+}
+
+.following_1 {
+    width: 70%;
+    display: flex;
+    margin-left: 1%;
+}
+
+.following_image {
+    width: 10%;
+}
+
+.following_image img {
+    width: 100%;
+    border-radius: 100%;
+    padding: 10px 0px;
+}
+
+.following_name {
+    margin-left: 1%;
+    width: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 56%;
+}
+
+.following_name h2 {
+    margin-bottom: auto;
+    margin-top: auto;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.following_name span {
+    font-size: 12px;
+}
+
+.following_bookmark {
+    width: 15%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
+    display: flex;
+}
+
+.following_bookmark img {
+    width: 20%;
+}
+
+.following_bookmark span {
+    font-size: 13px;
+    margin-left: 2%;
+}
+
+.following_2 {
+    width: 30%;
+    display: flex;
+}
+
+.followBtn {
+    width: 100%;
+    height: auto;
+    float: right;
+    text-align: left;
+    margin-top: 18%
+}
+
+.followBtn button {
+    width: 90%;
+    background-color: green;
+    color: #ffffff;
+    font-weight: 600;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 10px;
+}
+
+.followBtn svg {
+    width: 15px;
+}
+
+.following_icon1 {
+    width: 60%;
+    margin: 0px 10px;
+    padding: 10px 0px;
+}
+
+.following_icon1 img {
+    width: 80%;
+    border-radius: 100%
+}
+
+
+
+
+
+section{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: none;
+  }
+  .listing{
+    width: 100%;
+    height: auto;
+  }
+  .companyCard{
+    width: 48%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    float: left;
+    margin-top: 40px;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+  .cardHeader{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .logo{
+    height: auto;
+  }
+  .logo img{
+    width: 120px;
+    height: 120px;
+    padding: 5px 0 0 0;
+    border-radius: 50%;
+  }
+  .companyInfo{
+    width: 65%;
+    margin-left: 20px;
+  }
+  .companyInfo h1{
+    margin: 0;
+    padding: 5px 0 0 0;
+  }
+  .companyInfo button{
+    width: 18%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+  }
+  .storyBtn{
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 20px;
+  }
+  .storyBtn button{
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border:none;
+  }
+  .discription{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .discription p{
+    width: 80%;
+  }
+  .cardFooter{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .tags{
+    width: 60%;
+  
+  }
+  .tags p{
+    margin: 0;
+    padding: 0px 0 15px 0;
+  }
+  .icons{
+    width: 20%;
+    display: flex;
+  }
+  .icons p{
+    margin: 0;
+    padding: 0px 0 15px 0;
+  }
+  .des
+  {
+    display: none;
+  }
+  @media screen and (max-width: 700px){
+    .following_title
+    {
+      padding-top: 10%;
+    }
+    .user_following
+      {
+        display:none;
+
+      }
+    section{
+      width: 95%;
+      margin: 0 auto;
+      display: block;
+    }
+    .companyCard {
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      margin-top: 21px;
+  
+  }
+  .storyBtn {
+    display: none;
+  }
+  .companyInfo h1 {
+    float: left;
+    margin: 0;
+    padding: 5px 0 0 0;
+    font-size: 19px;
+  }
+  .b1{
+    margin-left: 13px;
+    font-size: 9px ! important;
+  }
+  .discription
+  {
+    display: none;
+  }
+  .des
+  {
+    display: block;
+  }
+  .cardFooter
+  {
+    dispay: none;
+  }
+  .companyInfo  button{
+    width: 27%;
+    height: 25px;
+    border: none;
+    border-radius: 10px;
+  }
+  .listing input{
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    border:none;
+  }
+  }
+  @media screen and (min-width: 767px)and (max-width: 1024px){
+    .following_title
+    {
+      padding-top: 6%;
+    }
+    .following_name h2 {
+    margin-bottom: auto;
+    margin-top: auto;
+    font-weight: 500;
+    margin-left: 8px;
+    font-size: 19px;
+}
+.following_2 {
+    width: 40%;
+    display: flex;
+}
+.following_1 {
+    width: 65%;
+    display: flex;
+    margin-left: 1%;
+}
+.followBtn {
+    width: 100%;
+    height: auto;
+    float: right;
+    text-align: left;
+    margin-top: 14%;
+}
+}

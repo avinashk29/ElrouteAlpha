@@ -1,0 +1,163 @@
+<app-side-nav ></app-side-nav>
+<app-header></app-header>
+<div  class="heading">
+    <h2 style="width: 70%;">Overview</h2>
+    <h2 style="width: 40%;" *ngIf = "haveCompany">Following</h2>
+</div>
+<div class="bookmark_overview" >
+    <div class="overview">
+        <div class="profile">
+            <div class="follower_user">
+                <div class="follower_location">
+                        <span (click) = "openDialog()" style="float:left;margin:11px;"> <svg  xmlns="http://www.w3.org/2000/svg" width="24" style="fill:aliceblue;" height="24" viewBox="0 0 24 24" ><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
+                    <span style="padding-top:10px;">{{location}}</span>
+                </div>
+                <div class="follower_img">
+                    <div class="follower_img1">
+                        <img src="assets/images/user.png">
+                    </div>
+                </div>
+
+                <div class="follower_name">
+                    <h2>{{username}}</h2>
+                    <h5>{{title}}</h5>
+                </div>
+
+                <!-- {{this.overviewResult.Email}} -->
+
+            </div>
+        </div>
+        <div class="Bio">
+            <div class="Bio_heading">
+                <p> BIO</p>
+                <span (click)= "editBio()" style="float:right"  class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
+            </div>
+
+            <div class="follower_des" *ngIf="!bioEdit">
+                <p>{{this.userBio}} </p>
+            </div>
+            <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
+                    <textarea formControlName= "ShortBio">{{this.userBio}}</textarea>
+                    <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
+            </div>
+            <div class="follower_company">
+                <div class="company">
+                    <div class="company_logo" *ngIf = "haveCompany">
+                        <img src="assets/images/user.png">
+                    </div>
+                    <div class="company_name">
+                        <h4 style="color: skyblue;">{{companyName}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="links">
+            <div class="follwers_links">
+                <div class="facebook">
+                    <img src="assets/images/fb.png">
+                </div>
+                <div class="google">
+                    <div class="facebook">
+                        <img src="assets/images/fb.png">
+                    </div>
+                </div>
+                <div class="linkdin">
+                    <div class="facebook">
+                        <img src="assets/images/fb.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bookmark_following">
+
+        <div class="following_nub" *ngIf="haveCompany">
+            <div class="user_img">
+                <img src="assets/images/following.png">
+            </div>
+            <div class="following_nub1">
+                <span>{{companyFollowers}}</span>
+            </div>
+            <div class="following_btn">
+                <button>Manage</button>
+            </div>
+
+        </div>
+        <div class="b_page_btn">
+            <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
+            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go TO B-Page</button>
+        </div>
+    </div>
+
+</div>
+
+<section>
+    <div class="follower_box">
+      <div class="follower_user">
+          <div class="follower_location">
+            <span>INDIA</span>
+           </div>
+           <div class="follower_img">
+              <div class="follower_img1">
+                <img src="assets/images/user.png">
+              </div>
+           </div>
+          <div style="clear:both"></div>
+           <div class="follower_name">
+              <h2>{{username}}</h2>
+              <h5>Web Designer</h5>
+            </div>
+            <div class="follower_des">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            </div>
+            <div class="follower_company">
+                  <div class="company">
+                    <div class="company_logo">
+                          <img src="assets/images/user.png">
+                    </div>
+                    <div class="company_name">
+                        <h4>{{companyName}}</h4>
+                  </div>
+                </div>
+                    <div class="followBtn">
+                        <button>Following</button>
+                    </div>
+            </div>
+            <div class="follwers_links1">
+                    <div class="facebook">
+                      <img src="assets/images/fb.png">
+                     </div>
+                     <div class="google">
+                        <div class="facebook">
+                            <img src="assets/images/fb.png">
+                           </div>
+                      </div>
+                      <div class="linkdin">
+                          <div class="facebook">
+                              <img src="assets/images/fb.png">
+                             </div>
+                        </div>
+                    </div>
+    </div>
+
+    </div>
+    <div class="bookmark_following" id="overview1">
+
+      <div class="following_nub">
+          <div class="user_img">
+              <img src="assets/images/following.png">
+          </div>
+          <div class="following_nub1">
+              <span>{{companyFollowers}}</span>
+          </div>
+          <div class="following_btn">
+              <button>Mange</button>
+          </div>
+
+      </div>
+      <div class="b_page_btn">
+          <button>Create  Your B page</button>
+      </div>
+    </div>
+    </section>

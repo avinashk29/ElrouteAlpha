@@ -1,0 +1,78 @@
+
+<app-user-overview style="margin: 0 auto;width: 80%;"></app-user-overview>
+<section>
+<h2>Bookmarks</h2>
+<app-header3></app-header3>
+<input type="search" placeholder="Enter Product/Service to Search">
+    <div class="listing">
+     <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
+    <div class="Card" *ngFor="let card of cards;">
+      <div class="productCard" *ngIf="card.type == 1">
+    <div class="productImage">
+      <img src="https://picsum.photos/200/300/?random">
+    </div>
+    <div class="productContent" >
+    <div class="content">
+    <div class="productCategory">
+    <h6>{{card.catogory}}</h6>
+    </div>
+    <div class="productName">
+      <h2>{{card.productName}}</h2>
+      <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{card.device}}</span><span style= "padding-left: 8px">{{card.country}}</span></small>
+    </div>
+    <div class="discription" style="margin-top:30px;">
+    <p>{{card.discription}}</p>
+    </div>
+    <div class="tags">
+
+    </div>
+    <div class="other-info">
+      <div class="price">
+      <h4>Price</h4>
+    </div>
+    <div class="hits">
+      <p>24,354 hits</p>
+    </div>
+    </div>
+    </div>
+    </div>
+      </div>
+       <!-------------------------------------------------------------------Service Card------------------------------------------------------------------------>
+      <div class="ServiceCard" *ngIf="card.type == 2" >
+
+          <div class="ServiceContent">
+          <div class="content">
+          <div class="ServiceCategory">
+          <h6>{{card.Servicecatogory}}</h6>
+          </div>
+          <div class="ServiceName">
+            <h2>{{card.serviceName}}</h2>
+            <h5>{{card.scompany}}</h5>
+            <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 8px">{{card.sdevice}}</span><span style= "padding-left: 8px">{{card.scountry}}</span></small>
+          </div>
+          <div class="discription" style="margin-top:30px;">
+          <p>{{card.sdiscription}}</p>
+          </div>
+          <div class="tags">
+
+          </div>
+          <div class="other-info">
+            <div class="price">
+            <h4>Price</h4>
+          </div>
+          <div class="hits">
+            <p>24,354 hits</p>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="ServiceImage">
+               <div class="bookmark">
+
+              </div> 
+              <img src="https://picsum.photos/200/300/?random">
+            </div>
+            </div>
+    </div>
+    </div>
+</section>

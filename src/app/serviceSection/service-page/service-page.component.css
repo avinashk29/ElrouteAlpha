@@ -1,0 +1,477 @@
+.body{
+  height: 100%;
+  width: 100%;
+}
+#feed2
+{
+  display: none;
+
+}
+.banner{
+  width: 100%;
+  height: 20vh;
+  background-color: lightgray;
+  text-align: center;
+  display: table;
+}
+.banner h1{
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  font-size: 60px;
+  font-weight: 600;
+}
+section{
+  width: 95%;
+  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3%;
+}
+.rightSection{
+  width: 53%;
+  height: 35vh;
+}
+.leftSection{
+  width: 40%;
+  margin-left: 2%;
+  position: fixed;
+  right: 0;
+  box-shadow: 0px 1px 1px #99999999;
+  border:1px solid #ccc;
+}
+.serviceImage{
+  width: 100%;
+  height: 35vh;
+  background-color: darkolivegreen;
+}
+.serviceImage img{
+  width: 100%;
+  height: 100%;
+}
+.info{
+  width: 100%;
+  margin-top: 3%;
+  /* border-bottom: 1px solid #ccc; */
+}
+.header{
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+.description{
+  width: 90%;
+  margin: 0 auto;
+}
+.description h2{
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.description h2 span{
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 10px;
+
+}
+.otherData{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+.priceAndTag{
+  width: 55%;
+  height: 100%;
+}
+.contact{
+  width: 30%;
+ 
+  margin-top: 6%;
+  text-align: right;
+  margin-left: 15%;
+}
+
+.contact span
+{
+    font-size:150%;
+    margin-left:20px;
+    border:solid 1px gray;
+    padding: 0px 15px;
+    color:#707070;
+    border-radius: 8px;
+
+}
+.contact img
+{
+    position: absolute;
+    width: 45px;
+    margin: -6px -7px;
+}
+.tag{
+  width: 100%;
+}
+.price{
+  width: 100%;
+}
+.price h2{
+  font-weight: 400;
+}
+.expnasion{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+mat-expansion-panel{
+  border-radius: 0px 0px 0px 0px !important;
+
+}
+mat-expansion-panel-header{
+  background-color: #F3F3F3;
+
+}
+mat-expansion-panel-header h2{
+  font-weight: 100;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+/* .card{
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.header{
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.heading{
+  float: left;
+  width: 60%;
+}
+.content{
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+}
+.heading h3{
+ margin: 7px 0px 7px 2px;
+ font-weight: 600;
+
+}
+.bookmark{
+  float: right;
+  width: 40%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.bookmark p{
+  margin:7px 10px 7px 0px;
+}
+.bookmark span{
+  width: 10%;
+  height: 35px;
+  background-color: blueviolet;
+}
+.cardContent{
+  width: 90%;
+  margin: 0 auto;
+}
+.cardContent .cardElement {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 6px;
+
+}
+.cardContent .cardElement label{
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.cardContent .cardElement h2{
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.cardContent .cardElement  p{
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+.contact{
+  width: 50%;
+  float: right;
+  display: flex;
+  background-color: blanchedalmond;
+  height: 2pc;
+  margin-top: 10px;
+} */
+@media screen and (max-width: 700px){
+section{
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  float: none;
+}
+#feed1{display:none;}
+#feed2{ display:block;}
+.rightSection{
+  width: 100%;
+
+}
+.leftSection{
+  width: 100%;
+  position: relative;
+  margin-left: 0;
+  margin-top: 30px;
+}
+.info p{
+  font-size: 11px;
+   line-height: 20px;
+}
+.description h2{
+  font-size: 15px;
+}
+.description h2 span{
+  display: none;
+}
+.priceAndTag{
+  display: none;
+  width: 0%;
+}
+.contact{
+  width: 100%;
+  margin: 0 auto;
+  height: 4vh;
+  /* position: fixed; */
+  bottom: 20px;
+  left: 11vh;
+  right: auto;
+}
+.contact img{
+  position: absolute;
+  width: 35px;
+  margin: -7px 0px;
+}
+.expnasion{
+  width: 100%;
+  margin-top: 0;
+}
+}
+/* <--------------------------------------------------------FEED CARD-------------------------------------------> */
+.feed{
+  width: 55%;
+  height: 490px;
+  display: block;
+  margin-right: auto;
+  border: 1px solid #cccccc;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+.authorInfo{
+width: 100%;
+display: flex;
+}
+.details{
+  width: 70%;
+  height: auto;
+  display: flex;
+}
+.logo{
+  width: 20%;
+  height: 100%;
+  background-color: black;
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+}
+.details h1{
+  margin: 0;
+  padding: 5px 0 0 15px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.details p{
+  padding: 0px 0 0 15px !important;
+  font-size: 10px;
+}
+.feedInfo {
+  width: 95%;
+  margin: 0 auto;
+  height: 15%;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  border-radius: 5px 5px 0 0;
+  margin-top: 20px;
+}
+.feedInfo p{
+  font-size: 12px;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.followBtn{
+  width: 25%;
+  height: auto;
+  float: right;
+  text-align: right;
+}
+.followBtn button{
+  width: 80%;
+  margin-top: 10px;
+  background-color: green;
+  color: #ffffff;
+  font-weight: 600;
+  height: 25px;
+  border-radius: 15px;
+  border:none;
+  margin-left: 10px;
+}
+.followBtn p{
+  align-items: baseline;
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom:  0;
+  font-size: 10px;
+}
+.feed-img{
+  width: 100%;
+  height: 60%;
+}
+.feed-img img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.feed-share{
+  width: 100%;
+  height: 7%;
+  display: flex;
+ /* ?splay: block; di */
+}
+.tagged{
+  width: 100%;
+  height: 7%;
+}
+mat-expansion-panel{
+  border-radius: 0 !important;
+
+}
+mat-expansion-panel{
+  /* box-shadow: 0 0 0 0!important; */
+}
+.tagged mat-expansion-panel-header{
+  height: 35px !important;
+  color: #ffffff !important;
+}
+mat-panel-title h4{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 100;
+}
+@media screen and (max-width:768px)
+{
+  .details h1{
+    margin: 0;
+    padding: 5px 0 0 15px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .logo{
+    width: 36%;
+  }
+  section {
+    width: 94%;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+.followBtn {
+  width: 37%;
+  height: auto;
+  float: right;
+  text-align: right;
+}
+.followBtn  button 
+  {
+    font-size: 12px;
+  }
+
+.feed {
+  width: 94%;
+  height: 490px;
+  display: block;
+  
+  border: 1px solid #cccccc;
+}
+}
+@media screen and (max-width:700px){
+  .company_industry,.login_user{
+    display: none;
+  }
+  .with_login{
+    width: 100%;
+    margin: 0px;
+  }
+  .feeds{
+    width: 100%;
+    padding: 0px;
+  }
+  .add_media h2{
+    font-size: 15px;
+    margin-top: -5px;
+  }
+  .add_media span{
+    font-size: 10px;
+  }
+  .add_feed {
+    font-size: 11px;
+    width: 12%;
+  }
+  section{
+    width: 95%;
+  }
+  .followBtn {
+    width: 25%;
+    height: auto;
+    float: right;
+    text-align: right;
+  }
+  .followBtn button{
+    width: 100%;
+    font-size: 8px;
+  }
+  .followBtn p{
+    margin-right: 0;
+    
+  }
+  .details h1{
+    font-size: 15px;
+  }
+  .details p{
+    font-size: 8px;
+  }
+  .feedInfo p{
+    font-size: 10px;
+    line-height: 15px;
+  }
+  mat-panel-title h4{
+    font-size: 11px;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 1440px){
+  .with_login{
+    width: 85%;
+  }
+}
