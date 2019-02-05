@@ -72,10 +72,10 @@
                <!-- <p> {{city}}</p>
                <p>{{companyEmail}}</p> -->
                <div class="follow-btn" *ngIf = "!myCompany" >
-                <button (click)="onCompanyFollow()" *ngIf="!Follower"> FOLLOW</button>
-                <button (click)="onCompanyUnfollow()" *ngIf="Follower"> UNFOLLOW</button>
-                <span><p>{{companyFollowers }}</p></span>
-            </div>
+                  <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
+                  <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
+                  <span><p>{{companyFollowers }}</p></span>
+              </div>
                 <div class="follow-btn" *ngIf="myCompany">
                     <button (click) = "EditBpage()">Edit</button>
                 </div>
@@ -278,36 +278,38 @@
   <img src="assets/images/bk.png">
 
 </div>
-<div class="certificate">
+<div class="certification">
   <h2>CERTIFICATES</h2>
   <div ng2-carouselamos class="slider-wrapper"
   [items]="certification"
-  [$prev]="prev"
-  [$next]="next"
-  [$item]="item"
+  [width]="500"
+  [$prev]="prev1"
+  [$next]="next1"
+  [$item]="item1"
   ></div>
-<ng-template #prev>
+
+<ng-template #prev1>
   <img src= "../../../assets/images/left-arrow.png">
 </ng-template>
-<ng-template #next>
+<ng-template #next1>
     <img src= "../../../assets/images/right-arrow.png">
   </ng-template>
-  <ng-template #item let-item>
-     <div class="items">
-        <img src="{{ items }}">
-     </div>
-    </ng-template>
-    <input type="file"  #filePicker (change)="onImagePick($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
-    <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+  <ng-template   let-item let-i="index" #item1>
+    <div class="items">
+        <img [src]="item">
+    </div>
+       </ng-template>
+    <input type="file"  #filePickercertificate (change)="onImagePick($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
+    <button type="button" (click)="filePickercertificate.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
       Add Certificate</button>
   </div>
   <div class="companyImg">
       <h2>COMPANY IMAGES</h2>
       <div ng2-carouselamos class="slider-wrapper"
-      [items]="items"
+      [items]="companyImage"
       [$prev]="prev"
       [$next]="next"
-      [$item]="item"
+      [$item]="item2"
       ></div>
     <ng-template #prev>
       <img src= "../../../assets/images/left-arrow.png">
@@ -315,11 +317,14 @@
     <ng-template #next>
         <img src= "../../../assets/images/right-arrow.png">
       </ng-template>
-      <ng-template #item let-item>
+      <ng-template #item2 let-item>
          <div class="items">
-            <img src="{{ item.name }}">
+            <img src="{{item}}">
          </div>
         </ng-template>
+        <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
+        <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+          Add Company Image</button>
       </div>
   </div>
 </div>

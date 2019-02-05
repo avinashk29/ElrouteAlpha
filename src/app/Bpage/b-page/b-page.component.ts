@@ -10,6 +10,8 @@ import { FormControl , FormGroup} from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import { JsonPipe } from '@angular/common';
+import { FollowService } from 'src/app/Service/follow-service.service';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -30,18 +32,19 @@ groups;
 CompanyName;
 category;
 city;
+Follower
 file
 uploadImages=false;
 companyEmail;
 // companyType ;
-certification=[];
-certificate=false;
+certification = [];
 country;
  Image;
 industry;
 // mobile;
 // address ;
 // yearEstd;
+companyFollowers
 website;
 workingHours;
 products = [];
@@ -64,6 +67,7 @@ editworkingHours = false;
 editshortIntro = false;
 imagePreview;
 infoImage;
+companyImage = [];
 bioEdit=false;
 BForm = new FormGroup ({
    website: new FormControl(''),
@@ -76,7 +80,7 @@ BForm = new FormGroup ({
   });
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute, private router: Router,
-   public userService: UserService,private spinner:NgxUiLoaderService, private sp:NgxSpinnerService, private imgUpload:ImageUploadService) {
+   public userService: UserService,private spinner:NgxUiLoaderService, private follows: FollowService,private sp:NgxSpinnerService, private imgUpload:ImageUploadService) {
     this.companyService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
 
@@ -98,8 +102,9 @@ BForm = new FormGroup ({
            this.companyLogo=JSON.parse(res['_body']).companyLogo;
            this.infoImage=JSON.parse(res['_body']).infoImage;
            this.certification=JSON.parse(res['_body']).certification;
-           console.log(typeof(this.certification))
-
+           this.companyImage = JSON.parse(res['_body']).companyImage
+           this.companyFollowers = JSON.parse(res['_body']).Followers.length
+           console.log(this.certification)
           console.log(JSON.parse(res['_body']));
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
@@ -143,51 +148,55 @@ BForm = new FormGroup ({
   }
 
   ngOnInit() {
-    // this.comapnyId = this.storage.get('companyId');
-    this.imgUpload.token=this.storage.get('token');
-    this.feedService.token = this.storage.get('token');
-    this.userService.getUserData().subscribe(res => {
-      console.log(JSON.parse(res['_body']).Following);
-      this.userInfo = JSON.parse(res['_body']).Following;
-      for (let i = 0; i < this.userInfo.length; i++) {
-        if (this.userInfo[i] === this.comapnyId) {
-            console.log('You Have to unfollow the company right now');
-        } else {
-          console.log('You have to follow the company');
-        }
-      }
-    });
-    this.companyService.token = this.storage.get('token');
-    this.productService.token = this.storage.get('token');
-    this.mycompanyId = this.storage.get('companyId');
-    this.token = this.storage.get('token')
-    this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
-
-      this.type = paramas.urltype;
-
-
-
-    });
-
-
-  //   this.certification =  [
     
-  //     // {name: 'https://picsum.photos/g/200/300'},
-  //   //  {name: 'https://picsum.photos/200/300?image=0'},
-  // //     {name: 'https://picsum.photos/200/300/?blur'},
-  // //     {name: 'https://picsum.photos/200/300/?random'},
-  // //     {name: 'https://picsum.photos/200/300'},
-  // //     {name: 'https://picsum.photos/g/200/300'},
-  // //     {name: 'https://picsum.photos/200/300?image=0'},
-  // //     {name: 'https://picsum.photos/200/300/?blur'},
-  // //     {name: 'https://picsum.photos/200/300/?random'}
-  // ];
-  this.feedService.GetFeed().subscribe(res => {
-    this.feeds =  JSON.parse(res['_body']);
-    if (!this.feeds.length){
-      this.noFeeds = true;
-    }
-    });
+   // this.comapnyId = this.storage.get('companyId');
+   this.imgUpload.token=this.storage.get('token');
+   this.feedService.token = this.storage.get('token');
+   this.userService.getUserData().subscribe(res => {
+     console.log(JSON.parse(res['_body']).Following);
+     this.userInfo = JSON.parse(res['_body']).Following;
+     for (let i = 0; i < this.userInfo.length; i++) {
+       console.log(this.userInfo[i]);
+       if (this.userInfo[i] === this.comapnyId) {
+         this.Follower = true;
+           console.log('You Have to unfollow the company right now');
+       } else {
+         console.log('You have to follow the company');
+         this.Follower = false;
+       }
+     }
+   });
+   this.companyService.token = this.storage.get('token');
+   this.productService.token = this.storage.get('token');
+   this.mycompanyId = this.storage.get('companyId');
+   this.token = this.storage.get('token')
+   this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
+
+     this.type = paramas.urltype;
+
+
+
+   });
+
+
+ //   this.certification =  [
+
+ //     // {name: 'https://picsum.photos/g/200/300'},
+ //   //  {name: 'https://picsum.photos/200/300?image=0'},
+ // //     {name: 'https://picsum.photos/200/300/?blur'},
+ // //     {name: 'https://picsum.photos/200/300/?random'},
+ // //     {name: 'https://picsum.photos/200/300'},
+ // //     {name: 'https://picsum.photos/g/200/300'},
+ // //     {name: 'https://picsum.photos/200/300?image=0'},
+ // //     {name: 'https://picsum.photos/200/300/?blur'},
+ // //     {name: 'https://picsum.photos/200/300/?random'}
+ // ];
+ this.feedService.GetFeed().subscribe(res => {
+   this.feeds =  JSON.parse(res['_body']);
+   if (!this.feeds.length){
+     this.noFeeds = true;
+   }
+   });
 
   }
   editbio(){
@@ -205,12 +214,59 @@ BForm = new FormGroup ({
         console.log(res);
         const updata = new FormData();
         const url = res['_body'];
-        console.log(url+'   '+name)
-        updata.append(name,url)
-        this.companyService.UpdateCompany(updata).subscribe(response=>{
-       // this.companyLogo=JSON.parse(response['_body']).url;
-        console.log(response)
-        })
+        if(name==="certification"){
+          // console.log(this.certification);
+          // console.log(url)
+          // console.log("m abhi yha pr hoon sbse upar")
+            this.certification.push(url); 
+          //   updata.append('certification',this.certification);
+          //   console.log(this.certification);
+          //   console.log("m abhi yha pr hoon");
+          //   console.log(updata)
+           let certiForm = new FormGroup({
+             certification: new FormControl(this.certification)
+           })
+           this.companyService.UpdateCompany(certiForm.value).subscribe(response=>{
+            // this.companyLogo=JSON.parse(response['_body']).url;
+             console.log(JSON.parse(response['_body']));
+             })
+          }
+        else{
+          updata.append(name,url);
+          this.companyService.UpdateCompany(updata).subscribe(response=>{
+            // this.companyLogo=JSON.parse(response['_body']).url;
+             console.log(JSON.parse(response['_body']));
+             })
+          
+        }
+
+        if(name==="companyImage"){
+          // console.log(this.certification);
+          // console.log(url)
+          // console.log("m abhi yha pr hoon sbse upar")
+            this.companyImage.push(url); 
+          //   updata.append('certification',this.certification);
+          //   console.log(this.certification);
+          //   console.log("m abhi yha pr hoon");
+          //   console.log(updata)
+           let companyImage = new FormGroup({
+             companyImage: new FormControl(this.companyImage)
+           })
+           this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
+            // this.companyLogo=JSON.parse(response['_body']).url;
+             console.log(JSON.parse(response['_body']));
+             })
+          }
+        else{
+          updata.append(name,url);
+          this.companyService.UpdateCompany(updata).subscribe(response=>{
+            // this.companyLogo=JSON.parse(response['_body']).url;
+             console.log(JSON.parse(response['_body']));
+             })
+          
+        }
+       
+        
 
       })
    }
@@ -264,7 +320,20 @@ this.productService.DeleteProduct(id).subscribe(res => {
 //     console.log(res);
 //   });
 // }
-
+onfollow() {
+  this.Follower = true;
+  this.follows.addFollow(this.comapnyId).subscribe(res => {
+             console.log(res);
+         });
+         console.log('i am working follow')
+}
+onunfollow() {
+  this.Follower =  false;
+  this.follows.Unfollow(this.comapnyId).subscribe(res => {
+             console.log(res);
+         });
+         console.log('i am working unfollow')
+}
 ngOnDestroy() {
   this.subscription.unsubscribe();
 }
