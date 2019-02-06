@@ -13,7 +13,7 @@
               <div class="service2">
                   <p><span>24,125</span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>  </p>
 
-                  <div class="service2_img"><img src="assets/images/henna-powder.jpg" alt="image not found"></div>
+                  <div class="service2_img"><img src="{{image}}" alt="image not found"></div>
               </div>
               <div class="tags">
                 <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
@@ -35,7 +35,7 @@
        <div class="des_box">
          <h2>Description</h2>
 
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged  .</p>
+        <p>{{ShortDescription}}</p>
       </div>
 
 
@@ -69,25 +69,25 @@
 <section>
 
 
-  <div class="feed">
+  <div class="feed" *ngFor="let f of feed">
   <div class="authorInfo">
   <div class="details">
     <div class="logo">
       <img src="https://picsum.photos/500/300/?random">
     </div>
     <div class="info">
-   <h1>Company Name</h1>
-   <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">Industry</p>
-   <p style="line-height: 3px;margin-bottom: 10px;">Location</p>
+   <h1></h1>
+   <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;"></p>
+   <p style="line-height: 3px;margin-bottom: 10px;"></p>
   </div>
   </div>
   <div class="followBtn" >
    <button >Following<span><svg xmlns="http://www.w3.org/2000/svg" width="30%" height="52%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
-   <p>34,342 followers</p>
+   <p></p>
   </div>
   </div>
   <div class="feedInfo">
-    <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content </p>
+    <p></p>
   </div>
   <div class="feed-img">
   <img src="https://picsum.photos/500/300/?random">
@@ -104,7 +104,7 @@
            </mat-panel-title>
          </mat-expansion-panel-header>
   
-         <p>This is the primary content of the panel.</p>
+         <p></p>
   
        </mat-expansion-panel>
   </div>

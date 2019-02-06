@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
+import { FeedService } from 'src/app/Service/feed-service.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -19,11 +20,14 @@ export class ProductPageComponent implements OnInit {
   Time;
   MatchScore;
   ProductInfo;
+  feed=[]
+  image;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, public product: ProductServiceService) {
+   public route: ActivatedRoute, public product: ProductServiceService,private feedService:FeedService) {
     this.id = this.route.snapshot.paramMap.get('_id');
     console.log(this.id);
   this.product.token = this.storage.get('token');
+  this.feedService.token=this.storage.get('token');
   }
   panelOpenState = false;
 id;
@@ -40,8 +44,15 @@ this.product.getOneProduct(this.id).subscribe(res => {
   this.Time=JSON.parse(res['_body']).Time;
   this.MatchScore=JSON.parse(res['_body']).matchScore;
   this.ProductInfo=JSON.parse(res['_body']).productInfo;
+  this.ShortDescription=JSON.parse(res['_body']).shortDescription;
+  this.image=JSON.parse(res['_body']).Image
   console.log(this.ProductName)
 });
+    this.feedService.GetFeed().subscribe(res=>{
+        this.feed=JSON.parse(res['_body']);
+        console.log(res);
+    })
+
   }
 
 }

@@ -65,6 +65,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       this.username = JSON.parse(res['_body']).UserName;
       this.location = JSON.parse(res['_body']).Location;
       this.title = JSON.parse(res['_body']).Title;
+      
       console.log(this.username);
       this.userBio = JSON.parse(res['_body']).ShortBio;
       console.log(this.userBio)

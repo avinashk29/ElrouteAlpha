@@ -1,3 +1,8 @@
 <p>
   feed works!
 </p>
+<input list="product"  placeholder="Product">
+                <datalist id="product">
+                <option (click)= "getProduct(product._id)" value="{{product.productName}}" *ngFor = "let product of products" >
+                  {{product._id}}
+                </datalist>

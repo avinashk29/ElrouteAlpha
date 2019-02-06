@@ -9,6 +9,8 @@ import {FormGroup , FormControl} from '@angular/forms';
 import {FeedService} from '../../Service/feed-service.service';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { Route } from '@angular/compiler/src/core';
+import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
+import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -32,7 +34,8 @@ Image: new FormControl(' ')
 });
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
-  public feedService: FeedService, public companyService: CompanyServiceService) {
+  public feedService: FeedService, public companyService: CompanyServiceService,
+  public dialog: MatDialog ) {
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
         // this.feedService.Getpost().subscribe(res =>{
@@ -53,6 +56,7 @@ Image: new FormControl(' ')
    }
   show = false;
   ngOnInit() {
+     this.feedService.token = this.storage.get('token');
     // this.followers.token=this.storage.get('token');
     // this.followers.getFollowers().subscribe(res=>{
     //   console.log(res);
@@ -86,11 +90,17 @@ Image: new FormControl(' ')
       });
    }
   onAddpost() {
-    this.feedService.token = this.storage.get('token');
+   
     this.feedService.AddFeed(this.feed.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
     this.feed.reset();
+  }
+  tagFeed(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
+    this.dialog.open(FeedComponent, dialogConfig);
   }
   onLogout() {
     this.storage.remove('token');

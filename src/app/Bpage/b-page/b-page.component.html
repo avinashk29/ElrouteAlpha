@@ -189,7 +189,7 @@
             </div>
             <div class="followBtn">
              <button>Following <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
-             <p>34,342 followers</p>
+             <p></p>
             </div>
             </div>
             <div class="feedInfo">
@@ -210,7 +210,7 @@
                      </mat-panel-title>
                    </mat-expansion-panel-header>
 
-                   <p>This is the primary content of the panel.</p>
+                   <p>T</p>
 
                  </mat-expansion-panel>
             </div>
@@ -241,7 +241,7 @@
               </div>
               <div class="revenu info" style="border-bottom:none">
                   <label>Total Revenue</label>
-                  <h3>50-100</h3>
+                  <h3></h3>
                 </div>
         </div>
        </div>
@@ -259,15 +259,24 @@
               <img src="{{infoImage}}"> 
                  </div>
         
-    <div class="infoContent">
-      <h3>SHORT BIO  <span  class="bio_btn" (click)="editbio()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15 " viewBox="0 0 24 24" ><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span></h3>
-      <p>{{shortIntro}}</p>
-    </div>
-  <!---s <div class="infoContent" *ngIf="!bioEdit">
+                 <div class="bio" *ngIf = "!editshortIntro">
+                    <h2>SHORT BIO</h2>
+                    <!-- <p>{{shortIntro}}</p> -->
+                    <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p *ngIf= "shortIntro">{{shortIntro}}</p>
+             
+                    <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
+                       </div>
+                       <div *ngIf = "editshortIntro">
+                       <textarea placeholder="Enter Bio" formControlName = "shortIntro" #shortIntro></textarea>
+                       <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
+             
+                     </div>
+      <div class="infoContent" *ngIf="!bioEdit">
         <textarea formControlName="shortIntro">{{shortIntro}}</textarea>
         <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
       </div>
-    -->
+  
 <div class="infoSectonCard">
     <div class="content">
         <div class="Sectioncontent">
@@ -337,7 +346,7 @@
               <div class="Card" *ngFor="let product of products; let i = index">
                   <div class="productCard">
                 <div class="productImage">
-                  <img src="https://picsum.photos/200/300/?random">
+                            <img src="{{product.Image}}">
                 </div>
                 <div class="productContent" >
                 <div class="content">

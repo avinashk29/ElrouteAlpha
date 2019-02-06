@@ -4,10 +4,11 @@
 <h2>Bookmarks</h2>
 <app-header3></app-header3>
 <input type="search" placeholder="Enter Product/Service to Search">
-    <div class="listing">
+
+    <div class="listing" *ngIf="product==null else load">
      <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
-    <div class="Card" *ngFor="let card of cards;">
-      <div class="productCard" *ngIf="card.type == 1">
+    <div class="Card" *ngFor="let card of  product;">
+      <div class="productCard" *ngIf="card.type == 1" >
     <div class="productImage">
       <img src="https://picsum.photos/200/300/?random">
     </div>
@@ -37,8 +38,12 @@
     </div>
     </div>
       </div>
+      
+        
+   
+      
        <!-------------------------------------------------------------------Service Card------------------------------------------------------------------------>
-      <div class="ServiceCard" *ngIf="card.type == 2" >
+      <div class="ServiceCard" >
 
           <div class="ServiceContent">
           <div class="content">
@@ -74,5 +79,10 @@
             </div>
             </div>
     </div>
+   
     </div>
+    <ng-template #load>
+        <h2>No bookmarks</h2>
+      </ng-template>
+   
 </section>

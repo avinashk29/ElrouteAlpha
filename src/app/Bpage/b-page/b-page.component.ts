@@ -36,14 +36,15 @@ Follower
 file
 uploadImages=false;
 companyEmail;
-// companyType ;
+ companyType ;
 certification = [];
 country;
  Image;
 industry;
-// mobile;
-// address ;
-// yearEstd;
+ mobile;
+ address ;
+  yearEstd;
+  companySize;
 companyFollowers
 website;
 workingHours;
@@ -83,7 +84,6 @@ BForm = new FormGroup ({
    public userService: UserService,private spinner:NgxUiLoaderService, private follows: FollowService,private sp:NgxSpinnerService, private imgUpload:ImageUploadService) {
     this.companyService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
-
     this.subscription = this.router.events.subscribe(() => {
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
@@ -98,14 +98,17 @@ BForm = new FormGroup ({
           this.website = JSON.parse(res['_body']).website;
           this.workingHours = JSON.parse(res['_body']).workingHours;
           this.shortIntro = JSON.parse(res['_body']).shortIntro,
+          this.yearEstd=JSON.parse(res['_body']).yearEstd;
+          this.companyType=JSON.parse(res['_body']).companyType;
+          this.address=JSON.parse(res['_body']).address;
+          this.companySize=JSON.parse(res['_body']).companySize;
            this.Image=JSON.parse(res['_body']).coverImage;
            this.companyLogo=JSON.parse(res['_body']).companyLogo;
            this.infoImage=JSON.parse(res['_body']).infoImage;
+            console.log(this.infoImage)
            this.certification=JSON.parse(res['_body']).certification;
            this.companyImage = JSON.parse(res['_body']).companyImage
            this.companyFollowers = JSON.parse(res['_body']).Followers.length
-           console.log(this.certification)
-          console.log(JSON.parse(res['_body']));
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
            Image: JSON.parse(res['_body']).Image,
@@ -140,6 +143,8 @@ BForm = new FormGroup ({
       if (this.type = 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
+            console.log(this.products[0].Image);
+          console.log(JSON.parse(res['_body']))
                 });
         this.type = 'product';
       }
@@ -231,6 +236,23 @@ BForm = new FormGroup ({
              console.log(JSON.parse(response['_body']));
              })
           }
+          if(name==="companyImage"){
+            // console.log(this.certification);
+            // console.log(url)
+            // console.log("m abhi yha pr hoon sbse upar")
+              this.companyImage.push(url); 
+            //   updata.append('certification',this.certification);
+            //   console.log(this.certification);
+            //   console.log("m abhi yha pr hoon");
+            //   console.log(updata)
+             let companyImage = new FormGroup({
+               companyImage: new FormControl(this.companyImage)
+             })
+             this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
+              // this.companyLogo=JSON.parse(response['_body']).url;
+               console.log(JSON.parse(response['_body']));
+               })
+            }
         else{
           updata.append(name,url);
           this.companyService.UpdateCompany(updata).subscribe(response=>{
@@ -239,34 +261,6 @@ BForm = new FormGroup ({
              })
           
         }
-
-        if(name==="companyImage"){
-          // console.log(this.certification);
-          // console.log(url)
-          // console.log("m abhi yha pr hoon sbse upar")
-            this.companyImage.push(url); 
-          //   updata.append('certification',this.certification);
-          //   console.log(this.certification);
-          //   console.log("m abhi yha pr hoon");
-          //   console.log(updata)
-           let companyImage = new FormGroup({
-             companyImage: new FormControl(this.companyImage)
-           })
-           this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
-            // this.companyLogo=JSON.parse(response['_body']).url;
-             console.log(JSON.parse(response['_body']));
-             })
-          }
-        else{
-          updata.append(name,url);
-          this.companyService.UpdateCompany(updata).subscribe(response=>{
-            // this.companyLogo=JSON.parse(response['_body']).url;
-             console.log(JSON.parse(response['_body']));
-             })
-          
-        }
-       
-        
 
       })
    }

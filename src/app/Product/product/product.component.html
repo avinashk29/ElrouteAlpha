@@ -14,12 +14,15 @@
             <input type="text" placeholder="Product Name" formControlName="productName">
             <div class="productImg">
              <div class="addButton">
-                <input type="file" #imagePicker (change)="onImagePick($event)">
+                <input type="file" #imagePicker (change)="onImagePick($event,'Image')">
               <button type="button" (click)="imagePicker.click()">ADD Product Image</button>
              </div>
               <div class="image">
                 <img  *ngIf="imagePreview" [src]="imagePreview">
               </div>
+              <div class="image">
+                  <img  src="{{Image}}">
+                </div>
             </div>
          </div>
          <div class="discription">

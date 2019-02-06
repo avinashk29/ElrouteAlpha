@@ -18,9 +18,9 @@ token;
     productData.append('moq', product.moq);
     productData.append(' industry', product.industry);
     productData.append('category', product.category);
-     productData.append('Image', product.Image);
+    productData.append('Image', product.Image);
     productData.append('tfCode', product.tfCode);
-    //  productData.append('productInfo', product.productInfo);
+   // productData.append('productInfo', product.productInfo);
     headers.append('x-auth', this.token);
     console.log(this.token);
     return this.http.post('http://localhost:8080/api/product', productData, {headers: headers});
@@ -35,7 +35,7 @@ token;
   UpdateProduct(product){
     const headers = new Headers();
     const productData = new FormData();
-    productData.append('Image', product.Image);
+   productData.append('Image', product.Image);
     productData.append('productName', product.productName);
     productData.append('shortDescription', product.shortDescription);
      productData.append('price ', product.price);
@@ -50,7 +50,7 @@ token;
      productData.append('productInfo', product.productInfo);
     headers.append('x-auth', this.token);
     console.log(this.token);
-    console.log(product);
+   
     return this.http.patch('http://localhost:8080/api/product/update',productData,{headers:headers});
   }
   DeleteProduct(id){

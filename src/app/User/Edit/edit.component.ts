@@ -48,6 +48,7 @@ export class EditComponent implements OnInit {
         UserName:JSON.parse(res['_body']).UserName,
         Location:JSON.parse(res['_body']).Location,
         Title:JSON.parse(res['_body']).Title,
+        Email:JSON.parse(res['_body']).Email
       })
     });
    

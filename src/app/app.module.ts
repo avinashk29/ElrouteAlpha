@@ -138,7 +138,8 @@ import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.compo
   entryComponents: [
     SignupComponent,
     LoginComponent,
-    EditComponent
+    EditComponent,
+    FeedComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService],

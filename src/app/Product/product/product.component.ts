@@ -4,6 +4,7 @@ import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router, ActivatedRoute } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 
 @Component({
   selector: 'app-product',
@@ -17,12 +18,14 @@ export class ProductComponent implements OnInit {
   imagePreview;
   companyId;
   productId;
+  url
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-    private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService,private route:ActivatedRoute) {
+    private _fb: FormBuilder, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService,private route:ActivatedRoute) {
       this.companyId =  this.storage.get('companyId');
       this.productId=route.snapshot.paramMap.get('id');
      }
   ngOnInit() {
+    this.imgupload.token=this.storage.get('token')
     this.editproductForm = this._fb.group({
       productName: ['', [Validators.required] ],
      productImage: [''],
@@ -60,15 +63,34 @@ export class ProductComponent implements OnInit {
     })
    
   }
-  onImagePick(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
+  onImagePick(event,name) {
+    console.log(name);
+    const file = <File>event.target.files[0];
     this.editproductForm.patchValue({Image: file});
     this.editproductForm.get('Image').updateValueAndValidity();
-      const reader = new FileReader();
+    const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
+         this.imagePreview = reader.result;
       };
       reader.readAsDataURL(file);
+    const fdata= new FormData();
+    fdata.append(name,file)
+      this.imgupload.uploadImg(fdata).subscribe(res=>{
+        const url=res['_body']
+        console.log(url)
+        this.url = url;
+      // var productImg = new FormControl({
+      //   Image: new FormControl(url)
+      // })
+    //   const fdata1= new FormData();
+    // fdata1.append(name,url)
+    //     this.productService.addProduct(fdata1).subscribe(res=>{
+    //       console.log(res);
+    //       // console.log(fdata);
+    //     })
+      })
+ 
+      
    }
   onAdd() {
     this.filedsArray.push(this.addFiledsGroup());
@@ -103,9 +125,8 @@ export class ProductComponent implements OnInit {
       console.log(productData)
       this.productService.UpdateProduct(productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
-        
       });
-       this.router.navigate(['/companyPage/' + this.companyId ]);
+      this.router.navigate(['/companyPage/' + this.companyId], {queryParams: {urltype : 'default'}});
     this.notification.success('Product updated');
     } else {
       this.notification.error('Enter Valid Deatils');

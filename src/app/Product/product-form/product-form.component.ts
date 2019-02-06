@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormGroup , FormBuilder, FormArray, Validator, Validators} from '@angular/forms';
+import {FormGroup , FormBuilder, FormArray, FormControl ,Validator, Validators} from '@angular/forms';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -16,12 +18,14 @@ export class ProductFormComponent implements OnInit {
   imagePreview;
   companyId;
   urltype;
+  url;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-    private _fb: FormBuilder, public productService: ProductServiceService, public router: Router, public notification: ToastrService) {
+    private _fb: FormBuilder, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
      }
 
   ngOnInit() {
+    this.imgupload.token=this.storage.get('token');
     this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
      Image: [''],
@@ -38,15 +42,36 @@ export class ProductFormComponent implements OnInit {
     });
     this.productService.token = this.storage.get('token');
   }
-  onImagePick(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
+  onImagePick(event,name) {
+    console.log(name);
+    const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
     this.productForm.get('Image').updateValueAndValidity();
-      const reader = new FileReader();
+    const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
+         this.imagePreview = reader.result;
       };
       reader.readAsDataURL(file);
+    const fdata= new FormData();
+    fdata.append(name,file)
+      this.imgupload.uploadImg(fdata).subscribe(res=>{
+        const url=res['_body']
+        this.productForm.patchValue({
+          Image: [url]
+        })
+        console.log(url);
+      // var productImg = new FormControl({
+      //   Image: new FormControl(url)
+      // })
+    //   const fdata1= new FormData();
+    // fdata1.append(name,url)
+    //     this.productService.addProduct(fdata1).subscribe(res=>{
+    //       console.log(res);
+    //       // console.log(fdata);
+    //     })
+      })
+ 
+      
    }
   onAdd() {
     this.filedsArray.push(this.addFiledsGroup());
@@ -80,7 +105,7 @@ export class ProductFormComponent implements OnInit {
       this.productService.addProduct(productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
       });
-      this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
+      //  this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');
     } else {
       this.notification.error('Enter Valid Deatils');
