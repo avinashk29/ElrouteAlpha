@@ -13,8 +13,8 @@
                   </div>
                   <div class="info">
                  <h1 routerLink = "/companyPage/{{feed._id}}"></h1>
-                 <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.Industry}}</p>
-                 <p style="line-height: 3px;margin-bottom: 10px;">{{feed.Location}}</p>
+                 <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.industry}}</p>
+                 <p style="line-height: 3px;margin-bottom: 10px;">{{feed.location}}</p>
                 </div>
                 <div class="b_page_btn">
                     <button  (click)= " onBookmark(i,feed._id)" *ngIf = "!this.bookmarkService.feedBookmark[i].bookm else bloading">Bookmark</button>
@@ -29,7 +29,7 @@
                 </div>
                 </div>
                 <div class="feedInfo">
-                  <p>{{feed.Content}} </p>
+                  <p>{{feed.content}} </p>
                 </div>
                 <div class="feed-img">
                 <img src="https://picsum.photos/500/300/?random">

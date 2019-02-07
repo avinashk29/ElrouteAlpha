@@ -21,7 +21,7 @@
           </div>
     <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
     <div class="b_page_btn">
-        <button  (click)="onunfollow(i,r._id)"  *ngIf = "this.bookmarkService.companyfollow[i].follow else loading">Following</button>
+        <button  (click)="onunfollow(i,r._id)"  *ngIf = "!this.bookmarkService.companyfollow[i].follow else loading">Following</button>
      
         <ng-template #loading>
             <button (click)="onfollow(i,r._id)" >Follow</button>

@@ -22,6 +22,7 @@ export class ProductPageComponent implements OnInit {
   ProductInfo;
   feed=[]
   image;
+  feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
    public route: ActivatedRoute, public product: ProductServiceService,private feedService:FeedService) {
     this.id = this.route.snapshot.paramMap.get('_id');
@@ -45,13 +46,18 @@ this.product.getOneProduct(this.id).subscribe(res => {
   this.MatchScore=JSON.parse(res['_body']).matchScore;
   this.ProductInfo=JSON.parse(res['_body']).productInfo;
   this.ShortDescription=JSON.parse(res['_body']).shortDescription;
-  this.image=JSON.parse(res['_body']).Image
+  this.image=JSON.parse(res['_body']).image
   console.log(this.ProductName)
 });
     this.feedService.GetFeed().subscribe(res=>{
         this.feed=JSON.parse(res['_body']);
         console.log(res);
     })
+this.product.getFeedById(this.id).subscribe(res=>{
+this.feedResult=JSON.parse(res['_body']);
+console.log(this.feedResult)
+})
+
 
   }
 

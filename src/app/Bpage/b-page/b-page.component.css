@@ -50,7 +50,7 @@ header {
 }
 
 .follow-btn button {
- width: 65%;
+ /* width: 65%; */
  height: 40px;
  border: none;
  color: #fff;
@@ -1132,7 +1132,7 @@ label {
 }
 
 .infoSectonCard img {
- width: 100%;
+ width: 60%;
  background-color: beige;
  /* margin-right: 5% */
 }
@@ -1152,7 +1152,7 @@ label {
 }
 
 .content {
- width: 50%;
+ width: 40%;
  box-shadow: 0px 0px 5px #5555;
 }
 

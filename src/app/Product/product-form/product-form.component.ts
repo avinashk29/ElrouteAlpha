@@ -28,7 +28,7 @@ export class ProductFormComponent implements OnInit {
     this.imgupload.token=this.storage.get('token');
     this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
-     Image: [''],
+     image: [''],
      shortDescription: [''],
      productInfo: this._fb.array([this.addProductInfoGroup()]),
      price: [''],
@@ -46,7 +46,7 @@ export class ProductFormComponent implements OnInit {
     console.log(name);
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
-    this.productForm.get('Image').updateValueAndValidity();
+    this.productForm.get('image').updateValueAndValidity();
     const reader = new FileReader();
       reader.onload = () => {
          this.imagePreview = reader.result;
@@ -105,7 +105,7 @@ export class ProductFormComponent implements OnInit {
       this.productService.addProduct(productData).subscribe(res => {
         console.log(JSON.parse(res['_body']));
       });
-      //  this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
+       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');
     } else {
       this.notification.error('Enter Valid Deatils');

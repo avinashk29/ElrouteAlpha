@@ -56,13 +56,7 @@ page;
         console.log(res);
       });
   }
-    //  follow(id)
-    //  {
-    //    this.follows.addFollow(id).subscribe(res=>{
-    //      console.log(res);
-    //    });
-    // }
-
+  
     onBookmark(i,id) {
       this.bookmarkService.feedBookmark[i].bookm=true;
       this.bookmarkService.addPostBookmark(id).subscribe(res => {

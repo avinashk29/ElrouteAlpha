@@ -328,7 +328,9 @@ onunfollow() {
          });
          console.log('i am working unfollow')
 }
+
 ngOnDestroy() {
   this.subscription.unsubscribe();
 }
+
 }

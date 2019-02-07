@@ -8,19 +8,19 @@
    <li>
   <div class="first-field">
     <div class="Uname">
-    <input type="text" placeholder="NAME" formControlName="UserName" name="UserName" [ngClass]="{'error': !signupForm.get('UserName').valid && signupForm.get('UserName').touched }">
+    <input type="text" placeholder="NAME" formControlName="userName" name="userName" [ngClass]="{'error': !signupForm.get('userName').valid && signupForm.get('userName').touched }">
     <!-- <span *ngIf="!signupForm.get('UserName').valid && signupForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span> -->
     </div>
     <div class="Ulocation">
-      <select formControlName="Location" name="Location" [ngClass]="{'error': !signupForm.get('Location').valid && signupForm.get('Location').touched }">
+      <select formControlName="location" name="location" [ngClass]="{'error': !signupForm.get('location').valid && signupForm.get('location').touched }">
         <option>LOCATION</option>
       </select>
     </div>
   </div>
 </li>
-<li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="Title" name="Title" [ngClass]="{'error': !signupForm.get('Title').valid && signupForm.get('Title').touched }"></li>
-<li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="Email" name="Email" [ngClass]="{'error': !signupForm.get('Email').valid && signupForm.get('Email').touched }" ></li>
-<li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !signupForm.get('Password').valid && signupForm.get('Password').touched }" ></li>
+<li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="title" name="title" [ngClass]="{'error': !signupForm.get('title').valid && signupForm.get('title').touched }"></li>
+<li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="email" name="email" [ngClass]="{'error': !signupForm.get('email').valid && signupForm.get('email').touched }" ></li>
+<li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="password" name="password" [ngClass]="{'error': !signupForm.get('password').valid && signupForm.get('password').touched }" ></li>
 <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
     <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
     <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 18px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>

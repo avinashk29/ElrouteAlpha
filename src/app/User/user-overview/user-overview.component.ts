@@ -36,12 +36,12 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       this.route.queryParams.filter(paramas => paramas.edit).subscribe(paramas => {
         this.userService.getUserData().subscribe(res => {
           console.log(JSON.parse(res['_body']));
-          this.username = JSON.parse(res['_body']).UserName;
-          this.location = JSON.parse(res['_body']).Location;
-          this.title = JSON.parse(res['_body']).Title;
+          this.username = JSON.parse(res['_body']).userName;
+          this.location = JSON.parse(res['_body']).location;
+          this.title = JSON.parse(res['_body']).title;
           console.log(this.username);
-          this.userBio = JSON.parse(res['_body']).ShortBio;
-          console.log(JSON.parse(res['_body']).ShortBio);
+          this.userBio = JSON.parse(res['_body']).shortBio;
+          console.log(JSON.parse(res['_body']).shortBio);
         });
 
       });
@@ -62,12 +62,12 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
     })
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']));
-      this.username = JSON.parse(res['_body']).UserName;
-      this.location = JSON.parse(res['_body']).Location;
-      this.title = JSON.parse(res['_body']).Title;
+      this.username = JSON.parse(res['_body']).userName;
+      this.location = JSON.parse(res['_body']).location;
+      this.title = JSON.parse(res['_body']).title;
       
       console.log(this.username);
-      this.userBio = JSON.parse(res['_body']).ShortBio;
+      this.userBio = JSON.parse(res['_body']).shortBio;
       console.log(this.userBio)
     });
   }

@@ -8,8 +8,8 @@
      <li>
     <div class="first-field">
       <div class="Uname">
-      <input type="text" placeholder="NAME" formControlName="UserName" name="UserName">
-       <span *ngIf="!editForm.get('UserName').valid && editForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span>
+      <input type="text" placeholder="NAME" formControlName="userName" name="userName">
+       <span *ngIf="!editForm.get('userName').valid && editForm.get('userName').touched" class="errorMsg"><p>Please Enter Company</p></span>
        
       </div>
     
@@ -20,13 +20,13 @@
       </div>
     </div>
   </li>
-  <li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="Title" name="Title"></li>
+  <li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="title" name="title"></li>
   
-  <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="Email" name="Email"></li>
+  <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="email" name="email"></li>
   <!-- <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !editForm.get('Password').valid && editForm.get('Password').touched }" ></li> -->
-  <li class="form-elements"><input type="text" placeholder="Facebook Link"  formControlName="Title" name="Title"></li>
-  <li class="form-elements"><input type="text" placeholder="LinkedIn Link"  formControlName="Title" name="Title"></li>
-  <li class="form-elements"><input type="text" placeholder="Twitter Link"  formControlName="Title" name="Title"></li>
+  <li class="form-elements"><input type="text" placeholder="Facebook Link"  formControlName="title" name="title"></li>
+  <li class="form-elements"><input type="text" placeholder="LinkedIn Link"  formControlName="title" name="title"></li>
+  <li class="form-elements"><input type="text" placeholder="Twitter Link"  formControlName="title" name="title"></li>
    <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
       <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
     </div></li> 

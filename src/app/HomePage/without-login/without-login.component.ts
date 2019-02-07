@@ -5,19 +5,24 @@ import {FormGroup , FormControl, Validators} from '@angular/forms';
 import { SearchService } from 'src/app/Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as $ from 'jquery';
 
+  
 @Component({
   selector: 'app-without-login',
   templateUrl: './without-login.component.html',
   styleUrls: ['./without-login.component.css']
 })
-export class WithoutLoginComponent implements OnInit {
+export class WithoutLoginComponent implements OnInit{
   token;
   noFeeds = false;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
    public dialog: MatDialog , public searchService: SearchService, private router: Router) { 
-     
+
    }
+   
+
+   
   searchForm = new FormGroup({
      word: new FormControl(''),
      page: new FormControl('1')
@@ -29,6 +34,21 @@ export class WithoutLoginComponent implements OnInit {
       console.log(this.token);
    }
   }
+  ngAfterViewInit() {
+   
+  //   $.getScript("/assets/js/slider.js", function () {
+
+  //   });
+  //  $.getScript('../node-modules/jquery/dist/jquery.min.js',function(){
+  //  (<any> $("#carousel")).waterwheelCarousel("horizontal",{
+  //     // include options like this:
+  //     // (use quotes only for string values, and no trailing comma after last option)
+  //     // option: value,
+  //     // option: value
+  //     });
+  
+  //  });
+}
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();

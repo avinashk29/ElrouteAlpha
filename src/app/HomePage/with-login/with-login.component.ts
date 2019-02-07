@@ -11,6 +11,7 @@ import {CompanyServiceService} from '../../Service/company-service.service';
 import { Route } from '@angular/compiler/src/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
+import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -27,35 +28,40 @@ subscription;
 shortBio;
 feeds = [];
 noFeeds = true;
-
+image;
 feed = new FormGroup({
   Content: new FormControl(''),
-Image: new FormControl(' ')
+Image: new FormControl(' '),
+tagId: new FormControl()
 });
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService ) {
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
         // this.feedService.Getpost().subscribe(res =>{
         //   console.log(res);
+
         // })
+
     });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']));
-      this.username = JSON.parse(res['_body']).UserName;
-      this.location = JSON.parse(res['_body']).Location;
-      this.shortBio = JSON.parse(res['_body']).ShortBio;
-
-      this.following = JSON.parse(res['_body']).Following.length;
-    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+      this.username = JSON.parse(res['_body']).userName;
+      this.location = JSON.parse(res['_body']).location;
+      this.shortBio = JSON.parse(res['_body']).shortBio;
+      this.image=JSON.parse(res['_body']).userImage
+      // this.following = JSON.parse(res['_body']).Following.length;
+      // console.log(JSON.parse(res['_body']).Following.length)
+    // this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
   show = false;
   ngOnInit() {
+    this.imgupload.token=this.storage.get('token')
      this.feedService.token = this.storage.get('token');
     // this.followers.token=this.storage.get('token');
     // this.followers.getFollowers().subscribe(res=>{
@@ -76,21 +82,29 @@ Image: new FormControl(' ')
     }
 
     }
-  onImagePick(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.feed.patchValue({Image: file});
-    this.feed.get('Image').updateValueAndValidity();
-      const reader = new FileReader();
-      reader.onload = () => {
-        // this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
-      this.userService.editUser(Image).subscribe(res => {
-        console.log(JSON.parse(res['_body']));
-      });
-   }
+    onImagePick(event,name) {
+      console.log(name);
+        
+      const file = <File>event.target.files[0];
+        // const reader = new FileReader();
+        // reader.readAsDataURL(file);
+      const fdata= new FormData();
+      fdata.append(name,file)
+        this.imgupload.uploadImg(fdata).subscribe(res=>{
+           const fd=new FormData()
+          this.feed.value.Image=res['_body']
+          const url=res['_body']
+           console.log(url)
+           fd.append('userImage',url);
+         this.userService.editUser(fd).subscribe(res=>{
+           console.log(res);
+         })
+        })
+        
+        
+     }
   onAddpost() {
-   
+   this.feed.value.tagId = this.feedService.tagId;
     this.feedService.AddFeed(this.feed.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });

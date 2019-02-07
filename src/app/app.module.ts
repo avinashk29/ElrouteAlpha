@@ -26,7 +26,7 @@ import { FooterComponent } from './StaticData/Footer/footer/footer.component';
 import { HelpComponent } from './StaticData/Help/help/help.component';
 
 import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import {TabHeaderComponent} from '../app/Header/tab-header/tab-header.component';
@@ -125,6 +125,7 @@ import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.compo
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpModule,
     StorageServiceModule,
     MatExpansionModule,

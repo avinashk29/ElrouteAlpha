@@ -37,11 +37,12 @@ export class CompanySearchComponent implements OnInit {
       console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).Following;
        this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-       console.log(this.userBookmark);
+       console.log(this.userInfo);
       console.log( JSON.parse(res['_body']).bookmarks.company);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
         this.result = JSON.parse(res1['_body']);
         this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0];
+        console.log(this.bookmarkService.companyfollow.length)
         this.bookmarkService.CompanyBookmark =  JSON.parse(res1['_body'])[0];
       
         for (let i=0; i<this.bookmarkService.companyfollow.length; i++) {
