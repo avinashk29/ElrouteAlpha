@@ -269,17 +269,28 @@
         <textarea formControlName="shortIntro">{{shortIntro}}</textarea>
         <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
       </div>
-  
-<div class="infoSectonCard">
-    <div class="content">
+  <div formArrayName="section">
+<div class="infoSectonCard" *ngFor="let section of BForm.get('section').controls; let i=index">
+    <div class="content" [formGroupName]="i">
         <div class="Sectioncontent">
-        <h2>SECTION TITLE</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p>
+            <input type="file" (change)="onImagePick($event,'sectionImage')" formControlName="sectionImage">
+          <input type="text" formControlName="sectionTitle">
+     
+       <textarea formControlName="sectionContent"></textarea>
+     
+        <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
         </div>
+
         </div>
-  <img src="assets/images/bk.png">
+  
+        <img src="assets/images/bk.png">
+  
 
 </div>
+<button type="submit" (click)="onSubmit()
+">submit</button>
+</div>
+
 <div class="certification">
   <h2>CERTIFICATES</h2>
   <div ng2-carouselamos class="slider-wrapper"

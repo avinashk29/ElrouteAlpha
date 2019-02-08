@@ -6,7 +6,7 @@ import {ProductServiceService} from '../../Service/product-service.service';
 import {FeedService} from '../../Service/feed-service.service';
 import 'rxjs/add/operator/filter';
 import {UserService} from '../../Service/user-services.service';
-import { FormControl , FormGroup} from '@angular/forms';
+import { FormControl , FormGroup, FormBuilder, FormArray} from '@angular/forms';
 // import { NgxUiLoaderSe÷rvice } from 'ngx-ui-loader';
 // import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
@@ -68,26 +68,46 @@ editworkingHours = false;
 editshortIntro = false;
 imagePreview;
 infoImage;
+section=[
+  {
+    "sectionTitle" : "",
+    "sectionContent" : "",
+    "sectionImage":""
+  }
+]
 companyImage = [];
 bioEdit=false;
-BForm = new FormGroup ({
-   website: new FormControl(''),
-   Image: new FormControl(''),
-   workingHours: new FormControl(),
-  shortIntro: new FormControl(''),
-  facebook: new FormControl(''),
-  linkedin: new FormControl(''),
-  google: new FormControl('')
-  });
+// BForm = new FormGroup ({
+  //  website: new FormControl(''),
+  //  Image: new FormControl(''),
+  //  workingHours: new FormControl(),
+  // shortIntro: new FormControl(''),
+  // facebook: new FormControl(''),
+  // linkedin: new FormControl(''),
+  // google: new FormControl('')
+//   });
+BForm: FormGroup;
+
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute, private router: Router,
-   public userService: UserService, private follows: FollowService, private imgUpload:ImageUploadService) {
+   public userService: UserService, private follows: FollowService, private imgUpload:ImageUploadService,private _fb:FormBuilder) {
+    this.BForm = this._fb.group({
+      website: [''],
+      Image: [''],
+      workingHours: [],
+     shortIntro: [],
+     facebook: [''],
+     linkedin: [''],
+     google: [''],
+     section: this._fb.array([])
+    })
     this.companyService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() => {
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
+          this.setSection();
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
@@ -105,7 +125,11 @@ BForm = new FormGroup ({
            this.Image=JSON.parse(res['_body']).coverImage;
            this.companyLogo=JSON.parse(res['_body']).companyLogo;
            this.infoImage=JSON.parse(res['_body']).infoImage;
-            console.log(this.infoImage)
+            // this.sectionImage=JSON.parse(res['_body']).sectionImage;
+            console.log(this.infoImage);
+            
+            this.section = JSON.parse(res['_body']).section;
+            this.setSection();
            this.certification=JSON.parse(res['_body']).certification;
            this.companyImage = JSON.parse(res['_body']).companyImage
           this.companyFollowers = JSON.parse(res['_body']).followers.length
@@ -150,10 +174,16 @@ BForm = new FormGroup ({
       }
     });
      
+// b form for section info
+  
+
+
+
   }
 
+
   ngOnInit() {
-    
+  
    // this.comapnyId = this.storage.get('companyId');
    this.imgUpload.token=this.storage.get('token');
    this.feedService.token = this.storage.get('token');
@@ -184,18 +214,6 @@ BForm = new FormGroup ({
    });
 
 
- //   this.certification =  [
-
- //     // {name: 'https://picsum.photos/g/200/300'},
- //   //  {name: 'https://picsum.photos/200/300?image=0'},
- // //     {name: 'https://picsum.photos/200/300/?blur'},
- // //     {name: 'https://picsum.photos/200/300/?random'},
- // //     {name: 'https://picsum.photos/200/300'},
- // //     {name: 'https://picsum.photos/g/200/300'},
- // //     {name: 'https://picsum.photos/200/300?image=0'},
- // //     {name: 'https://picsum.photos/200/300/?blur'},
- // //     {name: 'https://picsum.photos/200/300/?random'}
- // ];
  this.feedService.GetFeed().subscribe(res => {
    this.feeds =  JSON.parse(res['_body']);
    if (!this.feeds.length){
@@ -203,7 +221,35 @@ BForm = new FormGroup ({
    }
    });
 
+  //  this.BForm=this._fb.group({
+  //     section:this._fb.array([])
+  //  });
   }
+ onAddSection(){
+let control=<FormArray>this.BForm.controls.section;
+control.push(this._fb.group({
+  sectionTitle:[''],
+  sectionContent:[''],
+   sectionImage:[]
+}))
+ }
+ setSection(){
+   let control=<FormArray>this.BForm.controls.section;
+   control.reset;
+   this.section.forEach(x => {
+     control.push(this._fb.group({
+       sectionTitle:x.sectionTitle,
+       sectionContent:x.sectionContent,
+       sectionImage:x.sectionImage
+     }))
+   });
+ }
+
+onDelete(index){
+  let control = <FormArray>this.BForm.controls.section;
+  control.removeAt(index)
+}
+
   editbio(){
     this.bioEdit = !this.bioEdit;
   }
@@ -211,7 +257,7 @@ BForm = new FormGroup ({
   onImagePick(event,name) {
   //  this.uploadImages = !this.uploadImages;
   console.log(name)
-   // this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {uploadImages:true}});
+   
      this.file = <File>event.target.files[0];
       const fdata = new FormData()
        fdata.append(name,this.file)
@@ -221,15 +267,8 @@ BForm = new FormGroup ({
         const updata = new FormData();
         const url = res['_body'];
         if(name==="certification"){
-          // console.log(this.certification);
-          // console.log(url)
-          // console.log("m abhi yha pr hoon sbse upar")
-            this.certification.push(url); 
-          //   updata.append('certification',this.certification);
-          //   console.log(this.certification);
-          //   console.log("m abhi yha pr hoon");
-          //   console.log(updata)
-           let certiForm = new FormGroup({
+                     this.certification.push(url); 
+             let certiForm = new FormGroup({
              certification: new FormControl(this.certification)
            })
            this.companyService.UpdateCompany(certiForm.value).subscribe(response=>{
@@ -240,12 +279,8 @@ BForm = new FormGroup ({
           if(name==="companyImage"){
             // console.log(this.certification);
             // console.log(url)
-            // console.log("m abhi yha pr hoon sbse upar")
+             console.log("m abhi yha pr hoon sbse upar")
               this.companyImage.push(url); 
-            //   updata.append('certification',this.certification);
-            //   console.log(this.certification);
-            //   console.log("m abhi yha pr hoon");
-            //   console.log(updata)
              let companyImage = new FormGroup({
                companyImage: new FormControl(this.companyImage)
              })
@@ -308,13 +343,7 @@ this.productService.DeleteProduct(id).subscribe(res => {
   this.editshortIntro = false;
   this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
  }
-//  updateLogo(key,content:HTMLInputElement){
-//   const fdata=new FormData();
-//   fdata.append(key,content.value);
-//   this.companyService.UpdateCompany(fdata).subscribe(res=>{
-//     console.log(res);
-//   });
-// }
+
 onfollow() {
   this.Follower = true;
   this.follows.addFollow(this.comapnyId).subscribe(res => {
@@ -332,5 +361,16 @@ onunfollow() {
 
 ngOnDestroy() {
   this.subscription.unsubscribe();
+}
+onSubmit(){
+  // const bdata = new FormData()
+  // bdata.append('section',this.BForm.value.section)
+  // console.log(bdata);
+  const sectionForm = new FormGroup({
+    section: new FormControl(this.BForm.value.section)
+  })
+  this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
+    console.log(JSON.parse(res['_body']));
+  });
 }
 }
