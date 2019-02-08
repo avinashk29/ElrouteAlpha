@@ -19,6 +19,20 @@ export class ProductFormComponent implements OnInit {
   companyId;
   urltype;
   url;
+  productInfo= [ 
+    {
+        "specificationContent" : "",
+        "productSpecification" : "",
+       
+        "fields" : [ 
+            {
+                "fieldDes" : "",
+                "fieldName" : "",
+             
+            }
+        ]
+    }
+];
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     private _fb: FormBuilder, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
@@ -28,7 +42,7 @@ export class ProductFormComponent implements OnInit {
     this.imgupload.token=this.storage.get('token');
     this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
-     image: [''],
+     Image: [],
      shortDescription: [''],
      productInfo: this._fb.array([]),
      price: [''],
@@ -41,12 +55,13 @@ export class ProductFormComponent implements OnInit {
 
     });
     this.productService.token = this.storage.get('token');
+    this.setProductInfo();
   }
-  onImagePick(event,name) {
+  onImagePick(event, name) {
     console.log(name);
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
-    this.productForm.get('image').updateValueAndValidity();
+    this.productForm.get('Image').updateValueAndValidity();
     const reader = new FileReader();
       reader.onload = () => {
          this.imagePreview = reader.result;
@@ -60,53 +75,62 @@ export class ProductFormComponent implements OnInit {
           Image: [url]
         })
         console.log(url);
-      // var productImg = new FormControl({
-      //   Image: new FormControl(url)
-      // })
-    //   const fdata1= new FormData();
-    // fdata1.append(name,url)
-    //     this.productService.addProduct(fdata1).subscribe(res=>{
-    //       console.log(res);
-    //       // console.log(fdata);
-    //     })
+    
       })
- 
-      
+
+
+
    }
-  onAdd() {
-    this.filedsArray.push(this.addFiledsGroup());
-  }
-  addProductInfoGroup() {
-    return this.productInfoForm = this._fb.group({
-      productSpecification: [''],
-      specificationContent: [''],
-      fileds: this._fb.array([this.addFiledsGroup()])
-    });
-   
-  }
-  addFiledsGroup() {
-  return this._fb.group({
-    fieldName: [''],
-    fieldDes: ['']
-  });
-  }
-  get productInfoArray() {
-    return <FormArray>this.productForm.get('productInfo');
-  }
-  get filedsArray() {
-    return <FormArray>this.productInfoForm.get('fileds');
-  }
-  addProductInfo() {
+   addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
     control.push(
       this._fb.group({
         productSpecification: [''],
         specificationContent: [''],
-        fileds: this._fb.array([])
+        fields: this._fb.array([])
        
       })
     )
   }
+  addNewField(control) {
+    // this.filedsArray.push(this.addFiledsGroup());
+  control.push(
+    this._fb.group({
+      fieldName: [''],
+    fieldDes: ['']
+    })
+  )
+  }
+  setProductInfo(){
+    let control = <FormArray>this.productForm.controls.productInfo;
+  this.productInfo.forEach(x => {
+    control.push(this._fb.group({ 
+      productSpecification:x.productSpecification,
+      specificationContent:x.specificationContent,
+      fields: this.setField(x) }
+      )
+      )
+  })
+  }
+  deleteProductInfo(index) {
+    let control = <FormArray>this.productForm.controls.productInfo;
+    control.removeAt(index)
+  }
+  setField(x){
+    let arr = new FormArray([])
+    x.fields.forEach(y => {
+      arr.push(this._fb.group({ 
+        fieldName: y.fieldName,
+    fieldDes: y.fieldDes
+      }))
+    })
+    return arr;
+  }
+  deleteField(control,index){
+    control.removeAt(index);
+  }
+
+ 
   onSubmit() {
     if (this.productForm.valid) {
       console.log(this.productForm.value);
