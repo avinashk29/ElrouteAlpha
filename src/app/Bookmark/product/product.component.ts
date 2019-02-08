@@ -12,8 +12,8 @@ export class ProductBookmarkComponent implements OnInit {
   constructor(public bookmarkService:BookmarkServices,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
 
   ngOnInit() {
-    this.bookmarkService.token=this.storage.get('token');
-    this.bookmarkService.getBookmarkProduct()
+    // this.bookmarkService.token=this.storage.get('token');
+    // this.bookmarkService.getBookmarkProduct()
   }
 
 }

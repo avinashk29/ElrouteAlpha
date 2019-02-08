@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import {ProductServiceService} from '../../../Service/product-service.service';
+import {FeedService} from '../../../Service/feed-service.service';
 
 @Component({
   selector: 'app-feed',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-
-  constructor() { }
+id;
+products;
+// productForm = new FormGroup({
+//   Productname: new FormControl('')
+//   });
+product_id;
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public product: ProductServiceService, 
+  public feed: FeedService) { }
 
   ngOnInit() {
+   this.id = this.storage.get('companyId');
+    this.product.token = this.storage.get('token');
+    console.log(this.storage.get('companyId'))
+    this.product.getProduct(this.id).subscribe(res => {
+      console.log(JSON.parse(res['_body']));
+      this.products = JSON.parse(res['_body'])
+    })
   }
-
+  getProduct(){
+console.log(this.products[this.product_id]._id);
+  // console.log(this.productForm.value);
+  this.feed.tagId = this.products[this.product_id]._id;
+}
 }

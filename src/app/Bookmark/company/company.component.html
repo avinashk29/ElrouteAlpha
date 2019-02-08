@@ -6,7 +6,7 @@
     <div class="listing" *ngFor="let r of result">
         <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
         <input type="search" placeholder="Enter Product/Service to Search">
-    <div class="companyCard">
+    <div class="companyCard" >
     <div class="cardHeader">
       <div class="logo">
        <img src="https://picsum.photos/200/300/?random">
@@ -45,7 +45,6 @@
       </mat-accordion>
     <div class="cardFooter">
     <div class="tags">
-    <p>Taggs</p>
     </div>
     <div class="icons">
         <span><img src="assets/images/google_icon.png"></span>
@@ -54,5 +53,8 @@
     </div>
     </div>
     </div>
+    <ng-template #load>
+        <h2>No bookmarks</h2>
+      </ng-template>
     </section>
 

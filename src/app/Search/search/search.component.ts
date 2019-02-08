@@ -20,9 +20,10 @@ notlogin = true;
 token;
 word;
 page;
+len;
 unbookmarked = true;
-userProductBookmark=[];
-postResult=[]
+userProductBookmark=[]
+productResult=[]
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
@@ -39,30 +40,28 @@ postResult=[]
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
     this.userService.getUserData().subscribe(res=>{
-   this.userProductBookmark=JSON.parse(res['_body']).bookmarks.product;
-    console.log(this.userProductBookmark);
-   
-    ////////////////////////
-   this.search.onSearch(this.word , this.page).subscribe(res=>{
-     this.postResult=JSON.parse(res['_body']);
-     this.bookmarkService.productBookmark=JSON.parse(res['_body'])[0];
-     for(let i=0;i<this.bookmarkService.productBookmark.length;i++){
-      console.log(this.userProductBookmark.length+'dfghjk')
-      if(this.userProductBookmark.length === 0){
-        this.bookmarkService.productBookmark[i].bookm=false;
-      }else{
-        console.log(this.bookmarkService.productBookmark[i]._id);
-        console.log(this.userProductBookmark[i]);
-        if(this.bookmarkService.productBookmark[i]._id === this.userProductBookmark[i]){
-          this.bookmarkService.productBookmark[i].bookm=true;
-
+      this.userProductBookmark=JSON.parse(res['_body']).bookmarks.product;
+      console.log(JSON.parse(res['_body']));
+      this.search.onSearch(this.word,this.page).subscribe(response=>{
+        this.productResult=JSON.parse(response['_body']);
+        console.log(this.productResult);
+        this.bookmarkService.productBookmark=JSON.parse(response['_body']);
+        for(let i of this.bookmarkService.productBookmark.length){
+          console.log(this.userProductBookmark.length)
+          if(this.userProductBookmark.length === 0){
+            this.bookmarkService.productBookmark[i].bookm=false;
+            console.log(this.bookmarkService.productBookmark[i]);
+          }else{
+            console.log(this.bookmarkService.productBookmark[i]._id);
+            console.log(this.userProductBookmark[i]);
+            if(this.bookmarkService.productBookmark[i]._id === this.userProductBookmark[i]){
+              this.bookmarkService.productBookmark[i].bookm=true;
+                console.log(this.bookmarkService.productBookmark[i])
+            }
         }
-      }
-     
-    }
-
-   });
-  });
+       }
+      })
+    })
     console.log(this.token);
     if (this.token != null) {
       this.notlogin = false;
@@ -108,9 +107,10 @@ bookmark(id) {
     })
   }
   deleteProductBookmark(i,id){
-    this.bookmarkService.productBookmark[i].bookm=true;
+    this.bookmarkService.productBookmark[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       console.log(res);
     })
+    
   }
 }

@@ -25,7 +25,7 @@ export class CompanySearchComponent implements OnInit {
   page;
   result = [];
   userInfo = [];
-  userInfoForBookmark = [];
+  userBookmark = [];
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
     this.userService.token = this.storage.get('token');
@@ -36,11 +36,15 @@ export class CompanySearchComponent implements OnInit {
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).Following;
-       this.userInfoForBookmark=  JSON.parse(res['_body']).bookmarks.company;
+       this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
+       console.log(this.userInfo);
       console.log( JSON.parse(res['_body']).bookmarks.company);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
         this.result = JSON.parse(res1['_body']);
         this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0];
+        console.log(this.bookmarkService.companyfollow.length)
+        this.bookmarkService.CompanyBookmark =  JSON.parse(res1['_body'])[0];
+      
         for (let i=0; i<this.bookmarkService.companyfollow.length; i++) {
           console.log(this.userInfo.length);
           if (this.userInfo.length === 0){
@@ -58,15 +62,16 @@ export class CompanySearchComponent implements OnInit {
         }
         //Deletion method for Bookmarks//
         this.bookmarkService.CompanyBookmark=JSON.parse(res1['_body'])[0];
+        console.log(this.bookmarkService.CompanyBookmark.length);
         console.log(this.bookmarkService.CompanyBookmark);
         for(let i=0;i<this.bookmarkService.CompanyBookmark.length;i++){
-          console.log(this.userInfoForBookmark.length+'dfghjk')
-          if(this.userInfoForBookmark.length === 0){
+          console.log(this.userBookmark.length+'dfghjk')
+          if(this.userBookmark.length === 0){
             this.bookmarkService.CompanyBookmark[i].bookm=false;
           }else{
             console.log(this.bookmarkService.CompanyBookmark[i]._id);
-            console.log(this.userInfoForBookmark[i]);
-            if(this.bookmarkService.CompanyBookmark[i]._id === this.userInfoForBookmark[i]){
+            console.log(this.userBookmark[i]);
+            if(this.bookmarkService.CompanyBookmark[i]._id === this.userBookmark[i]){
               this.bookmarkService.CompanyBookmark[i].bookm=true;
 
             }
@@ -139,8 +144,9 @@ export class CompanySearchComponent implements OnInit {
      this.bookmarkService.CompanyBookmark[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
        console.log(res)
+      
      });
-     console.log('done')
+     console.log(id)
  }
  deletecompanyBookmark(i,id){
    this.bookmarkService.CompanyBookmark[i].bookm=false;

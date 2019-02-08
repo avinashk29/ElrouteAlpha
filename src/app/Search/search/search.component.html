@@ -16,16 +16,14 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
-<div class="listing" *ngFor="let result of this.search.searchResult; let i = index;">
+<div class="listing" *ngFor="let result of productResult; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null" >
 
   <div>
-    <div class="productCard" *ngIf="result.type == 1 && result._id != null" >
+    <div class="productCard" *ngIf="result._id != null" >
       <div class="productImage">
-          <div class="bookmark" *ngIf="notlogin" (click)="openLogin()">
-
-            </div>
+         
       <!--  <div class="bookmark" *ngIf="!notlogin" (click)="bookmark(result._id)" >
 
         </div>
@@ -35,7 +33,7 @@
         <div class="bookmark unbookmark" *ngIf="!notlogin && !unbookmarked" (click)="unbookmark(result._id)" >
 
         </div>
-      -->
+      
         <button  (click)= " addProductBookmark(i,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm else bloading">Bookmark</button>
             <ng-template #bloading>
                 <button (click)=" deleteProductBookmark(i,result._id)" >Unbookmark</button>
@@ -57,7 +55,6 @@
       <p>{{result.shortDescription}}</p>
       </div>
       <div class="tags">
-
       </div>
       <div class="other-info">
         <div class="price">
@@ -67,9 +64,49 @@
         <p>24,354 hits</p>
       </div>
       </div>
-      </div>
+    </div>
       </div>
         </div>
+      -->
+    
+          <div class="productCard">
+        <div class="productImage">
+          <img src="https://picsum.photos/200/300/?random">
+        </div>
+        <div class="productContent" >
+        <div class="content">
+          <div class="b_page_btn">
+            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm else bloading">Bookmark</button>
+            <ng-template #bloading>
+                <button (click)="deleteProductBookmark(i,result._id)">Unbookmark</button>
+            </ng-template>
+          </div>
+        <div class="productCategory">
+        <h6>{{result.catogory}}</h6>
+        </div>
+        <div class="productName">
+          <h2 routerLink = "/product-page/{{product._id}}">{{result.productName}}</h2>
+          <h5>{{result.company}}</h5>
+         
+          <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.category}}</span><span style= "padding-left: 8px">Country</span></small>
+        </div>
+        <div class="discription" style="margin-top:30px;">
+        <p>{{result.shortDescription}}</p>
+        </div>
+        <div class="tags">
+
+        </div>
+        <div class="other-info">
+          <div class="price">
+          <h4>{{result.price}} {{result.minPrice}}</h4>
+        </div>
+        <div class="hits">
+          <p>24,354 hits</p>
+        </div>
+        </div>
+        </div>
+        </div>
+          </div>
         <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
         <div class="ServiceCard" *ngIf="result.type == 2 && result._id != null" >
 
@@ -108,8 +145,9 @@
               </div>
   </div>
 </div>
-
-
+</div>
+</div>
+</div>
 </section>
 
 <div class="mob-cards">

@@ -26,7 +26,7 @@ import { FooterComponent } from './StaticData/Footer/footer/footer.component';
 import { HelpComponent } from './StaticData/Help/help/help.component';
 
 import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import {TabHeaderComponent} from '../app/Header/tab-header/tab-header.component';
@@ -51,7 +51,8 @@ import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
 //
 // import { CarouselModule } from 'angular4-carousel';
-
+// import { NgxUiLoaderModule } from  'ngx-ui-loader';
+// import {NgxSpinnerModule} from 'ngx-spinner'
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 // import {ProductBookmarkComponent} from './Bookmark/product/product.component';
@@ -124,18 +125,22 @@ import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.compo
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpModule,
     StorageServiceModule,
     MatExpansionModule,
     MatTabsModule,
     Ng2CarouselamosModule,
+    // NgxUiLoaderModule,
+    // NgxSpinnerModule,
     ToastrModule.forRoot()
 
   ],
   entryComponents: [
     SignupComponent,
     LoginComponent,
-    EditComponent
+    EditComponent,
+    FeedComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService],

@@ -26,7 +26,7 @@ editUser(User){
     UserFormData.append('Image' , User.Image);
     UserFormData.append('Image' , User.Image);
     UserFormData.append('Image' , User.Image);
-    return this.http.patch('http://localhost:8080/api/user/update', User, {headers: headers});
+    return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
 
 }

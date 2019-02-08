@@ -23,14 +23,14 @@ export class CompanyServiceService {
   // }
   addCompany(company) {
     const headers = new Headers();
-const companyFormData = new FormData();
+// const companyFormData = new FormData();
 
-    companyFormData.append('companyName', company.companyName);
-    companyFormData.append('country', company.country);
-    companyFormData.append('city', company.city);
-    companyFormData.append('companyEmail', company.companyEmail);
-    companyFormData.append('industry', company.industry);
-    companyFormData.append('category' , company.category);
+    // companyFormData.append('companyName', company.companyName);
+    // companyFormData.append('country', company.country);
+    // companyFormData.append('city', company.city);
+    // companyFormData.append('companyEmail', company.companyEmail);
+    // companyFormData.append('industry', company.industry);
+    // companyFormData.append('category' , company.category);
 
     // companyFormData.append('website', company.website);
     // companyFormData.append('companyType', company.companyType);
@@ -45,7 +45,7 @@ const companyFormData = new FormData();
 
       headers.append('x-auth', this.token);
     console.log(this.token);
-    return this.http.post('http://localhost:8080/api/company', companyFormData, {headers: headers});
+    return this.http.post('http://localhost:8080/api/company', company, {headers: headers});
 
   }
   GetCompany() {
@@ -64,13 +64,13 @@ const companyFormData = new FormData();
     const headers = new Headers();
     headers.append('x-auth', this.token);
      console.log(this.token);
-    return this.http.patch('http://localhost:8080/api/company/update' , company,  {headers: headers});
+    return this.http.patch('http://localhost:8080/api/company' , company,  {headers: headers});
   }
 
   DeleteCompany(id){
     const headers=new Headers();
     headers.append('x-auth',this.token);
-    return this.http.delete('http://localhost:8080/api/company/delete', {headers:headers});
+    return this.http.delete('http://localhost:8080/api/company', {headers:headers});
 
   }
 companyFollowing(id){

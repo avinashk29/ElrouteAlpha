@@ -20,20 +20,7 @@ export class BookmarkComponent implements OnInit {
 
   }
 
-  cards = [
-    {
-    type: 1,
-    catogory: 'Laptp',
-    productName: 'Product Name',
-    company: 'Company ka Naam',
-    device: 'computer',
-    country: 'China',
-    discription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
 
-    },
-  
-  ];
-  
   ngOnInit() {
    
   }

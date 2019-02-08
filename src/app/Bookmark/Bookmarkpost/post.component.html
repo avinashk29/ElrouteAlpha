@@ -5,16 +5,17 @@
     <h2>Bookmarks</h2>
     <app-header3></app-header3>
     <input type="search" placeholder="Enter Product/Service to Search">
-    <div class="feed">
+    <div *ngIf="post==null else load">
+    <div class="feed" *ngFor="let r of post">
     <div class="authorInfo">
     <div class="details">
       <div class="logo">
         <img src="https://picsum.photos/500/300/?random">
       </div>
       <div class="info">
-     <h1>Company Name</h1>
-     <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">Industry</p>
-     <p style="line-height: 3px;margin-bottom: 10px;">Location</p>
+     <h1>{{r.companyName}}</h1>
+     <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{r.industry}}</p>
+     <p style="line-height: 3px;margin-bottom: 10px;">{{r.location}}</p>
     </div>
     </div>
     <div class="followBtn">
@@ -23,7 +24,7 @@
     </div>
     </div>
     <div class="feedInfo">
-      <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content </p>
+      <p></p>
     </div>
     <div class="feed-img">
     <img src="https://picsum.photos/500/300/?random">
@@ -45,5 +46,8 @@
          </mat-expansion-panel>
     </div>
     </div>
-
+</div>
+<ng-template #load>
+    <h2>No bookmarks</h2>
+  </ng-template>
     </section>

@@ -1,3 +1,4 @@
+<app-side-nav></app-side-nav>
 <div class="main_heading"><h2>Listed Products</h2></div>
 <section>
        
@@ -6,47 +7,44 @@
     <div class="category">
      <input type="search" placeholder="Enter Product/Service to Search">
         <div class="category_btn1">
-                <button typ="button">Add product</button>
+                <!-- <button typ="button">Add product</button> -->
+                <div class="productAddbutton"><button routerLink= "/productForm">ADD Product</button></div>
                 
         </div>   
         <div class="category_btn2">
                 <button typ="button">Group product</button>
-                
         </div>  
 
     </div>
 
 </div>
 <div class="rightSection">
-    
        <div class="edit_heading"><h2>Edit Product</h2></div>
        <div class="rightSection1">
-    <div class="edit_product">
+    <div class="edit_product" *ngFor="let r of results">
         <div class="card">
             <div class="card_edit">
                     <!-- <div class="edit_btn">
                             <button type="button">Edit</button>
                      </div>    -->
                      <div class="product_img">
-                            <img src="https://picsum.photos/200/300/?random">
+                            <img src="{{r.image}}">
                             <div class="edit_btn">
-                                    <button type="button">Edit</button>
+                                    <button type="button" (click)="editProduct(r._id)">Edit</button>
                              </div> 
                     </div>
             </div> 
         </div>   
             <div class="product_details">
-                      <h4>Laptop</h4>
-                      <h2>Acer Aspire ES-574G 57T1</h2>
-                     <h5>Acer Aspire ES-574G 57T1</h5>
-                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <h4>{{r.productName}}</h4>
+                      <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
+                     <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
+                     <p>{{r.shortDescription}}</p>
                      <div class="tags"> 
                             <h5>Price</h5>
                             <div class="tags1">
                                    <span>tags</span>
-                                   
                              </div>   
-           
                         </div>  
              </div>  
             

@@ -42,7 +42,7 @@ export class CompanyForm4Component implements OnInit {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
-// this.router.navigate(['/companyPage/' + this.companyId], {queryParams: {urltype : 'default'}});;
+ this.router.navigate(['/companyPage/' + this.companyId], {queryParams: {urltype : 'default'}});;
   }
 
 }
