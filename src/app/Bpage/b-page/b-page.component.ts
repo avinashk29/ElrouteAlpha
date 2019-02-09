@@ -101,7 +101,7 @@ BForm: FormGroup;
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
-          
+
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
@@ -120,14 +120,11 @@ BForm: FormGroup;
            this.companyLogo=JSON.parse(res['_body']).companyLogo;
            this.infoImage=JSON.parse(res['_body']).infoImage;
             // this.sectionImage=JSON.parse(res['_body']).sectionImage;
-            console.log(this.infoImage);
-            
+
             this.section = JSON.parse(res['_body']).section;
-            console.log(this.section);
-         
            this.certification=JSON.parse(res['_body']).certification;
-           this.companyImage = JSON.parse(res['_body']).companyImage
-          this.companyFollowers = JSON.parse(res['_body']).followers.length
+           this.companyImage = JSON.parse(res['_body']).companyImage;
+          this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
            Image: JSON.parse(res['_body']).Image,
@@ -145,7 +142,7 @@ this.setSection();
           } else {
             this.myCompany = false;
           }
-          
+
       if(this.companyLogo){
         this.logo=true;
       }
@@ -155,31 +152,40 @@ this.setSection();
       if(this.Image){
         this.img=true;
       }
-    
-    
+
+
         });
       });
       this.mycompanyId = this.storage.get('companyId');
       console.log(this.comapnyId+'companyId')
-      if (this.type = 'product') {
+      if (this.type === 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
             // console.log(this.products[0].Image);
-          console.log(JSON.parse(res['_body']))
                 });
         this.type = 'product';
+        console.log(this.type);
+      }
+      if (this.type === 'info'){
+        console.log(this.type);
+        this.type = 'info';
+      }
+      if (this.type === 'contact'){
+        console.log('info is working');
+        this.type = 'contact  ';
+        console.log(this.type);
       }
     });
-     
+
 // b form for section info
-  
+
 
 
   }
 
 
   ngOnInit() {
-  
+
    // this.comapnyId = this.storage.get('companyId');
    this.imgUpload.token=this.storage.get('token');
    this.feedService.token = this.storage.get('token');
@@ -252,11 +258,11 @@ onDelete(index){
   editbio(){
     this.bioEdit = !this.bioEdit;
   }
- 
+
   onImagePick(event,name) {
   //  this.uploadImages = !this.uploadImages;
   console.log(name)
-   
+
      this.file = <File>event.target.files[0];
       const fdata = new FormData()
        fdata.append(name,this.file)
@@ -266,7 +272,7 @@ onDelete(index){
         const updata = new FormData();
         const url = res['_body'];
         if(name==="certification"){
-                     this.certification.push(url); 
+                     this.certification.push(url);
              let certiForm = new FormGroup({
              certification: new FormControl(this.certification)
            })
@@ -279,7 +285,7 @@ onDelete(index){
             // console.log(this.certification);
             // console.log(url)
              console.log("m abhi yha pr hoon sbse upar")
-              this.companyImage.push(url); 
+              this.companyImage.push(url);
              let companyImage = new FormGroup({
                companyImage: new FormControl(this.companyImage)
              })
@@ -294,12 +300,12 @@ onDelete(index){
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
-          
+
         }
 
       })
    }
- 
+
   editProduct(id) {
     this.router.navigate(['/productEdit/' + id]);
   }
@@ -308,19 +314,25 @@ onDelete(index){
     this.router.navigate(['company-form2']);
   }
   showTwo() {
-    this.type = 'info';
+    this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
+     this.type = 'info';
+     console.log(this.type);
   }
   showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
       this.products = JSON.parse(res['_body']);
     });
-    this.type = 'product';
+    this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'product'}});
+     this.type = 'product';
+    console.log(this.type);
   }
   showFour() {
+    this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'contact'}});
     this.type = 'contact';
+    console.log(this.type);
   }
   editshortBio(){
-    
+
   }
 DeleteProduct(id) {
 this.productService.DeleteProduct(id).subscribe(res => {

@@ -37,7 +37,7 @@
 
       </div>
       <!-- Use Spinnser to loading image file in Bpage-->
-    
+
 <header>
     <div class="card1">
         <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
@@ -51,7 +51,7 @@
         </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader" *ngIf="!logo">
-              
+
             <input type="file" #filePicker (change)="onImagePick($event,'companyLogo')" class="picker" style="display: hidden;" >
             <button type="submit" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
               Add Your Logo</button>
@@ -240,39 +240,39 @@
        </div>
   </div>
 </div>
-<div class="body" *ngIf="this.type === 'info'">
+<div class="body" *ngIf = "this.type === 'info'">
   <div class="infoSection2">
     <div class="infoImg" *ngIf="!infoImg">
-       <img src="{{infoImage}}"> 
+       <img src="{{infoImage}}">
       <input type="file"  #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"  visbility="hidden">
           <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
             Info Image</button>
           </div>
           <div class="infoImg" *ngIf="infoImg">
-              <img src="{{infoImage}}"> 
+              <img src="{{infoImage}}">
                  </div>
-        
+
                  <div class="bio" *ngIf = "!editshortIntro">
                     <h2>SHORT BIO</h2>
                     <!-- <p>{{shortIntro}}</p> -->
                     <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                     <p *ngIf= "shortIntro">{{shortIntro}}</p>
-             
+
                     <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
                        </div>
                        <div *ngIf = "editshortIntro">
                        <input type="text" placeholder="Enter Bio" formControlName = "shortIntro" #shortIntro>
                        <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
-             
+
                      </div>
       <div class="infoContent" *ngIf="!bioEdit">
         <textarea formControlName="shortIntro">{{shortIntro}}</textarea>
         <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
       </div>
-                                 
+
                       <!-- section edit   -->
 
-        
+
 <div *ngIf="sectionEdit">
     <div formArrayName="section" >
       <div class="infoSectonCard" *ngFor="let section of BForm.get('section').controls; let i=index">
@@ -287,7 +287,7 @@
             <img src="assets/images/bk.png">
               <button (click)="onDelete(i)">Remove section</button>
             </div>
-            
+
             <button (click)="onAddSection()">Add section</button>
           </div>
           <button type="submit" (click)="onSubmit()">submit</button>
@@ -295,11 +295,11 @@
 
 
 
-                                      
-      
+
+
 
                                  <!-- end of section edit form -->
-  
+
 
                                   <!-- start of section -->
 
@@ -307,19 +307,19 @@
 
 <div *ngIf="!sectionEdit">
     <button  (click)="sectionEdit=true">Edit</button>
-	
+
 		<div class="infoSectonCard" *ngFor="let section of this.section">
 			<div class="content" >
 				<div class="Sectioncontent">
-			        <h2>{{section.sectionTitle}}</h2> 
+			        <h2>{{section.sectionTitle}}</h2>
 							<p>{{section.sectionContent}}</p>
 						</div>
 					</div>
 					<img src="{{section.sectionImage}}">
-						
+
 					</div>
-				
-		
+
+
 			</div>
 
              <!-- end of section -->
