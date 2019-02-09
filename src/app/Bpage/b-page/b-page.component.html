@@ -269,28 +269,60 @@
         <textarea formControlName="shortIntro">{{shortIntro}}</textarea>
         <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
       </div>
-  <div formArrayName="section">
-<div class="infoSectonCard" *ngFor="let section of BForm.get('section').controls; let i=index">
-    <div class="content" [formGroupName]="i">
-        <div class="Sectioncontent">
+                                 
+                      <!-- section edit   -->
+
+        
+<div *ngIf="sectionEdit">
+    <div formArrayName="section" >
+      <div class="infoSectonCard" *ngFor="let section of BForm.get('section').controls; let i=index">
+        <div class="content" [formGroupName]="i">
+          <div class="Sectioncontent">
             <input type="file" (change)="onImagePick($event,'sectionImage')" formControlName="sectionImage">
-          <input type="text" formControlName="sectionTitle">
-     
-       <textarea formControlName="sectionContent"></textarea>
-     
-        <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
+              <input type="text" formControlName="sectionTitle">
+                <textarea formControlName="sectionContent"></textarea>
+                <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
+              </div>
+            </div>
+            <img src="assets/images/bk.png">
+              <button (click)="onDelete(i)">Remove section</button>
+            </div>
+            
+            <button (click)="onAddSection()">Add section</button>
+          </div>
+          <button type="submit" (click)="onSubmit()">submit</button>
         </div>
 
-        </div>
-  
-        <img src="assets/images/bk.png">
+
+
+                                      
+      
+
+                                 <!-- end of section edit form -->
   
 
-</div>
-<button type="submit" (click)="onSubmit()
-">submit</button>
-</div>
+                                  <!-- start of section -->
 
+
+
+<div *ngIf="!sectionEdit">
+    <button  (click)="sectionEdit=true">Edit</button>
+	
+		<div class="infoSectonCard" *ngFor="let section of this.section">
+			<div class="content" >
+				<div class="Sectioncontent">
+			        <h2>{{section.sectionTitle}}</h2> 
+							<p>{{section.sectionContent}}</p>
+						</div>
+					</div>
+					<img src="{{section.sectionImage}}">
+						
+					</div>
+				
+		
+			</div>
+
+             <!-- end of section -->
 <div class="certification">
   <h2>CERTIFICATES</h2>
   <div ng2-carouselamos class="slider-wrapper"

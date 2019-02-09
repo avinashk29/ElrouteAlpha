@@ -19,7 +19,7 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 })
 export class BPageComponent implements OnInit , OnDestroy {
 
-
+sectionEdit=false;
 one = true;
 two = false;
 three = false;
@@ -68,13 +68,7 @@ editworkingHours = false;
 editshortIntro = false;
 imagePreview;
 infoImage;
-section=[
-  {
-    "sectionTitle" : "",
-    "sectionContent" : "",
-    "sectionImage":""
-  }
-]
+section=[];
 companyImage = [];
 bioEdit=false;
 // BForm = new FormGroup ({
@@ -107,7 +101,7 @@ BForm: FormGroup;
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
-          this.setSection();
+          
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
@@ -129,7 +123,8 @@ BForm: FormGroup;
             console.log(this.infoImage);
             
             this.section = JSON.parse(res['_body']).section;
-            this.setSection();
+            console.log(this.section);
+         
            this.certification=JSON.parse(res['_body']).certification;
            this.companyImage = JSON.parse(res['_body']).companyImage
           this.companyFollowers = JSON.parse(res['_body']).followers.length
@@ -142,6 +137,8 @@ BForm: FormGroup;
           //  linkedin: JSON.parse(res['_body']).socialLinks.linkedin,
           //  google: JSON.parse(res['_body']).socialLinks.google,
           });
+
+this.setSection();
 
           if (this.comapnyId === this.mycompanyId) {
             this.myCompany = true;
@@ -176,7 +173,6 @@ BForm: FormGroup;
      
 // b form for section info
   
-
 
 
   }
@@ -235,7 +231,10 @@ control.push(this._fb.group({
  }
  setSection(){
    let control=<FormArray>this.BForm.controls.section;
-   control.reset;
+   while(control.length!==0){
+     control.removeAt(0);
+   }
+  //  console.log(control);
    this.section.forEach(x => {
      control.push(this._fb.group({
        sectionTitle:x.sectionTitle,
@@ -363,6 +362,7 @@ ngOnDestroy() {
   this.subscription.unsubscribe();
 }
 onSubmit(){
+  this.sectionEdit=false;
   // const bdata = new FormData()
   // bdata.append('section',this.BForm.value.section)
   // console.log(bdata);
