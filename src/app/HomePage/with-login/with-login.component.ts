@@ -28,7 +28,7 @@ subscription;
 shortBio;
 feeds = [];
 noFeeds = true;
-image;
+userImage;
 feed = new FormGroup({
   content: new FormControl(''),
 Image: new FormControl(' '),
@@ -53,7 +53,7 @@ tagId: new FormControl()
       this.username = JSON.parse(res['_body']).userName;
       this.location = JSON.parse(res['_body']).location;
       this.shortBio = JSON.parse(res['_body']).shortBio;
-      this.image=JSON.parse(res['_body']).userImage
+      this.userImage=JSON.parse(res['_body']).userImage
       // this.following = JSON.parse(res['_body']).Following.length;
       // console.log(JSON.parse(res['_body']).Following.length)
     // this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;

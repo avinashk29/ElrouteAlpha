@@ -4,23 +4,23 @@
       <div class="product_detalis">
             <div class="product">
               <div class="product_1">
-                    <li><a href="#">{{tab1}} {{ProductName}}</a></li>
-                    <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{tab2}}2</a></li>
-                    <li style="float:right;">{{model}}</li>
+                    <li><a href="#">{{productName}}</a></li>
+                    <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{category}}</a></li>
+                    <li style="float:right;">{{Time}}</li>
               </div>
               <div style="clear:both;"></div>
-              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{heading}}3</h2>
+              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{industry}}</h2>
               <div class="service2">
-                  <p><span>24,125</span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>  </p>
+                  <p><span>{{bookmark}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>  </p>
 
-                  <div class="service2_img"><img src="{{image}}" alt="image not found"></div>
+                  <div class="service2_img"><img src="{{Image}}" alt="image not found"></div>
               </div>
               <div class="tags">
-                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
+                <!-- <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
                 <li><img src="assets/images/tags.png"   alt="image not found"><span>tag2</span></li>
                 <li><img src="assets/images/tags.png"   alt="image not found"><span>tag3</span></li>
                 <li><img src="assets/images/tags.png"   alt="image not found"><span>tag4</span></li>
-                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag5</span></li>
+                <li><img src="assets/images/tags.png"   alt="image not found"><span>tag5</span></li> -->
               </div>
               <p class="contact">
                   <img src="assets/images/contact.png" alt="image not found"><span>Contact</span>
@@ -35,7 +35,7 @@
        <div class="des_box">
          <h2>Description</h2>
 
-        <p>{{ShortDescription}}</p>
+        <p>{{shortDescription}}</p>
       </div>
 
 
@@ -88,7 +88,7 @@
   </div>
   </div>
   <div class="feedInfo">
-    <p>{{f.Content}}</p>
+    <p>{{f.content}}</p>
   </div>
   <div class="feed-img">
   <img src="{{f.Image}}">
@@ -104,9 +104,7 @@
             <h4>Tagged Products</h4>
            </mat-panel-title>
          </mat-expansion-panel-header>
-  
          <p></p>
-  
        </mat-expansion-panel>
   </div>
   </div>

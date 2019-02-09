@@ -905,7 +905,7 @@ input#search-bar:focus:-ms-placeholder {
 }
 .path
 {
- width: 100%;    padding: 290px 0;height: 100%;
+ width: 100%;    padding: 345px 0;height: 100%;
 }
 
 @media screen and (min-width:200px) and (max-width:400px) {
@@ -1623,7 +1623,7 @@ input#search-bar:focus:-ms-placeholder {
  }
  .header_img img 
  {
- TOP: 50%;
+ TOP: 45%;
  }
  .section2{
  margin: 0 auto;
@@ -1633,11 +1633,11 @@ input#search-bar:focus:-ms-placeholder {
  background-color: white;
  left: 9%;
  height: 50%;
- margin-top: -10%;
+top:75%;
  }
  .images{
  display: flex;
- margin-top: 2%;
+ margin-top: 8%;
  /* position: absolute;
  bottom: -75%;
  left: 18%; */
