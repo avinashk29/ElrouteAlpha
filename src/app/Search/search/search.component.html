@@ -84,7 +84,7 @@
         <h6>{{result.catogory}}</h6>
         </div>
         <div class="productName">
-          <h2 routerLink = "/product-page/{{product._id}}">{{result.productName}}</h2>
+          <h2 (click)="gotoProductPage(result._id)">{{result.productName}}</h2>
           <h5>{{result.company}}</h5>
          
           <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.category}}</span><span style= "padding-left: 8px">Country</span></small>

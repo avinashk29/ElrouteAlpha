@@ -9,10 +9,10 @@
             <div class="authorInfo" >
                 <div class="details">
                   <div class="logo">
-                    <img src= "https://picsum.photos/500/300/?random">
+                    <img src= "{{feed.companyLogo}}">
                   </div>
                   <div class="info">
-                 <h1 routerLink = "/companyPage/{{feed._id}}"></h1>
+                 <h1 (click)="GotoBpage(feed.admin)">{{feed.companyName}}</h1>
                  <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.industry}}</p>
                  <p style="line-height: 3px;margin-bottom: 10px;">{{feed.location}}</p>
                 </div>

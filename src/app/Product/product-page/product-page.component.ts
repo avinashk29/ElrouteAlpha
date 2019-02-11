@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { FeedService } from 'src/app/Service/feed-service.service';
+import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -25,9 +26,10 @@ export class ProductPageComponent implements OnInit {
   category
   bookmark;
   industry
+  productid
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, public product: ProductServiceService,private feedService:FeedService) {
+   public route: ActivatedRoute, public product: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService) {
     this.id = this.route.snapshot.paramMap.get('_id');
     console.log(this.id);
   this.product.token = this.storage.get('token');
@@ -51,10 +53,11 @@ this.product.getOneProduct(this.id).subscribe(res => {
   this.category=JSON.parse(res['_body']).category;
   this.bookmark=JSON.parse(res['_body']).bookmarks;
   this.industry=JSON.parse(res['_body']).industry
-console.log(this.bookmark)
+  this.productid=JSON.parse(res['_body'])._id;
+console.log(this.productid)
   // this.ShortDescription=JSON.parse(res['_body']).shortDescription;
   this.Image=JSON.parse(res['_body']).Image
-  // console.log(this.ProductName)
+  console.log(JSON.parse(res['_body']))
 });
     // this.feedService.GetFeed().subscribe(res=>{
     //     this.feed=JSON.parse(res['_body']);
@@ -67,5 +70,18 @@ this.feedResult=JSON.parse(res['_body']);
 
 
   }
+  // addProductBookmark(){
+  //   this.bookmark=true;
+  //   this.bookmarkService.addProductBookmarks(this.productid).subscribe(res=>{
+  //     console.log(res);
+  //   })
+  // }
+  // deleteProductBookmark(){
+  //   this.bookmark=false
+  //   this.bookmarkService.DeleteProductBookmark(this.productid).subscribe(res=>{
+  //     console.log(res);
+  //   })
+    
+  // }
 
 }

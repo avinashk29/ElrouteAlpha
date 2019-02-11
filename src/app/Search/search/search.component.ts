@@ -6,7 +6,7 @@ import {LoginComponent} from '../../Auth/login/login.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { UserService} from '../../Service/user-services.service';
 import { ProductServiceService } from 'src/app/Service/product-service.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 @Component({
   selector: 'app-search',
@@ -28,7 +28,7 @@ productResult=[]
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
- public route: ActivatedRoute, public companyService: CompanyServiceService
+ public route: ActivatedRoute, public companyService: CompanyServiceService,private router:Router
  ) {
 
   }
@@ -120,6 +120,8 @@ bookmark(id) {
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       console.log(res);
     })
-    
+  }
+  gotoProductPage(id){
+    this.router.navigate(['/product-page/'+id])
   }
 }

@@ -29,6 +29,7 @@ shortBio;
 feeds = [];
 noFeeds = true;
 userImage;
+companyLogo
 feed = new FormGroup({
 content: new FormControl(''),
 Image: new FormControl(' '),
@@ -56,7 +57,7 @@ tagId: new FormControl(),
       this.shortBio = JSON.parse(res['_body']).shortBio;
       this.userImage=JSON.parse(res['_body']).userImage;
       this.following = JSON.parse(res['_body']).following.length;
-      // console.log(JSON.parse(res['_body']).following.length)
+      console.log(JSON.parse(res['_body']).following.length)
     this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
    });
    }
@@ -79,6 +80,7 @@ tagId: new FormControl(),
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);
+        this.companyLogo=(JSON.parse(res['_body']).companyLogo);
 
       });
     }
@@ -98,7 +100,7 @@ tagId: new FormControl(),
           this.feed.value.Image=res['_body']
           const url=res['_body']
            console.log(url)
-           fd.append('userImage',url);
+           fd.append(name,url);
          this.userService.editUser(fd).subscribe(res=>{
            console.log(res);
          })
@@ -109,6 +111,7 @@ tagId: new FormControl(),
   onAddpost() {
    this.feed.value.tagId = this.feedService.tagId;
    this.feed.value.companyName=this.companyName;
+   this.feed.value.companyLogo=this.companyLogo
     this.feedService.AddFeed(this.feed.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });

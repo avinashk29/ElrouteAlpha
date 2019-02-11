@@ -3,7 +3,7 @@ import {SearchService} from '../../Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import {BookmarkServices} from '../../Service/bookmark-services.service';
 import {FollowService} from 'src/app/Service/follow-service.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from 'src/app/Service/user-services.service';
 @Component({
   selector: 'app-feeds',
@@ -16,7 +16,7 @@ export class FeedsSearchComponent implements OnInit {
   productId
   feedResult=[]
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
-   public bookmarkService: BookmarkServices, public follows: FollowService,private UserService:UserService, public route: ActivatedRoute) { }
+   public bookmarkService: BookmarkServices,private router:Router, public follows: FollowService,private UserService:UserService, public route: ActivatedRoute) { }
 word;
 page;
   ngOnInit() {
@@ -73,4 +73,9 @@ page;
       console.log(res);
     });
    }
+  
+  GotoBpage(id){
+    this.router.navigate(['/companyPage/'+id], {queryParams: {urltype : 'default'}});
+  }
+  
 }

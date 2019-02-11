@@ -11,8 +11,13 @@
               <div style="clear:both;"></div>
               <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{industry}}</h2>
               <div class="service2">
-                  <p><span>{{bookmark}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>  </p>
-
+                  <p><span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>  </p>
+                  <!-- <div class="b_page_btn">
+                      <button  (click)= "addProductBookmark()" *ngIf="!bookmark">Bookmark</button>
+                     
+                          <button (click)="deleteProductBookmark()" *ngIf="bookmark">Unbookmark</button>
+                      
+                    </div> -->
                   <div class="service2_img"><img src="{{Image}}" alt="image not found"></div>
               </div>
               <div class="tags">
@@ -74,10 +79,10 @@
   <div class="details">
     <div class="logo">
      
-      <img src="https://picsum.photos/500/300/?random">
+      <img src="{{f.companyLogo}}">
     </div>
     <div class="info">
-   <h1></h1>
+   <h1>{{f.companyName}}</h1>
    <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;"></p>
    <p style="line-height: 3px;margin-bottom: 10px;"></p>
   </div>
