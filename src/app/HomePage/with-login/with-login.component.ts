@@ -40,6 +40,7 @@ tagId: new FormControl()
   public feedService: FeedService, public companyService: CompanyServiceService,
   public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute ) {
 
+
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
         // this.feedService.Getpost().subscribe(res =>{
