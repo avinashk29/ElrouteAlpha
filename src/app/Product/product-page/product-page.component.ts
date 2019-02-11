@@ -4,6 +4,7 @@ import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { FeedService } from 'src/app/Service/feed-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
+import { UserService } from 'src/app/Service/user-services.service';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -24,12 +25,13 @@ export class ProductPageComponent implements OnInit {
   feed=[]
   Image;
   category
-  bookmark;
+  userBookmark;
+  bookmark
   industry
   productid
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, public product: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService) {
+   public route: ActivatedRoute, public product: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
     this.id = this.route.snapshot.paramMap.get('_id');
     console.log(this.id);
   this.product.token = this.storage.get('token');
@@ -51,7 +53,7 @@ this.product.getOneProduct(this.id).subscribe(res => {
   this.MatchScore=JSON.parse(res['_body']).matchScore;
   this.ProductInfo=JSON.parse(res['_body']).productInfo;
   this.category=JSON.parse(res['_body']).category;
-  this.bookmark=JSON.parse(res['_body']).bookmarks;
+  // this.bookmark=JSON.parse(res['_body']).bookmarks;
   this.industry=JSON.parse(res['_body']).industry
   this.productid=JSON.parse(res['_body'])._id;
 console.log(this.productid)
@@ -67,21 +69,33 @@ this.product.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
 // console.log(JSON.parse(res['_body']))
 })
+this.UserService.getUserData().subscribe(res=>{
+  this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
+  console.log(this.userBookmark.length);  
+for(let i=0;i<this.userBookmark.length;i++){
+  if(this.id==this.userBookmark[i])
+  {
+    this.bookmark=false;
+  }else{
+    this.bookmark=true;
+  }
+}
 
+})
 
   }
-  // addProductBookmark(){
-  //   this.bookmark=true;
-  //   this.bookmarkService.addProductBookmarks(this.productid).subscribe(res=>{
-  //     console.log(res);
-  //   })
-  // }
-  // deleteProductBookmark(){
-  //   this.bookmark=false
-  //   this.bookmarkService.DeleteProductBookmark(this.productid).subscribe(res=>{
-  //     console.log(res);
-  //   })
+  addProductBookmark(){
+    this.bookmark=true;
+    this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  deleteProductBookmark(){
+    this.bookmark=false
+    this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
+      console.log(res);
+    })
     
-  // }
+  }
 
 }

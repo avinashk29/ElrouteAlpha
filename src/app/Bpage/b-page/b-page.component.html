@@ -99,8 +99,13 @@
                   <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Social Links</button>
               </div>
               <div class="social_bookmark">
+                 <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button>
+
+                 <ng-template #load>
+                    <button (click)="removeBookmark()">Unbookmark</button>
+                 </ng-template>
                  
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+                  <!-- <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span> -->
               </div>
             </div>
         </div>

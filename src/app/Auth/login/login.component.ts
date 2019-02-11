@@ -13,8 +13,8 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class LoginComponent implements OnInit {
  login = new FormGroup({
-   Email: new FormControl(),
-   Password: new FormControl()
+   email: new FormControl(),
+   password: new FormControl()
  });
  error = true;
    constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
@@ -40,7 +40,7 @@ onSubmit() {
   this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
   this.router.navigate(['/Dashboard']);
-  this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);
+  this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
   } else {
     this.notification.error('Error Login');
   }
