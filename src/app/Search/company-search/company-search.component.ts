@@ -8,6 +8,7 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { JAN } from '@angular/material';
 
+
 @Component({
   selector: 'app-company-search',
   templateUrl: './company-search.component.html',
@@ -19,6 +20,7 @@ export class CompanySearchComponent implements OnInit {
   panelOpenState = false;
   word;
   id;
+  cresult
   notlogin = true;
   unbookmarked = true;
   haveFollow = true;
@@ -35,113 +37,67 @@ export class CompanySearchComponent implements OnInit {
     this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']))
-      this.userInfo = JSON.parse(res['_body']).Following;
+      this.userInfo = JSON.parse(res['_body']).following;
        this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-       console.log(this.userInfo);
-      console.log( JSON.parse(res['_body']).bookmarks.company);
+      //  console.log(this.userBookmark.pop());
+      console.log( this.userInfo);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
         this.result = JSON.parse(res1['_body']);
-        this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0];
-        console.log(this.bookmarkService.companyfollow.length)
-        this.bookmarkService.CompanyBookmark =  JSON.parse(res1['_body'])[0];
-      
-        for (let i=0; i<this.bookmarkService.companyfollow.length; i++) {
-          console.log(this.userInfo.length);
-          if (this.userInfo.length === 0){
-            this.bookmarkService.companyfollow[i].follow = false;
-            console.log(this.bookmarkService.companyfollow[i])
-          } else {
-            console.log(this.bookmarkService.companyfollow[i]._id);
-          console.log( this.userInfo[i]);
-          if (this.bookmarkService.companyfollow[i]._id === this.userInfo[i]){
-            this.bookmarkService.companyfollow[i].follow = true;
-            console.log(this.bookmarkService.companyfollow[i].follow)
-          }
-          }
-
-        }
-        //Deletion method for Bookmarks//
-        this.bookmarkService.CompanyBookmark=JSON.parse(res1['_body'])[0];
-        console.log(this.bookmarkService.CompanyBookmark.length);
-        console.log(this.bookmarkService.CompanyBookmark);
-        for(let i=0;i<this.bookmarkService.CompanyBookmark.length;i++){
-          console.log(this.userBookmark.length+'dfghjk')
-          if(this.userBookmark.length === 0){
-            this.bookmarkService.CompanyBookmark[i].bookm=false;
-          }else{
-            console.log(this.bookmarkService.CompanyBookmark[i]._id);
-            console.log(this.userBookmark[i]);
-            if(this.bookmarkService.CompanyBookmark[i]._id === this.userBookmark[i]){
-              this.bookmarkService.CompanyBookmark[i].bookm=true;
-
-            }
-          }
-
-        }
-
+        console.log(this.result)
+        this.cresult=JSON.parse(res1['_body'])[0]
+        this.id=JSON.parse(res1['_body'])[0][0]
+        console.log(this.id)
+        // this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0]; 
+         //Addition/Deletion method for Follow//
+         for(let i = 0; i < this.userInfo.length; i++) {
+          console.log(this.userInfo[i]);
+          for(let j = 0;j < this.cresult.length; j++) {
+            console.log(this.cresult[j]._id);
+               if(this.userInfo[i] == this.cresult[j]._id) {
+                console.log(this.cresult[j]._id);
+                this.cresult[j].follow=true;
+               } else  {
+                console.log(this.cresult[j]._id);
+                // this.cresult[j].follow=false;
+               }
+           }      
+     }
+            //Addition/Deletion method for Bookmarks//
+        for(let i = 0; i < this.userBookmark.length; i++) {
+          console.log(this.userBookmark[i]);
+          for(let j = 0;j < this.cresult.length; j++) {
+            console.log(this.cresult[j]._id);
+               if(this.userBookmark[i] == this.cresult[j]._id) {
+                console.log(this.cresult[j]._id);
+                this.cresult[j].bookm=true;
+               } else  {
+                console.log(this.cresult[j]._id);
+                // this.cresult[j].bookm=false;
+               }
+           }      
+     }
       });
  })
 
-
-
-
   }
-  // onClick (id) {
-  //   this.bookmarkService.count+=1;
-  //   console.log(this.userInfo.length);
-  //   if (!this.userInfo.length){
-
-  //   console.log(id)
-  //   console.log('1');
-  //   this.follows.addFollow(id).subscribe(res=>{
-  //     console.log(res);
-  //   })
-  //   console.log( this.bookmarkService.companyfollow[id].follow );
-  //   this.bookmarkService.companyfollow[id].follow = !this.bookmarkService.companyfollow[id].follow;
-
-  //   }else{
-  //   for (let i = 0; i<this.userInfo.length; i++) {
-  //     console.log(this.userInfo[i]);
-  //     console.log(id);
-  //     if (id === this.userInfo[i]){
-  //       this.bookmarkService.companyfollow[i].follow = !this.bookmarkService.companyfollow[id].follow;
-  //       console.log(this.bookmarkService.companyfollow[i].follow)
-  //       console.log('2')
-  //       console.log(id)
-
-  //       this.follows.Unfollow(id).subscribe(res=>{
-  //         console.log(res);
-  //       })
-  //      }
-  //      if (this.userInfo[i] !== id) {
-  //       this.bookmarkService.companyfollow[i].follow = !this.bookmarkService.companyfollow[id].follow;
-  //       console.log(this.bookmarkService.companyfollow[i].follow )
-  //       console.log(id)
-  //       console.log('3')
-  //       this.follows.addFollow(id).subscribe(res=>{
-  //         console.log(res);
-  //       })
-  //      }
-  //     }
-  // }
-
-  // }
+  
   onfollow(i,id){
-    this.bookmarkService.companyfollow[i].follow = true;
+    this.cresult[i].follow=true;
     this.follows.addFollow(id).subscribe(res=>{
                console.log(res);
            })
            console.log('i am working follow')
   }
   onunfollow(i,id){
-    this.bookmarkService.companyfollow[i].follow = false;
+    console.log(id)
+    this.cresult[i].follow=false;
     this.follows.Unfollow(id).subscribe(res=>{
                console.log(res);
            })
            console.log('i am working unfollow')
   }
  companyBookmark(i,id){
-     this.bookmarkService.CompanyBookmark[i].bookm=true;
+  this.cresult[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
        console.log(res)
       
@@ -149,7 +105,7 @@ export class CompanySearchComponent implements OnInit {
      console.log(id)
  }
  deletecompanyBookmark(i,id){
-   this.bookmarkService.CompanyBookmark[i].bookm=false;
+  this.cresult[i].bookm=false;
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
     console.log(res)
   });

@@ -19,6 +19,7 @@ export class ProductFormComponent implements OnInit {
   companyId;
   urltype;
   url;
+ 
   productInfo= [ 
     {
         "specificationContent" : "",

@@ -14,7 +14,7 @@
                 </div>
                 <div class="follower_img">
                     <div class="follower_img1">
-                        <img src="assets/images/user.png">
+                        <img src="{{userImage}}">
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                 <p>{{this.userBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
-                    <textarea formControlName= "ShortBio">{{this.userBio}}</textarea>
+                    <textarea formControlName= "shortBio">{{this.userBio}}</textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
             <div class="follower_company">

@@ -3,31 +3,37 @@
 <div class="following_title">
     <h1> Following</h1>
 </div>
-<div class="user_following">
-    <div class="follow_search">
-        <input type="search" placeholder="search">
+<div class="user_following" >
+    <div class="follow_search" >
+        <!-- <input type="search" placeholder="search"> -->
+        <!-- <h2>You are not Following any Company</h2> -->
     </div>
     <div class="following"  *ngFor="let following of followings let i = index">
         <div class="following_1">
             <div class="following_image">
-                <img src="assets/images/user.png">
+                <img src="{{following.companyLogo}}">
             </div>
             <div class="following_name">
-                <h2> {{ following .Company_name }}</h2>
-                <span style="border-right:solid 1px gray;padding: 0px 10px;">{{ following.location }}</span>
-                <span style="padding: 0px 10px;">{{following.industry }}</span>
+                <h2 (click)="gotoBpage(following._id)"> {{ following.companyName }}</h2>
+                <span style="border-right:solid 1px gray;padding: 0px 10px;">{{ following.category}}</span>
+                <span style="padding: 0px 10px;">{{following.industry}}</span>
             </div>
             <div class="following_bookmark">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
-                <span>{{following.follwers_nub}}</span>
+                <span>{{following.followers.length}}</span>
             </div>
         </div>
         <div class="following_2">
             <div class="followBtn">
-                <button>{{ following.Following}}</button>
+                <button  (click)="onunfollow(i,following._id)"  *ngIf = "this.followings[i].follow else loading">Following</button>
+     
+             <ng-template #loading>
+            <button (click)="onfollow(i,following._id)" >Follow</button>
+        </ng-template>
             </div>
             <div class="following_icon1">
-                <img src="assets/images/google_icon.png">
+             <!-- <a href="{{following.website}}" ><img src="assets/images/google_icon.png"></a>   -->
+             <a target="_blank" href="http://{{following.website}}"><img src="assets/images/google_icon.png"></a>
 
             </div>
             <div class="following_icon1">
@@ -37,6 +43,10 @@
         </div>
     </div>
     </div>
+<ng-template #load>
+<h2>No Followings</h2>
+</ng-template>
+
     <section>
     
      

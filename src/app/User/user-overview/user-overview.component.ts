@@ -19,7 +19,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   username;
   title;
   location;
-  ShortBio;
+  shortBio;
   haveCompany;
   companyName;
   companyId;
@@ -29,6 +29,8 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   bioForm;
   companyFollowers = [];
   subscription;
+  userImage
+ 
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog , public route: ActivatedRoute,) {
 
     console.log('working');
@@ -58,16 +60,17 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
         });
     }
     this.bioForm = new FormGroup({
-      ShortBio: new FormControl ('')
+      shortBio: new FormControl ('')
     })
     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).userName;
       this.location = JSON.parse(res['_body']).location;
       this.title = JSON.parse(res['_body']).title;
-      
-      console.log(this.username);
+      this.userImage=JSON.parse(res['_body']).userImage;
+      console.log(this.userImage);
       this.userBio = JSON.parse(res['_body']).shortBio;
+    
       console.log(this.userBio)
     });
   }
@@ -95,7 +98,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
    }
   addBio() {
     this.bioForm.patchValue({
-      ShortBio: this.bioForm.value.ShortBio
+      shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));

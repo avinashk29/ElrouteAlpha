@@ -6,7 +6,7 @@ import {LoginComponent} from '../../Auth/login/login.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { UserService} from '../../Service/user-services.service';
 import { ProductServiceService } from 'src/app/Service/product-service.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 @Component({
   selector: 'app-search',
@@ -21,13 +21,14 @@ token;
 word;
 page;
 len;
+productId=[]
 unbookmarked = true;
-userProductBookmark=[]
+userBookmark=[]
 productResult=[]
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
- public route: ActivatedRoute, public companyService: CompanyServiceService
+ public route: ActivatedRoute, public companyService: CompanyServiceService,private router:Router
  ) {
 
   }
@@ -40,28 +41,36 @@ productResult=[]
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
     this.userService.getUserData().subscribe(res=>{
-      this.userProductBookmark=JSON.parse(res['_body']).bookmarks.product;
+      this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
+      console.log(this.userBookmark.length)
       console.log(JSON.parse(res['_body']));
       this.search.onSearch(this.word,this.page).subscribe(response=>{
         this.productResult=JSON.parse(response['_body']);
-        console.log(this.productResult);
+        this.productId=JSON.parse(response['_body']);
+        console.log(this.productId.length);
+        // console.log(this.productId.length)
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
-        for(let i of this.bookmarkService.productBookmark.length){
-          console.log(this.userProductBookmark.length)
-          if(this.userProductBookmark.length === 0){
-            this.bookmarkService.productBookmark[i].bookm=false;
-            console.log(this.bookmarkService.productBookmark[i]);
-          }else{
-            console.log(this.bookmarkService.productBookmark[i]._id);
-            console.log(this.userProductBookmark[i]);
-            if(this.bookmarkService.productBookmark[i]._id === this.userProductBookmark[i]){
-              this.bookmarkService.productBookmark[i].bookm=true;
-                console.log(this.bookmarkService.productBookmark[i])
-            }
-        }
-       }
+        console.log(this.bookmarkService.productBookmark.length)
+                for(let i = 0; i < this.userBookmark.length; i++) {
+                  console.log(this.userBookmark[i]);
+                  for(let j = 0;j < this.productId.length; j++) {
+                       if(this.productId[j]==null){
+
+                       }else{
+                        console.log(this.productId[j]._id);
+                        if(this.userBookmark[i] == this.productId[j]._id) {
+                         console.log(this.productId[j]._id);
+                         this.productId[j].bookm=true;
+                        } else  {
+                         // this.productId[j].bookm=true;
+                         console.log(this.productId[j]._id);
+                        }
+                       }
+                   }      
+             }
+              
       })
-    })
+    })                                                  
     console.log(this.token);
     if (this.token != null) {
       this.notlogin = false;
@@ -101,16 +110,18 @@ bookmark(id) {
   }
 
   addProductBookmark(i,id){
-    this.bookmarkService.productBookmark[i].bookm=true;
+    this.productId[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
       console.log(res);
     })
   }
   deleteProductBookmark(i,id){
-    this.bookmarkService.productBookmark[i].bookm=false;
+    this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       console.log(res);
     })
-    
+  }
+  gotoProductPage(id){
+    this.router.navigate(['/product-page/'+id])
   }
 }

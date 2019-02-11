@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {AuthServiceService} from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import {FormGroup , FormControl} from '@angular/forms';
@@ -25,16 +25,17 @@ location;
 companyName;
 haveCompany;
 subscription;
-userImage;
 shortBio;
 feeds = [];
 noFeeds = true;
-image;
+userImage;
+companyLogo
 feed = new FormGroup({
-  content: new FormControl(''),
+content: new FormControl(''),
 Image: new FormControl(' '),
-tagId: new FormControl()
+tagId: new FormControl(),
 });
+
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
@@ -47,23 +48,20 @@ tagId: new FormControl()
         //   console.log(res);
 
         // })
-    this.route.queryParams.filter(params => params.Edit).subscribe(params => {
-      this.userService.getUserData().subscribe(res => {
-        console.log(JSON.parse(res['_body']));
-        this.username = JSON.parse(res['_body']).userName;
-        this.location = JSON.parse(res['_body']).location;
-        this.shortBio = JSON.parse(res['_body']).shortBio;
-        this.userImage=JSON.parse(res['_body']).userImage;
-        // this.following = JSON.parse(res['_body']).Following.length;
-        // console.log(JSON.parse(res['_body']).Following.length)
-      // this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
-     });
-    })
 
     });
     this.userService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
-
+    this.userService.getUserData().subscribe(res => {
+      console.log(JSON.parse(res['_body']));
+      this.username = JSON.parse(res['_body']).userName;
+      this.location = JSON.parse(res['_body']).location;
+      this.shortBio = JSON.parse(res['_body']).shortBio;
+      this.userImage=JSON.parse(res['_body']).userImage;
+      this.following = JSON.parse(res['_body']).following.length;
+      console.log(JSON.parse(res['_body']).following.length)
+    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
+   });
    }
   show = false;
   ngOnInit() {
@@ -84,28 +82,16 @@ tagId: new FormControl()
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);
+        this.companyLogo=(JSON.parse(res['_body']).companyLogo);
+
       });
     }
 
-    this.userService.getUserData().subscribe(res => {
-      console.log(JSON.parse(res['_body']));
-      this.username = JSON.parse(res['_body']).userName;
-      this.location = JSON.parse(res['_body']).location;
-      this.shortBio = JSON.parse(res['_body']).shortBio;
-      this.userImage=JSON.parse(res['_body']).userImage;
-      this.following = JSON.parse(res['_body']).following.length;
-      console.log(JSON.parse(res['_body']).following.length)
-    this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
-   });
 
     }
-    // toggle(){
-    //   this.router.navigate(['/Dashboard'], {queryParams: {Edit: 'true'}});
-    // }
     onImagePick(event,name) {
-
       console.log(name);
-      this.router.navigate(['/Dashboard'], {queryParams: {Edit: 'true'}});
+
       const file = <File>event.target.files[0];
         // const reader = new FileReader();
         // reader.readAsDataURL(file);
@@ -116,20 +102,23 @@ tagId: new FormControl()
           this.feed.value.Image=res['_body']
           const url=res['_body']
            console.log(url)
-           fd.append('userImage',url);
+           fd.append(name,url);
          this.userService.editUser(fd).subscribe(res=>{
            console.log(res);
          })
         })
-        this.router.navigate(['/Dashboard'], {queryParams: {Edit: 'true'}});
+
 
      }
   onAddpost() {
    this.feed.value.tagId = this.feedService.tagId;
+   this.feed.value.companyName=this.companyName;
+   this.feed.value.companyLogo=this.companyLogo
     this.feedService.AddFeed(this.feed.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
     this.feed.reset();
+
   }
   tagFeed(){
     const dialogConfig = new MatDialogConfig();
