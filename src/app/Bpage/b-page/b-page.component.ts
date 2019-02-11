@@ -222,11 +222,14 @@ this.setSection();
   //  });
   }
  onAddSection(){
+   this.sectionEdit=true;
+   console.log(this.sectionEdit);
+   console.log('here i am')
 let control=<FormArray>this.BForm.controls.section;
 control.push(this._fb.group({
   sectionTitle:[''],
   sectionContent:[''],
-   sectionImage:[]
+   sectionImage:['../../../assets/images/bk.png']
 }))
  }
  setSection(){
@@ -252,7 +255,21 @@ onDelete(index){
   editbio(){
     this.bioEdit = !this.bioEdit;
   }
- 
+ onsectionImagePick(event,name,index){
+  this.file = <File>event.target.files[0];
+  const fdata = new FormData()
+   fdata.append(name,this.file)
+  console.log(fdata);
+  this.imgUpload.uploadImg(fdata).subscribe(res=>{
+    console.log(res);
+    const updata = new FormData();
+    const url = res['_body'];
+    console.log(res);
+    let control = <FormArray>this.BForm.controls.section;
+    control.value[index].sectionImage= url;
+    console.log(control);
+  });
+ }
   onImagePick(event,name) {
   //  this.uploadImages = !this.uploadImages;
   console.log(name)

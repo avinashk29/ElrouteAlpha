@@ -50,7 +50,7 @@ header {
 }
 
 .follow-btn button {
- /* width: 65%; */
+ width: 65%;
  height: 40px;
  border: none;
  color: #fff;
@@ -227,7 +227,7 @@ header {
 }
 
 .infoSection1 {
- width: 95%;
+ width: 100%;
  margin: 0 auto;
  display: flex;
  margin-top: 30px;
@@ -239,7 +239,7 @@ header {
 .shortBio {
  width: 100%;
  box-shadow: 0px 1px 7px #5555;
- height: 45vh;
+ 
 }
 
 
@@ -255,9 +255,13 @@ header {
  padding: 11px 9px;
 
 }
-.bio button
+.bio_btn
 {
- float: right;
+ text-align: right;
+}
+.bio_btn button
+{
+ 
  
  background-color: black;
  color: white;
@@ -296,7 +300,11 @@ padding: 7px 10px;
  margin-bottom: auto;
  margin-top: auto;
 }
-.category_1 button
+category_btn
+{
+ text-align: right;
+}
+.category_btn button
  {
  background-color: white;
  box-shadow: 0px 1px 7px #5555;
@@ -331,7 +339,8 @@ padding: 7px 10px;
  margin-right: 5%;
  margin-left: 5%;
  box-shadow: 0px 1px 7px #5555;
- height: 58vh;
+ margin-bottom: 4%;
+ padding: 0px 0px 13px;
 
 }
 .feed_show
@@ -339,6 +348,7 @@ padding: 7px 10px;
  width: 100%;
  background-color: skyblue;
  height: 60%;
+ margin-top: 21%;
 }
 .feed_show_img
 {
@@ -348,7 +358,8 @@ padding: 7px 10px;
 .feed_show_img img 
 {
  width: 100%;
- margin-top: -13%;
+ margin-top: -22%;
+ height: 36vh;
  border-radius: 10px;
 }
 .feed_show_content
@@ -360,6 +371,9 @@ padding: 7px 10px;
  width: 85%;
  background-color: white;
  margin-top: 6%;
+ 
+ padding: 0 0 10px;
+
  
  
 }
@@ -396,6 +410,7 @@ padding: 7px 10px;
  height: 15px;
  }
 
+
 .authorInfo {
  width: 100%;
  display: flex;
@@ -406,6 +421,7 @@ padding: 7px 10px;
  height: auto;
  display: flex;
 }
+
 
 .logo {
  width: 20%;
@@ -932,7 +948,7 @@ mat-panel-title h4 {
 @media screen and (min-width: 767px) and (max-width: 1024px) {
  header
  {
- height: 42vh;
+ 
  }
  .login_user {
  width: 26%;
@@ -1021,7 +1037,7 @@ mat-panel-title h4 {
  }
  .headerImg[_ngcontent-c1] {
  width: 100%;
- height: 58%;
+ 
  display: flex;
  }
  .bio button
@@ -1115,7 +1131,7 @@ label {
  /* background-color: aqua; */
  margin-top: 40px;
  display: flex;
- 
+ height: 40vh;
 }
 .infoSectonCard_img
 {
@@ -1132,8 +1148,9 @@ label {
 }
 
 .infoSectonCard img {
- width: 60%;
+ width: 100%;
  background-color: beige;
+ height: 100%;
  /* margin-right: 5% */
 }
 .infoSectonCard textarea
@@ -1161,16 +1178,28 @@ label {
  margin: 0 auto;
  height: 100%;
 }
+.Sectioncontent input
+{
+  width: 70%;
+    height: 8%;
+    border-radius: 6px;
+    border: solid 1px gray;
+    margin-top: 5%;
+}
 
 .add_division
  {
- background-color: white !important;
- color: skyblue !important;
- font-size: 15px !important;
- border: solid 1px gainsboro !important;
- border-radius: 40px !important;
- margin-top: 2%;
- padding:7px;
+  background-color: white !important;
+  color: skyblue !important;
+  font-size: 15px !important;
+  border: solid 1px gainsboro !important;
+  border-radius: 40px !important;
+  margin-top: 1%;
+  padding: 7px;
+  float: right;
+  width: 15%;
+  margin: 10px   10px;
+
  }
  .add_division svg
  {
@@ -1187,6 +1216,7 @@ label {
  font-size: 15px !important;
  border: solid 1px gainsboro !important;
  border-radius: 40px !important;
+ float:right;
  margin-top: 3%;
  padding:7px;
  margin-bottom: 1%;
@@ -1199,7 +1229,65 @@ label {
  fill: gray;
  padding: 0 15px 0 0;
  }
+ 
+ .submit_division
+ {
+  background-color: white !important;
+  color: skyblue !important;
+  font-size: 15px !important;
+  border: solid 1px gainsboro !important;
+  border-radius: 40px !important;
+  margin-top: 1%;
+  padding: 7px;
+  float: right;
+  width: 15%;
 
+
+ }
+ .edit_division
+ {
+  background-color: white !important;
+  color: skyblue !important;
+  font-size: 15px !important;
+  border: solid 1px gainsboro !important;
+  border-radius: 40px !important;
+  margin-top: 1%;
+  padding: 7px;
+  float: right;
+  width: 12%;
+  margin: 10px   10px;
+
+ }
+ .edit_division svg
+ {
+ height: 15px;
+ width: 15px;
+ float: left;
+ fill: gray;
+ padding: 0 15px 0 0;
+ }
+ .item_btn1
+ {
+  background-color: white !important;
+  color: skyblue !important;
+  font-size: 15px !important;
+  border: solid 1px gainsboro !important;
+  border-radius: 40px !important;
+  margin-top: 1%;
+  padding: 7px;
+  float: right;
+  width: 19%;
+  margin: 10px   10px;
+
+ }
+ .item_btn1 svg
+ {
+ height: 15px;
+ width: 15px;
+
+ fill: gray;
+ padding: 0 15px 0 0;
+ }
 /* <----------------------------------------------------------------Slider-------------------------------------------------> */
 
 .certificate {
@@ -1220,17 +1308,34 @@ label {
 
 .items img {
  margin-right: 60px;
+ width: 100%;
+
 }
 .items
 {
- width:30% ;
- margin: 0px 10px;
+  min-width: 33%;
+  margin: 0px 10px;
+  height: 30vh;
+
 }
-.items button
+.items1
 {
- width:100% ;
- padding: 62px 17px;
+  
+  margin: 0px 10px;
+  height: 30vh;
+
 }
+.item_btn
+{
+  margin: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+/* .item_btn button
+{
+ 
+ padding: 62px 17px;
+} */
 
 .companyImg {
  width: 90%;
@@ -1463,13 +1568,14 @@ label {
 
 .container {
  position: relative;
+ width: 100%;
  
  }
  
  .image {
  display: block;
  width: 100%;
- height: auto;
+ height:100%;
  }
  
  .overlay {
@@ -1488,7 +1594,25 @@ label {
  .container:hover .overlay {
  opacity: 0.5;
  }
+ .overlay1 {
+  position: absolute;
+width: 50%;left: 25px;
+top: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 100%;
+ width: 100%;
  
+  transition: .5s ease;
+  
+  }
+  
+  .container:hover .overlay1 {
+  opacity: 0.5;
+ 
+  }
+  
  .change_section_image {
  
  font-size: 20px;
@@ -1507,6 +1631,43 @@ label {
 {
  fill: white;
 }
+
+.edit_bio
+{
+  display: flex;
+  text-align: right;
+  margin: 0 auto;
+  width: 70%
+}
+.edit_bio textarea
+{
+  width: 100% !important;
+  font-size: 20px;
+  height: 8vh !important;
+  padding: 10px;
+  border-radius: 6px;
+  
+  text-align: justify;
+  font-size: 12px;
+  
+  
+}
+.edit_bio button
+{
+  width: 10%;
+  margin: 4px 12px;
+  background-color: #34c334;
+  color: #ffffff;
+  font-weight: 600;
+  height: 25px;
+  border-radius: 13px;
+  border: none;
+  margin-top: 7%;
+  /* float: right; */
+  font-size: 12px;
+  /* display: flex; */
+
+}
 input[type="file"]{
   width: 77%;
   height: 40px;
@@ -1519,4 +1680,12 @@ input[type="file"]{
   padding: 10px;
   border-color: #c7c7c7;
   display: none;
+}
+.content_img
+{
+  width: 60%;
+}
+.certification
+{
+  margin-top: 9%
 }
