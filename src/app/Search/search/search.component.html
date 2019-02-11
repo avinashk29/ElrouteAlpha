@@ -24,19 +24,18 @@
     <div class="productCard" *ngIf="result._id != null" >
       <div class="productImage">
          
-      <!--  <div class="bookmark" *ngIf="!notlogin" (click)="bookmark(result._id)" >
+       <!-- <div class="bookmark" *ngIf="!notlogin" (click)="bookmark(result._id)" >
 
-        </div>
+        </div> 
         <div class="bookmark" *ngIf="!notlogin && unbookmarked" (click)="bookmark(result._id)" >
 
         </div>
         <div class="bookmark unbookmark" *ngIf="!notlogin && !unbookmarked" (click)="unbookmark(result._id)" >
 
-        </div>
-      
-        <button  (click)= " addProductBookmark(i,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm else bloading">Bookmark</button>
+        </div> -->
+        <!-- <button  (click)= " addProductBookmark(i,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm; else bloading">Bookmark</button>
             <ng-template #bloading>
-                <button (click)=" deleteProductBookmark(i,result._id)" >Unbookmark</button>
+                <button (click)=" deleteProductBookmark(i,result._id)">Unbookmark</button>
             </ng-template>
           </div>
         <img src="https://picsum.photos/200/300/?random">
@@ -66,8 +65,8 @@
       </div>
     </div>
       </div>
-        </div>
-      -->
+        </div> -->
+
     
           <div class="productCard">
         <div class="productImage">
@@ -76,7 +75,7 @@
         <div class="productContent" >
         <div class="content">
           <div class="b_page_btn">
-            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.bookmarkService.productBookmark[i].bookm else bloading">Bookmark</button>
+            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading">Bookmark</button>
             <ng-template #bloading>
                 <button (click)="deleteProductBookmark(i,result._id)">Unbookmark</button>
             </ng-template>

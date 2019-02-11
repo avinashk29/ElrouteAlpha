@@ -65,7 +65,9 @@
           </div>
           <button type= "submit" class="add_btn">Add Feed</button>
           <div class="add_media1">
-          <span>{{companyName}}</span>
+          <span>{{companyName}}
+            <!-- <input type="text" formControlName="{{companyName}}"> -->
+          </span>
         </div>
         </div>
       </div>
@@ -92,7 +94,7 @@
           </div>
           </div>
           <div class="feedInfo">
-            <p>{{feed.Content}} </p>
+            <p>{{feed.content}} </p>
           </div>
           <div class="feed-img">
           <img src = {{feed.Image}}>

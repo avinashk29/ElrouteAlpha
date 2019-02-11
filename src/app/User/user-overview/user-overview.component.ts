@@ -30,6 +30,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   companyFollowers = [];
   subscription;
   userImage
+ 
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private router:Router, public companyService: CompanyServiceService ,  public dialog: MatDialog , public route: ActivatedRoute,) {
 
     console.log('working');
@@ -40,7 +41,6 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
           this.username = JSON.parse(res['_body']).userName;
           this.location = JSON.parse(res['_body']).location;
           this.title = JSON.parse(res['_body']).title;
-       
           console.log(this.username);
           this.userBio = JSON.parse(res['_body']).shortBio;
           console.log(JSON.parse(res['_body']).shortBio);
@@ -70,6 +70,7 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
       this.userImage=JSON.parse(res['_body']).userImage;
       console.log(this.userImage);
       this.userBio = JSON.parse(res['_body']).shortBio;
+    
       console.log(this.userBio)
     });
   }
