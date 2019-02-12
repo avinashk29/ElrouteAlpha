@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import {AuthServiceService} from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import {FormGroup , FormControl} from '@angular/forms';

@@ -223,17 +223,19 @@ this.setSection();
    }
    });
    //------------------------------------------bookmark at Bpage-------------------
-      // this.userService.getUserData().subscribe(res=>{
-      //   this.userBookmark=JSON.parse(res['_body']).bookmarks.company
-      //   console.log(this.userBookmark);
-      // for(let i=0;i<this.userBookmark.length;i++){
-      //   if(this.comapnyId==this.userBookmark[i])
-      //   {
-          
-      //   }
-      // }
+      this.userService.getUserData().subscribe(res=>{
+        this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
+        console.log(this.userBookmark);
+      for(let i=0;i<this.userBookmark.length;i++){
+        if(this.comapnyId==this.userBookmark[i])
+        {
+          this.bookmark=true;
+        }else{
+          this.bookmark=false;
+        }
+      }
 
-      // })
+      })
   }
  onAddSection(){
    this.sectionEdit=true;
@@ -413,4 +415,18 @@ onSubmit(){
   });
 }
 
+addBookmark(){
+  this.bookmark=true;
+  this.bookmarkService.addCompanyBookmark(this.comapnyId).subscribe(res=>{
+    console.log(res);
+  })
+  console.log('Bookmark Done');
+}
+removeBookmark(){
+  this.bookmark=false;
+  this.bookmarkService.DeleteBookmarkCompany(this.comapnyId).subscribe(res=>{
+    console.log(res);
+  })
+  console.log('Bookmar Removed')
+}
 }

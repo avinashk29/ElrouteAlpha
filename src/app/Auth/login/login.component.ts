@@ -13,8 +13,8 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class LoginComponent implements OnInit {
  login = new FormGroup({
-   Email: new FormControl(),
-   Password: new FormControl()
+   email: new FormControl(),
+   password: new FormControl()
  });
  error = true;
  bpage = false;
@@ -48,12 +48,8 @@ onSubmit() {
     this.storage.set('token', res.headers.get('x-auth'));
   this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
-  if (!this.bpage) {
-    this.router.navigate(['/Dashboard']);
-   } else {
-    this.router.navigate(['/B-page']);
-   }
-  this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);
+  this.router.navigate(['/Dashboard']);
+  this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
   } else {
     this.notification.error('Error Login');
   }

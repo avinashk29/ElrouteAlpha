@@ -24,6 +24,7 @@ import {CompanyForm2Component} from './Company/company-form2/company-form2.compo
 import {CompanyForm3Component} from './Company/company-form3/company-form3.component';
 import {CompanyForm4Component} from './Company/company-form4/company-form4.component';
 import {CompanyForm5Component} from './Company/company-form5/company-form5.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
