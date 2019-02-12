@@ -161,7 +161,7 @@ this.setSection();
       if (this.type === 'product') {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
             this.products = JSON.parse(res['_body']);
-            // console.log(this.products[0].Image);
+            console.log(JSON.parse(res['_body']));
                 });
         this.type = 'product';
         console.log(this.type);
@@ -290,7 +290,8 @@ onDelete(index){
         const updata = new FormData();
         const url = res['_body'];
         if(name==="certification"){
-                     this.certification.push(url);
+          console.log(this.certification)
+            this.certification.push(url);
              let certiForm = new FormGroup({
              certification: new FormControl(this.certification)
            })
@@ -299,7 +300,7 @@ onDelete(index){
              console.log(JSON.parse(response['_body']));
              })
           }
-          if(name==="companyImage"){
+          else if(name==="companyImage"){
             // console.log(this.certification);
             // console.log(url)
              console.log("m abhi yha pr hoon sbse upar")

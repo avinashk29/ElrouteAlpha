@@ -5,6 +5,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import { CompanyServiceService } from 'src/app/Service/company-service.service';
 
 @Component({
   selector: 'app-product-form',
@@ -19,6 +20,8 @@ export class ProductFormComponent implements OnInit {
   companyId;
   urltype;
   url;
+  companyid
+  companyName
   productInfo= [ 
     {
         "specificationContent" : "",
@@ -34,7 +37,7 @@ export class ProductFormComponent implements OnInit {
     }
 ];
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-    private _fb: FormBuilder, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
+    private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
      }
 
@@ -58,6 +61,11 @@ export class ProductFormComponent implements OnInit {
     this.setProductInfo();
   }
   onImagePick(event, name) {
+    this.companyid=this.storage.get('companyId')
+    this.companyService.GetoneCompany(this.companyid).subscribe(res=>{
+      this.companyName=JSON.parse(res['_body']).companyName;
+      console.log(this.companyName)
+    })
     console.log(name);
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
@@ -134,8 +142,9 @@ export class ProductFormComponent implements OnInit {
   onSubmit() {
     if (this.productForm.valid) {
       console.log(this.productForm.value);
-      const productData = this.productForm.value;
-      this.productService.addProduct(productData).subscribe(res => {
+     this.productForm.value;
+     this.productForm.value.companyName=this.companyName;
+      this.productService.addProduct(this.productForm.value).subscribe(res => {
         console.log(JSON.parse(res['_body']));
       });
        this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
