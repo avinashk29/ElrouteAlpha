@@ -47,8 +47,7 @@ const routes: Routes = [
     {path: 'company-form3' , component: CompanyForm3Component},
     {path: 'company-form4' , component: CompanyForm4Component},
     {path: 'company-form5' , component: CompanyForm5Component},
-    {path:'product', component:ProductListingComponent},
-    {path:'Bface/:id',component:LandingPageComponent}
+    {path:'product', component:ProductListingComponent}
     
 
   // {path: 'feed ' , component: fee}

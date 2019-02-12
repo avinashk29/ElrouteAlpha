@@ -110,7 +110,7 @@ export class CompanySearchComponent implements OnInit {
     console.log(res)
   });
  }
- GotoBpage(id){
-   this.router.navigate(['/Bface/'+this.id]);
- }
+//  GotoBpage(id){
+//    this.router.navigate(['/companyPage/'+this.id]);
+//  }
 }
