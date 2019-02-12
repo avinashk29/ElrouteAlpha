@@ -44,7 +44,7 @@ link: new FormControl('')
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute, public productService: ProductServiceService ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService ) {
 
 
     this.feedService.token = this.storage.get('token');
