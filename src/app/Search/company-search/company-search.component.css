@@ -97,7 +97,7 @@ section{
   height: auto;
 }
 .companyCard{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 30px;
@@ -124,14 +124,20 @@ section{
   margin: 0;
   padding: 5px 0 0 0;
 }
-.companyInfo button{
-  width: 15%;
+.b_page_btn1 button{
+  
   border: solid 1px #707070;;
   border-radius: 10px;
   color: #707070;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   background-color: #F9FDFA;
+}
+.b_page_btn button
+{
+  background-color: transparent;
+  border:none;  
+  margin-top: 16%;
 }
 .b1 img
 { 
@@ -139,10 +145,14 @@ section{
     margin-left: 20px;
 
 }
+.follow
+{
+  display: flex;
+}
 .storyBtn{
-  width: 15%;
+  width: 22%;
   margin-left: 5%;
-  margin-top: 20px;
+  margin-top: 1%;
 }
 .storyBtn button{
   width: 100%;

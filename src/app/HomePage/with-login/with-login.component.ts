@@ -12,6 +12,7 @@ import { Route } from '@angular/compiler/src/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import {ProductServiceService} from '../../Service/product-service.service';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -26,20 +27,24 @@ companyName;
 haveCompany;
 subscription;
 shortBio;
+imagePreview;
 feeds = [];
 noFeeds = true;
+addLink = false;
+image;
 userImage;
-companyLogo
+companyLogo;
 feed = new FormGroup({
 content: new FormControl(''),
 Image: new FormControl(' '),
 tagId: new FormControl(),
+link: new FormControl('')
 });
 
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute, public productService: ProductServiceService ) {
 
 
     this.feedService.token = this.storage.get('token');
@@ -93,8 +98,14 @@ tagId: new FormControl(),
       console.log(name);
 
       const file = <File>event.target.files[0];
-        // const reader = new FileReader();
-        // reader.readAsDataURL(file);
+      if (name === 'Image') {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagePreview = reader.result;
+       };
+       reader.readAsDataURL(file);
+      }
+
       const fdata= new FormData();
       fdata.append(name,file)
         this.imgupload.uploadImg(fdata).subscribe(res=>{
@@ -102,7 +113,8 @@ tagId: new FormControl(),
           this.feed.value.Image=res['_body']
           const url=res['_body']
            console.log(url)
-           fd.append(name,url);
+           fd.append('userImage',url);
+           console.log(url);
          this.userService.editUser(fd).subscribe(res=>{
            console.log(res);
          })

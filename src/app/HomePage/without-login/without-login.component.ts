@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 // import * as $ from 'jquery';
 
 
+  
 @Component({
   selector: 'app-without-login',
   templateUrl: './without-login.component.html',

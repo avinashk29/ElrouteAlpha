@@ -72,6 +72,7 @@
               </div>
                 <div class="follow-btn" *ngIf="myCompany">
                     <button (click) = "EditBpage()">Edit</button>
+                    <span>24,922</span>
                 </div>
               </div>
         </div>
@@ -143,9 +144,14 @@
 
       </div>
       <div class="headerImg" *ngIf="img">
+          <div class="container">
 
-         <img src="{{Image}}">
-
+         <img src="{{Image}}" class="image">
+         <div class="overlay">
+            <input  type="file"  #filePicker (change)="onsectionImagePick($event,'sectionImage',i)" class="picker" style="display: hidden;"  visbility="hidden">
+            <button type="button" (click)="filePicker.click()" class="change_cover_image">Change Photo<br/><svg xmlns="http://www.w3.org/2000/svg"  width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> </button>
+        </div>
+</div>
       </div>
         <div class="tabs">
         <div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h1>INFO</h1></div>
@@ -162,8 +168,10 @@
           <div class="bio" *ngIf = "!editshortIntro">
        <h2>SHORT BIO</h2>
        <!-- <p>{{shortIntro}}</p> -->
-       <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+       <div class="short_bio_content"> 
+       <p *ngIf= "!shortIntro"><i>All business,large  and smaall,new or established ,struggle to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize yourself is less than 400 characters.</i></p>
        <p *ngIf= "shortIntro">{{shortIntro}}</p>
+       </div>
 <div class="bio_btn">
        <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
 </div>    
@@ -315,6 +323,7 @@
       </div> -->
                                  
                       <!-- section edit   -->
+                      
 
 
 <div *ngIf="sectionEdit">
@@ -324,9 +333,9 @@
       <div class="infoSectonCard" >
         <div class="content" [formGroupName]="i">
           <div class="Sectioncontent">
-         
+         <!-- <button type="button" class="addTitle_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Section Title</button> -->
               <input type="text" formControlName="sectionTitle">
-                <textarea formControlName="sectionContent"></textarea>
+                <textarea formControlName="sectionContent" ></textarea>
                 <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
               </div>
             </div>
@@ -380,7 +389,7 @@
         </div>
   <div ng2-carouselamos class="slider-wrapper"
   [items]="certification"
-  [width]="500"
+  [width]="830"
   [$prev]="prev1"
   [$next]="next1"
   [$item]="item1"
@@ -398,7 +407,14 @@
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> -->
     <div class="items">
         <!-- <div class="overlay1"> -->
+            <div class="container" style="height:40vh;">
         <img [src]="item">
+        <div class="overlay1"> 
+            
+            <button type="button" class="close">x</button> 
+        </div>
+        </div>
+
       <!-- </div> -->
     </div>
   <!-- </div> -->
@@ -406,12 +422,19 @@
        
   </div>
   <div class="companyImg">
+      <div class="item_btn">
       <h2>COMPANY IMAGES</h2>
+      <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
+      <button type="button" (click)="filePicker.click()" class="item_btn2"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>
+        Add Company Image</button>
+      </div> 
       <div ng2-carouselamos class="slider-wrapper"
       [items]="companyImage"
+      [width]="835"
       [$prev]="prev"
       [$next]="next"
       [$item]="item2"
+      
       ></div>
     <ng-template #prev>
       <img src= "../../../assets/images/left-arrow.png">
@@ -421,12 +444,21 @@
       </ng-template>
       <ng-template #item2 let-item>
          <div class="items1">
-            <img src="{{item}}">
+           
+        <div class="container">
+            <img src="{{item}}"  >
+           
+            <div class="overlay1"> 
+            
+                <button type="button" class="close">x</button> 
+            </div>
+            
+            </div>
          </div>
         </ng-template>
-        <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
+        <!-- <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
         <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-          Add Company Image</button>
+          Add Company Image</button> -->
       </div>
   </div>
 </div>
@@ -443,14 +475,14 @@
                 </div>
                 <div class="productContent" >
                 <div class="content">
-                    <button (click)="DeleteProduct(product._id)">Delete</button>
+                    <!-- <button (click)="DeleteProduct(product._id)">Delete</button> -->
                 <div class="productCategory">
                 <h6>{{product.catogory}}</h6>
                 </div>
                 <div class="productName">
                   <h2 routerLink = "/product-page/{{product._id}}">{{product.productName}}</h2>
-                  <h5>{{product.company}}</h5>
-                  <button (click)="editProduct(product._id)">Edit</button>
+                  <h5>{{product.companyName}}</h5>
+                  <!-- <button (click)="editProduct(product._id)">Edit</button> -->
                   <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span style= "padding-left: 8px">Country</span></small>
                 </div>
                 <div class="discription" style="margin-top:30px;">
