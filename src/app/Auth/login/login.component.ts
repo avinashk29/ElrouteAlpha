@@ -2,7 +2,7 @@ import { Component, OnInit , Inject} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {AuthServiceService} from '../auth-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { SignupComponent } from '../signup/signup.component';
@@ -17,8 +17,17 @@ export class LoginComponent implements OnInit {
    Password: new FormControl()
  });
  error = true;
+ bpage = false;
    constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, public authService: AuthServiceService,
-  public router: Router, public notification: ToastrService, public dialog: MatDialog , public dialogRef: MatDialogRef<LoginComponent>,) { }
+  public router: Router, public notification: ToastrService, public dialog: MatDialog , public dialogRef: MatDialogRef<LoginComponent>,
+   public route: ActivatedRoute) {
+    this.route.queryParams.filter(params => params.urlRedirect).subscribe(params => {
+      const test = params.urlRedirect;
+      if (test === true) {
+         this.bpage = true;
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -39,7 +48,11 @@ onSubmit() {
     this.storage.set('token', res.headers.get('x-auth'));
   this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
-  this.router.navigate(['/Dashboard']);
+  if (!this.bpage) {
+    this.router.navigate(['/Dashboard']);
+   } else {
+    this.router.navigate(['/B-page']);
+   }
   this.notification.success('Welcome Back', JSON.parse(res['_body']).UserName);
   } else {
     this.notification.error('Error Login');

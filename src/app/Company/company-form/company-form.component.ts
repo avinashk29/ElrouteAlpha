@@ -83,7 +83,7 @@ this.router.navigate(['/companyPage/' + this.companyId] ,{queryParams:{urltype:'
 
 
 
-      this.notification.success('Welcome' + this.companyForm.value.companyName);
+      this.notification.success('Welcome' + '' + this.companyForm.value.companyName);
     } else {
       this.notification.error('Enter Valid Deatils');
     }

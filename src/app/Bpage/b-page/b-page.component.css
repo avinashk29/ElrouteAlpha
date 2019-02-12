@@ -1058,7 +1058,7 @@ mat-panel-title h4 {
  height:fit-content !important;
  }
 }
-@media screen and (min-width: 700px) and (max-width: 1440px) {
+@media screen and (min-width: 768px) and (max-width: 1366px) {
  .with_login {
  width: 85%;
  }
@@ -1179,7 +1179,7 @@ label {
 }
 
 .content {
- width: 40%;
+ width: 50%;
  box-shadow: 0px 0px 5px #5555;
 }
 

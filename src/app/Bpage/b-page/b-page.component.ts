@@ -12,6 +12,7 @@ import { FormControl , FormGroup, FormBuilder, FormArray} from '@angular/forms';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { JsonPipe } from '@angular/common';
 import { FollowService } from 'src/app/Service/follow-service.service';
+import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -33,6 +34,7 @@ CompanyName;
 category;
 city;
 Follower
+bookmark
 file
 uploadImages=false;
 companyEmail;
@@ -45,7 +47,7 @@ industry;
  address ;
   yearEstd;
   companySize;
-companyFollowers=[];
+companyFollowers=[]
 website;
 workingHours;
 products = [];
@@ -71,6 +73,8 @@ infoImage;
 section=[];
 companyImage = [];
 bioEdit=false;
+userBookmark
+follower
 // BForm = new FormGroup ({
   //  website: new FormControl(''),
   //  Image: new FormControl(''),
@@ -84,7 +88,7 @@ BForm: FormGroup;
 
   constructor(@Inject (LOCAL_STORAGE) private storage: WebStorageService, public companyService: CompanyServiceService,
   public productService: ProductServiceService, public feedService: FeedService, public route: ActivatedRoute, private router: Router,
-   public userService: UserService, private follows: FollowService, private imgUpload:ImageUploadService,private _fb:FormBuilder) {
+   public userService: UserService, private follows: FollowService,private bookmarkService:BookmarkServices, private imgUpload:ImageUploadService,private _fb:FormBuilder) {
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
@@ -101,8 +105,8 @@ BForm: FormGroup;
       this.comapnyId = this.route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
-
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+          console.log(JSON.parse(res['_body']))
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
           this.city = JSON.parse(res['_body']).city;
@@ -118,9 +122,7 @@ BForm: FormGroup;
           this.companySize=JSON.parse(res['_body']).companySize;
            this.Image=JSON.parse(res['_body']).coverImage;
            this.companyLogo=JSON.parse(res['_body']).companyLogo;
-           this.infoImage=JSON.parse(res['_body']).infoImage;
-            // this.sectionImage=JSON.parse(res['_body']).sectionImage;
-
+           this.infoImage=JSON.parse(res['_body']).infoImage;      
             this.section = JSON.parse(res['_body']).section;
            this.certification=JSON.parse(res['_body']).certification;
            this.companyImage = JSON.parse(res['_body']).companyImage;
@@ -130,9 +132,7 @@ BForm: FormGroup;
            Image: JSON.parse(res['_body']).Image,
            workingHours: JSON.parse(res['_body']).workingHours,
            shortIntro: JSON.parse(res['_body']).shortIntro,
-          //  facebook: JSON.parse(res['_body']).socialLinks.facebook,
-          //  linkedin: JSON.parse(res['_body']).socialLinks.linkedin,
-          //  google: JSON.parse(res['_body']).socialLinks.google,
+         
           });
 
 this.setSection();
@@ -216,16 +216,24 @@ this.setSection();
    });
 
 
- this.feedService.GetFeed().subscribe(res => {
+ this.feedService.GetFeed(this.comapnyId).subscribe(res => {
    this.feeds =  JSON.parse(res['_body']);
    if (!this.feeds.length){
      this.noFeeds = true;
    }
    });
+   //------------------------------------------bookmark at Bpage-------------------
+      // this.userService.getUserData().subscribe(res=>{
+      //   this.userBookmark=JSON.parse(res['_body']).bookmarks.company
+      //   console.log(this.userBookmark);
+      // for(let i=0;i<this.userBookmark.length;i++){
+      //   if(this.comapnyId==this.userBookmark[i])
+      //   {
+          
+      //   }
+      // }
 
-  //  this.BForm=this._fb.group({
-  //     section:this._fb.array([])
-  //  });
+      // })
   }
  onAddSection(){
    this.sectionEdit=true;
@@ -303,23 +311,23 @@ onDelete(index){
           else if(name==="companyImage"){
             // console.log(this.certification);
             // console.log(url)
-             console.log("m abhi yha pr hoon sbse upar")
-              this.companyImage.push(url);
-             let companyImage = new FormGroup({
-               companyImage: new FormControl(this.companyImage)
+            console.log("m abhi yha pr hoon sbse upar")
+            this.companyImage.push(url);
+           let companyImage = new FormGroup({
+             companyImage: new FormControl(this.companyImage)
+           })
+           this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
+            // this.companyLogo=JSON.parse(response['_body']).url;
+             console.log(JSON.parse(response['_body']));
              })
-             this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
-              // this.companyLogo=JSON.parse(response['_body']).url;
-               console.log(JSON.parse(response['_body']));
-               })
-            }
+          }
+       
         else{
           updata.append(name,url);
           this.companyService.UpdateCompany(updata).subscribe(response=>{
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
-
         }
 
       })
@@ -404,4 +412,5 @@ onSubmit(){
     console.log(JSON.parse(res['_body']));
   });
 }
+
 }

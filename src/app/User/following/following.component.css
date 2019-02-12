@@ -15,7 +15,7 @@
     box-shadow: 0 1px 5px 2px rgba(25, 25, 25, 0.2);
 }
 
-.follow_search {
+/* .follow_search {
     width: 95%;
     margin: 0 auto;
     padding: 10px;
@@ -26,7 +26,7 @@
     width: 100%;
     background-color: #f5f5fa;
     border: none;
-}
+} */
 
 .following {
     display: flex;
@@ -270,7 +270,7 @@ section{
   }
   .cardFooter
   {
-    dispay: none;
+    display: none;
   }
   .companyInfo  button{
     width: 27%;

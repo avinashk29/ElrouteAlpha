@@ -3,7 +3,7 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { Router } from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-company-form5',
   templateUrl: './company-form5.component.html',
@@ -12,7 +12,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 export class CompanyForm5Component implements OnInit {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
-  public companyService: CompanyServiceService, public router: Router,  private _fb: FormBuilder) { }
+  public companyService: CompanyServiceService, public router: Router,  private _fb: FormBuilder,  public notification: ToastrService) { }
 companyId;
 contactDevisionForm: FormGroup;
 companyForm: FormGroup;
@@ -55,6 +55,6 @@ companyForm: FormGroup;
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
-this.router.navigate(['/companyPage/' + this.companyId], {queryParams: {urltype : 'default'}});;
+    this.notification.success('B Face Updated');
   }
 }

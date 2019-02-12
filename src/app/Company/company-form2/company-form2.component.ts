@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { Router } from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-company-form2',
   templateUrl: './company-form2.component.html',
@@ -15,7 +16,7 @@ export class CompanyForm2Component implements OnInit {
   companyId;
 
   constructor(public companyService: CompanyServiceService, public router: Router,
-    @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService,  public notification: ToastrService) {
     }
     companyForm = new FormGroup ({
       companyName: new FormControl('', [Validators.required]),
@@ -79,8 +80,8 @@ export class CompanyForm2Component implements OnInit {
           this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
              console.log(JSON.parse(res['_body']));
            });
-      this.router.navigate(['/companyPage/' + this.companyId], {queryParams: {urltype : 'default'}});
 
+           this.notification.success('B Face Updated');
 
   }
 

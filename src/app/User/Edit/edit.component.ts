@@ -45,10 +45,10 @@ export class EditComponent implements OnInit {
       this.user = JSON.parse(res['_body']);
       console.log(this.user);
       this.editForm.patchValue({
-        UserName:JSON.parse(res['_body']).userName,
-        Location:JSON.parse(res['_body']).location,
-        Title:JSON.parse(res['_body']).title,
-        Email:JSON.parse(res['_body']).email
+        userName:JSON.parse(res['_body']).userName,
+        location:JSON.parse(res['_body']).location,
+        title:JSON.parse(res['_body']).title,
+        email:JSON.parse(res['_body']).email
       })
     });
    

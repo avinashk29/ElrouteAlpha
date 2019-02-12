@@ -10,12 +10,14 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 export class BookmarkComponent implements OnInit {
 
   product=[]
+  bookmark=[]
   constructor(public bookmarkService:BookmarkServices,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { 
 
     this.bookmarkService.token = this.storage.get('token');
     this.bookmarkService.getBookmarkProduct().subscribe(res => {
     this.product=JSON.parse(res['_body']);
       console.log(this.product)
+    
     });
 
   }

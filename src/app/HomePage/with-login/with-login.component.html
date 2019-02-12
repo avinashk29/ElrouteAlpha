@@ -27,6 +27,9 @@
     <div class="user_img">
         <img src="{{userImage}}"  >
     </div>
+    <div class="user_img" *ngIf="!userImage">
+      <img src="assets/images/user.png">
+  </div>
     <div class="user_details">
         <div class="user_details1">
             <h3>{{username}}</h3>
@@ -121,7 +124,7 @@
           </div>
           </div>
           <div class="feedInfo">
-            <p>{{feed.Content}} </p>
+            <p>{{feed.content}} </p>
           </div>
           <div class="feed-img">
           <img src = {{feed.Image}}>
