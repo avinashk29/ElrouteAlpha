@@ -44,20 +44,20 @@
 
 <div class="home_bgimg">
   <section>
-      
+
     <div class="HomePage">
-      
+
 
       <div class="HomePage_header">
-         
+
         <div class="header_logo">
           <!-- <h1>elroute</h1> -->
           <img src="../../assets/images/elroute_logo .png">
           <p>"Build Business Relationships like Never Before ”</p>
         </div>
         <div class="sign_up_btn">
-          <button type="button" class="btn1">Get Started</button>
-          <button type="button" class="btn2" (click)="openDialog()">Sign In</button>
+          <button type="button" class="btn1" (click)="openDialog()">Get Started</button>
+          <button type="button" class="btn2" (click) = "openLogin()" >Sign In</button>
         </div>
 
       </div>
@@ -70,14 +70,14 @@
       </div>
       <img src="assets/images/Path.png" class="path">
     </div>
-    
+
   </section>
-  
+
   <!-- <svg xmlns="http://www.w3.org/2000/svg" width="1670" height="508.559" viewBox="0 0 1670 508.559">
 
     <path id="Path_393" data-name="Path 393" d="M150,0H1520l150,93.933V508.559H0V101.04Z" fill="#fff"/>
   </svg> -->
-  
+
 
   <section id="section_2">
     <div class="section2">
@@ -87,23 +87,23 @@
         <div class="category_btn">
           <button type="button">Top Categories</button>
         </div>
-        
+
       </div>
       <div class="images">
         <div class="test">
-          
-              <div class="img1" > 
+
+              <div class="img1" (click) = "onSearch('HandmadePaper')" >
                   <!-- <img src="assets/images/handpaper.jpg"> -->
                   <div class="hover_1" >
                   <h3>Handmade Paper</h3>
                   </div>
-                
+
           </div>
-            
+
         </div>
-       
+
         <div class="test">
-        <div class="img2">
+        <div class="img2" (click) = "onSearch('Gems & Jewellry')">
           <!-- <img src="assets/images/gems.jpg"> -->
           <div class="hover_2">
           <h3>Gems & Jewellry</h3>
@@ -111,17 +111,17 @@
         </div>
         </div>
         <div class="test">
-        <div class="img3">
+        <div class="img3" (click) = "onSearch('Bearings')">
           <!-- <img src="assets/images/bearings.jpg"> -->
           <div class="hover_3">
           <h3>Bearings</h3>
         </div>
         </div>
-  </div>  
+  </div>
       </div>
 
     </div>
-   
+
 
 
 
@@ -225,15 +225,15 @@
         <h2>Want something, we don't have right now?</h2>
         <h4>Just Drop your contact and needs, we’ll try our level best to serve you.</h4>
       </div>
-      <div class="user_need_email">
+      <div class="user_need_email" [formGroup] = "contactFrom">
         <ul>
-          <li><label>Need</label><textarea></textarea></li>
+          <li><label>Need</label><textarea formControlName = "Need"></textarea></li>
           <li class="email_box">
             <label>Email</label>
             <div class="input_box">
-              <input type="email">
+              <input type="email" formControlName = "Email">
             </div>
-            <button>Ya! that's exactly what I need</button>
+            <button (click) = OnSendrequest()>Ya! that's exactly what I need</button>
 
 
           </li>
@@ -246,11 +246,11 @@
       <div class="section5">
         <div class="b_face">
           <h2> Create Your B Face</h2>
-          
+
           <div class="b_face_1">
             <div class="b_face_img">
               <img src="assets/images/bface.png">
-            </div>  
+            </div>
             <div class="b_face_content">
               <h3> With a  B face ,you can</h3>
               <ul>
@@ -284,16 +284,16 @@
                       <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
                     </svg>
                   </span><span>Tell what your business stands for.</span></li>
-                  <li><button type="button">Get Yours</button></li>
+                  <li>   <a style="width: 100%" [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button" (click)="openDialog()">Get Started</button></a></li>
                   </ul>
 
-             </div> 
+             </div>
             </div>
 
-          
-         </div> 
-       </div> 
-   </section> 
+
+         </div>
+       </div>
+   </section>
    <section>
         <div class="section6">
               <div class="benifites">
@@ -306,10 +306,10 @@
                       <button type="button"><img src="assets/images/2.png"><span>Maximum exposure and direct visibility on Elroute’s homepage.</span></button>
                       <button type="button"><img src="assets/images/3.png"><span>Get constant support in building your brand.</span></button>
                       </div>
-                  </div>  
-              </div>  
-        </div>  
-   </section>  
+                  </div>
+              </div>
+        </div>
+   </section>
 
    <section>
       <div class="section7">
@@ -317,8 +317,8 @@
             <h2>Think you are missing on skills or expertise that is stopping you from building your brand? </h2>
             <h3>Worry Not!</h3>
 
-           </div> 
-           <div class="section7_2"> </div> 
+           </div>
+           <div class="section7_2"> </div>
            <div class="section7_3">
              <h3> The <span style="font-weight: 700">Trade-Catalysts</span> on our platform are inclusive of  but not limites to</h3>
              <div class="section7_4">
@@ -326,37 +326,37 @@
                 <div class="section7_4_1">
                   <img src="assets/images/branding.png">
                   <h4>Branding Experts</h4>
-                 </div> 
+                 </div>
                  <div class="section7_4_1">
                     <img src="assets/images/digital.png">
                     <h4>Digital Marketing Experts</h4>
-                   </div> 
+                   </div>
                    <div class="section7_4_1">
                       <img src="assets/images/Content.png">
                       <h4>Content Marketing Experts</h4>
-                     </div> 
-  
-               
-             </div> 
-          </div> 
-          
+                     </div>
+
+
+             </div>
+          </div>
+
 
 
       </div>
-   </section>  
+   </section>
    <section>
       <div class="section8">
             <div class="section8_text">
               <h2>Got Leads?</h2>
               <h4>Share one link across with all your leads and you would have told everything about your business! </h4>
-             </div> 
+             </div>
              <div class="section8_btn">
                 <h2>Creating your B-Face on Elroute is easy and free!</h2>
-               <button type="button">Get Started</button>
-               </div> 
+               <a [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button" (click)="openDialog()">Get Started</button></a>
+               </div>
 
-       </div> 
-   </section>  
+       </div>
+   </section>
 
 
 </div>

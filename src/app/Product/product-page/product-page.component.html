@@ -39,13 +39,9 @@
       <div class="Description_box">
        <div class="des_box">
          <h2>Description</h2>
-
         <p>{{shortDescription}}</p>
       </div>
-
-
-  <mat-accordion >
-
+  <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false" *ngFor="let product of products let i = index" >
     <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-side-nav></app-side-nav>
 
-<section [formGroup] = "BForm" (ngSubmit)= "onSubmit()">
+<section >
   <div class="header_responsive">
 
         <div class="headerElements1">
@@ -51,10 +51,10 @@
         </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
             <div class="logoheader" *ngIf="!logo">
-
+<!-- 
             <input type="file" #filePicker (change)="onImagePick($event,'companyLogo')" class="picker" style="display: hidden;" >
             <button type="submit" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-              Add Your Logo</button>
+              Add Your Logo</button> -->
             </div>
             <div class="logoheader" *ngIf="logo">
                 <img src="{{companyLogo}}">
@@ -70,33 +70,33 @@
                   <span><p>{{companyFollowers }}</p></span>
                 
               </div>
-                <div class="follow-btn" *ngIf="myCompany">
+                <!-- <div class="follow-btn" *ngIf="myCompany">
                     <button (click) = "EditBpage()">Edit</button>
-                </div>
+                </div> -->
               </div>
         </div>
         <div class="extraInfo">
           <!-- <p>9 A.M. - 5 P.M.</p> -->
-          <button type="button" *ngIf= "!workingHours && !editworkingHours && myCompany " (click) = "editworkingHours = true"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Your Working Hours</button>
+          <!-- <button type="button" *ngIf= "!workingHours && !editworkingHours && myCompany " (click) = "editworkingHours = true"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Your Working Hours</button> -->
           <!-- <p>{{website}}</p> -->
-          <p *ngIf = "workingHours && !editworkingHours">{{workingHours}}</p>
+          <p>{{workingHours}}</p>
           <div *ngIf="editworkingHours">
-            <input type="number"  placeholder="Enter Working Hours"  formControlName = "workingHours"  trim #workingHours >
-            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)" *ngIf = "myCompany">Save</button>
+            <!-- <input type="number"  placeholder="Enter Working Hours"  formControlName = "workingHours"  trim #workingHours >
+            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)" *ngIf = "myCompany">Save</button> -->
           </div>
-          <button type="button" *ngIf="!website && !editwebsite && myCompany" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
-          <a *ngIf="website && !editwebsite"  target="_blank">{{website}}</a>
-          <div *ngIf="editwebsite">
+          <!-- <button type="button" *ngIf="!website && !editwebsite && myCompany" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button> -->
+          <a target="_blank">{{website}}</a>
+          <!-- <div *ngIf="editwebsite">
             <input type="text"    placeholder="Enter Website"  formControlName = "website"  trim #website >
             <button type="submit" (click) = "onEditBpage('website',website)" >Save</button>
-          </div>
+          </div> -->
 
           <div class="social">
               <div class="social_links">
                   <!-- <span><img src="assets/images/linkdin.png"></span>
                   <span><img src="assets/images/linkdin.png"></span>
                   <span><img src="assets/images/linkdin.png"></span> -->
-                  <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Social Links</button>
+                  <!-- <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Social Links</button> -->
               </div>
               <div class="social_bookmark">
                  <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button>
@@ -134,14 +134,14 @@
 
         <div class="img"></div>
         </div> -->
-        <div class="headerImg" *ngIf="!img">
-          <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
-          <!-- <img src="assets/images/bk.png"> -->
+        <!-- <div class="headerImg" *ngIf="!img">
+          <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> 
+           <img src="assets/images/bk.png"> 
           <input type="file"  #filePicker (change)="onImagePick($event,'coverImage')" class="picker testing-1911" style="display: hidden;"  visbility="hidden">
           <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
             Cover Page</button>
 
-      </div>
+      </div> -->
       <div class="headerImg" *ngIf="img">
 
          <img src="{{Image}}">
@@ -173,7 +173,7 @@
     <h6>CATEGORY</h6>
     <h5>CLOUD COMPUTING</h5>
     <div class="category_btn">
-        <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span></button>
+        <!-- <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span></button> -->
     </div>
 </div>
       
@@ -240,15 +240,15 @@
                    <p>Add your feeds here to attract more and more business and level up your game</p>
                    
                    </div>
-                   <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-                    </button>
+                   <!-- <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                    </button> -->
                 </div>
             </div>
        </div>
 
        <div class="otherInfocard">
         <div class="infoCard">
-        <!-- <div class="hq info">
+        <div class="hq info">
           <label>HEADquarters</label>
           <h3>{{country}} , {{city}}</h3>
         </div>
@@ -267,46 +267,43 @@
               <div class="revenu info" style="border-bottom:none">
                   <label>Total Revenue</label>
                   <h3></h3>
-                </div> -->
+                </div>
                 <div class="hq_info">
                     <div class="hq_info_content_" >
                      <p>It's time you share your company's whereabouts with  the business world.</p>
                      <h4 style="font-weight:400;">Add your Company's basic details here.</h4>
                      </div>
-                     <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-                      </button>
+                     <!-- <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                      </button> -->
                   </div> 
         </div>
        </div>
   </div>
 </div>
+
 <div class="body" *ngIf = "this.type === 'info'">
   <div class="infoSection2">
-    <div class="infoImg" *ngIf="!infoImg">
-       <img src="{{infoImage}}">
-      <input type="file"  #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"  visbility="hidden">
-          <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-            Info Image</button>
-          </div>
-          <div class="infoImg" *ngIf="infoImg">
+    <div class="infoImg">
+       <!-- <img src="{{infoImage}}"> -->
+      <!-- <input type="file"  #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"  visbility="hidden"> -->
+          <!-- <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/> -->
+            <!-- Info Image</button> -->
+          <!-- </div> -->
+          <div class="infoImg">
               <img src="{{infoImage}}"> 
           </div>
         
                  <div class="infoContent" >
-                    <h3>SHORT BIO  <span (click)="editshortIntro = true" *ngIf="myCompany" class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15 " viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span></h3>
+                    <h3>SHORT BIO</h3>
                     <!-- <p>{{shortIntro}}</p> -->
-                    <div *ngIf = "!editshortIntro"> 
-                    <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p *ngIf= "shortIntro">{{shortIntro}}</p>
-                    </div>
+                    
+                    <!-- <p *ngIf= "!shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> -->
+                    <p>{{shortIntro}}</p>
+                    
                     <!-- <div class="bio_btn">
                     <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
                   </div>     -->
-                  <div *ngIf = "editshortIntro" class="edit_bio">
-                      <textarea  placeholder="Enter Bio" formControlName = "shortIntro" #shortIntro></textarea>
-                      <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
-            
-                    </div>
+               
                   </div>
                        
       <!-- <div class="infoContent" *ngIf="!bioEdit">
@@ -317,7 +314,7 @@
                       <!-- section edit   -->
 
 
-<div *ngIf="sectionEdit">
+<!-- <div *ngIf="sectionEdit">
     
     <div formArrayName="section" *ngFor="let section of BForm.get('section').controls; let i=index">
         <button (click)="onDelete(i)" class="remove_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span>Remove section</button>  
@@ -327,11 +324,11 @@
          
               <input type="text" formControlName="sectionTitle">
                 <textarea formControlName="sectionContent"></textarea>
-                <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
+               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> 
               </div>
             </div>
             <div class="container">
-              <!-- {{section}} -->
+              {{section}}
             
             <img src="{{this.BForm.controls.section.value[i].sectionImage}}" >
             <div class="overlay">
@@ -345,14 +342,15 @@
           <div class="add_sub_btn">
               <button type="submit" (click)="onSubmit()"class="submit_division">submit</button>
           <button (click)="onAddSection()" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add section</button>
-         
+          
           </div>
         </div>
+      -->
       
 
-<div *ngIf="!sectionEdit">
-    <button (click)="onAddSection()" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add section</button>
-    <button  (click)="sectionEdit=true" class="edit_division"> <span class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15 " viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>Edit</button>
+<div>
+    <!-- <button (click)="onAddSection()" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add section</button> -->
+    <!-- <button  (click)="sectionEdit=true" class="edit_division"> <span class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15 " viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>Edit</button> -->
 	
 		<div class="infoSectonCard" *ngFor="let section of this.section">
 			<div class="content" >
@@ -365,18 +363,15 @@
 					<img src="{{section.sectionImage}}">
 						</div>
 					</div>
-
-
 			</div>
 
              <!-- end of section -->
 <div class="certification">
-  
   <div class="item_btn">
       <h2>CERTIFICATES</h2>
-      <input type="file"  #filePickercertificate (change)="onImagePick($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
+      <!-- <input type="file"  #filePickercertificate (change)="onImagePick($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
       <button type="button" (click)="filePickercertificate.click()" class="item_btn1"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>
-        Add Certificate</button>
+        Add Certificate</button> -->
         </div>
   <div ng2-carouselamos class="slider-wrapper"
   [items]="certification"
@@ -424,15 +419,17 @@
             <img src="{{item}}">
          </div>
         </ng-template>
-        <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
+        <!-- <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
         <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-          Add Company Image</button>
+          Add Company Image</button> -->
       </div>
   </div>
 </div>
+</div>
+
 <div class="body" *ngIf="this.type === 'product'">
   <div class="infoSection3">
-    <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div>
+    <!-- <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div> -->
       <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
           <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
@@ -443,14 +440,14 @@
                 </div>
                 <div class="productContent" >
                 <div class="content">
-                    <button (click)="DeleteProduct(product._id)">Delete</button>
+                    <!-- <button (click)="DeleteProduct(product._id)">Delete</button> -->
                 <div class="productCategory">
                 <h6>{{product.catogory}}</h6>
                 </div>
                 <div class="productName">
                   <h2 routerLink = "/product-page/{{product._id}}">{{product.productName}}</h2>
                   <h5>{{product.company}}</h5>
-                  <button (click)="editProduct(product._id)">Edit</button>
+                  <!-- <button (click)="editProduct(product._id)">Edit</button> -->
                   <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span style= "padding-left: 8px">Country</span></small>
                 </div>
                 <div class="discription" style="margin-top:30px;">
@@ -471,7 +468,8 @@
                 </div>
                   </div>
                 </div>
-
+</div>
+</div>
               <!-- <div class="mob-cards" *ngIf="three">
                   <div class="card-wrapper" *ngFor="let card of group.card; let i = index" >
                       <div class="header">
@@ -522,7 +520,10 @@
                 </div>
                 <div class="footer">
                   <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
-                    <h6 style="width:35%;">Price</h6> -->
+                    <h6 style="width:35%;">Price</h6>
+                    </div>
+                    
 </div>
 </div>
+</div> -->
 </section>

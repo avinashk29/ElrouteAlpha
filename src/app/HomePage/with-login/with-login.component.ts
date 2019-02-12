@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import {AuthServiceService} from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import {FormGroup , FormControl} from '@angular/forms';
@@ -39,7 +39,9 @@ tagId: new FormControl(),
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute ) {
+
+
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
         // this.feedService.Getpost().subscribe(res =>{
@@ -89,7 +91,7 @@ tagId: new FormControl(),
     }
     onImagePick(event,name) {
       console.log(name);
-        
+
       const file = <File>event.target.files[0];
         // const reader = new FileReader();
         // reader.readAsDataURL(file);
@@ -105,8 +107,8 @@ tagId: new FormControl(),
            console.log(res);
          })
         })
-        
-        
+
+
      }
   onAddpost() {
    this.feed.value.tagId = this.feedService.tagId;
@@ -116,7 +118,7 @@ tagId: new FormControl(),
       console.log(JSON.parse(res['_body']));
     });
     this.feed.reset();
- 
+
   }
   tagFeed(){
     const dialogConfig = new MatDialogConfig();

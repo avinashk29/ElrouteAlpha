@@ -278,9 +278,11 @@ input#search-bar:focus:-ms-placeholder {
  color: rgb(45, 61, 81);
  font-family: SegoeUI-Bold, "Segoe UI";
  left: 70%;
+ cursor: pointer;
 }
 .btn2
 {
+  cursor: pointer;
  text-transform: uppercase;
  background-color: transparent;
  border: solid 1px gray;
@@ -386,7 +388,7 @@ input#search-bar:focus:-ms-placeholder {
 
 .img1
 {
-
+  cursor: pointer;
  background-image: url(/assets/images/handpaper.jpg);
  /* width: 100%; */
  background-position: center;
@@ -396,7 +398,7 @@ input#search-bar:focus:-ms-placeholder {
  width: 150px;
  height: 150px;;
  border: solid 11px white;
-
+transition-duration: 1s;
 }
 .hover_1
 {
@@ -429,10 +431,12 @@ input#search-bar:focus:-ms-placeholder {
 
  transform: scale(1.2);
  opacity: 0;
+ transition-duration: 1s;
 
 }
 .img2
 {
+  cursor: pointer;
  background-image: url(/assets/images/gems.jpg);
  /* width: 100%; */
  background-position: center;
@@ -442,7 +446,7 @@ input#search-bar:focus:-ms-placeholder {
  width: 150px;
  height: 150px;;
  border: solid 11px white;
-
+ transition-duration: 1s;
 
 }
 /* .img2 img
@@ -472,13 +476,14 @@ input#search-bar:focus:-ms-placeholder {
 }
 .img2:hover .hover_2
 {
-
+  transition-duration: 1s;
  transform: scale(1.2);
  opacity: 0;
 
 }
 .img3
 {
+  cursor: pointer;
  background-image: url(/assets/images/bearings.jpg);
  /* width: 100%; */
  background-position: center;
@@ -488,7 +493,7 @@ input#search-bar:focus:-ms-placeholder {
  width: 150px;
  height: 150px;;
  border: solid 11px white;
-
+ transition-duration: 1s;
 }
 /* .img3 img
 {
@@ -517,7 +522,7 @@ color: white;
 }
 .img3:hover .hover_3
 {
-
+  transition-duration: 1s;
  transform: scale(1.2);
  opacity: 0;
 
@@ -687,6 +692,7 @@ color: white;
  width: 45%;
  border: none;
  color: white;
+ cursor: pointer;
  font-weight: 500;
  font-size: 15px;
  box-shadow: 0px 1px 5px 0px #5555;
@@ -774,6 +780,7 @@ color: white;
  background-color: rgb(45, 61, 81);
  border: none;
  color: white;
+ cursor: pointer;
  box-shadow: 0px 2px 10px 0px #5555;
  margin: 0 auto;
  width: 40%;
@@ -1172,6 +1179,7 @@ color: white;
  height: 30px;
 }
 .email_box button{
+  cursor: pointer;
  background-color: rgb(45, 61, 81);
  width: 78%;
  border: none;
@@ -1506,6 +1514,7 @@ color: white;
 }
 .email_box button{
  background-color: rgb(45, 61, 81);
+ cursor: pointer;
  width: 78%;
  border: none;
  color: white;
@@ -1817,6 +1826,7 @@ color: white;
  .email_box button{
  background-color: rgb(45, 61, 81);
  width: 42%;
+ cursor: pointer;
  border: none;
  color: white;
  height: 7vh;

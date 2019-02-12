@@ -36,11 +36,13 @@ export class ProductPageComponent implements OnInit {
     console.log(this.id);
   this.product.token = this.storage.get('token');
   this.feedService.token=this.storage.get('token');
+  this.bookmarkService.token=this.storage.get('token')
   }
   panelOpenState = false;
 id;
 
   ngOnInit() {
+
 this.product.getOneProduct(this.id).subscribe(res => {
   this.productName=JSON.parse(res['_body']).productName;
   this.shortDescription=JSON.parse(res['_body']).shortDescription;
@@ -73,11 +75,12 @@ this.UserService.getUserData().subscribe(res=>{
   this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
   console.log(this.userBookmark.length);  
 for(let i=0;i<this.userBookmark.length;i++){
-  if(this.id==this.userBookmark[i])
+  if(this.productid==this.userBookmark[i])
   {
     this.bookmark=false;
-  }else{
-    this.bookmark=true;
+  }
+  else{
+    // this.bookmark=true;
   }
 }
 
@@ -85,7 +88,7 @@ for(let i=0;i<this.userBookmark.length;i++){
 
   }
   addProductBookmark(){
-    this.bookmark=true;
+    this.bookmark=true
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
       console.log(res);
     })

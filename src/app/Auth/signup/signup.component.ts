@@ -3,7 +3,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthServiceService} from '../auth-service.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Service/user-services.service';
@@ -15,6 +15,7 @@ import { UserService } from 'src/app/Service/user-services.service';
 export class SignupComponent implements OnInit {
   error;
   username;
+  bpage = false;
   signupForm = new FormGroup({
     userName : new FormControl('',[Validators.required]),
     location : new FormControl('', [Validators.required]),
@@ -24,7 +25,15 @@ export class SignupComponent implements OnInit {
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
-     public router: Router, public notification: ToastrService,public userService:UserService) {
+     public router: Router, public notification: ToastrService,public userService:UserService, public route: ActivatedRoute) {
+      this.route.queryParams.filter(params => params.urlRedirect).subscribe(params => {
+        let test = params.urlRedirect;
+        if (test = true) {
+          console.log('working');
+           this.bpage = true;
+        }
+      });
+
  }
   ngOnInit() {
   }
@@ -58,8 +67,13 @@ onSubmit() {
     //  this.storage.set('User', JSON.parse(res['_body']));
      this.authService.token = this.storage.get('token');
      this.dialogRef.close(SignupComponent);
-     this.router.navigate(['/Dashboard']);
-     this.notification.success('LogIn Successful');
+     if (!this.bpage) {
+      this.router.navigate(['/Dashboard']);
+     } else {
+      this.router.navigate(['/B-page']);
+     }
+
+     this.notification.success('Sign Up Successful');
       console.log(this.authService.token);
       console.log('1' + this.error);
   }  if (this.error) {

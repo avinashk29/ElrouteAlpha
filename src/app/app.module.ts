@@ -71,6 +71,7 @@ import { ProductComponent } from './Product/product/product.component';
 import { CompanyForm4Component } from './Company/company-form4/company-form4.component';
 import { CompanyForm5Component } from './Company/company-form5/company-form5.component';
 import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,7 +117,8 @@ import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.compo
     ProductComponent,
     CompanyForm4Component,
     CompanyForm5Component,
-    EditSideNavComponent
+    EditSideNavComponent,
+    LandingPageComponent
 
   ],
   imports: [
