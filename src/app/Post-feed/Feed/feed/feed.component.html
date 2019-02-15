@@ -1,5 +1,18 @@
-
-                 <form (submit) = "getProduct()"> 
+<!-- 
+<input list="product"  placeholder="Product">
+                <datalist id ="product"  >
+                  <div *ngFor = "let product of products"  >
+                    <li (click)="getProduct(product.productName)">
+                      
+                          <option   value="{{product.productName}}">
+  
+                      
+                        </li>
+                   </div>
+                </datalist>
+                <button type="submit" >Tag Product</button>
+                 -->
+                 <!-- <form (submit) = "getProduct()"> 
                     <input list="product" [(ngModel)]="product_id" name="product_id"  placeholder="Product">
                     <datalist id ="product"  >
                       <div *ngFor = "let product of products; let i = index">
@@ -7,5 +20,36 @@
                     </div>
                   </datalist>
                 <button type="submit">Submit</button>
-              </form>
+              </form> -->
             
+
+              <form>
+                    <div class="tag_product">
+                      <div class="tag">
+                        <div class="heading">
+                        <h2>  Tag Product</h2>
+                        <button type="button">X</button>
+                        </div> 
+
+                        <div class="form">
+                          <ul>
+                             <li><input type="text" placeholder="Enter Your Proudct Name"></li>
+                             <li>
+                               
+                      
+                      <select>
+                      <option>DYES</option>
+                      <option>LAPTOPS</option>
+                      <option>SPEKARS</option>
+                      <option>BEACONS</option>
+                      <option>MOBILES</option>
+                      </select>
+                             </li> 
+                          </ul> 
+                        </div>  
+                        <div class="tag_btn">
+                          <button type="button">Tag</button>
+                         </div> 
+                       </div> 
+                     </div>   
+              </form>

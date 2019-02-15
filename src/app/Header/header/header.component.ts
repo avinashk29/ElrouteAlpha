@@ -12,6 +12,7 @@ import { UserService } from 'src/app/Service/user-services.service';
 export class HeaderComponent implements OnInit {
 
   userImage
+  username
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private router: Router,
   public searchService: SearchService, private route: ActivatedRoute,private UserService:UserService) { }
   searchForm = new FormGroup({
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
     this.UserService.token=this.storage.get('token');
     this.UserService.getUserData().subscribe(res=>{
       this.userImage=JSON.parse(res['_body']).userImage;
+      this.username=JSON.parse(res['_body']).userName;
     })
   }
   onSearch(event) {

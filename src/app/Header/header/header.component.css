@@ -18,7 +18,7 @@ a {
 }
 .logo a,
 .main-nav a {
-	padding: 15px 15px;
+
 	text-transform: uppercase;
 	text-align: center;
   display: block;
@@ -27,6 +27,8 @@ a {
 }
 .header p {
   padding: 4px 0;
+  margin-bottom: auto;
+    margin-top: auto;
 }
 
 
@@ -78,7 +80,7 @@ a {
 .user
 {
   display: flex;
-  padding: 5px 0;
+  padding: 13px 0;
 
 }
 .user_img
@@ -147,7 +149,7 @@ a {
   font-size: 12px;
 }
 .logo a  {
-  padding: 10px 15px;
+  
   text-transform: uppercase;
   text-align: center;
   display: block;

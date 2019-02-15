@@ -328,14 +328,14 @@
 }
 
 .add_feed {
- border-radius: 12px 12px 0 0px;
- width: 14%;
- margin: 0 0px;
- padding: 9px 22px;
- height: 20px;
- /* background-color: #8890A4; */
- box-shadow: 0px 0px 2px 1px rgba(24, 24, 7, 0.2);
- color:gray;
+    border-radius: 12px 12px 0 0px;
+    width: 17%;
+    margin: 0 0px;
+    padding: 9px 22px;
+    height: 20px;
+    /* background-color: #8890A4; */
+    box-shadow: 0px 0px 2px 1px rgba(24, 24, 7, 0.2);
+    color:gray;
 }
 
 .about_feed {
