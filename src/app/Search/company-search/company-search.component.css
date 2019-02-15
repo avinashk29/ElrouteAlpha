@@ -101,6 +101,7 @@ section{
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 30px;
+  padding: 10px;
 }
 .cardHeader{
   width: 95%;
@@ -118,7 +119,7 @@ section{
 }
 .companyInfo{
   width: 65%;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .companyInfo h1{
   margin: 0;
@@ -168,7 +169,7 @@ section{
 }
 
 .discription{
-  width: 90%;
+  width: 94%;
   margin: 0 auto;
 }
 .discription p{
@@ -177,12 +178,12 @@ section{
   font-weight: 600;
 }
 .cardFooter{
-  width: 90%;
+  width: 94%;
   margin: 0 auto;
   display: flex;
 }
 .tags{
-  width: 80%;
+  width: 100%;
 
 }
 /* .tags p{
@@ -197,7 +198,7 @@ section{
     margin: 1%;
 }
 .icons{
-  width: 20%;
+  
   display: flex;
 }
 .icons span
@@ -228,6 +229,7 @@ section{
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 30px;
+ 
 
 }
 .storyBtn {

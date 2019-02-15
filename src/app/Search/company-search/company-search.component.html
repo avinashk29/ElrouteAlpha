@@ -3,10 +3,10 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section>
-<div class="listing" >
+<div class="listing">
 
-<div class="companyCard"*ngFor="let r of result[0]; let i=index" >
-    
+<div class="companyCard" *ngFor="let r of result[0]; let i=index" >
+    <!-- {{this.÷result.length}} -->
 <div class="cardHeader">
   <div class="logo">
    <img src="https://picsum.photos/200/300/?random">
@@ -37,6 +37,7 @@
  
 </div>
 <div class="discription">
+  
   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 </div>
 <mat-accordion  class="des">
@@ -71,4 +72,7 @@
 </div>
 </div>
 </div>
+<ng-template #load>
+  <img src="../../../assets/images/result_not_found.png">
+</ng-template>
 </section>

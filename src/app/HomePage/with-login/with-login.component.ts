@@ -133,9 +133,9 @@ link: new FormControl('')
 
   }
   tagFeed(){
-    const dialogConfig = new MatDialogConfig();
+    const dialogConfig = new MatDialogConfig( );
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '30%';
+    dialogConfig.width = '50%';
     this.dialog.open(FeedComponent, dialogConfig);
   }
   onLogout() {
