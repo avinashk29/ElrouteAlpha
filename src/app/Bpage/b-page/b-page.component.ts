@@ -66,15 +66,20 @@ shortbioEdit=false;
 noFeeds = false;
 myCompany = false;
 editwebsite = false;
+editSocialLinks=false;
 editworkingHours = false;
 editshortIntro = false;
 imagePreview;
 infoImage;
 section=[];
+socialLink=[]
 companyImage = [];
 bioEdit=false;
 userBookmark
+basicDetail=false;
+linkEdit=false;
 follower
+
 // BForm = new FormGroup ({
   //  website: new FormControl(''),
   //  Image: new FormControl(''),
@@ -97,6 +102,7 @@ BForm: FormGroup;
      facebook: [''],
      linkedin: [''],
      google: [''],
+     socialLinks:[''],
      section: this._fb.array([])
     })
     this.companyService.token = this.storage.get('token');
@@ -106,6 +112,7 @@ BForm: FormGroup;
       this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+         
           console.log(JSON.parse(res['_body']))
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
@@ -127,12 +134,13 @@ BForm: FormGroup;
            this.certification=JSON.parse(res['_body']).certification;
            this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
+          this.socialLink=JSON.parse(res['_body']).socialLinks
           this.BForm.patchValue({
            website: JSON.parse(res['_body']).website,
            Image: JSON.parse(res['_body']).Image,
            workingHours: JSON.parse(res['_body']).workingHours,
            shortIntro: JSON.parse(res['_body']).shortIntro,
-         
+          //  socialLinks:JSON.parse(res['_body']).socialLinks
           });
 
 this.setSection();
@@ -218,6 +226,7 @@ this.setSection();
 
  this.feedService.GetFeed(this.comapnyId).subscribe(res => {
    this.feeds =  JSON.parse(res['_body']);
+   console.log(this.feeds)
    if (!this.feeds.length){
      this.noFeeds = true;
    }
@@ -268,7 +277,8 @@ onDelete(index){
   control.removeAt(index)
 }
 
-  editbio(){
+
+ editbio(){
     this.bioEdit = !this.bioEdit;
   }
  onsectionImagePick(event,name,index){
@@ -290,6 +300,8 @@ onDelete(index){
   onImagePick(event,name) {
   //  this.uploadImages = !this.uploadImages;
   console.log(name)
+  // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
+  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'imageUpload'}});
 
      this.file = <File>event.target.files[0];
       const fdata = new FormData()
@@ -309,6 +321,7 @@ onDelete(index){
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
+             this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
           }
           else if(name==="companyImage"){
             // console.log(this.certification);
@@ -322,6 +335,7 @@ onDelete(index){
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
+             this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
           }
        
         else{
@@ -331,8 +345,9 @@ onDelete(index){
              console.log(JSON.parse(response['_body']));
              })
         }
-
+        
       })
+      this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
    }
 
   editProduct(id) {
@@ -371,17 +386,26 @@ this.productService.DeleteProduct(id).subscribe(res => {
    this.router.navigate(['/companyPage/' + this.comapnyId]);
  }
  onEditBpage(key, content: HTMLInputElement ) {
+ 
    console.log(key);
    const formData = new FormData();
     formData.append(key, content.value);
   this.companyService.UpdateCompany(formData).subscribe(res => {
      console.log(JSON.parse(res['_body']));
+     this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'edit'}});
+     if(this.type==='info'){
+      this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
+    }else{
+       this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
+    }
    });
- // console.log(this.BForm.value);
   this.editwebsite = false;
   this.editworkingHours = false;
   this.editshortIntro = false;
-  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
+  this.editSocialLinks=false;
+  console.log(this.type)
+ 
+  // this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
  }
 
 onfollow() {
@@ -399,14 +423,9 @@ onunfollow() {
          console.log('i am working unfollow')
 }
 
-ngOnDestroy() {
-  this.subscription.unsubscribe();
-}
+
 onSubmit(){
   this.sectionEdit=false;
-  // const bdata = new FormData()
-  // bdata.append('section',this.BForm.value.section)
-  // console.log(bdata);
   const sectionForm = new FormGroup({
     section: new FormControl(this.BForm.value.section)
   })
@@ -414,7 +433,14 @@ onSubmit(){
     console.log(JSON.parse(res['_body']));
   });
 }
-
+onadeleteImg(item,index){
+  console.log(item,index)
+this.certification.splice(item,index);
+}
+onDeleteCompanyImg(item,index){
+  console.log(item,index)
+  this.companyImage.splice(item,index)
+}
 addBookmark(){
   this.bookmark=true;
   this.bookmarkService.addCompanyBookmark(this.comapnyId).subscribe(res=>{
@@ -428,5 +454,8 @@ removeBookmark(){
     console.log(res);
   })
   console.log('Bookmar Removed')
+}
+ngOnDestroy() {
+  this.subscription.unsubscribe();
 }
 }

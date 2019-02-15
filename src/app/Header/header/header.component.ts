@@ -3,6 +3,7 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SearchService} from '../../Service/search.service';
+import { UserService } from 'src/app/Service/user-services.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,13 +11,18 @@ import {SearchService} from '../../Service/search.service';
 })
 export class HeaderComponent implements OnInit {
 
+  userImage
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, private router: Router,
-  public searchService: SearchService, private route: ActivatedRoute) { }
+  public searchService: SearchService, private route: ActivatedRoute,private UserService:UserService) { }
   searchForm = new FormGroup({
     word: new FormControl(''),
     page: new FormControl('1')
  });
   ngOnInit() {
+    this.UserService.token=this.storage.get('token');
+    this.UserService.getUserData().subscribe(res=>{
+      this.userImage=JSON.parse(res['_body']).userImage;
+    })
   }
   onSearch(event) {
     const formData = this.searchForm.value;

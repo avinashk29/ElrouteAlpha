@@ -15,7 +15,7 @@
     <div class="follow">
     <h1>{{r.companyName}}</h1>
     <div class="b_page_btn">
-            <button  (click)= "companyBookmark(i ,r._id)"  *ngIf = "!this.cresult[i].bookm; else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
+            <button  (click)= "companyBookmark(i ,r._id)"  *ngIf = "!this.cresult[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
             <ng-template #bloading>
                 <button (click)="deletecompanyBookmark(i,r._id)"><span><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span></button>
             </ng-template>
@@ -23,7 +23,7 @@
       </div>    
     <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
     <div class="b_page_btn1">
-        <button  (click)="onunfollow(i,r._id)"  *ngIf = "!this.cresult[i].follow; else loading">Following</button>
+        <button  (click)="onunfollow(i,r._id)"  *ngIf = "this.cresult[i].follow else loading">Following</button>
      
         <ng-template #loading>
             <button (click)="onfollow(i,r._id)" >Follow</button>

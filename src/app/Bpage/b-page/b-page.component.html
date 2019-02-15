@@ -83,23 +83,29 @@
           <p *ngIf = "workingHours && !editworkingHours">{{workingHours}}</p>
           <div *ngIf="editworkingHours">
             <input type="number"  placeholder="Enter Working Hours"  formControlName = "workingHours"  trim #workingHours >
-            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)" *ngIf = "myCompany">Save</button>
+            <button type="submit" (click) = "onEditBpage('workingHours', workingHours)">Save</button>
           </div>
           <button type="button" *ngIf="!website && !editwebsite && myCompany" (click) = "editwebsite = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add YourWebsite</button>
           <a *ngIf="website && !editwebsite"  target="_blank">{{website}}</a>
           <div *ngIf="editwebsite">
             <input type="text"    placeholder="Enter Website"  formControlName = "website"  trim #website >
-            <button type="submit" (click) = "onEditBpage('website',website)"  *ngIf="myCompany">Save</button>
+            <button type="submit" (click) = "onEditBpage('website',website)">Save</button>
           </div>
-
-          <div class="social">
-              <div class="social_links">
-                  <!-- <span><img src="assets/images/linkdin.png"></span>
-                  <span><img src="assets/images/linkdin.png"></span>
-                  <span><img src="assets/images/linkdin.png"></span> -->
-                  <button type="button" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Social Links</button>
+          
+          <div class="social" >
+              
+              <div *ngFor="let link of socialLink"> <a target="_blank">{{link}}</a>
+            
               </div>
-              <div class="social_bookmark">
+               
+            <button type="button" *ngIf="socialLink && !editSocialLinks && myCompany" (click)="editSocialLinks=true"><span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Social Links</button>
+          
+        
+            <div class="social_links" *ngIf="editSocialLinks">
+                <input type="text"    placeholder="Enter Social Links"  formControlName = "socialLinks" #socialLinks>
+                <button type="submit" (click) = "onEditBpage('socialLinks',socialLinks)">Save</button>
+              </div>
+              <div class="social_bookmark" *ngIf="!myCompany">
                  <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button>
 
                  <ng-template #load>
@@ -148,8 +154,8 @@
 
          <img src="{{Image}}" class="image">
          <div class="overlay">
-            <input  type="file"  #filePicker (change)="onsectionImagePick($event,'sectionImage',i)" class="picker" style="display: hidden;"  visbility="hidden">
-            <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change Photo<br/><svg xmlns="http://www.w3.org/2000/svg"  width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> </button>
+            <input  type="file"  #filePick (change)="onImagePick($event,'coverImage')" class="picker" style="display: hidden;"  visbility="hidden">
+            <button type="button" (click)="filePick.click()" class="change_cover_image" *ngIf="myCompany">Change Photo<br/><svg xmlns="http://www.w3.org/2000/svg"  width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> </button>
         </div>
 </div>
       </div>
@@ -181,7 +187,7 @@
     <h6>CATEGORY</h6>
     <h5>CLOUD COMPUTING</h5>
     <div class="category_btn">
-        <button type="button" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span></button>
+        <button type="button" *ngIf="myCompany" routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span></button>
     </div>
 </div>
       
@@ -192,7 +198,7 @@
         </div>
       </div>
 
-        <div class="feedCards" *ngIf = "!noFeeds">
+        <div class="feedCards" *ngIf = "feeds">
           <div class="feed" *ngFor = "let feed of feeds; let i = index">
             <div class="authorInfo">
             <div class="details">
@@ -200,7 +206,7 @@
                 <img src="{{feed.companyLogo}}">
               </div>
               <div class="info">
-             <h1>{{this.CompanyName}}</h1>
+             <h1>{{feed.companyName}}</h1>
              <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{this.industry}}</p>
              <p style="line-height: 3px;margin-bottom: 10px;">{{this.country}}</p>
             </div>
@@ -235,7 +241,7 @@
             </div>
 
         </div>
-       <div  class="feedCards" *ngIf = "noFeeds">
+       <div  class="feedCards" *ngIf="!feeds">
         <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
         <div class="feed_show">
             <div class="feed_show_img">
@@ -248,7 +254,7 @@
                    <p>Add your feeds here to attract more and more business and level up your game</p>
                    
                    </div>
-                   <button type="button" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                   <button type="button" *ngIf="myCompany" routerLink="/Dashboard"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
                     </button>
                 </div>
             </div>
@@ -256,7 +262,7 @@
 
        <div class="otherInfocard">
         <div class="infoCard">
-        <!-- <div class="hq info">
+        <div class="hq info">
           <label>HEADquarters</label>
           <h3>{{country}} , {{city}}</h3>
         </div>
@@ -275,13 +281,18 @@
               <div class="revenu info" style="border-bottom:none">
                   <label>Total Revenue</label>
                   <h3></h3>
-                </div> -->
-                <div class="hq_info">
-                    <div class="hq_info_content_" >
+                  <div class="hq_info">
+                      <button type="button" *ngIf="myCompany" routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                      </button>
+                  </div>
+                </div>
+             
+                <div class="hq_info" *ngIf="!country && !city">
+                    <div class="hq_info_content_">
                      <p>It's time you share your company's whereabouts with  the business world.</p>
                      <h4 style="font-weight:400;">Add your Company's basic details here.</h4>
                      </div>
-                     <button type="button" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                     <button type="button" *ngIf="myCompany" routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
                       </button>
                   </div> 
         </div>
@@ -411,7 +422,7 @@
         <img [src]="item">
         <div class="overlay1"> 
             
-            <button type="button" class="close">x</button> 
+            <button type="button" class="close" (click)="onadeleteImg(item,i)">x</button> 
         </div>
         </div>
 
@@ -450,7 +461,7 @@
            
             <div class="overlay1"> 
             
-                <button type="button" class="close">x</button> 
+                <button type="button" class="close" (click)="onDeleteCompanyImg(item,i)">x</button> 
             </div>
             
             </div>
@@ -464,7 +475,7 @@
 </div>
 <div class="body" *ngIf="this.type === 'product'">
   <div class="infoSection3">
-    <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div>
+    <!-- <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div> -->
       <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
           <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->

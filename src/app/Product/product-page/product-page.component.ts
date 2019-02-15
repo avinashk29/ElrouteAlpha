@@ -29,6 +29,9 @@ export class ProductPageComponent implements OnInit {
   bookmark
   industry
   productid
+  mycompany
+  creatorId
+  mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
    public route: ActivatedRoute, public product: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
@@ -37,6 +40,8 @@ export class ProductPageComponent implements OnInit {
   this.product.token = this.storage.get('token');
   this.feedService.token=this.storage.get('token');
   this.bookmarkService.token=this.storage.get('token')
+  this.mycompany=this.storage.get('companyId');
+  console.log(this.mycompany)
   }
   panelOpenState = false;
 id;
@@ -57,25 +62,31 @@ this.product.getOneProduct(this.id).subscribe(res => {
   this.category=JSON.parse(res['_body']).category;
   // this.bookmark=JSON.parse(res['_body']).bookmarks;
   this.industry=JSON.parse(res['_body']).industry
-  this.productid=JSON.parse(res['_body'])._id;
-console.log(this.productid)
-  // this.ShortDescription=JSON.parse(res['_body']).shortDescription;
+  this.creatorId=JSON.parse(res['_body']).creator;
+console.log(this.creatorId)
+
   this.Image=JSON.parse(res['_body']).Image
   console.log(JSON.parse(res['_body']))
+  if(this.creatorId===this.mycompany){
+    this.mybookmark=false;
+  }else{
+    this.mybookmark=true;
+  }
 });
+
     // this.feedService.GetFeed().subscribe(res=>{
     //     this.feed=JSON.parse(res['_body']);
     //     console.log(res);
     // })
 this.product.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
-// console.log(JSON.parse(res['_body']))
+// console.log(Object.keys(JSON.parse(res['_body'])[1]).length)
 })
 this.UserService.getUserData().subscribe(res=>{
-  this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
+  this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
   console.log(this.userBookmark.length);  
 for(let i=0;i<this.userBookmark.length;i++){
-  if(this.productid==this.userBookmark[i])
+  if(this.id==this.userBookmark[i])
   {
     this.bookmark=false;
   }
@@ -88,13 +99,13 @@ for(let i=0;i<this.userBookmark.length;i++){
 
   }
   addProductBookmark(){
-    this.bookmark=true
+    this.bookmark=false
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
       console.log(res);
     })
   }
   deleteProductBookmark(){
-    this.bookmark=false
+    this.bookmark=true
     this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
       console.log(res);
     })

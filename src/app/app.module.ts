@@ -49,7 +49,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
-//
+import { StickyNavModule } from 'ng2-sticky-nav';
 // import { CarouselModule } from 'angular4-carousel';
 // import { NgxUiLoaderModule } from  'ngx-ui-loader';
 // import {NgxSpinnerModule} from 'ngx-spinner'
@@ -135,6 +135,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     Ng2CarouselamosModule,
     // NgxUiLoaderModule,
     // NgxSpinnerModule,
+    StickyNavModule,
     ToastrModule.forRoot()
 
   ],
