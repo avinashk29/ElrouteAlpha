@@ -271,7 +271,9 @@ control.push(this._fb.group({
      }))
    });
  }
-
+ gotoTimeline(){
+  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
+ }
 onDelete(index){
   let control = <FormArray>this.BForm.controls.section;
   control.removeAt(index)

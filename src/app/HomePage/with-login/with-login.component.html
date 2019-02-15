@@ -255,7 +255,7 @@
          <div  class="feedCards" *ngIf = "feeds">
           <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
     
-          <div class="main_feed_card"   *ngFor = "let feedElement of feeds[0]; let i = index">
+          <div class="main_feed_card"   *ngFor = "let feedElement of feeds; let i = index">
             <div class="feed1" *ngIf="feedElement.length>0">
                   <div *ngFor="let feed of feedElement">
                       <div class="feed_content" >
@@ -269,7 +269,7 @@
                                   <h6>India</h6>
                                </div> 
                                <div class="feed_following">
-                                  <button  (click)="onunfollow(i,feed.admin)"  *ngIf = "!this.result[i].follow else loading">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
+                                  <button  (click)="onunfollow(i,feed.admin)"  *ngIf = "!resultvalue else loading">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                     <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
                                   </svg></span></button>
                               <ng-template #loading>

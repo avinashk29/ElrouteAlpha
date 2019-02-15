@@ -3,7 +3,7 @@
  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
  margin: 0 auto;
  width: 80%;
- height: -webkit-fill-available;
+
  margin-top: 7%;
 }
 .with_login {
@@ -66,7 +66,16 @@
  width: 35%;
  position: relative;
 }
-
+.company
+{
+    display: flex;
+    
+}
+.company_logo
+{
+    width: 40%;
+    margin: 0px 10px;
+}
 .follower_img1 {
  position: absolute;
  

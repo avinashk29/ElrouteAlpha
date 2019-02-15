@@ -41,13 +41,14 @@ tagId: new FormControl(),
 link: new FormControl('')
 });
 type
+resultvalue
 showSpinner
 result=[]
 userFollow
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService, public route: ActivatedRoute, public productService: ProductServiceService ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private route:ActivatedRoute ) {
 
 
     this.feedService.token = this.storage.get('token');
@@ -86,6 +87,7 @@ userFollow
       // console.log(JSON.parse(res['_body'])[0].admin);
       this.feeds =  JSON.parse(res['_body']);
       this.result=JSON.parse(res['_body'])[0];
+      console.log(JSON.parse(res['_body'])[0].follow)
       console.log(this.feeds)
       if (!this.feeds.length){
         this.noFeeds = true;
@@ -99,7 +101,7 @@ userFollow
             console.log(this.result[j].admin);
                if(this.userFollow[i] == this.result[j].admin) {
                 console.log(this.result[j].admin);
-                this.result[j].follow=false;
+                this.resultvalue=false;
                } else  {
                 console.log(this.result[j]._id);
                 // this.result[j].follow=false;
@@ -164,11 +166,7 @@ userFollow
     dialogConfig.width = '30%';
     this.dialog.open(FeedComponent, dialogConfig);
   }
-  onLogout() {
-    this.storage.remove('token');
-    this.storage.remove('companyId');
-    this.router.navigate(['/']);
-  }
+ 
   EditBpage() {
     // console.log(this.mycompanyId)
     this.router.navigate(['/company-form2']);

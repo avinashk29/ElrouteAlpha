@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import {SearchService} from '../../Service/search.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
@@ -42,11 +42,14 @@ export class CompanySearchComponent implements OnInit {
       //  console.log(this.userBookmark.pop());
       console.log( this.userInfo);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
+      
         this.result = JSON.parse(res1['_body']);
         console.log(this.result)
         this.cresult=JSON.parse(res1['_body'])[0]
-        this.id=JSON.parse(res1['_body'])[0][0]
-        console.log(this.id)
+          var number=this.cresult.length
+        this.search.setOption(number)
+        this.id=JSON.parse(res1['_body'])[0][0];
+    
         // this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0]; 
          //Addition/Deletion method for Follow//
          for(let i = 0; i < this.userInfo.length; i++) {
@@ -76,11 +79,14 @@ export class CompanySearchComponent implements OnInit {
                }
            }      
      }
+    
       });
  })
 
+ 
   }
-  
+
+ 
   onfollow(i,id){
     this.cresult[i].follow=true;
     this.follows.addFollow(id).subscribe(res=>{
