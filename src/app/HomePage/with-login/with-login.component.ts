@@ -32,6 +32,7 @@ feeds = [];
 noFeeds = true;
 addLink = false;
 image;
+title;
 userImage;
 companyLogo;
 feed = new FormGroup({
@@ -67,6 +68,7 @@ userFollow
       this.location = JSON.parse(res['_body']).location;
       this.shortBio = JSON.parse(res['_body']).shortBio;
       this.userImage=JSON.parse(res['_body']).userImage;
+      this.title=JSON.parse(res['_body']).title;
       this.following = JSON.parse(res['_body']).following.length;
       console.log(JSON.parse(res['_body']).following.length)
     this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
@@ -118,7 +120,7 @@ userFollow
 
       });
     }
-
+    
 
     }
     onImagePick(event,name) {

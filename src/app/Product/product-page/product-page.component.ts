@@ -80,7 +80,7 @@ console.log(this.creatorId)
     // })
 this.product.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
-// console.log(Object.keys(JSON.parse(res['_body'])[1]).length)
+console.log(JSON.parse(res['_body']))
 })
 this.UserService.getUserData().subscribe(res=>{
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;

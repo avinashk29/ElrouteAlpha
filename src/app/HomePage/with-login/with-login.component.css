@@ -41,6 +41,13 @@
  border-radius: 4px;
  margin: 4px;
 }
+.user_edit button
+{
+    background-color: transparent;
+    border: none;
+    float:right;
+    outline: none;
+}
 .user_edit span
 {
  float: right;
@@ -79,14 +86,16 @@
 .follower_img1 {
  position: absolute;
  
- bottom: -27px;
-
+ bottom: -40px;
+ text-align: center;
  width: 100%;
 }
 
 .follower_img1 img {
  border-radius: 100%;
- width: 100%;
+ width: 80px;
+    height: 80px;
+border: solid 5px white;
 }
 .user_name
 {
@@ -764,6 +773,7 @@ section {
 .tagged {
  width: 100%;
  height: 7%;
+ margin-top: -4px;
 }
 
 mat-expansion-panel {
@@ -859,12 +869,7 @@ mat-panel-title h4 {
  padding-top: 9%;
  margin-left: 10%;
  }
- .user_name h2 {
- font-size: 15px;
- color: #FAF6F6;
- margin-top: -2px;
- float: left;
- }
+
  .company_industry {
  width: 100%;
  }
@@ -881,7 +886,7 @@ mat-panel-title h4 {
  }
  .add_feed {
  font-size: 15px;
- width: 21%;
+ width: 25%;
  }
  section {
  width: 95%;
@@ -906,6 +911,49 @@ mat-panel-title h4 {
  mat-panel-title h4 {
  font-size: 11px;
  }
+
+ /*------------------*/
+ .follower_img {
+    margin: 0 auto;
+    width: 35%;
+}
+.follower_img1 img {
+   
+    width: 50px;
+    height: 50px;
+   
+}
+.follower_img1 {
+    position: absolute;
+    bottom: -28px;
+    width: 100%;
+}
+
+.user_name h2
+{
+    font-size: 19px;
+}
+.feed_logo img {
+    width: 55px !important;
+    height: 55px !important;
+}
+.feed_name h4  {
+    margin-bottom: auto;
+    font-size: 11px;
+    margin-top: auto;
+}
+.feed_name {
+    width: 50%;
+    margin-top: 4%;
+    margin: 9px 0px;
+}
+.feed_following  {
+    
+    width: 30% !important;
+    
+}
+
+/*----------*/
 }
 
 @media screen and (min-width: 700px) and (max-width: 1440px) {
@@ -946,6 +994,7 @@ input[type="file"]
  width: 100%;
  /* box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2); */
  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
+ margin-bottom: 3%;
  
 }
 .feed_header
@@ -997,9 +1046,10 @@ input[type="file"]
 {
  background-color: lightgreen;
  border: none;
+ display: flex;
  color: white;
  width: 100%;
- height: 3vh;
+ height: 5vh;
  font-weight: 900;
  border-radius: 10px;
 }
@@ -1014,6 +1064,7 @@ input[type="file"]
 .feed_img img
 {
 width: 100%;
+height: 62vh;
 
 }
 .tagged_product
