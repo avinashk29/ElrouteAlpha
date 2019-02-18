@@ -15,6 +15,7 @@ products;
 //   Productname: new FormControl('')
 //   });
 product_id;
+productName
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public product: ProductServiceService, 
   public feed: FeedService) { }
 
@@ -28,8 +29,10 @@ product_id;
     })
   }
   getProduct(){
-console.log(this.products[this.product_id]._id);
   // console.log(this.productForm.value);
   this.feed.tagId = this.products[this.product_id]._id;
+  this.feed.productName=this.products[this.product_id].productName;
+  this.feed.productImage=this.products[this.product_id].Image;
+  this.feed.productDescription=this.products[this.product_id].shortDescription;
 }
 }

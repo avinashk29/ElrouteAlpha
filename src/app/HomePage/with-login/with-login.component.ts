@@ -39,18 +39,24 @@ feed = new FormGroup({
 content: new FormControl(''),
 Image: new FormControl(' '),
 tagId: new FormControl(),
-link: new FormControl('')
+link: new FormControl(''),
+productName: new FormControl(''),
+productImage: new FormControl(),
+productDescription: new FormControl('')
 });
 type
 resultvalue
 showSpinner
 result=[]
+pId
+product=[];
+productDescription;
+productImage;
 userFollow
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
   public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private route:ActivatedRoute ) {
-
 
     this.feedService.token = this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
@@ -75,6 +81,12 @@ userFollow
   
   })
   });
+  this.haveCompany = this.storage.get('companyId');
+  console.log(this.haveCompany)
+  this.productService.getProduct(this.haveCompany).subscribe(res=>{
+    this.product=JSON.parse(res['_body']);
+    console.log(this.product)
+});
    }
   show = false;
   ngOnInit() {
@@ -88,9 +100,16 @@ userFollow
       console.log('Working');
       // console.log(JSON.parse(res['_body'])[0].admin);
       this.feeds =  JSON.parse(res['_body']);
-      this.result=JSON.parse(res['_body'])[0];
-      console.log(JSON.parse(res['_body'])[0].follow)
       console.log(this.feeds)
+      this.result=JSON.parse(res['_body'])[0];
+    this.pId=JSON.parse(res['_body'])[0]._id;
+    for (let i =0; i< JSON.parse(res['_body'])[0].length; i++){
+      console.log(JSON.parse(res['_body'])[0][i].tagId)
+      this.productService.getOneProduct(JSON.parse(res['_body'])[0][i].tagId).subscribe(res1 => {
+        console.log(JSON.parse(res1['_body']))
+      })
+    }
+
       if (!this.feeds.length){
         this.noFeeds = true;
       }
@@ -110,7 +129,7 @@ userFollow
                }
            }      
      }
-      })
+      });
     });
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
@@ -119,13 +138,16 @@ userFollow
       
 
       });
+
+     
     }
+
     
 
     }
     onImagePick(event,name) {
       console.log(name);
-      this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
+      // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
       const file = <File>event.target.files[0];
       if (name === 'Image') {
         const reader = new FileReader();
@@ -152,13 +174,16 @@ userFollow
         })
 
      }
+  
   onAddpost() {
-   this.feed.value.tagId = this.feedService.tagId;
-   this.feed.value.companyName=this.companyName;
-   this.feed.value.companyLogo=this.companyLogo
-    this.feedService.AddFeed(this.feed.value).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
-    });
+    console.log(this.feed.value);
+  this.feed.value.tagId = this.feedService.tagId;
+   this.feed.value.productName=this.feedService.productName;
+   this.feed.value.productImage=this.feedService.productImage;
+   this.feed.value.productDescription=this.feedService.productDescription;
+  this.feedService.AddFeed(this.feed.value).subscribe(res => {
+    console.log(JSON.parse(res['_body']));
+  });
     this.feed.reset();
 
   }
@@ -172,6 +197,9 @@ userFollow
   EditBpage() {
     // console.log(this.mycompanyId)
     this.router.navigate(['/company-form2']);
+  }
+  CreateBpage(){
+    this.router.navigate(['/B-page'])
   }
 
   onfollow(i,id){

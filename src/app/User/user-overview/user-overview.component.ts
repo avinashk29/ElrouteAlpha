@@ -78,6 +78,9 @@ export class UserOverviewComponent implements OnInit , OnDestroy{
   ngOnInit() {
 
   }
+  manageFollowing(){
+    this.router.navigate(['/Following'])
+  }
   createBPage(){
     this.router.navigate(['/B-page'])
   }

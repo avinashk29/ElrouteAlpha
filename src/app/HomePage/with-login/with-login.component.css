@@ -105,6 +105,9 @@ border: solid 5px white;
  margin-top: 19%;
 }
 .user_name h2 {
+    /* font-f: Segoe UI, Bold;f
+     */
+     font-family: Segoe UI, Bold;
  margin-bottom: auto;
  font-weight: 500;
  margin-top: auto;
@@ -113,6 +116,7 @@ border: solid 5px white;
  color: rgb(75, 73, 73);
 }
 .user_name p {
+    font-family: Segoe UI, Semibold;
  font-size: 10px;
  margin-bottom: auto;
  margin-top: auto;
@@ -125,6 +129,7 @@ border: solid 5px white;
 
 .user_details p
 {
+    font-family: Segoe UI, Regular;
  text-align: center;
  font-size: 12px;
  margin-bottom: auto;
@@ -153,6 +158,7 @@ border: solid 5px white;
  margin-bottom: auto;
  width: 100%;
  font-size: 15px;
+ font-family:Segoe UI, Bold;
 }
 .user_following p
 {
@@ -338,7 +344,7 @@ border: solid 5px white;
 
 .add_feed {
     border-radius: 12px 12px 0 0px;
-    width: 17%;
+    width: 19%;
     margin: 0 0px;
     padding: 9px 22px;
     height: 20px;
@@ -1128,8 +1134,9 @@ height: 62vh;
 
 .feed_text p
 {
+    font-family: Segoe UI, Regular;
  color: white;
- font-size: 20px;
+ font-size: 12px;
  margin-bottom: auto;
  margin-top: auto;
  padding: 18px;

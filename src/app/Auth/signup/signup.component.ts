@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
   bpage = false;
   signupForm = new FormGroup({
     userName : new FormControl('',[Validators.required]),
-    location : new FormControl('', [Validators.required]),
+    location : new FormControl('India', [Validators.required]),
     email: new FormControl('' , [Validators.required]),
     title: new FormControl ('', [Validators.required]),
     password: new FormControl('' , [Validators.required])

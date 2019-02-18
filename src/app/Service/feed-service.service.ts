@@ -7,6 +7,9 @@ import { Http, Headers } from '@angular/http';
 export class FeedService {
     token;
     tagId;
+    productName;
+    productImage;
+    productDescription
     constructor(public http: Http) {}
     AddFeed(feed) {
       const headers = new Headers();

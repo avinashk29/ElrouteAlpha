@@ -160,8 +160,6 @@ this.setSection();
       if(this.Image){
         this.img=true;
       }
-
-
         });
       });
       this.mycompanyId = this.storage.get('companyId');
@@ -346,10 +344,11 @@ onDelete(index){
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
+             this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
         }
         
       })
-      this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
+     
    }
 
   editProduct(id) {

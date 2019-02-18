@@ -10,9 +10,8 @@
                         </li>
                    </div>
                 </datalist>
-                <button type="submit" >Tag Product</button>
-                 -->
-                 <!-- <form (submit) = "getProduct()"> 
+                <button type="submit" >Tag Product</button>  -->
+             <form (submit) = "getProduct()"> 
                     <input list="product" [(ngModel)]="product_id" name="product_id"  placeholder="Product">
                     <datalist id ="product"  >
                       <div *ngFor = "let product of products; let i = index">
@@ -20,10 +19,10 @@
                     </div>
                   </datalist>
                 <button type="submit">Submit</button>
-              </form> -->
+              </form>
             
 
-              <form>
+              <!-- <form>
                     <div class="tag_product">
                       <div class="tag">
                         <div class="heading">
@@ -52,4 +51,4 @@
                          </div> 
                        </div> 
                      </div>   
-              </form>
+              </form> -->
