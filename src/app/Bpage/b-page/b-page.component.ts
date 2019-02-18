@@ -223,9 +223,9 @@ this.setSection();
 
    });
 
-
  this.feedService.GetFeed(this.comapnyId).subscribe(res => {
    this.feeds =  JSON.parse(res['_body']);
+   console.log(this.feeds.length)
    console.log(this.feeds)
    if (!this.feeds.length){
      this.noFeeds = true;
@@ -304,12 +304,13 @@ onDelete(index){
   console.log(name)
   // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
   this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'imageUpload'}});
-
      this.file = <File>event.target.files[0];
       const fdata = new FormData()
        fdata.append(name,this.file)
       console.log(fdata);
       this.imgUpload.uploadImg(fdata).subscribe(res=>{
+        
+
         console.log(res);
         const updata = new FormData();
         const url = res['_body'];
@@ -346,6 +347,7 @@ onDelete(index){
             // this.companyLogo=JSON.parse(response['_body']).url;
              console.log(JSON.parse(response['_body']));
              })
+             this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'default'}});
         }
         
       })

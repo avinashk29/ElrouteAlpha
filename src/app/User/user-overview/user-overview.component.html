@@ -1,4 +1,3 @@
-<app-side-nav ></app-side-nav>
 
 <div  class="heading">
     <h2 style="width: 67%;">Overview</h2>
@@ -91,7 +90,7 @@
     </div>
 
 </div>
-
+<!------------------------------------MObile code---------------------------->
 <section>
     <div class="follower_box">
       <div class="follower_user">
@@ -144,20 +143,21 @@
     </div>
     <div class="bookmark_following" id="overview1">
 
-      <div class="following_nub">
-          <div class="user_img">
-              <img src="assets/images/following.png">
-          </div>
-          <div class="following_nub1">
-              <span>{{companyFollowers}}</span>
-          </div>
-          <div class="following_btn">
-              <button>Mange</button>
-          </div>
-
-      </div>
-      <div class="b_page_btn">
-          <button>Create  Your B page</button>
-      </div>
+            <div class="following_nub" *ngIf="haveCompany">
+                    <div class="user_img">
+                        <img src="assets/images/following.png">
+                    </div>
+                    <div class="following_nub1">
+                        <span>{{companyFollowers}}</span>
+                    </div>
+                    <div class="following_btn">
+                        <button>Manage</button>
+                    </div>
+        
+                </div>
+                <div class="b_page_btn">
+                    <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
+                    <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go TO B-Page</button>
+                </div>
     </div>
     </section>

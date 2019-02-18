@@ -23,7 +23,7 @@ header {
 
     width: 20px;
     height: 2px;
-    background-color: black;
+    background-color: white;
     margin: 4px 0;
 
 }
@@ -33,6 +33,7 @@ header {
 aside {
   width: 60px;
   background: #fff;
+  background-color: #43425D;
   padding: 8px 0px 10px 0px;
   position: absolute;
   left: 0;
@@ -56,7 +57,7 @@ aside ul li {
 }
 aside ul li a {
   font-size: 14px;
-  color: #4a4a4a;
+  color: #FFFFFF;
   text-decoration: none;
   text-transform:uppercase;
   white-space: nowrap;
@@ -186,4 +187,8 @@ aside{
 .menu2{
   display: inline-block;
 }
+/* .menu2 span{
+  margin-top: -7%;
+  margin-left: -2%;
+}  */
 }

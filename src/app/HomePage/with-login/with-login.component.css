@@ -3,6 +3,7 @@
  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
  margin: 0 auto;
  width: 80%;
+ height: 100vh;
 
  margin-top: 7%;
 }
@@ -46,6 +47,7 @@
     background-color: transparent;
     border: none;
     float:right;
+    
     outline: none;
 }
 .user_edit span
@@ -94,6 +96,7 @@
 .follower_img1 img {
  border-radius: 100%;
  width: 80px;
+ outline: none;
     height: 80px;
 border: solid 5px white;
 }
@@ -181,7 +184,8 @@ border: solid 5px white;
 }
 .company_logo img
 {
- width: 100%;
+    width: 60px;
+    height: 60px;   
 }
 .company_name
 {
@@ -237,6 +241,7 @@ border: solid 5px white;
  padding: 4px;
  border: none;
  margin-top: 10%;
+ outline: none;
 }
 .default_feed
 {
@@ -317,6 +322,7 @@ border: solid 5px white;
  border-radius: 100px;
  height: 40px;
  width: 40px;
+ outline: none;
  border: none;
  
  }
@@ -338,7 +344,7 @@ border: solid 5px white;
 
 .add_feed {
     border-radius: 12px 12px 0 0px;
-    width: 17%;
+    width: 19%;
     margin: 0 0px;
     padding: 9px 22px;
     height: 20px;
@@ -508,6 +514,7 @@ border: solid 5px white;
  margin-right: 4%;
  margin: 6px;
  font-weight: 500;
+ outline: none;
  font-size: 14px;
  color: white;
  background-color: transparent;
@@ -594,6 +601,7 @@ border: solid 5px white;
  font-weight: 600;
  height: 25px;
  border-radius: 4px;
+ outline: none;
  border: none;
  /* margin-left: 10px; */
  /* float: right; */
@@ -730,6 +738,7 @@ section {
  font-weight: 600;
  height: 25px;
  border-radius: 15px;
+ outline: none;
  border: none;
  margin-left: 10px;
 }
@@ -810,7 +819,17 @@ mat-panel-title h4 {
 }
 
 @media screen and (max-width:700px) {
- .company_industry,
+ .dashboard
+ {
+    
+    width: 95%;
+ 
+ }
+    .user
+ {
+     display: none;
+ }
+    .company_industry,
  .login_user {
  display: none;
  }
@@ -820,8 +839,10 @@ mat-panel-title h4 {
  padding-top: 18%;
  }
  .feeds {
- width: 100%;
- padding: 0px;
+    width: 96%;
+    padding: 0px;
+    left: 2%;
+
  }
  .add_media h2 {
  font-size: 15px;
@@ -831,8 +852,9 @@ mat-panel-title h4 {
  font-size: 10px;
  }
  .add_feed {
- font-size: 11px;
- width: 12%;
+    font-size: 15px;
+    width: 20%;
+
  }
  section {
  width: 95%;
@@ -840,6 +862,7 @@ mat-panel-title h4 {
  .followBtn button {
  width: 100%;
  font-size: 8px;
+ outline: none;
  }
  .followBtn p {
  margin-right: 0;
@@ -874,12 +897,12 @@ mat-panel-title h4 {
  width: 100%;
  }
  .feeds {
- width: 48%;
+ width: 50%;
  padding: 0px;
  }
  .add_media h2 {
  font-size: 15px;
- margin-top: -5px;
+ /* margin-top: -5px; */
  }
  .add_media span {
  font-size: 10px;
@@ -894,6 +917,7 @@ mat-panel-title h4 {
  .followBtn button {
  width: 100%;
  font-size: 8px;
+ outline: none;
  }
  .followBtn p {
  margin-right: 0;
@@ -915,7 +939,7 @@ mat-panel-title h4 {
  /*------------------*/
  .follower_img {
     margin: 0 auto;
-    width: 35%;
+    width: 40%;
 }
 .follower_img1 img {
    
@@ -952,6 +976,24 @@ mat-panel-title h4 {
     width: 30% !important;
     
 }
+.user{
+    
+    width: 20%;
+    
+}
+.company_logo img{
+    width: 40px;
+    height: 40px;
+}
+.company_name h2{
+    
+    padding: 0  px;
+}
+.feeds {
+    
+    left: 23%;
+}
+
 
 /*----------*/
 }
@@ -1052,6 +1094,7 @@ input[type="file"]
  height: 5vh;
  font-weight: 900;
  border-radius: 10px;
+ outline: none;
 }
 .feed_following p
 {

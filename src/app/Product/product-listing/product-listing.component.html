@@ -23,7 +23,7 @@
        <div class="rightSection1">
     <div class="edit_product" *ngFor="let r of results">
         <div class="card">
-            <div class="card_edit">
+           
                     <!-- <div class="edit_btn">
                             <button type="button">Edit</button>
                      </div>    -->
@@ -32,8 +32,9 @@
                             <div class="edit_btn">
                                     <button type="button" (click)="editProduct(r._id)">Edit</button>
                              </div> 
-                    </div>
-            </div> 
+                        </div>    
+                    
+            
         </div>   
             <div class="product_details">
                       <h4>{{r.productName}}</h4>

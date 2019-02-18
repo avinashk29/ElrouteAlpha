@@ -2,12 +2,14 @@
 {
     padding-top:5%;
     margin-left: 5%;
+    margin: 0 auto;
+    width: 80%;
 }
 .product
 {
     padding: 10px 20px;
     background-color: #f5f2f2;
-    width: 30%;
+    width: 40%;
     float: left;
 }
 .product_1
@@ -110,7 +112,7 @@
 }
 .Description_box
 {
-    width: 45%;
+    width: 50%;
     float: left;
    margin-left:2%;
    font-family:  Segoe UI regular ;
@@ -284,9 +286,7 @@ section{
     border-radius: 0 !important;
   
   }
-  mat-expansion-panel{
-    /* box-shadow: 0 0 0 0!important; */
-  }
+
   .tagged mat-expansion-panel-header{
     height: 35px !important;
     color: #ffffff !important;
@@ -426,4 +426,8 @@ section{
         margin-right: auto;
         border: 1px solid #cccccc;
       }
+      .product_detalis {
+        
+        margin-left: 10%;
+    }
  }
