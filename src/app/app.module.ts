@@ -24,7 +24,7 @@ import {FeedsComponent} from './Bookmark/feeds/feeds.component'
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './StaticData/Footer/footer/footer.component';
 import { HelpComponent } from './StaticData/Help/help/help.component';
-
+import {MatCardModule} from '@angular/material/card';
 import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
@@ -135,6 +135,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     Ng2CarouselamosModule,
     // NgxUiLoaderModule,
     // NgxSpinnerModule,
+    MatCardModule,
     StickyNavModule,
     ToastrModule.forRoot()
 

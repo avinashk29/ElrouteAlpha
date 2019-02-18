@@ -258,7 +258,7 @@
             </div>
             </div> -->
             <div class="main_feed_card"   *ngFor = "let feed of feeds; let i = index">
-              <div class="feed1">
+              <div class="feed1" *ngIf="feeds">
                     <div>
                         <div class="feed_content" >
                             <div class="feed_header">
@@ -271,12 +271,12 @@
                                     <h6>India</h6>
                                  </div> 
                                  <div class="feed_following">
-                                    <button  (click)="onunfollow(i,feed.admin)"  *ngIf = "!resultvalue else loading">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
+                                    <button  (click)="onunfollow(i,feed.admin)">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                       <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
                                     </svg></span></button>
-                                <ng-template #loading>
+                                <!-- <ng-template #loading>
                                <button (click)="onfollow(i,feed.admin)">Follow</button>
-                                    </ng-template>
+                                    </ng-template> -->
                                    <!-- <button type="button">Following<span>   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                     <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/> -->
                                   <!-- </svg></span></button> -->
@@ -337,33 +337,36 @@
                     </div>
                    
                 </div>
+                
               </div>
-
+              <div  class="feeds" #load>
+                  <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
+                  <div class="default_feed">
+                      <div class="feed_show">
+                          <div class="feed_show_img">
+                              <img src="assets/images/Group1.png">
+                            </div>  
+                            <div class="feed_show_content">
+                                <div class="feed_show_content1" >
+                                    <h4 >Elroute your way to business!</h4>
+                                 <p>We give you a platform to showcase what your company has got and how ypur're better than tha other in your category</p>
+                                 <p>Add your feeds here to attract more and more business and level up your game</p>
+                                 
+                                 </div>
+                                 <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                                  </button>
+                              </div>
+                          </div>
+                        </div> 
+                 </div>
         </div>
 
+       
 
 
 
 
-
-       <div  class="feedCards" *ngIf="!feeds">
-        <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
-        <div class="feed_show">
-            <div class="feed_show_img">
-                <img src="assets/images/Group1.png">
-              </div>  
-              <div class="feed_show_content">
-                  <div class="feed_show_content1" >
-                      <h4 >Elroute your way to business!</h4>
-                   <p>We give you a platform to showcase what your company has got and how ypur're better than tha other in your category</p>
-                   <p>Add your feeds here to attract more and more business and level up your game</p>
-                   
-                   </div>
-                   <button type="button" *ngIf="myCompany" routerLink="/Dashboard"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-                    </button>
-                </div>
-            </div>
-       </div>
+       
 
        <div class="otherInfocard">
         <div class="infoCard">
@@ -590,7 +593,9 @@
       <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
           <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
+            
               <div class="Card" *ngFor="let product of products; let i = index">
+
                   <div class="productCard">
                 <div class="productImage">
                             <img src="{{product.Image}}">
@@ -617,9 +622,9 @@
                   <div class="price">
                   <h4>{{product.price}} {{product.minPrice}}</h4>
                 </div>
-                <div class="hits">
+                <!-- <div class="hits">
                   <p>24,354 hits</p>
-                </div>
+                </div> -->
                 </div>
                 </div>
                 </div>

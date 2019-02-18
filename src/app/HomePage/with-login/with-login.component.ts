@@ -64,6 +64,7 @@ userFollow
         this.type=params.urltype;
         this.userService.getUserData().subscribe(res => {
           this.userImage=JSON.parse(res['_body']).userImage;
+          console.log(this.userImage)
       })
       })
     this.userService.token = this.storage.get('token');
@@ -74,6 +75,7 @@ userFollow
       this.location = JSON.parse(res['_body']).location;
       this.shortBio = JSON.parse(res['_body']).shortBio;
       this.userImage=JSON.parse(res['_body']).userImage;
+      
       this.title=JSON.parse(res['_body']).title;
       this.following = JSON.parse(res['_body']).following.length;
       console.log(JSON.parse(res['_body']).following.length)
@@ -147,7 +149,7 @@ userFollow
     }
     onImagePick(event,name) {
       console.log(name);
-      // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
+      this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
       const file = <File>event.target.files[0];
       if (name === 'Image') {
         const reader = new FileReader();
@@ -156,8 +158,8 @@ userFollow
        };
        reader.readAsDataURL(file);
       }
-
       const fdata= new FormData();
+      console.log(name)
       fdata.append(name,file)
         this.imgupload.uploadImg(fdata).subscribe(res=>{
            const fd=new FormData()

@@ -7,17 +7,19 @@ a {
 	text-decoration: none;
 }
 
-.head
+/* .head
 {
   margin-bottom: 7%;
-  }
+  } */
 
 .logo {
 	margin: 0;
-	font-size: 1.45em;
+  font-size: 1.45em;
+  outline: none;
 }
 .logo img
 {
+  outline: none;
   width: 150px;
   margin-left: 35%
 }
@@ -87,12 +89,15 @@ a {
 {
   display: flex;
   padding: 0px 0;
+  
 
 }
 .user_img
 {
+  outline: none;
   display: flex;
   cursor: pointer;
+  padding: 1px 0;
 }
 .user_img img
 {
@@ -114,7 +119,7 @@ a {
 .user span > svg
 {
   fill: white;
-  padding: 16px 0;
+  padding: 17px 0;
 
 }
 
@@ -147,6 +152,15 @@ a {
   .main-nav a{
     color: black;
   } 
+  .user_img p {
+   
+    color: black;
+    /* background-color: #942525; */
+}
+.user[_ngcontent-c2] span > svg {
+  fill: black;
+  padding: 17px 0;
+}
 
 }
 @media screen and (min-width: 767px) and (max-width: 1024px){

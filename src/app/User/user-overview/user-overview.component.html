@@ -1,4 +1,3 @@
-<app-side-nav ></app-side-nav>
 
 <div  class="heading">
     <h2 style="width: 67%;">Overview</h2>
@@ -80,7 +79,7 @@
                 <span>{{companyFollowers}}</span>
             </div>
             <div class="following_btn">
-                <button>Manage</button>
+                <button (click)="manageFollowing()">Manage</button>
             </div>
 
         </div>
@@ -91,7 +90,7 @@
     </div>
 
 </div>
-
+<!------------------------------------MObile code---------------------------->
 <section>
     <div class="follower_box">
       <div class="follower_user">
