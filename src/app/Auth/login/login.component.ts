@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(SignupComponent, dialogConfig);
   }
 onSubmit() {
-  this.dialogRef.close(LoginComponent);
+ 
  const loginValues = this.login.value;
  this.authService.login(loginValues).subscribe(res => {
   console.log(JSON.parse(res['_body']));
@@ -50,11 +50,13 @@ onSubmit() {
   this.authService.token =   this.storage.set('token', res.headers.get('x-auth'));
   this.router.navigate(['/Dashboard']);
   this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
-  } else {
-    this.notification.error('Error Login');
   }
-
- });
+ this.dialogRef.close(LoginComponent);
+ },
+ error => {
+   this.notification.error('Enter Valid Details');
+ }
+ );
 
 }
 

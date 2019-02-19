@@ -7,6 +7,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Service/user-services.service';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider,LinkedinLoginProvider, SocialUser} from 'ng4-social-login';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,6 +16,7 @@ import { UserService } from 'src/app/Service/user-services.service';
 export class SignupComponent implements OnInit {
   error;
   username;
+  public user: any = SocialUser; 
   bpage = false;
   signupForm = new FormGroup({
     userName : new FormControl('',[Validators.required]),
@@ -25,7 +27,7 @@ export class SignupComponent implements OnInit {
   });
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public dialog: MatDialog , public dialogRef: MatDialogRef<SignupComponent>, public authService: AuthServiceService,
-     public router: Router, public notification: ToastrService,public userService:UserService, public route: ActivatedRoute) {
+     public router: Router, public notification: ToastrService,public userService:UserService, public route: ActivatedRoute, private authService1: AuthService) {
       this.route.queryParams.filter(params => params.urlRedirect).subscribe(params => {
         let test = params.urlRedirect;
         if (test = true) {
@@ -45,6 +47,62 @@ export class SignupComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(LoginComponent, dialogConfig);
+  }
+    signInWithGoogle(): void {
+    this.authService1.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData => {
+      this.user = userData;
+      console.log(userData)
+     this.signupForm.value.userName  = userData.name;
+     this.signupForm.value.email = userData.email;
+    this.authService.signup(this.signupForm.value).subscribe(res => {
+      this.error = false;
+      console.log(JSON.parse(res['_body']));
+     this.storage.set('token', res.headers.get('x-auth'));
+    //  this.storage.set('User', JSON.parse(res['_body']));
+     this.authService.token = this.storage.get('token');
+     this.dialogRef.close(SignupComponent);
+     if (!this.bpage) {
+      this.router.navigate(['/Dashboard']);
+     } else {
+      this.router.navigate(['/B-page']);
+     }
+
+     this.notification.success('Sign Up Successful');
+  });
+    }));
+  }
+ 
+  signInWithFB(): void {
+    this.authService1.signIn(FacebookLoginProvider.PROVIDER_ID).then((userData) =>{
+      this.user = userData;
+      console.log(userData.name);
+    });
+  }
+ 
+  signInWithLinkedIN(): void {
+    this.authService1.signIn(LinkedinLoginProvider.PROVIDER_ID).then((userData) => {
+      this.user = userData;
+      console.log(userData)
+            this.user = userData;
+      console.log(userData)
+     this.signupForm.value.userName  = userData.name;
+     this.signupForm.value.email = userData.email;
+    this.authService.signup(this.signupForm.value).subscribe(res => {
+      this.error = false;
+      console.log(JSON.parse(res['_body']));
+     this.storage.set('token', res.headers.get('x-auth'));
+    //  this.storage.set('User', JSON.parse(res['_body']));
+     this.authService.token = this.storage.get('token');
+     this.dialogRef.close(SignupComponent);
+     if (!this.bpage) {
+      this.router.navigate(['/Dashboard']);
+     } else {
+      this.router.navigate(['/B-page']);
+     }
+
+     this.notification.success('Sign Up Successful');
+  });
+    });
   }
 onSubmit() {
   this.error = true;

@@ -18,6 +18,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class WithoutLoginComponent implements OnInit{
   token;
+  test = ['https://picsum.photos/200/300',
+           'https://picsum.photos/200',
+           'https://picsum.photos/200/300/?random',
+           'https://picsum.photos/200/300',
+           'https://picsum.photos/200',
+           'https://picsum.photos/200/300/?random'
+             
+  ]
+  
   noFeeds = false;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
    public dialog: MatDialog , public notification: ToastrService,

@@ -72,6 +72,25 @@ import { CompanyForm4Component } from './Company/company-form4/company-form4.com
 import { CompanyForm5Component } from './Company/company-form5/company-form5.component';
 import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
+const config = new AuthServiceConfig([
+{
+  id: GoogleLoginProvider.PROVIDER_ID,
+  provider: new GoogleLoginProvider('349477484566-r02ikt755q39t0gkg5lomu8cqag1as6n.apps.googleusercontent.com')
+},
+{
+  id: FacebookLoginProvider.PROVIDER_ID,
+  provider: new FacebookLoginProvider('307465413244657')
+},
+{
+  id: LinkedinLoginProvider.PROVIDER_ID,
+  provider: new LinkedinLoginProvider('81dtr1bi4w9s9g')
+}
+], false);
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,6 +152,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatExpansionModule,
     MatTabsModule,
     Ng2CarouselamosModule,
+    SocialLoginModule,
     // NgxUiLoaderModule,
     // NgxSpinnerModule,
     MatCardModule,
@@ -147,7 +167,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     FeedComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
-     SearchService, CompanyGuardService],
+     SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig}],
   bootstrap: [AppComponent],
 
 })
