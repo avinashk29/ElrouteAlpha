@@ -7,10 +7,10 @@ a {
 	text-decoration: none;
 }
 
-/* .head
+.head
 {
-  margin-bottom: 7%;
-  } */
+  margin-bottom: 6%;
+  }
 
 .logo {
 	margin: 0;
@@ -21,7 +21,7 @@ a {
 {
   outline: none;
   width: 150px;
-  margin-left: 35%
+  margin-left: 35%;
 }
 .logo a,
 .main-nav a {
@@ -66,7 +66,7 @@ a {
   .header {
     position: fixed;
     width: 95%;
-    height: 44px;
+    height: 53px;
     color: #fff;
     z-index: 9;
 	}
@@ -97,7 +97,7 @@ a {
   outline: none;
   display: flex;
   cursor: pointer;
-  padding: 1px 0;
+  padding: 7px 0;
 }
 .user_img img
 {
@@ -108,10 +108,13 @@ a {
 }
 .user_img p
 {
+ 
   margin: 10px 13px 0px 0px;
+  margin-bottom: auto;
+  margin-top: auto;
   
 }
-.user_img span
+.user span
 { 
   margin-bottom: auto;
   margin-top: auto;
@@ -119,7 +122,8 @@ a {
 .user span > svg
 {
   fill: white;
-  padding: 17px 0;
+  padding: 7px 0 0 0;
+
 
 }
 
@@ -138,6 +142,7 @@ a {
     border-radius: 5px;
     padding: 0 0 0 9px;
     font-size: 11px;
+    margin-left: 7%;
   }
   .header {
     padding-left: 5%;
@@ -155,13 +160,22 @@ a {
   .user_img p {
    
     color: black;
+    font-size: 12px;
     /* background-color: #942525; */
 }
 .user[_ngcontent-c2] span > svg {
   fill: black;
   padding: 17px 0;
 }
-
+.head
+{
+  margin-bottom: 0%;
+  }
+  user {
+    display: flex;
+    padding: 0px 0;
+    margin-left: 7%;
+}
 }
 @media screen and (min-width: 767px) and (max-width: 1024px){
  .main-nav {
@@ -177,4 +191,8 @@ a {
   margin-left: 9px;
   
 }
+.head
+{
+  margin-bottom: 7%;
+  }
 }

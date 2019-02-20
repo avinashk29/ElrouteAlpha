@@ -1,8 +1,9 @@
-
+<div class="bookmark_overview1">
 <div  class="heading">
     <h2 style="width: 67%;">Overview</h2>
     <h2 style="width: 40%;" *ngIf = "haveCompany">Following</h2>
 </div>
+
 <div class="bookmark_overview" >
     <div class="overview">
         <div class="profile">
@@ -156,7 +157,10 @@
 
       </div>
       <div class="b_page_btn">
-          <button>Create  Your B page</button>
-      </div>
+            <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
+            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go TO B-Page</button>
+        </div>
     </div>
     </section>
+
+    </div>

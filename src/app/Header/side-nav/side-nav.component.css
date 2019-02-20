@@ -195,4 +195,12 @@ aside{
   margin-top: -7%;
   margin-left: -2%;
 }  */
+.menuBar{
+
+  width: 20px;
+  height: 2px;
+  background-color: black !important;
+  margin: 4px 0;
+
+}
 }

@@ -47,7 +47,7 @@ productResult=[]
       this.search.onSearch(this.word,this.page).subscribe(response=>{
         this.productResult=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
-        console.log(this.productId.length);
+        console.log(this.productResult);
         // console.log(this.productId.length)
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
         console.log(this.bookmarkService.productBookmark.length)

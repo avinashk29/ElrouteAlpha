@@ -36,7 +36,7 @@ section{
 .edit_heading h2
 {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   color: gray;
   font-size: 20px;
   font-weight: 500;
@@ -258,7 +258,7 @@ font-size: 13px;
 .rightSection1
 {
   margin: 0 auto;
-  width:80%;
+  width:85%;
 }
 .edit_product
 {
@@ -291,7 +291,7 @@ font-size: 13px;
   background-color: gray;
   color: white;
   padding: 2px 11px;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 .product_img img
 {
@@ -322,6 +322,7 @@ font-size: 13px;
 .product_details h4
 {
   font-weight: 400;
+  font-size: 15px;
   padding-top: 1%;
   margin-bottom: auto;
   margin-top: auto;
@@ -339,7 +340,7 @@ font-size: 13px;
   margin-bottom: auto;
   margin-top: auto;
   padding-top: 4%;
-  font-size: 12px;
+  font-size: 11px;
 
 }
 .tags
@@ -373,7 +374,7 @@ padding-top: 10%;
   }
   .leftSection {
     width: 100%;
-    height: 40%;
+    height: 35%;
     box-shadow: none;
 }
 .rightSection{
@@ -413,6 +414,3 @@ padding-top: 10%;
   width: 80%;
 }
 }
-
-
-

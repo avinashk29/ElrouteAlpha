@@ -1,5 +1,6 @@
 header{
   border: solid 1px gray;
+  border-top:none; 
   border-right: none;
   border-left: none;
   margin-top: 20px;
@@ -9,7 +10,15 @@ header{
 
     width: 80%;
     margin: 0px auto;
-    margin-top: 1%;
+    /* margin-top: 1%; */
+}
+.s_page_links1 h3
+{
+    margin-bottom: auto;
+    margin-top: auto;
+    /* padding-top: 6%; */
+    font-size: 29px;
+    font-weight: 400;
 }
 .s_page_details h1{
   font-weight: 400;
@@ -17,6 +26,7 @@ header{
 .s_page_header_link
 {
     width: 100%;
+  
 
 }
 .s_page_header_link span
@@ -45,6 +55,7 @@ header{
 {
 
     width: 100%;
+    margin-bottom: 7px;
 }
 .s_page_links select
 {
@@ -63,14 +74,41 @@ header{
 .s_page_links1
 {
     float: left;
+    margin: 0px 40px 0 0;
 }
 .s_page_links2
 {
     float: left;
-    margin: 0px 20px;
+    margin: 0px 40px 0 0;
 }
 @media screen and (max-width: 700px){
     .s_page_header{
         display: none;
+    }
+    .s_page_links h3
+{
+
+    font-size: 20px;
+ 
+}
+    .s_page_links a
+{
+
+    font-size: 20px;
+   
+}
+  }
+  @media screen and (min-width: 700px) and (max-width: 1024px){
+    .s_page_links1 h3
+    {
+    
+        font-size: 20px;
+     
+    }
+        .s_page_links a
+    {
+    
+        font-size: 20px;
+       
     }
   }

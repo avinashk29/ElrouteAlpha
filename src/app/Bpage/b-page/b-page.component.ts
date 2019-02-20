@@ -47,7 +47,7 @@ industry;
  address ;
   yearEstd;
   companySize;
-companyFollowers=[]
+companyFollowers=[];
 website;
 workingHours;
 products = [];

@@ -45,6 +45,7 @@
 }
 .user_edit button
 {
+    cursor: pointer;
     background-color: transparent;
     border: none;
     float:right;
@@ -159,6 +160,7 @@ border: solid 5px white;
 }
 .user_following h2
 {
+   
  margin-top: auto;
  margin-bottom: auto;
  width: 100%;
@@ -182,11 +184,13 @@ border: solid 5px white;
 .company
 {
  display: flex;
+
  
 }
 .company_logo
 {
  width: 40%;
+ cursor: pointer;
  margin: 0px 10px;
 
 }
@@ -197,6 +201,7 @@ border: solid 5px white;
 }
 .company_name
 {
+    cursor: pointer;
  width: 100%;
 }
 .company_name h2
@@ -205,7 +210,7 @@ border: solid 5px white;
  margin-top: auto;
  font-size: 12px;
  color:rgb(50, 50, 51);
- padding: 8px;;
+ /* padding: 8px;; */
 }
 .user_company_details hr
 {
@@ -215,6 +220,7 @@ border: solid 5px white;
 }
 .company_following
 {
+    cursor: pointer;
  display: flex;
  margin: 0 auto;
  width: 84%;
@@ -239,6 +245,7 @@ border: solid 5px white;
 }
 .company_edit_btn
 {
+   
  text-align: center;
  margin-top: 2%;
  cursor: pointer;
@@ -247,6 +254,7 @@ border: solid 5px white;
     cursor: pointer;
 }
 .company_edit_btn button{
+    cursor: pointer;
  border-radius: 3px;
  background-color: #323233;
  color: white;
@@ -368,7 +376,7 @@ border: solid 5px white;
 
 .about_feed {
  margin: 0 0px;
- box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2);
+ box-shadow: 0px 1px 6px 1px rgba(25, 25, 25, 0.2);
  width: 100%;
  
 }
@@ -417,7 +425,7 @@ border: solid 5px white;
 }
 .add_media_tag
 {
- 
+    cursor: pointer;
  width: 25%;
  text-align: center;
  cursor: pointer;
@@ -560,7 +568,7 @@ border: solid 5px white;
  
  
  border-radius: 4px;
- margin-bottom: 10%;
+ margin-bottom: 8%;
  
 }
 .category1

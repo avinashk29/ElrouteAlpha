@@ -1,16 +1,17 @@
 .product_detalis
 {
-    padding-top:5%;
+    padding-top:1%;
     margin-left: 5%;
     margin: 0 auto;
-    width: 80%;
+    width: 85%;
 }
 .product
 {
     padding: 10px 20px;
     background-color: #f5f2f2;
-    width: 40%;
+    width: 35%;
     float: left;
+    position: fixed;
 }
 .product_1
 {
@@ -90,7 +91,7 @@
 }
 .contact span
 {
-    font-size:150%;
+    font-size:20px;
     margin-left:20px;
     border:solid 1px gray;
     padding: 0px 15px;
@@ -112,9 +113,11 @@
 }
 .Description_box
 {
-    width: 50%;
+  position: relative;
+  left: 49%;
+    width: 48%;
     float: left;
-   margin-left:2%;
+   /* margin-left:2%; */
    font-family:  Segoe UI regular ;
 }
 .des_box
@@ -316,6 +319,7 @@ section{
   .product{
     width: 100%;
     float: none;
+    position: unset;
   }
   .product_1{
     font-size: 10px;
@@ -342,6 +346,7 @@ section{
   }
   .Description_box{
     width: 100%;
+    position: unset;
   }
   .des_box{
     padding: 0 20px;
@@ -397,10 +402,11 @@ section{
         background-color: #F5F5F5;
     }
     .Description_box {
-        width: 44%;
-        float: left;
-        margin-left: 2%;
-        font-family: Segoe UI regular;
+      width: 40%;
+      left: 55%;
+      /* float: left; */
+      margin-left: 2%;
+      font-family: Segoe UI regular;
     }
     .des_box p {
         color: #707070;

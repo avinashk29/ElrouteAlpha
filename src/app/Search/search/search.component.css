@@ -85,7 +85,7 @@ input#search-bar:focus:-ms-placeholder {
   margin-top: 30px;
 } */
 section{
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 30px;
   display: flex;
@@ -108,15 +108,15 @@ section{
 }
 .productCard, .ServiceCard{
   display: flex;
-
-  height: 15em;
-  border: 1px solid #cccccccc;
-  border-radius: 10px 10px 10px 10px
+  height: 33vh;
+  /* height: 15em; */
+  /* border: 1px solid #cccccccc;
+  border-radius: 10px 10px 10px 10px */
 }
 .productImage, .ServiceImage {
   border-radius: 10px 0 0 10px;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 .bookmark{
    position: absolute;
@@ -132,9 +132,30 @@ section{
   height: 100%;
   border-radius: 10px 0 0 10px;
 }
+.product_img
+{
+  width: 60%;
+}
+.discription p
+{
+  text-align: justify;
+  font-size: 12px;
+}
+.b_page_btn
+{
+  text-align: left;
+  float: left;
+}
+.b_page_btn button
+{
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
 .productContent{
   width: 100%;
   height: 100%;
+  text-align: right;
   border-radius: 0px 10px 10px 0px;
 }
 .content{
@@ -145,7 +166,7 @@ section{
 
 .productContent .content .productCategory h6 ,.ServiceContent .content .ServiceCategory h6 {
   float: right;
-  margin: 13px 15px 0 0;
+  margin: 13px 0px 0 0;
   font-size: 13px;
   font-weight: 100;
 }
@@ -191,7 +212,7 @@ section{
 .price h4{
   margin: 0;
   color: #25FE03;
-  font-size: 23px;
+  font-size: 20px;
 }
 .hits p{
   margin: 0;
