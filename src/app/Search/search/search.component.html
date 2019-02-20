@@ -16,9 +16,6 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
-<div *ngIf = "!productResult">
-<img src="../../../assets/images/result_not_found.png">
-</div>
 <div class="listing" *ngFor="let result of productResult; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null" >
@@ -72,25 +69,26 @@
 
     
           <div class="productCard">
-        <div class="productImage">
-          <img src="https://picsum.photos/200/300/?random">
+        <div class="product_img">
+          <img src="{{result.Image}}">
         </div>
         <div class="productContent" >
         <div class="content">
-          <div class="b_page_btn">
-            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading">Bookmark</button>
-            <ng-template #bloading>
-                <button (click)="deleteProductBookmark(i,result._id)">Unbookmark</button>
-            </ng-template>
-          </div>
+          
         <div class="productCategory">
-        <h6>{{result.catogory}}</h6>
+            <div class="b_page_btn">
+                <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
+                <ng-template #bloading>
+                    <button (click)="deleteProductBookmark(i,result._id)"><span><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span></button>
+                </ng-template>
+              </div>
+        <h6>{{result.category}}</h6>
         </div>
         <div class="productName">
           <h2 (click)="gotoProductPage(result._id)">{{result.productName}}</h2>
           <h5>{{result.company}}</h5>
          
-          <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.category}}</span><span style= "padding-left: 8px">Country</span></small>
+          <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.industry}}</span><span style= "padding-left: 8px">Country</span></small>
         </div>
         <div class="discription" style="margin-top:30px;">
         <p>{{result.shortDescription}}</p>
