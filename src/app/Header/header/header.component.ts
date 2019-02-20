@@ -40,4 +40,5 @@ export class HeaderComponent implements OnInit {
     this.storage.remove('companyId');
     this.router.navigate(['/']);
   }
+
 }

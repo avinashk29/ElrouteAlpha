@@ -270,18 +270,18 @@
                                     <p>Service</p>
                                     <h6>India</h6>
                                  </div> 
-                                 <div class="feed_following">
+                                 <!-- <div class="feed_following">
                                     <button  (click)="onunfollow(i,feed.admin)">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                       <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
                                     </svg></span></button>
-                                <!-- <ng-template #loading>
+                                < <ng-template #loading>
                                <button (click)="onfollow(i,feed.admin)">Follow</button>
                                     </ng-template> -->
                                    <!-- <button type="button">Following<span>   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                     <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/> -->
                                   <!-- </svg></span></button> -->
-                                   <!-- <p>24,444 followers</p> -->
-                                   </div>
+                                   <!-- <p>24,444 followers</p> 
+                                   </div> -->
                              </div> 
                              <div class="feed_img">
                                 <div class="container1">
@@ -293,7 +293,7 @@
                                     <a href="">{{feed.link}}</a>
                                   </div>
                                     <div class="bookmark_share">
-                                      <div class="bookmark_feed">
+                                      <!-- <div class="bookmark_feed">
                                       <span>
                                           <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                                             <g id="bookmark" fill="none">
@@ -303,7 +303,7 @@
                                           </svg>
                                       </span>
                                       <p>28</p>
-                                      </div>
+                                      </div> -->
                                       <div class="share_feed">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
                                           <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z" transform="translate(-1181.904 -755.425)" fill="#fff"/>
@@ -339,7 +339,7 @@
                 </div>
                 
               </div>
-              <div  class="feeds" #load>
+              <div  class="feeds" *ngIf="!feeds">
                   <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
                   <div class="default_feed">
                       <div class="feed_show">
@@ -353,7 +353,7 @@
                                  <p>Add your feeds here to attract more and more business and level up your game</p>
                                  
                                  </div>
-                                 <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                                 <button type="button" routerLink="/Dashboard"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
                                   </button>
                               </div>
                           </div>
@@ -593,7 +593,9 @@
       <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
           <h1>GROUP {{i + 1}}</h1>
           <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
-            
+            <div *ngIf= "!products">
+              <h1>No Products Found</h1>
+            </div>
               <div class="Card" *ngFor="let product of products; let i = index">
 
                   <div class="productCard">

@@ -56,7 +56,7 @@
                 <div class="user_edit">
                     <input type="file" #filepicker (change)="onImagePick($event,'userImage')" style="display: none">
                         <button (click)="filepicker.click()">
-                        <span ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478" >
+                        <span class="point" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478" >
                           <g id="edit" transform="translate(-546.942 -212.818)" >
                             <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="white"   stroke-linecap="round">
                               <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z" stroke="none"/>
@@ -112,14 +112,14 @@
                         <img src="{{this.companyLogo}}"  >
                      </div>
                      <div class="company_name">
-                          <h2 routerLink = "/companyPage/{{haveCompany}}" [queryParams]= "{urltype:'default'}">{{this.companyName}}</h2>
+                          <h2 routerLink ="/companyPage/{{haveCompany}}" [queryParams]= "{urltype:'default'}">{{this.companyName}}</h2>
                      </div> 
                    
                  </div> 
                  <hr/>
                  <div class="company_following">
-                    <h2>Following</h2>
-                    <p>20</p>
+                    <h2 routerLink="/Followers">Followers</h2>
+                    <p>{{companyFollowers}}</p>
                  </div>  
                  <div class="company_following">
                     <h2>Hits</h2>
@@ -149,7 +149,7 @@
                      <p>Add your feeds here to attract more and more business and level up your game</p>
                      
                      </div>
-                     <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
+                     <button type="button" routerLink="/B-page"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
                       </button>
                   </div>
               </div>
@@ -206,7 +206,6 @@
     <div class="input_link">
         <input *ngIf = "addLink" type="url" placeholder="Enter Link here" formControlName = "link">
         <button *ngIf = "addLink" (click)= "addLink = false">Save</button>
-      
         </div>
             </div>
             
@@ -214,50 +213,6 @@
          </form>
          
     <section>
-        <!-- <div class="feedCards" *ngIf = "!feeds">
-            <div class="feed">
-              <div class="authorInfo">
-              <div class="details">
-                <div class="logo">
-                  <img src="https://picsum.photos/500/300/?random">
-                </div>
-                <div class="info">
-               <h1>{{feed.companyName}}</h1>
-                <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{this.industry}}</p> -->
-               <!-- <p style="line-height: 3px;margin-bottom: 10px;">{{this.country}}</p> 
-              </div>
-              </div>
-              <div class="followBtn">
-               <button>Following <span><svg xmlns="http://www.w3.org/2000/svg" width="19%" height="53%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
-                <p>34,342 followers</p> 
-              </div>
-              </div>
-              <div class="feedInfo">
-                <p>{{feed.content}} </p>
-              </div>
-              <div class="feed-img">
-              <img src = {{feed.Image}}>
-              </div>
-              <div class="feed-share">
-               <p  style="padding: 4px; margin: 0; display: flex;width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg><span><b style="margin-left: 5px;">24,244</b></span></p>
-               <p style=" padding: 0; margin:4px 0;     margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg></p>
-               </div>
-              <div class="tagged">
-                 <mat-expansion-panel>
-                     <mat-expansion-panel-header style="background-color:#6E7892;">
-                       <mat-panel-title>
-                        <h4 style="  color: #fff">Tagged Products</h4>
-                       </mat-panel-title>
-                     </mat-expansion-panel-header>
-    
-                     <p>This is the primary content of the panel.</p>
-    
-                   </mat-expansion-panel>
-              </div>
-              </div>
-    
-          </div> -->
-
          <div  class="feedCards" *ngIf = "feeds">
           <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
     
@@ -275,7 +230,7 @@
                                   <h6>India</h6>
                                </div> 
                                <div class="feed_following">
-                                  <button  (click)="onunfollow(i,feed.admin)"  *ngIf = "!resultvalue else loading">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
+                                  <button  (click)="onunfollow(i,feed.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;"viewBox="0 0 30.043 36.42">
                                     <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
                                   </svg></span></button>
                               <ng-template #loading>
@@ -293,21 +248,40 @@
                               <div class="overlay1">
                                 <div class="feed_text">
                                   <p>{{feed.content}}</p>
-                                    <p>Watch our first episode</p>  
+                                    <!-- <p>Watch our first episode</p>   -->
                                   <a href="">{{feed.link}}</a>
                                 </div>
                                   <div class="bookmark_share">
                                     <div class="bookmark">
-                                    <span>
+                                    
+                                    <span  (click)="feedbookmark(i,feed._id)" *ngIf="!this.result[i].bookm else load">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
-                                          <g id="bookmark" fill="none">
+                                          <g id="bookmark" fill="green">
                                             <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z" stroke="none"/>
                                             <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z" stroke="none" fill="#fff"/>
                                           </g>
                                         </svg>
+                                        <p>28</p>
                                     </span>
-                                    <p>28</p>
+                                  
+                                    
                                     </div>
+                                    <ng-template #load>
+                                    <div class="bookmark">
+                                        
+                                      <span (click)="revmovefeedbookmark(i,feed._id)">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                            <g id="bookmark" fill="red">
+                                              <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z" stroke="none"/>
+                                              <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z" stroke="none" fill="#fff"/>
+                                            </g>
+                                          </svg>
+                                          <p>28</p>
+                                      </span>
+                                      
+                                    
+                                      </div>
+                                      </ng-template>
                                     <div class="share">
                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
                                         <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z" transform="translate(-1181.904 -755.425)" fill="#fff"/>

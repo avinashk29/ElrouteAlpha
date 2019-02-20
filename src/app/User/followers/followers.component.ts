@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
+import { CompanyServiceService } from 'src/app/Service/company-service.service';
+import {LOCAL_STORAGE,WebStorageService} from 'angular-webstorage-service'
+
 
 @Component({
   selector: 'app-followers',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FollowersComponent implements OnInit {
 
-  constructor() { }
+  constructor( private companyService:CompanyServiceService,@Inject(LOCAL_STORAGE) private storage:WebStorageService) { }
 followers = [{
    image: 'https://picsum.photos/200/300/?random',
    comapny: 'Xyz',
@@ -39,6 +42,10 @@ country: 'India'
 
 ];
   ngOnInit() {
+    this.companyService.token=this.storage.get('token');
+    this.companyService.getCompanyFollowers().subscribe(res=>{
+      console.log(res);
+    })
   }
 
 }

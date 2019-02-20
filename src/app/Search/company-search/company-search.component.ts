@@ -39,12 +39,11 @@ export class CompanySearchComponent implements OnInit {
       console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).following;
        this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-      //  console.log(this.userBookmark.pop());
-      console.log( this.userInfo);
       this.search.onSearchCompany(this.word).subscribe(res1=>{
       
         this.result = JSON.parse(res1['_body']);
         console.log(this.result)
+        console.log(this.result.length)
         this.cresult=JSON.parse(res1['_body'])[0]
           var number=this.cresult.length
         this.search.setOption(number)

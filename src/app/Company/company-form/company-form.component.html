@@ -37,7 +37,7 @@
                       <option value="country">
                       <option value="country">
                       <option value="country">
-                      </datalist>
+                      </datalist> -->
                         <input  style="width:45%; float: right;margin-left: 9%;" type="text" placeholder="City (optional)" formControlName = "city" name="city">
                     </div>
                     <span *ngIf="!companyForm.get('country').valid && companyForm.get('country').touched"><p>Please Select Country</p></span>
@@ -47,22 +47,22 @@
               <span *ngIf="!companyForm.get('companyEmail').valid && companyForm.get('companyEmail').touched"><p>Please Enter Valid Email</p></span>
               <li>
                 <input list="industry" formControlName = "industry" placeholder="Industry">
-                <datalist id="industry">
+                <!-- <datalist id="industry">
                 <option value="industry">
                 <option value="industry">
                 <option value="industry">
                 <option value="industry">
-                </datalist>
+                </datalist> -->
               </li>
               <span *ngIf="!companyForm.get('industry').valid && companyForm.get('industry').touched"><p>Please Select Industry</p></span>
               <li>
                   <input list="category" formControlName = "category" placeholder="Category">
-                  <datalist id="category">
+                  <!-- <datalist id="category">
                   <option value="category">
                   <option value="category">
                   <option value="category">
                   <option value="category">
-                  </datalist>
+                  </datalist> -->
               </li>
               <span *ngIf="!companyForm.get('category').valid && companyForm.get('category').touched"><p>Please Select Requied Category</p></span>
               <li><button type="button" (click)=" onSubmit()">Finish</button></li>

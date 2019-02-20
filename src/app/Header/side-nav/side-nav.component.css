@@ -48,6 +48,10 @@ aside ul {
   list-style: none;
   width: 100%;
 }
+.activate{
+  background-color:white;
+
+}
 aside ul li {
   border-bottom: 1px solid #ccc;
   padding: 10px 27px;
