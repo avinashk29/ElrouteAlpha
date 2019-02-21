@@ -202,15 +202,9 @@
 </div>    
           </div>
         </div>
-<div class="category_1">
-    <h6>CATEGORY</h6>
-    <h5>CLOUD COMPUTING</h5>
-    <div class="category_btn">
-        <button type="button" *ngIf="myCompany" routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span></button>
-    </div>
-</div>
+
       
-          <div *ngIf = "editshortIntro">
+          <div *ngIf = "editshortIntro" class="edit_dummy_text">
           <textarea placeholder="Enter Bio"  formControlName = "shortIntro" #shortIntro></textarea>
           <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)" *ngIf="myCompany">Save</button>
 
