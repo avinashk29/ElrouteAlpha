@@ -78,4 +78,10 @@ companyFollowing(id){
     headers.append('x-auth', this.token);
     return this.http.patch('http://localhost:8080/api/company/follow/'+id, {headers: headers});
 }
+getCompanyFollowers(){
+  const headers = new Headers();
+  headers.append('x-auth', this.token);
+  return this.http.get('http://localhost:8080/api/company/followers',{headers: headers});
+
+}
 }

@@ -16,6 +16,9 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
+  <div *ngIf = "!productResult.length">
+    <img src = "../../../assets/images/result_not_found.png">
+  </div>
 <div class="listing" *ngFor="let result of productResult; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null" >
@@ -69,7 +72,7 @@
 
     
           <div class="productCard">
-        <div class="product_img">
+        <div class="productImage">
           <img src="{{result.Image}}">
         </div>
         <div class="productContent" >

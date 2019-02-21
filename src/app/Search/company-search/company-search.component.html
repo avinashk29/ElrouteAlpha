@@ -4,9 +4,10 @@
 <app-s-page-header></app-s-page-header>
 <section>
 <div class="listing">
-
-<div class="companyCard" *ngFor="let r of result[0]; let i=index" >
-    <!-- {{this.÷result.length}} -->
+    <div *ngIf = "!result.length">
+        <img src = "../../../assets/images/result_not_found.png">
+      </div>
+<div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
   <div class="logo">
    <img src="r.companyLogo">
@@ -70,8 +71,11 @@
 </div>
 </div>
 </div>
-</div>
-<ng-template #load>
+<div *ngIf="!result">
   <img src="../../../assets/images/result_not_found.png">
-</ng-template>
+
+</div>
+ 
+</div>
+
 </section>

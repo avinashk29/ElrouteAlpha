@@ -41,6 +41,7 @@
  background-color: #151517;
  border-radius: 4px;
  margin: 4px;
+ 
 }
 .user_edit button
 {
@@ -232,6 +233,7 @@ border: solid 5px white;
  width: 100%;
  font-size: 12px;
  line-height: 19px;
+ cursor: pointer;
  
 }
 .company_following p
@@ -246,6 +248,10 @@ border: solid 5px white;
    
  text-align: center;
  margin-top: 2%;
+ cursor: pointer;
+}
+.point{
+    cursor: pointer;
 }
 .company_edit_btn button{
     cursor: pointer;
@@ -422,18 +428,21 @@ border: solid 5px white;
     cursor: pointer;
  width: 25%;
  text-align: center;
+ cursor: pointer;
 }
 .add_media_tag h2
 { 
  font-size: 15px;
  margin-bottom: auto;
  margin-top: auto;
+ cursor: pointer;
 }
 .add_link
 {
  
  text-align: center;
  margin: 0px 10px;
+ cursor: pointer;
 }
 .add_link h3
 {
@@ -441,16 +450,19 @@ border: solid 5px white;
  margin-top: auto;
  font-size: 15px;
  font-weight: 400;
+ cursor: pointer;
 }
 .tag_product{
  width: 65%;
  text-align: center;
+ cursor: pointer;
 }
 .tag_product h2
 {
  margin-bottom: auto;
  margin-top: auto;
  font-size: 15px;
+ cursor: pointer;
 }
 .post
 {
@@ -466,6 +478,7 @@ border: solid 5px white;
 {
  margin: 0 auto;
  width: 90%;
+ cursor: pointer;
 }
 .input_link input
 {
@@ -604,6 +617,7 @@ border: solid 5px white;
  
  border-left: solid #8991a2;
  margin: 10px;
+ cursor: pointer;
 }
 .add_btn button
 {
@@ -1002,7 +1016,8 @@ mat-panel-title h4 {
 }
 .company_name h2{
     
-    padding: 0px;
+    padding: 0  px;
+    cursor: pointer;
 }
 .feeds {
     

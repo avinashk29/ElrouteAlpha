@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
@@ -8,11 +8,13 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 import {FormGroup , FormControl} from '@angular/forms';
 import {FeedService} from '../../Service/feed-service.service';
 import {CompanyServiceService} from '../../Service/company-service.service';
-import { Route } from '@angular/compiler/src/core';
+// import { Route } from '@angular/compiler/src/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import {ProductServiceService} from '../../Service/product-service.service';
+import { EventEmitter } from 'events';
+import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -46,25 +48,33 @@ productDescription: new FormControl('')
 });
 type
 resultvalue
+bookmvalue
 showSpinner
 result=[]
+companyFollowers=[]
 pId
 product=[];
 productDescription;
 productImage;
 userFollow
+userBookmark
+
+
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private route:ActivatedRoute ) {
+  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private route:ActivatedRoute,private bookmarkService:BookmarkServices) {
 
     this.feedService.token = this.storage.get('token');
+    this.bookmarkService.token=this.storage.get('token')
+    this.followers.token=this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
       this.route.queryParams.filter(params=>params.urltype).subscribe(params=>{
         this.type=params.urltype;
         this.userService.getUserData().subscribe(res => {
           this.userImage=JSON.parse(res['_body']).userImage;
           console.log(this.userImage)
+
       })
       })
     this.userService.token = this.storage.get('token');
@@ -75,7 +85,6 @@ userFollow
       this.location = JSON.parse(res['_body']).location;
       this.shortBio = JSON.parse(res['_body']).shortBio;
       this.userImage=JSON.parse(res['_body']).userImage;
-      
       this.title=JSON.parse(res['_body']).title;
       this.following = JSON.parse(res['_body']).following.length;
       console.log(JSON.parse(res['_body']).following.length)
@@ -90,6 +99,7 @@ userFollow
     console.log(this.product)
 });
    }
+
   show = false;
   ngOnInit() {
     this.imgupload.token=this.storage.get('token')
@@ -117,6 +127,7 @@ userFollow
       }
       this.userService.getUserData().subscribe(res1=>{
         this.userFollow=JSON.parse(res1['_body']).following;
+        this.userBookmark=JSON.parse(res1['_body']).bookmarks.post
         console.log(this.userFollow)
         for(let i = 0; i < this.userFollow.length; i++) {
           console.log(this.userFollow[i]);
@@ -124,21 +135,37 @@ userFollow
             console.log(this.result[j].admin);
                if(this.userFollow[i] == this.result[j].admin) {
                 console.log(this.result[j].admin);
-                this.resultvalue=false;
+                this.result[i].follow=true;
                } else  {
                 console.log(this.result[j]._id);
                 // this.result[j].follow=false;
                }
            }      
      }
+    
+    //  -----------------------Bookmark for feed-----------
+    for(let i = 0; i < this.userBookmark.length; i++) {
+      console.log(this.userBookmark[i]);
+      for(let j = 0;j < this.result.length; j++) {
+        console.log(this.result[j]._id);
+           if(this.userBookmark[i] == this.result[j]._id) {
+            console.log(this.result[j]._id);
+            this.result[i].bookm=true;
+           } else  {
+            console.log(this.result[j]._id);
+            // this.result[j].follow=false;
+           }
+       }      
+ }
+
       });
     });
     if (this.haveCompany){
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = (JSON.parse(res['_body']).companyName);
         this.companyLogo=(JSON.parse(res['_body']).companyLogo);
+        this.companyFollowers=(JSON.parse(res['_body']).followers.length)
       
-
       });
 
      
@@ -149,7 +176,7 @@ userFollow
     }
     onImagePick(event,name) {
       console.log(name);
-      this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
+      // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
       const file = <File>event.target.files[0];
       if (name === 'Image') {
         const reader = new FileReader();
@@ -174,12 +201,14 @@ userFollow
           
          })
         })
-
+        
      }
-  
+
   onAddpost() {
     console.log(this.feed.value);
   this.feed.value.tagId = this.feedService.tagId;
+  this.feed.value.companyName=this.companyName;
+  this.feed.value.companyLogo=this.companyLogo;
    this.feed.value.productName=this.feedService.productName;
    this.feed.value.productImage=this.feedService.productImage;
    this.feed.value.productDescription=this.feedService.productDescription;
@@ -205,7 +234,7 @@ userFollow
   }
 
   onfollow(i,id){
-     this.result[i].follow=false
+     this.result[i].follow=true
     this.followers.addFollow(id).subscribe(res=>{
                console.log(res);
            })
@@ -213,12 +242,28 @@ userFollow
   }
   onunfollow(i,id){
     console.log(id)
-    this.result[i].follow=true
+    this.result[i].follow=false
     this.followers.Unfollow(id).subscribe(res=>{
                console.log(res);
            })
            console.log('i am working unfollow')
   }
+  feedbookmark(i,id){
+    console.log(id)
+    this.result[i].bookm=true;
+  this.bookmarkService.addPostBookmark(id).subscribe(res=>{
+    console.log(res)
+  })  
+
+  }
+  revmovefeedbookmark(i,id){
+    this.result[i].bookm=false;
+    this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
+      console.log(res)
+    })
+
+  }
+
 ngOnDestroy(){
  this.subscription.unsubscribe();
 }
