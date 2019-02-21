@@ -19,6 +19,7 @@ a {
 }
 .logo img
 {
+  cursor: pointer;
   outline: none;
   width: 150px;
   margin-left: 35%;

@@ -51,8 +51,9 @@ header {
 }
 
 .follow-btn button {
- 
+  cursor: pointer;
  height: 40px;
+ width: 42%;
  border: none;
  color: #fff;
  background-color: #333333;
@@ -138,7 +139,7 @@ header {
 
 .headerImg {
   width: 100%;
-  height: 230PX;
+  height: 276PX;
   display: flex;
 }
 .headerImg button
@@ -180,6 +181,7 @@ header {
 }
 .logoheader button
 {
+  cursor: pointer;
  width: 100px;
  height: 100px;
  outline: none;
@@ -236,8 +238,9 @@ header {
 }
 
 .tabClicked {
- height: 100px;
+ height: 1000px;
  transition: .2s;
+ background-color: red;
 }
 
 .tab h1 {
@@ -1495,12 +1498,12 @@ label {
   outline: none;
  width: 100%;
  border: navajowhite;
- /* height: 30vh; */
+ height: 30vh;
  font-size: 39px;
 }
 .infoImg img {
  width: 100%;
- height: 35vh;
+ height: 30vh;
 }
 
 .infoContent h3 {
@@ -1559,11 +1562,13 @@ label {
 {
  
  
- width: 98%;
- margin-top: 3%;
- border: none;
- height: 210px;
- outline: none;
+  width: 98%;
+  margin-top: 5%;
+  /* border: none; */
+  height: 150px;
+  outline: none;
+  border-color: gray;
+  border-radius: 5px;
 }
 .infoSectonCard_links
 {
@@ -2163,7 +2168,7 @@ label {
   display: flex;
   text-align: right;
   margin: 0 auto;
-  width: 70%
+  width: 70%;
 }
 .edit_bio textarea
 {
@@ -2193,6 +2198,22 @@ label {
   font-size: 12px;
   /* display: flex; */
 
+}
+.edit_dummy_text textarea
+{
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+}
+.edit_dummy_text button
+{
+  background-color: #2fb22f;
+  width: 25%;
+  border: none;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 2%
 }
 input[type="file"]{
   width: 77%;
