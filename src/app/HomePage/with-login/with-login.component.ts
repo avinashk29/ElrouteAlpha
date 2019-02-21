@@ -66,6 +66,8 @@ userBookmark
   public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private route:ActivatedRoute,private bookmarkService:BookmarkServices) {
 
     this.feedService.token = this.storage.get('token');
+    this.userService.token = this.storage.get('token');
+    this.haveCompany = this.storage.get('companyId');
     this.bookmarkService.token=this.storage.get('token')
     this.followers.token=this.storage.get('token');
     this.subscription = this.router.events.subscribe(() =>{
@@ -73,13 +75,27 @@ userBookmark
         this.type=params.urltype;
         this.userService.getUserData().subscribe(res => {
           this.userImage=JSON.parse(res['_body']).userImage;
-          console.log(this.userImage)
+          this.userService.sendEmployeeDetail(this.userImage);
+      })
+      })
+   
+   
+  });
+  this.haveCompany = this.storage.get('companyId');
+  console.log(this.haveCompany)
+  this.productService.getProduct(this.haveCompany).subscribe(res=>{
+    this.product=JSON.parse(res['_body']);
+    console.log(this.product)
+});
 
-      })
-      })
-    this.userService.token = this.storage.get('token');
-    this.haveCompany = this.storage.get('companyId');
-    this.userService.getUserData().subscribe(res => {
+   }
+ 
+
+  show = false;
+  ngOnInit() {
+    this.imgupload.token=this.storage.get('token')
+     this.feedService.token = this.storage.get('token');
+     this.userService.getUserData().subscribe(res => {
       console.log(JSON.parse(res['_body']));
       this.username = JSON.parse(res['_body']).userName;
       this.location = JSON.parse(res['_body']).location;
@@ -91,23 +107,6 @@ userBookmark
     this.bookmark = JSON.parse(res['_body']).bookmarks.company.length + JSON.parse(res['_body']).bookmarks.post.length + JSON.parse(res['_body']).bookmarks.product.length + JSON.parse(res['_body']).bookmarks.service.length;
   
   })
-  });
-  this.haveCompany = this.storage.get('companyId');
-  console.log(this.haveCompany)
-  this.productService.getProduct(this.haveCompany).subscribe(res=>{
-    this.product=JSON.parse(res['_body']);
-    console.log(this.product)
-});
-   }
-
-  show = false;
-  ngOnInit() {
-    this.imgupload.token=this.storage.get('token')
-     this.feedService.token = this.storage.get('token');
-    // this.followers.token=this.storage.get('token');
-    // this.followers.getFollowers().subscribe(res=>{
-    //   console.log(res);
-    // })
     this.feedService.getCompanyFeed().subscribe(res =>{
       console.log('Working');
       // console.log(JSON.parse(res['_body'])[0].admin);
@@ -176,7 +175,7 @@ userBookmark
     }
     onImagePick(event,name) {
       console.log(name);
-      // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
+      this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
       const file = <File>event.target.files[0];
       if (name === 'Image') {
         const reader = new FileReader();
@@ -195,10 +194,10 @@ userBookmark
            console.log(url)
            fd.append(name,url);
            console.log(url);
-
+          //  this.router.navigate(['/Dashboard']);
          this.userService.editUser(fd).subscribe(res=>{
            console.log(res);
-          
+         
          })
         })
         

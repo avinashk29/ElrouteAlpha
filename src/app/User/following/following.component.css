@@ -32,7 +32,7 @@
     display: flex;
     margin: 0 auto;
     background-color: #ffffff;
-    box-shadow: 0 1px 5px 0px rgba(25, 25, 25, 0.2);
+    /* box-shadow: 0 1px 5px 0px rgba(25, 25, 25, 0.2); */
     margin: 10px auto;
     width: 94%;
     border-radius: 10px;
@@ -49,13 +49,14 @@
 }
 
 .following_image img {
-    width: 100%;
+    width: 80px;
+    height: 80px;
     border-radius: 100%;
     padding: 10px 0px;
 }
 
 .following_name {
-    margin-left: 1%;
+    margin-left: 4%;
     width: auto;
     margin-bottom: auto;
     margin-top: auto;
@@ -312,5 +313,10 @@ section{
     float: right;
     text-align: left;
     margin-top: 14%;
+}
+.following_image img {
+  width: 50px;
+  height: 50px;
+ 
 }
 }

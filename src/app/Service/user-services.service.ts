@@ -7,6 +7,7 @@ import {BehaviorSubject} from 'rxjs'
 })
 export class UserService {
     token;
+    user
     private empDetailSubject = new BehaviorSubject(null); 
     constructor(public http: Http) {}
 
@@ -29,7 +30,13 @@ editUser(User){
     // UserFormData.append('Image' , User.Image);
     return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
+sendEmployeeDetail(value) {  
+    this.user=value;
+    this.empDetailSubject.next(this.user);
+}  
 
-
+getdata(){
+    return this.empDetailSubject.asObservable()
+}
 
 }

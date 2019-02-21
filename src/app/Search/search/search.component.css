@@ -108,7 +108,7 @@ section{
 }
 .productCard, .ServiceCard{
   display: flex;
-  height: 33vh;
+  height: 40vh;
   /* height: 15em; */
   /* border: 1px solid #cccccccc;
   border-radius: 10px 10px 10px 10px */

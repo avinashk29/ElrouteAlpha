@@ -987,8 +987,8 @@ mat-panel-title h4 {
     font-size: 19px;
 }
 .feed_logo img {
-    width: 55px !important;
-    height: 55px !important;
+    width: 45px !important;
+    height: 45px !important;
 }
 .feed_name h4  {
     margin-bottom: auto;
@@ -1004,6 +1004,11 @@ mat-panel-title h4 {
     
     width: 30% !important;
     
+}
+.feed_following button {
+   
+    font-size: 11px;
+  
 }
 .user{
     
@@ -1080,13 +1085,13 @@ input[type="file"]
 }
 .feed_logo img
 {
- width: 80px;
+ width: 60px;
  padding: 5px 4px 0px 3px;
- height: 80px;
+ height: 60px;
 }
 .feed_name
 {
- width: 60%;
+ width: 90%;
  margin-top: 4%;
  margin: 9px 0px;
  
@@ -1111,7 +1116,7 @@ input[type="file"]
 .feed_following
 {
  margin-top: 4%;
- width: 20%;
+ /* width: 20%; */
  margin-right: 2%;
 }
 .feed_following button
