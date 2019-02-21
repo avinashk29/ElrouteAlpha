@@ -203,7 +203,6 @@ export class BPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
     // this.comapnyId = this.storage.get('companyId');
     this.imgUpload.token = this.storage.get("token");
     this.feedService.token = this.storage.get("token");
@@ -218,62 +217,9 @@ export class BPageComponent implements OnInit, OnDestroy {
         } else {
           console.log("You have to follow the company");
           this.Follower = false;
-=======
-
-   // this.comapnyId = this.storage.get('companyId');
-   this.imgUpload.token=this.storage.get('token');
-   this.feedService.token = this.storage.get('token');
-   this.feedService.GetFeed(this.comapnyId).subscribe(res => {
-    console.log(res)
-    this.feeds =  JSON.parse(res['_body']);
-    console.log(this.feeds.length)
-    console.log(this.feeds)
-    if (!this.feeds.length){
-      this.noFeeds = true;
-    }
-    });
-   this.userService.getUserData().subscribe(res => {
-     console.log(res);
-     this.userInfo = JSON.parse(res['_body']).following;
-     for (let i = 0; i < this.userInfo.length; i++) {
-       console.log(this.userInfo[i]);
-       if (this.userInfo[i] === this.comapnyId) {
-         this.Follower = true;
-           console.log('You Have to unfollow the company right now');
-       } else {
-         console.log('You have to follow the company');
-         this.Follower = false;
-       }
-     }
-   });
-   this.companyService.token = this.storage.get('token');
-   this.productService.token = this.storage.get('token');
-   this.mycompanyId = this.storage.get('companyId');
-   this.token = this.storage.get('token')
-   this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
-
-     this.type = paramas.urltype;
-
-
-
-   });
-
-
-   //------------------------------------------bookmark at Bpage-------------------
-      this.userService.getUserData().subscribe(res=>{
-        this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
-        
-      for(let i=0;i<this.userBookmark.length;i++){
-        if(this.comapnyId==this.userBookmark[i])
-        {
-          this.bookmark=true;
-        }else{
-          this.bookmark=false;
->>>>>>> 980eb97aa1d43c956e45b1f25a76b4ded983c83f
         }
       }
     });
-    this.companyService.token = this.storage.get("token");
     this.productService.token = this.storage.get("token");
     this.mycompanyId = this.storage.get("companyId");
     this.token = this.storage.get("token");
