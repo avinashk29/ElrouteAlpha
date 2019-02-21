@@ -531,7 +531,7 @@ color: white;
 .section3
 {
  background-color: rgb(45, 61, 81);
- height: 80vh;
+ /* height: 80vh; */
 }
 .slider
 {
@@ -547,13 +547,13 @@ color: white;
 }
 
 /*-----slider----*/
-.carousel_wrap {
+/* .carousel_wrap {
  height:360px;
  position:relative;
  margin-bottom:30px;
 }
 
-/*--water_whjeel_carousel--*/
+--water_whjeel_carousel--
 #carousel img {
  opacity:0;
  width:360px;
@@ -562,7 +562,7 @@ color: white;
 #carousel {
  widows: 70%;;
  margin:0px auto;
- /* margin-top:50px; */
+
  height:350px;
  position:relative;
  clear:both;
@@ -632,7 +632,94 @@ color: white;
 
  left:auto;
  right:50px;
+} */
+
+.b_face_card
+{
+  margin: 0 auto;
+  width: 50%;
+  border: solid 1px gainsboro;
+  background-color: white;
 }
+.b_face_card_img
+{
+  width: 100%;
+}
+.b_face_card_img img
+{
+  width: 100%;
+  height: 32vh;
+}
+.follower_img {
+  margin: 0 auto;
+  width: 35%;
+  position: relative;
+ }
+.follower_img1 {
+  position: absolute;
+  
+  bottom: -75px;
+  text-align: center;
+  width: 100%;
+ }
+ 
+ .follower_img1 img {
+  border-radius: 100%;
+  width: 150px;
+  outline: none;
+     height: 150px;
+ border: solid 5px white;
+ }
+ .b_face_card_name
+ {
+  margin: 0 auto;
+  width: 95%;
+  margin-bottom: 8%;
+  margin-top: 15%;
+  text-align: center;
+ }
+ .b_face_card_name h2
+ {
+  color: black;
+  font-size: 25px;
+  margin-bottom: 1%;
+ }
+ .b_face_card_specialities
+ {
+  margin: 0 auto;
+  width: 65%;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: none;
+  box-shadow: 0px 0px 3px 0px #5555;
+  border: solid 1px gray;
+  padding: 10px;
+  border-bottom: none;
+ }
+ .b_face_card_specialities h2
+ {
+  text-align: center;
+  color:#2491be;
+  font-size: 25px;
+ }
+ .specialities_list 
+ {
+   margin-top: 1%;
+ }
+ .specialities_list li
+ {
+   padding: 6px;
+ }
+ .b_face_title
+ {
+  border-bottom: none;
+  border-radius: 27px 10px 0 0;
+  box-shadow: 0px 1px 5px 0px #5555;
+  padding: 11px;
+ }
+ .b_face_title h2
+ {
+   text-align: center;
+ }
 /*------end-slider---*/
 
 .user_need_email
@@ -1899,7 +1986,34 @@ color: white;
  margin: 0px 17px;
  padding: 20px 30px 20px;
  }
-
+ .follower_img1{
+  position: absolute;
+  bottom: -45px;
+  text-align: center;
+  width: 100%;
+}
+.follower_img1 img {
+  width: 100px;
+  height: 100px;
+  
+}
+.b_face_card_name h2 {
+ font-size: 20px;
+}
+.b_face_card_specialities {
+ 
+  width: 80%;
+}
+.b_face_card_specialities h2{
+  
+  font-size: 20px;
+}
+.specialities_list li {
+  font-size: 13px;
+}
+.b_face_title h2 {
+  font-size: 20px;
+}
 }
 @media screen and (min-width:1024px) and (max-width:1299px) {
  .images{
