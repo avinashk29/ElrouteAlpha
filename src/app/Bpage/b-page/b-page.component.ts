@@ -195,8 +195,17 @@ this.setSection();
    // this.comapnyId = this.storage.get('companyId');
    this.imgUpload.token=this.storage.get('token');
    this.feedService.token = this.storage.get('token');
+   this.feedService.GetFeed(this.comapnyId).subscribe(res => {
+    console.log(res)
+    this.feeds =  JSON.parse(res['_body']);
+    console.log(this.feeds.length)
+    console.log(this.feeds)
+    if (!this.feeds.length){
+      this.noFeeds = true;
+    }
+    });
    this.userService.getUserData().subscribe(res => {
-     console.log(JSON.parse(res['_body']).following);
+     console.log(res);
      this.userInfo = JSON.parse(res['_body']).following;
      for (let i = 0; i < this.userInfo.length; i++) {
        console.log(this.userInfo[i]);
@@ -221,18 +230,11 @@ this.setSection();
 
    });
 
- this.feedService.GetFeed(this.comapnyId).subscribe(res => {
-   this.feeds =  JSON.parse(res['_body']);
-   console.log(this.feeds.length)
-   console.log(this.feeds)
-   if (!this.feeds.length){
-     this.noFeeds = true;
-   }
-   });
+
    //------------------------------------------bookmark at Bpage-------------------
       this.userService.getUserData().subscribe(res=>{
         this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
-        console.log(this.userBookmark);
+        
       for(let i=0;i<this.userBookmark.length;i++){
         if(this.comapnyId==this.userBookmark[i])
         {

@@ -1466,6 +1466,7 @@ mat-panel-title h4 {
 
 .info {
  border-bottom: 1px solid #ccc;
+ padding: 7px 12px;
 }
 
 label {
@@ -1576,7 +1577,7 @@ label {
 }
 
 .content {
- width: 50%;
+ width: 40%;
  box-shadow: 0px 0px 5px #5555;
 }
 
@@ -2077,6 +2078,7 @@ label {
  position: relative;
  width: 100%;
  
+ 
  }
  
  .image {
@@ -2230,7 +2232,8 @@ input[type="file"]{
 }
 .content_img
 {
-  width: 60%;
+  width: 67%;
+  height: 35vh;
 }
 .certification
 {
