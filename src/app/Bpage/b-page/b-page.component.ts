@@ -113,7 +113,7 @@ BForm: FormGroup;
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
          
-          console.log(JSON.parse(res['_body']))
+          // console.log(JSON.parse(res['_body']))
           this.CompanyName = JSON.parse(res['_body']).companyName;
           this.category = JSON.parse(res['_body']).category;
           this.city = JSON.parse(res['_body']).city;
