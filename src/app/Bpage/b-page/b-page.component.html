@@ -262,7 +262,7 @@
             </div> -->
             <div class="main_feed_card"   *ngFor = "let feed of feeds; let i = index">
               <div class="feed1" *ngIf="feeds">
-                    <div>
+                    <div style="width: 100%;">
                         <div class="feed_content" >
                             <div class="feed_header">
                                 <div class="feed_logo">
@@ -530,7 +530,7 @@
     <img src= "../../../assets/images/right-arrow.png">
   </ng-template>
  
-  <ng-template   let-item let-i="index" #item1>
+  <ng-template   let-item  #item1>
     <!-- <div class="container"> -->
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> -->
     <div class="items">
@@ -539,7 +539,7 @@
         <img [src]="item">
         <div class="overlay1"> 
             
-            <button type="button" class="close" (click)="onadeleteImg(item,i)">x</button> 
+            <button type="button" class="close" (click)="onadeleteImg(item)">x</button> 
         </div>
         </div>
 
@@ -574,11 +574,11 @@
          <div class="items1">
            
         <div class="container">
-            <img src="{{item}}"  >
+            <img src="{{item}}">
            
             <div class="overlay1"> 
             
-                <button type="button" class="close" (click)="onDeleteCompanyImg(item,i)">x</button> 
+                <button type="button" class="close" (click)="onDeleteCompanyImg(item)">x</button> 
             </div>
             
             </div>
