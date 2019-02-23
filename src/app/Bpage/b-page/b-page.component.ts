@@ -328,9 +328,7 @@ export class BPageComponent implements OnInit, OnDestroy {
         let certiForm = new FormGroup({
           certification: new FormControl(this.certification)
         });
-        this.companyService
-          .UpdateCompany(certiForm.value)
-          .subscribe(response => {
+        this.companyService.UpdateCompany(certiForm.value).subscribe(response => {
             // this.companyLogo=JSON.parse(response['_body']).url;
             console.log(JSON.parse(response["_body"]));
           });
