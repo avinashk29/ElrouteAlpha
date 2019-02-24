@@ -74,20 +74,20 @@
                 </div>  
                 <div class="follower_img">
                   <div class="follower_img1">
-                    <img src="{{userImage}}">
+                    <img src="{{this.userService.userImage}}">
                   </div>
                </div>
-               <div class="follower_img" *ngIf="!userImage">
+               <div class="follower_img" *ngIf="!this.userService.userImage">
                   <div class="follower_img1">
                     <img src="assets/images/user.png">
                   </div>
                </div>
                 <div class="user_name" >
-                    <h2>{{username}}</h2>
-                    <p>{{title}}</p>
+                    <h2>{{this.userService.userName}}</h2>
+                    <p>{{this.userService.title}}</p>
                  </div>
                  <div class="user_details">
-                   <p>{{shortBio}}</p>
+                   <p>{{this.userService.shortBio}}</p>
                  </div>   
     
           </div>  
@@ -95,13 +95,13 @@
             <div class="user_follower">
               <div class="user_following" routerLink="/Following">
                   <h2>Following</h2>
-                  <span *ngIf = "following ">{{following}}</span>
-                  <span *ngIf = "!following">0</span>
+                  <span *ngIf = "this.userService.following ">{{this.userService.following}}</span>
+                  <span *ngIf = "!this.userService.following">0</span>
                </div>  
                <div class="user_following" routerLink = "/bookmark">
                   <h2>Bookmarks</h2>
-                  <span *ngIf = "bookmark">{{bookmark}}</span>
-                    <span *ngIf = "!bookmark">0</span>
+                  <span *ngIf = "this.userService.bookmark">{{this.userService.bookmark}}</span>
+                    <span *ngIf = "!this.userService.bookmark">0</span>
                </div> 
     
              </div> 

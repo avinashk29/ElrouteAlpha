@@ -1,33 +1,33 @@
 
 
 <div class="head">
+  <div class="head">
     <header class="header">
         <div class="logo" routerLink="/Dashboard"><img src="../../../assets/images/elroute_logo .png"></div>
         <!-- <p>Filter</p> -->
         <div class="search" [formGroup] = "searchForm" (ngSubmit)= "onSearch($event)">
-        
+
                <input type="search" placeholder="Enter Product/Service to Search"  formControlName = "word" (keypress) = "onSearch($event)" >
-    
+
+
         </div>
           <ul class="main-nav">
               <!-- <li class="book_mark"><a routerLink="/bookmark">Bookmark</a></li> -->
               <!-- <li class="book_mark"><a>Location</a></li> -->
               <li>
-                  <div class="user_img" *ngIf="!userImage">  
-                      <img src="../../../assets/images/user.png">
-                        <p>{{username}}</p>
-                    </div> 
-                  <div class="user" *ngIf="userImage"> 
-                    <div class="user_img" routerLink="/bookmark">  
-                      <img src="{{userImage}}">
-                        <p>{{username}}</p>
-                    </div>   
-                 
+                  <div class="user">
+                    <div class="user_img" routerLink="/bookmark">
+                      <img src="{{this.UserService.userImage}}" *ngIf="this.UserService.userImage">
+                      <img src="assets/images/user.png" *ngIf="!this.UserService.userImage">
+                  <p>{{this.UserService.userName}}</p>
+                    </div>
                  <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"  (click)= "onLogout()"><path d="M14 12h-4v-12h4v12zm4.213-10.246l-1.213 1.599c2.984 1.732 5 4.955 5 8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z"/></svg></span>
-                   </div> 
+                   </div>
                 </li>
               <!-- <li>routerLink="/bookmark"<a href="#">Contact</a></li> -->
           </ul>
       </header>
+
+</div>
 
 </div>

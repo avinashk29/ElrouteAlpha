@@ -22,7 +22,7 @@
 <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="email" name="email" [ngClass]="{'error': !signupForm.get('email').valid && signupForm.get('email').touched }" ></li>
 <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="password" name="password" [ngClass]="{'error': !signupForm.get('password').valid && signupForm.get('password').touched }" ></li>
 <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
-    <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%" required="required">
+    <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
     <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 18px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>
   </div></li>
 </ul>
@@ -30,13 +30,13 @@
   </form>
   <span class="other_option"><h6>Or you can Sign up with the following</h6></span>
   <div class="social_icon_signup">
-    <div class="social_icon">
+    <div class="social_icon" (click) = "signInWithFB()">
       <img src="../../../assets/images/facebook_logos_PNG19753.png">
     </div>
-    <div class="social_icon">
+    <div class="social_icon" (click) = "signInWithGoogle()">
       <img src="../../../assets/images/new-google-logo-2015.png">
     </div>
-    <div class="social_icon">
+    <div class="social_icon" (click) = "signInWithLinkedIN()">
         <img src="../../../assets/images/square-linkedin-512.png">
     </div>
   </div>
