@@ -222,7 +222,7 @@ export class BPageComponent implements OnInit, OnDestroy {
     });
     this.productService.token = this.storage.get("token");
     this.mycompanyId = this.storage.get("companyId");
-    this.token = this.storage.get("token");
+    // this.token = this.storage.get("token");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
