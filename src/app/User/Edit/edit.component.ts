@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject, inject} from '@angular/core';
+import { Component, OnInit , Inject, inject, NgZone} from '@angular/core';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import {UserService} from '../../Service/user-services.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -10,14 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  username;
-  location;
-  title;
-  email;
-  facebook;
-  linkedin;
-  user;
-  twitter;
   editForm = new FormGroup({
     userName : new FormControl(''),
     location : new FormControl(''),
@@ -28,39 +20,33 @@ export class EditComponent implements OnInit {
     twitter: new FormControl('')
   });
 
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public userService: UserService, public router: Router,public dialogRef: MatDialogRef<EditComponent>) { 
-    
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
+  public userService: UserService, public router: Router,public dialogRef: MatDialogRef<EditComponent>, private ngZone: NgZone) {
+
   }
 
   ngOnInit() {
     this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
-      this.username = JSON.parse(res['_body']).userName;
-      this.location = JSON.parse(res['_body']).location;
-      this.title = JSON.parse(res['_body']).title;
-      this.email = JSON.parse(res['_body']).email;
-      // this.facebook = JSON.parse(res['_body']).Facebook;
-      // this.linkedin = JSON.parse(res['_body']).Linkedin;
-      // this.twitter = JSON.parse(res['_body']).Twitter;
-      this.user = JSON.parse(res['_body']);
-      console.log(this.user);
       this.editForm.patchValue({
-        userName:JSON.parse(res['_body']).userName,
-        location:JSON.parse(res['_body']).location,
-        title:JSON.parse(res['_body']).title,
-        email:JSON.parse(res['_body']).email
-      })
+        userName: JSON.parse(res['_body']).userName,
+        location: JSON.parse(res['_body']).location,
+        title: JSON.parse(res['_body']).title,
+        email: JSON.parse(res['_body']).email
+      });
     });
-   
+
   }
 onEdit() {
- // console.log(this.editForm.value);
+
   const formData = this.editForm.value;
+
   this.userService.editUser(formData).subscribe(res => {
-    console.log(JSON.parse(res['_body']));
-   // console.log(this.editForm.value.Title);
+
+     this.router.navigate(['/bookmark' ], {queryParams: {edit: true}});
      this.dialogRef.close(EditComponent);
-     this.router.navigate(['/bookmark' ]); 
   });
+
+  // this.router.navigate(['/bookmark' ]);
 }
 }

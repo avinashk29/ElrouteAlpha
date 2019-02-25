@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import {Http , Headers} from '@angular/http';
 import {BehaviorSubject} from 'rxjs'
-
+import { user} from '../model/userModel'
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
+    userImage;
+    userName;
+    shortBio;
+    location;
+    title;
+    email;
+    following;
+    bookmark;
+
     token;
-    user
+    user;
     private empDetailSubject = new BehaviorSubject(null); 
     constructor(public http: Http) {}
 
