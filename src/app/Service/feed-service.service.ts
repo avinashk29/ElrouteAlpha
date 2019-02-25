@@ -19,11 +19,11 @@ export class FeedService {
          return this.http.post('http://localhost:8080/api/post',feed, {headers:headers})
         // return this.http.post('/post', formData, {headers: headers});
     }
-    GetFeed(id) {
+    GetFeed() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
         console.log(this.token);
-        return this.http.get('http://localhost:8080/api/post/'+id,{headers:headers})
+        return this.http.get('http://localhost:8080/api/post',{headers:headers})
     }
     // Getpost(){
     //     const headers = new Headers();

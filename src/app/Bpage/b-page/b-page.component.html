@@ -203,7 +203,7 @@
       </div>
         <div class="feedCards" *ngIf="!noFeeds"> 
             <div class="main_feed_card"   *ngFor = "let feed of feeds; let i = index">
-              <div class="feed1" *ngIf="feeds">
+              <div class="feed1">
                     <div style="width: 100%;">
                         <div class="feed_content" >
                             <div class="feed_header">
@@ -223,7 +223,7 @@
                                   <div class="feed_text">
                                     <p>{{feed.content}}</p>
                                       <p>Watch our first episode</p>  
-                                    <a href="">{{feed.link}}</a>
+                                      <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                                   </div>
                                     <div class="bookmark_share">
                                       <div class="share_feed">
@@ -341,7 +341,7 @@
             <div class="container">
               <img src="{{infoImage}}"> 
               <div class="overlay">
-                  <input  type="file"  #filePicker (change)="onImagePick($event,'infoImage',i)" class="picker" style="display: hidden;"  visbility="hidden">
+                  <input  type="file"  #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"  visbility="hidden">
                   <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change Photo<br/><svg xmlns="http://www.w3.org/2000/svg"  width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> </button>
               </div>
               </div>
@@ -410,7 +410,7 @@
     <button (click)="onAddSection()" class="add_division" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add section</button>
     <button  (click)="sectionEdit=true" class="edit_division" *ngIf="myCompany"> <span class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15 " viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>Edit</button>
 	
-		<div class="infoSectonCard" *ngFor="let section of this.section">
+		<div class="infoSectonCard" *ngFor="let section of this.companyService.section">
 			<div class="content" >
 				<div class="Sectioncontent">
 			        <h2>{{section.sectionTitle}}</h2>
@@ -430,7 +430,7 @@
   
   <div class="item_btn">
       <h2>CERTIFICATES</h2>
-      <input type="file"  #filePickercertificate (change)="onImagePick($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
+      <input type="file"  #filePickercertificate (change)="PickInfoImage($event,'certification')" class="picker" style="display: hidden;"  visbility="hidden">
       <button type="button" (click)="filePickercertificate.click()" class="item_btn1" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>
         Add Certificate</button>
         </div>
@@ -471,7 +471,7 @@
   <div class="companyImg">
       <div class="item_btn">
       <h2>COMPANY IMAGES</h2>
-      <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
+      <input type="file"  #filePicker (change)="PickInfoImage($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
       <button type="button" (click)="filePicker.click()" class="item_btn2" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>
         Add Company Image</button>
       </div> 

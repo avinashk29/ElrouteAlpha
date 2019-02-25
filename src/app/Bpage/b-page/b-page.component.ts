@@ -191,7 +191,6 @@ this.setSection();
 
   ngOnInit() {
 
-   // this.comapnyId = this.storage.get('companyId');
    this.imgUpload.token=this.storage.get('token');
    this.feedService.token = this.storage.get('token');
    this.userService.getUserData().subscribe(res => {
@@ -220,10 +219,11 @@ this.setSection();
 
    });
 
- this.feedService.GetFeed(this.comapnyId).subscribe(res => {
+ this.feedService.GetFeed().subscribe(res => {
+
    this.feeds =  JSON.parse(res['_body']);
    console.log(this.feeds.length)
-   console.log(this.feeds)
+console.log(this.feeds)
    if (!this.feeds.length){
      this.noFeeds = true;
    }
@@ -251,7 +251,7 @@ let control=<FormArray>this.BForm.controls.section;
 control.push(this._fb.group({
   sectionTitle:[''],
   sectionContent:[''],
-   sectionImage:['../../../assets/images/bk.png']
+   sectionImage:['']
 }))
  }
  setSection(){
@@ -259,8 +259,8 @@ control.push(this._fb.group({
    while(control.length!==0){
      control.removeAt(0);
    }
-  //  console.log(control);
-   this.section.forEach(x => {
+  console.log(this.companyService.section)
+   this.companyService.section.forEach(x => {
      control.push(this._fb.group({
        sectionTitle: x.sectionTitle,
        sectionContent: x.sectionContent,
@@ -275,7 +275,6 @@ onDelete(index){
   let control = <FormArray>this.BForm.controls.section;
   control.removeAt(index)
 }
-
 
  editbio(){
     this.bioEdit = !this.bioEdit;
@@ -296,21 +295,17 @@ onDelete(index){
   });
  }
 
-  onImagePick(event,name) {
+ PickInfoImage(event ,name){
   //  this.uploadImages = !this.uploadImages;
   console.log(name)
-  // this.router.navigate(['/Dashboard'], {queryParams: {urltype: 'upload'}});
      this.file = <File>event.target.files[0];
       const fdata = new FormData()
        fdata.append(name,this.file)
       console.log(fdata);
       this.imgUpload.uploadImg(fdata).subscribe(res=>{
-
-
         console.log(res);
         const updata = new FormData();
         const url = res['_body'];
-        this.ngZone.run(() => {
           if(name==="certification"){
             console.log(this.certification)
               this.certification.push(url);
@@ -318,38 +313,45 @@ onDelete(index){
                certification: new FormControl(this.certification)
              })
              this.companyService.UpdateCompany(certiForm.value).subscribe(response=>{
-              // this.companyLogo=JSON.parse(response['_body']).url;
                console.log(JSON.parse(response['_body']));
-               })
-              //  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
+               this.companyService.certification=JSON.parse(response['_body']).certification;
+               });
             }
-            else if(name==="companyImage"){
-              // console.log(this.certification);
-              // console.log(url)
+            else {
               console.log("m abhi yha pr hoon sbse upar")
               this.companyImage.push(url);
              let companyImage = new FormGroup({
                companyImage: new FormControl(this.companyImage)
              });
              this.companyService.UpdateCompany(companyImage.value).subscribe(response=>{
-              // this.companyLogo=JSON.parse(response['_body']).url;
                console.log(JSON.parse(response['_body']));
+               this.companyService.companyImage=JSON.parse(response['_body']).companyImage;
                });
-              //  this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'info'}});
-            } else {
-            updata.append(name,url);
-            this.companyService.UpdateCompany(updata).subscribe(response => {
-              console.log(JSON.parse(response['_body']));
-              this.ngZone.run(() => {
+        
+            } 
+  
+      });
 
+
+ }
+
+  onImagePick(event,name) {
+  console.log(name)
+     this.file = <File>event.target.files[0];
+      const fdata = new FormData()
+       fdata.append(name,this.file)
+      console.log(fdata);
+      this.imgUpload.uploadImg(fdata).subscribe(res=>{
+
+        console.log(res);
+        const updata = new FormData();
+        const url = res['_body'];
+              updata.append(name,url);
+            this.companyService.UpdateCompany(updata).subscribe(response => {
                 this.companyService.companyLogo = JSON.parse(response['_body']).companyLogo;
                 this.companyService.Image = JSON.parse(response['_body']).coverImage;
-              });
+              
                });
-
-          }
-        });
-
       });
 
    }
@@ -399,8 +401,8 @@ this.productService.DeleteProduct(id).subscribe(res => {
       console.log(res);
       this.website = JSON.parse(res['_body']).website;
       // Image: JSON.parse(res['_body']).Image,
-      this.workingHours = JSON.parse(res['_body']).workingHours;
-      this.shortIntro = JSON.parse(res['_body']).shortIntro;
+      this.companyService.workingHours = JSON.parse(res['_body']).workingHours;
+      this.companyService.shortIntro = JSON.parse(res['_body']).shortIntro;
        console.log(JSON.parse(res['_body']));
        this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'edit'}});
        if (this.type === 'info') {
@@ -442,7 +444,7 @@ onSubmit(){
     section: new FormControl(this.BForm.value.section)
   })
   this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-    console.log(JSON.parse(res['_body']));
+    this.companyService.section = JSON.parse(res['_body']).section;
   });
 }
 onadeleteImg(item,index){
