@@ -224,6 +224,7 @@ this.setSection();
    this.feeds =  JSON.parse(res['_body']);
    console.log(this.feeds.length)
    console.log(this.feeds)
+   
    if (!this.feeds.length){
      this.noFeeds = true;
    }
