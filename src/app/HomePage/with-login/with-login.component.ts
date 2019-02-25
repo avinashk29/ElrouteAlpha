@@ -135,7 +135,9 @@ userFollow;
     const fdata = new FormData();
 
     fdata.append(name, file);
+    console.log(name)
     this.imgupload.uploadImg(fdata).subscribe(res => {
+      console.log(res)
       const fd = new FormData();
       this.feed.value.Image = res['_body'];
       const url = res['_body'];
@@ -151,6 +153,8 @@ userFollow;
   onAddpost() {
 
     this.feed.value.tagId = this.feedService.tagId;
+    this.feed.value.companyName=this.companyName;
+    this.feed.value.companyLogo=this.companyLogo;
     this.feed.value.productName = this.feedService.productName;
     this.feed.value.productImage = this.feedService.productImage;
     this.feed.value.productDescription = this.feedService.productDescription;

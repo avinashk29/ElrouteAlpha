@@ -9,7 +9,7 @@ export class ImageUploadService {
     constructor(private http:Http){}
     
     uploadImg(image){
-        console.log(image)
+        // console.log(image)
         // const headers=new Headers();
         // headers.append('x-auth',this.token);
         // console.log(this.token);

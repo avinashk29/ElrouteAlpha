@@ -17,13 +17,10 @@ pagecounter
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
     console.log(this.word , this.page);
-    this.pagecounter= this.search.getOption();
-    console.log(this.pagecounter)
-    
+  
   }
 
   ngOnInit() {
-  console.log(this.search.fresult)
   }
 
 }
