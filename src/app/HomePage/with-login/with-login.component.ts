@@ -58,7 +58,7 @@ userFollow;
   constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   public homeService: HomepageService, public router: Router, public authService: AuthServiceService, private followers: FollowService,
   public feedService: FeedService, public companyService: CompanyServiceService,
-  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService
+  public dialog: MatDialog,private imgupload:ImageUploadService, public productService: ProductServiceService,private imageService:ImageUploadService
   , public notification: ToastrService) {
 
 
@@ -123,7 +123,6 @@ userFollow;
   }
   onImagePick(event, name) {
 
-
     const file = < File > event.target.files[0];
     if (name === 'Image') {
       const reader = new FileReader();
@@ -132,22 +131,24 @@ userFollow;
       };
       reader.readAsDataURL(file);
     }
-    const fdata = new FormData();
+    this.imageService.updateUserImage(event,name)
+  
+    // const fdata = new FormData();
 
-    fdata.append(name, file);
-    console.log(name)
-    this.imgupload.uploadImg(fdata).subscribe(res => {
-      console.log(res)
-      const fd = new FormData();
-      this.feed.value.Image = res['_body'];
-      const url = res['_body'];
+    // fdata.append(name, file);
+    // console.log(name)
+    // this.imgupload.uploadImg(fdata).subscribe(res => {
+    //   console.log(res)
+    //   const fd = new FormData();
+    //   this.feed.value.Image = res['_body'];
+    //   const url = res['_body'];
 
-      fd.append(name, url);
+    //   fd.append(name, url);
 
-      this.userService.editUser(fd).subscribe(res2 => {
-          this.userService.userImage = JSON.parse(res2['_body']).userImage;
-      });
-    });
+    //   this.userService.editUser(fd).subscribe(res2 => {
+    //       this.userService.userImage = JSON.parse(res2['_body']).userImage;
+    //   });
+    // });
 
   }
   onAddpost() {

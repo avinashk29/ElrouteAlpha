@@ -73,7 +73,7 @@
               </div>  
                 </div>
             <div class="user_profile">
-                <h2>{{this.companyService.CompanyName }}</h2>
+                <h2>{{this.companyService.companyName }}</h2>
                 <p>{{this.companyService.industry}}</p>
                <div class="follow-btn" *ngIf = "!myCompany" >
                   <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
@@ -143,17 +143,17 @@
 
       <div class="card-left">
 
-        <div class="headerImg" *ngIf="!this.companyService.Image">
+        <div class="headerImg" *ngIf="!this.companyService.coverImage">
 
           <input type="file"  #filePicker (change)="onImagePick($event,'coverImage')" class="picker testing-1911" style="display: hidden;"  visbility="hidden">
           <button type="button" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
             Cover Page</button>
 
       </div>
-      <div class="headerImg" *ngIf="this.companyService.Image">
+      <div class="headerImg" *ngIf="this.companyService.coverImage">
           <div class="container">
 
-         <img src="{{this.companyService.Image}}" >
+         <img src="{{this.companyService.coverImage}}" >
          <div class="overlay">
             <input  type="file"  #filePicker (change)="onImagePick($event,'coverImage')" class="picker" style="display: hidden;"  visbility="hidden">
             <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change Cover Photo<br/><svg xmlns="http://www.w3.org/2000/svg"  width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> </button>

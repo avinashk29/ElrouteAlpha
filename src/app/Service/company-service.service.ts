@@ -7,7 +7,7 @@ import { Http , Headers} from '@angular/http';
 })
 export class CompanyServiceService {
   token;
-  CompanyName;
+  companyName;
   category;
   city;
   companyEmail;
@@ -20,7 +20,7 @@ export class CompanyServiceService {
   companyType;
   address;
   companySize;
-  Image;
+  coverImage;
   companyLogo;
   infoImage;
   section;
