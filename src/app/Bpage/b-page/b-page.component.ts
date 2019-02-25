@@ -260,7 +260,8 @@ control.push(this._fb.group({
      control.removeAt(0);
    }
   //  console.log(control);
-   this.section.forEach(x => {
+  console.log(this.companyService.section)
+   this.companyService.section.forEach(x => {
      control.push(this._fb.group({
        sectionTitle: x.sectionTitle,
        sectionContent: x.sectionContent,
@@ -339,12 +340,12 @@ onDelete(index){
             } else {
             updata.append(name,url);
             this.companyService.UpdateCompany(updata).subscribe(response => {
-              console.log(JSON.parse(response['_body']));
-              this.ngZone.run(() => {
+              
+              
 
-                this.companyLogo = JSON.parse(response['_body']).companyLogo;
-                this.Image = JSON.parse(response['_body']).coverImage;
-              });
+                this.companyService.companyLogo = JSON.parse(response['_body']).companyLogo;
+                this.companyService.Image = JSON.parse(response['_body']).coverImage;
+              
                });
 
           }
@@ -399,8 +400,8 @@ this.productService.DeleteProduct(id).subscribe(res => {
       console.log(res);
       this.website = JSON.parse(res['_body']).website;
       // Image: JSON.parse(res['_body']).Image,
-      this.workingHours = JSON.parse(res['_body']).workingHours;
-      this.shortIntro = JSON.parse(res['_body']).shortIntro;
+      this.companyService.workingHours = JSON.parse(res['_body']).workingHours;
+      this.companyService.shortIntro = JSON.parse(res['_body']).shortIntro;
        console.log(JSON.parse(res['_body']));
        this.router.navigate(['/companyPage/' + this.comapnyId ], {queryParams: {urltype: 'edit'}});
        if (this.type === 'info') {
@@ -442,7 +443,7 @@ onSubmit(){
     section: new FormControl(this.BForm.value.section)
   })
   this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-    console.log(JSON.parse(res['_body']));
+    this.companyService.section = JSON.parse(res['_body']).section;
   });
 }
 onadeleteImg(item,index){

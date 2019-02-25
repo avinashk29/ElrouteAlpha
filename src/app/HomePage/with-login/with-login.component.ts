@@ -87,16 +87,16 @@ userFollow;
       this.userService.getUserData().subscribe(res1 => {
         // this.userService.user = JSON.parse(res1['_body']);
         
-        this.userService.location = JSON.parse(res1['_body']).location;
-        this.userService.shortBio = JSON.parse(res1['_body']).shortBio;
-        this.userService.userImage = JSON.parse(res1['_body']).userImage;
-        this.userService.userName =JSON.parse(res1['_body']).userName;
+        // this.userService.location = JSON.parse(res1['_body']).location;
+        // this.userService.shortBio = JSON.parse(res1['_body']).shortBio;
+        // this.userService.userImage = JSON.parse(res1['_body']).userImage;
+        // this.userService.userName =JSON.parse(res1['_body']).userName;
       
-        this.userService.title = JSON.parse(res1['_body']).title;
-        this.userService.following = JSON.parse(res1['_body']).following.length;
+        // this.userService.title = JSON.parse(res1['_body']).title;
+        // this.userService.following = JSON.parse(res1['_body']).following.length;
 
-        this.userService.bookmark = JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
-                        + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
+        // this.userService.bookmark = JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
+        //                 + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
         this.userFollow = JSON.parse(res1['_body']).following;
 
         for (let i = 0; i < this.userFollow.length; i++) {
