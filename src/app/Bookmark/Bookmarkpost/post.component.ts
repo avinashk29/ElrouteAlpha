@@ -13,11 +13,9 @@ export class PostComponent implements OnInit {
   constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private route:ActivatedRoute) { }
 post=[];
   ngOnInit() {
-   //this.companyId= this.route.snapshot.paramMap.get('id')
     this.bookmarkService.token = this.storage.get('token');
     this.bookmarkService.getBookmarkPost().subscribe(res => {
       this.post=JSON.parse(res['_body']);
-      console.log(res);
     });
     
   }

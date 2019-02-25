@@ -16,7 +16,6 @@ result=[]
     this.bookmarkService.getBookmarkCompany().subscribe(res => {
          console.log(res)
          this.result=JSON.parse(res['_body']);
-         console.log(this.result)
     });
   }
 

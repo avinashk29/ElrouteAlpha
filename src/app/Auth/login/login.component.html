@@ -2,28 +2,10 @@
     <h2>
       SIGN IN
     </h2>
-    <!-- <p>Register and step into the business world</p> -->
     <form [formGroup]="login" (ngSubmit)="onSubmit()" >
       <ul>
-     <!-- <li>
-    <div class="first-field">
-      <div class="Uname">
-      <input type="text" placeholder="NAME">
-      </div>
-      <div class="Ulocation">
-        <select>
-          <option>LOCATION</option>
-        </select>
-      </div>
-    </div>
-  </li>
-  <li class="form-elements"><input type="text" placeholder="TITLE"></li> -->
   <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName= "email" name="Email"></li>
   <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName= "password" name="Password"></li>
-  <!-- <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
-      <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
-      <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 18px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>
-    </div></li> -->
   </ul>
   <button>SIGN IN</button>
     </form>
