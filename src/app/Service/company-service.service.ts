@@ -44,7 +44,6 @@ export class CompanyServiceService {
   }
   // GetoneCompany  method is using to get one company using company id
   GetoneCompany(id) {
-    // console.log(id);
     return this.http.get('http://localhost:8080/api/company/' + id);
   }
 

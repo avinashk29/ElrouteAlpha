@@ -22,14 +22,11 @@ productName
   ngOnInit() {
    this.id = this.storage.get('companyId');
     this.product.token = this.storage.get('token');
-    console.log(this.storage.get('companyId'))
     this.product.getProduct(this.id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body'])
     })
   }
   getProduct(){
-  // console.log(this.productForm.value);
   this.feed.tagId = this.products[this.product_id]._id;
   this.feed.productName=this.products[this.product_id].productName;
   this.feed.productImage=this.products[this.product_id].Image;

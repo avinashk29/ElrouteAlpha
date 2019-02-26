@@ -44,14 +44,9 @@ export class ProductComponent implements OnInit {
      }
   ngOnInit() {
     this.imgupload.token = this.storage.get('token');
-   
     this.productService.token = this.storage.get('token');
     this.productService.getOneProduct(this.productId).subscribe(res => {
-    
       this.productInfo=JSON.parse(res['_body']).productInfo;
-     
-      console.log(JSON.parse(res['_body']).productInfo.length);
-       console.log(JSON.parse(res['_body']));
         this.productForm.patchValue({
         Image: JSON.parse(res['_body']).Image,
         productName: JSON.parse(res['_body']).productName,
@@ -70,7 +65,6 @@ export class ProductComponent implements OnInit {
           
       });
       this.setProductInfo();
-      console.log(this.productInfo)
     });
 
   }
@@ -127,10 +121,8 @@ export class ProductComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
       const productData = this.productForm.value;
       this.productService.UpdateProduct(productData,this.productId).subscribe(res => {
-        console.log(JSON.parse(res['_body']));
       });
       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product not Added');
@@ -141,7 +133,6 @@ export class ProductComponent implements OnInit {
   }
 
   onImagePick(event, name) {
-    console.log(name);
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
     this.productForm.get('Image').updateValueAndValidity();
@@ -157,7 +148,6 @@ export class ProductComponent implements OnInit {
         this.productForm.patchValue({
           Image: [url]
         })
-        console.log(url);
     
       })
 

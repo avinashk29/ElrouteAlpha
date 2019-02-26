@@ -14,9 +14,7 @@ companyId;
 haveCompany = false;
   ngOnInit() {
     this.userService.token = this.storage.get('token');
-    console.log(this.userService.token);
     this.userService.getUserData().subscribe(res => {
-      // console.log(JSON.parse(res['_body']).Company_id);
       this.companyId = JSON.parse(res['_body']).Company_id;
       if (this.companyId) {
         this.haveCompany = true;
@@ -26,6 +24,5 @@ haveCompany = false;
   }
   onToggle() {
 this.toggle = !this.toggle;
-console.log(this.toggle);
   }
 }

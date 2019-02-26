@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class EditComponent implements OnInit {
   editForm = new FormGroup({
     userName : new FormControl(''),
-    location : new FormControl(''),
+    location : new FormControl('India'),
     email: new FormControl(''),
     title: new FormControl (''),
     facebook: new FormControl(''),

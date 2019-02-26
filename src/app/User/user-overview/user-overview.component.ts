@@ -29,12 +29,9 @@ export class UserOverviewComponent implements OnInit{
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute) {
        this.route.queryParams.filter(params => params.edit).subscribe(params => {
-         console.log('working');
         this.userService.getUserData().subscribe(res => {
           this.router.navigate(['/bookmark' ]);
       
-            console.log('i am working');
-            console.log(JSON.parse(res['_body']));
             this.userService.userName = JSON.parse(res['_body']).userName;
             this.userService.location = JSON.parse(res['_body']).location;
             this.userService.title = JSON.parse(res['_body']).title;
@@ -55,7 +52,6 @@ export class UserOverviewComponent implements OnInit{
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
          this.companyFollowers = JSON.parse(res['_body']).followers.length;
-         console.log(JSON.parse(res['_body']));
         });
     }
     this.bioForm = new FormGroup({
@@ -64,9 +60,7 @@ export class UserOverviewComponent implements OnInit{
   }
   overviewResult;
   ngOnInit() {
-console.log('i am working');
 this.userService.getUserData().subscribe(res => {
-    console.log('i am working');
     this.userService.userName = JSON.parse(res['_body']).userName;
     this.userService.location = JSON.parse(res['_body']).location;
     this.userService.title = JSON.parse(res['_body']).title;
@@ -81,7 +75,6 @@ this.userService.getUserData().subscribe(res => {
     this.router.navigate(['/B-page'])
   }
   EditBpage(){
-    console.log(this.haveCompany)
     this.router.navigate(['/editcompany/' + this.haveCompany]);
   }
   openDialog() {
@@ -93,15 +86,12 @@ this.userService.getUserData().subscribe(res => {
   }
   editBio(){
     this.bioEdit = !this.bioEdit;
-    // this.router.navigate(['/bookmark' ], {queryParams: {edit: true}});
    }
   addBio() {
     this.bioForm.patchValue({
       shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
-        console.log('i am working');
-        console.log(JSON.parse(res['_body']));
         this.userService.shortBio= JSON.parse(res['_body']).shortBio;
     })
     this.bioEdit = !this.bioEdit;

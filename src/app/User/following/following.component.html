@@ -5,8 +5,6 @@
 </div>
 <div class="user_following" >
     <div class="follow_search" >
-        <!-- <input type="search" placeholder="search"> -->
-        <!-- <h2>You are not Following any Company</h2> -->
     </div>
     <div class="following"  *ngFor="let following of followings let i = index">
         <div class="following_1">
@@ -32,7 +30,6 @@
         </ng-template>
             </div>
             <div class="following_icon1">
-             <!-- <a href="{{following.website}}" ><img src="assets/images/google_icon.png"></a>   -->
              <a target="_blank" href="http://{{following.website}}"><img src="assets/images/google_icon.png"></a>
 
             </div>
@@ -74,26 +71,7 @@
         <div class="discription">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
-        <!-- <mat-accordion  class="des">
-    
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
-                <mat-panel-title>
-                    <h2 >Description</h2>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="speci_1"  >
-                <div class="speci_details">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-    
-                </div>
-    
-    
-              </div>
-            </mat-expansion-panel>
-    
-          </mat-accordion> -->
+       
         </div>
         </div>
         </section>

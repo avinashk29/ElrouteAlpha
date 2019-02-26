@@ -42,28 +42,19 @@ productResult=[]
     this.page = this.route.snapshot.paramMap.get('page');
     this.userService.getUserData().subscribe(res=>{
       this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
-      console.log(this.userBookmark.length)
-      console.log(JSON.parse(res['_body']));
       this.search.onSearch(this.word,this.page).subscribe(response=>{
         this.productResult=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
-        console.log(this.productResult);
-        // console.log(this.productId.length)
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
-        console.log(this.bookmarkService.productBookmark.length)
                 for(let i = 0; i < this.userBookmark.length; i++) {
-                  console.log(this.userBookmark[i]);
                   for(let j = 0;j < this.productId.length; j++) {
                        if(this.productId[j]==null){
 
                        }else{
-                        console.log(this.productId[j]._id);
                         if(this.userBookmark[i] == this.productId[j]._id) {
-                         console.log(this.productId[j]._id);
                          this.productId[j].bookm=true;
                         } else  {
                          // this.productId[j].bookm=true;
-                         console.log(this.productId[j]._id);
                         }
                        }
                    }      
@@ -71,11 +62,9 @@ productResult=[]
               
       })
     })                                                  
-    console.log(this.token);
     if (this.token != null) {
       this.notlogin = false;
     }
-    console.log(this.notlogin);
   }
 unbookmark(id) {
   this.unbookmarked = true;
@@ -88,23 +77,18 @@ openLogin() {
 }
 serviceBookmark(id) {
 this.bookmarkService.addServiceBookmark(id).subscribe(res => {
-  console.log(res);
 });
 }
 showProduct(id) {
 // this.product.getOneproduct(id).subscribe(res => {
-//  console.log(JSON.parse(res['_body']));
 // });
 }
 // openCompany(id) {
 // this.companyService.GetoneCompany(id).subscribe(res => {
-//   console.log(res.json);
 // });
 // }
 bookmark(id) {
-  console.log(id);
   this.bookmarkService.addPostBookmark(id).subscribe(res =>{
-    console.log(res);
   });
   this.unbookmarked = false;
   }
@@ -112,13 +96,11 @@ bookmark(id) {
   addProductBookmark(i,id){
     this.productId[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
-      console.log(res);
     })
   }
   deleteProductBookmark(i,id){
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-      console.log(res);
     })
   }
   gotoProductPage(id){

@@ -63,10 +63,8 @@ this.product.getOneProduct(this.id).subscribe(res => {
   // this.bookmark=JSON.parse(res['_body']).bookmarks;
   this.industry=JSON.parse(res['_body']).industry
   this.creatorId=JSON.parse(res['_body']).creator;
-console.log(this.creatorId)
 
   this.Image=JSON.parse(res['_body']).Image
-  console.log(JSON.parse(res['_body']))
   if(this.creatorId===this.mycompany){
     this.mybookmark=false;
   }else{
@@ -74,25 +72,18 @@ console.log(this.creatorId)
   }
 });
 
-    // this.feedService.GetFeed().subscribe(res=>{
-    //     this.feed=JSON.parse(res['_body']);
-    //     console.log(res);
-    // })
+    
 this.product.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
-console.log(JSON.parse(res['_body']))
 })
 this.UserService.getUserData().subscribe(res=>{
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
-  console.log(this.userBookmark.length);  
 for(let i=0;i<this.userBookmark.length;i++){
   if(this.id==this.userBookmark[i])
   {
     this.bookmark=false;
   }
-  else{
-    // this.bookmark=true;
-  }
+  
 }
 
 })
@@ -101,13 +92,11 @@ for(let i=0;i<this.userBookmark.length;i++){
   addProductBookmark(){
     this.bookmark=false
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
-      console.log(res);
     })
   }
   deleteProductBookmark(){
     this.bookmark=true
     this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
-      console.log(res);
     })
     
   }

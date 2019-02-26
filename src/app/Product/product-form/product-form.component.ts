@@ -64,9 +64,7 @@ export class ProductFormComponent implements OnInit {
     this.companyid=this.storage.get('companyId')
     this.companyService.GetoneCompany(this.companyid).subscribe(res=>{
       this.companyName=JSON.parse(res['_body']).companyName;
-      console.log(this.companyName)
     })
-    console.log(name);
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
     this.productForm.get('Image').updateValueAndValidity();
@@ -82,7 +80,6 @@ export class ProductFormComponent implements OnInit {
         this.productForm.patchValue({
           Image: [url]
         })
-        console.log(url);
     
       })
 
@@ -101,7 +98,6 @@ export class ProductFormComponent implements OnInit {
     )
   }
   addNewField(control) {
-    // this.filedsArray.push(this.addFiledsGroup());
   control.push(
     this._fb.group({
       fieldName: [''],
@@ -141,11 +137,9 @@ export class ProductFormComponent implements OnInit {
  
   onSubmit() {
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
      this.productForm.value;
      this.productForm.value.companyName=this.companyName;
       this.productService.addProduct(this.productForm.value).subscribe(res => {
-        console.log(JSON.parse(res['_body']));
       });
        this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');

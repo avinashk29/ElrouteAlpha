@@ -1,45 +1,7 @@
-<!-- <div class="homepage">
-  <div class="header">
-    <div class="nav">
-    <div class="side-nav">
-    <a (click)="openDialog()">SIGN IN</a>
-    <select>
-      <option>LOCATION</option>
-    </select>
-    </div>
-    <div class="left-nav">
-    <div class="menu">
-    </div>
-    </div>
 
-    </div>
-    <div class="header-bottom">
-     <div class="header-bottom-elements"><button><h2>PRODUCT</h2></button></div>
-     <div class="header-bottom-elements"><button><h2>SERVICE</h2></button></div>
-     <div class="header-bottom-elements"><button><h2>B-SERVICE</h2></button></div>
-    </div>
-  </div>
-  <section>
-    <div class="search">
-     <div class="text">
-       <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry."</p>
-     </div>
-     <div class="search-bar">
-        <div class="search-container" [formGroup] = "searchForm" (ngSubmit)= "onSearch()" >
-            <input type="text" id="search-bar" placeholder="ENTER PRODUCT/SERVICE TO SEARCH" formControlName = "word"  (keypress) = "onEnterKey($event)" >
-            <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-            <button (click)="onSearch()">Search</button>
-          </div>
-     </div>
-    </div>
-  </section>
-</div> -->
 
 
 <script src="../assets/js/slider.js">
-
-
-
 </script>
 
 <div class="home_bgimg">
@@ -57,7 +19,7 @@
         </div>
         <div class="sign_up_btn">
           <button type="button" class="btn1" (click)="openDialog()">Get Started</button>
-          <button type="button" class="btn2" (click) = "openLogin()" >Sign In</button>
+          <button type="button" class="btn2" (click)="openLogin()">Sign In</button>
         </div>
 
       </div>
@@ -73,11 +35,7 @@
 
   </section>
 
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="1670" height="508.559" viewBox="0 0 1670 508.559">
-
-    <path id="Path_393" data-name="Path 393" d="M150,0H1520l150,93.933V508.559H0V101.04Z" fill="#fff"/>
-  </svg> -->
-
+  
 
   <section id="section_2">
     <div class="section2">
@@ -92,32 +50,32 @@
       <div class="images">
         <div class="test">
 
-              <div class="img1" (click) = "onSearch('HandmadePaper')" >
-                  <!-- <img src="assets/images/handpaper.jpg"> -->
-                  <div class="hover_1" >
-                  <h3>Handmade Paper</h3>
-                  </div>
+          <div class="img1" (click)="onSearch('HandmadePaper')">
+      
+            <div class="hover_1">
+              <h3>Handmade Paper</h3>
+            </div>
 
           </div>
 
         </div>
 
         <div class="test">
-        <div class="img2" (click) = "onSearch('Gems & Jewellry')">
-          <!-- <img src="assets/images/gems.jpg"> -->
-          <div class="hover_2">
-          <h3>Gems & Jewellery</h3>
-        </div>
-        </div>
+          <div class="img2" (click)="onSearch('Gems & Jewellry')">
+            <!-- <img src="assets/images/gems.jpg"> -->
+            <div class="hover_2">
+              <h3>Gems & Jewellery</h3>
+            </div>
+          </div>
         </div>
         <div class="test">
-        <div class="img3" (click) = "onSearch('Bearings')">
-          <!-- <img src="assets/images/bearings.jpg"> -->
-          <div class="hover_3">
-          <h3>Bearings</h3>
+          <div class="img3" (click)="onSearch('Bearings')">
+            <!-- <img src="assets/images/bearings.jpg"> -->
+            <div class="hover_3">
+              <h3>Bearings</h3>
+            </div>
+          </div>
         </div>
-        </div>
-  </div>
       </div>
 
     </div>
@@ -131,18 +89,18 @@
       <div class="slider">
 
         <!-- <h2>Slider Here</h2> -->
-      <section id="slider">
-  <input type="radio" name="slider" id="s1">
-  <input type="radio" name="slider" id="s2">
-  <input type="radio" name="slider" id="s3" checked>
-  <input type="radio" name="slider" id="s4">
-  <input type="radio" name="slider" id="s5">
-  <label for="s1" id="slide1"></label>
-  <label for="s2" id="slide2"></label>
-  <label for="s3" id="slide3"></label>
-  <label for="s4" id="slide4"></label>
-  <label for="s5" id="slide5"></label>
-</section>
+        <section id="slider">
+          <input type="radio" name="slider" id="s1">
+          <input type="radio" name="slider" id="s2">
+          <input type="radio" name="slider" id="s3" checked>
+          <input type="radio" name="slider" id="s4">
+          <input type="radio" name="slider" id="s5">
+          <label for="s1" id="slide1"></label>
+          <label for="s2" id="slide2"></label>
+          <label for="s3" id="slide3"></label>
+          <label for="s4" id="slide4"></label>
+          <label for="s5" id="slide5"></label>
+        </section>
       </div>
     </div>
   </section>
@@ -153,15 +111,15 @@
         <h2>Want something, we don't have right now?</h2>
         <h4>Just Drop your contact and needs, we’ll try our level best to serve you.</h4>
       </div>
-      <div class="user_need_email" [formGroup] = "contactFrom">
+      <div class="user_need_email" [formGroup]="contactFrom">
         <ul>
-          <li><label>Need</label><textarea formControlName = "Need"></textarea></li>
+          <li><label>Need</label><textarea formControlName="Need"></textarea></li>
           <li class="email_box">
             <label>Email</label>
             <div class="input_box">
-              <input type="email" formControlName = "Email">
+              <input type="email" formControlName="Email">
             </div>
-            <button (click) = OnSendrequest()>Ya! that's exactly what I need</button>
+            <button (click)=OnSendrequest()>Ya! that's exactly what I need</button>
 
 
           </li>
@@ -171,120 +129,131 @@
     </div>
   </section>
   <section>
-      <div class="section5">
-        <div class="b_face">
-          <h2> Create Your B Face</h2>
+    <div class="section5">
+      <div class="b_face">
+        <h2> Create Your B Face</h2>
 
-          <div class="b_face_1">
-            <div class="b_face_img">
-              <img src="assets/images/bface.png">
-            </div>
-            <div class="b_face_content">
-              <h3> With a  B face ,you can</h3>
-              <ul>
-                  <li><span style="width:10%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Tell what your business stands for.</span></li>
-                  <li><span style="width:20%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Put information that your customers want and more specifically tell them how your business can solve their</span></li>
-                  <li><span style="width:10%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Showcase your products and services.</span></li>
-                  <li><span style="width:10%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Regularly engage your visitors with the help of feeds.</span></li>
-                  <li><span style="width:12%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Link all your social media profiles and website to a single platform.</span></li>
-                  <li><span style="width:10%">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
-                      <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3"/>
-                    </svg>
-                  </span><span>Tell what your business stands for.</span></li>
-                  <li>   <a style="width: 100%" [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button" (click)="openDialog()" style="margin-top: 11%;margin-left: 23%;">Get Started</button></a></li>
-                  </ul>
-
-             </div>
-            </div>
-
-
-         </div>
-       </div>
-   </section>
-   <section>
-        <div class="section6">
-              <div class="benifites">
-                  <div class="benifites_left">
-                      <h2>Here are our early-adopter <span>benefits</span> that will help you ace the competition :</h2>
-                  </div>
-                  <div class="benifites_right">
-                      <div class="benifites_btn">
-                      <button type="button"><img src="assets/images/1.png"><span>Free brand consultancy for your business.</span></button>
-                      <button type="button"><img src="assets/images/2.png"><span>Maximum exposure and direct visibility on Elroute’s homepage.</span></button>
-                      <button type="button"><img src="assets/images/3.png"><span>Get constant support in building your brand.</span></button>
-                      </div>
-                  </div>
-              </div>
-        </div>
-   </section>
-
-   <section>
-      <div class="section7">
-          <div class="section7_1">
-            <h2>Think you are missing on skills or expertise that is stopping you from building your brand? </h2>
-            <h3>Worry Not!</h3>
-
-           </div>
-           <div class="section7_2"> </div>
-           <div class="section7_3">
-             <h3> The <span style="font-weight: 700">Trade-Catalysts</span> on our platform are inclusive of  but not limites to</h3>
-             <div class="section7_4">
-
-                <div class="section7_4_1">
-                  <img src="assets/images/branding.png">
-                  <h4>Branding Experts</h4>
-                 </div>
-                 <div class="section7_4_1">
-                    <img src="assets/images/digital.png">
-                    <h4>Digital Marketing Experts</h4>
-                   </div>
-                   <div class="section7_4_1">
-                      <img src="assets/images/Content.png">
-                      <h4>Content Marketing Experts</h4>
-                     </div>
-
-
-             </div>
+        <div class="b_face_1">
+          <div class="b_face_img">
+            <img src="assets/images/bface.png">
           </div>
+          <div class="b_face_content">
+            <h3> With a B face ,you can</h3>
+            <ul>
+              <li><span style="width:10%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Tell what your business stands for.</span></li>
+              <li><span style="width:20%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Put information that your customers want and more specifically tell them how your business
+                  can solve their</span></li>
+              <li><span style="width:10%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Showcase your products and services.</span></li>
+              <li><span style="width:10%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Regularly engage your visitors with the help of feeds.</span></li>
+              <li><span style="width:12%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Link all your social media profiles and website to a single platform.</span></li>
+              <li><span style="width:10%">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.043" height="36.42" viewBox="0 0 30.043 36.42">
+                    <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0" transform="translate(8.314 1.798) rotate(13)"
+                      fill="none" stroke="#2d3d51" stroke-linecap="round" stroke-width="3" />
+                  </svg>
+                </span><span>Tell what your business stands for.</span></li>
+              <li> <a style="width: 100%" [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button"
+                    (click)="openDialog()" style="margin-top: 11%;margin-left: 23%;">Get Started</button></a></li>
+            </ul>
 
+          </div>
+        </div>
 
 
       </div>
-   </section>
-   <section>
-      <div class="section8">
-            <div class="section8_text">
-              <h2>Got Leads?</h2>
-              <h4>Share one link across with all your leads and you would have told everything about your business! </h4>
-             </div>
-             <div class="section8_btn">
-                <h2>Creating your B-Face on Elroute is easy and free!</h2>
-               <a [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button" (click)="openDialog()">Get Started</button></a>
-               </div>
+    </div>
+  </section>
+  <section>
+    <div class="section6">
+      <div class="benifites">
+        <div class="benifites_left">
+          <h2>Here are our early-adopter <span>benefits</span> that will help you ace the competition :</h2>
+        </div>
+        <div class="benifites_right">
+          <div class="benifites_btn">
+            <button type="button"><img src="assets/images/1.png"><span>Free brand consultancy for your business.</span></button>
+            <button type="button"><img src="assets/images/2.png"><span>Maximum exposure and direct visibility on
+                Elroute’s homepage.</span></button>
+            <button type="button"><img src="assets/images/3.png"><span>Get constant support in building your brand.</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-       </div>
-   </section>
+  <section>
+    <div class="section7">
+      <div class="section7_1">
+        <h2>Think you are missing on skills or expertise that is stopping you from building your brand? </h2>
+        <h3>Worry Not!</h3>
+
+      </div>
+      <div class="section7_2"> </div>
+      <div class="section7_3">
+        <h3> The <span style="font-weight: 700">Trade-Catalysts</span> on our platform are inclusive of but not limites
+          to</h3>
+        <div class="section7_4">
+
+          <div class="section7_4_1">
+            <img src="assets/images/branding.png">
+            <h4>Branding Experts</h4>
+          </div>
+          <div class="section7_4_1">
+            <img src="assets/images/digital.png">
+            <h4>Digital Marketing Experts</h4>
+          </div>
+          <div class="section7_4_1">
+            <img src="assets/images/Content.png">
+            <h4>Content Marketing Experts</h4>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+  <section>
+    <div class="section8">
+      <div class="section8_text">
+        <h2>Got Leads?</h2>
+        <h4>Share one link across with all your leads and you would have told everything about your business! </h4>
+      </div>
+      <div class="section8_btn">
+        <h2>Creating your B-Face on Elroute is easy and free!</h2>
+        <a [routerLink]="['']" [queryParams]="{ urlRedirect: true }"><button type="button" (click)="openDialog()">Get
+            Started</button></a>
+      </div>
+
+    </div>
+  </section>
 
 
 </div>

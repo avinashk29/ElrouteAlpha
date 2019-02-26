@@ -1,9 +1,7 @@
-
-
 <div>
   <section>
     <div class="productForm">
-      <form [formGroup] = "productForm" (ngSubmit)= "onSubmit()">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="header">
           <h1>PRODUCT</h1>
           <small>Register and step into business world </small>
@@ -12,88 +10,89 @@
           <h2>Listing Details</h2>
           <label>Enter Product Name</label>
           <input type="text" placeholder="Product Name" formControlName="productName">
-            <div class="productImg">
-              <div class="addButton">
-                <input type="file" #imagePicker (change)="onImagePick($event,'image')">
-                  <button type="button" (click)="imagePicker.click()">ADD Product Image</button>
-                </div>
-                <div class="image">
-                  <img  *ngIf="imagePreview" [src]="imagePreview">
+          <div class="productImg">
+            <div class="addButton">
+              <input type="file" #imagePicker (change)="onImagePick($event,'image')">
+              <button type="button" (click)="imagePicker.click()">ADD Product Image</button>
+            </div>
+            <div class="image">
+              <img *ngIf="imagePreview" [src]="imagePreview">
+            </div>
+          </div>
+        </div>
+        <div class="discription">
+          <h2>Description</h2>
+          <textarea placeholder="Short Description" formControlName="shortDescription" minlength="20" maxlength="200"></textarea>
+          <div class="chips"></div>
+        </div>
+        <div>
+          <div class="category" formArrayName="productInfo">
+            <div *ngFor="let productinfo of productForm.get('productInfo').controls ; let i = index;">
+              <button (click)="deleteProductInfo(i)">delete product info</button>
+              <div [formGroupName]="i">
+                <input list="category" placeholder="Product Specification" formControlName="productSpecification">
+                <datalist id="category">
+                  <option value="Category">
+                  <option value="Category">
+                  <option value="Category">
+                  <option value="Category">
+                  <option value="Category">
+                </datalist>
+                <textarea placeholder="Specification Content" formControlName="specificationContent"></textarea>
+                <div class="fields" style="width: 100%;margin-top: 5px" formArrayName="fields">
+                  <div *ngFor="let field of productinfo.get('fields').controls; let j = index; ">
+                    <div [formGroupName]="j">
+                      <input type="text" placeholder="Enter Field Name " style="width: 43%" formControlName="fieldName">
+                      <input type="text" placeholder="Enter Field Name " style="width: 43%; margin-left: 7.55555%"
+                        formControlName="fieldDes">
+                      <button (click)="deleteField(productinfo.controls.fields, j)">
+                        Delete
+                      </button>
+                    </div>
                   </div>
+                  <button type="button" (click)="addNewField(productinfo.controls.fields)">Add More</button>
                 </div>
               </div>
-              <div class="discription">
-                <h2>Description</h2>
-                <textarea placeholder="Short Description"  formControlName="shortDescription" minlength="20" maxlength="200"></textarea>
-                <div class="chips"></div>
-              </div>
-              <div >
-                <div class="category" formArrayName = "productInfo" >
-                  <div *ngFor="let productinfo of productForm.get('productInfo').controls ; let i = index;" >
-                    <button (click)="deleteProductInfo(i)">delete product info</button>
-                    <div [formGroupName]="i">
-                      <input list="category"  placeholder="Product Specification" formControlName = "productSpecification">
-                        <datalist id="category">
-                          <option value="Category">
-                            <option value="Category">
-                              <option value="Category">
-                                <option value="Category">
-                                  <option value="Category">
-                                  </datalist>
-                                  <textarea placeholder="Specification Content" formControlName = "specificationContent"></textarea>
-                                  <div class="fields" style="width: 100%;margin-top: 5px" formArrayName = "fields">
-                                    <div *ngFor = "let field of productinfo.get('fields').controls; let j = index; " >
-                                      <div [formGroupName] = "j">
-                                     <input type="text" placeholder="Enter Field Name " style="width: 43%" formControlName = "fieldName">
-                                   <input type="text" placeholder="Enter Field Name " style="width: 43%; margin-left: 7.55555%" formControlName = "fieldDes">
-                                   <button (click)="deleteField(productinfo.controls.fields, j)">
-                                    Delete 
-                                  </button> 
-                                  </div>
-                                   </div>
-                                        <button type="button" (click) = "addNewField(productinfo.controls.fields)">Add More</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <button type="button" style="float:right;margin-top: 30px;" (click)="addProductInfo()" >Apply</button>
-                              </div>
-                              <div class="otherSection">
-                                <div class="price" style="margin-top:60px;">
-                                  <input list="price"  placeholder="Price" style="width: 15%;height: 30px;margin-left: 0" formControlName="price">
-                                    <datalist id="price">
-                                      <option value="price">
-                                        <option value="price">
-                                          <option value="price">
-                                            <option value="price">
-                                              <option value="price">
-                                              </datalist>
-                                              <input type="number" placeholder="min"  formControlName="minPrice">
-                                                <input type="number" placeholder="max"  formControlName="maxPrice">
-                                                </div>
-                                                <div class="moq">
-                                                  <input type= "text" placeholder="MOQ"  formControlName="moq">
-                                                  </div>
-                                                  <div class="industry">
-                                                    <input list="Industry"  placeholder="Industry"  formControlName="industry">
-                                                      <datalist id="Industry">
-                                                        <option value="Industry">
-                                                          <option value="Industry">
-                                                            <option value="Industry">
-                                                              <option value="Industry">
-                                                                <option value="Industry">
-                                                                </datalist>
-                                                              </div>
-                                                              <div class="proCategory">
-                                                                <input type= "text" placeholder="Category"  formControlName="category">
-                                                                </div>
-                                                                <div class="Tf">
-                                                                  <input type= "text" placeholder="TF Code"  formControlName="tfCode">
-                                                                  </div>
-                                                                </div>
-                                                                <button type="submit">Finish</button>
-                                                              </form>
-                                                            </div>
-                                                            <div class="static"></div>
-                                                          </section>
-                                                        </div>
+            </div>
+          </div>
+          <button type="button" style="float:right;margin-top: 30px;" (click)="addProductInfo()">Apply</button>
+        </div>
+        <div class="otherSection">
+          <div class="price" style="margin-top:60px;">
+            <input list="price" placeholder="Price" style="width: 15%;height: 30px;margin-left: 0" formControlName="price">
+            <datalist id="price">
+              <option value="price">
+              <option value="price">
+              <option value="price">
+              <option value="price">
+              <option value="price">
+            </datalist>
+            <input type="number" placeholder="min" formControlName="minPrice">
+            <input type="number" placeholder="max" formControlName="maxPrice">
+          </div>
+          <div class="moq">
+            <input type="text" placeholder="MOQ" formControlName="moq">
+          </div>
+          <div class="industry">
+            <input list="Industry" placeholder="Industry" formControlName="industry">
+            <datalist id="Industry">
+              <option value="Industry">
+              <option value="Industry">
+              <option value="Industry">
+              <option value="Industry">
+              <option value="Industry">
+            </datalist>
+          </div>
+          <div class="proCategory">
+            <input type="text" placeholder="Category" formControlName="category">
+          </div>
+          <div class="Tf">
+            <input type="text" placeholder="TF Code" formControlName="tfCode">
+          </div>
+        </div>
+        <button type="submit">Finish</button>
+      </form>
+    </div>
+    <div class="static"></div>
+  </section>
+</div>

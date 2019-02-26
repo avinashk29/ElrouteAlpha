@@ -15,9 +15,8 @@ export class FeedService {
       const headers = new Headers();
       headers.append('x-auth', this.token);
       console.log(this.token);
- console.log(feed)
+         console.log(feed)
          return this.http.post('http://localhost:8080/api/post',feed, {headers:headers})
-        // return this.http.post('/post', formData, {headers: headers});
     }
     GetFeed() {
         const headers = new Headers();
@@ -25,12 +24,7 @@ export class FeedService {
         console.log(this.token);
         return this.http.get('http://localhost:8080/api/post',{headers:headers})
     }
-    // Getpost(){
-    //     const headers = new Headers();
-    //     headers.append('x-auth', this.token);
-    //     console.log(this.token);
-    //     return this.http.get('/feed', {headers: headers})
-    // }
+  
     getCompanyFeed(){
         const headers = new Headers();
         headers.append('x-auth', this.token);

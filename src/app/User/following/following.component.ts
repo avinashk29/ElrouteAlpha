@@ -39,19 +39,14 @@ export class FollowingComponent implements OnInit {
 this.following.getFollowing().subscribe(res1=>{
   this.followings=JSON.parse(res1['_body']);
   
-  console.log(this.followings)
   this.userService.getUserData().subscribe(res=>{
     this.userInfo=JSON.parse(res['_body']).following;
     for (let i=0; i<this.followings.length; i++) {
-      console.log(this.userInfo.length);
       if (this.userInfo.length === 0){
         this.followings[i].follow = false;
-        console.log(this.followings[i])
       } else {
-      console.log( this.userInfo[i]);
       if (this.followings[i]._id === this.userInfo[i]){
       this.followings[i].follow = true;
-        console.log(this.followings[i].follow)
       }
       }
   
@@ -63,17 +58,12 @@ this.following.getFollowing().subscribe(res1=>{
   onfollow(i,id){
     this.followings[i].follow = true;
     this.follows.addFollow(id).subscribe(res=>{
-               console.log(res);
            })
-           console.log('i am working follow')
   }
   onunfollow(i,id){
-    console.log(id)
     this.followings[i].follow = false;
     this.follows.Unfollow(id).subscribe(res=>{
-               console.log(res);
            })
-           console.log('i am working unfollow')
   }
   gotoBpage(id){
     this.router.navigate(['/companyPage/'+id ], {queryParams: {urltype : 'default'}});;

@@ -16,7 +16,6 @@ pagecounter
   constructor(public route: ActivatedRoute,private search:SearchService) {
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-    console.log(this.word , this.page);
   
   }
 

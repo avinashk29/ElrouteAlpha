@@ -10,12 +10,10 @@ import { UserService } from "src/app/Service/user-services.service";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  
   constructor(
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
     private router: Router,
     public searchService: SearchService,
-    
     private UserService: UserService
   ) {}
   searchForm = new FormGroup({
@@ -24,7 +22,6 @@ export class HeaderComponent implements OnInit {
   });
   ngOnInit() {
     this.UserService.token = this.storage.get("token");
-  
   }
   onSearch(event) {
     const formData = this.searchForm.value;

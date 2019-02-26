@@ -34,7 +34,6 @@ companyForm: FormGroup;
         zipCode: JSON.parse(res['_body']).zipCode,
         landLine: JSON.parse(res['_body']).landLine,
         mobile: JSON.parse(res['_body']).mobile,
-        // category: JSON.parse(res['_body']).category,
 
 
       });
@@ -50,10 +49,7 @@ companyForm: FormGroup;
     return <FormArray>this.companyForm.get('contactDevision');
   }
   onSubmit() {
-    console.log(this.companyForm.value);
-    console.log(this.companyForm.value);
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
     });
     this.notification.success('B Face Updated');
   }

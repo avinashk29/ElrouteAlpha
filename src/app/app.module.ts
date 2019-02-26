@@ -51,13 +51,13 @@ import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StickyNavModule } from 'ng2-sticky-nav';
 // import { CarouselModule } from 'angular4-carousel';
-// import { NgxUiLoaderModule } from  'ngx-ui-loader';
-// import {NgxSpinnerModule} from 'ngx-spinner'
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { BPageComponent } from './Bpage/b-page/b-page.component';
 // import {ProductBookmarkComponent} from './Bookmark/product/product.component';
 import {CompanyServiceService} from './Service/company-service.service';
 // import { CopmayService } from './Company/copmay.service';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {ProductServiceService } from './Service/product-service.service';
 import { ToastrModule } from 'ngx-toastr';
 import {AuthGuardService} from './guards/auth-guard.service';
@@ -153,10 +153,10 @@ export function provideConfig() {
     MatTabsModule,
     Ng2CarouselamosModule,
     SocialLoginModule,
-    // NgxUiLoaderModule,
-    // NgxSpinnerModule,
+    Ng4LoadingSpinnerModule.forRoot(),
     MatCardModule,
     StickyNavModule,
+    ScrollDispatchModule,
     ToastrModule.forRoot()
 
   ],

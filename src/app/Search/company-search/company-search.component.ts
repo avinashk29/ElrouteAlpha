@@ -36,14 +36,11 @@ export class CompanySearchComponent implements OnInit {
    this.page = this.route.snapshot.paramMap.get('page');
     this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
-      console.log(JSON.parse(res['_body']))
       this.userInfo = JSON.parse(res['_body']).following;
        this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
       this.search.onSearchCompany(this.word).subscribe(res1=>{
       
         this.result = JSON.parse(res1['_body']);
-        console.log(this.result)
-        console.log(this.result.length)
         this.cresult=JSON.parse(res1['_body'])[0]
           var number=this.cresult.length
         this.search.setOption(number)
@@ -52,28 +49,20 @@ export class CompanySearchComponent implements OnInit {
         // this.bookmarkService.companyfollow =JSON.parse(res1['_body'])[0]; 
          //Addition/Deletion method for Follow//
          for(let i = 0; i < this.userInfo.length; i++) {
-          console.log(this.userInfo[i]);
           for(let j = 0;j < this.cresult.length; j++) {
-            console.log(this.cresult[j]._id);
                if(this.userInfo[i] == this.cresult[j]._id) {
-                console.log(this.cresult[j]._id);
                 this.cresult[j].follow=true;
                } else  {
-                console.log(this.cresult[j]._id);
                 // this.cresult[j].follow=false;
                }
            }      
      }
             //Addition/Deletion method for Bookmarks//
         for(let i = 0; i < this.userBookmark.length; i++) {
-          console.log(this.userBookmark[i]);
           for(let j = 0;j < this.cresult.length; j++) {
-            console.log(this.cresult[j]._id);
                if(this.userBookmark[i] == this.cresult[j]._id) {
-                console.log(this.cresult[j]._id);
                 this.cresult[j].bookm=true;
                } else  {
-                console.log(this.cresult[j]._id);
                 // this.cresult[j].bookm=false;
                }
            }      
@@ -89,30 +78,22 @@ export class CompanySearchComponent implements OnInit {
   onfollow(i,id){
     this.cresult[i].follow=true;
     this.follows.addFollow(id).subscribe(res=>{
-               console.log(res);
            })
-           console.log('i am working follow')
   }
   onunfollow(i,id){
-    console.log(id)
     this.cresult[i].follow=false;
     this.follows.Unfollow(id).subscribe(res=>{
-               console.log(res);
            })
-           console.log('i am working unfollow')
   }
  companyBookmark(i,id){
   this.cresult[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
-       console.log(res)
       
      });
-     console.log(id)
  }
  deletecompanyBookmark(i,id){
   this.cresult[i].bookm=false;
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
-    console.log(res)
   });
  }
 //  GotoBpage(id){
