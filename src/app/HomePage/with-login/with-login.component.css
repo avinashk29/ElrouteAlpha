@@ -12,7 +12,7 @@
  width: 90%;
  padding-top: 2%;
  display: flex;
- justify-content: space-between; 
+ justify-content: space-between;
 }
 .user
 {
@@ -22,7 +22,7 @@
  position: fixed;
  width: 18%;
  z-index: 1;
- /* margin-top: 10%; */ 
+ /* margin-top: 10%; */
 }
 .login_user {
  width: 100%;
@@ -41,7 +41,7 @@
  background-color: #151517;
  border-radius: 4px;
  margin: 4px;
- 
+
 }
 .user_edit button
 {
@@ -49,7 +49,7 @@
     background-color: transparent;
     border: none;
     float:right;
-    
+
     outline: none;
 }
 .user_edit span
@@ -69,7 +69,7 @@
  width: 80px;
  height: 80px;
  border-radius: 100px;
- 
+
  margin-top: 50%;
 } */
 .follower_img {
@@ -80,7 +80,7 @@
 .company
 {
     display: flex;
-    
+
 }
 .company_logo
 {
@@ -89,7 +89,7 @@
 }
 .follower_img1 {
  position: absolute;
- 
+
  bottom: -40px;
  text-align: center;
  width: 100%;
@@ -127,7 +127,7 @@ border: solid 5px white;
  margin-top: auto;
  text-align: center;
 }
-.user_details 
+.user_details
 {
  margin-bottom: 10%;
 }
@@ -160,7 +160,7 @@ border: solid 5px white;
 }
 .user_following h2
 {
-   
+
  margin-top: auto;
  margin-bottom: auto;
  width: 100%;
@@ -171,7 +171,7 @@ border: solid 5px white;
 {
  margin-top: auto;
  margin-bottom: auto;
- 
+
  font-size: 15px;
 }
 .user_company_details{
@@ -185,7 +185,7 @@ border: solid 5px white;
 {
  display: flex;
 
- 
+
 }
 .company_logo
 {
@@ -197,7 +197,7 @@ border: solid 5px white;
 .company_logo img
 {
     width: 60px;
-    height: 60px;   
+    height: 60px;
 }
 .company_name
 {
@@ -224,7 +224,7 @@ border: solid 5px white;
  display: flex;
  margin: 0 auto;
  width: 84%;
- 
+
 }
 .company_following h2
 {
@@ -234,18 +234,18 @@ border: solid 5px white;
  font-size: 12px;
  line-height: 19px;
  cursor: pointer;
- 
+
 }
 .company_following p
 {
  margin-top: auto;
  margin-bottom: auto;
- 
+
  font-size: 12px;
 }
 .company_edit_btn
 {
-   
+
  text-align: center;
  margin-top: 2%;
  cursor: pointer;
@@ -270,7 +270,7 @@ border: solid 5px white;
  width: 100%;
  height: 65vh;
  display: block;
- 
+
  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
  /* margin-right: 4%;
  margin-left: 8%; */
@@ -289,7 +289,7 @@ border: solid 5px white;
 {
  width: 100%;
  background-color: skyblue;
- 
+
  margin-top: 21%;
  height: 35vh;
 }
@@ -298,7 +298,7 @@ border: solid 5px white;
  margin: 0 auto;
  width: 85%;
 }
-.feed_show_img img 
+.feed_show_img img
 {
  width: 100%;
  margin-top: -22%;
@@ -307,30 +307,30 @@ border: solid 5px white;
 }
 .feed_show_content
 {
- 
+
  text-align: center;
  box-shadow: 0px 1px 7px #5555;
  margin: 0 auto;
  width: 85%;
  background-color: white;
  margin-top: 6%;
- 
+
  padding: 0 0 10px;
 
- 
- 
+
+
 }
 .feed_show_content1
 {
  padding: 1%;
  margin: 0 auto;
  width: 97%;
- 
+
 }
 .feed_show_content1 h4
 {
  margin-top:auto;
- margin-bottom: auto; 
+ margin-bottom: auto;
 }
 .feed_show_content1 p
 {
@@ -345,7 +345,7 @@ border: solid 5px white;
  width: 40px;
  outline: none;
  border: none;
- 
+
  }
  .feed_show_content svg
  {
@@ -359,7 +359,7 @@ border: solid 5px white;
  float: left;
  position: relative;
  padding: 0 30px;
- 
+
  left: 22%;
 }
 
@@ -378,7 +378,7 @@ border: solid 5px white;
  margin: 0 0px;
  box-shadow: 0px 1px 6px 1px rgba(25, 25, 25, 0.2);
  width: 100%;
- 
+
 }
 .add_media
 {
@@ -392,7 +392,7 @@ border: solid 5px white;
  margin-right: 2%;
  padding: 10px;
  display: flex;
- 
+
 }
 .about_feed1 {
  color: #707070;
@@ -401,12 +401,12 @@ border: solid 5px white;
  text-align: justify;
  font-size: 12px;
  line-height: 20px;
- 
+
 }
 
 .add_media_box {
  /* padding: 15px 26px; */
- 
+
  background-color: #F5F5F5;
 }
 
@@ -431,7 +431,7 @@ border: solid 5px white;
  cursor: pointer;
 }
 .add_media_tag h2
-{ 
+{
  font-size: 15px;
  margin-bottom: auto;
  margin-top: auto;
@@ -439,7 +439,7 @@ border: solid 5px white;
 }
 .add_link
 {
- 
+
  text-align: center;
  margin: 0px 10px;
  cursor: pointer;
@@ -474,7 +474,7 @@ border: solid 5px white;
  width: 100%;
  height: 100%;
 }
-.input_link 
+.input_link
 {
  margin: 0 auto;
  width: 90%;
@@ -509,15 +509,15 @@ border: solid 5px white;
 .container {
  position: relative;
  width: 100%;
- 
+
  }
- 
+
  .image {
  display: block;
  width: 100%;
  height:100%;
  }
- 
+
  .overlay {
  position: absolute;
  top: 0;
@@ -528,10 +528,10 @@ border: solid 5px white;
  width: 100%;
  opacity: 0;
  transition: .5s ease;
- background: rgba(0, 0, 0, 0.5); 
- 
+ background: rgba(0, 0, 0, 0.5);
+
  }
- 
+
  .container:hover .overlay {
  opacity: 1;
  }
@@ -547,7 +547,7 @@ border: solid 5px white;
  color: white;
  background-color: transparent;
  }
- 
+
  .chnge_img
  {
  color:white;
@@ -557,19 +557,19 @@ border: solid 5px white;
  right: 11%;
  position: absolute;
  width: 19%;
- z-index: 1; 
+ z-index: 1;
  }
 .company_industry {
- 
+
  height: fit-content;
  width: 100%;
  background-color: #fafafb;
  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
- 
- 
+
+
  border-radius: 4px;
  margin-bottom: 8%;
- 
+
 }
 .category1
 {
@@ -614,7 +614,7 @@ border: solid 5px white;
 }
 .add_btn
 {
- 
+
  border-left: solid #8991a2;
  margin: 10px;
  cursor: pointer;
@@ -816,7 +816,7 @@ section {
 
 mat-expansion-panel {
  border-radius: 0 !important;
- 
+
 }
 
 
@@ -833,7 +833,7 @@ mat-panel-title h4 {
 }
 .logout_btn
 {
- 
+
  width: 45%;
  margin: 4px;
  background-color: green;
@@ -844,15 +844,15 @@ mat-panel-title h4 {
  border: none;
  /* margin-left: 10px; */
  float: right;
- 
+
 }
 
 @media screen and (max-width:700px) {
  .dashboard
  {
-    
+
     width: 95%;
- 
+
  }
     .user
  {
@@ -971,10 +971,10 @@ mat-panel-title h4 {
     width: 40%;
 }
 .follower_img1 img {
-   
+
     width: 50px;
     height: 50px;
-   
+
 }
 .follower_img1 {
     position: absolute;
@@ -1001,31 +1001,31 @@ mat-panel-title h4 {
     margin: 9px 0px;
 }
 .feed_following  {
-    
+
     width: 30% !important;
-    
+
 }
 .feed_following button {
-   
+
     font-size: 11px;
-  
+
 }
 .user{
-    
+
     width: 20%;
-    
+
 }
 .company_logo img{
     width: 40px;
     height: 40px;
 }
 .company_name h2{
-    
+
     padding: 0  px;
     cursor: pointer;
 }
 .feeds {
-    
+
     left: 23%;
 }
 
@@ -1072,7 +1072,7 @@ input[type="file"]
  /* box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2); */
  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
  margin-bottom: 3%;
- 
+
 }
 .feed_header
 {
@@ -1094,7 +1094,7 @@ input[type="file"]
  width: 90%;
  margin-top: 4%;
  margin: 9px 0px;
- 
+
 }
 .feed_name h4
 {
@@ -1148,7 +1148,7 @@ height: 62vh;
 .tagged_product
 {
  display: flex;
- 
+
 }
 .tagged_product_img
 {
@@ -1165,7 +1165,7 @@ height: 62vh;
  position: relative;
  width: 100%;
  overflow: hidden;
- 
+
  }
 
 
@@ -1180,8 +1180,8 @@ height: 62vh;
  width: 100%;
  opacity: 0;
  transition: .5s ease;
- background: rgba(0, 0, 0, 0.8); 
- 
+ background: rgba(0, 0, 0, 0.8);
+
 }
 .container1 img
 {
@@ -1194,7 +1194,7 @@ height: 62vh;
 
 .container1:hover img {
  transform: scale(1.2);
- } 
+ }
 
 .feed_text
 {
@@ -1202,7 +1202,7 @@ height: 62vh;
  width: 85%;
  padding-top: 8%;
 }
- 
+
 
 .feed_text p
 {
@@ -1248,4 +1248,39 @@ height: 62vh;
 .mat-expansion-panel-body
 {
  padding: 0 0 0 0 !important;
+}
+.tagged_product{
+  width: 95%;
+  height: fit-content;
+  margin: 0 auto;
+  background-color: #151517;
+  display: flex;
+  align-items: center;
+}
+.content{
+  width: 90%;
+  height: 80%;
+  margin: 0 auto;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+}
+.product_img{
+  width: 30%;
+  height: 100%;
+  background-color: yellow;
+}
+.product_img img{
+  width: 100%;
+  height: 100%;
+}
+.product_content{
+  width: 63%;
+  margin-left: 7%;
+  height: 100%;
+}
+.product_content h2{
+  margin: 0;
+  font-weight: 500;
+  color: #151517;
 }

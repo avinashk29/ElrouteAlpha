@@ -17,7 +17,7 @@ export class UserService {
     Image;
     token;
     user;
-    private empDetailSubject = new BehaviorSubject(null); 
+    private empDetailSubject = new BehaviorSubject(null);
     constructor(public http: Http) {}
 
     getUserData() {
@@ -33,13 +33,17 @@ editUser(User){
     const UserFormData = new FormData();
     return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
-sendEmployeeDetail(value) {  
+sendEmployeeDetail(value) {
     this.user=value;
     this.empDetailSubject.next(this.user);
-}  
+}
 
 getdata(){
     return this.empDetailSubject.asObservable()
+}
+getOneUser(id) {
+  console.log(id);
+  return this.http.get('http://localhost:8080/api/user/' + id );
 }
 
 }

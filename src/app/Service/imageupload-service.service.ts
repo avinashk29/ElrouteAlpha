@@ -12,9 +12,10 @@ export class ImageUploadService {
     token;
     file;
     image
-    
-    constructor(private ngZone:NgZone,private http:Http,private companyService:CompanyServiceService,private userService:UserService,private spinner:Ng4LoadingSpinnerService,private feedService:FeedService){}
-    
+
+    constructor(private ngZone:NgZone,private http:Http,private companyService:CompanyServiceService,private userService:UserService,
+      private spinner:Ng4LoadingSpinnerService,private feedService:FeedService){}
+
     uploadImg(image){
         return this.http.post('http://localhost:8080/api/imageupload',image);
     }
@@ -55,16 +56,15 @@ export class ImageUploadService {
                     this.feedService.AddFeed(updata).subscribe(res=>{
                         this.userService.Image=JSON.parse(res['_body']).Image;
                         console.log(this.userService.Image)
-                    })
+                    });
                  }
                 this.userService.editUser(updata).subscribe(response => {
                   this.userService.userImage= JSON.parse(response['_body']).userImage;
                   this.spinner.hide();
-                
+
              });
-           
+
          });
-       
-    }
-  
+         }
+
 }

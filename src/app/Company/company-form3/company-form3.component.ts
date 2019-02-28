@@ -13,12 +13,13 @@ export class CompanyForm3Component implements OnInit {
   companyId;
   companyForm = new FormGroup ({
      website: new FormControl(''),
+     facebook: new FormControl(''),
      companyType: new FormControl(''),
      companySize: new FormControl(),
      yearEstd: new FormControl(),
    city: new FormControl(''),
      shortIntro: new FormControl(''),
-  
+
     }) ;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public companyService: CompanyServiceService, public router: Router, public notification: ToastrService) {
@@ -35,7 +36,8 @@ export class CompanyForm3Component implements OnInit {
         yearEstd: JSON.parse(res['_body']).yearEstd,
         shortIntro: JSON.parse(res['_body']).shortIntro,
         city: JSON.parse(res['_body']).city,
-        workingHours: JSON.parse(res['_body']).workingHours
+        workingHours: JSON.parse(res['_body']).workingHours,
+        facebook:  JSON.parse(res['_body']).facebook
       });
     });
 

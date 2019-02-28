@@ -41,14 +41,14 @@ const routes: Routes = [
    {path: 'companyBookmark' , component: CompanyComponent},
     {path: 'post' , component: PostComponent},
     {path: 'companyPage/:id' , component: BPageComponent},
-    {path:'editcompany',component:CompanEditComponent},
-    {path:'productEdit/:id',component:ProductComponent},
+    {path: 'editcompany', component: CompanEditComponent},
+    {path: 'productEdit/:id', component: ProductComponent},
     {path: 'company-form2' , component: CompanyForm2Component},
     {path: 'company-form3' , component: CompanyForm3Component},
     {path: 'company-form4' , component: CompanyForm4Component},
     {path: 'company-form5' , component: CompanyForm5Component},
-    {path:'product', component:ProductListingComponent}
-    
+    {path: 'product', component: ProductListingComponent}
+
 
   // {path: 'feed ' , component: fee}
 ];

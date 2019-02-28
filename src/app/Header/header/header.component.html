@@ -9,7 +9,10 @@
 
       </div>
       <ul class="main-nav">
-        <li>
+        <li *ngIf="!this.UserService.userName" (click)="openDialog()"  style="display: flex; align-items: center">
+           <h3 style="margin-top: 15px; cursor: pointer"> Login & Signup</h3>
+        </li>
+        <li *ngIf="this.UserService.userName">
           <div class="user">
             <div class="user_img" routerLink="/bookmark">
               <img src="{{this.UserService.userImage}}" *ngIf="this.UserService.userImage">

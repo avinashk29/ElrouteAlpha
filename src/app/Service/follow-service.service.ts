@@ -7,6 +7,7 @@ import { Http,Headers } from "@angular/http";
 })
 export class FollowService{
     token;
+    followerId;
 constructor(public http:Http){}
      addFollow(id){
          const headers=new Headers();
