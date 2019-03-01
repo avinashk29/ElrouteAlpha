@@ -14,7 +14,6 @@ result=[]
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
     this.bookmarkService.getBookmarkCompany().subscribe(res => {
-         console.log(res)
          this.result=JSON.parse(res['_body']);
     });
   }

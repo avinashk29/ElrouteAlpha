@@ -40,7 +40,6 @@ export class CompanyForm2Component implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.companyForm.value)
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
     });
 

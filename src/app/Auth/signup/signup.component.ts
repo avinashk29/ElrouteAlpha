@@ -113,6 +113,7 @@ export class SignupComponent implements OnInit {
         this.storage.set("token", res.headers.get("x-auth"));
         this.authService.token = this.storage.get("token");
         this.dialogRef.close(SignupComponent);
+        this.userService.userData=JSON.parse(res['_body']);
         if (!this.bpage) {
           this.router.navigate(["/Dashboard"]);
         } else {

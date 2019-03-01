@@ -26,8 +26,6 @@ fresult
      return this.data
    }  
   onSearch(word , page) {
-    console.log(word);
-
     return this.http.get('http://localhost:8080/api/search/' + word + '/' + page )
   }
   onSearchCompany(word) {
