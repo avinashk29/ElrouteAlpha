@@ -11,7 +11,7 @@ import { FeedService } from "./feed-service.service";
 export class ImageUploadService {
     token;
     file;
-    image
+    image;
 
     constructor(private ngZone:NgZone,private http:Http,private companyService:CompanyServiceService,private userService:UserService,
       private spinner:Ng4LoadingSpinnerService,private feedService:FeedService){}

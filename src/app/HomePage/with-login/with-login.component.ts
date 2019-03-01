@@ -124,11 +124,14 @@ export class WithLoginComponent implements OnInit {
     this.feed.value.companyName = this.companyName;
     this.feed.value.companyLogo = this.companyLogo;
     // this.feed.value.productName = this.feedService.productName;
-    // this.feed.value.productImage = this.feedService.productImage;
+    // this.feed.value.productImage = this.feedService.productName;
     this.feed.value.Image = this.userService.Image;
     // this.feed.value.productDescription = this.feedService.productDescription;
     this.feedService.AddFeed(this.feed.value).subscribe(res => {});
     this.feed.reset();
+    this.feedService.productName = null;
+    this.feedService.productName = null;
+    this.feedService.productDescription = null;
     this.notification.success('Post Added');
   }
   tagFeed() {

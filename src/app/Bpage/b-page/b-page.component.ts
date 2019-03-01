@@ -84,6 +84,8 @@ export class BPageComponent implements OnInit {
   basicDetail = false;
   linkEdit = false;
   follower;
+  linkedin;
+  likedinEdit = false;
 
   BForm: FormGroup;
 
@@ -112,8 +114,12 @@ export class BPageComponent implements OnInit {
       gmail: [''],
       section: this._fb.array([])
     });
+    // this.comapnyId = this.route.snapshot.paramMap.get('id');
+    console.log(this.mycompanyId);
+    // this.comapnyId = this.storage.get('companyId');
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
+      console.log('working');
     } else {
       this.myCompany = false;
     }
@@ -165,19 +171,9 @@ export class BPageComponent implements OnInit {
           this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.facebook = JSON.parse(res['_body']).facebook;
-
-
-
-          // this.BForm.patchValue({
-          //  website: JSON.parse(res['_body']).website,
-          //  Image: JSON.parse(res['_body']).Image,
-          //  workingHours: JSON.parse(res['_body']).workingHours,
-          //  shortIntro: JSON.parse(res['_body']).shortIntro,
-          // //  socialLinks:JSON.parse(res['_body']).socialLinks
-          // });
-
+         this.linkedin = JSON.parse(res['_body']).linkedin;
           this.setSection();
-
+  console.log(this.BForm.value.section)
           if (this.companyLogo) {
             this.logo = true;
           }
@@ -238,7 +234,7 @@ export class BPageComponent implements OnInit {
     this.userService.getUserData().subscribe(res => {
       this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
       for (let i = 0; i < this.userBookmark.length; i++) {
-        if (this.comapnyId == this.userBookmark[i]) {
+        if (this.comapnyId === this.userBookmark[i]) {
           this.bookmark = true;
         } else {
           this.bookmark = false;
@@ -248,7 +244,7 @@ export class BPageComponent implements OnInit {
   }
   onAddSection() {
     this.sectionEdit = true;
-    let control = <FormArray>this.BForm.controls.section;
+    const control = <FormArray>this.BForm.controls.section;
     control.push(
       this._fb.group({
         sectionTitle: [''],
@@ -258,7 +254,7 @@ export class BPageComponent implements OnInit {
     );
   }
   setSection() {
-    let control = <FormArray>this.BForm.controls.section;
+    const control = <FormArray>this.BForm.controls.section;
     while (control.length !== 0) {
       control.removeAt(0);
     }
@@ -278,7 +274,7 @@ export class BPageComponent implements OnInit {
     });
   }
   onDelete(index) {
-    let control = <FormArray>this.BForm.controls.section;
+    const control = <FormArray>this.BForm.controls.section;
     control.removeAt(index);
   }
 
@@ -293,8 +289,9 @@ export class BPageComponent implements OnInit {
     this.imgUpload.uploadImg(fdata).subscribe(res => {
       const updata = new FormData();
       const url = res['_body'];
-      let control = <FormArray>this.BForm.controls.section;
+      const control = <FormArray>this.BForm.controls.section;
       control.value[index].sectionImage = url;
+      console.log(url);
       this.spinner.hide();
     });
   }
@@ -309,7 +306,7 @@ export class BPageComponent implements OnInit {
       const url = res['_body'];
       if (name === 'certification') {
         this.certification.push(url);
-        let certiForm = new FormGroup({
+        const certiForm = new FormGroup({
           certification: new FormControl(this.certification)
         });
         this.companyService
