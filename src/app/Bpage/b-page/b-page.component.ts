@@ -161,20 +161,11 @@ export class BPageComponent implements OnInit {
           ).companyLogo;
           this.companyService.infoImage = JSON.parse(res["_body"]).infoImage;
           this.companyService.section = JSON.parse(res["_body"]).section;
+          console.log(this.companyService.section);
           this.certification = JSON.parse(res["_body"]).certification;
           this.companyImage = JSON.parse(res["_body"]).companyImage;
           this.companyFollowers = JSON.parse(res["_body"]).followers.length;
           this.socialLink = JSON.parse(res["_body"]).socialLinks;
-
-
-
-          // this.BForm.patchValue({
-          //  website: JSON.parse(res['_body']).website,
-          //  Image: JSON.parse(res['_body']).Image,
-          //  workingHours: JSON.parse(res['_body']).workingHours,
-          //  shortIntro: JSON.parse(res['_body']).shortIntro,
-          // //  socialLinks:JSON.parse(res['_body']).socialLinks
-          // });
 
           this.setSection();
 
@@ -251,9 +242,10 @@ export class BPageComponent implements OnInit {
     let control = <FormArray>this.BForm.controls.section;
     control.push(
       this._fb.group({
+        sectionImage: [""],
         sectionTitle: [""],
-        sectionContent: [""],
-        sectionImage: [""]
+        sectionContent: [""]
+      
       })
     );
   }
@@ -265,9 +257,11 @@ export class BPageComponent implements OnInit {
     this.companyService.section.forEach(x => {
       control.push(
         this._fb.group({
+          sectionImage: x.sectionImage,
           sectionTitle: x.sectionTitle,
           sectionContent: x.sectionContent,
-          sectionImage: x.sectionImage
+          // sectionImage: x.sectionImage
+  
         })
       );
     });
@@ -295,6 +289,7 @@ export class BPageComponent implements OnInit {
       const url = res["_body"];
       let control = <FormArray>this.BForm.controls.section;
       control.value[index].sectionImage = url;
+      console.log(url);
       this.spinner.hide();
     });
   }
