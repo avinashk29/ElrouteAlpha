@@ -139,6 +139,7 @@ export class BPageComponent implements OnInit {
 
     this.feedService.GetFeed().subscribe(res => {
       this.feeds = JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
       if (!this.feeds.length) {
         this.noFeeds = true;
       }
