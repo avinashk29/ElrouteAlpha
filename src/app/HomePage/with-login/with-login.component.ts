@@ -21,23 +21,13 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
   styleUrls: ['./with-login.component.css']
 })
 export class WithLoginComponent implements OnInit {
-  username;
-
-  following = [];
-  bookmark = [];
-  location;
   companyName;
   haveCompany;
-  subscription;
-  shortBio;
   file;
   imagePreview;
   feeds = [];
   noFeeds = true;
   addLink = false;
-  image;
-  title;
-  userImage;
   feedImage
   companyLogo;
   feed = new FormGroup({
@@ -46,14 +36,10 @@ export class WithLoginComponent implements OnInit {
     tagId: new FormControl(),
     link: new FormControl(''),
   });
-  type;
   resultvalue;
-  showSpinner;
   result = [];
   pId;
   product = [];
-  productDescription;
-  productImage;
   userFollow;
   constructor(
     public userService: UserService,
@@ -70,9 +56,7 @@ export class WithLoginComponent implements OnInit {
     private imageService: ImageUploadService,
     public notification: ToastrService,
     private spinner:Ng4LoadingSpinnerService
-  ) {
-   
-  }
+  ) {}
   show = false;
   ngOnInit() {
     this.imgupload.token = this.storage.get("token");
@@ -107,8 +91,6 @@ export class WithLoginComponent implements OnInit {
       });
     });
     if (this.haveCompany) {
-      // this.companyName = this.companyService.companyData.companyName;
-        // this.companyLogo = this.companyService.companyData.companyLogo;
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
         this.companyLogo = JSON.parse(res['_body']).companyLogo;

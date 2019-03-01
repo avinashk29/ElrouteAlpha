@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from './Service/user-services.service';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 import { CompanyServiceService } from './Service/company-service.service';
+import { ProductServiceService } from './Service/product-service.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(
     private userService: UserService,
     private companyService:CompanyServiceService,
-
+    private productService:ProductServiceService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
     ){
       
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
 ngOnInit(){
   this.userService.userData={};
   this.companyService.companyData={};
+  this.productService.productData={};
   this.userService.getUserData().subscribe(res1 => {
     this.userService.userData = JSON.parse(res1['_body']);
     this.userService.bookmark =

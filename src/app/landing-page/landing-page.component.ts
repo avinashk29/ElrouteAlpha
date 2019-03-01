@@ -15,7 +15,6 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     // this.imgUpload.token=this.storage.get('token');
-   
   }//end of Oninit
 
  
