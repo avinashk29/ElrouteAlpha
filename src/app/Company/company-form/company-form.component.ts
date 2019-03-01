@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject, Input } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import {
   FormGroup,
   FormControl,
-  Validators,
-  EmailValidator
+  Validators
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CompanyServiceService } from "../../Service/company-service.service";
@@ -48,7 +47,6 @@ export class CompanyFormComponent implements OnInit {
    
   }
   ngOnInit() {
-    // this.companyService.token = this.storage.get("token");
     this.token = this.storage.get("token");
   }
 

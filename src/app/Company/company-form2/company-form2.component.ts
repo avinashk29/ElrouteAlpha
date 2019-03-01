@@ -34,14 +34,7 @@ export class CompanyForm2Component implements OnInit {
     this.companyId = this.storage.get('companyId');
     this.token = this.storage.get('token');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
-      this.companyForm.patchValue({
-        companyName: JSON.parse(res['_body']).companyName,
-        country: JSON.parse(res['_body']).country,
-        companyEmail: JSON.parse(res['_body']).companyEmail,
-        city: JSON.parse(res['_body']).city,
-        industry: JSON.parse(res['_body']).industry,
-        category: JSON.parse(res['_body']).category,
-      });
+      this.companyForm.patchValue(JSON.parse(res['_body']));
     });
 
   }
