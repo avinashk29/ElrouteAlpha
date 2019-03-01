@@ -8,7 +8,7 @@
         <div class="login_user">
           <div class="user_profile">
             <div class="user_edit">
-              <input type="file" #filepicker (change)="onImagePick($event,'userImage')" style="display: none">
+              <input type="file" #filepicker (change)="uploadUserImage($event,'userImage')" style="display: none">
               <button (click)="filepicker.click()">
                 <span class="point"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
                     <g id="edit" transform="translate(-546.942 -212.818)">
@@ -27,27 +27,26 @@
                   </svg>
                 </span>
               </button>
-              <!-- <div class="user_img">
-                        <img src="assets/images/user_img.jpg"  >
-                    </div>  -->
             </div>
-            <div class="follower_img">
+            <div class="follower_img" *ngIf="this.userService.userData.userImage">
               <div class="follower_img1">
+                <img src="{{this.userService.userData.userImage}}" > 
+              </div>
+            </div>
+            <div *ngIf="!this.userService.userData.userImage">
+              <div class="follower_img">
+                <div class="follower_img1">
+                  <img src="assets/images/user.png">
+                </div>
+              </div>
+            </div>
 
-                <img src="{{this.userService.userImage}}">
-              </div>
-            </div>
-            <div class="follower_img" *ngIf="!this.userService.userImage">
-              <div class="follower_img1">
-                <img src="assets/images/user.png">
-              </div>
-            </div>
             <div class="user_name">
-              <h2>{{this.userService.userName}}</h2>
-              <p>{{this.userService.title}}</p>
+              <h2>{{this.userService.userData.userName}}</h2>
+              <p>{{this.userService.userData.title}}</p>
             </div>
             <div class="user_details">
-              <p>{{this.userService.shortBio}}</p>
+              <p>{{this.userService.userData.shortBio}}</p>
             </div>
 
           </div>
@@ -55,13 +54,13 @@
         <div class="user_follower">
           <div class="user_following" routerLink="/Following">
             <h2>Following</h2>
-            <span *ngIf="this.userService.following ">{{this.userService.following}}</span>
-            <span *ngIf="!this.userService.following">0</span>
+            
+                  <span >{{this.userService.following}}</span>
+              
           </div>
           <div class="user_following" routerLink="/bookmark">
-            <h2>Bookmarks</h2>
-            <span *ngIf="this.userService.bookmark">{{this.userService.bookmark}}</span>
-            <span *ngIf="!this.userService.bookmark">0</span>
+              <h2>Bookmarks</h2>
+                  <span >{{this.userService.bookmark}}</span>
           </div>
 
         </div>
@@ -137,7 +136,7 @@
                 <div class="add_media2">
 
                   <div class="add_media_tag">
-                    <input type="file" #filepick (change)="onImagePick($event,'Image')">
+                    <input type="file" #filepick (change)="uploadUserImage($event,'Image')">
                     <span *ngIf="!imagePreview"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M19.5 12c-2.483 0-4.5 2.015-4.5 4.5s2.017 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.017-4.5-4.5-4.5zm2.5 5h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-18 0l4-5.96 2.48 1.96 2.52-4 1.853 2.964c-1.271 1.303-1.977 3.089-1.827 5.036h-9.026zm10.82 4h-14.82v-18h22v7.501c-.623-.261-1.297-.422-2-.476v-5.025h-18v14h11.502c.312.749.765 1.424 1.318 2zm-9.32-11c-.828 0-1.5-.671-1.5-1.5 0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5c0 .829-.672 1.5-1.5 1.5z" /></svg></span>
                     <h2 (click)="filepick.click()" *ngIf="!imagePreview">Add Media</h2>
@@ -323,9 +322,6 @@
               <img src="assets/images/digital.png">
             </div>
             <div class="category_text">
-              <!-- <h2>Category2</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's.</p> -->
             </div>
           </div>
         </div>

@@ -24,23 +24,13 @@ export class CompanyForm4Component implements OnInit {
     revenu: new  FormControl()
     }) ;
   ngOnInit() {
-    this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
-      this.companyForm.patchValue({
-        industry: JSON.parse(res['_body']).industry,
-        category: JSON.parse(res['_body']).category,
-        mainProduct: JSON.parse(res['_body']).mainProduct,
-        specialities: JSON.parse(res['_body']).specialities,
-        mainMarket: JSON.parse(res['_body']).mainMarket,
-        hsCode: JSON.parse(res['_body']).hsCode,
-        revenu: JSON.parse(res['_body']).revenu
-      });
+      this.companyForm.patchValue(JSON.parse(res['_body']));
     });
   }
   onSubmit() {
-    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
-    });
+    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {});
     this.notification.success('B Face Updated');
   }
 

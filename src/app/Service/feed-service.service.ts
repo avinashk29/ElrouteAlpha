@@ -14,21 +14,17 @@ export class FeedService {
     AddFeed(feed) {
       const headers = new Headers();
       headers.append('x-auth', this.token);
-      console.log(this.token);
-         console.log(feed)
          return this.http.post('http://localhost:8080/api/post',feed, {headers:headers})
     }
     GetFeed() {
         const headers = new Headers();
         headers.append('x-auth', this.token);
-        console.log(this.token);
         return this.http.get('http://localhost:8080/api/post',{headers:headers})
     }
   
     getCompanyFeed(){
         const headers = new Headers();
         headers.append('x-auth', this.token);
-        console.log(this.token);
         return this.http.get('http://localhost:8080/api/feed',{headers:headers});
     }
 }

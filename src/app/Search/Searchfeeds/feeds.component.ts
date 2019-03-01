@@ -22,7 +22,6 @@ page;
   ngOnInit() {
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-    this.UserService.token=this.storage.get('token');
     this.bookmarkService.token = this.storage.get('token');
      this.UserService.getUserData().subscribe(res=>{
     this.userInfo=JSON.parse(res['_body']).bookmarks.post;

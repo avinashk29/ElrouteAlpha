@@ -8,7 +8,7 @@
 <app-header3></app-header3>
 <input type="search" placeholder="Enter Product/Service to Search">
 
-    <div class="listing">
+    <div class="listing" *ngIf="product">
      <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
     <div class="Card" *ngFor="let p of  product; let i=index">
       <div class="productCard" *ngIf="p.type == 1" >
@@ -86,10 +86,7 @@
     </div> -->
     </div>
     </div>
-    <ng-template #load>
-        <h2>No bookmarks</h2>
-      </ng-template>
-
+  
 </section>
 </div>
 

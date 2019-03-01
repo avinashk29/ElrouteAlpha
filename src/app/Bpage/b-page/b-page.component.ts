@@ -1,23 +1,20 @@
 import {
   Component,
   OnInit,
-  Inject,
-  NgZone
-} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CompanyServiceService } from '../../Service/company-service.service';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import { ProductServiceService } from '../../Service/product-service.service';
-import { FeedService } from '../../Service/feed-service.service';
-import 'rxjs/add/operator/filter';
-import { UserService } from '../../Service/user-services.service';
-import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
-// import { NgxUiLoaderSe÷rvice } from 'ngx-ui-loader';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
-import { FollowService } from 'src/app/Service/follow-service.service';
-import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+  Inject
+} from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CompanyServiceService } from "../../Service/company-service.service";
+import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
+import { ProductServiceService } from "../../Service/product-service.service";
+import { FeedService } from "../../Service/feed-service.service";
+import "rxjs/add/operator/filter";
+import { UserService } from "../../Service/user-services.service";
+import { FormControl, FormGroup, FormBuilder, FormArray } from "@angular/forms";
+import { ImageUploadService } from "src/app/Service/imageupload-service.service";
+import { FollowService } from "src/app/Service/follow-service.service";
+import { BookmarkServices } from "src/app/Service/bookmark-services.service";
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -29,43 +26,18 @@ export class BPageComponent implements OnInit {
   two = false;
   three = false;
   four = false;
-  items;
-  expand = [];
-  token;
   userInfo = [];
-  groups;
-  CompanyName;
-  category;
-  city;
   Follower;
   bookmark;
   file;
   uploadImages = false;
-  companyEmail;
-  companyType;
   certification = [];
-  country;
-  Image;
-  industry;
-  mobile;
-  address;
-  yearEstd;
-  companySize;
   companyFollowers = [];
-  website;
-  workingHours;
   products = [];
   comapnyId;
   mycompanyId;
-  companyLogo;
   type;
   feeds = [];
-  subscription;
-  url;
-  logo = false;
-  infoImg = false;
-  img = false;
-  shortIntro;
   shortbioEdit = false;
   noFeeds = false;
   myCompany = false;
@@ -74,8 +46,6 @@ export class BPageComponent implements OnInit {
   editworkingHours = false;
   editshortIntro = false;
   imagePreview;
-  infoImage;
-  facebook;
   section = [];
   socialLink = [];
   companyImage = [];
@@ -101,7 +71,7 @@ export class BPageComponent implements OnInit {
     private bookmarkService: BookmarkServices,
     private imgUpload: ImageUploadService,
     private _fb: FormBuilder,
-    private ngZone: NgZone,
+
     private spinner: Ng4LoadingSpinnerService
   ) {
     this.BForm = this._fb.group({
@@ -117,72 +87,17 @@ export class BPageComponent implements OnInit {
     // this.comapnyId = this.route.snapshot.paramMap.get('id');
     console.log(this.mycompanyId);
     // this.comapnyId = this.storage.get('companyId');
-    if (this.comapnyId === this.mycompanyId) {
-      this.myCompany = true;
-      console.log('working');
-    } else {
-      this.myCompany = false;
-    }
-    this.companyService.token = this.storage.get('token');
-    this.userService.token = this.storage.get('token');
-    this.comapnyId = this.route.snapshot.paramMap.get('id');
+
+    this.comapnyId = this.route.snapshot.paramMap.get("id");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
         this.type = paramas.urltype;
+
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
-          // this.companyService = JSON.parse(res['_body']);
-          //  (this.companyService.city);
-          //  (this.companyService.companyName);
-          //  (JSON.parse(res['_body']));
-
-
-          this.companyService.companyName = JSON.parse(
-            res['_body']
-          ).companyName;
-          this.companyService.category = JSON.parse(res['_body']).category;
-          this.companyService.city = JSON.parse(res['_body']).city;
-          this.companyService.companyEmail = JSON.parse(
-            res['_body']
-          ).companyEmail;
-          this.companyService.country = JSON.parse(res['_body']).country;
-          this.companyService.industry = JSON.parse(res['_body']).industry;
-          (this.companyService.shortIntro = JSON.parse(
-            res['_body']
-          ).shortIntro),
-            this.companyService.website = JSON.parse(res['_body']).website;
-          this.companyService.workingHours = JSON.parse(
-            res['_body']
-          ).workingHours;
-          this.companyService.yearEstd = JSON.parse(res['_body']).yearEstd;
-          this.companyService.companyType = JSON.parse(res['_body']).companyType;
-          this.companyService.address = JSON.parse(res['_body']).address;
-          this.companyService.companySize = JSON.parse(
-            res['_body']
-          ).companySize;
-          this.companyService.coverImage = JSON.parse(res['_body']).coverImage;
-
-          this.companyService.companyLogo = JSON.parse(
-            res['_body']
-          ).companyLogo;
-          this.companyService.infoImage = JSON.parse(res['_body']).infoImage;
-          this.companyService.section = JSON.parse(res['_body']).section;
-          this.certification = JSON.parse(res['_body']).certification;
-          this.companyImage = JSON.parse(res['_body']).companyImage;
-          this.companyFollowers = JSON.parse(res['_body']).followers.length;
-          this.facebook = JSON.parse(res['_body']).facebook;
-         this.linkedin = JSON.parse(res['_body']).linkedin;
+          this.companyService.companyData=JSON.parse(res['_body']);
+          this.companyFollowers = JSON.parse(res["_body"]).followers.length;
           this.setSection();
-  console.log(this.BForm.value.section)
-          if (this.companyLogo) {
-            this.logo = true;
-          }
-          if (this.infoImage) {
-            this.infoImg = true;
-          }
-          if (this.Image) {
-            this.img = true;
-          }
         });
       });
     this.mycompanyId = this.storage.get('companyId');
@@ -197,6 +112,11 @@ export class BPageComponent implements OnInit {
     }
     if (this.type === 'contact') {
       this.type = 'contact  ';
+    }
+    if (this.comapnyId === this.mycompanyId) {
+      this.myCompany = true;
+    } else {
+      this.myCompany = false;
     }
 
   }
@@ -214,10 +134,8 @@ export class BPageComponent implements OnInit {
         }
       }
     });
-    this.companyService.token = this.storage.get('token');
-    this.productService.token = this.storage.get('token');
-    this.mycompanyId = this.storage.get('companyId');
-    this.token = this.storage.get('token');
+    this.productService.token = this.storage.get("token");
+    this.mycompanyId = this.storage.get("companyId");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
@@ -258,12 +176,14 @@ export class BPageComponent implements OnInit {
     while (control.length !== 0) {
       control.removeAt(0);
     }
-    this.companyService.section.forEach(x => {
+    this.companyService.companyData.section.forEach(x => {
       control.push(
         this._fb.group({
+          sectionImage: x.sectionImage,
           sectionTitle: x.sectionTitle,
           sectionContent: x.sectionContent,
-          sectionImage: x.sectionImage
+          // sectionImage: x.sectionImage
+
         })
       );
     });
@@ -296,15 +216,23 @@ export class BPageComponent implements OnInit {
     });
   }
 
-  PickInfoImage(event, name) {
-    this.file = <File>event.target.files[0];
-    const fdata = new FormData();
-    fdata.append(name, this.file);
+  uploadCompanyImage(event,name){
+    this.file=<File>event.target.files[0];
+    const fdata=new FormData();
+    fdata.append(name,this.file);
     this.spinner.show();
-    this.imgUpload.uploadImg(fdata).subscribe(res => {
-      const updata = new FormData();
-      const url = res['_body'];
-      if (name === 'certification') {
+    this.imgUpload.uploadImg(fdata).subscribe(res=>{
+      const formdata=new FormData();
+        const url=res['_body'];
+        formdata.append(name,url);
+      if(name==='companyLogo' || name==='coverImage' || name==='infoImage'){
+          this.companyService.UpdateCompany(formdata).subscribe(res=>{
+              this.companyService.companyData.companyLogo=JSON.parse(res['_body']).companyLogo;
+              this.companyService.companyData.infoImage=JSON.parse(res['_body']).infoImage;
+              this.companyService.companyData.coverImage=JSON.parse(res['_body']).coverImage;
+              this.spinner.hide();
+          });
+      }else if(name === 'certification'){
         this.certification.push(url);
         const certiForm = new FormGroup({
           certification: new FormControl(this.certification)
@@ -312,12 +240,12 @@ export class BPageComponent implements OnInit {
         this.companyService
           .UpdateCompany(certiForm.value)
           .subscribe(response => {
-            this.companyService.certification = JSON.parse(
-              response['_body']
+            this.companyService.companyData.certification = JSON.parse(
+              response["_body"]
             ).certification;
           });
         this.spinner.hide();
-      } else {
+      }else{
         this.companyImage.push(url);
         let companyImage = new FormGroup({
           companyImage: new FormControl(this.companyImage)
@@ -325,17 +253,14 @@ export class BPageComponent implements OnInit {
         this.companyService
           .UpdateCompany(companyImage.value)
           .subscribe(response => {
-            this.companyService.companyImage = JSON.parse(
-              response['_body']
+            this.companyService.companyData.companyImage = JSON.parse(
+              response["_body"]
             ).companyImage;
           });
         this.spinner.hide();
       }
-    });
-  }
+    })
 
-  onImagePick(event, name) {
-    this.imgUpload.updateCompanyImage(event, name);
   }
 
   editProduct(id) {
@@ -376,13 +301,14 @@ export class BPageComponent implements OnInit {
     const formData = new FormData();
     formData.append(key, content.value);
     this.companyService.UpdateCompany(formData).subscribe(res => {
-      this.website = JSON.parse(res['_body']).website;
-      this.companyService.workingHours = JSON.parse(
-        res['_body']
+      this.companyService.companyData.website = JSON.parse(res["_body"]).website;
+      this.companyService.companyData.workingHours = JSON.parse(
+        res["_body"]
       ).workingHours;
-      this.companyService.shortIntro = JSON.parse(res['_body']).shortIntro;
-      this.router.navigate(['/companyPage/' + this.comapnyId], {
-        queryParams: { urltype: 'edit' }
+      this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
+      this.companyService.companyData.shortIntro = JSON.parse(res["_body"]).shortIntro;
+      this.router.navigate(["/companyPage/" + this.comapnyId], {
+        queryParams: { urltype: "edit" }
       });
       if (this.type === 'info') {
         this.router.navigate(['/companyPage/' + this.comapnyId], {
@@ -414,11 +340,11 @@ export class BPageComponent implements OnInit {
 
   onSubmit() {
     this.sectionEdit = false;
-    const sectionForm = new FormGroup({
+    let sectionForm = new FormGroup({
       section: new FormControl(this.BForm.value.section)
     });
     this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-      this.companyService.section = JSON.parse(res['_body']).section;
+      this.companyService.companyData.section = JSON.parse(res["_body"]).section;
     });
   }
   onadeleteImg(item, index) {

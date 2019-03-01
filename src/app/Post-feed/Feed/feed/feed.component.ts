@@ -11,9 +11,6 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 export class FeedComponent implements OnInit {
 id;
 products;
-// productForm = new FormGroup({
-//   Productname: new FormControl('')
-//   });
 product_id;
 productName;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public product: ProductServiceService,

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     page: new FormControl('1')
   });
   ngOnInit() {
-    this.UserService.token = this.storage.get('token');
+    // this.UserService.token = this.storage.get('token');
   }
   onSearch(event) {
     const formData = this.searchForm.value;

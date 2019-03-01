@@ -16,7 +16,6 @@ export class BookmarkComponent implements OnInit {
     this.bookmarkService.token = this.storage.get('token');
     this.bookmarkService.getBookmarkProduct().subscribe(res => {
     this.product=JSON.parse(res['_body']);
-      console.log(this.product)
     
     });
 

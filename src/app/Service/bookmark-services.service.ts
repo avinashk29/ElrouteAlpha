@@ -17,7 +17,6 @@ constructor(public http:Http) {}
 addProductBookmarks(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token);
     return this.http.patch('http://localhost:8080/api/bookmark/product/' + id , id ,{headers: headers});
 }
 DeleteProductBookmark(id){
@@ -28,7 +27,6 @@ DeleteProductBookmark(id){
 addCompanyBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token+'dfghjkl');
     return this.http.patch('http://localhost:8080/api/bookmark/company/' + id , id , {headers: headers});
 }
 DeleteBookmarkCompany(id){
@@ -39,16 +37,12 @@ DeleteBookmarkCompany(id){
 addPostBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token);
-    console.log(id);
     return this.http.patch('http://localhost:8080/api/bookmark/post/' + id, id, {headers: headers});
 
 }
 DeletePostBookmark(id) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token);
-    console.log(id);
     return this.http.delete('http://localhost:8080/api/bookmark/post/'+ id,{headers: headers});
 
 }
@@ -72,19 +66,16 @@ BookmarkResult(){
     getBookmarkProduct() {
     const headers = new Headers();
      headers.append('x-auth', this.token);
-     console.log(this.token);
      return this.http.get('http://localhost:8080/api/bookmark/product', {headers: headers});
   }
   getBookmarkCompany() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token);
     return this.http.get('http://localhost:8080/api/bookmark/company', {headers: headers});
   }
   getBookmarkPost() {
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    console.log(this.token);
     return this.http.get('http://localhost:8080/api/bookmark/post', {headers: headers});
   }
 

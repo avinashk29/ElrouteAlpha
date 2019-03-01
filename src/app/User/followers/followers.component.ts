@@ -18,9 +18,8 @@ export class FollowersComponent implements OnInit {
     public followService: FollowService) { }
 followers = [];
   ngOnInit() {
-    this.companyService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.companyService.getCompanyFollowers().subscribe(res => {
-      console.log(JSON.parse(res['_body']));
       this.followers = JSON.parse(res['_body']);
     });
   }
@@ -29,7 +28,6 @@ followers = [];
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
-    console.log(id);
     this.dialog.open(OnefollowerComponent, dialogConfig);
 
   }

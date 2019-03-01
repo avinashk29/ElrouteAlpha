@@ -7,7 +7,6 @@ import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LoginComponent } from "src/app/Auth/login/login.component";
 import { ToastrService } from "ngx-toastr";
-// import * as $ from 'jquery';
 
 @Component({
   selector: "app-without-login",
@@ -40,9 +39,7 @@ export class WithoutLoginComponent implements OnInit {
       this.router.navigate(["/Dashboard"]);
     }
   }
-  ngAfterViewInit() {
-  
-  }
+  ngAfterViewInit() {}
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
