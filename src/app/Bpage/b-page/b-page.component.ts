@@ -253,7 +253,7 @@ export class BPageComponent implements OnInit {
       this._fb.group({
         sectionTitle: [''],
         sectionContent: [''],
-        sectionImage: ['']
+        sectionImage: []
       })
     );
   }
@@ -286,17 +286,23 @@ export class BPageComponent implements OnInit {
     this.bioEdit = !this.bioEdit;
   }
   onsectionImagePick(event, name, index) {
+    console.log(event)
     this.file = <File>event.target.files[0];
     const fdata = new FormData();
     fdata.append(name, this.file);
-    this.spinner.show();
+    // this.spinner.show();
     this.imgUpload.uploadImg(fdata).subscribe(res => {
       const updata = new FormData();
       const url = res['_body'];
       let control = <FormArray>this.BForm.controls.section;
-      control.value[index].sectionImage = url;
-      this.spinner.hide();
+      this.companyService.section=control.value;  
+      this.companyService.section[index].sectionImage = url;
+      this.setSection();
+      
+      
+      // this.spinner.hide();
     });
+    // control.value[index].sectionImage
   }
 
   PickInfoImage(event, name) {
@@ -424,11 +430,40 @@ export class BPageComponent implements OnInit {
       this.companyService.section = JSON.parse(res['_body']).section;
     });
   }
-  onadeleteImg(item, index) {
-    this.certification.splice(item, index);
+  onadeleteImg(item) {
+ 
+      if (confirm("Are you sure to delete ")){
+        const i = this.certification.indexOf(item);
+        console.log(i)
+        this.certification.splice(i, 1);
+        let certiForm = new FormGroup({
+          certification: new FormControl(this.certification)
+        });
+        this.companyService
+          .UpdateCompany(certiForm.value)
+          .subscribe(response => {
+            this.companyService.certification = JSON.parse(
+              response['_body']
+            ).certification;
+          });
+      }
   }
   onDeleteCompanyImg(item, index) {
-    this.companyImage.splice(item, index);
+
+      if (confirm("Are you sure to delete ", text)){
+        const i = this.companyImage.indexOf(item);
+        this.companyImage.splice(item, 1);
+        let companyImage = new FormGroup({
+          companyImage: new FormControl(this.companyImage)
+        });
+        this.companyService
+          .UpdateCompany(companyImage.value)
+          .subscribe(response => {
+            this.companyService.companyImage = JSON.parse(
+              response['_body']
+            ).companyImage;
+          });
+      }
   }
   addBookmark() {
     this.bookmark = true;

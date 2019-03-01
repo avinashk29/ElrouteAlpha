@@ -61,7 +61,7 @@ export class ImageUploadService {
                 this.userService.editUser(updata).subscribe(response => {
                   this.userService.userImage= JSON.parse(response['_body']).userImage;
                   this.spinner.hide();
-
+ 
              });
 
          });

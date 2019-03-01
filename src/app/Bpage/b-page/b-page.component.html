@@ -464,12 +464,13 @@
                 height="24" viewBox="0 0 24 24">
                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
               </svg></span>Remove section</button>
-          <div class="infoSectonCard">
-            <div class="content" [formGroupName]="i">
+          <div class="infoSectonCard" [formGroupName]="i">
+            <div class="content" >
               <div class="Sectioncontent">
                 <!-- <button type="button" class="addTitle_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Section Title</button> -->
-                <input type="text" formControlName="sectionTitle" required>
-                <textarea formControlName="sectionContent" required></textarea>
+                <input type="text" formControlName="sectionTitle" >
+                <!-- <input type="text" formControlName="sectionImage" required> -->
+                <textarea formControlName="sectionContent" ></textarea>
                 <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem </p> -->
               </div>
             </div>
