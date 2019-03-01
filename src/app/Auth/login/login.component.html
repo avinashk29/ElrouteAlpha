@@ -4,8 +4,8 @@
     </h2>
     <form [formGroup]="login" (ngSubmit)="onSubmit()" >
       <ul>
-  <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName= "email" name="Email"></li>
-  <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName= "password" name="Password"></li>
+  <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName= "email" name="email" [ngClass]="{'error': !login.get('email').valid && login.get('email').touched}"></li>
+  <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName= "password" name="password" [ngClass]="{'error': !login.get('password').valid && login.get('password').touched}"></li>
   </ul>
   <button>SIGN IN</button>
     </form>

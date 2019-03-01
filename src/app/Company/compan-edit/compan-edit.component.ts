@@ -53,7 +53,7 @@ export class CompanEditComponent implements OnInit {
   
   }
   ngOnInit() {
-    this.companyService.token = this.storage.get("token");
+    // this.companyService.token = this.storage.get("token");
     this.token = this.storage.get("token");
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       this.Image = JSON.parse(res["_body"]).Image;
@@ -109,7 +109,7 @@ export class CompanEditComponent implements OnInit {
     reader.readAsDataURL(file);
   }
   onSubmit() {
-    this.companyService.token = this.storage.get("token");
+    // this.companyService.token = this.storage.get("token");
     this.companyService
       .UpdateCompany(this.editcompanyForm.value)
       .subscribe(res => {

@@ -25,7 +25,7 @@ companyForm: FormGroup;
          mobile: [],
          contactDevision: this._fb.array([this.addDevision()])
     });
-    this.companyService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       this.companyForm.patchValue({

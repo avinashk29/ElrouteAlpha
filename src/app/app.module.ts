@@ -49,7 +49,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { StickyNavModule } from 'ng2-sticky-nav';
+// import { StickyNavModule } from 'ng2-sticky-nav';
 // import { CarouselModule } from 'angular4-carousel';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
@@ -73,6 +73,7 @@ import { CompanyForm5Component } from './Company/company-form5/company-form5.com
 import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
+import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -137,7 +138,8 @@ export function provideConfig() {
     CompanyForm4Component,
     CompanyForm5Component,
     EditSideNavComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    OnefollowerComponent,
 
   ],
   imports: [
@@ -155,7 +157,7 @@ export function provideConfig() {
     SocialLoginModule,
     Ng4LoadingSpinnerModule.forRoot(),
     MatCardModule,
-    StickyNavModule,
+    // StickyNavModule,
     ScrollDispatchModule,
     ToastrModule.forRoot()
 
@@ -164,7 +166,8 @@ export function provideConfig() {
     SignupComponent,
     LoginComponent,
     EditComponent,
-    FeedComponent
+    FeedComponent,
+    OnefollowerComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig}],

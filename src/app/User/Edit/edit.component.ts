@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.token = this.storage.get('token');
+    // this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       this.editForm.patchValue({
         userName: JSON.parse(res['_body']).userName,

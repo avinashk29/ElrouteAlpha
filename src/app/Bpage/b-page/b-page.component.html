@@ -10,12 +10,12 @@
             <div class="elements"><h4>Contact</h4></div>
             </div>
         <div class="headerImg">
-           <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> 
-               <div class="img" ><img src="assets/images/bk1.jpg"></div>  
+           <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div>
+               <div class="img" ><img src="assets/images/bk1.jpg"></div>
 
         </div>
 
-        <div class="card">  
+        <div class="card">
             <div class="logoheader">
             <img src="{{Image}}">
             </div>
@@ -32,7 +32,7 @@
 
                 </div>
               </div>
-             
+
         </div>
 
 
@@ -62,18 +62,18 @@
             </div> -->
         <div class="logoheader">
           <div class="container_logo">
-            <div *ngIf="!this.companyService.companyLogo">
-              <input type="file" #filePicker (change)="onImagePick($event,'companyLogo')" class="picker" style="display: hidden;"
+            <div *ngIf="!this.companyService.companyData.companyLogo">
+              <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyLogo')" class="picker" style="display: hidden;"
                 visbility="hidden">
               <button type="submit" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                 Add Your Logo</button>
             </div>
-            <img *ngIf="this.companyService.companyLogo " src="{{this.companyService.companyLogo}}">
+            <img *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
 
-            <div class="overlay_logo" *ngIf="this.companyService.companyLogo ">
-              <input type="file" #filePicker (change)="onImagePick($event,'companyLogo')" class="picker" style="display: hidden;"
+            <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo ">
+              <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyLogo')" class="picker" style="display: hidden;"
                 visbility="hidden">
               <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change
                 Logo<br /><svg xmlns="http://www.w3.org/2000/svg" width="50" height="34" style="padding-top:1%;"
@@ -83,13 +83,13 @@
           </div>
         </div>
         <div class="user_profile">
-          <h2>{{this.companyService.companyName }}</h2>
-          <p>{{this.companyService.industry}}</p>
+          <h2>{{this.companyService.companyData.companyName }}</h2>
+          <p>{{this.companyService.companyData.industry}}</p>
           <div class="follow-btn" *ngIf="!myCompany">
             <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
             <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
             <span>
-              <p>{{companyFollowers }}</p>
+              <p>{{this.companyFollowers}}</p>
             </span>
 
           </div>
@@ -102,53 +102,70 @@
       </div>
       <div class="extraInfo">
         <!-- <p>9 A.M. - 5 P.M.</p> -->
-        <button type="button" *ngIf="!this.companyService.workingHours && !editworkingHours && myCompany " (click)="editworkingHours = true"><span><svg
+        <button type="button" *ngIf="!this.companyService.companyData.workingHours && !editworkingHours && myCompany " (click)="editworkingHours = true"><span><svg
               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;"
               viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add Your Working Hours</button>
         <!-- <p>{{website}}</p> -->
-        <div class="time" *ngIf="this.companyService.workingHours && !editworkingHours">
+        <div class="time" *ngIf="this.companyService.companyData.workingHours && !editworkingHours">
           <span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
               <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z" />
             </svg></span>
-          <p>{{this.companyService.workingHours}}</p>
+          <p>{{this.companyService.companyData.workingHours}}</p>
         </div>
         <div *ngIf="editworkingHours">
           <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours>
           <button type="submit" (click)="onEditBpage('workingHours', workingHours)">Save</button>
         </div>
-        <button type="button" *ngIf="!this.companyService.website&& !editwebsite && myCompany" (click)="editwebsite = true"><span><svg
+        <button type="button" *ngIf="!this.companyService.companyData.website && !editwebsite && myCompany" (click)="editwebsite = true"><span><svg
               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;"
               viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add YourWebsite</button>
-        <div class="website" *ngIf="this.companyService.website && !editwebsite">
+        <div class="website" *ngIf="this.companyService.companyData.website && !editwebsite">
           <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
               <path d="M13.144 8.171c-.035-.066.342-.102.409-.102.074.009-.196.452-.409.102zm-2.152-3.072l.108-.031c.064.055-.072.095-.051.136.086.155.021.248.008.332-.014.085-.104.048-.149.093-.053.066.258.075.262.085.011.033-.375.089-.304.171.096.136.824-.195.708-.176.225-.113.029-.125-.097-.19-.043-.215-.079-.547-.213-.68l.088-.102c-.206-.299-.36.362-.36.362zm13.008 6.901c0 6.627-5.373 12-12 12-6.628 0-12-5.373-12-12s5.372-12 12-12c6.627 0 12 5.373 12 12zm-8.31-5.371c-.006-.146-.19-.284-.382-.031-.135.174-.111.439-.184.557-.104.175.567.339.567.174.025-.277.732-.063.87-.025.248.069.643-.226.211-.381-.355-.13-.542-.269-.574-.523 0 0 .188-.176.106-.166-.218.027-.614.786-.614.395zm6.296 5.371c0-1.035-.177-2.08-.357-2.632-.058-.174-.189-.312-.359-.378-.256-.1-1.337.597-1.5.254-.107-.229-.324.146-.572.008-.12-.066-.454-.515-.605-.46-.309.111.474.964.688 1.076.201-.152.852-.465.992-.038.268.804-.737 1.685-1.251 2.149-.768.694-.624-.449-1.147-.852-.275-.211-.272-.66-.55-.815-.124-.07-.693-.725-.688-.813l-.017.166c-.094.071-.294-.268-.315-.321 0 .295.48.765.639 1.001.271.405.416.995.748 1.326.178.178.858.914 1.035.898.193-.017.803-.458.911-.433.644.152-1.516 3.205-1.721 3.583-.169.317.138 1.101.113 1.476-.029.433-.37.573-.693.809-.346.253-.265.745-.556.925-.517.318-.889 1.353-1.623 1.348-.216-.001-1.14.36-1.261.007-.094-.256-.22-.45-.353-.703-.13-.248-.015-.505-.173-.724-.109-.152-.475-.497-.508-.677-.002-.155.117-.626.28-.708.229-.117.044-.458.016-.656-.048-.354-.267-.646-.53-.851-.389-.299-.188-.537-.097-.964 0-.204-.124-.472-.398-.392-.564.164-.393-.44-.804-.413-.296.021-.538.209-.813.292-.346.104-.7-.082-1.042-.125-1.407-.178-1.866-1.786-1.499-2.946.037-.19-.114-.542-.048-.689.158-.352.48-.747.762-1.014.158-.15.361-.112.547-.229.287-.181.291-.553.572-.781.4-.325.946-.318 1.468-.388.278-.037 1.336-.266 1.503-.06 0 .038.191.604-.019.572.433.023 1.05.749 1.461.579.211-.088.134-.736.567-.423.262.188 1.436.272 1.68.069.15-.124.234-.93.052-1.021.116.115-.611.124-.679.098-.12-.044-.232.114-.425.025.116.055-.646-.354-.218-.667-.179.131-.346-.037-.539.107-.133.108.062.18-.128.274-.302.153-.53-.525-.644-.602-.116-.076-1.014-.706-.77-.295l.789.785c-.039.025-.207-.286-.207-.059.053-.135.02.579-.104.347-.055-.089.09-.139.006-.268 0-.085-.228-.168-.272-.226-.125-.155-.457-.497-.637-.579-.05-.023-.764.087-.824.11-.07.098-.13.201-.179.311-.148.055-.287.126-.419.214l-.157.353c-.068.061-.765.291-.769.3.029-.075-.487-.171-.453-.321.038-.165.213-.68.168-.868-.048-.197 1.074.284 1.146-.235.029-.225.046-.487-.313-.525.068.008.695-.246.799-.36.146-.168.481-.442.724-.442.284 0 .223-.413.354-.615.131.053-.07.376.087.507-.01-.103.445.057.489.033.104-.054.684-.022.594-.294-.1-.277.051-.195.181-.253-.022.009.34-.619.402-.413-.043-.212-.421.074-.553.063-.305-.024-.176-.52-.061-.665.089-.115-.243-.256-.247-.036-.006.329-.312.627-.241 1.064.108.659-.735-.159-.809-.114-.28.17-.509-.214-.364-.444.148-.235.505-.224.652-.476.104-.178.225-.385.385-.52.535-.449.683-.09 1.216-.041.521.048.176.124.104.324-.069.19.286.258.409.099.07-.092.229-.323.298-.494.089-.222.901-.197.334-.536-.374-.223-2.004-.672-3.096-.672-.236 0-.401.263-.581.412-.356.295-1.268.874-1.775.698-.519-.179-1.63.66-1.808.666-.065.004.004-.634.358-.681-.153.023 1.247-.707 1.209-.859-.046-.18-2.799.822-2.676 1.023.059.092.299.092-.016.294-.18.109-.372.801-.541.801-.505.221-.537-.435-1.099.409l-.894.36c-1.328 1.411-2.247 3.198-2.58 5.183-.013.079.334.226.379.28.112.134.112.712.167.901.138.478.479.744.74 1.179.154.259.41.914.329 1.186.108-.178 1.07.815 1.246 1.022.414.487.733 1.077.061 1.559-.217.156.33 1.129.048 1.368l-.361.093c-.356.219-.195.756.021.982 1.818 1.901 4.38 3.087 7.22 3.087 5.517 0 9.989-4.472 9.989-9.989zm-11.507-6.357c.125-.055.293-.053.311-.22.015-.148.044-.046.08-.1.035-.053-.067-.138-.11-.146-.064-.014-.108.069-.149.104l-.072.019-.068.087.008.048-.087.106c-.085.084.002.139.087.102z" />
             </svg></span>
-          <a target="_blank">{{this.companyService.website}}</a>
+          <a target="_blank" href="http://{{this.companyService.companyData.website}}">{{this.companyService.companyData.website}}</a>
         </div>
         <div *ngIf="editwebsite">
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
           <button type="submit" (click)="onEditBpage('website',website)">Save</button>
         </div>
-
         <div class="social">
+                    <div class="social_media">
+                  <div class="facebook social">
 
-          <div *ngFor="let link of socialLink"> <a target="_blank">{{link}}</a>
-          </div>
-
-          <button type="button" *ngIf="socialLink && !editSocialLinks && myCompany" (click)="editSocialLinks=true"><span><svg
-                xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;"
-                viewBox="0 0 24 24">
-                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add Social Links</button>
-
+                    <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" *ngIf= "!editSocialLinks && !facebook && myCompany">
+                    <a href="{{facebook}}" *ngIf= "facebook"><img src="../../../assets/images/fb.png" ></a>
 
           <div class="social_links" *ngIf="editSocialLinks">
-            <input type="text" placeholder="Enter Social Links" formControlName="socialLinks" #socialLinks>
-            <button type="submit" (click)="onEditBpage('socialLinks',socialLinks)">Save</button>
+              <input type="text" placeholder="Enter Your FaceBook link" formControlName="facebook" #facebook>
+              <button type="submit" (click)="onEditBpage('facebook', facebook)">Save</button>
+            </div>
           </div>
+
+          <!-- <div class="linkedin social">
+
+              <img src="../../../assets/images/square-linkedin-512.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
+
+    <div class="social_links" *ngIf="editSocialLinks">
+        <input type="text" placeholder="Enter Your FaceBook link" formControlName="linkedin" #linkedin>
+        <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button>
+      </div>
+    </div> -->
+    <!-- <div class="gmail social">
+
+        <img src="../../../assets/images/new-google-logo-2015.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
+
+<div class="social_links" *ngIf="editSocialLinks">
+  <input type="text" placeholder="Enter Your FaceBook link" formControlName="gmail" #gmail>
+  <button type="submit" (click)="onEditBpage('gmial', gmail)">Save</button>
+</div>
+</div> -->
+                </div>
+
           <div class="social_bookmark" *ngIf="!myCompany">
-             <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span> 
+             <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span>
 
             <!-- <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button> -->
 
@@ -171,9 +188,9 @@
 
     <div class="card-left">
 
-      <div class="headerImg" *ngIf="!this.companyService.coverImage">
+      <div class="headerImg" *ngIf="!this.companyService.companyData.coverImage">
 
-        <input type="file" #filePicker (change)="onImagePick($event,'coverImage')" class="picker testing-1911" style="display: hidden;"
+        <input type="file" #filePicker (change)="uploadCompanyImage($event,'coverImage')" class="picker testing-1911" style="display: hidden;"
           visbility="hidden">
         <button type="button" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" viewBox="0 0 24 24">
@@ -181,12 +198,12 @@
           Cover Page</button>
 
       </div>
-      <div class="headerImg" *ngIf="this.companyService.coverImage">
+      <div class="headerImg" *ngIf="this.companyService.companyData.coverImage">
         <div class="container">
 
-          <img src="{{this.companyService.coverImage}}">
+          <img src="{{this.companyService.companyData.coverImage}}">
           <div class="overlay">
-            <input type="file" #filePicker (change)="onImagePick($event,'coverImage')" class="picker" style="display: hidden;"
+            <input type="file" #filePicker (change)="uploadCompanyImage($event,'coverImage')" class="picker" style="display: hidden;"
               visbility="hidden">
             <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change
               Cover
@@ -217,10 +234,10 @@
             <h2>SHORT BIO</h2>
             <!-- <p>{{shortIntro}}</p> -->
             <div class="short_bio_content">
-              <p *ngIf="!this.companyService.shortIntro"><i>All business,large and smaall,new or established ,struggle
+              <p *ngIf="!this.companyService.companyData.shortIntro"><i>All business,large and smaall,new or established ,struggle
                   to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize
                   yourself is less than 400 characters.</i></p>
-              <p *ngIf="this.companyService.shortIntro">{{this.companyService.shortIntro}}</p>
+              <p *ngIf="this.companyService.companyData.shortIntro">{{this.companyService.companyData.shortIntro}}</p>
             </div>
             <div class="bio_btn">
               <button type="button" (click)="editshortIntro = true" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +255,7 @@
         </div>
         <div class="category_1">
           <h6>CATEGORY</h6>
-          <h5>{{this.companyService.category }}</h5>
+          <h5>{{this.companyService.companyData.category}}</h5>
           <div class="category_btn">
             <button type="button" *ngIf="myCompany" routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24">
@@ -248,8 +265,7 @@
 
 
       </div>
-      <div class="feedCards" *ngIf="!noFeeds">
-
+      <div class="feedCards" *ngIf="feeds">
         <div class="main_feed_card" *ngFor="let feed of feeds; let i = index">
           <div class="feed1">
             <div style="width: 100%;">
@@ -284,7 +300,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tagged">
+                <div class="tagged" *ngIf="feed.tagId">
                   <mat-expansion-panel>
                     <mat-expansion-panel-header style="background-color: #6d7791;">
                       <mat-panel-title>
@@ -308,8 +324,8 @@
           </div>
         </div>
 
-
-        <div class="feeds" *ngIf="noFeeds">
+      
+        <div class="feeds" *ngIf="!feeds">
           <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
           <div class="default_feed">
             <div class="feed_show">
@@ -332,32 +348,25 @@
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-
-
-
+    </div>
 
       <div class="otherInfocard">
         <div class="infoCard">
           <div class="hq info">
             <label>HEADquarters</label>
-            <h3>{{this.companyService.country}} , {{this.companyService.city}}</h3>
+            <h3>{{this.companyService.companyData.city}} , {{this.companyService.companyData.country}}</h3>
           </div>
-          <div class="estd info" *ngIf="this.companyService.yearEstd">
+          <div class="estd info" *ngIf="this.companyService.companyData.yearEstd">
             <label>year estd.</label>
-            <h3>{{this.companyService.yearEstd}}</h3>
+            <h3>{{this.companyService.companyData.yearEstd}}</h3>
           </div>
-          <div class="estd info" *ngIf="this.companyService.companySize">
+          <div class="estd info" *ngIf="this.companyService.companyData.companySize">
             <label>size</label>
-            <h3>{{this.companyService.companySize}}</h3>
+            <h3>{{this.companyService.companyData.companySize}}</h3>
           </div>
-          <div class="add info" *ngIf="this.companyService.address ">
+          <div class="add info" *ngIf="this.companyService.companyData.address ">
             <label>office address</label>
-            <h3>{{this.companyService.address }}</h3>
+            <h3>{{this.companyService.companyData.address }}</h3>
           </div>
           <div class="revenu info" style="border-bottom:none">
             <label>Total Revenue</label>
@@ -370,7 +379,7 @@
             </div>
           </div>
 
-          <div class="hq_info" *ngIf="!this.companyService.country">
+          <div class="hq_info" *ngIf="!this.companyService.companyData.country">
             <div class="hq_info_content_">
               <p>It's time you share your company's whereabouts with the business world.</p>
               <h4 style="font-weight:400;">Add your Company's basic details here.</h4>
@@ -386,20 +395,20 @@
   </div>
   <div class="body" *ngIf="this.type === 'info'">
     <div class="infoSection2">
-      <div class="infoImg" *ngIf="infoImg">
-        <!-- <img src="{{this.companyService.infoImage}}"> -->
-        <input type="file" #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"
+      <div class="infoImg" *ngIf="!this.companyService.companyData.infoImage">
+         <!-- <img src="{{this.companyService.companyData.infoImage}}">  -->
+        <input type="file" #filePicker (change)="uploadCompanyImage($event,'infoImage')" class="picker" style="display: hidden;"
           visbility="hidden">
         <button type="button" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
           Info Image</button>
       </div>
-      <div class="infoImg" *ngIf="!infoImg">
+      <div class="infoImg" *ngIf="this.companyService.companyData.infoImage">
         <div class="container">
-          <img src="{{this.companyService.infoImage}}">
+          <img src="{{this.companyService.companyData.infoImage}}">
           <div class="overlay">
-            <input type="file" #filePicker (change)="onImagePick($event,'infoImage')" class="picker" style="display: hidden;"
+            <input type="file" #filePicker (change)="uploadCompanyImage($event,'infoImage')" class="picker" style="display: hidden;"
               visbility="hidden">
             <button type="button" (click)="filePicker.click()" class="change_cover_image" *ngIf="myCompany">Change
               Photo<br /><svg xmlns="http://www.w3.org/2000/svg" width="50" height="34" style="padding-top:1%;" viewBox="0 0 24 24">
@@ -430,21 +439,9 @@
         </div>
       </div>
 
-      <!-- <div class="infoContent" *ngIf="!bioEdit">
-        <textarea formControlName="shortIntro">{{shortIntro}}</textarea>
-        <button type="submit" (click) = "onEditBpage('shortIntro',shortIntro)">Save</button>
-      </div> -->
 
-      <!-- section edit   -->
-
-
-
-      <div *ngIf="sectionEdit && myCompany">
-
-        <div formArrayName="section" *ngFor="let sec of BForm.get('section').controls; let i=index">
-          {{ BForm.get('section').controls}}
-          {{i}}
-          <!-- {{section}} -->
+      <div *ngIf="sectionEdit">
+        <div formArrayName="section" *ngFor="let section of BForm.get('section').controls; let i=index">
           <button (click)="onDelete(i)" class="remove_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24">
                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
@@ -459,14 +456,8 @@
               </div>
             </div>
             <div class="container" style="height: 30vh;">
-              <!-- {{section}} -->
-              <img src="{{this.BForm.controls.section.value[i].sectionImage}}" >
-             
-              {{this.BForm.controls.section.value[i].sectionImage}}
-              {{this.BForm.controls.section.value[i].sectionTitle}}
-              {{this.BForm.controls.section.value[i].sectionContent}}
-            
-              <div class="overlay">
+              <img src="{{this.BForm.controls.section.value[i].sectionImage}}">
+              <div class="overlay" *ngIf="myCompany">
                 <input type="file" #filePicker (change)="onsectionImagePick($event,'sectionImage',i)" class="picker"
                   style="display: hidden;" visbility="hidden">
                 <button type="button" (click)="filePicker.click()" class="change_section_image">Change
@@ -497,7 +488,7 @@
               <path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z" />
             </svg></span>Edit</button>
 
-        <div class="infoSectonCard" *ngFor="let section of this.companyService.section">
+        <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section">
           <div class="content">
             <div class="Sectioncontent">
               <h2>{{section.sectionTitle}}</h2>
@@ -517,14 +508,14 @@
 
         <div class="item_btn">
           <h2>CERTIFICATES</h2>
-          <input type="file" #filePickercertificate (change)="PickInfoImage($event,'certification')" class="picker"
+          <input type="file" #filePickercertificate (change)="uploadCompanyImage($event,'certification')" class="picker"
             style="display: hidden;" visbility="hidden">
           <button type="button" (click)="filePickercertificate.click()" class="item_btn1" *ngIf="myCompany"><span><svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Certificate</button>
         </div>
-        <div ng2-carouselamos class="slider-wrapper" [items]="certification" [width]="830" [$prev]="prev1" [$next]="next1"
+        <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.certification" [width]="830" [$prev]="prev1" [$next]="next1"
           [$item]="item1"></div>
 
         <ng-template #prev1>
@@ -556,14 +547,14 @@
       <div class="companyImg">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
-          <input type="file" #filePicker (change)="PickInfoImage($event,'companyImage')" class="picker" style="display: hidden;"
+          <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
             visbility="hidden">
           <button type="button" (click)="filePicker.click()" class="item_btn2" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24">
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-        <div ng2-carouselamos class="slider-wrapper" [items]="companyImage" [width]="835" [$prev]="prev" [$next]="next"
+        <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev>
           <img src="../../../assets/images/left-arrow.png">
@@ -641,3 +632,4 @@
   </div>
 
 </section>
+<app-footer></app-footer>

@@ -48,7 +48,7 @@ export class CompanyFormComponent implements OnInit {
    
   }
   ngOnInit() {
-    this.companyService.token = this.storage.get("token");
+    // this.companyService.token = this.storage.get("token");
     this.token = this.storage.get("token");
   }
 

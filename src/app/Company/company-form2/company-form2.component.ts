@@ -30,7 +30,7 @@ export class CompanyForm2Component implements OnInit {
 
   ngOnInit() {
 
-    this.companyService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.token = this.storage.get('token');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
@@ -47,7 +47,7 @@ export class CompanyForm2Component implements OnInit {
   }
 
   onSubmit() {
-
+    console.log(this.companyForm.value)
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
     });
 

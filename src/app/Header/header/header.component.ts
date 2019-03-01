@@ -1,27 +1,30 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
-import { Router } from "@angular/router";
-import { FormControl, FormGroup } from "@angular/forms";
-import { SearchService } from "../../Service/search.service";
-import { UserService } from "src/app/Service/user-services.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { SearchService } from '../../Service/search.service';
+import { UserService } from 'src/app/Service/user-services.service';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
   constructor(
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
     private router: Router,
     public searchService: SearchService,
-    private UserService: UserService
+    public UserService: UserService,
+    public dialog: MatDialog,
   ) {}
   searchForm = new FormGroup({
-    word: new FormControl(""),
-    page: new FormControl("1")
+    word: new FormControl(''),
+    page: new FormControl('1')
   });
   ngOnInit() {
-    this.UserService.token = this.storage.get("token");
+    // this.UserService.token = this.storage.get('token');
   }
   onSearch(event) {
     const formData = this.searchForm.value;
@@ -32,16 +35,22 @@ export class HeaderComponent implements OnInit {
       );
       this.searchService.searchValue = formData;
       this.router.navigate([
-        "/Result/" +
+        '/Result/' +
           this.searchForm.value.word +
-          "/" +
+          '/' +
           this.searchForm.value.page
       ]);
     }
   }
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
+    this.dialog.open(LoginComponent, dialogConfig);
+  }
   onLogout() {
-    this.storage.remove("token");
-    this.storage.remove("companyId");
-    this.router.navigate(["/"]);
+    this.storage.remove('token');
+    this.storage.remove('companyId');
+    this.router.navigate(['/']);
   }
 }

@@ -428,9 +428,19 @@ category_btn {
 }
 
 <<<<<<< HEAD
-=======
+.example-viewport {
+  height: 600px;
+  width: 400px;
+  scroll-behavior: inherit;
+  border: 1px solid black;
+}
 
->>>>>>> e628f68fb1b4a880aeba3d68094f2cb40130072e
+.example-item {
+  height: 50px;
+}
+
+=======
+>>>>>>> cdbac0de0ad42b6ee1d1aa8aea693f91df5abfc6
 
 
 
@@ -2151,7 +2161,7 @@ label {
 }
 .dummy_product_text
 {
-  margin-left: 2%;  
+  margin-left: 2%;
   margin-bottom: auto;
   margin-top: auto;
 }
@@ -2404,4 +2414,16 @@ input[type="file"] {
   .with_login {
     width: 85%;
   }
+}
+.social_media{
+  display: flex;
+  width: 100%;
+}
+.social {
+  width: 35%;
+  margin-right: 5%;
+}
+.social img{
+  width: 100%;
+  height: 47px;
 }
