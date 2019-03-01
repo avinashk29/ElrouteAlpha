@@ -18,6 +18,7 @@ export class CompanyForm3Component implements OnInit {
      yearEstd: new FormControl(),
    city: new FormControl(''),
      shortIntro: new FormControl(''),
+     workingHours:new FormControl('')
   
     }) ;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
@@ -25,9 +26,10 @@ export class CompanyForm3Component implements OnInit {
   }
 
   ngOnInit() {
-    this.companyService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
+      console.log(JSON.parse(res['_body']))
       this.companyForm.patchValue({
         website: JSON.parse(res['_body']).website,
         companyType: JSON.parse(res['_body']).companyType,
@@ -43,7 +45,9 @@ export class CompanyForm3Component implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.companyForm.value);
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
+      console.log(res);
     });
     this.notification.success('B Face Updated');
   }

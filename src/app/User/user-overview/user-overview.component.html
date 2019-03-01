@@ -10,17 +10,17 @@
             <div class="follower_user">
                 <div class="follower_location">
                         <span (click) = "openDialog()" style="float:left;margin:11px;"> <svg  xmlns="http://www.w3.org/2000/svg" width="24" style="fill:aliceblue;" height="24" viewBox="0 0 24 24" ><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
-                    <span style="padding-top:10px;">{{this.userService.location}}</span>
+                    <span style="padding-top:10px;">{{this.userService.userData.location}}</span>
                 </div>
                 <div class="follower_img">
                     <div class="follower_img1">
-                        <img src="{{this.userService.userImage}}">
+                        <img src="{{this.userService.userData.userImage}}">
                     </div>
                 </div>
 
                 <div class="follower_name">
-                    <h2>{{this.userService.userName}}</h2>
-                    <h5>{{this.userService.title}}</h5>
+                    <h2>{{this.userService.userData.userName}}</h2>
+                    <h5>{{this.userService.userData.title}}</h5>
                 </div>
 
 
@@ -33,10 +33,10 @@
             </div>
 
             <div class="follower_des" *ngIf="!bioEdit">
-                <p>{{this.userService.shortBio}} </p>
+                <p>{{this.userService.userData.shortBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
-                    <textarea formControlName= "shortBio">{{this.userService.shortBio}}</textarea>
+                    <textarea formControlName= "shortBio">{{this.userService.userData.shortBio}}</textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
             <div class="follower_company">
@@ -104,7 +104,7 @@
            </div>
           <div style="clear:both"></div>
            <div class="follower_name">
-              <h2>{{username}}</h2>
+              <h2></h2>
               <h5>Web Designer</h5>
             </div>
             <div class="follower_des">

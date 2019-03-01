@@ -25,28 +25,28 @@ export class UserOverviewComponent implements OnInit{
   subscription;
   userImage;
 
-  constructor(private userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
+  constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute) {
        this.route.queryParams.filter(params => params.edit).subscribe(params => {
-        this.userService.getUserData().subscribe(res => {
-          this.router.navigate(['/bookmark' ]);
+      //   this.userService.getUserData().subscribe(res => {
+      //     this.router.navigate(['/bookmark' ]);
       
-            this.userService.userName = JSON.parse(res['_body']).userName;
-            this.userService.location = JSON.parse(res['_body']).location;
-            this.userService.title = JSON.parse(res['_body']).title;
-            this.userService.userImage=JSON.parse(res['_body']).userImage;
-            this.userService.shortBio= JSON.parse(res['_body']).shortBio;
+      //       this.userService.userName = JSON.parse(res['_body']).userName;
+      //       this.userService.location = JSON.parse(res['_body']).location;
+      //       this.userService.title = JSON.parse(res['_body']).title;
+      //       this.userService.userImage=JSON.parse(res['_body']).userImage;
+      //       this.userService.shortBio= JSON.parse(res['_body']).shortBio;
 
 
 
-      });
+      // });
        });
 
 
 
-    this.userService.token = this.storage.get('token');
-    this.companyService.token = this.storage.get('token');
+    // this.userService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
@@ -61,11 +61,11 @@ export class UserOverviewComponent implements OnInit{
   overviewResult;
   ngOnInit() {
 this.userService.getUserData().subscribe(res => {
-    this.userService.userName = JSON.parse(res['_body']).userName;
-    this.userService.location = JSON.parse(res['_body']).location;
-    this.userService.title = JSON.parse(res['_body']).title;
-    this.userService.userImage=JSON.parse(res['_body']).userImage;
-    this.userService.shortBio= JSON.parse(res['_body']).shortBio;
+    this.userService.userData.userName = JSON.parse(res['_body']).userName;
+    this.userService.userData.location = JSON.parse(res['_body']).location;
+    this.userService.userData.title = JSON.parse(res['_body']).title;
+    this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
+    this.userService.userData.shortBio= JSON.parse(res['_body']).shortBio;
 });
   }
   manageFollowing() {
@@ -92,7 +92,7 @@ this.userService.getUserData().subscribe(res => {
       shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
-        this.userService.shortBio= JSON.parse(res['_body']).shortBio;
+        this.userService.userData.shortBio= JSON.parse(res['_body']).shortBio;
     })
     this.bioEdit = !this.bioEdit;
     this.router.navigate(['/bookmark']);

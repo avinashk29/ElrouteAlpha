@@ -427,10 +427,17 @@ category_btn {
 
 }
 
-<<<<<<< HEAD
-=======
+.example-viewport {
+  height: 600px;
+  width: 400px;
+  scroll-behavior: inherit;
+  border: 1px solid black;
+}
 
->>>>>>> e628f68fb1b4a880aeba3d68094f2cb40130072e
+.example-item {
+  height: 50px;
+}
+
 
 
 

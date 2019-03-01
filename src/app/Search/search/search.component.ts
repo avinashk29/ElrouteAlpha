@@ -34,9 +34,9 @@ productResult=[]
   }
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
-    this.userService.token =  this.storage.get('token');
+    // this.userService.token =  this.storage.get('token');
     this.product.token = this.storage.get('token');
-    this.companyService.token = this.storage.get('token');
+    // this.companyService.token = this.storage.get('token');
     this.token =  this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');

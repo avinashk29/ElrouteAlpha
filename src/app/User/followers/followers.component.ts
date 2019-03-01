@@ -42,7 +42,7 @@ country: 'India'
 
 ];
   ngOnInit() {
-    this.companyService.token=this.storage.get('token');
+    // this.companyService.token=this.storage.get('token');
     this.companyService.getCompanyFollowers().subscribe(res=>{
       console.log(res);
     })

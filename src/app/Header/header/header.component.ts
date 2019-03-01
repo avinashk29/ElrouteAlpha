@@ -14,14 +14,14 @@ export class HeaderComponent implements OnInit {
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
     private router: Router,
     public searchService: SearchService,
-    private UserService: UserService
+    public UserService: UserService
   ) {}
   searchForm = new FormGroup({
     word: new FormControl(""),
     page: new FormControl("1")
   });
   ngOnInit() {
-    this.UserService.token = this.storage.get("token");
+    // this.UserService.token = this.storage.get("token");
   }
   onSearch(event) {
     const formData = this.searchForm.value;
