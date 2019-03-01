@@ -1,24 +1,24 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { UserService } from "../../Service/user-services.service";
-import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
-import { HomepageService } from "../homepage.service";
-import { Router } from "@angular/router";
-import { AuthServiceService } from "../../Auth/auth-service.service";
-import { FollowService } from "src/app/Service/follow-service.service";
-import { FormGroup, FormControl } from "@angular/forms";
-import { FeedService } from "../../Service/feed-service.service";
-import { CompanyServiceService } from "../../Service/company-service.service";
-import { MatDialog, MatDialogConfig } from "@angular/material";
-import { FeedComponent } from "src/app/Post-feed/Feed/feed/feed.component";
-import { ImageUploadService } from "src/app/Service/imageupload-service.service";
-import { ProductServiceService } from "../../Service/product-service.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { UserService } from '../../Service/user-services.service';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { HomepageService } from '../homepage.service';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../../Auth/auth-service.service';
+import { FollowService } from 'src/app/Service/follow-service.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { FeedService } from '../../Service/feed-service.service';
+import { CompanyServiceService } from '../../Service/company-service.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
+import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import { ProductServiceService } from '../../Service/product-service.service';
 
 import { ToastrService } from "ngx-toastr";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 @Component({
-  selector: "app-with-login",
-  templateUrl: "./with-login.component.html",
-  styleUrls: ["./with-login.component.css"]
+  selector: 'app-with-login',
+  templateUrl: './with-login.component.html',
+  styleUrls: ['./with-login.component.css']
 })
 export class WithLoginComponent implements OnInit {
   username;
@@ -41,13 +41,10 @@ export class WithLoginComponent implements OnInit {
   feedImage
   companyLogo;
   feed = new FormGroup({
-    content: new FormControl(""),
-    Image: new FormControl(" "),
+    content: new FormControl(''),
+    Image: new FormControl(''),
     tagId: new FormControl(),
-    link: new FormControl(""),
-    productName: new FormControl(""),
-    productImage: new FormControl(),
-    productDescription: new FormControl("")
+    link: new FormControl(''),
   });
   type;
   resultvalue;
@@ -82,13 +79,13 @@ export class WithLoginComponent implements OnInit {
     this.feedService.token = this.storage.get("token");
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
-      this.feeds = JSON.parse(res["_body"]);
-      this.result = JSON.parse(res["_body"])[0];
+      this.feeds = JSON.parse(res['_body']);
+      this.result = JSON.parse(res['_body'])[0];
       if (this.result) {
-        this.pId = JSON.parse(res["_body"])[0]._id;
-        for (let i = 0; i < JSON.parse(res["_body"])[0].length; i++) {
+        this.pId = JSON.parse(res['_body'])[0]._id;
+        for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
           this.productService
-            .getOneProduct(JSON.parse(res["_body"])[0][i].tagId)
+            .getOneProduct(JSON.parse(res['_body'])[0][i].tagId)
             .subscribe(res1 => {});
         }
       }
@@ -101,7 +98,7 @@ export class WithLoginComponent implements OnInit {
 
         for (let i = 0; i < this.userFollow.length; i++) {
           for (let j = 0; j < this.result.length; j++) {
-            if (this.userFollow[i] == this.result[j].admin) {
+            if (this.userFollow[i] === this.result[j].admin) {
               this.resultvalue = false;
             } else {
             }
@@ -113,8 +110,8 @@ export class WithLoginComponent implements OnInit {
       // this.companyName = this.companyService.companyData.companyName;
         // this.companyLogo = this.companyService.companyData.companyLogo;
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
-        this.companyName = JSON.parse(res["_body"]).companyName;
-        this.companyLogo = JSON.parse(res["_body"]).companyLogo;
+        this.companyName = JSON.parse(res['_body']).companyName;
+        this.companyLogo = JSON.parse(res['_body']).companyLogo;
       });
     }
   }
@@ -152,19 +149,19 @@ export class WithLoginComponent implements OnInit {
     this.feed.value.Image=this.feedImage;
     this.feedService.AddFeed(this.feed.value).subscribe(res => {});
     this.feed.reset();
-    this.notification.success("Post Added");
+    this.notification.success('Post Added');
   }
   tagFeed() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = '50%';
     this.dialog.open(FeedComponent, dialogConfig);
   }
   EditBpage() {
-    this.router.navigate(["/company-form2"]);
+    this.router.navigate(['/company-form2']);
   }
   CreateBpage() {
-    this.router.navigate(["/B-page"]);
+    this.router.navigate(['/B-page']);
   }
   onfollow(i, id) {
     this.result[i].follow = false;

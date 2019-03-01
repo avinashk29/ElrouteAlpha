@@ -1,19 +1,20 @@
+<app-header></app-header>
 <app-side-nav></app-side-nav>
 <div class="main_heading"><h2>Listed Products</h2></div>
 <section>
-       
+
 <div class="leftSection">
-    
+
     <div class="category">
      <input type="search" placeholder="Enter Product/Service to Search">
         <div class="category_btn1">
                 <!-- <button typ="button">Add product</button> -->
                 <div class="productAddbutton"><button routerLink= "/productForm">ADD Product</button></div>
-                
-        </div>   
+
+        </div>
         <div class="category_btn2">
                 <button typ="button">Group product</button>
-        </div>  
+        </div>
 
     </div>
 
@@ -23,7 +24,7 @@
        <div class="rightSection1">
     <div class="edit_product" *ngFor="let r of results">
         <div class="card">
-           
+
                     <!-- <div class="edit_btn">
                             <button type="button">Edit</button>
                      </div>    -->
@@ -31,11 +32,11 @@
                             <img src="{{r.Image}}">
                             <div class="edit_btn">
                                     <button type="button" (click)="editProduct(r._id)">Edit</button>
-                             </div> 
-                        </div>    
-                    
-            
-        </div>   
+                             </div>
+                        </div>
+
+
+        </div>
             <div class="product_details">
                     <p style="text-align:right;">{{r.category}}</p>
                       <h4>{{r.productName}}</h4>
@@ -43,20 +44,21 @@
                      <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
                      <p style="text-align:right;">{{r.industry}}</p>
                      <p>{{r.shortDescription}}</p>
-                     <div class="tags"> 
+                     <div class="tags">
                             <h5>Price</h5>
                             <div class="tags1">
                                    <!-- <span>tags</span> -->
-                             </div>   
-                        </div>  
-             </div>  
-            
+                             </div>
+                        </div>
+             </div>
 
 
-          
+
+
 
 
 </div>
 </div>
 </div>
 </section>
+<app-footer></app-footer>

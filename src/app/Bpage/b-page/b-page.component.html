@@ -10,12 +10,12 @@
             <div class="elements"><h4>Contact</h4></div>
             </div>
         <div class="headerImg">
-           <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> 
-               <div class="img" ><img src="assets/images/bk1.jpg"></div>  
+           <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div>
+               <div class="img" ><img src="assets/images/bk1.jpg"></div>
 
         </div>
 
-        <div class="card">  
+        <div class="card">
             <div class="logoheader">
             <img src="{{Image}}">
             </div>
@@ -32,7 +32,7 @@
 
                 </div>
               </div>
-             
+
         </div>
 
 
@@ -131,23 +131,41 @@
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
           <button type="submit" (click)="onEditBpage('website',website)">Save</button>
         </div>
-
         <div class="social">
+                    <div class="social_media">
+                  <div class="facebook social">
 
-          <div> <a target="_blank" href="http://{{this.companyService.companyData.socialLinks}}">{{this.companyService.companyData.socialLinks}}</a>
-          </div>
-
-          <button type="button" *ngIf="socialLink && !editSocialLinks && myCompany" (click)="editSocialLinks=true"><span><svg
-                xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 26px 0px 1px;"
-                viewBox="0 0 24 24">
-                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add Social Links</button>
+                    <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" *ngIf= "!editSocialLinks && !facebook && myCompany">
+                    <a href="{{facebook}}" *ngIf= "facebook"><img src="../../../assets/images/fb.png" ></a>
 
           <div class="social_links" *ngIf="editSocialLinks">
-            <input type="text" placeholder="Enter Social Links" formControlName="socialLinks" #socialLinks>
-            <button type="submit" (click)="onEditBpage('socialLinks',socialLinks)">Save</button>
+              <input type="text" placeholder="Enter Your FaceBook link" formControlName="facebook" #facebook>
+              <button type="submit" (click)="onEditBpage('facebook', facebook)">Save</button>
+            </div>
           </div>
+
+          <!-- <div class="linkedin social">
+
+              <img src="../../../assets/images/square-linkedin-512.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
+
+    <div class="social_links" *ngIf="editSocialLinks">
+        <input type="text" placeholder="Enter Your FaceBook link" formControlName="linkedin" #linkedin>
+        <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button>
+      </div>
+    </div> -->
+    <!-- <div class="gmail social">
+
+        <img src="../../../assets/images/new-google-logo-2015.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
+
+<div class="social_links" *ngIf="editSocialLinks">
+  <input type="text" placeholder="Enter Your FaceBook link" formControlName="gmail" #gmail>
+  <button type="submit" (click)="onEditBpage('gmial', gmail)">Save</button>
+</div>
+</div> -->
+                </div>
+
           <div class="social_bookmark" *ngIf="!myCompany">
-             <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span> 
+             <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span>
 
             <!-- <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button> -->
 
@@ -614,3 +632,4 @@
   </div>
 
 </section>
+<app-footer></app-footer>

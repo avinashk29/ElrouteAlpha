@@ -49,5 +49,9 @@ sendEmployeeDetail(value) {
 getdata(){
     return this.empDetailSubject.asObservable()
 }
+getOneUser(id) {
+  console.log(id);
+  return this.http.get('http://localhost:8080/api/user/' + id );
+}
 
 }

@@ -26,17 +26,17 @@
   <div>
     <div class="productCard" *ngIf="result._id != null" >
       <div class="productImage">
-         
-      
 
-    
+
+
+
           <div class="productCard">
         <div class="productImage">
           <img src="{{result.Image}}">
         </div>
         <div class="productContent" >
         <div class="content">
-          
+
         <div class="productCategory">
             <div class="b_page_btn">
                 <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
@@ -49,7 +49,7 @@
         <div class="productName">
           <h2 (click)="gotoProductPage(result._id)">{{result.productName}}</h2>
           <h5>{{result.company}}</h5>
-         
+
           <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.industry}}</span><span style= "padding-left: 8px">Country</span></small>
         </div>
         <div class="discription" style="margin-top:30px;">
@@ -169,3 +169,4 @@
 
 </div>
 </div>
+<app-footer></app-footer>

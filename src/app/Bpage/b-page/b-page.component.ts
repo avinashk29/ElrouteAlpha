@@ -16,9 +16,9 @@ import { FollowService } from "src/app/Service/follow-service.service";
 import { BookmarkServices } from "src/app/Service/bookmark-services.service";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 @Component({
-  selector: "app-b-page",
-  templateUrl: "./b-page.component.html",
-  styleUrls: ["./b-page.component.css"]
+  selector: 'app-b-page',
+  templateUrl: './b-page.component.html',
+  styleUrls: ['./b-page.component.css']
 })
 export class BPageComponent implements OnInit {
   sectionEdit = false;
@@ -71,14 +71,13 @@ export class BPageComponent implements OnInit {
     private spinner: Ng4LoadingSpinnerService
   ) {
     this.BForm = this._fb.group({
-      website: [""],
-      Image: [""],
+      website: [''],
+      Image: [''],
       workingHours: [],
       shortIntro: [],
-      facebook: [""],
-      linkedin: [""],
-      google: [""],
-      socialLinks: [""],
+      facebook: [''],
+      linkedin: [''],
+      gmail: [''],
       section: this._fb.array([])
     });
     if (this.comapnyId === this.mycompanyId) {
@@ -99,27 +98,27 @@ export class BPageComponent implements OnInit {
           this.setSection();
         });
       });
-    this.mycompanyId = this.storage.get("companyId");
-    if (this.type === "product") {
+    this.mycompanyId = this.storage.get('companyId');
+    if (this.type === 'product') {
       this.productService.getProduct(this.comapnyId).subscribe(res => {
-        this.products = JSON.parse(res["_body"]);
+        this.products = JSON.parse(res['_body']);
       });
-      this.type = "product";
+      this.type = 'product';
     }
-    if (this.type === "info") {
-      this.type = "info";
+    if (this.type === 'info') {
+      this.type = 'info';
     }
-    if (this.type === "contact") {
-      this.type = "contact  ";
+    if (this.type === 'contact') {
+      this.type = 'contact  ';
     }
 
   }
 
   ngOnInit() {
-    this.imgUpload.token = this.storage.get("token");
-    this.feedService.token = this.storage.get("token");
+    this.imgUpload.token = this.storage.get('token');
+    this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
-      this.userInfo = JSON.parse(res["_body"]).following;
+      this.userInfo = JSON.parse(res['_body']).following;
       for (let i = 0; i < this.userInfo.length; i++) {
         if (this.userInfo[i] === this.comapnyId) {
           this.Follower = true;
@@ -139,14 +138,14 @@ export class BPageComponent implements OnInit {
       });
 
     this.feedService.GetFeed().subscribe(res => {
-      this.feeds = JSON.parse(res["_body"]);
+      this.feeds = JSON.parse(res['_body']);
       if (!this.feeds.length) {
         this.noFeeds = true;
       }
     });
     // ------------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
-      this.userBookmark = JSON.parse(res["_body"]).bookmarks.company;
+      this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
       for (let i = 0; i < this.userBookmark.length; i++) {
         if (this.comapnyId == this.userBookmark[i]) {
           this.bookmark = true;
@@ -161,9 +160,9 @@ export class BPageComponent implements OnInit {
     let control = <FormArray>this.BForm.controls.section;
     control.push(
       this._fb.group({
-        sectionTitle: [""],
-        sectionContent: [""],
-        sectionImage: [""]
+        sectionTitle: [''],
+        sectionContent: [''],
+        sectionImage: ['']
       })
     );
   }
@@ -183,8 +182,8 @@ export class BPageComponent implements OnInit {
     });
   }
   gotoTimeline() {
-    this.router.navigate(["/companyPage/" + this.comapnyId], {
-      queryParams: { urltype: "default" }
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { urltype: 'default' }
     });
   }
   onDelete(index) {
@@ -259,38 +258,38 @@ export class BPageComponent implements OnInit {
   }
  
   editProduct(id) {
-    this.router.navigate(["/productEdit/" + id]);
+    this.router.navigate(['/productEdit/' + id]);
   }
   EditBpage() {
-    this.router.navigate(["company-form2"]);
+    this.router.navigate(['company-form2']);
   }
   showTwo() {
-    this.router.navigate(["/companyPage/" + this.comapnyId], {
-      queryParams: { urltype: "info" }
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { urltype: 'info' }
     });
-    this.type = "info";
+    this.type = 'info';
   }
   showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
-      this.products = JSON.parse(res["_body"]);
+      this.products = JSON.parse(res['_body']);
     });
-    this.router.navigate(["/companyPage/" + this.comapnyId], {
-      queryParams: { urltype: "product" }
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { urltype: 'product' }
     });
-    this.type = "product";
+    this.type = 'product';
   }
   showFour() {
-    this.router.navigate(["/companyPage/" + this.comapnyId], {
-      queryParams: { urltype: "contact" }
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { urltype: 'contact' }
     });
-    this.type = "contact";
+    this.type = 'contact';
   }
   editshortBio() { }
   DeleteProduct(id) {
     this.productService.DeleteProduct(id).subscribe(res => { });
   }
   GotoBpage() {
-    this.router.navigate(["/companyPage/" + this.comapnyId]);
+    this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
   onEditBpage(key, content: HTMLInputElement) {
     const formData = new FormData();
@@ -305,13 +304,13 @@ export class BPageComponent implements OnInit {
       this.router.navigate(["/companyPage/" + this.comapnyId], {
         queryParams: { urltype: "edit" }
       });
-      if (this.type === "info") {
-        this.router.navigate(["/companyPage/" + this.comapnyId], {
-          queryParams: { urltype: "info" }
+      if (this.type === 'info') {
+        this.router.navigate(['/companyPage/' + this.comapnyId], {
+          queryParams: { urltype: 'info' }
         });
       } else {
-        this.router.navigate(["/companyPage/" + this.comapnyId], {
-          queryParams: { urltype: "default" }
+        this.router.navigate(['/companyPage/' + this.comapnyId], {
+          queryParams: { urltype: 'default' }
         });
       }
     });
