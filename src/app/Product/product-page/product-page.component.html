@@ -1,4 +1,4 @@
- <app-side-nav ></app-side-nav>
+<app-side-nav ></app-side-nav>
 <app-header></app-header>
 
       <div class="product_detalis">
@@ -19,7 +19,7 @@
 
                       </ng-template>
                       </div>
-                  <div class="service2_img"><img src="{{Image}}" alt="image not found"></div>
+                  <div class="service2_img"><img src="{{this.productService.productData.Image}}" alt="image not found"></div>
               </div>
               <div class="tags">
                 <!-- <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
@@ -33,7 +33,7 @@
               </p>
               <div class="USA_1">
                   <li>USA:{{this.productService.productData.MaxPrice}}</li>
-                  <li style="margin-left:20px;" class="moq">MOQ:{this.productService.productData.{Moq}}</li>
+                  <li style="margin-left:20px;" class="moq">MOQ:{{this.productService.productData.Moq}}</li>
             </div>
         </div>
        </div>
@@ -64,10 +64,8 @@
           <P>{{product.punchline}}</P>
           <P>{{product.punchline}}</P>
         </div>
-
     </div>
   </mat-expansion-panel>
-
 </mat-accordion> -->
 <section>
 
