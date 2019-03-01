@@ -12,7 +12,6 @@ export class OnefollowerComponent implements OnInit {
   constructor(public user: UserService,
     public followService: FollowService) {
       this.user.getOneUser(this.followService.followerId).subscribe(res => {
-        console.log(JSON.parse(res['_body']));
         this.follower = JSON.parse(res['_body']);
       });
     }

@@ -15,14 +15,12 @@ export class ProductListingComponent implements OnInit {
   results=[]
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService,private productService:ProductServiceService,private router:Router) {
     this.companyid=this.storage.get('companyId')
-    console.log(this.companyid);
    }
 
   ngOnInit() {
     this.productService.token=this.storage.get('token');
     this.productService.getProduct(this.companyid).subscribe(res=>{
       this.results=JSON.parse(res['_body']);
-      console.log(this.results);
     })
     
   }

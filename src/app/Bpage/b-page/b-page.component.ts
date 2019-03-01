@@ -136,7 +136,6 @@ export class BPageComponent implements OnInit {
 
     this.feedService.GetFeed().subscribe(res => {
       this.feeds = JSON.parse(res['_body']);
-      console.log(JSON.parse(res['_body']))
       if (!this.feeds.length) {
         this.noFeeds = true;
       }
@@ -204,13 +203,11 @@ export class BPageComponent implements OnInit {
       const url = res["_body"];
       let control = <FormArray>this.BForm.controls.section;
       control.value[index].sectionImage = url;
-      console.log(url);
       this.spinner.hide();
     });
   }
 
   uploadCompanyImage(event,name){
-    console.log(name)
     this.file=<File>event.target.files[0];
     const fdata=new FormData();
     fdata.append(name,this.file);
@@ -218,7 +215,6 @@ export class BPageComponent implements OnInit {
     this.imgUpload.uploadImg(fdata).subscribe(res=>{
       const formdata=new FormData();
         const url=res['_body'];
-        console.log(url)
         formdata.append(name,url);
       if(name==='companyLogo' || name==='coverImage' || name==='infoImage'){
           this.companyService.UpdateCompany(formdata).subscribe(res=>{

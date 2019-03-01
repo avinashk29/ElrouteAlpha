@@ -31,13 +31,11 @@ userData;
      getUserData(){
         const headers = new Headers();
         headers.append('x-auth', this.storage.get('token'));
-        // console.log(this.userData.token);
         return this.http.get('http://localhost:8080/api/user', {headers: headers});
     }
 editUser(User){
     const headers = new Headers();
     headers.append('x-auth', this.storage.get('token'));
-    // console.log(this.userData.token);
     const UserFormData = new FormData();
     return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
@@ -50,7 +48,6 @@ getdata(){
     return this.empDetailSubject.asObservable()
 }
 getOneUser(id) {
-  console.log(id);
   return this.http.get('http://localhost:8080/api/user/' + id );
 }
 

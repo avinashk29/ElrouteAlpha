@@ -92,7 +92,7 @@
                   <div class="facebook social">
 
                     <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" *ngIf= "!editSocialLinks && !facebook && myCompany">
-                    <a href="{{facebook}}" *ngIf= "facebook"><img src="../../../assets/images/fb.png" ></a>
+                    <a href="{{facebook}}" *ngIf="facebook"><img src="../../../assets/images/fb.png" ></a>
 
           <div class="social_links" *ngIf="editSocialLinks">
               <input type="text" placeholder="Enter Your FaceBook link" formControlName="facebook" #facebook>

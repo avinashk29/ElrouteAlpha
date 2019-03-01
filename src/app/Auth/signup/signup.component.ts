@@ -108,7 +108,6 @@ export class SignupComponent implements OnInit {
     this.error = true;
     const SignupForm = this.signupForm.value;
     this.authService.signup(SignupForm).subscribe(res => {
-      console.log(res);
       this.error = false;
       if (this.signupForm.valid) {
         this.storage.set("token", res.headers.get("x-auth"));

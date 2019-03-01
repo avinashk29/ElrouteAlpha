@@ -115,7 +115,6 @@ export class WithLoginComponent implements OnInit {
     }
   }
   uploadUserImage(event,name){
-    console.log(name)
      this.file = <File>event.target.files[0];
     if(name === 'Image'){
       const reader =new FileReader();
