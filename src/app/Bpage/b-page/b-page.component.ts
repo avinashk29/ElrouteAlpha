@@ -175,9 +175,11 @@ export class BPageComponent implements OnInit {
     this.companyService.companyData.section.forEach(x => {
       control.push(
         this._fb.group({
+          sectionImage: x.sectionImage,
           sectionTitle: x.sectionTitle,
           sectionContent: x.sectionContent,
-          sectionImage: x.sectionImage
+          // sectionImage: x.sectionImage
+  
         })
       );
     });
@@ -205,6 +207,7 @@ export class BPageComponent implements OnInit {
       const url = res["_body"];
       let control = <FormArray>this.BForm.controls.section;
       control.value[index].sectionImage = url;
+      console.log(url);
       this.spinner.hide();
     });
   }
