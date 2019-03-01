@@ -1,12 +1,11 @@
 
 
-              <form (submit)="getProduct()">
+              <form (submit)="getProduct()" *ngIf= "products.length">
                     <div class="tag_product">
                       <div class="tag">
                         <div class="heading">
                         <h2>  Tag Product</h2>
-                        <button type="button">X</button>
-                        </div> 
+                        </div>
 
                         <div class="form">
                            <input list="product" [(ngModel)]="product_id" name="product_id"  placeholder="Product">
@@ -15,11 +14,14 @@
                        <option  value="{{i}}">{{product.productName}}</option>
                     </div>
                   </datalist>
-                            
-                        </div>  
+
+                        </div>
                         <div class="tag_btn">
                           <button type="submit">Tag</button>
-                         </div> 
-                       </div> 
-                     </div>   
+                         </div>
+                       </div>
+                     </div>
               </form>
+<div *ngIf= "!products.length">
+  <h1 style="text-align: center">No Product Created</h1>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormGroup , FormBuilder, FormArray, FormControl ,Validator, Validators} from '@angular/forms';
+import {FormGroup , FormBuilder, FormArray, Validators} from '@angular/forms';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router } from '@angular/router';
@@ -82,10 +82,8 @@ export class ProductFormComponent implements OnInit {
         })
     
       })
-
-
-
    }
+
    addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
     control.push(
@@ -97,6 +95,7 @@ export class ProductFormComponent implements OnInit {
       })
     )
   }
+
   addNewField(control) {
   control.push(
     this._fb.group({
@@ -105,6 +104,7 @@ export class ProductFormComponent implements OnInit {
     })
   )
   }
+
   setProductInfo(){
     let control = <FormArray>this.productForm.controls.productInfo;
   this.productInfo.forEach(x => {
@@ -116,10 +116,12 @@ export class ProductFormComponent implements OnInit {
       )
   })
   }
+
   deleteProductInfo(index) {
     let control = <FormArray>this.productForm.controls.productInfo;
     control.removeAt(index)
   }
+
   setField(x){
     let arr = new FormArray([])
     x.fields.forEach(y => {

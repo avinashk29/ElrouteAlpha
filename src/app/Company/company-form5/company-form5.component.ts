@@ -18,25 +18,16 @@ contactDevisionForm: FormGroup;
 companyForm: FormGroup;
   ngOnInit() {
     this.companyForm =  this._fb.group({
-      address: [''],
+          address: [''],
           city: [''],
           zipCode: [ ],
           landLine: [ ],
-         mobile: [],
-         contactDevision: this._fb.array([this.addDevision()])
+          mobile: [],
+          contactDevision: this._fb.array([this.addDevision()])
     });
-    this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
-      this.companyForm.patchValue({
-        address: JSON.parse(res['_body']).address,
-        city: JSON.parse(res['_body']).city,
-        zipCode: JSON.parse(res['_body']).zipCode,
-        landLine: JSON.parse(res['_body']).landLine,
-        mobile: JSON.parse(res['_body']).mobile,
-
-
-      });
+      this.companyForm.patchValue(JSON.parse(res['_body']));
     });
   }
   addDevision() {

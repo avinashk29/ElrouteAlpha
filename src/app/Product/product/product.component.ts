@@ -19,15 +19,13 @@ export class ProductComponent implements OnInit {
   companyId;
   productId;
   url;
-  productSec;
-  fieldarray;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     private _fb: FormBuilder, public productService: ProductServiceService, private imgupload: ImageUploadService,
      public router: Router, public notification: ToastrService, private route: ActivatedRoute) {
       this.companyId =  this.storage.get('companyId');
       this.productId = route.snapshot.paramMap.get('id');
       this.productForm = this._fb.group({
-        productName: ['', [Validators.required] ],
+      productName: ['', [Validators.required] ],
        Image: [''],
        shortDescription: [''],
       productInfo: this._fb.array([]),
@@ -38,37 +36,18 @@ export class ProductComponent implements OnInit {
        industry: [''],
        category: [''],
        tfCode: [''],
-  
       });
-  
      }
+
   ngOnInit() {
     this.imgupload.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
     this.productService.getOneProduct(this.productId).subscribe(res => {
       this.productInfo=JSON.parse(res['_body']).productInfo;
-        this.productForm.patchValue({
-        Image: JSON.parse(res['_body']).Image,
-        productName: JSON.parse(res['_body']).productName,
-        shortDescription: JSON.parse(res['_body']).shortDescription,
-        price: JSON.parse(res['_body']).price,
-        minPrice: JSON.parse(res['_body']).minPrice,
-        maxPrice: JSON.parse(res['_body']).maxPrice,
-        moq: JSON.parse(res['_body']).moq,
-        industry: JSON.parse(res['_body']).industry,
-        category: JSON.parse(res['_body']).category,
-        tfCode: JSON.parse(res['_body']).tfCode,
-    
-       
-       
-       
-          
-      });
+        this.productForm.patchValue(JSON.parse(res['_body']));
       this.setProductInfo();
     });
-
   }
-  
   
   addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
@@ -77,12 +56,11 @@ export class ProductComponent implements OnInit {
         productSpecification: [''],
         specificationContent: [''],
         fields: this._fb.array([])
-       
       })
     )
   }
+
   addNewField(control) {
-    // this.filedsArray.push(this.addFiledsGroup());
   control.push(
     this._fb.group({
       fieldName: [''],
@@ -90,6 +68,7 @@ export class ProductComponent implements OnInit {
     })
   )
   }
+
   setProductInfo(){
     let control = <FormArray>this.productForm.controls.productInfo;
   this.productInfo.forEach(x => {
@@ -101,10 +80,12 @@ export class ProductComponent implements OnInit {
       )
   })
   }
+
   deleteProductInfo(index) {
     let control = <FormArray>this.productForm.controls.productInfo;
     control.removeAt(index)
   }
+
   setField(x){
     let arr = new FormArray([])
     x.fields.forEach(y => {
@@ -115,6 +96,7 @@ export class ProductComponent implements OnInit {
     })
     return arr;
   }
+
   deleteField(control,index){
     control.removeAt(index);
   }
@@ -129,7 +111,6 @@ export class ProductComponent implements OnInit {
     } else {
       this.notification.error('Enter Valid Deatils');
     }
-
   }
 
   onImagePick(event, name) {

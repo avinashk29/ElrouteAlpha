@@ -49,7 +49,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { StickyNavModule } from 'ng2-sticky-nav';
+// import { StickyNavModule } from 'ng2-sticky-nav';
 // import { CarouselModule } from 'angular4-carousel';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
@@ -157,7 +157,7 @@ export function provideConfig() {
     SocialLoginModule,
     Ng4LoadingSpinnerModule.forRoot(),
     MatCardModule,
-    StickyNavModule,
+    // StickyNavModule,
     ScrollDispatchModule,
     ToastrModule.forRoot()
 

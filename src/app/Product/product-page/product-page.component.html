@@ -1,15 +1,15 @@
- <app-side-nav ></app-side-nav>
+<app-side-nav ></app-side-nav>
 <app-header></app-header>
 
       <div class="product_detalis">
             <div class="product">
               <div class="product_1">
-                    <li><a href="#">{{industry}}</a></li>
-                    <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{category}}</a></li>
+                    <li><a href="#">{{this.productService.productData.industry}}</a></li>
+                    <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{this.productService.productData.category}}</a></li>
                     <li style="float:right;">{{Time | date:'medium'}}</li>
               </div>
               <div style="clear:both;"></div>
-              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{productName}}</h2>
+              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{this.productService.productData.productName}}</h2>
               <div class="service2">
                   <div class="b_page_btn" *ngIf="mybookmark">
                   <span  (click)= "addProductBookmark()"  *ngIf="bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" style="margin-left: 6px;" height="24" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg> </span>
@@ -19,7 +19,7 @@
 
                       </ng-template>
                       </div>
-                  <div class="service2_img"><img src="{{Image}}" alt="image not found"></div>
+                  <div class="service2_img"><img src="{{this.productService.productData.Image}}" alt="image not found"></div>
               </div>
               <div class="tags">
                 <!-- <li><img src="assets/images/tags.png"   alt="image not found"><span>tag1</span></li>
@@ -32,8 +32,8 @@
                   <img src="assets/images/contact.png" alt="image not found"><span>Contact</span>
               </p>
               <div class="USA_1">
-                  <li>USA:{{MaxPrice}}</li>
-                  <li style="margin-left:20px;" class="moq">MOQ:{{Moq}}</li>
+                  <li>USA:{{this.productService.productData.MaxPrice}}</li>
+                  <li style="margin-left:20px;" class="moq">MOQ:{{this.productService.productData.Moq}}</li>
             </div>
         </div>
        </div>
@@ -41,9 +41,9 @@
       <div class="Description_box">
        <div class="des_box">
          <h2>Description</h2>
-        <p>{{shortDescription}}</p>
+        <p>{{this.productService.productData.shortDescription}}</p>
       </div>
-  <mat-accordion>
+  <!-- <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false" *ngFor="let product of products let i = index" >
     <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
@@ -64,11 +64,9 @@
           <P>{{product.punchline}}</P>
           <P>{{product.punchline}}</P>
         </div>
-
     </div>
   </mat-expansion-panel>
-
-</mat-accordion>
+</mat-accordion> -->
 <section>
 
 
