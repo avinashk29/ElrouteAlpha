@@ -23,7 +23,6 @@
                     <h5>{{this.userService.userData.title}}</h5>
                 </div>
 
-
             </div>
         </div>
         <div class="Bio">
@@ -42,7 +41,7 @@
             <div class="follower_company">
                 <div class="company">
                     <div class="company_logo" *ngIf = "haveCompany">
-                        <img src="assets/images/user.png">
+                        <img src="{{companyLogo}}">
                     </div>
                     <div class="company_name">
                         <h4 style="color: skyblue;">{{companyName}}</h4>

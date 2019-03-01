@@ -107,11 +107,13 @@ export class SignupComponent implements OnInit {
     this.error = true;
     const SignupForm = this.signupForm.value;
     this.authService.signup(SignupForm).subscribe(res => {
+      console.log(res);
       this.error = false;
       if (this.signupForm.valid) {
         this.storage.set("token", res.headers.get("x-auth"));
         this.authService.token = this.storage.get("token");
         this.dialogRef.close(SignupComponent);
+        this.userService.userData=JSON.parse(res['_body']);
         if (!this.bpage) {
           this.router.navigate(["/Dashboard"]);
         } else {

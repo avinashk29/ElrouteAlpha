@@ -13,7 +13,6 @@ toggle = false;
 companyId;
 haveCompany = false;
   ngOnInit() {
-    // this.userService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
       this.companyId = JSON.parse(res['_body']).Company_id;
       if (this.companyId) {

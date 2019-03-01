@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
    onSubmit() {
     this.dialogRef.close(LoginComponent);
     const loginValues = this.login.value;
-    this.authService.login(loginValues).subscribe(async res => {
+    this.authService.login(loginValues).subscribe( res => {
       console.log(res)
       this.error = false;
       if (!this.error) {

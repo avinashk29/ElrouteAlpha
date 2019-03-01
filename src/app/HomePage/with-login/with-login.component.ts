@@ -55,6 +55,7 @@ export class WithLoginComponent implements OnInit {
   productDescription;
   productImage;
   userFollow;
+  companyFollowers
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -93,9 +94,7 @@ export class WithLoginComponent implements OnInit {
         this.noFeeds = true;
       }
       this.userService.getUserData().subscribe(res1 => {
-        
         this.userFollow = JSON.parse(res1["_body"]).following;
-
         for (let i = 0; i < this.userFollow.length; i++) {
           for (let j = 0; j < this.result.length; j++) {
             if (this.userFollow[i] === this.result[j].admin) {
@@ -107,11 +106,11 @@ export class WithLoginComponent implements OnInit {
       });
     });
     if (this.haveCompany) {
-      // this.companyName = this.companyService.companyData.companyName;
-        // this.companyLogo = this.companyService.companyData.companyLogo;
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
-        this.companyName = JSON.parse(res['_body']).companyName;
-        this.companyLogo = JSON.parse(res['_body']).companyLogo;
+        this.companyFollowers=JSON.parse(res['_body']).followers.length;
+        this.companyName=JSON.parse(res['_body']).companyName;
+        this.companyLogo=JSON.parse(res['_body']).companyLogo;
+        
       });
     }
   }

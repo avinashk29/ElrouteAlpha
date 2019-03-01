@@ -13,7 +13,7 @@ export class CompanyServiceService {
 
  companyData;
  section;
-
+  companyFollowers
   constructor(
     private http: Http,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService

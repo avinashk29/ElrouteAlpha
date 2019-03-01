@@ -24,34 +24,16 @@ export class UserOverviewComponent implements OnInit{
   companyFollowers = [];
   subscription;
   userImage;
-
+companyLogo
   constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute) {
-       this.route.queryParams.filter(params => params.edit).subscribe(params => {
-      //   this.userService.getUserData().subscribe(res => {
-      //     this.router.navigate(['/bookmark' ]);
-      
-      //       this.userService.userName = JSON.parse(res['_body']).userName;
-      //       this.userService.location = JSON.parse(res['_body']).location;
-      //       this.userService.title = JSON.parse(res['_body']).title;
-      //       this.userService.userImage=JSON.parse(res['_body']).userImage;
-      //       this.userService.shortBio= JSON.parse(res['_body']).shortBio;
-
-
-
-      // });
-       });
-
-
-
-    // this.userService.token = this.storage.get('token');
-    // this.companyService.token = this.storage.get('token');
     this.haveCompany = this.storage.get('companyId');
     if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
          this.companyFollowers = JSON.parse(res['_body']).followers.length;
+         this.companyLogo=JSON.parse(res['_body']).companyLogo;
         });
     }
     this.bioForm = new FormGroup({
@@ -60,12 +42,9 @@ export class UserOverviewComponent implements OnInit{
   }
   overviewResult;
   ngOnInit() {
-this.userService.getUserData().subscribe(res => {
-    this.userService.userData.userName = JSON.parse(res['_body']).userName;
-    this.userService.userData.location = JSON.parse(res['_body']).location;
-    this.userService.userData.title = JSON.parse(res['_body']).title;
-    this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
-    this.userService.userData.shortBio= JSON.parse(res['_body']).shortBio;
+    this.companyName=this.companyService.companyData.companyName;
+     this.userService.getUserData().subscribe(res => {
+       this.userService.userData=JSON.parse(res['_body']);
 });
   }
   manageFollowing() {
