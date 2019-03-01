@@ -31,16 +31,7 @@ export class CompanyForm3Component implements OnInit {
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       console.log(JSON.parse(res['_body']))
-      this.companyForm.patchValue({
-        website: JSON.parse(res['_body']).website,
-        companyType: JSON.parse(res['_body']).companyType,
-        companySize: JSON.parse(res['_body']).companySize,
-        yearEstd: JSON.parse(res['_body']).yearEstd,
-        shortIntro: JSON.parse(res['_body']).shortIntro,
-        city: JSON.parse(res['_body']).city,
-        workingHours: JSON.parse(res['_body']).workingHours,
-        facebook:  JSON.parse(res['_body']).facebook
-      });
+      this.companyForm.patchValue(JSON.parse(res['_body']));
     });
 
 

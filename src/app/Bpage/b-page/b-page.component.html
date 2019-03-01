@@ -1,44 +1,6 @@
 <app-header></app-header>
 <app-side-nav></app-side-nav>
-<!-- <ng4-loading-spinner  [loadingText]="'Uploading Image...'"></ng4-loading-spinner> -->
 <section [formGroup]="BForm" (ngSubmit)="onSubmit()">
-  <!-- <div class="header_responsive">
-
-        <div class="headerElements1">
-            <div class="elements"><h4>Info</h4></div>
-            <div class="elements" ><h4>Product</h4></div>
-            <div class="elements"><h4>Contact</h4></div>
-            </div>
-        <div class="headerImg">
-           <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div>
-               <div class="img" ><img src="assets/images/bk1.jpg"></div>
-
-        </div>
-
-        <div class="card">
-            <div class="logoheader">
-            <img src="{{Image}}">
-            </div>
-            <div class="user_profile">
-                <h2>{{CompanyName}}</h2>
-
-                     <div class="follow-btn" *ngIf = "!myCompany">
-                    <button (click)="onCompanyFollow()"> FOLLOW</button>
-                    <button (click)="onCompanyUnfollow()"> UNFOLLOW</button>
-                    <span>24,255</span>
-                </div>
-                <div class="follow-btn" *ngIf = "myCompany">
-                    <button (click) = "EditBpage()">Edit</button>
-
-                </div>
-              </div>
-
-        </div>
-
-
-      </div> -->
-  <!-- Use Spinnser to loading image file in Bpage-->
-
   <header>
     <div class="card1">
       <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg"
@@ -54,12 +16,6 @@
           </g>
         </svg><span style="margin-left:10px;">{{country}}</span></h1>
       <div class="card">
-        <!-- <div class="logoheader" *ngIf="!logo">
-
-            <input type="file" #filePicker (change)="onImagePick($event,'companyLogo')" class="picker" style="display: hidden;" >
-            <button type="submit" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-              Add Your Logo</button>
-            </div> -->
         <div class="logoheader">
           <div class="container_logo">
             <div *ngIf="!this.companyService.companyData.companyLogo">
@@ -143,34 +99,13 @@
               <button type="submit" (click)="onEditBpage('facebook', facebook)">Save</button>
             </div>
           </div>
-
-          <!-- <div class="linkedin social">
-
-              <img src="../../../assets/images/square-linkedin-512.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
-
-    <div class="social_links" *ngIf="editSocialLinks">
-        <input type="text" placeholder="Enter Your FaceBook link" formControlName="linkedin" #linkedin>
-        <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button>
-      </div>
-    </div> -->
-    <!-- <div class="gmail social">
-
-        <img src="../../../assets/images/new-google-logo-2015.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
-
-<div class="social_links" *ngIf="editSocialLinks">
-  <input type="text" placeholder="Enter Your FaceBook link" formControlName="gmail" #gmail>
-  <button type="submit" (click)="onEditBpage('gmial', gmail)">Save</button>
-</div>
-</div> -->
                 </div>
 
           <div class="social_bookmark" *ngIf="!myCompany">
              <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span>
 
-            <!-- <button (click)="addBookmark()" *ngIf="!bookmark else load">Bookmark</button> -->
 
             <ng-template #load>
-              <!-- <button (click)="removeBookmark()">Unbookmark</button> -->
             <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="green"/></svg></span>
 
             </ng-template>
@@ -396,7 +331,6 @@
   <div class="body" *ngIf="this.type === 'info'">
     <div class="infoSection2">
       <div class="infoImg" *ngIf="!this.companyService.companyData.infoImage">
-         <!-- <img src="{{this.companyService.companyData.infoImage}}">  -->
         <input type="file" #filePicker (change)="uploadCompanyImage($event,'infoImage')" class="picker" style="display: hidden;"
           visbility="hidden">
         <button type="button" (click)="filePicker.click()" class="btn" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
@@ -526,10 +460,7 @@
         </ng-template>
 
         <ng-template let-item #item1>
-          <!-- <div class="container"> -->
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg> -->
           <div class="items">
-            <!-- <div class="overlay1"> -->
             <div class="container">
               <img [src]="item">
               <div class="overlay1">
@@ -538,9 +469,7 @@
               </div>
             </div>
 
-            <!-- </div> -->
           </div>
-          <!-- </div> -->
         </ng-template>
 
       </div>
@@ -576,18 +505,11 @@
             </div>
           </div>
         </ng-template>
-        <!-- <input type="file"  #filePicker (change)="onImagePick($event,'companyImage')" class="picker" style="display: hidden;"  visbility="hidden">
-        <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span><br/>
-          Add Company Image</button> -->
       </div>
     </div>
   </div>
   <div class="body" *ngIf="this.type === 'product'">
     <div class="infoSection3">
-      <!-- <div class="productAddbutton" *ngIf = "myCompany"><button routerLink= "/productForm">ADD New Product</button></div> -->
-      <!-- <div *ngFor= "let product of products; let i = index;" class="conatiner">
-          <h1>GROUP {{i + 1}}</h1>
-          <div class="productConatiner" [ngClass]= "{'expand': expand[i]}" > -->
       <div *ngIf="!products">
         <h1>No Products Found</h1>
       </div>
@@ -618,9 +540,6 @@
                 <div class="price">
                   <h4>{{product.price}} {{product.minPrice}}</h4>
                 </div>
-                <!-- <div class="hits">
-                  <p>24,354 hits</p>
-                </div> -->
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { CompanyServiceService } from "../../Service/company-service.service";
 import { AuthServiceService } from "src/app/Auth/auth-service.service";
 import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
@@ -47,34 +47,13 @@ export class CompanEditComponent implements OnInit {
     public companyService: CompanyServiceService,
     public authService: AuthServiceService,
     public notification: ToastrService,
-    private route: ActivatedRoute
   ) {
     this.companyId = this.storage.get("companyId");
-  
   }
   ngOnInit() {
-    // this.companyService.token = this.storage.get("token");
-    this.token = this.storage.get("token");
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       this.Image = JSON.parse(res["_body"]).Image;
-      this.editcompanyForm.patchValue({
-        companyName: JSON.parse(res["_body"]).companyName,
-        country: JSON.parse(res["_body"]).country,
-        companyEmail: JSON.parse(res["_body"]).companyEmail,
-        city: JSON.parse(res["_body"]).city,
-        industry: JSON.parse(res["_body"]).industry,
-        category: JSON.parse(res["_body"]).category,
-        website: JSON.parse(res["_body"]).website,
-        companyType: JSON.parse(res["_body"]).companyType,
-        companySize: JSON.parse(res["_body"]).companySize,
-        yearEstd: JSON.parse(res["_body"]).yearEstd,
-        address: JSON.parse(res["_body"]).address,
-        zipCode: JSON.parse(res["_body"]).zipCode,
-        landLine: JSON.parse(res["_body"]).landLine,
-        mobile: JSON.parse(res["_body"]).mobile,
-        shortIntro: JSON.parse(res["_body"]).shortIntro,
-        Image: JSON.parse(res["_body"]).Image
-      });
+      this.editcompanyForm.patchValue(JSON.parse["_body"]);
     });
   }
   Showtwo() {
@@ -109,12 +88,9 @@ export class CompanEditComponent implements OnInit {
     reader.readAsDataURL(file);
   }
   onSubmit() {
-    // this.companyService.token = this.storage.get("token");
     this.companyService
       .UpdateCompany(this.editcompanyForm.value)
-      .subscribe(res => {
-        
-      });
+      .subscribe(res => {});
     this.Id = this.storage.get("companyId");
     this.router.navigate(["/companyPage/" + this.Id], {
       queryParams: { urltype: "default" }

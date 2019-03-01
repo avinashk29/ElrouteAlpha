@@ -20,12 +20,7 @@
             <p>Register and step into the business world</p>
           </div>
 
-          <!-- <p class="submit_page">1 of 3</p> -->
-
           <ul>
-            <!-- <li class="heading"><h1 style="margin:0;">Create Your B Face</h1>
-                <small style="font-size:16px; letter-spacing: 2px;">Register and step into the business world</small>
-              </li> -->
             <li><input type="text" placeholder="Company Name" formControlName="companyName" name="companyName"></li>
             <span *ngIf="!companyForm.get('companyName').valid && companyForm.get('companyName').touched">
               <p>Please Enter Company</p>

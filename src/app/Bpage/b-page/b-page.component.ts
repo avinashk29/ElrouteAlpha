@@ -85,7 +85,6 @@ export class BPageComponent implements OnInit {
     } else {
       this.myCompany = false;
     }
-    // this.companyService.token = this.storagrage.get("token");
     this.comapnyId = this.route.snapshot.paramMap.get("id");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
@@ -127,10 +126,8 @@ export class BPageComponent implements OnInit {
         }
       }
     });
-    // this.companyService.token = this.storage.get("token");
     this.productService.token = this.storage.get("token");
     this.mycompanyId = this.storage.get("companyId");
-    // this.token = this.storage.get("token");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
