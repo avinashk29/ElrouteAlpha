@@ -63,7 +63,12 @@ a {
     display: flex;
     margin-right: 2%;
 	}
-
+  .main-nav{
+    margin-right: 60px
+  }
+  .main-nav p{
+    letter-spacing: 1px;
+  }
   .header {
     position: fixed;
     width: 95%;

@@ -1,32 +1,27 @@
 <app-header></app-header>
-<<<<<<< HEAD
-<app-side-nav></app-side-nav>
 
-=======
-
-<div class="main_heading"><h2>Listed Products</h2></div>
->>>>>>> 3c30eee53e4f4c795d557f7e2fe72587f97641cf
+<!-- <div class="main_heading"><h2>Listed Products</h2></div> -->
 <section>
 
 <div class="leftSection">
 
 <div  *ngIf= "!showForm">
                 <div class="category" *ngIf= "!showEdit">
-                                <input type="search" placeholder="Enter Product/Service to Search">
+
                                    <div class="category_btn1">
                                            <!-- <button typ="button">Add product</button> -->
                                            <div class="productAddbutton"><button (click) = "showForm = true" >ADD Product</button></div>
-                           
+
                                    </div>
                                    <div class="category_btn2">
                                            <button typ="button">Group product</button>
                                    </div>
-                           
+
                                </div>
 </div>
     <app-product *ngIf = "showEdit"></app-product>
     <app-product-form *ngIf= "showForm"></app-product-form>
- 
+
 </div>
 
 <div class="rightSection">
@@ -49,7 +44,7 @@
         </div>
             <div class="product_details">
                     <p style="text-align:right;">{{r.category}}</p>
-                      <h4>{{r.productName}}</h4>
+                      <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
                       <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
                      <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
                      <p style="text-align:right;">{{r.industry}}</p>
@@ -72,6 +67,6 @@
 </div>
 </section>
 <div>
-       
+
 </div>
 
