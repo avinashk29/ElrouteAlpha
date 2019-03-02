@@ -6,6 +6,7 @@ import {Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
+import { UserService } from 'src/app/Service/user-services.service';
 
 @Component({
   selector: 'app-product-form',
@@ -36,7 +37,7 @@ export class ProductFormComponent implements OnInit {
         ]
     }
 ];
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private userService:UserService,
     private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
      }
@@ -138,16 +139,15 @@ export class ProductFormComponent implements OnInit {
 
  
   onSubmit() {
-    if (this.productForm.valid) {
      this.productForm.value;
      this.productForm.value.companyName=this.companyName;
       this.productService.addProduct(this.productForm.value).subscribe(res => {
+        this.productService.productData = JSON.parse(res['_body']); 
+        this.userService.sendData(res);
       });
-       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
+      this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');
-    } else {
-      this.notification.error('Enter Valid Deatils');
-    }
+
 
   }
 }

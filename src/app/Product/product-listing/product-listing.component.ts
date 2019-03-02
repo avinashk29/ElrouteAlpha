@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 export class ProductListingComponent implements OnInit {
 
   companyid;
-  results=[]
+  results=[];
+  showForm = false;
+  showEdit = false;
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService,private productService:ProductServiceService,private router:Router) {
     this.companyid=this.storage.get('companyId')
    }
@@ -20,11 +22,13 @@ export class ProductListingComponent implements OnInit {
   ngOnInit() {
     this.productService.token=this.storage.get('token');
     this.productService.getProduct(this.companyid).subscribe(res=>{
-      this.results=JSON.parse(res['_body']);
+      this.productService.productData=JSON.parse(res['_body']);
+      this.results = this.productService.productData;
+      console.log(this.results);
     })
     
   }
   editProduct(id) {
-    this.router.navigate(['/productEdit/'+id]);
+     this.router.navigate(['/product/'] , {queryParams: {productId: id}});
   }
 }

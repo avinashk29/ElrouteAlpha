@@ -45,6 +45,7 @@ companyLogo
     this.companyName=this.companyService.companyData.companyName;
      this.userService.getUserData().subscribe(res => {
        this.userService.userData=JSON.parse(res['_body']);
+       
 });
   }
   manageFollowing() {
@@ -65,6 +66,7 @@ companyLogo
   }
   editBio(){
     this.bioEdit = !this.bioEdit;
+  
    }
   addBio() {
     this.bioForm.patchValue({

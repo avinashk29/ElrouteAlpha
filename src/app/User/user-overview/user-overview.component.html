@@ -35,7 +35,7 @@
                 <p>{{this.userService.userData.shortBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
-                    <textarea formControlName= "shortBio">{{this.userService.userData.shortBio}}</textarea>
+                    <textarea formControlName= "shortBio" value="{{this.userService.userData.shortBio}}"></textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
             <div class="follower_company">
@@ -84,7 +84,7 @@
         </div>
         <div class="b_page_btn">
             <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
-            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go TO B-Page</button>
+            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go To B-Page</button>
         </div>
     </div>
 

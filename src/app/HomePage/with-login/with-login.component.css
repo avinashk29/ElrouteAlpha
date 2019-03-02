@@ -1249,13 +1249,13 @@ height: 62vh;
 {
  padding: 0 0 0 0 !important;
 }
-.tagged_product{
+.tagged_product_feed{
   width: 95%;
   height: fit-content;
   margin: 0 auto;
   background-color: #151517;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 }
 .content{
   width: 90%;
@@ -1263,7 +1263,7 @@ height: 62vh;
   margin: 0 auto;
   /* background-color: red; */
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 .product_img{
   width: 30%;
@@ -1278,6 +1278,7 @@ height: 62vh;
   width: 63%;
   margin-left: 7%;
   height: 100%;
+  
 }
 .product_content h2{
   margin: 0;

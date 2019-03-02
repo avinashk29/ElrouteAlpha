@@ -39,7 +39,7 @@ editUser(User){
     const UserFormData = new FormData();
     return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
-sendEmployeeDetail(value) {  
+sendData(value) {  
     this.userData.user=value;
     this.empDetailSubject.next(this.userData.user);
 }  
