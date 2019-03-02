@@ -23,7 +23,21 @@ export class ProductComponent implements OnInit {
     private _fb: FormBuilder, public productService: ProductServiceService, private imgupload: ImageUploadService,
      public router: Router, public notification: ToastrService, private route: ActivatedRoute) {
       this.companyId =  this.storage.get('companyId');
-      this.productId = route.snapshot.paramMap.get('id');
+      // this.productId = route.snapshot.paramMap.get('id');
+      this.route.queryParams.filter(params => params.productId).subscribe(params => {
+        this.productService.productId = params.productId;
+        console.log('working');
+
+        this.productService.getOneProduct(this.productService.productId).subscribe(res => {
+         
+          this.productService.productData.productInfo=JSON.parse(res['_body']).productInfo;
+            this.productForm.patchValue(JSON.parse(res['_body']));
+            console.log(res);
+          this.setProductInfo();
+         });
+});
+
+
       this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
        Image: [''],
@@ -37,16 +51,14 @@ export class ProductComponent implements OnInit {
        category: [''],
        tfCode: [''],
       });
+
+
      }
 
   ngOnInit() {
     this.imgupload.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
-    this.productService.getOneProduct(this.productId).subscribe(res => {
-      this.productInfo=JSON.parse(res['_body']).productInfo;
-        this.productForm.patchValue(JSON.parse(res['_body']));
-      this.setProductInfo();
-    });
+
   }
   
   addProductInfo() {
@@ -71,7 +83,7 @@ export class ProductComponent implements OnInit {
 
   setProductInfo(){
     let control = <FormArray>this.productForm.controls.productInfo;
-  this.productInfo.forEach(x => {
+  this.productService.productData.productInfo.forEach(x => {
     control.push(this._fb.group({ 
       productSpecification:x.productSpecification,
       specificationContent:x.specificationContent,
@@ -104,10 +116,12 @@ export class ProductComponent implements OnInit {
   onSubmit() {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
-      this.productService.UpdateProduct(productData,this.productId).subscribe(res => {
+      this.productService.UpdateProduct(productData,this.productService.productId).subscribe(res => {
+        this.productService.productData = JSON.parse(res['_body']).productInfo;
       });
+      this.router.navigate(['/product/']);
       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
-  this.notification.success('Product not Added');
+
     } else {
       this.notification.error('Enter Valid Deatils');
     }
