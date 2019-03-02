@@ -7,6 +7,7 @@ import { Http , Headers} from '@angular/http';
 export class ProductServiceService {
 token;
 productData;
+productId;
   constructor(public http: Http) { }
   addProduct(product) {
     const headers = new Headers();    

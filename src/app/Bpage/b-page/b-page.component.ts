@@ -1,9 +1,9 @@
 import {
   Component,
   OnInit,
-  Inject
+  Inject,NgZone 
 } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import { CompanyServiceService } from "../../Service/company-service.service";
 import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
 import { ProductServiceService } from "../../Service/product-service.service";
@@ -71,6 +71,7 @@ export class BPageComponent implements OnInit {
     private bookmarkService: BookmarkServices,
     private imgUpload: ImageUploadService,
     private _fb: FormBuilder,
+    private ngZone:NgZone,
 
     private spinner: Ng4LoadingSpinnerService
   ) {
@@ -84,29 +85,35 @@ export class BPageComponent implements OnInit {
       gmail: [''],
       section: this._fb.array([])
     });
-    // this.comapnyId = this.route.snapshot.paramMap.get('id');
-    console.log(this.mycompanyId);
-    // this.comapnyId = this.storage.get('companyId');
 
     this.comapnyId = this.route.snapshot.paramMap.get("id");
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
         this.type = paramas.urltype;
-
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData=JSON.parse(res['_body']);
           this.companyFollowers = JSON.parse(res["_body"]).followers.length;
           this.setSection();
+          
         });
+       
       });
+    
+      this.ngZone.run(() => {
+         if (this.type === 'product') {
+          this.productService.getProduct(this.comapnyId).subscribe(res => {
+            this.productService.productData= JSON.parse(res['_body']);
+            this.products=this.productService.productData;
+            console.log(this.products);
+          });
+          this.type = 'product';
+        }
+      
+      });
+      
     this.mycompanyId = this.storage.get('companyId');
-    if (this.type === 'product') {
-      this.productService.getProduct(this.comapnyId).subscribe(res => {
-        this.products = JSON.parse(res['_body']);
-      });
-      this.type = 'product';
-    }
+
     if (this.type === 'info') {
       this.type = 'info';
     }

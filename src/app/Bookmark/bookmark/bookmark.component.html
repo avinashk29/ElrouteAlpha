@@ -6,7 +6,7 @@
 <section>
 <h2>Bookmarks</h2>
 <app-header3></app-header3>
-<input type="search" placeholder="Enter Product/Service to Search">
+<!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
 
     <div class="listing" *ngIf="product">
      <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
@@ -85,8 +85,10 @@
 
     </div> -->
     </div>
-    </div>
   
+<div *ngIf="!product.length" style="text-align:center;"><h2>No Product Bookmarked yet!</h2></div>
+
+</div>
 </section>
 </div>
 

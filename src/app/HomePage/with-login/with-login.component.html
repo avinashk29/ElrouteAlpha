@@ -1,5 +1,5 @@
 <body>
-  <app-side-nav></app-side-nav>
+  
   <app-header></app-header>
 
   <div class="dashboard">
@@ -129,7 +129,7 @@
             </div>
             <div class="about_feed1">
               <!-- <input type="texta" placeholder="Write your post here" formControlName = "Content"> -->
-              <textarea placeholder="Write your post here" formControlName="content"></textarea>
+              <textarea placeholder="Write your post here" formControlName="content" required></textarea>
             </div>
             <div class="add_media_box">
               <div class="add_media">
@@ -143,10 +143,8 @@
                     <div class="container">
                       <img [src]="imagePreview" *ngIf="imagePreview" (click)="filepick.click()" class="imagepreview">
                       <div class="overlay">
-                        <button type="button">x</button> <br />
-                        <input type="file" #file (change)="onImagePick($event,'Image')">
+                        <input type="file" #file (change)="uploadUserImage($event,'Image')">
                         <h5 *ngIf="imagePreview" (click)="file.click()" class="chnge_img">Change Media</h5>
-
                       </div>
                     </div>
                   </div>
@@ -178,7 +176,7 @@
 
           </div>
 
-          <div class="tagged_product" *ngIf="this.feedService.productName">
+          <div class="tagged_product_feed" *ngIf="this.feedService.productName">
             <div class="content">
              <div class="product_img">
                <img src="{{this.feedService.productImage}}">
@@ -187,6 +185,9 @@
                 <h2>{{this.feedService.productName}}</h2>
                 <p>{{this.feedService.productDescription}}</p>
              </div>
+             <div class="tag_close">
+                <span (click)="closeTaggedProduct()" style="cursor: pointer;">X</span>
+                </div>
             </div>
           </div>
         </form>
