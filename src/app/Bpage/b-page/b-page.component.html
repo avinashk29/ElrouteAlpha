@@ -1,5 +1,5 @@
 <app-header></app-header>
-<app-side-nav></app-side-nav>
+
 <section [formGroup]="BForm" (ngSubmit)="onSubmit()">
   <header>
     <div class="card1">
@@ -91,23 +91,23 @@
           <div class="social_media">
         <div class="facebook social">
 
-          <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
+          <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" (click)="likedinEdit=false" *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
           <a href="{{this.companyService.companyData.facebook}}" *ngIf="this.companyService.companyData.facebook"><img src="../../../assets/images/fb.png" ></a>
 
 <div class="social_links" *ngIf="editSocialLinks" style="margin-top: 60px">
     <input type="text" placeholder="Enter Your FaceBook link" formControlName="facebook" #facebook>
-    <button type="submit" (click)="onEditBpage('facebook', facebook)">Save</button>
+    <button type="submit" (click)="onEditBpage('facebook', facebook)"> Add Facebook Profile</button>
   </div>
 </div>
 
 <div class="linkedin social">
 
-    <img src="../../../assets/images/square-linkedin-512.png" (click)="likedinEdit=true"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
-    <a href="{{this.companyService.companyData.linkedin}}" *ngIf= "this.companyService.companyData.linkedin"><img src="../../../assets/images/square-linkedin-512.png"></a>
+    <img src="../../../assets/images/circularLinkedin.png" style="height: 37px; margin-top: 5px; width: 80%" (click)="likedinEdit=true" (click)="editSocialLinks=false"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+    <a href="{{this.companyService.companyData.linkedin}}" style="height: 37px; margin-top: 5px; width: 80%" *ngIf= "this.companyService.companyData.linkedin"><img src="../../../assets/images/circularLinkedin.png"></a>
     <!-- <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button> -->
 <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
 <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
-<button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" >Save</button>
+<button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" > Add Linkedin  Profile</button>
 </div>
 </div>
 <!-- <div class="gmail social">
@@ -123,11 +123,11 @@
 
 
 <div class="social_bookmark" >
-   <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="red"/></svg></span>
+   <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
 
 
   <ng-template #load>
-  <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="green"/></svg></span>
+  <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
 
   </ng-template>
 
@@ -194,7 +194,7 @@
               <p *ngIf="!this.companyService.companyData.shortIntro"><i>All business,large and smaall,new or established ,struggle
                   to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize
                   yourself is less than 400 characters.</i></p>
-              <p *ngIf="this.companyService.companyData.shortIntro">{{this.companyService.companyData.shortIntro}}</p>
+              <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{this.companyService.companyData.shortIntro}}</p>
             </div>
             <div class="bio_btn">
               <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@
 
 
         <div *ngIf="editshortIntro" class="edit_dummy_text">
-          <textarea placeholder="Enter Bio" formControlName="shortIntro" #shortIntro></textarea>
+          <textarea placeholder="Enter Bio" formControlName="shortIntro" value = "{{this.companyService.companyData.shortIntro}}" #shortIntro ></textarea>
           <button type="submit" (click)="onEditBpage('shortIntro',shortIntro)" >Save</button>
 
         </div>
@@ -380,16 +380,16 @@
             </svg></span></h3>
         <!-- <p>{{shortIntro}}</p> -->
         <div *ngIf="!editshortIntro">
-          <p *ngIf="!this.companyService.shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting
+          <p *ngIf="!this.companyService.companyData.shortIntro">Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
             printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <p *ngIf="this.companyService.shortIntro">{{this.companyService.shortIntro}}</p>
+          <p *ngIf="this.companyService.companyData.shortIntro">{{this.companyService.companyData.shortIntro}}</p>
         </div>
         <!-- <div class="bio_btn">
                     <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add bio</button>
                   </div>     -->
         <div *ngIf="editshortIntro" class="edit_bio">
-          <textarea placeholder="Enter Bio" formControlName="shortIntro" #shortIntro></textarea>
+          <textarea placeholder="Enter Bio" formControlName="shortIntro"  value = "{{this.companyService.companyData.shortIntro}}" #shortIntro></textarea>
           <button type="submit" (click)="onEditBpage('shortIntro',shortIntro)">Save</button>
 
         </div>
@@ -574,6 +574,68 @@
     </div>
 
   </div>
+  <div class="body1" *ngIf="this.type === 'contact'">
 
+    <div class="comapany_contact">
+            <h2>Company Divisions</h2>
+    </div>
+  <div class="company_details">
+      <div class="company_details1">
+          <div class="company_email">
+                 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+                 <p>abc@infotech.com</p>
+         </div>
+            <div class="company_email1">
+             <h2>Sales Division</h2>
+           </div>
+       </div>
+       <div class="company_details1">
+          <div class="company_email">
+                 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+                 <p>abc@infotech.com</p>
+         </div>
+            <div class="company_email1">
+             <h2>Marketing Division</h2>
+           </div>
+       </div>
+  </div>
+  <div class="company_details">
+      <div class="company_details1">
+          <div class="company_email">
+                 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+                 <p>abc@infotech.com</p>
+         </div>
+            <div class="company_email1">
+             <h2>HR Division</h2>
+           </div>
+       </div>
+       <div class="company_details1">
+          <div class="company_email">
+                 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+                 <p>abc@infotech.com</p>
+         </div>
+            <div class="company_email1">
+             <h2>Technical Division</h2>
+           </div>
+       </div>
+
+
+   </div>
+      <div class="comapany_contact">
+          <h2>Company Office</h2>
+        </div>
+    <div class="company_address">
+        <div class="google_map">
+            Google Map here
+          </div>
+          <div class="complete_address">
+            <p>India Address </p>
+            <p>277, Mahaveer Nagar 2, Maharani Farm, Gayatri Nagar A, Durgapura, Jaipur, Rajasthan 302020</p>
+            <p>Email:-</p>
+            <p>info@naturaldyes.in</p>
+
+            </div>
+    </div>
+  </div>
 </section>
 <app-footer></app-footer>

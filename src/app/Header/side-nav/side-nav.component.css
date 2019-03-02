@@ -52,6 +52,10 @@ aside ul {
   background-color:white;
 
 }
+.activate a
+{
+  color:black !important;
+}
 
 aside ul li {
   border-bottom: 1px solid #ccc;
