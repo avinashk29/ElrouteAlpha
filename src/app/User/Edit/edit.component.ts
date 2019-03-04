@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserData().subscribe(res => {
       this.editForm.patchValue( JSON.parse(res['_body']
-      ))
+      ));
     });
 
   }
@@ -36,7 +36,7 @@ onEdit() {
 
   const formData = this.editForm.value;
   this.userService.editUser(formData).subscribe(res => {
-     this.router.navigate(['/bookmark' ], {queryParams: {edit: true}});
+     this.userService.userData = JSON.parse(res['_body']);
      this.dialogRef.close(EditComponent);
   });
 

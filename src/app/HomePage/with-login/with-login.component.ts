@@ -28,7 +28,7 @@ export class WithLoginComponent implements OnInit {
   feeds = [];
   noFeeds = true;
   addLink = false;
-  feedImage
+  feedImage;
   companyLogo;
   feed = new FormGroup({
     content: new FormControl(''),
@@ -41,7 +41,7 @@ export class WithLoginComponent implements OnInit {
   pId;
   product = [];
   userFollow;
-  companyFollowers
+  companyFollowers;
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -128,11 +128,12 @@ export class WithLoginComponent implements OnInit {
   }
 
   onAddpost() {
+    this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
-      this.feed.value.Image=this.feedImage;
-    if(!this.feed.value.Image){
+      this.feed.value.Image = this.feedImage;
+    if (!this.feed.value.Image) {
         this.notification.warning('Please Add Image!');
-    }else{
+    } else {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
         console.log(res)
       });
@@ -143,7 +144,7 @@ export class WithLoginComponent implements OnInit {
       this.feedService.productDescription = null;
       this.notification.success('Post Added!');
     }
-   
+
   }
   closeTaggedProduct(){
     this.feedService.productName = null;
