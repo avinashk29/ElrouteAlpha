@@ -97,20 +97,14 @@ export class BPageComponent implements OnInit {
           this.setSection();
           
         });
-       
+     
+      
+    
       });
     
-      this.ngZone.run(() => {
-         if (this.type === 'product') {
-          this.productService.getProduct(this.comapnyId).subscribe(res => {
-            this.productService.productData= JSON.parse(res['_body']);
-            this.products=this.productService.productData;
-            console.log(this.products);
-          });
-          this.type = 'product';
-        }
-      
-      });
+   
+    
+
       
     this.mycompanyId = this.storage.get('companyId');
 
@@ -356,7 +350,7 @@ export class BPageComponent implements OnInit {
       section: new FormControl(this.BForm.value.section)
     });
     this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-      this.companyService.section = JSON.parse(res['_body']).section;
+      this.companyService.companyData.section = JSON.parse(res['_body']).section;
     });
   }
   onadeleteImg(item) {

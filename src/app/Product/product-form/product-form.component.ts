@@ -143,7 +143,7 @@ export class ProductFormComponent implements OnInit {
      this.productForm.value.companyName=this.companyName;
       this.productService.addProduct(this.productForm.value).subscribe(res => {
         this.productService.productData = JSON.parse(res['_body']); 
-        this.userService.sendData(res);
+        // this.productService.sendData(JSON.parse(res['_body']));
       });
       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
   this.notification.success('Product Added');

@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
          
           this.productService.productData.productInfo=JSON.parse(res['_body']).productInfo;
             this.productForm.patchValue(JSON.parse(res['_body']));
-            console.log(res);
+            // console.log(res);
           this.setProductInfo();
          });
 });
@@ -117,7 +117,9 @@ export class ProductComponent implements OnInit {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
       this.productService.UpdateProduct(productData,this.productService.productId).subscribe(res => {
-        this.productService.productData = JSON.parse(res['_body']).productInfo;
+        this.productService.productData.productInfo = JSON.parse(res['_body']).productInfo;
+        this.productService.productData=JSON.parse(res['_body'])
+        // this.productService.sendData(res);
       });
       this.router.navigate(['/product/']);
       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
