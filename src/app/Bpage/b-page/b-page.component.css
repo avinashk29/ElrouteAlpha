@@ -1027,8 +1027,9 @@ mat-panel-title h4 {
   height: 25vh;
   display: flex;
   border: solid 1px gray;
-  border-radius: 4px 10px 10px 1px;
- 
+  border-radius: 20px;
+  margin: 0 auto; width: 50%;
+  margin-top: 4%;
   align-items: center;
 }
 .no_product_left
@@ -1036,10 +1037,13 @@ mat-panel-title h4 {
   height: 25vh;
   width:35%;
   background-color: gray;
+  border-radius: 16px 0px 0px 16px;
 }
 .no_product_right
 {
   margin-left: 4%;
+  width: 55%;
+  text-align: center;
 }
 
 @media screen and (max-width:700px) {

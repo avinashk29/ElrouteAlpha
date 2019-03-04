@@ -455,6 +455,21 @@
       </div>
 
       <!-- end of section -->
+      <div class="no_product" >
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right" *ngIf="!this.companyService.companyData.certification.length">
+              <h3>Add Your Company CERTIFICATES Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <button type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
       <div class="certification" *ngIf="this.companyService.companyData.certification.length">
 
         <div class="item_btn">
@@ -490,12 +505,22 @@
         </ng-template>
 
       </div>
-<<<<<<< HEAD
-      <div class="companyImg">
-        
-=======
+      <div class="no_product" >
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right">
+              <h3>Add Your Company Images Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
       <div class="companyImg" *ngIf="this.companyService.companyData.companyImage.length">
->>>>>>> 75c79a476a1c26c9353b4e9e2c74d938c43b2619
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
           <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
@@ -505,14 +530,7 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-        <div class="no_product">
-            <div class="no_product_left">
-              
-              </div>
-              <div class="no_product_right">
-                <h3>No Product Bookmarked yet!</h3>
-               </div> 
-          </div>
+       
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev *ngIf="this.companyService.companyData.companyImage.length > 2">
@@ -642,5 +660,6 @@
             </div>
     </div>
   </div>
-</section>
+  </section>
+
 
