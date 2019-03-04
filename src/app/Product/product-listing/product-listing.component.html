@@ -10,7 +10,7 @@
 
                                    <div class="category_btn1">
                                            <!-- <button typ="button">Add product</button> -->
-                                           <div class="productAddbutton"><button (click) = "showForm = true" >ADD Product</button></div>
+                                           <div class="productAddbutton"><button (click) = "showForm = true" (click) = "showEdit = false"  >ADD Product</button></div>
 
                                    </div>
                                    <div class="category_btn2">
@@ -36,7 +36,7 @@
                      <div class="product_img">
                             <img src="{{r.Image}}">
                             <div class="edit_btn">
-                                    <button type="button" (click)="editProduct(r._id)" (click) = "showEdit = true">Edit</button>
+                                    <button type="button" (click)="editProduct(r._id)" (click) = "showEdit = true" (click) = "showForm = false">Edit</button>
                              </div>
                         </div>
 

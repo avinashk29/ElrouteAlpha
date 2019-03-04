@@ -10,9 +10,9 @@
       <div class="Uname">
       <input type="text" placeholder="NAME" formControlName="userName" name="userName">
        <span *ngIf="!editForm.get('userName').valid && editForm.get('userName').touched" class="errorMsg"><p>Please Enter Company</p></span>
-       
+
       </div>
-    
+
       <div class="Ulocation">
         <select formControlName="location" name="location">
             <option selected="selected">India</option>
@@ -21,12 +21,9 @@
     </div>
   </li>
   <li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="title" name="title"></li>
-  
+
   <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="email" name="email"></li>
   <!-- <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="Password" name="Password" [ngClass]="{'error': !editForm.get('Password').valid && editForm.get('Password').touched }" ></li> -->
-  <li class="form-elements"><input type="text" placeholder="Facebook Link"  formControlName="title" name="title"></li>
-  <li class="form-elements"><input type="text" placeholder="LinkedIn Link"  formControlName="title" name="title"></li>
-  <li class="form-elements"><input type="text" placeholder="Twitter Link"  formControlName="title" name="title"></li>
   </ul>
   <button type="submit">Save Changes</button>
     </form>

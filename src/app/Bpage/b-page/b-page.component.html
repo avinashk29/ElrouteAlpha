@@ -455,7 +455,7 @@
       </div>
 
       <!-- end of section -->
-      <div class="certification">
+      <div class="certification" *ngIf="this.companyService.companyData.certification.length">
 
         <div class="item_btn">
           <h2>CERTIFICATES</h2>
@@ -469,10 +469,10 @@
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.certification" [width]="830" [$prev]="prev1" [$next]="next1"
           [$item]="item1"></div>
 
-        <ng-template #prev1>
+        <ng-template #prev1 *ngIf="this.companyService.companyData.certification.length > 3">
           <img src="../../../assets/images/left-arrow.png">
         </ng-template>
-        <ng-template #next1>
+        <ng-template #next1 *ngIf="this.companyService.companyData.certification.length > 3">
           <img src="../../../assets/images/right-arrow.png">
         </ng-template>
 
@@ -490,7 +490,7 @@
         </ng-template>
 
       </div>
-      <div class="companyImg">
+      <div class="companyImg" *ngIf="this.companyService.companyData.companyImage.length">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
           <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
@@ -502,10 +502,10 @@
         </div>
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
-        <ng-template #prev>
+        <ng-template #prev *ngIf="this.companyService.companyData.companyImage.length > 2">
           <img src="../../../assets/images/left-arrow.png">
         </ng-template>
-        <ng-template #next>
+        <ng-template #next *ngIf="this.companyService.companyData.companyImage.length > 2">
           <img src="../../../assets/images/right-arrow.png">
         </ng-template>
         <ng-template #item2 let-item>
