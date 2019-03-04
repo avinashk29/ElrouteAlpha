@@ -110,15 +110,7 @@
 <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" > Add Linkedin  Profile</button>
 </div>
 </div>
-<!-- <div class="gmail social">
 
-<img src="../../../assets/images/new-google-logo-2015.png" *ngIf= "!editSocialLinks" (click)="editSocialLinks=true">
-
-<div class="social_links" *ngIf="editSocialLinks">
-<input type="text" placeholder="Enter Your FaceBook link" formControlName="gmail" #gmail>
-<button type="submit" (click)="onEditBpage('gmial', gmail)">Save</button>
-</div>
-</div> -->
       </div>
 
 
@@ -463,7 +455,7 @@
       </div>
 
       <!-- end of section -->
-      <div class="certification">
+      <div class="certification" *ngIf = "this.certification.length" >
 
         <div class="item_btn">
           <h2>CERTIFICATES</h2>
@@ -477,11 +469,11 @@
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.certification" [width]="830" [$prev]="prev1" [$next]="next1"
           [$item]="item1"></div>
 
-        <ng-template #prev1>
-          <img src="../../../assets/images/left-arrow.png">
+        <ng-template #prev1 >
+          <img src="../../../assets/images/left-arrow.png"  *ngIf = "this.certification.length > 3" >
         </ng-template>
-        <ng-template #next1>
-          <img src="../../../assets/images/right-arrow.png">
+        <ng-template #next1 >
+          <img src="../../../assets/images/right-arrow.png" *ngIf = "this.certification.length > 3">
         </ng-template>
 
         <ng-template let-item #item1>
@@ -498,7 +490,7 @@
         </ng-template>
 
       </div>
-      <div class="companyImg">
+      <div class="companyImg" *ngIf="this.companyImage.length">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
           <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
@@ -508,13 +500,21 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
+        <div class="no_product">
+            <div class="no_product_left">
+              
+              </div>
+              <div class="no_product_right">
+                <h3>No Product Bookmarked yet!</h3>
+               </div> 
+          </div>
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
-        <ng-template #prev>
+        <ng-template #prev *ngIf="this.companyImage.length > 2" >
           <img src="../../../assets/images/left-arrow.png">
         </ng-template>
-        <ng-template #next>
-          <img src="../../../assets/images/right-arrow.png">
+        <ng-template #next >
+          <img src="../../../assets/images/right-arrow.png" *ngIf="this.companyImage.length > 2">
         </ng-template>
         <ng-template #item2 let-item>
           <div class="items1">
@@ -638,4 +638,4 @@
     </div>
   </div>
 </section>
-<app-footer></app-footer>
+

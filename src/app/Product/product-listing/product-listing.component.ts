@@ -21,11 +21,11 @@ export class ProductListingComponent implements OnInit {
 
   ngOnInit() {
     this.productService.token=this.storage.get('token');
-    // this.productService.getProduct(this.companyid).subscribe(res=>{
-    //   this.productService.productData=JSON.parse(res['_body']);
-    //   this.results = this.productService.productData;
-    //   console.log(this.results);
-    // })
+    this.productService.getProduct(this.companyid).subscribe(res=>{
+      this.productService.productData=JSON.parse(res['_body']);
+      this.results = this.productService.productData;
+      console.log(this.results);
+    })
     
   }
   editProduct(id) {

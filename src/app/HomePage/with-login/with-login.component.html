@@ -1,5 +1,5 @@
 <body>
-  
+
   <app-header></app-header>
 
   <div class="dashboard">
@@ -30,7 +30,7 @@
             </div>
             <div class="follower_img" *ngIf="this.userService.userData.userImage">
               <div class="follower_img1">
-                <img src="{{this.userService.userData.userImage}}" > 
+                <img src="{{this.userService.userData.userImage}}" >
               </div>
             </div>
             <div *ngIf="!this.userService.userData.userImage">
@@ -54,13 +54,13 @@
         <div class="user_follower">
           <div class="user_following" routerLink="/Following">
             <h2>Following</h2>
-            
-                  <span >{{this.userService.following}}</span>
-              
+
+                  <span>{{this.userService.following}}</span>
+
           </div>
           <div class="user_following" routerLink="/bookmark">
               <h2>Bookmarks</h2>
-                  <span >{{this.userService.bookmark}}</span>
+                  <span>{{this.userService.bookmark}}</span>
           </div>
 
         </div>
@@ -68,7 +68,8 @@
         <div class="user_company_details" *ngIf="haveCompany">
           <div class="company">
             <div class="company_logo">
-              <img src="{{this.companyLogo}}">
+              <img src="{{this.companyLogo}}" *ngIf="this.companyLogo">
+              <img src = "../../../assets/images/user.png"  *ngIf="!this.companyLogo">
             </div>
             <div class="company_name">
               <h2 routerLink="/companyPage/{{haveCompany}}" [queryParams]="{urltype:'default'}">{{this.companyName}}</h2>
@@ -80,10 +81,10 @@
             <h2 routerLink="/Followers">Followers</h2>
             <p>{{companyFollowers}}</p>
           </div>
-          <div class="company_following">
+          <!-- <div class="company_following">
             <h2>Hits</h2>
             <p>28</p>
-          </div>
+          </div> -->
           <div class="company_edit_btn">
             <button (click)="EditBpage()">Edit</button>
           </div>
@@ -136,8 +137,8 @@
                 <div class="add_media2">
 
                   <div class="add_media_tag">
-                    <input type="file" #filepick (change)="uploadUserImage($event,'Image')">
-                    <span *ngIf="!imagePreview"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <input type="file" #filepick (change)="uploadUserImage($event,'Image')" />
+                    <span *ngIf="!imagePreview"  (click)="filepick.click()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M19.5 12c-2.483 0-4.5 2.015-4.5 4.5s2.017 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.017-4.5-4.5-4.5zm2.5 5h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-18 0l4-5.96 2.48 1.96 2.52-4 1.853 2.964c-1.271 1.303-1.977 3.089-1.827 5.036h-9.026zm10.82 4h-14.82v-18h22v7.501c-.623-.261-1.297-.422-2-.476v-5.025h-18v14h11.502c.312.749.765 1.424 1.318 2zm-9.32-11c-.828 0-1.5-.671-1.5-1.5 0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5c0 .829-.672 1.5-1.5 1.5z" /></svg></span>
                     <h2 (click)="filepick.click()" *ngIf="!imagePreview">Add Media</h2>
                     <div class="container">
@@ -153,7 +154,7 @@
                         <path d="M16.949 7.051c.39.389.391 1.022.001 1.413l-8.485 8.486c-.392.391-1.023.391-1.414 0-.39-.39-.39-1.021.001-1.412l8.485-8.488c.39-.39 1.024-.387 1.412.001zm-5.805 10.043c-.164.754-.541 1.486-1.146 2.088l-1.66 1.66c-1.555 1.559-3.986 1.663-5.413.235-1.429-1.428-1.323-3.857.234-5.413l1.661-1.663c.603-.601 1.334-.98 2.087-1.144l1.934-1.934c-1.817-.306-3.829.295-5.313 1.783l-1.662 1.661c-2.342 2.34-2.5 5.978-.354 8.123 2.145 2.146 5.783 1.985 8.123-.354l1.66-1.66c1.486-1.487 2.089-3.496 1.783-5.314l-1.934 1.932zm3.222-15.231l-1.66 1.66c-1.486 1.488-2.089 3.499-1.783 5.317l1.935-1.935c.162-.753.54-1.485 1.146-2.087l1.66-1.66c1.556-1.559 3.984-1.663 5.413-.234 1.429 1.427 1.324 3.857-.233 5.415l-1.66 1.66c-.602.603-1.334.981-2.089 1.145l-1.934 1.934c1.818.306 3.827-.295 5.317-1.783l1.658-1.662c2.34-2.339 2.498-5.976.354-8.121-2.145-2.146-5.78-1.987-8.124.351z" /></svg></span>
                     <h3 x> Add Links</h3>
                   </div>
-                  <a target="_blank" href="http://{{this.feedService.productName}}"> {{this.feed.value.link}}</a>
+
 
                 </div>
                 <div class="post">
@@ -168,9 +169,12 @@
                   </div>
                 </div>
               </div>
+
               <div class="input_link">
+                  <a target="_blank"  *ngIf="!addLink" href="http://{{this.feedService.productName}}"> <h3>{{this.feed.value.link}}</h3></a>
                 <input *ngIf="addLink" type="url" placeholder="Enter Link here" formControlName="link">
                 <button *ngIf="addLink" (click)="addLink = false">Save</button>
+
               </div>
             </div>
 

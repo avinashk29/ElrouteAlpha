@@ -4,7 +4,6 @@ section{
   height: 100vh;
   margin: 0 auto;
   margin-bottom: 40px;
-  margin-top: -50px;
 }
 .productForm{
   display: table-cell;
@@ -12,10 +11,9 @@ section{
   height: 100%;
 }
 .productForm form{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
-
 .listingSection input{
   width: 100%;
   height: 35px;

@@ -1,27 +1,32 @@
 <app-header></app-header>
+<<<<<<< HEAD
 <app-side-nav></app-side-nav>
 
+=======
+
+<!-- <div class="main_heading"><h2>Listed Products</h2></div> -->
+>>>>>>> dfcc1464f6ff0b24e8d88ad6105d2b4111167ade
 <section>
 
 <div class="leftSection">
 
 <div  *ngIf= "!showForm">
                 <div class="category" *ngIf= "!showEdit">
-                                <input type="search" placeholder="Enter Product/Service to Search">
+
                                    <div class="category_btn1">
                                            <!-- <button typ="button">Add product</button> -->
-                                           <div class="productAddbutton"><button (click) = "showForm = true" >ADD Product</button></div>
-                           
+                                           <div class="productAddbutton"><button (click) = "showForm = true" (click) = "showEdit = false"  >ADD Product</button></div>
+
                                    </div>
                                    <div class="category_btn2">
                                            <button typ="button">Group product</button>
                                    </div>
-                           
+
                                </div>
 </div>
     <app-product *ngIf = "showEdit"></app-product>
     <app-product-form *ngIf= "showForm"></app-product-form>
- 
+
 </div>
 
 <div class="rightSection">
@@ -36,7 +41,7 @@
                      <div class="product_img">
                             <img src="{{r.Image}}">
                             <div class="edit_btn">
-                                    <button type="button" (click)="editProduct(r._id)" (click) = "showEdit = true">Edit</button>
+                                    <button type="button" (click)="editProduct(r._id)" (click) = "showEdit = true" (click) = "showForm = false">Edit</button>
                              </div>
                         </div>
 
@@ -44,7 +49,7 @@
         </div>
             <div class="product_details">
                     <p style="text-align:right;">{{r.category}}</p>
-                      <h4>{{r.productName}}</h4>
+                      <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
                       <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
                      <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
                      <p style="text-align:right;">{{r.industry}}</p>
@@ -67,6 +72,6 @@
 </div>
 </section>
 <div>
-       
+
 </div>
 
