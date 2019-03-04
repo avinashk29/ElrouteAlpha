@@ -218,7 +218,9 @@
 }
 .company_logo img {
     border-radius: 100%;
-    width: 100%;
+    width: 45px;
+    height: 45px;
+
 }
 
 .company_name {
