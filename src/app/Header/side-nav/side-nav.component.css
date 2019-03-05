@@ -49,9 +49,10 @@ aside ul {
   width: 100%;
 }
 .activate{
-  background-color:white;
+  background-color:#333333;
 
 }
+
 
 aside ul li {
   border-bottom: 1px solid #ccc;

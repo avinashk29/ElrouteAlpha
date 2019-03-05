@@ -427,8 +427,7 @@ category_btn {
 
 }
 
-<<<<<<< HEAD
-.example-viewport {
+/* .example-viewport {
   height: 600px;
   width: 400px;
   scroll-behavior: inherit;
@@ -437,10 +436,8 @@ category_btn {
 
 .example-item {
   height: 50px;
-}
+} */
 
-=======
->>>>>>> cdbac0de0ad42b6ee1d1aa8aea693f91df5abfc6
 
 
 
@@ -947,7 +944,7 @@ mat-panel-title h4 {
 
 .company_email {
   display: flex;
-  width: 45%;
+  width: 50%;
   MARGIN: 0 AUTO;
   font-size: 28px;
 }
@@ -1256,19 +1253,19 @@ mat-panel-title h4 {
     width: 100% ! important;
   }
 
-  .comapany_contact[_ngcontent-c1] {
+  .comapany_contact {
     width: 96%;
     margin: 0 auto;
   }
 
-  .company_details[_ngcontent-c1] {
+  .company_details {
     display: flex;
     width: 100%;
     margin: 0 auto;
     margin-top: 2%;
   }
 
-  .company_details1[_ngcontent-c1] {
+  .company_details1 {
     width: 47%;
     box-shadow: 0px 3px 10px #5555;
     height: 131px;
@@ -1276,14 +1273,14 @@ mat-panel-title h4 {
     margin-left: 2%;
   }
 
-  .company_email[_ngcontent-c1] {
+  .company_email {
     display: flex;
     width: 92%;
     MARGIN: 0 AUTO;
     font-size: 28px;
   }
 
-  .company_email[_ngcontent-c1] p[_ngcontent-c1] {
+  .company_email p {
     width: 21%;
     color: #0A9AB1;
     font-size: 14px;
@@ -1313,6 +1310,7 @@ mat-panel-title h4 {
   .complete_address {
     font-size: 15px;
     width: 100%;
+    margin-left: 1%;
   }
 
   .section1 {
@@ -1947,6 +1945,7 @@ label {
   display: flex;
   width: 95%;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 
@@ -1961,7 +1960,7 @@ label {
 /* <---------------------------------------------------------------PRODUCT CARD-------------------------------------------------------------------------> */
 
 .Card {
-  width: 50%;
+  width: 47%;
   /* height: 15rem; */
   border-radius: 10px;
   margin-right: 3%;
@@ -2424,6 +2423,6 @@ input[type="file"] {
   margin-right: 5%;
 }
 .social img{
-  width: 100%;
-  height: 47px;
+  width: 50px;
+  height: 50px;
 }
