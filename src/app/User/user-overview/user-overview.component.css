@@ -212,10 +212,10 @@
     margin: 0 auto;
 }
 
-.company_logo {
+/* .company_logo {
     width: 20%;
     height: 14%;
-}
+} */
 .company_logo img {
     border-radius: 100%;
     width: 45px;

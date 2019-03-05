@@ -103,6 +103,9 @@ this.follows.token=this.storage.get('token');
         });
 
           if (this.type === 'product') {
+            this.two = false;
+            this.three = true;
+            this.four = false;
 
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -117,10 +120,17 @@ this.follows.token=this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
 
     if (this.type === 'info') {
+      this.two = true;
+      this.three = false;
+      this.four = false;
       this.type = 'info';
+
     }
     if (this.type === 'contact') {
       this.type = 'contact  ';
+      this.two = false;
+      this.three = false;
+      this.four = true;
     }
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -298,7 +308,11 @@ this.follows.token=this.storage.get('token');
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'info' }
     });
+    this.two = true;
+this.three = false;
+this.four = false;
     this.type = 'info';
+    
   }
   showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -307,12 +321,18 @@ this.follows.token=this.storage.get('token');
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
     });
+    this.two = false;
+this.three = true;
+this.four = false;
     this.type = 'product';
   }
   showFour() {
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'contact' }
     });
+    this.two = false;
+this.three = false;
+this.four = true;
     this.type = 'contact';
   }
   editshortBio() { }

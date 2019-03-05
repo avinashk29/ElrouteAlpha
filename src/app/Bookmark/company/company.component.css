@@ -6,16 +6,21 @@
   margin-left: 7%;
   margin-top: 2%;
   position: absolute;
+  height: fit-content;
+  /* background-color: red;   */
 }
 section{
   width: 90%;
   margin: 0 auto;
   padding: 4px;
   margin-top: 30px;
+  height: fit-content;
+  /* background-color: red;   */
 }
 .listing{
   width: 100%;
-  height: auto;
+  height: fit-content;
+  min-height: 80vh;
 }
 .companyCard{
   width: 48%;
@@ -49,6 +54,7 @@ section{
 .companyInfo h1{
   margin: 0;
   padding: 5px 0 0 0;
+  font-size: 20px;
 }
 .companyInfo button{
   width: 32%;
