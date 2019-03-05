@@ -14,7 +14,8 @@ section{
 }
 .listing{
   width: 100%;
-  height: auto;
+  height: fit-content;
+  min-height: 80vh;
 }
 .companyCard{
   width: 48%;
