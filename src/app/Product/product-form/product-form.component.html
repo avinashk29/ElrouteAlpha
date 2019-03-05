@@ -24,7 +24,7 @@
         <div class="discription">
           <h2>Description</h2>
           <textarea placeholder="Short Description" formControlName="shortDescription" minlength="20" maxlength="200"></textarea>
-          <div class="chips"></div>
+          <!-- <div class="chips"></div> -->
         </div>
         <div>
           <div class="category" formArrayName="productInfo">
@@ -43,8 +43,8 @@
                 <div class="fields" style="width: 100%;margin-top: 5px" formArrayName="fields">
                   <div *ngFor="let field of productinfo.get('fields').controls; let j = index; ">
                     <div [formGroupName]="j">
-                      <input type="text" placeholder="Enter Field Name " style="width: 43%" formControlName="fieldName">
-                      <input type="text" placeholder="Enter Field Name " style="width: 43%; margin-left: 7.55555%"
+                      <input type="text" placeholder="Enter Field Name " style="width: 42%" formControlName="fieldName">
+                      <input type="text" placeholder="Enter Field Name " style="width: 42%; margin-left: 7.55555%"
                         formControlName="fieldDes">
                       <button (click)="deleteField(productinfo.controls.fields, j)">
                         Delete
@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <button type="button" style="float:right;margin-top: 30px;" (click)="addProductInfo()">Apply</button>
+          <button type="button" style="float:right;" (click)="addProductInfo()" class="product_submit">Apply</button>
         </div>
         <div class="otherSection">
           <div class="price" style="margin-top:60px;">

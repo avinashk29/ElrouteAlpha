@@ -52,14 +52,16 @@ aside ul {
   transition: .5s ease-in-out;
 }
 .activate{
-  background-color:#333333;
+  background-color:white;
 
 }
 .activate a
 {
   color:black !important;
 }
-
+aside ul li:hover{
+  color: black !important;
+}
 
 aside ul li {
   border-bottom: 1px solid #ccc;
@@ -155,6 +157,4 @@ aside{
 
 }
 }
-aside ul li:hover{
-  color: black !important;
-}
+

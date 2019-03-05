@@ -15,6 +15,7 @@ a {
 .logo {
 	margin: 0;
   font-size: 1.45em;
+  margin-left: 4%;
   outline: none;
 }
 .logo img
@@ -22,7 +23,7 @@ a {
   cursor: pointer;
   outline: none;
   width: 150px;
-  margin-left: 35%;
+  
 }
 .logo a,
 .main-nav a {
@@ -103,7 +104,7 @@ a {
   outline: none;
   display: flex;
   cursor: pointer;
-  padding: 7px 0;
+  padding: 7px 19px;
 }
 .user_img img
 {

@@ -299,7 +299,52 @@ section{
     font-size: 14px;
     font-weight: 100;
   }
- @media screen and (max-width: 700px){
+.header
+{
+  margin:0 auto;
+  width: 85%;
+  border-bottom: solid 1px;
+  display: flex;
+}
+  .header_left
+  {
+    display: flex;
+    width: 100%;
+  }
+  .company_logo
+  {
+    width: 7%;
+    margin: 0px 10px 0 0;
+
+  }
+  .company_logo img
+  {
+    width: 100%;
+  }
+  .company_name h2
+  {
+    margin-bottom: auto;
+    font-weight: 400;
+    margin-top: auto;
+  }
+  .header_right ul 
+  {
+  
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+  .header_right ul li
+  {
+    display: inline;
+
+  }
+  .header_right li
+  {
+    font-size: 25px;
+    margin: 0px 0px 0px 40px;
+
+  }
+  @media screen and (max-width: 700px){
     section{
         width: 97%;
         margin: 0 auto;
