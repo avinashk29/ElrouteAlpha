@@ -87,7 +87,7 @@ export class BPageComponent implements OnInit {
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
 this.bookmarkService.token=this.storage.get('token')
-
+this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
@@ -95,7 +95,8 @@ this.bookmarkService.token=this.storage.get('token')
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           console.log( JSON.parse(res['_body']));
-          this.companyFollowers = JSON.parse(res['_body']).followers.length;
+          this.companyFollowers= JSON.parse(res['_body']).followers.length;
+          console.log(this.companyFollowers)
           this.setSection();
 
 
@@ -146,7 +147,7 @@ this.bookmarkService.token=this.storage.get('token')
     this.userService.getUserData().subscribe(res => {
       this.userInfo = JSON.parse(res['_body']).following;
       for (let i = 0; i < this.userInfo.length; i++) {
-        if (this.userInfo[i] === this.comapnyId) {
+        if (this.comapnyId ===this.userInfo[i]) {
           this.Follower = true;
         } else {
           this.Follower = false;
@@ -179,7 +180,6 @@ this.bookmarkService.token=this.storage.get('token')
       }
     });
     if (this.type === 'product') {
-
       this.type = 'product';
       this.ngZone.run(() => {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -374,12 +374,20 @@ this.four = true;
 
   onfollow() {
     this.Follower = true;
+    console.log(this.comapnyId)
     this.follows.addFollow(this.comapnyId).subscribe(res => {
-    });
+      //  this.companyService.companyData.followers;
+      console.log(this.companyFollowers.length)
+       console.log(res)
+       });
+ 
   }
   onunfollow() {
     this.Follower = false;
     this.follows.Unfollow(this.comapnyId).subscribe(res => {
+    // this.companyService.companyData.followers;
+    console.log(this.companyFollowers.length);
+    console.log(res)
     });
   }
 
@@ -395,31 +403,37 @@ this.four = true;
   onadeleteImg(item) {
         const i = this.certification.indexOf(item);
         console.log(i)
-        this.certification.splice(i, 1);
-        let certiForm = new FormGroup({
-          certification: new FormControl(this.certification)
-        });
-        this.companyService
-          .UpdateCompany(certiForm.value)
-          .subscribe(response => {
-            this.companyService.companyData.certification = JSON.parse(
-              response['_body']
-            ).certification;
+        if(confirm('Are you sure you want to delete')){
+          this.certification.splice(i, 1);
+          let certiForm = new FormGroup({
+            certification: new FormControl(this.certification)
           });
+          this.companyService
+            .UpdateCompany(certiForm.value)
+            .subscribe(response => {
+              this.companyService.companyData.certification = JSON.parse(
+                response['_body']
+              ).certification;
+            });
+        }
+       
   }
   onDeleteCompanyImg(item, index) {
         const i = this.companyImage.indexOf(item);
-        this.companyImage.splice(i, 1);
-        let companyImage = new FormGroup({
-          companyImage: new FormControl(this.companyImage)
-        });
-        this.companyService
-          .UpdateCompany(companyImage.value)
-          .subscribe(response => {
-            this.companyService.companyData.companyImage = JSON.parse(
-              response['_body']
-            ).companyImage;
+        if(confirm('Are you sure you want to delete')){
+          this.companyImage.splice(i, 1);
+          let companyImage = new FormGroup({
+            companyImage: new FormControl(this.companyImage)
           });
+          this.companyService
+            .UpdateCompany(companyImage.value)
+            .subscribe(response => {
+              this.companyService.companyData.companyImage = JSON.parse(
+                response['_body']
+              ).companyImage;
+            });
+        }
+
  
   }
   addBookmark(id) {

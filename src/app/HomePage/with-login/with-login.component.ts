@@ -62,8 +62,10 @@ export class WithLoginComponent implements OnInit {
   ngOnInit() {
     this.imgupload.token = this.storage.get("token");
     this.feedService.token = this.storage.get("token");
+    this.followers.token=this.storage.get('token')
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
+      console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
       this.result = JSON.parse(res['_body'])[0];
       if (this.result) {
@@ -82,7 +84,7 @@ export class WithLoginComponent implements OnInit {
         for (let i = 0; i < this.userFollow.length; i++) {
           for (let j = 0; j < this.result.length; j++) {
             if (this.userFollow[i] === this.result[j].admin) {
-              this.resultvalue = false;
+              this.result[i].follow=true;
             } else {
             }
           }
@@ -164,11 +166,11 @@ export class WithLoginComponent implements OnInit {
     this.router.navigate(['/B-page']);
   }
   onfollow(i, id) {
-    this.result[i].follow = false;
+    this.result[i].follow = true;
     this.followers.addFollow(id).subscribe(res => {});
   }
   onunfollow(i, id) {
-    this.result[i].follow = true;
+    this.result[i].follow = false;
     this.followers.Unfollow(id).subscribe(res => {});
   }
 }
