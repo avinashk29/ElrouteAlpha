@@ -23,6 +23,7 @@ section{
   height: 100%;
   margin-left: 4%;
   box-shadow: 0px 3px 10px #5555;
+  overflow-y: scroll;
 }
 .edit_product
 {
@@ -418,3 +419,14 @@ padding-top: 10%;
   overflow-y: scroll;
 }
 .leftSection::-webkit-scrollbar { width: 0 !important }
+.product_cancel
+{
+  margin-top: 30px;
+  width: 30%;
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  background-color: red;
+  border: none;
+  margin: 10px 15px 0 0;
+}

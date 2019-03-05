@@ -27,7 +27,7 @@ export class WithoutLoginComponent implements OnInit {
 
   contactFrom = new FormGroup({
     Need: new FormControl("",Validators.required),
-    Email: new FormControl("",[Validators.required])
+    Email: new FormControl("",Validators.required)
   });
   searchForm = new FormGroup({
     word: new FormControl(""),

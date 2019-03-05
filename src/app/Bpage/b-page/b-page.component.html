@@ -18,7 +18,7 @@
       <div class="card">
         <div class="logoheader">
           <div class="container_logo">
-            <div *ngIf="!this.companyService.companyData.companyLogo">
+            <div *ngIf="!this.companyService.companyData.companyLogo && myCompany">
               <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyLogo')" class="picker" style="display: hidden;"
                 visbility="hidden">
               <button type="submit" (click)="filePicker.click()" class="btn" ><span><svg xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@
             </div>
             <img *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
 
-            <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo ">
+            <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo && myCompany">
               <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyLogo')" class="picker" style="display: hidden;"
                 visbility="hidden">
               <button type="button" (click)="filePicker.click()" class="change_cover_image" >Change
@@ -45,11 +45,12 @@
             <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
             <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
             <span>
-              <p>{{this.companyFollowers}}</p>
+              <p> {{this.companyService.companyData.followers}}</p>
+              <!-- <p>{{this.companyFollowers}}</p> -->
             </span>
 
           </div>
-          <div class="follow-btn" >
+          <div class="follow-btn" *ngIf="myCompany">
             <button (click)="EditBpage()">Edit</button>
             <span>{{this.companyFollowers}}</span>
           </div>
@@ -114,19 +115,17 @@
       </div>
 
 
-<div class="social_bookmark" >
-   <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
+<div class="social_bookmark" *ngIf="!myCompany">
+   <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
 
 
   <ng-template #load>
-  <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
+  <span (click)="removeBookmark(this.companyService.companyData._id)"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
 
   </ng-template>
 
 </div>
 </div>
-
-
 
         <div class="timeline_btn"  style="text-align: right;">
           <button (click)="gotoTimeline()">Timeline</button>
@@ -137,7 +136,7 @@
 
     <div class="card-left">
 
-      <div class="headerImg" *ngIf="!this.companyService.companyData.coverImage">
+      <div class="headerImg" *ngIf="!this.companyService.companyData.coverImage && myCompany">
 
         <input type="file" #filePicker (change)="uploadCompanyImage($event,'coverImage')" class="picker testing-1911" style="display: hidden;"
           visbility="hidden">
@@ -151,7 +150,7 @@
         <div class="container">
 
           <img src="{{this.companyService.companyData.coverImage}}">
-          <div class="overlay">
+          <div class="overlay" *ngIf="myCompany">
             <input type="file" #filePicker (change)="uploadCompanyImage($event,'coverImage')" class="picker" style="display: hidden;"
               visbility="hidden">
             <button type="button" (click)="filePicker.click()" class="change_cover_image" >Change
@@ -188,14 +187,13 @@
                   yourself is less than 400 characters.</i></p>
               <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{this.companyService.companyData.shortIntro}}</p>
             </div>
-            <div class="bio_btn">
+            <div class="bio_btn" *ngIf="myCompany">
               <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add bio</button>
             </div>
           </div>
         </div>
-
 
         <div *ngIf="editshortIntro" class="edit_dummy_text">
           <textarea placeholder="Enter Bio" formControlName="shortIntro" value = "{{this.companyService.companyData.shortIntro}}" #shortIntro ></textarea>
@@ -205,7 +203,7 @@
         <div class="category_1">
           <h6>CATEGORY</h6>
           <h5>{{this.companyService.companyData.category}}</h5>
-          <div class="category_btn">
+          <div class="category_btn" *ngIf="myCompany">
             <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24">
                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
@@ -289,7 +287,7 @@
                   <p>Add your feeds here to attract more and more business and level up your game</p>
 
                 </div>
-                <button type="button" routerLink="/Dashboard"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                <button type="button" routerLink="/Dashboard"><span *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                       height="24" viewBox="0 0 24 24">
                       <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                 </button>
@@ -320,7 +318,7 @@
           <div class="revenu info" style="border-bottom:none">
             <label>Total Revenue</label>
             <h3></h3>
-            <div class="hq_info">
+            <div class="hq_info" *ngIf="myCompany">
               <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
@@ -344,10 +342,10 @@
   </div>
   <div class="body" *ngIf="this.type === 'info'">
     <div class="infoSection2">
-      <div class="infoImg" *ngIf="!this.companyService.companyData.infoImage">
+      <div class="infoImg" *ngIf="!this.companyService.companyData.infoImage && myCompany">
         <input type="file" #filePicker (change)="uploadCompanyImage($event,'infoImage')" class="picker" style="display: hidden;"
           visbility="hidden">
-        <button type="button" (click)="filePicker.click()" class="btn" ><span><svg xmlns="http://www.w3.org/2000/svg"
+        <button type="button" (click)="filePicker.click()" class="btn"><span><svg xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
           Info Image</button>
@@ -355,7 +353,7 @@
       <div class="infoImg" *ngIf="this.companyService.companyData.infoImage">
         <div class="container">
           <img src="{{this.companyService.companyData.infoImage}}">
-          <div class="overlay">
+          <div class="overlay" *ngIf="myCompany">
             <input type="file" #filePicker (change)="uploadCompanyImage($event,'infoImage')" class="picker" style="display: hidden;"
               visbility="hidden">
             <button type="button" (click)="filePicker.click()" class="change_cover_image" >Change
@@ -366,7 +364,7 @@
       </div>
 
       <div class="infoContent">
-        <h3>SHORT BIO <span (click)="editshortIntro = true"  class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg"
+        <h3>SHORT BIO <span (click)="editshortIntro = true"  class="bio_btn" *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg"
               width="15" height="15 " viewBox="0 0 24 24">
               <path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z" />
             </svg></span></h3>
@@ -390,7 +388,7 @@
 
       <div *ngIf="sectionEdit">
         <div formArrayName="section" *ngFor="let section of BForm.get('section').controls; let i=index">
-          <button (click)="onDelete(i)" class="remove_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+          <button (click)="onDelete(i)" class="remove_division"><span *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24">
                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
               </svg></span>Remove section</button>
@@ -408,7 +406,7 @@
               <!-- {{section}} -->
 
               <img src="{{BForm.controls.section.value[i].sectionImage}}">
-              <div class="overlay" >
+              <div class="overlay" *ngIf="myCompany">
                 <input type="file" #sectionpicker (change)="onsectionImagePick($event,'sectionImage',i)" class="picker"
                   style="display: hidden;" visbility="hidden">
                 <button type="button" (click)="sectionpicker.click()" class="change_section_image">Change
@@ -423,7 +421,7 @@
         </div>
         <div class="add_sub_btn">
           <button type="submit" (click)="onSubmit()" class="submit_division">submit</button>
-          <button (click)="onAddSection()" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+          <button (click)="onAddSection()" class="add_division" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24">
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add section</button>
         </div>
@@ -431,10 +429,10 @@
 
 
       <div *ngIf="!sectionEdit">
-        <button (click)="onAddSection()" class="add_division" ><span><svg xmlns="http://www.w3.org/2000/svg"
+        <button (click)="onAddSection()" class="add_division" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add section</button>
-        <button (click)="sectionEdit=true" class="edit_division" > <span class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg"
+        <button (click)="sectionEdit=true" class="edit_division" *ngIf="myCompany"> <span class="bio_btn" *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg"
               width="15" height="15 " viewBox="0 0 24 24">
               <path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z" />
             </svg></span>Edit</button>
@@ -455,13 +453,30 @@
       </div>
 
       <!-- end of section -->
+      <div class="no_product" *ngIf = "!this.certification.length">
+          <div class="no_product_left">
+            </div>
+            <div class="no_product_right" *ngIf="myCompany">
+              <h3>Add Your Company CERTIFICATES Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePickercertificate (change)="uploadCompanyImage($event,'certification')" class="picker"
+                  style="display: hidden;" visbility="hidden">
+                  <button  (click)="filePickercertificate.click()" type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
+ 
       <div class="certification" *ngIf = "this.certification.length" >
 
         <div class="item_btn">
           <h2>CERTIFICATES</h2>
           <input type="file" #filePickercertificate (change)="uploadCompanyImage($event,'certification')" class="picker"
             style="display: hidden;" visbility="hidden">
-          <button type="button" (click)="filePickercertificate.click()" class="item_btn1" ><span><svg
+          <button type="button" (click)="filePickercertificate.click()" class="item_btn1" *ngIf="myCompany"><span><svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Certificate</button>
@@ -480,7 +495,7 @@
           <div class="items">
             <div class="container">
               <img [src]="item">
-              <div class="overlay1">
+              <div class="overlay1" *ngIf="myCompany">
 
                 <button type="button" class="close" (click)="onadeleteImg(item)">x</button>
               </div>
@@ -490,24 +505,34 @@
         </ng-template>
 
       </div>
+      <div class="no_product" *ngIf="!this.companyImage.length">
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right" *ngIf="myCompany">
+              <h3>Add Your Company Images Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
+                  visbility="hidden">
+                  <button type="button"  (click)="filePicker.click()"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
       <div class="companyImg" *ngIf="this.companyImage.length">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
           <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
             visbility="hidden">
-          <button type="button" (click)="filePicker.click()" class="item_btn2" ><span><svg xmlns="http://www.w3.org/2000/svg"
+          <button type="button" (click)="filePicker.click()" class="item_btn2" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24">
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-        <div class="no_product">
-            <div class="no_product_left">
-              
-              </div>
-              <div class="no_product_right">
-                <h3>No Product Bookmarked yet!</h3>
-               </div> 
-          </div>
+       
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev *ngIf="this.companyImage.length > 2" >
@@ -522,7 +547,7 @@
             <div class="container">
               <img src="{{item}}">
 
-              <div class="overlay1">
+              <div class="overlay1" *ngIf="myCompany">
 
                 <button type="button" class="close" (click)="onDeleteCompanyImg(item)">x</button>
               </div>
@@ -637,5 +662,6 @@
             </div>
     </div>
   </div>
-</section>
+  </section>
+
 

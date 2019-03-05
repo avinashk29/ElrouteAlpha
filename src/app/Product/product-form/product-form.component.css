@@ -94,13 +94,37 @@ margin-left: 20px;
   height: 35px;
   margin-top: 20px;
 }
-button[type= "submit"]{
+.product_submit
+{
+  margin-top: 30px;
+  width: 30%;
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  background-color: #45eb45;
+  border: none;
+  margin: 10px 15px 0 0;
+}
+  .product_cancel
+  {
+    margin-top: 30px;
+    width: 30%;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    background-color: red;
+    border: none;
+    margin: 10px 15px 0 0;
+  }
+
+/* button[type= "submit"]{
   margin-top: 30px;
   width: 30%;
   height: 40px;
   font-weight: bolder;
   font-size: 20px;
-}
+} */
+
 input , textarea{
   padding: 0 0 0 10px;
 }

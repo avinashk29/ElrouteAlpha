@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/Dashboard']);
         this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
     }, error =>{
-      this.notification.error('Enter Valid Details');
+      this.notification.error(error._body);
+      console.log(error._body);
     });
 
       
