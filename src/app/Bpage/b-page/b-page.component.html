@@ -114,19 +114,17 @@
       </div>
 
 
-<div class="social_bookmark" >
-   <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
+<div class="social_bookmark" *ngIf="!myCompany">
+   <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
 
 
   <ng-template #load>
-  <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
+  <span (click)="removeBookmark(this.companyService.companyData._id)"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
 
   </ng-template>
 
 </div>
 </div>
-
-
 
         <div class="timeline_btn"  style="text-align: right;">
           <button (click)="gotoTimeline()">Timeline</button>
@@ -455,6 +453,24 @@
       </div>
 
       <!-- end of section -->
+      <div class="no_product" *ngIf = "!this.certification.length">
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right">
+              <h3>Add Your Company CERTIFICATES Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePickercertificate (change)="uploadCompanyImage($event,'certification')" class="picker"
+                  style="display: hidden;" visbility="hidden">
+                  <button  (click)="filePickercertificate.click()" type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
+ 
       <div class="certification" *ngIf = "this.certification.length" >
 
         <div class="item_btn">
@@ -490,6 +506,23 @@
         </ng-template>
 
       </div>
+      <div class="no_product" *ngIf="!this.companyImage.length">
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right">
+              <h3>Add Your Company Images Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
+                  visbility="hidden">
+                  <button type="button"  (click)="filePicker.click()"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
       <div class="companyImg" *ngIf="this.companyImage.length">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
@@ -500,14 +533,7 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-        <div class="no_product">
-            <div class="no_product_left">
-              
-              </div>
-              <div class="no_product_right">
-                <h3>No Product Bookmarked yet!</h3>
-               </div> 
-          </div>
+       
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev *ngIf="this.companyImage.length > 2" >
@@ -637,5 +663,6 @@
             </div>
     </div>
   </div>
-</section>
+  </section>
+
 

@@ -86,7 +86,7 @@ export class BPageComponent implements OnInit {
     });
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
-
+this.bookmarkService.token=this.storage.get('token')
 
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
@@ -402,15 +402,15 @@ export class BPageComponent implements OnInit {
           });
  
   }
-  addBookmark() {
+  addBookmark(id) {
     this.bookmark = true;
-    this.bookmarkService.addCompanyBookmark(this.comapnyId).subscribe(res => {
+    this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
     });
   }
-  removeBookmark() {
+  removeBookmark(id) {
     this.bookmark = false;
     this.bookmarkService
-      .DeleteBookmarkCompany(this.comapnyId)
+      .DeleteBookmarkCompany(id)
       .subscribe(res => {
       });
   }
