@@ -271,7 +271,7 @@ font-size: 13px;
   flex-wrap: wrap;
   border: solid 1px gray;
   margin-top: 5%;
-  /* height: 190px; */
+  height: 190px;
   display: flex;
   position: relative;
   /* height: 22vh; */
