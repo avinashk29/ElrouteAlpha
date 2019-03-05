@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   signupForm = new FormGroup({
     userName: new FormControl("", [Validators.required]),
     location: new FormControl("India", [Validators.required]),
-    email: new FormControl("", [Validators.required]),
+    email: new FormControl("", [Validators.required, Validators.email]),
     title: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
@@ -124,6 +124,9 @@ export class SignupComponent implements OnInit {
       if (this.error) {
         this.notification.error("Cant LogIn Enter Valid Details");
       }
+    }, error => {
+      this.notification.error('Enter Valid details');
     });
+
   }
 }

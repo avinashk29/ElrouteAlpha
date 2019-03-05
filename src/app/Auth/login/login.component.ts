@@ -43,17 +43,14 @@ export class LoginComponent implements OnInit {
     this.dialogRef.close(LoginComponent);
     const loginValues = this.login.value;
     this.authService.login(loginValues).subscribe( res => {
-      this.error = false;
-      if (!this.error) {
+
         this.storage.set('token', res.headers.get('x-auth'));
          this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
         this.userService.userData = JSON.parse(res['_body']);
         this.router.navigate(['/Dashboard']);
         this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
-      } else {
-        this.notification.error('Error Login');
-      }
-
+    }, error =>{
+      this.notification.error('Enter Valid Details');
     });
 
       

@@ -2151,6 +2151,9 @@ color: white;
   cursor: pointer;
   transition: transform 0.4s ease;
 }
+.error{
+  border: 1px solid red;
+}
 
 #s1:checked ~ #slide4, #s2:checked ~ #slide5,
 #s3:checked ~ #slide1, #s4:checked ~ #slide2,

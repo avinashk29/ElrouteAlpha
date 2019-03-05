@@ -110,17 +110,15 @@
       </div>
       <div class="user_need_email" [formGroup]="contactFrom">
         <ul>
-          <li><label>Need</label><textarea formControlName="Need"></textarea></li>
+          <li><label>Need</label><textarea formControlName="Need"  [ngClass]="{'error':!contactFrom.get('Need').valid && contactFrom.get('Need').touched }"></textarea></li>
           <li class="email_box">
             <label>Email</label>
             <div class="input_box">
-              <input type="email" formControlName="Email">
+              <input type="email" formControlName="Email"  [ngClass]="{'error':!contactFrom.get('Email').valid && contactFrom.get('Email').touched }">
             </div>
             <button (click)=OnSendrequest()>Ya! that's exactly what I need</button>
-
-
+ 
           </li>
-
         </ul>
       </div>
     </div>
@@ -129,7 +127,6 @@
     <div class="section5">
       <div class="b_face">
         <h2> Create Your B Face</h2>
-
         <div class="b_face_1">
           <div class="b_face_img">
             <img src="assets/images/bface.png">
