@@ -58,6 +58,14 @@
  margin: 3px 7px;
 
 }
+.tag_close
+{
+    text-align: right;
+    margin-right: 3%;
+    padding: 10px;
+    color: black;
+    font-size: 18px;
+}
 /* .user_img
 {
  margin: 0 auto;
@@ -215,7 +223,7 @@ border: solid 5px white;
 .user_company_details hr
 {
  margin: 0 auto;
- width: 50%;
+ width: 35%;
  margin-bottom: 5%;
 }
 .company_following
@@ -268,7 +276,7 @@ border: solid 5px white;
 {
  border: solid 1px gainsboro;
  width: 100%;
- height: 65vh;
+ height: 70vh;
  display: block;
 
  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
@@ -287,11 +295,10 @@ border: solid 5px white;
 }
 .feed_show
 {
- width: 100%;
- background-color: skyblue;
-
- margin-top: 21%;
- height: 35vh;
+    width: 100%;
+    background-color: skyblue;
+    margin-top: 16%;
+    height: 40vh;
 }
 .feed_show_img
 {
@@ -300,10 +307,10 @@ border: solid 5px white;
 }
 .feed_show_img img
 {
- width: 100%;
- margin-top: -22%;
- height: 36vh;
- border-radius: 10px;
+    width: 100%;
+    margin-top: -14%;
+    height: 36vh;
+    border-radius: 10px;
 }
 .feed_show_content
 {
@@ -432,6 +439,7 @@ border: solid 5px white;
 }
 .add_media_tag h2
 {
+    font-weight: 400;
  font-size: 15px;
  margin-bottom: auto;
  margin-top: auto;
@@ -459,6 +467,7 @@ border: solid 5px white;
 }
 .tag_product h2
 {
+    font-weight: 400;
  margin-bottom: auto;
  margin-top: auto;
  font-size: 15px;
@@ -466,6 +475,7 @@ border: solid 5px white;
 }
 .post
 {
+    width: 35%;
  display: flex;
  padding: 8px 0;
 }
@@ -1253,7 +1263,10 @@ height: 62vh;
   width: 95%;
   height: fit-content;
   margin: 0 auto;
-  background-color: #151517;
+  /* background-color: #151517; */
+  box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2);
+    
+  margin-top: 7%;
   /* display: flex;
   align-items: center; */
 }
@@ -1283,7 +1296,7 @@ height: 62vh;
 .product_content h2{
   margin: 0;
   font-weight: 500;
-  color: white;
+  color: black;
 }
 .input_link a{
   text-align: center;

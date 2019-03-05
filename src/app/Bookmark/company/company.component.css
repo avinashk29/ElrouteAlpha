@@ -5,12 +5,17 @@
   width: 90%;
   margin-left: 7%;
   margin-top: 2%;
+  position: absolute;
+  height: fit-content;
+  /* background-color: red;   */
 }
 section{
   width: 90%;
   margin: 0 auto;
   padding: 4px;
   margin-top: 30px;
+  height: fit-content;
+  /* background-color: red;   */
 }
 .listing{
   width: 100%;
@@ -24,6 +29,7 @@ section{
   border-radius: 30px;
   float: left;
   margin-top: 40px;
+  margin-bottom: 3%;
   margin-right: 1%;
   margin-left: 1%;
 }
@@ -48,6 +54,7 @@ section{
 .companyInfo h1{
   margin: 0;
   padding: 5px 0 0 0;
+  font-size: 20px;
 }
 .companyInfo button{
   width: 32%;
@@ -111,8 +118,10 @@ section{
   height: 25vh;
   display: flex;
   border: solid 1px gray;
-  border-radius: 4px 10px 10px 1px;
-  margin-top: 30px;
+  border-radius: 20px;
+  margin: 0 auto; 
+  width: 100%;
+  margin-top: 4%;
   align-items: center;
 }
 .no_product_left
@@ -120,10 +129,13 @@ section{
   height: 25vh;
   width:35%;
   background-color: gray;
+  border-radius: 16px 0px 0px 16px;
 }
 .no_product_right
 {
   margin-left: 4%;
+  width: 55%;
+  text-align: center;
 }
 @media screen and (max-width: 700px){
   section{
@@ -197,6 +209,7 @@ section{
   border-radius: 30px;
   float: left;
   margin-top: 40px;
+
   margin-right: 1%;
   margin-left: 1%;
 

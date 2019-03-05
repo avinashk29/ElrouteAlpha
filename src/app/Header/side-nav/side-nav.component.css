@@ -59,6 +59,9 @@ aside ul {
 {
   color:black !important;
 }
+aside ul li:hover{
+  color: black !important;
+}
 
 aside ul li {
   border-bottom: 1px solid #ccc;
@@ -154,6 +157,4 @@ aside{
 
 }
 }
-aside ul li:hover{
-  color: black !important;
-}
+

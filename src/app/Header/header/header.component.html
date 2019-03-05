@@ -14,6 +14,7 @@
         </li>
         <li *ngIf="this.UserService.userData.userName">
           <div class="user">
+            <hr>
             <div class="user_img" routerLink="/bookmark">
               <img src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage">
               <img src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage">

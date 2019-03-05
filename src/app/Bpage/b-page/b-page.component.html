@@ -102,8 +102,8 @@
 
 <div class="linkedin social">
 
-    <img src="../../../assets/images/circularLinkedin.png" style="height: 37px; margin-top: 5px; width: 80%" (click)="likedinEdit=true" (click)="editSocialLinks=false"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
-    <a href="{{this.companyService.companyData.linkedin}}" style="height: 37px; margin-top: 5px; width: 80%" *ngIf= "this.companyService.companyData.linkedin"><img src="../../../assets/images/circularLinkedin.png"></a>
+    <img src="../../../assets/images/circularLinkedin.png" style="height: 37px; margin-top: 5px; width: 37px" (click)="likedinEdit=true" (click)="editSocialLinks=false"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+    <a href="{{this.companyService.companyData.linkedin}}" style="height: 37px; margin-top: 5px; width: 37px" *ngIf= "this.companyService.companyData.linkedin"><img src="../../../assets/images/circularLinkedin.png"></a>
     <!-- <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button> -->
 <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
 <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
@@ -114,19 +114,17 @@
       </div>
 
 
-<div class="social_bookmark" >
-   <span (click)="addBookmark()"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
+<div class="social_bookmark" *ngIf="!myCompany">
+   <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!bookmark else load"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
 
 
   <ng-template #load>
-  <span (click)="removeBookmark()"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
+  <span (click)="removeBookmark(this.companyService.companyData._id)"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
 
   </ng-template>
 
 </div>
 </div>
-
-
 
         <div class="timeline_btn"  style="text-align: right;">
           <button (click)="gotoTimeline()">Timeline</button>
@@ -162,7 +160,7 @@
         </div>
       </div>
       <div class="tabs">
-        <div class="tab" (click)="showTwo()" [ngClass]="{'tabClicked': two}">
+        <div class="tab" (click)="showTwo()"  [ngClass]="{'tabClicked': two}">
           <h1>INFO</h1>
         </div>
         <div class="tab" (click)="showThree()" [ngClass]="{'tabClicked': three}">
@@ -421,7 +419,7 @@
 
           </div>
         </div>
-        <div class="add_sub_btn">
+        <div class="add_sub_btn" >
           <button type="submit" (click)="onSubmit()" class="submit_division">submit</button>
           <button (click)="onAddSection()" class="add_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24">
@@ -430,7 +428,7 @@
       </div>
 
 
-      <div *ngIf="!sectionEdit">
+      <div *ngIf="!sectionEdit" style="margin-bottom:4%;">
         <button (click)="onAddSection()" class="add_division" ><span><svg xmlns="http://www.w3.org/2000/svg"
               width="24" height="24" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add section</button>
@@ -455,6 +453,24 @@
       </div>
 
       <!-- end of section -->
+      <div class="no_product" *ngIf = "!this.certification.length">
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right">
+              <h3>Add Your Company CERTIFICATES Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePickercertificate (change)="uploadCompanyImage($event,'certification')" class="picker"
+                  style="display: hidden;" visbility="hidden">
+                  <button  (click)="filePickercertificate.click()" type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
+ 
       <div class="certification" *ngIf = "this.certification.length" >
 
         <div class="item_btn">
@@ -490,6 +506,23 @@
         </ng-template>
 
       </div>
+      <div class="no_product" *ngIf="!this.companyImage.length">
+          <div class="no_product_left">
+            
+            </div>
+            <div class="no_product_right">
+              <h3>Add Your Company Images Here!</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyImage')" class="picker" style="display: hidden;"
+                  visbility="hidden">
+                  <button type="button"  (click)="filePicker.click()"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
       <div class="companyImg" *ngIf="this.companyImage.length">
         <div class="item_btn">
           <h2>COMPANY IMAGES</h2>
@@ -500,14 +533,7 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-        <div class="no_product">
-            <div class="no_product_left">
-              
-              </div>
-              <div class="no_product_right">
-                <h3>No Product Bookmarked yet!</h3>
-               </div> 
-          </div>
+       
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev *ngIf="this.companyImage.length > 2" >
@@ -576,11 +602,45 @@
   </div>
   <div class="body1" *ngIf="this.type === 'contact'">
 
+      <div class="no_contact">
+          <div class="no_contact_left">
+              <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
+            </div>
+            <div class="no_contact_right">
+              <h3>Add Your Company Contact Details</h3>
+              <div class="hq_info" style="text-align:right;">
+                  <button  type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                  </button>
+                </div>
+             </div> 
+            
+        </div>
+
+
+
     <div class="comapany_contact">
             <h2>Company Divisions</h2>
     </div>
   <div class="company_details">
       <div class="company_details1">
+          <span class="point"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+            <g id="edit" transform="translate(-546.942 -212.818)">
+              <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="black"
+                stroke-linecap="round">
+                <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z"
+                  stroke="none" />
+                <path d="M 2.000001430511475 1 C 1.449577808380127 1 1.001590251922607 1.447044372558594 1.000005722045898 1.997102737426758 L 1.136211395263672 22.65461921691895 L 1.136231422424316 22.65790939331055 L 1.136231422424316 22.66120910644531 C 1.136231422424316 22.7505989074707 1.1446213722229 22.90604972839355 1.200821399688721 22.9427604675293 C 1.259501457214355 22.98110008239746 1.454841613769531 23.07025909423828 2.000001430511475 23.07025909423828 L 4.564501762390137 23.07025909423828 C 5.097259998321533 23.07025909423828 5.295174598693848 23.01947402954102 5.364688396453857 22.99041175842285 C 5.372547626495361 22.9588737487793 5.383181571960449 22.89670181274414 5.383181571960449 22.79117965698242 L 5.383181571960449 22.78681945800781 L 5.383221626281738 22.7824592590332 L 5.56449556350708 1.996555328369141 C 5.562639236450195 1.446727752685547 5.114757537841797 1 4.564501762390137 1 L 2.000001430511475 1 M 2.000001430511475 0 L 4.564501762390137 0 C 5.669071674346924 0 6.564501762390137 0.8954296112060547 6.564501762390137 2 L 6.383181571960449 22.79117965698242 C 6.383181571960449 23.89575004577637 5.669071674346924 24.07025909423828 4.564501762390137 24.07025909423828 L 2.000001430511475 24.07025909423828 C 0.8954315185546875 24.07025909423828 0.1362314224243164 23.76577949523926 0.1362314224243164 22.66120910644531 L 1.430511474609375e-06 2 C 1.430511474609375e-06 0.8954296112060547 0.8954315185546875 0 2.000001430511475 0 Z"
+                  stroke="none" fill="#a5a4bf" />
+              </g>
+              <path id="Path_359" data-name="Path 359" d="M2090.028-116.6l-.076.285-1.961,5.688,2.394-1.061,3.525-1.446"
+                transform="translate(-1540.202 347)" fill="none" stroke="#a5a4bf" stroke-width="1" />
+              <path id="Path_361" data-name="Path 361" d="M2088.635-112.306l.683.817Z" transform="translate(-1540 347)"
+                fill="none" stroke="red" d="M5 20 l215 0" stroke-width="1" />
+            </g>
+          </svg>
+        </span>
           <div class="company_email">
                  <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                  <p>abc@infotech.com</p>
@@ -590,6 +650,22 @@
            </div>
        </div>
        <div class="company_details1">
+          <span class="point"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+            <g id="edit" transform="translate(-546.942 -212.818)">
+              <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="black"
+                stroke-linecap="round">
+                <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z"
+                  stroke="none" />
+                <path d="M 2.000001430511475 1 C 1.449577808380127 1 1.001590251922607 1.447044372558594 1.000005722045898 1.997102737426758 L 1.136211395263672 22.65461921691895 L 1.136231422424316 22.65790939331055 L 1.136231422424316 22.66120910644531 C 1.136231422424316 22.7505989074707 1.1446213722229 22.90604972839355 1.200821399688721 22.9427604675293 C 1.259501457214355 22.98110008239746 1.454841613769531 23.07025909423828 2.000001430511475 23.07025909423828 L 4.564501762390137 23.07025909423828 C 5.097259998321533 23.07025909423828 5.295174598693848 23.01947402954102 5.364688396453857 22.99041175842285 C 5.372547626495361 22.9588737487793 5.383181571960449 22.89670181274414 5.383181571960449 22.79117965698242 L 5.383181571960449 22.78681945800781 L 5.383221626281738 22.7824592590332 L 5.56449556350708 1.996555328369141 C 5.562639236450195 1.446727752685547 5.114757537841797 1 4.564501762390137 1 L 2.000001430511475 1 M 2.000001430511475 0 L 4.564501762390137 0 C 5.669071674346924 0 6.564501762390137 0.8954296112060547 6.564501762390137 2 L 6.383181571960449 22.79117965698242 C 6.383181571960449 23.89575004577637 5.669071674346924 24.07025909423828 4.564501762390137 24.07025909423828 L 2.000001430511475 24.07025909423828 C 0.8954315185546875 24.07025909423828 0.1362314224243164 23.76577949523926 0.1362314224243164 22.66120910644531 L 1.430511474609375e-06 2 C 1.430511474609375e-06 0.8954296112060547 0.8954315185546875 0 2.000001430511475 0 Z"
+                  stroke="none" fill="#a5a4bf" />
+              </g>
+              <path id="Path_359" data-name="Path 359" d="M2090.028-116.6l-.076.285-1.961,5.688,2.394-1.061,3.525-1.446"
+                transform="translate(-1540.202 347)" fill="none" stroke="#a5a4bf" stroke-width="1" />
+              <path id="Path_361" data-name="Path 361" d="M2088.635-112.306l.683.817Z" transform="translate(-1540 347)"
+                fill="none" stroke="red" d="M5 20 l215 0" stroke-width="1" />
+            </g>
+          </svg>
+        </span>
           <div class="company_email">
                  <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                  <p>abc@infotech.com</p>
@@ -601,6 +677,22 @@
   </div>
   <div class="company_details">
       <div class="company_details1">
+          <span class="point"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+            <g id="edit" transform="translate(-546.942 -212.818)">
+              <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="black"
+                stroke-linecap="round">
+                <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z"
+                  stroke="none" />
+                <path d="M 2.000001430511475 1 C 1.449577808380127 1 1.001590251922607 1.447044372558594 1.000005722045898 1.997102737426758 L 1.136211395263672 22.65461921691895 L 1.136231422424316 22.65790939331055 L 1.136231422424316 22.66120910644531 C 1.136231422424316 22.7505989074707 1.1446213722229 22.90604972839355 1.200821399688721 22.9427604675293 C 1.259501457214355 22.98110008239746 1.454841613769531 23.07025909423828 2.000001430511475 23.07025909423828 L 4.564501762390137 23.07025909423828 C 5.097259998321533 23.07025909423828 5.295174598693848 23.01947402954102 5.364688396453857 22.99041175842285 C 5.372547626495361 22.9588737487793 5.383181571960449 22.89670181274414 5.383181571960449 22.79117965698242 L 5.383181571960449 22.78681945800781 L 5.383221626281738 22.7824592590332 L 5.56449556350708 1.996555328369141 C 5.562639236450195 1.446727752685547 5.114757537841797 1 4.564501762390137 1 L 2.000001430511475 1 M 2.000001430511475 0 L 4.564501762390137 0 C 5.669071674346924 0 6.564501762390137 0.8954296112060547 6.564501762390137 2 L 6.383181571960449 22.79117965698242 C 6.383181571960449 23.89575004577637 5.669071674346924 24.07025909423828 4.564501762390137 24.07025909423828 L 2.000001430511475 24.07025909423828 C 0.8954315185546875 24.07025909423828 0.1362314224243164 23.76577949523926 0.1362314224243164 22.66120910644531 L 1.430511474609375e-06 2 C 1.430511474609375e-06 0.8954296112060547 0.8954315185546875 0 2.000001430511475 0 Z"
+                  stroke="none" fill="#a5a4bf" />
+              </g>
+              <path id="Path_359" data-name="Path 359" d="M2090.028-116.6l-.076.285-1.961,5.688,2.394-1.061,3.525-1.446"
+                transform="translate(-1540.202 347)" fill="none" stroke="#a5a4bf" stroke-width="1" />
+              <path id="Path_361" data-name="Path 361" d="M2088.635-112.306l.683.817Z" transform="translate(-1540 347)"
+                fill="none" stroke="red" d="M5 20 l215 0" stroke-width="1" />
+            </g>
+          </svg>
+        </span>
           <div class="company_email">
                  <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                  <p>abc@infotech.com</p>
@@ -610,6 +702,22 @@
            </div>
        </div>
        <div class="company_details1">
+          <span class="point"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+            <g id="edit" transform="translate(-546.942 -212.818)">
+              <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="black"
+                stroke-linecap="round">
+                <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z"
+                  stroke="none" />
+                <path d="M 2.000001430511475 1 C 1.449577808380127 1 1.001590251922607 1.447044372558594 1.000005722045898 1.997102737426758 L 1.136211395263672 22.65461921691895 L 1.136231422424316 22.65790939331055 L 1.136231422424316 22.66120910644531 C 1.136231422424316 22.7505989074707 1.1446213722229 22.90604972839355 1.200821399688721 22.9427604675293 C 1.259501457214355 22.98110008239746 1.454841613769531 23.07025909423828 2.000001430511475 23.07025909423828 L 4.564501762390137 23.07025909423828 C 5.097259998321533 23.07025909423828 5.295174598693848 23.01947402954102 5.364688396453857 22.99041175842285 C 5.372547626495361 22.9588737487793 5.383181571960449 22.89670181274414 5.383181571960449 22.79117965698242 L 5.383181571960449 22.78681945800781 L 5.383221626281738 22.7824592590332 L 5.56449556350708 1.996555328369141 C 5.562639236450195 1.446727752685547 5.114757537841797 1 4.564501762390137 1 L 2.000001430511475 1 M 2.000001430511475 0 L 4.564501762390137 0 C 5.669071674346924 0 6.564501762390137 0.8954296112060547 6.564501762390137 2 L 6.383181571960449 22.79117965698242 C 6.383181571960449 23.89575004577637 5.669071674346924 24.07025909423828 4.564501762390137 24.07025909423828 L 2.000001430511475 24.07025909423828 C 0.8954315185546875 24.07025909423828 0.1362314224243164 23.76577949523926 0.1362314224243164 22.66120910644531 L 1.430511474609375e-06 2 C 1.430511474609375e-06 0.8954296112060547 0.8954315185546875 0 2.000001430511475 0 Z"
+                  stroke="none" fill="#a5a4bf" />
+              </g>
+              <path id="Path_359" data-name="Path 359" d="M2090.028-116.6l-.076.285-1.961,5.688,2.394-1.061,3.525-1.446"
+                transform="translate(-1540.202 347)" fill="none" stroke="#a5a4bf" stroke-width="1" />
+              <path id="Path_361" data-name="Path 361" d="M2088.635-112.306l.683.817Z" transform="translate(-1540 347)"
+                fill="none" stroke="red" d="M5 20 l215 0" stroke-width="1" />
+            </g>
+          </svg>
+        </span>
           <div class="company_email">
                  <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
                  <p>abc@infotech.com</p>
@@ -637,5 +745,6 @@
             </div>
     </div>
   </div>
-</section>
+  </section>
+
 

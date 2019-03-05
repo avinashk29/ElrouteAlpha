@@ -86,7 +86,7 @@ export class BPageComponent implements OnInit {
     });
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
-
+this.bookmarkService.token=this.storage.get('token')
 
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
@@ -102,6 +102,9 @@ export class BPageComponent implements OnInit {
         });
 
           if (this.type === 'product') {
+            this.two = false;
+            this.three = true;
+            this.four = false;
 
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -116,10 +119,17 @@ export class BPageComponent implements OnInit {
     this.mycompanyId = this.storage.get('companyId');
 
     if (this.type === 'info') {
+      this.two = true;
+      this.three = false;
+      this.four = false;
       this.type = 'info';
+
     }
     if (this.type === 'contact') {
       this.type = 'contact  ';
+      this.two = false;
+      this.three = false;
+      this.four = true;
     }
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -298,7 +308,11 @@ export class BPageComponent implements OnInit {
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'info' }
     });
+    this.two = true;
+this.three = false;
+this.four = false;
     this.type = 'info';
+    
   }
   showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -307,12 +321,18 @@ export class BPageComponent implements OnInit {
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
     });
+    this.two = false;
+this.three = true;
+this.four = false;
     this.type = 'product';
   }
   showFour() {
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'contact' }
     });
+    this.two = false;
+this.three = false;
+this.four = true;
     this.type = 'contact';
   }
   editshortBio() { }
@@ -402,15 +422,15 @@ export class BPageComponent implements OnInit {
           });
  
   }
-  addBookmark() {
+  addBookmark(id) {
     this.bookmark = true;
-    this.bookmarkService.addCompanyBookmark(this.comapnyId).subscribe(res => {
+    this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
     });
   }
-  removeBookmark() {
+  removeBookmark(id) {
     this.bookmark = false;
     this.bookmarkService
-      .DeleteBookmarkCompany(this.comapnyId)
+      .DeleteBookmarkCompany(id)
       .subscribe(res => {
       });
   }
