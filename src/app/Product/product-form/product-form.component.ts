@@ -6,6 +6,7 @@ import {Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
+import { UserService } from 'src/app/Service/user-services.service';
 
 @Component({
   selector: 'app-product-form',
@@ -22,21 +23,21 @@ export class ProductFormComponent implements OnInit {
   url;
   companyid
   companyName
-  productInfo= [ 
+  productInfo= [
     {
         "specificationContent" : "",
         "productSpecification" : "",
-       
-        "fields" : [ 
+
+        "fields" : [
             {
                 "fieldDes" : "",
                 "fieldName" : "",
-             
+
             }
         ]
     }
 ];
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private userService:UserService,
     private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
      }
@@ -80,7 +81,7 @@ export class ProductFormComponent implements OnInit {
         this.productForm.patchValue({
           Image: [url]
         })
-    
+
       })
    }
 
@@ -91,7 +92,7 @@ export class ProductFormComponent implements OnInit {
         productSpecification: [''],
         specificationContent: [''],
         fields: this._fb.array([])
-       
+
       })
     )
   }
@@ -108,7 +109,7 @@ export class ProductFormComponent implements OnInit {
   setProductInfo(){
     let control = <FormArray>this.productForm.controls.productInfo;
   this.productInfo.forEach(x => {
-    control.push(this._fb.group({ 
+    control.push(this._fb.group({
       productSpecification:x.productSpecification,
       specificationContent:x.specificationContent,
       fields: this.setField(x) }
@@ -125,7 +126,7 @@ export class ProductFormComponent implements OnInit {
   setField(x){
     let arr = new FormArray([])
     x.fields.forEach(y => {
-      arr.push(this._fb.group({ 
+      arr.push(this._fb.group({
         fieldName: y.fieldName,
     fieldDes: y.fieldDes
       }))
@@ -136,18 +137,17 @@ export class ProductFormComponent implements OnInit {
     control.removeAt(index);
   }
 
- 
+
   onSubmit() {
-    if (this.productForm.valid) {
-     this.productForm.value;
      this.productForm.value.companyName=this.companyName;
       this.productService.addProduct(this.productForm.value).subscribe(res => {
+        this.productService.productData = JSON.parse(res['_body']);
+        // this.userService.sendData(res);
+        this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
+        this.notification.success('Product Added');
       });
-       this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
-  this.notification.success('Product Added');
-    } else {
-      this.notification.error('Enter Valid Deatils');
-    }
+;
+
 
   }
 }

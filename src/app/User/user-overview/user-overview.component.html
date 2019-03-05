@@ -14,7 +14,8 @@
                 </div>
                 <div class="follower_img">
                     <div class="follower_img1">
-                        <img src="{{this.userService.userData.userImage}}">
+                        <img src="{{this.userService.userData.userImage}}" *ngIf="this.userService.userData.userImage">
+                        <img src="../../../assets/images/user.png" *ngIf="!this.userService.userData.userImage">
                     </div>
                 </div>
 
@@ -32,24 +33,25 @@
             </div>
 
             <div class="follower_des" *ngIf="!bioEdit">
-                <p>{{this.userService.userData.shortBio}} </p>
+                <p style="text-align: center; font-size: 16px">{{this.userService.userData.shortBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
-                    <textarea formControlName= "shortBio">{{this.userService.userData.shortBio}}</textarea>
+                    <textarea formControlName= "shortBio" value="{{this.userService.userData.shortBio}}"></textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
             <div class="follower_company">
-                <div class="company">
-                    <div class="company_logo" *ngIf = "haveCompany">
-                        <img src="{{companyLogo}}">
+                <div class="company" *ngIf = "haveCompany">
+                    <div class="company_logo">
+                        <img src="{{companyLogo}}" *ngIf="companyLogo">
+                        <img src="../../../assets/images/user.png" *ngIf="!companyLogo">
                     </div>
                     <div class="company_name">
-                        <h4 style="color: skyblue;">{{companyName}}</h4>
+                        <h4 style="color: skyblue; text-align: center;">{{companyName}}</h4>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="links">
+        <!-- <div class="links">
             <div class="follwers_links">
                 <div class="facebook">
                     <img src="assets/images/fb.png">
@@ -65,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
     <div class="bookmark_following">
@@ -84,7 +86,7 @@
         </div>
         <div class="b_page_btn">
             <button routerLink = "/B-page" *ngIf = "!haveCompany">Create  Your B page</button>
-            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go TO B-Page</button>
+            <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go To B-Page</button>
         </div>
     </div>
 

@@ -28,7 +28,7 @@ export class WithLoginComponent implements OnInit {
   feeds = [];
   noFeeds = true;
   addLink = false;
-  feedImage
+  feedImage;
   companyLogo;
   feed = new FormGroup({
     content: new FormControl(''),
@@ -41,7 +41,7 @@ export class WithLoginComponent implements OnInit {
   pId;
   product = [];
   userFollow;
-  companyFollowers
+  companyFollowers;
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -117,24 +117,39 @@ export class WithLoginComponent implements OnInit {
        if(name==='userImage'){
         this.userService.editUser(formdata).subscribe(res=>{
           this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
-          this.spinner.hide();
+          // this.spinner.hide();
           });
        }else{
         this.feedImage=url;
-        this.spinner.hide();
+        // this.spinner.hide();
        }
+       this.spinner.hide();
      })
   }
 
   onAddpost() {
+    this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
-    this.feed.value.Image=this.feedImage;
-    this.feedService.AddFeed(this.feed.value).subscribe(res => {});
-    this.feed.reset();
+      this.feed.value.Image = this.feedImage;
+    if (!this.feed.value.Image) {
+        this.notification.warning('Please Add Image!');
+    } else {
+      this.feedService.AddFeed(this.feed.value).subscribe(res => {
+        console.log(res)
+      });
+      this.feed.reset();
+      this.imagePreview=null;
+      this.feedService.productName = null;
+      this.feedService.productName = null;
+      this.feedService.productDescription = null;
+      this.notification.success('Post Added!');
+    }
+
+  }
+  closeTaggedProduct(){
     this.feedService.productName = null;
     this.feedService.productName = null;
     this.feedService.productDescription = null;
-    this.notification.success('Post Added');
   }
   tagFeed() {
     const dialogConfig = new MatDialogConfig();

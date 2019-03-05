@@ -24,16 +24,21 @@ export class UserOverviewComponent implements OnInit{
   companyFollowers = [];
   subscription;
   userImage;
-companyLogo
+companyLogo;
   constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute) {
     this.haveCompany = this.storage.get('companyId');
+    this.companyName = this.companyService.companyData.companyName;
+    this.userService.getUserData().subscribe(res => {
+      this.userService.userData = JSON.parse(res['_body']);
+
+});
     if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
         this.companyName = JSON.parse(res['_body']).companyName;
          this.companyFollowers = JSON.parse(res['_body']).followers.length;
-         this.companyLogo=JSON.parse(res['_body']).companyLogo;
+         this.companyLogo = JSON.parse(res['_body']).companyLogo;
         });
     }
     this.bioForm = new FormGroup({
@@ -42,10 +47,7 @@ companyLogo
   }
   overviewResult;
   ngOnInit() {
-    this.companyName=this.companyService.companyData.companyName;
-     this.userService.getUserData().subscribe(res => {
-       this.userService.userData=JSON.parse(res['_body']);
-});
+
   }
   manageFollowing() {
     this.router.navigate(['/Following'])
@@ -65,6 +67,7 @@ companyLogo
   }
   editBio(){
     this.bioEdit = !this.bioEdit;
+
    }
   addBio() {
     this.bioForm.patchValue({

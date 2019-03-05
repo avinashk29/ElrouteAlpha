@@ -21,7 +21,7 @@ userData;
      Image;
     // token;
     // user;
-    private empDetailSubject = new BehaviorSubject(null); 
+   
     constructor(public http: Http,
         
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
@@ -39,14 +39,7 @@ editUser(User){
     const UserFormData = new FormData();
     return this.http.patch('http://localhost:8080/api/user', User, {headers: headers});
 }
-sendEmployeeDetail(value) {  
-    this.userData.user=value;
-    this.empDetailSubject.next(this.userData.user);
-}  
 
-getdata(){
-    return this.empDetailSubject.asObservable()
-}
 getOneUser(id) {
   return this.http.get('http://localhost:8080/api/user/' + id );
 }

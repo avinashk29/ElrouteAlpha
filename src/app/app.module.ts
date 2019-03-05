@@ -7,7 +7,6 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { BookmarkComponent } from './Bookmark/bookmark/bookmark.component';
-import { ProductBookmarkComponent } from './Bookmark/product/product.component';
 import { PostComponent } from './Bookmark/Bookmarkpost/post.component';
 import {PostsComponent} from './Post-feed/Post/posts/post.component';
 import { CompanyComponent } from './Bookmark/company/company.component';
@@ -99,7 +98,6 @@ export function provideConfig() {
     LoginComponent,
     ForgetPasswordComponent,
     BookmarkComponent,
-    ProductBookmarkComponent,
     PostComponent,
     CompanyComponent,
     CompanyFormComponent,

@@ -1,10 +1,11 @@
 <app-header></app-header>
-<app-side-nav></app-side-nav>
+
 <app-user-overview></app-user-overview>
 <div class="bookmark_overview">
 <section>
     <h2>Bookmarks</h2>
     <app-header3></app-header3>
+    <div *ngIf="result">
     <div class="listing" *ngFor="let r of result">
         <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
         <input type="search" placeholder="Enter Product/Service to Search">
@@ -55,10 +56,18 @@
     </div>
     </div>
     </div>
-    <ng-template #load>
-        <h2>No bookmarks</h2>
-      </ng-template>
+    <div *ngIf="!result.length" style="text-align:center; margin: 0 auto;width: 50%;">
+        <div class="no_product">
+            <div class="no_product_left">
+              
+              </div>
+              <div class="no_product_right">
+                <h3>No Company Bookmarked yet!</h3>
+               </div> 
+          </div>
+    
+    </div>
+    </div>
     </section>
-
 </div>
-<app-footer></app-footer>
+

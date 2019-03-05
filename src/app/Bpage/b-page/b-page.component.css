@@ -427,17 +427,6 @@ category_btn {
 
 }
 
-/* .example-viewport {
-  height: 600px;
-  width: 400px;
-  scroll-behavior: inherit;
-  border: 1px solid black;
-}
-
-.example-item {
-  height: 50px;
-} */
-
 
 
 
@@ -609,7 +598,7 @@ category_btn {
 
 .feed_img img {
   width: 100%;
-  height: 62vh;
+  height: 50vh;
 
 }
 
@@ -1032,6 +1021,25 @@ mat-panel-title h4 {
   padding: 5px;
   border-radius: 3px;
   margin-bottom: 2%;
+}
+.no_product
+{
+  height: 25vh;
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 4px 10px 10px 1px;
+ 
+  align-items: center;
+}
+.no_product_left
+{
+  height: 25vh;
+  width:35%;
+  background-color: gray;
+}
+.no_product_right
+{
+  margin-left: 4%;
 }
 
 @media screen and (max-width:700px) {
@@ -1964,11 +1972,11 @@ label {
   /* height: 15rem; */
   border-radius: 10px;
   margin-right: 3%;
-  margin-bottom: 30px;
+  margin-bottom: 1%;
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.19);
-  MARGIN-TOP: 3%;
+  MARGIN-TOP: 1%;
 
 }
 
@@ -2423,6 +2431,32 @@ input[type="file"] {
   margin-right: 5%;
 }
 .social img{
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 47px;
+  transition-duration: .5s;
+}
+.social input{
+padding: 10px 5px;
+width: 300px;
+transition-duration: .5s;
+}
+.social button{
+  margin-top: 10px;
+
+  padding: 10px;
+  transition-duration: .5s;
+  color: #fff;
+  border-radius: 0;
+}
+.linkedin button{
+  margin-left: -60px;
+  width: 130px;
+  background-color: #0077B5;
+}
+.facebook button {
+  width: 140px;
+  background-color: #3b5998;
+}
+.linkedin input {
+  margin-left: -60px;
 }

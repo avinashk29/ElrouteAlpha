@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, NgZone } from '@angular/core';
 import {FormGroup , FormBuilder, FormArray, Validator, Validators} from '@angular/forms';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -21,9 +21,23 @@ export class ProductComponent implements OnInit {
   url;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     private _fb: FormBuilder, public productService: ProductServiceService, private imgupload: ImageUploadService,
-     public router: Router, public notification: ToastrService, private route: ActivatedRoute) {
+     public router: Router, public notification: ToastrService, private route: ActivatedRoute, public ngZone: NgZone) {
       this.companyId =  this.storage.get('companyId');
-      this.productId = route.snapshot.paramMap.get('id');
+      // this.productId = route.snapshot.paramMap.get('id');
+      this.route.queryParams.filter(params => params.productId).subscribe(params => {
+        this.productService.productId = params.productId;
+        console.log('working');
+
+        this.productService.getOneProduct(this.productService.productId).subscribe(res => {
+
+          this.productService.productData.productInfo=JSON.parse(res['_body']).productInfo;
+            this.productForm.patchValue(JSON.parse(res['_body']));
+            // console.log(res);
+          this.setProductInfo();
+         });
+});
+
+
       this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
        Image: [''],
@@ -37,18 +51,16 @@ export class ProductComponent implements OnInit {
        category: [''],
        tfCode: [''],
       });
+
+
      }
 
   ngOnInit() {
     this.imgupload.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
-    this.productService.getOneProduct(this.productId).subscribe(res => {
-      this.productInfo=JSON.parse(res['_body']).productInfo;
-        this.productForm.patchValue(JSON.parse(res['_body']));
-      this.setProductInfo();
-    });
+
   }
-  
+
   addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
     control.push(
@@ -71,8 +83,8 @@ export class ProductComponent implements OnInit {
 
   setProductInfo(){
     let control = <FormArray>this.productForm.controls.productInfo;
-  this.productInfo.forEach(x => {
-    control.push(this._fb.group({ 
+  this.productService.productData.productInfo.forEach(x => {
+    control.push(this._fb.group({
       productSpecification:x.productSpecification,
       specificationContent:x.specificationContent,
       fields: this.setField(x) }
@@ -89,7 +101,7 @@ export class ProductComponent implements OnInit {
   setField(x){
     let arr = new FormArray([])
     x.fields.forEach(y => {
-      arr.push(this._fb.group({ 
+      arr.push(this._fb.group({
         fieldName: y.fieldName,
     fieldDes: y.fieldDes
       }))
@@ -104,11 +116,12 @@ export class ProductComponent implements OnInit {
   onSubmit() {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
-      this.productService.UpdateProduct(productData,this.productId).subscribe(res => {
+      this.productService.UpdateProduct(productData , this.productService.productId).subscribe(res => {
+          console.log(res);
+          this.notification.success('Product Updated');
+          this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
       });
-      this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
-  this.notification.success('Product not Added');
-    } else {
+} else {
       this.notification.error('Enter Valid Deatils');
     }
   }
@@ -129,7 +142,7 @@ export class ProductComponent implements OnInit {
         this.productForm.patchValue({
           Image: [url]
         })
-    
+
       })
 
 

@@ -244,6 +244,26 @@ section{
   margin-left: 10px;
 }
 
+.no_product
+{
+  height: 25vh;
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 4px 10px 10px 1px;
+ 
+  align-items: center;
+}
+.no_product_left
+{
+  height: 25vh;
+  width:35%;
+  background-color: gray;
+}
+.no_product_right
+{
+  margin-left: 4%;
+}
+
 @media screen and (max-width:700px) {
 section {
   width: 90%;

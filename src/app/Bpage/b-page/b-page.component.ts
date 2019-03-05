@@ -1,20 +1,20 @@
 import {
   Component,
   OnInit,
-  Inject
-} from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { CompanyServiceService } from "../../Service/company-service.service";
-import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
-import { ProductServiceService } from "../../Service/product-service.service";
-import { FeedService } from "../../Service/feed-service.service";
-import "rxjs/add/operator/filter";
-import { UserService } from "../../Service/user-services.service";
-import { FormControl, FormGroup, FormBuilder, FormArray } from "@angular/forms";
-import { ImageUploadService } from "src/app/Service/imageupload-service.service";
-import { FollowService } from "src/app/Service/follow-service.service";
-import { BookmarkServices } from "src/app/Service/bookmark-services.service";
-import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+  Inject,NgZone
+} from '@angular/core';
+import { ActivatedRoute, Router} from '@angular/router';
+import { CompanyServiceService } from '../../Service/company-service.service';
+import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { ProductServiceService } from '../../Service/product-service.service';
+import { FeedService } from '../../Service/feed-service.service';
+import 'rxjs/add/operator/filter';
+import { UserService } from '../../Service/user-services.service';
+import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import { FollowService } from 'src/app/Service/follow-service.service';
+import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -71,8 +71,8 @@ export class BPageComponent implements OnInit {
     private bookmarkService: BookmarkServices,
     private imgUpload: ImageUploadService,
     private _fb: FormBuilder,
-
-    private spinner: Ng4LoadingSpinnerService
+    private spinner: Ng4LoadingSpinnerService,
+    public ngZone: NgZone
   ) {
     this.BForm = this._fb.group({
       website: [''],
@@ -84,29 +84,37 @@ export class BPageComponent implements OnInit {
       gmail: [''],
       section: this._fb.array([])
     });
-    // this.comapnyId = this.route.snapshot.paramMap.get('id');
-    console.log(this.mycompanyId);
-    // this.comapnyId = this.storage.get('companyId');
 
-    this.comapnyId = this.route.snapshot.paramMap.get("id");
-    this.route.queryParams
-      .filter(paramas => paramas.urltype)
-      .subscribe(paramas => {
+    this.comapnyId = this.route.snapshot.paramMap.get('id');
+
+
+    this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
-
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
-          this.companyService.companyData=JSON.parse(res['_body']);
-          this.companyFollowers = JSON.parse(res["_body"]).followers.length;
+          this.companyService.companyData = JSON.parse(res['_body']);
+          this.certification = JSON.parse(res['_body']).certification;
+          this.companyImage = JSON.parse(res['_body']).companyImage;
+          console.log( JSON.parse(res['_body']));
+          this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.setSection();
+
+
         });
+
+          if (this.type === 'product') {
+
+            this.type = 'product';
+            this.productService.getProduct(this.comapnyId).subscribe(res => {
+              this.products =  JSON.parse(res['_body']);
+              console.log(JSON.parse(res['_body']));
+            });
+          }
+
       });
+
+
     this.mycompanyId = this.storage.get('companyId');
-    if (this.type === 'product') {
-      this.productService.getProduct(this.comapnyId).subscribe(res => {
-        this.products = JSON.parse(res['_body']);
-      });
-      this.type = 'product';
-    }
+
     if (this.type === 'info') {
       this.type = 'info';
     }
@@ -122,6 +130,7 @@ export class BPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
@@ -134,8 +143,8 @@ export class BPageComponent implements OnInit {
         }
       }
     });
-    this.productService.token = this.storage.get("token");
-    this.mycompanyId = this.storage.get("companyId");
+    this.productService.token = this.storage.get('token');
+    this.mycompanyId = this.storage.get('companyId');
     this.route.queryParams
       .filter(paramas => paramas.urltype)
       .subscribe(paramas => {
@@ -159,6 +168,17 @@ export class BPageComponent implements OnInit {
         }
       }
     });
+    if (this.type === 'product') {
+
+      this.type = 'product';
+      this.ngZone.run(() => {
+        this.productService.getProduct(this.comapnyId).subscribe(res => {
+          this.products =  JSON.parse(res['_body']);
+          console.log(JSON.parse(res['_body']));
+        });
+      });
+
+    }
   }
   onAddSection() {
     this.sectionEdit = true;
@@ -182,7 +202,7 @@ export class BPageComponent implements OnInit {
           sectionImage: x.sectionImage,
           sectionTitle: x.sectionTitle,
           sectionContent: x.sectionContent
-          
+
 
         })
       );
@@ -211,11 +231,11 @@ export class BPageComponent implements OnInit {
       const updata = new FormData();
       const url = res['_body'];
       let control = <FormArray>this.BForm.controls.section;
-      this.companyService.companyData.section=control.value;  
+      this.companyService.companyData.section=control.value;
       this.companyService.companyData.section[index].sectionImage = url;
       this.setSection();
-      
-      
+
+
       // this.spinner.hide();
     });
     // control.value[index].sectionImage
@@ -246,7 +266,7 @@ export class BPageComponent implements OnInit {
           .UpdateCompany(certiForm.value)
           .subscribe(response => {
             this.companyService.companyData.certification = JSON.parse(
-              response["_body"]
+              response['_body']
             ).certification;
           });
         this.spinner.hide();
@@ -259,7 +279,7 @@ export class BPageComponent implements OnInit {
           .UpdateCompany(companyImage.value)
           .subscribe(response => {
             this.companyService.companyData.companyImage = JSON.parse(
-              response["_body"]
+              response['_body']
             ).companyImage;
           });
         this.spinner.hide();
@@ -306,14 +326,14 @@ export class BPageComponent implements OnInit {
     const formData = new FormData();
     formData.append(key, content.value);
     this.companyService.UpdateCompany(formData).subscribe(res => {
-      this.companyService.companyData.website = JSON.parse(res["_body"]).website;
+      this.companyService.companyData.website = JSON.parse(res['_body']).website;
       this.companyService.companyData.workingHours = JSON.parse(
-        res["_body"]
+        res['_body']
       ).workingHours;
       this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
-      this.companyService.companyData.shortIntro = JSON.parse(res["_body"]).shortIntro;
-      this.router.navigate(["/companyPage/" + this.comapnyId], {
-        queryParams: { urltype: "edit" }
+      this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
+      this.router.navigate(['/companyPage/' + this.comapnyId], {
+        queryParams: { urltype: 'edit' }
       });
       if (this.type === 'info') {
         this.router.navigate(['/companyPage/' + this.comapnyId], {
@@ -349,12 +369,10 @@ export class BPageComponent implements OnInit {
       section: new FormControl(this.BForm.value.section)
     });
     this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-      this.companyService.section = JSON.parse(res['_body']).section;
+      this.companyService.companyData.section = JSON.parse(res['_body']).section;
     });
   }
   onadeleteImg(item) {
- 
-      if (confirm("Are you sure to delete ")){
         const i = this.certification.indexOf(item);
         console.log(i)
         this.certification.splice(i, 1);
@@ -368,13 +386,10 @@ export class BPageComponent implements OnInit {
               response['_body']
             ).certification;
           });
-      }
   }
   onDeleteCompanyImg(item, index) {
-
-      if (confirm("Are you sure to delete ")){
         const i = this.companyImage.indexOf(item);
-        this.companyImage.splice(item, 1);
+        this.companyImage.splice(i, 1);
         let companyImage = new FormGroup({
           companyImage: new FormControl(this.companyImage)
         });
@@ -385,7 +400,7 @@ export class BPageComponent implements OnInit {
               response['_body']
             ).companyImage;
           });
-      }
+ 
   }
   addBookmark() {
     this.bookmark = true;

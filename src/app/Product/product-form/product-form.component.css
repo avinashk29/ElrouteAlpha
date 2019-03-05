@@ -11,14 +11,8 @@ section{
   height: 100%;
 }
 .productForm form{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-}
-.static{
-  display: table-cell;
-  width: 50%;
-  height: 100%;
-  background-color: greenyellow;
 }
 .listingSection input{
   width: 100%;
