@@ -10,17 +10,10 @@ export class UserService {
 
    
 userData;
-    // userImage;
-    // userName;
-    // shortBio;
-    // location;
-    // title;
-    // email;
+   
     following=[];
     bookmark=[];
      Image;
-    // token;
-    // user;
    
     constructor(public http: Http,
         
