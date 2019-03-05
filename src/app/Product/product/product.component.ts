@@ -32,7 +32,7 @@ export class ProductComponent implements OnInit {
 
           this.productService.productData.productInfo=JSON.parse(res['_body']).productInfo;
             this.productForm.patchValue(JSON.parse(res['_body']));
-            console.log(res);
+            this.imagePreview = JSON.parse(res['_body']).Image
           this.setProductInfo();
          });
 });

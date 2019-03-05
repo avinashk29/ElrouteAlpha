@@ -109,20 +109,18 @@
         <h4>Just Drop your contact and needs, we’ll try our level best to serve you.</h4>
       </div>
       <div class="user_need_email" [formGroup]="contactFrom">
-        <ul>
-          <li><label>Need</label><textarea formControlName="Need"></textarea></li>
-          <li class="email_box">
-            <label>Email</label>
-            <div class="input_box">
-              <input type="email" formControlName="Email">
-            </div>
-            <button (click)=OnSendrequest()>Ya! that's exactly what I need</button>
-
-
-          </li>
-
-        </ul>
-      </div>
+          <ul>
+            <li><label>Need</label><textarea formControlName="Need"  [ngClass]="{'error':!contactFrom.get('Need').valid && contactFrom.get('Need').touched }"></textarea></li>
+            <li class="email_box">
+              <label>Email</label>
+              <div class="input_box">
+                <input type="email" formControlName="Email"  [ngClass]="{'error':!contactFrom.get('Email').valid && contactFrom.get('Email').touched }">
+              </div>
+              <button (click)=OnSendrequest()>Ya! that's exactly what I need</button>
+   
+            </li>
+          </ul>
+        </div>
     </div>
   </section>
   <section>

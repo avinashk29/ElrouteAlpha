@@ -26,8 +26,8 @@ export class WithoutLoginComponent implements OnInit {
   ) {}
 
   contactFrom = new FormGroup({
-    Need: new FormControl(""),
-    Email: new FormControl("")
+    Need: new FormControl("",Validators.required),
+    Email: new FormControl("",Validators.required)
   });
   searchForm = new FormGroup({
     word: new FormControl(""),
@@ -60,10 +60,14 @@ export class WithoutLoginComponent implements OnInit {
     this.router.navigate(["/Result/" + name + "/" + formData.page]);
   }
   OnSendrequest() {
-    this.notification.success(
-      "Thanks for Submitting your needs we will get back to you soon at " +
-        this.contactFrom.value.Email
-    );
+    if(!this.contactFrom.value.Email){
+      this.notification.error('Please fill the required information!')
+    }else{
+      this.notification.success(
+        "Thanks for Submitting your needs we will get back to you soon at " +
+          this.contactFrom.value.Email
+      );
+    }
     this.contactFrom.reset();
   }
 

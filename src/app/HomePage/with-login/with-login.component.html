@@ -181,6 +181,9 @@
           </div>
 
           <div class="tagged_product_feed" *ngIf="this.feedService.productName">
+              <div class="tag_close">
+                  <span (click)="closeTaggedProduct()" style="cursor: pointer;">X</span>
+                  </div>
             <div class="content">
              <div class="product_img">
                <img src="{{this.feedService.productImage}}">
@@ -189,9 +192,7 @@
                 <h2>{{this.feedService.productName}}</h2>
                 <p>{{this.feedService.productDescription}}</p>
              </div>
-             <div class="tag_close">
-                <span (click)="closeTaggedProduct()" style="cursor: pointer;">X</span>
-                </div>
+           
             </div>
           </div>
         </form>

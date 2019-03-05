@@ -86,12 +86,15 @@ export class BPageComponent implements OnInit {
     });
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
-
+this.bookmarkService.token=this.storage.get('token')
 
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData = JSON.parse(res['_body']);
+          this.certification = JSON.parse(res['_body']).certification;
+          this.companyImage = JSON.parse(res['_body']).companyImage;
+          console.log( JSON.parse(res['_body']));
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.setSection();
 
@@ -366,12 +369,10 @@ export class BPageComponent implements OnInit {
       section: new FormControl(this.BForm.value.section)
     });
     this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-      this.companyService.section = JSON.parse(res['_body']).section;
+      this.companyService.companyData.section = JSON.parse(res['_body']).section;
     });
   }
   onadeleteImg(item) {
-
-      if (confirm('Are you sure to delete ')){
         const i = this.certification.indexOf(item);
         console.log(i)
         this.certification.splice(i, 1);
@@ -385,13 +386,10 @@ export class BPageComponent implements OnInit {
               response['_body']
             ).certification;
           });
-      }
   }
   onDeleteCompanyImg(item, index) {
-
-      if (confirm('Are you sure to delete ')){
         const i = this.companyImage.indexOf(item);
-        this.companyImage.splice(item, 1);
+        this.companyImage.splice(i, 1);
         let companyImage = new FormGroup({
           companyImage: new FormControl(this.companyImage)
         });
@@ -402,17 +400,17 @@ export class BPageComponent implements OnInit {
               response['_body']
             ).companyImage;
           });
-      }
+ 
   }
-  addBookmark() {
+  addBookmark(id) {
     this.bookmark = true;
-    this.bookmarkService.addCompanyBookmark(this.comapnyId).subscribe(res => {
+    this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
     });
   }
-  removeBookmark() {
+  removeBookmark(id) {
     this.bookmark = false;
     this.bookmarkService
-      .DeleteBookmarkCompany(this.comapnyId)
+      .DeleteBookmarkCompany(id)
       .subscribe(res => {
       });
   }
