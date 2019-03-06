@@ -64,7 +64,8 @@ export class WithLoginComponent implements OnInit {
     this.feedService.token = this.storage.get("token");
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
-      this.feeds = JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
+      this.feeds = JSON.parse(res['_body'])[0];
       this.result = JSON.parse(res['_body'])[0];
       if (this.result) {
         this.pId = JSON.parse(res['_body'])[0]._id;

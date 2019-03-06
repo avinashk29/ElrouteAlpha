@@ -73,6 +73,7 @@ import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.compo
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
 import { OnefollowerComponent } from './User/onefollower/onefollower.component';
+import { ProductSelectComponent } from './Product/product-select/product-select.component';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -138,6 +139,7 @@ export function provideConfig() {
     EditSideNavComponent,
     LandingPageComponent,
     OnefollowerComponent,
+    ProductSelectComponent,
 
   ],
   imports: [
@@ -165,7 +167,8 @@ export function provideConfig() {
     LoginComponent,
     EditComponent,
     FeedComponent,
-    OnefollowerComponent
+    OnefollowerComponent,
+    ProductSelectComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig}],

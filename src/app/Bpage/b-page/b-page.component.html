@@ -466,10 +466,10 @@
                         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                   </button>
                 </div>
-             </div> 
-            
+             </div>
+
         </div>
- 
+
       <div class="certification" *ngIf = "this.certification.length" >
 
         <div class="item_btn">
@@ -507,7 +507,7 @@
       </div>
       <div class="no_product" *ngIf="!this.companyImage.length">
           <div class="no_product_left">
-            
+
             </div>
             <div class="no_product_right" *ngIf="myCompany">
               <h3>Add Your Company Images Here!</h3>
@@ -519,8 +519,8 @@
                         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                   </button>
                 </div>
-             </div> 
-            
+             </div>
+
         </div>
       <div class="companyImg" *ngIf="this.companyImage.length">
         <div class="item_btn">
@@ -532,7 +532,7 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>
             Add Company Image</button>
         </div>
-       
+
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev *ngIf="this.companyImage.length > 2" >
@@ -563,9 +563,62 @@
       <div *ngIf="!products">
         <h1>No Products Found</h1>
       </div>
-      <div class="Card" *ngFor="let product of products; let i = index">
 
+
+      <div *ngFor="let group of products; let ip = index">
+
+          <h4 style="  color: #333">  {{group.key}}</h4>
+
+          <button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany">Add Product</button>
+          <button (click)="onDeletegroup(group.key)" *ngIf="myCompany">Delete Group</button>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+
+
+                      </mat-panel-title>
+                      <div style="display: flex;flex-wrap: wrap;">
+                          <div class="Card" *ngFor="let product of group.sortedProducts | slice:0:limit; let i = index">
+                              <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany">Remove</button>
+                            <div class="productCard">
+
+                              <div class="productImage">
+                                <img src="{{product.Image}}">
+                              </div>
+                              <div class="productContent">
+                                <div class="content">
+                                  <div class="productCategory">
+                                    <h6>{{product.category}}</h6>
+                                  </div>
+                                  <div class="productName">
+                                    <h2 routerLink="/product-page/{{product._id}}">{{product.productName}}</h2>
+                                    <h5>{{product.companyName}}</h5>
+                                    <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span
+                                        style="padding-left: 8px">Country</span></small>
+                                  </div>
+                                  <div class="discription" style="margin-top:30px;">
+                                    <p>{{product.shortDescription}}</p>
+                                  </div>
+                                  <div class="tags">
+
+                                  </div>
+                                  <div class="other-info">
+                                    <div class="price">
+                                      <h4>{{product.price}} {{product.minPrice}}</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                    </mat-expansion-panel-header>
+      <div style="display: flex;flex-wrap: wrap;">
+      <div class="Card" *ngFor="let product of group.sortedProducts | slice:2:group.sortedProducts.length; let i = index">
+          <button  (click)="onRemoveproduct(product._id , ip,  group.key)" *ngIf="myCompany">Remove</button>
         <div class="productCard">
+
           <div class="productImage">
             <img src="{{product.Image}}">
           </div>
@@ -594,11 +647,19 @@
             </div>
           </div>
         </div>
+
       </div>
+    </div>
+    </mat-expansion-panel>
+
+      </div>
+      <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
+        </div>
 
     </div>
 
-  </div>
+
+
   <div class="body1" *ngIf="this.type === 'contact'">
 
       <div class="no_contact">
@@ -613,8 +674,8 @@
                         <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                   </button>
                 </div>
-             </div> 
-            
+             </div>
+
         </div>
 
 

@@ -1,0 +1,18 @@
+
+<form [formGroup] = "GroupForm" (ngSubmit) = "onSubmit()">
+<div *ngIf = "this.productService.key">
+  <label>Group Name</label>
+  <input type="text" formControlName = "groupName" value="{{this.productService.key}}" disabled="disabled">
+
+</div>
+<div *ngIf = "!this.productService.key">
+    <label>Group Name</label>
+  <input type="text" formControlName = "groupName" placeholder="Enter Group Name">
+  </div>
+  <hr>
+<div *ngFor = "let product of products">
+  {{product.productName}}
+   <input type="checkbox" (click)="getGroupproduct(product._id)">
+</div>
+<button>Submit</button>
+</form>

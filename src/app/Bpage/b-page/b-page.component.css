@@ -1057,7 +1057,7 @@ mat-panel-title h4 {
   display: flex;
   border: solid 1px gray;
   border-radius: 20px;
-  margin: 0 auto; 
+  margin: 0 auto;
   width: 30%;
   margin-top: 4%;
   align-items: center;
@@ -2283,7 +2283,6 @@ label {
 }
 
 
-
 .change_section_image {
 
   font-size: 20px;
@@ -2515,3 +2514,17 @@ transition-duration: .5s;
   height: 50px;
   transition: .5s;
 } */
+/* .mat-expansion-panel:not([class*=mat-elevation-z]){
+  height: 200px !important;
+} */
+mat-expansion-panel-header{
+  height: 230px !important;
+}
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 0px !important;
+}
+.mat-content{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}

@@ -15,6 +15,8 @@ import { ImageUploadService } from 'src/app/Service/imageupload-service.service'
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -56,9 +58,12 @@ export class BPageComponent implements OnInit {
   follower;
   linkedin;
   likedinEdit = false;
-
+  limit;
   BForm: FormGroup;
-
+  GroupForm = new FormGroup({
+    groupName: new FormControl(''),
+    products: new FormControl('')
+  });
   constructor(
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public companyService: CompanyServiceService,
@@ -72,8 +77,10 @@ export class BPageComponent implements OnInit {
     private imgUpload: ImageUploadService,
     private _fb: FormBuilder,
     private spinner: Ng4LoadingSpinnerService,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    public dialog: MatDialog,
   ) {
+
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
@@ -110,6 +117,7 @@ this.follows.token=this.storage.get('token');
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
+              console.log(typeof(this.products));
               console.log(JSON.parse(res['_body']));
             });
           }
@@ -187,7 +195,7 @@ this.follows.token=this.storage.get('token');
           console.log(JSON.parse(res['_body']));
         });
       });
-
+ this.limit = 2;
     }
   }
   onAddSection() {
@@ -312,7 +320,7 @@ this.follows.token=this.storage.get('token');
 this.three = false;
 this.four = false;
     this.type = 'info';
-    
+
   }
   showThree() {
     this.productService.getProduct(this.comapnyId).subscribe(res => {
@@ -380,7 +388,7 @@ this.four = true;
       console.log(this.companyFollowers.length)
        console.log(res)
        });
- 
+
   }
   onunfollow() {
     this.Follower = false;
@@ -416,7 +424,7 @@ this.four = true;
               ).certification;
             });
         }
-       
+
   }
   onDeleteCompanyImg(item, index) {
         const i = this.companyImage.indexOf(item);
@@ -434,7 +442,7 @@ this.four = true;
             });
         }
 
- 
+
   }
   addBookmark(id) {
     this.bookmark = true;
@@ -448,4 +456,25 @@ this.four = true;
       .subscribe(res => {
       });
   }
+  onAddproductTogroup(key) {
+console.log(key);
+this.productService.key = key;
+const dialogConfig = new MatDialogConfig();
+dialogConfig.autoFocus = true;
+dialogConfig.width = '30%';
+this.dialog.open(ProductSelectComponent, dialogConfig);
+  }
+  onRemoveproduct(id, ip , key) {
+    console.log(key);
+    console.log(this.products[ip].sortedProducts);
+    this.products[ip].sortedProducts.splice(id, 1);
+    console.log(this.products[ip].sortedProducts);
+  }
+onDeletegroup(name) {
+  this.productService.token = this.storage.get('token');
+  console.log(name);
+this.productService.deletegroup(name).subscribe(res => {
+  // console.log(JSON.parse(res['_body']));
+});
+}
 }
