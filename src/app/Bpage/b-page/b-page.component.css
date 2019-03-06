@@ -1,4 +1,30 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* ------------------mobile css------*/
+.header_mobile{
+  width: 94%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+.headerElements{
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+}
+.elements{
+  width: 12%;
+  height: 100%;
+  outline: none;
+}
+.elements h4{
+  margin: 0;
+}
+
+
+/* ------------------mobile css------*/
+
+
 
 section {
   width: 90%;
@@ -15,7 +41,7 @@ header {
 }
 
 .card1 {
-  /* height: 100%; */
+  height: 100%;
   width: 35%;
   /* height: fit-content; */
   box-shadow: 0px 1px 7px #5555;
@@ -124,6 +150,10 @@ header {
 .social_links span {
   padding: 0px 2%;
 }
+.social_bookmark
+{
+  margin-top: 3%;
+}
 
 .card-left {
   width: 65%;
@@ -142,7 +172,7 @@ header {
 
 .headerImg {
   width: 100%;
-  height: 276PX;
+  height: 256PX;
   display: flex;
 }
 
@@ -242,14 +272,14 @@ header {
 }
 
 .tabClicked  {
-  height: 100px;
+  height: 120px;
   transition: .2s;
   /* background-color: red; */
 }
 
 .tab h1 {
   text-align: center;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -258,7 +288,7 @@ header {
   display: flex;
   height: fit-content;
   box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
-  margin-top: 2%;
+  /* margin-top: 2%; */
   /* margin-top: 50px; */
 }
 
@@ -907,7 +937,7 @@ mat-panel-title h4 {
 
 .body1 {
   box-shadow: 0px 3px 10px #5555;
-  margin-top: 4%;
+  /* margin-top: 4%; */
   padding: 20px 0;
 }
 
@@ -1092,7 +1122,15 @@ mat-panel-title h4 {
   .login_user {
     display: none;
   }
-
+  .header_mobile{
+ 
+    display: block;
+  }
+  .elements{
+    width: 40%;
+    height: 100%;
+    font-size: 13px;
+  }
   .with_login {
     width: 100%;
     margin: 0px;
@@ -1183,7 +1221,7 @@ mat-panel-title h4 {
   .elements {
     width: 100%;
     height: 100%;
-    padding: 10px 26px;
+    padding: 10px 20px;
   }
 
   .elements h4 {
@@ -1286,9 +1324,9 @@ mat-panel-title h4 {
     width: 100% ! important;
   }
 
-  .Card {
+  /* .Card {
     display: none ! important;
-  }
+  } */
 
   .mob-cards {
     display: flex;
@@ -1421,7 +1459,15 @@ mat-panel-title h4 {
     ;
   }
 
+.content_img {
+  width: 100% !important;
+  height: 35vh;
+}
+.no_contact {
 
+  width: 100%;
+
+}
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
