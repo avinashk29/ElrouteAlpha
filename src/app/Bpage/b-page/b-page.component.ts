@@ -29,6 +29,7 @@ export class BPageComponent implements OnInit {
   three = false;
   four = false;
   userInfo = [];
+  showAll =[];
   Follower;
   bookmark;
   file;
@@ -192,6 +193,9 @@ this.follows.token=this.storage.get('token');
       this.ngZone.run(() => {
         this.productService.getProduct(this.comapnyId).subscribe(res => {
           this.products =  JSON.parse(res['_body']);
+          for(let i=0;i<this.products.length;i++){
+            this.showAll.push(false);
+          }
           console.log(JSON.parse(res['_body']));
         });
       });
@@ -476,5 +480,11 @@ onDeletegroup(name) {
 this.productService.deletegroup(name).subscribe(res => {
   // console.log(JSON.parse(res['_body']));
 });
+}
+
+onShowAllProduct(index){
+  console.log(this.showAll[index])
+  console.log(index)
+  this.showAll[index]= !this.showAll[index]
 }
 }
