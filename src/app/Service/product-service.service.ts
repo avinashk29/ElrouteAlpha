@@ -24,6 +24,10 @@ changedata=this.empDetailSubject.asObservable();
     return this.http.get('http://localhost:8080/api/product/company/'+id);
 
   }
+  getAllProduct(id) {
+    return this.http.get('http://localhost:8080/api/product/all/company/'+id);
+
+  }
 groupProduct(data){
   const headers = new Headers();
   headers.append('x-auth', this.token);

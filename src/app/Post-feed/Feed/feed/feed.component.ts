@@ -19,7 +19,8 @@ productName;
   ngOnInit() {
    this.id = this.storage.get('companyId');
     this.product.token = this.storage.get('token');
-    this.product.getProduct(this.id).subscribe(res => {
+    this.product.getAllProduct(this.id).subscribe(res => {
+      console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body'])
     })
   }
