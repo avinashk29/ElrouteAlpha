@@ -243,7 +243,10 @@ section{
   border:none;
   margin-left: 10px;
 }
-
+.no_product_dummy
+{
+  text-align:center;     margin: 0 auto;width: 50%;
+}
 .no_product
 {
   height: 25vh;
@@ -280,6 +283,9 @@ section {
   width: 100%;
 
   
+}
+.no_product_dummy {
+  width: 100%;
 }
 }
 

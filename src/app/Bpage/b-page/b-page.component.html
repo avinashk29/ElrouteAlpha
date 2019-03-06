@@ -1,6 +1,17 @@
 <app-header></app-header>
 
 <section [formGroup]="BForm" (ngSubmit)="onSubmit()">
+    <!-- ------------------mobile--- -->
+    <div class="header_mobile">
+        <div class="headerElements">
+            <div class="elements" (click)="gotoTimeline()"><h4>Timeline</h4></div>
+        <div class="elements" (click)="showTwo()"><h4>Info</h4></div>
+        <div class="elements" (click)="showThree()"><h4>Product</h4></div>
+        <div class="elements"  (click)="showFour()"><h4>Contact</h4></div>
+        </div>
+      
+          </div>
+          <!-- /* ------------------mobile css------*/ -->
   <header>
     <div class="card1">
       <!-- <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg"
@@ -127,9 +138,9 @@
 </div>
 </div>
 
-        <div class="timeline_btn"  style="text-align: right;">
+        <!-- <div class="timeline_btn"  style="text-align: right;">
           <button (click)="gotoTimeline()">Timeline</button>
-        </div>
+        </div> -->
       </div>
 
     </div>
@@ -161,6 +172,9 @@
         </div>
       </div>
       <div class="tabs">
+          <div class="tab" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}">
+              <h1>Timeline</h1>
+            </div>
         <div class="tab" (click)="showTwo()"  [ngClass]="{'tabClicked': two}">
           <h1>INFO</h1>
         </div>

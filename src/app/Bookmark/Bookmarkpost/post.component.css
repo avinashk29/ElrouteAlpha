@@ -132,6 +132,10 @@ mat-panel-title h4{
   font-size: 14px;
   font-weight: 100;
 }
+.no_product_dummy
+{
+  text-align:center;     margin: 0 auto;width: 50%;
+}
 .no_product
 {
   height: 25vh;
@@ -213,6 +217,9 @@ mat-panel-title h4{
     margin-right: 5%;
     margin-left: 5%;
     margin-top: 20px;
+  }
+  .no_product_dummy {
+    width: 100%;
   }
 }
 
