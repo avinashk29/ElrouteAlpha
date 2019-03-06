@@ -579,7 +579,7 @@
       </div>
 
 
-      <div *ngFor="let group of products; let ip = index">
+      <fieldset *ngFor="let group of products; let ip = index">
 
           <!-- <h4 style="  color: #333">  {{group.key}}</h4>
 
@@ -666,7 +666,7 @@
     </div>
     </mat-expansion-panel>
 --->
-<h4 style="  color: #333">  {{group.key}}</h4>
+<legend style="  color: #333">  {{group.key|uppercase}}</legend>
 <button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany">Add Product</button>
 <button (click)="onDeletegroup(group.key)" *ngIf="myCompany">Delete Group</button>
 <button (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2">show all product</button>
@@ -707,7 +707,7 @@
   </div>
 </div>
 </div>
-</div>
+      </fieldset>
       <!-- <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button> -->
         </div>
 
