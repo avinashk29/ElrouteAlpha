@@ -33,6 +33,12 @@ groupProduct(data){
   headers.append('x-auth', this.token);
   return this.http.post('http://localhost:8080/api/groupProduct/', data,  {headers:headers});
 }
+groupProductdelete(id){
+  const headers = new Headers();
+  headers.append('x-auth', this.token);
+  console.log(id);
+  return this.http.delete('http://localhost:8080/api/groupProduct/product/' + id,  {headers:headers});
+}
 deletegroup(data) {
   const headers = new Headers();
   headers.append('x-auth', this.token);
