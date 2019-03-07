@@ -452,6 +452,7 @@
             </svg></span>Edit</button>
 
         <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section">
+          <div>
           <div class="content">
             <div class="Sectioncontent">
               <h2>{{section.sectionTitle}}</h2>
@@ -462,9 +463,27 @@
             <img src="{{section.sectionImage}}">
           </div>
         </div>
+      </div>
 
+ 
+      <div>
+        <div class="content_img">
+            <img src="{{section.sectionImage}}">
+          </div>
+      <div class="content">
+        <div class="Sectioncontent">
+          <h2>{{section.sectionTitle}}</h2>
+          <p>{{section.sectionContent}}</p>
+        </div>
+      </div>
+      </div>
 
       </div>
+
+      
+      <!-- section change -->
+
+     
 
       <!-- end of section -->
       <div class="no_product" *ngIf = "!this.certification.length">

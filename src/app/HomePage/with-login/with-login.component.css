@@ -3,7 +3,7 @@
  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
  margin: 0 auto;
  width: 85%;
- /* height: 100vh; */
+ min-height: 100vh;
 
  margin-top: 7%;
 }
@@ -404,7 +404,7 @@ border: solid 5px white;
 .about_feed1 {
  color: #707070;
  margin: 5px 12px auto;
- width:90%; 
+ width:94%; 
  text-align: justify;
  font-size: 12px;
  line-height: 20px;
@@ -415,7 +415,7 @@ border: solid 5px white;
  /* padding: 15px 26px; */
 
  background-color: #F5F5F5;
- width: 98%;
+ width: 100%;
 }
 
 .add_media h2 {
@@ -650,7 +650,7 @@ border: solid 5px white;
 .add_media1
 {
  text-align: right;
- margin-right: 4%;
+ margin-right: 0;
  padding: 10px;
 }
 /* border: 1px solid #cccccc;
@@ -1058,7 +1058,9 @@ mat-panel-title h4 {
 }
 .add_media_box{
    
-    margin: -12px 0;
+    margin: -7px 0;
+    width: 97%;
+
 }
 .content_1
 {
@@ -1066,6 +1068,11 @@ mat-panel-title h4 {
 }
 
 /*----------*/
+.about_feed1 {
+   
+    width: 88%;
+  
+}
 }
 
 @media screen and (min-width: 700px) and (max-width: 1440px) {
@@ -1360,4 +1367,21 @@ height: 50vh;
       width:100px;
       height:100px;
       /*transform: rotate(30deg);      */
+    }
+    @media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+
+        .about_feed1 {
+            width: 90%;
+           
+        }
+        .add_media_box {
+            
+            width: 98%;
+        }
+        .add_media1 {
+       
+            margin-right: 4%;
+           
+        }
     }
