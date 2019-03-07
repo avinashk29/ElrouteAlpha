@@ -308,9 +308,89 @@ header {
   box-shadow: 0px 1px 7px #5555;
 
 }
+fieldset
+{
+  margin-top: 2%;
+   margin-bottom: 2%;
+  width: 100%;
+}
 
+.arrow_product
+{
+  margin-right: 3%;
+  float:right;
+}
+.add_delete
+{
+  text-align: right;
+  margin-right: 2%;
+}
+.delete_product
+{
+  border: none;
+  outline: none;
+  /* float:right; */
+}
+.delete_product svg
+{
+  fill: #a7aab7;
+}
 
+ 
+.add_product
+{
+  border: none;
+  outline: none;
+  /* float:right; */
+}
+.add_product svg
+{
+  fill: #a7aab7;
+}
+.add_new_product
+{
+ margin-top: 1%;
+ margin-bottom: 2%;
+}
+.add_new_product button
+{
+  font-size: 15px;
+  border: none;
+  background-color: #65e665;
+  color: white;
+  padding: 10px;
+}
+.remove_product
+{
+  float: right;
+  position: relative;
+  border: none;
+  top: -12px;
+  background-color: transparent;
+  left: 17px;
 
+}
+.remove_product svg
+{
+ fill: #795548;
+}
+
+.overlay_remove_product {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  /* background: rgba(0, 0, 0, 0.8); */
+
+}
+.container:hover .overlay_remove_product {
+  opacity: 1;
+}
 .bio {
   width: 100%;
   margin: 0 auto;

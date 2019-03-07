@@ -114,7 +114,7 @@ this.follows.token=this.storage.get('token');
             this.two = false;
             this.three = true;
             this.four = false;
-
+            this.one = false;
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
@@ -132,6 +132,7 @@ this.follows.token=this.storage.get('token');
       this.two = true;
       this.three = false;
       this.four = false;
+      this.one = false;
       this.type = 'info';
 
     }
@@ -140,6 +141,7 @@ this.follows.token=this.storage.get('token');
       this.two = false;
       this.three = false;
       this.four = true;
+      this.one = false;
     }
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -234,6 +236,10 @@ this.follows.token=this.storage.get('token');
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'default' }
     });
+    this.one = true;
+    this.two = false;
+this.three = false;
+this.four = false;
   }
   onDelete(index) {
     const control = <FormArray>this.BForm.controls.section;
@@ -323,6 +329,7 @@ this.follows.token=this.storage.get('token');
     this.two = true;
 this.three = false;
 this.four = false;
+this.one = false
     this.type = 'info';
 
   }
@@ -333,6 +340,7 @@ this.four = false;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
     });
+    this.one = false
     this.two = false;
 this.three = true;
 this.four = false;
@@ -342,6 +350,7 @@ this.four = false;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'contact' }
     });
+    this.one = false
     this.two = false;
 this.three = false;
 this.four = true;
@@ -465,7 +474,7 @@ console.log(key);
 this.productService.key = key;
 const dialogConfig = new MatDialogConfig();
 dialogConfig.autoFocus = true;
-dialogConfig.width = '30%';
+dialogConfig.width = '80%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
   onRemoveproduct(id, ip , key) {
@@ -475,6 +484,9 @@ this.dialog.open(ProductSelectComponent, dialogConfig);
     console.log(this.products[ip].sortedProducts);
   }
 onDeletegroup(name) {
+  let i = this.products.indexOf(name);
+  this.products.splice(i, 1);
+  console.log(this.products);
   this.productService.token = this.storage.get('token');
   console.log(name);
 this.productService.deletegroup(name).subscribe(res => {

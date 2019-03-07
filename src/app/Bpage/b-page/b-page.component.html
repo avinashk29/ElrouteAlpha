@@ -684,14 +684,17 @@
     </mat-expansion-panel>
 --->
 <legend style="  color: #333">  {{group.key|uppercase}}</legend>
-<button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany && group.key!=='others' ">Add Product</button>
-<button (click)="onDeletegroup(group.key)" *ngIf="myCompany && group.key!=='others'">Delete Group</button>
-<button (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2">show all product</button>
+<div class="add_delete" >
+<button (click)="onAddproductTogroup(group.key)" class="add_product" *ngIf="myCompany && group.key!=='others' "><span> <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2c1.695 1.942 2.371 3 4 3h13v17h-24v-20h7zm4 5c-2.339 0-3.537-1.388-4.917-3h-4.083v16h20v-13h-11zm2 6h3v2h-3v3h-2v-3h-3v-2h3v-3h2v3z"/></svg> </span></button>
+<button (click)="onDeletegroup(group.key)" class="delete_product" *ngIf="myCompany && group.key!=='others'"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6l3 18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/></svg></span></button>
+</div>
+<!-- <button (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2">show all product</button> -->
 
 <div style="display: flex;flex-wrap: wrap;">
-    
+   
 <div class="Card" *ngFor="let product of group.sortedProducts;let j=index" [ngStyle]="{'display':(j >= 2&&!this.showAll[ip]) ? 'none' : 'block' }">
-    <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany && group.key!=='others'">Remove</button>  
+   
+    <div class="container">
 <div class="productCard">
 
     <div class="productImage">
@@ -699,8 +702,11 @@
     </div>
     <div class="productContent">
       <div class="content">
-        <div class="productCategory">
-          <h6>{{product.category}}</h6>
+        <!-- <div>
+          <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany && group.key!=='others'"> <span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5 15.538l-3.592-3.548 3.546-3.587-1.416-1.403-3.545 3.589-3.588-3.543-1.405 1.405 3.593 3.552-3.547 3.592 1.405 1.405 3.555-3.596 3.591 3.55 1.403-1.416z"/></svg></span></button>  
+        </div> -->
+          <div class="productCategory">
+          <h6>{{product.industry}}</h6>
         </div>
         <div class="productName">
           <h2 routerLink="/product-page/{{product._id}}">{{product.productName}}</h2>
@@ -722,16 +728,25 @@
       </div>
     </div>
   </div>
+  <div class="overlay_remove_product"*ngIf="myCompany && group.key!=='others'" >
+      <button (click)="onRemoveproduct(product._id , ip , group.key)" class="remove_product" ><span> <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z"/></svg></span></button>  
+    </div>
+</div>
+
 </div>
 
 
 </div>
-<legend style="  color: #333"> <span (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"/></svg> </span>
-</legend>
+
+<legend *ngIf="!this.showAll[ip]" class="arrow_product">  <span (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"/></svg> </span>
+</legend>  
+<legend *ngIf="this.showAll[ip]" class="arrow_product"><span (click)="onShowAllProduct(ip)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg> </span></legend>
 
       </fieldset>
+      <div class="add_new_product">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
+    </div>
 
     </div>
 
