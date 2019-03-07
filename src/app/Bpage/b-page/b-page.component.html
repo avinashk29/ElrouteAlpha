@@ -26,6 +26,7 @@
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                 Add Your Logo</button>
             </div>
+            <img *ngIf="!this.companyService.companyData.companyLogo" src="{{../../../../../assets/images/user.png">
             <img *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
 
             <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo && myCompany">
@@ -45,7 +46,7 @@
             <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
             <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
             <span>
-              <p> {{this.companyService.companyData.followers}}</p>
+              <!-- <p> {{this.companyService.companyData.followers}}</p> -->
               <!-- <p>{{this.companyFollowers}}</p> -->
             </span>
 
@@ -144,7 +145,6 @@
               width="24" height="24" viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
           Cover Page</button>
-
       </div>
       <div class="headerImg" *ngIf="this.companyService.companyData.coverImage">
         <div class="container">
