@@ -480,22 +480,22 @@ dialogConfig.autoFocus = true;
 dialogConfig.width = '80%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
-  onRemoveproduct(id, ip , key) {
-    this.spinner.show();
-    console.log(key);
-    console.log(this.products[ip].sortedProducts);
-    let i = this.products[ip].sortedProducts.indexOf(id);
-    this.products[ip].sortedProducts.splice(i, 1);
-    console.log(this.products[ip].sortedProducts);
+  onRemoveproduct(id) {
+    // this.spinner.show();
+    // console.log(key);
+    // console.log(this.products[ip].sortedProducts);
+    // let i = this.products[ip].sortedProducts.indexOf(id);
+    // this.products[ip].sortedProducts.splice(i, 1);
+    // console.log(this.products[ip].sortedProducts);
     this.productService.groupProductdelete(id).subscribe(res => {
-      // this.ngZone.run(() => {
-      //   this.productService.getProduct(this.comapnyId).subscribe(res1 => {
-      //     this.products =  JSON.parse(res1['_body']);
+      this.ngZone.run(() => {
+        this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+          this.products =  JSON.parse(res1['_body']);
       //      this.spinner.hide();
-      //   });
-      // });
+        });
+      });
       console.log(res);
-      this.spinner.hide();
+      // this.spinner.hide();
     });
   }
 onDeletegroup(name) {

@@ -273,7 +273,8 @@ header {
 
 .tabClicked  {
   height: 120px;
-  transition: .2s;
+  box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0, .35);
+  /* transition: heigh  .5s ease-in-out; */
   /* background-color: red; */
 }
 
@@ -1343,6 +1344,8 @@ mat-panel-title h4 {
     width: 22%;
     font-size: 21px;
     height: 50vh;
+
+
   }
 
   .extraInfo {
