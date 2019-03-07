@@ -451,32 +451,30 @@
               <path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z" />
             </svg></span>Edit</button>
 
-        <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section">
-          <div>
-          <div class="content">
+        <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section let x=index ">
+          <div class="content" *ngIf="x%2!=0">
             <div class="Sectioncontent">
               <h2>{{section.sectionTitle}}</h2>
               <p>{{section.sectionContent}}</p>
             </div>
           </div>
-          <div class="content_img">
+          <div class="content_img" *ngIf="x%2!=0">
             <img src="{{section.sectionImage}}">
           </div>
+          <div class="content_img" *ngIf="x%2===0">
+              <img src="{{section.sectionImage}}">
+            </div>
+        <div class="content" *ngIf="x%2===0">
+          <div class="Sectioncontent">
+            <h2>{{section.sectionTitle}}</h2>
+            <p>{{section.sectionContent}}</p>
+          </div>
         </div>
-      </div>
+        </div>
 
  
-      <div>
-        <div class="content_img">
-            <img src="{{section.sectionImage}}">
-          </div>
-      <div class="content">
-        <div class="Sectioncontent">
-          <h2>{{section.sectionTitle}}</h2>
-          <p>{{section.sectionContent}}</p>
-        </div>
-      </div>
-      </div>
+      
+       
 
       </div>
 
