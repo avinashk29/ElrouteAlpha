@@ -684,14 +684,14 @@
     </mat-expansion-panel>
 --->
 <legend style="  color: #333">  {{group.key|uppercase}}</legend>
-<button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany">Add Product</button>
-<button (click)="onDeletegroup(group.key)" *ngIf="myCompany">Delete Group</button>
+<button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany && group.key!=='others' ">Add Product</button>
+<button (click)="onDeletegroup(group.key)" *ngIf="myCompany && group.key!=='others'">Delete Group</button>
 <button (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2">show all product</button>
 
 <div style="display: flex;flex-wrap: wrap;">
     
 <div class="Card" *ngFor="let product of group.sortedProducts;let j=index" [ngStyle]="{'display':(j >= 2&&!this.showAll[ip]) ? 'none' : 'block' }">
-    <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany">Remove</button>  
+    <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany && group.key!=='others'">Remove</button>  
 <div class="productCard">
 
     <div class="productImage">
@@ -725,7 +725,7 @@
 </div>
 </div>
       </fieldset>
-      <!-- <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button> -->
+      <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
 
     </div>

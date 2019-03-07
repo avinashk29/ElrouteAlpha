@@ -26,8 +26,14 @@ GroupForm = new FormGroup({
     this.productService.getProduct(this.companyId).subscribe(res => {
       this.productService.productData = JSON.parse(res['_body']);
       // // this.results = this.productService.productData;
-      console.log(JSON.parse(res['_body'])[this.productService.productData.length - 1].sortedProducts);
-      this.products = JSON.parse(res['_body'])[this.productService.productData.length - 1].sortedProducts;
+      for(let i=0;i<this.productService.productData.length;i++){
+        if(this.productService.productData[i].key==='others'){
+          console.log(JSON.parse(res['_body'])[i].sortedProducts);
+          this.products = JSON.parse(res['_body'])[i].sortedProducts;
+        }
+      }
+
+    
     });
   }
 
