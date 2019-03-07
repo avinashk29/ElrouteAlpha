@@ -451,20 +451,37 @@
               <path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z" />
             </svg></span>Edit</button>
 
-        <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section">
-          <div class="content">
+        <div class="infoSectonCard" *ngFor="let section of this.companyService.companyData.section let x=index ">
+          <div class="content" *ngIf="x%2!=0">
             <div class="Sectioncontent">
               <h2>{{section.sectionTitle}}</h2>
               <p>{{section.sectionContent}}</p>
             </div>
           </div>
-          <div class="content_img">
+          <div class="content_img" *ngIf="x%2!=0">
             <img src="{{section.sectionImage}}">
           </div>
+          <div class="content_img" *ngIf="x%2===0">
+              <img src="{{section.sectionImage}}">
+            </div>
+        <div class="content" *ngIf="x%2===0">
+          <div class="Sectioncontent">
+            <h2>{{section.sectionTitle}}</h2>
+            <p>{{section.sectionContent}}</p>
+          </div>
+        </div>
         </div>
 
+ 
+      
+       
 
       </div>
+
+      
+      <!-- section change -->
+
+     
 
       <!-- end of section -->
       <div class="no_product" *ngIf = "!this.certification.length">
@@ -579,7 +596,7 @@
       </div>
 
 
-      <div *ngFor="let group of products; let ip = index">
+      <fieldset *ngFor="let group of products; let ip = index">
 
           <!-- <h4 style="  color: #333">  {{group.key}}</h4>
 
@@ -666,7 +683,7 @@
     </div>
     </mat-expansion-panel>
 --->
-<h4 style="  color: #333">  {{group.key}}</h4>
+<legend style="  color: #333">  {{group.key|uppercase}}</legend>
 <button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany">Add Product</button>
 <button (click)="onDeletegroup(group.key)" *ngIf="myCompany">Delete Group</button>
 <button (click)="onShowAllProduct(ip)" *ngIf="group.sortedProducts.length>2">show all product</button>
@@ -707,7 +724,7 @@
   </div>
 </div>
 </div>
-</div>
+      </fieldset>
       <!-- <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button> -->
         </div>
 
