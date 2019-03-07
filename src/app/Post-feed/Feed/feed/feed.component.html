@@ -1,6 +1,6 @@
 
 
-              <form (submit)="getProduct()" *ngIf= "products.length">
+              <form (submit)="getProduct()" *ngIf= "this.products">
                     <div class="tag_product">
                       <div class="tag">
                         <div class="heading">
@@ -22,6 +22,6 @@
                        </div>
                      </div>
               </form>
-<div *ngIf= "!products.length">
+<div *ngIf= "!this.products">
   <h1 style="text-align: center">No Product Created</h1>
 </div>
