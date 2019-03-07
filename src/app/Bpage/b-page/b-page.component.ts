@@ -461,6 +461,9 @@ this.four = true;
       });
   }
   onAddproductTogroup(key) {
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { edit: 'true'}
+    });
 console.log(key);
 this.productService.key = key;
 const dialogConfig = new MatDialogConfig();
@@ -469,17 +472,37 @@ dialogConfig.width = '30%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
   onRemoveproduct(id, ip , key) {
+    this.spinner.show();
     console.log(key);
     console.log(this.products[ip].sortedProducts);
-    this.products[ip].sortedProducts.splice(id, 1);
+    let i = this.products[ip].sortedProducts.indexOf(id);
+    this.products[ip].sortedProducts.splice(i, 1);
     console.log(this.products[ip].sortedProducts);
+    this.productService.groupProductdelete(id).subscribe(res => {
+      // this.ngZone.run(() => {
+      //   this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+      //     this.products =  JSON.parse(res1['_body']);
+      //      this.spinner.hide();
+      //   });
+      // });
+      console.log(res);
+      this.spinner.hide();
+    });
   }
 onDeletegroup(name) {
+  this.spinner.show();
   this.productService.token = this.storage.get('token');
   console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
   // console.log(JSON.parse(res['_body']));
+  this.ngZone.run(() => {
+    this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+      this.products =  JSON.parse(res1['_body']);
+       this.spinner.hide();
+    });
+  });
 });
+
 }
 
 onShowAllProduct(index){
