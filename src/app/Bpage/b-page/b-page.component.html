@@ -37,7 +37,7 @@
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                 Add Your Logo</button>
             </div>
-            <img *ngIf="!this.companyService.companyData.companyLogo" src="{{../../../../../assets/images/user.png">
+            <img *ngIf="!this.companyService.companyData.companyLogo && !myCompany" src="{{../../../../../assets/images/user.png">
             <img *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
 
             <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo && myCompany">
@@ -247,7 +247,7 @@
                     <div class="overlay1">
                       <div class="feed_text">
                         <p>{{feed.content}}</p>
-                        <p>Watch our first episode</p>
+                        <!-- <p>Watch our first episode</p> -->
                         <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                       </div>
                       <div class="bookmark_share">

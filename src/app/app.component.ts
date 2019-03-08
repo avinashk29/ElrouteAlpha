@@ -11,7 +11,8 @@ import { ProductServiceService } from './Service/product-service.service';
 })
 export class AppComponent implements OnInit {
   title = 'ElrouteAlpha';
-  token
+  token;
+  companyId;
   constructor(
     private userService: UserService,
     private companyService:CompanyServiceService,
@@ -19,7 +20,9 @@ export class AppComponent implements OnInit {
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
     ){
       this.token=this.storage.get('token');
-      console.log(this.token)
+    // this.companyId =  this.storage.get('companyId');
+    // console.log(this.companyId);
+    
       }
 ngOnInit(){
   this.userService.userData={};

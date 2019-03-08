@@ -152,7 +152,10 @@ this.follows.token=this.storage.get('token');
   }
 
   ngOnInit() {
-
+    if(!this.companyService.companyData.companyLogo){
+      this.companyService.companyData.companyLogo='';
+    }
+console.log(this.companyService.companyData.companyLogo);
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {

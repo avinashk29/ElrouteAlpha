@@ -9,6 +9,7 @@
 
       </div>
       <ul class="main-nav">
+        
         <li *ngIf="!this.UserService.userData.userName" (click)="openDialog()"  style="display: flex; align-items: center">
            <h3 style="margin-top: 15px; cursor: pointer"> Login & Signup</h3>
         </li>
