@@ -62,6 +62,8 @@ export class BPageComponent implements OnInit {
   linkedin;
   likedinEdit = false;
   limit;
+  time1;
+  time2;
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
@@ -87,7 +89,7 @@ export class BPageComponent implements OnInit {
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
-      workingHours: [],
+      workingHours: [''],
       shortIntro: [],
       facebook: [''],
       linkedin: [''],
@@ -371,32 +373,40 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
   onEditBpage(key, content: HTMLInputElement) {
+    // console.log(content);
     const formData = new FormData();
     formData.append(key, content.value);
-    this.companyService.UpdateCompany(formData).subscribe(res => {
-      this.companyService.companyData.website = JSON.parse(res['_body']).website;
-      this.companyService.companyData.workingHours = JSON.parse(
-        res['_body']
-      ).workingHours;
-      this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
-      this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
-      this.router.navigate(['/companyPage/' + this.comapnyId], {
-        queryParams: { urltype: 'edit' }
-      });
-      if (this.type === 'info') {
-        this.router.navigate(['/companyPage/' + this.comapnyId], {
-          queryParams: { urltype: 'info' }
-        });
-      } else {
-        this.router.navigate(['/companyPage/' + this.comapnyId], {
-          queryParams: { urltype: 'default' }
-        });
-      }
-    });
-    this.editwebsite = false;
-    this.editworkingHours = false;
-    this.editshortIntro = false;
-    this.editSocialLinks = false;
+    console.log(content.value);
+    console.log(this.time1);
+    if (key === 'workingHours') {
+      content.value = this.time1 + '-' + this.time2;
+      formData.append(key, content.value);
+      console.log(content.value);
+    }
+    // this.companyService.UpdateCompany(formData).subscribe(res => {
+    //   this.companyService.companyData.website = JSON.parse(res['_body']).website;
+    //   this.companyService.companyData.workingHours = JSON.parse(
+    //     res['_body']
+    //   ).workingHours;
+    //   this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
+    //   this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
+    //   this.router.navigate(['/companyPage/' + this.comapnyId], {
+    //     queryParams: { urltype: 'edit' }
+    //   });
+    //   if (this.type === 'info') {
+    //     this.router.navigate(['/companyPage/' + this.comapnyId], {
+    //       queryParams: { urltype: 'info' }
+    //     });
+    //   } else {
+    //     this.router.navigate(['/companyPage/' + this.comapnyId], {
+    //       queryParams: { urltype: 'default' }
+    //     });
+    //   }
+    // });
+    // this.editwebsite = false;
+    // this.editworkingHours = false;
+    // this.editshortIntro = false;
+    // this.editSocialLinks = false;
 
   }
 

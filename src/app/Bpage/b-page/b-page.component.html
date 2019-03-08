@@ -83,7 +83,9 @@
           <p>{{this.companyService.companyData.workingHours}}</p>
         </div>
         <div *ngIf="editworkingHours" class="time_input">
-          <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours>
+          <input type="time" placeholder="Enter Working Hours" [(ngModel)] = "time1" formControlName="workingHours" trim #workingHours />
+          <input type="time" placeholder="Enter Working Hours" [(ngModel)] = "time2" formControlName="workingHours" trim #workingHours />
+          <!-- <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours> -->
           <button type="submit" (click)="onEditBpage('workingHours', workingHours)">Save</button>
         </div>
         <button type="button" *ngIf="!this.companyService.companyData.website && !editwebsite && myCompany" (click)="editwebsite = true"><span><svg
