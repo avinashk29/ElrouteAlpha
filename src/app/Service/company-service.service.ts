@@ -9,6 +9,7 @@ export class CompanyServiceService {
 
  companyData;
  section;
+ contact;
   companyFollowers=[];
   id;
   constructor(

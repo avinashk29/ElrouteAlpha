@@ -74,6 +74,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
 import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 import { ProductSelectComponent } from './Product/product-select/product-select.component';
+import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -140,6 +141,7 @@ export function provideConfig() {
     LandingPageComponent,
     OnefollowerComponent,
     ProductSelectComponent,
+    CompanyContactComponent,
 
   ],
   imports: [
@@ -168,7 +170,8 @@ export function provideConfig() {
     EditComponent,
     FeedComponent,
     OnefollowerComponent,
-    ProductSelectComponent
+    ProductSelectComponent,
+    CompanyContactComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
      SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig}],

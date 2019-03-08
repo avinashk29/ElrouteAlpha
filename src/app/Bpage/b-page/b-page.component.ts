@@ -17,6 +17,7 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
+import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -37,6 +38,7 @@ export class BPageComponent implements OnInit {
   certification = [];
   companyFollowers = [];
   products = [];
+  contact = [];
   comapnyId;
   mycompanyId;
   type;
@@ -90,7 +92,8 @@ export class BPageComponent implements OnInit {
       facebook: [''],
       linkedin: [''],
       gmail: [''],
-      section: this._fb.array([])
+      section: this._fb.array([]),
+
     });
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
@@ -103,8 +106,9 @@ this.follows.token=this.storage.get('token');
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           console.log( JSON.parse(res['_body']));
-          this.companyFollowers= JSON.parse(res['_body']).followers.length;
-          console.log(this.companyFollowers)
+          this.companyFollowers = JSON.parse(res['_body']).followers.length;
+          this.contact = JSON.parse(res['_body']).contact;
+          console.log(this.companyFollowers);
           this.setSection();
 
 
@@ -301,7 +305,7 @@ this.four = false;
             ).certification;
           });
         this.spinner.hide();
-      }else{
+      } else {
         this.companyImage.push(url);
         let companyImage = new FormGroup({
           companyImage: new FormControl(this.companyImage)
@@ -315,7 +319,7 @@ this.four = false;
           });
         this.spinner.hide();
       }
-    })
+    });
 
   }
 
@@ -332,7 +336,7 @@ this.four = false;
     this.two = true;
 this.three = false;
 this.four = false;
-this.one = false
+this.one = false;
     this.type = 'info';
 
   }
@@ -343,7 +347,7 @@ this.one = false
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
     });
-    this.one = false
+    this.one = false;
     this.two = false;
 this.three = true;
 this.four = false;
@@ -353,7 +357,7 @@ this.four = false;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'contact' }
     });
-    this.one = false
+    this.one = false;
     this.two = false;
 this.three = false;
 this.four = true;
@@ -484,12 +488,6 @@ dialogConfig.width = '80%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
   onRemoveproduct(id) {
-    // this.spinner.show();
-    // console.log(key);
-    // console.log(this.products[ip].sortedProducts);
-    // let i = this.products[ip].sortedProducts.indexOf(id);
-    // this.products[ip].sortedProducts.splice(i, 1);
-    // console.log(this.products[ip].sortedProducts);
     this.productService.groupProductdelete(id).subscribe(res => {
       this.ngZone.run(() => {
         this.productService.getProduct(this.comapnyId).subscribe(res1 => {
@@ -521,5 +519,14 @@ onShowAllProduct(index){
   console.log(this.showAll[index])
   console.log(index)
   this.showAll[index]= !this.showAll[index]
+}
+onAddContact() {
+  this.router.navigate(['/companyPage/' + this.comapnyId], {
+    queryParams: { edit: 'true'}
+  });
+  const dialogConfig = new MatDialogConfig();
+// dialogConfig.autoFocus = true;
+dialogConfig.width = '48%';
+  this.dialog.open(CompanyContactComponent, dialogConfig);
 }
 }
