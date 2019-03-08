@@ -6,18 +6,18 @@
             <div class="header_left">
                 <div class="company_logo">
                     <img src="../../../assets/images/logo.png">
-                 </div> 
+                 </div>
                  <div class="company_name">
                     <h2> Larsen And Turbo Pvt.Ltd.</h2>
-                  </div> 
-             </div> 
+                  </div>
+             </div>
              <div class="header_right">
                 <ul>
-                    <li>Info</li>
-                    <li>Product</li>
-                    <li>Contact</li>
-                 </ul> 
-             </div>  
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'info'}">Info</li>
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'product'}">Product</li>
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'contact'}">Contact</li>
+                 </ul>
+             </div>
         </div>
 
         <div class="product_detalis">
@@ -73,11 +73,11 @@
     <div class="speci_1"  *ngFor="let field of productinfo.fields">
       <div class="speci_details">
         <P > {{field.fieldName}}</P>
-    
+
       </div>
       <div class="speci_details">
         <P > {{field.fieldDes}}</P>
-      
+
         </div>
     </div>
   </mat-expansion-panel>
@@ -114,9 +114,9 @@
   </div> -->
 
   <div class="main_feed_card">
-    
+
     <div class="feed1" *ngFor="let feed of feedResult">
-  
+
       <div style="width: 100%;    margin-bottom: 5%;">
         <div class="feed_content">
           <div class="feed_header">
