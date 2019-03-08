@@ -118,7 +118,7 @@
           </div>
         </div>
 
-        <div style="width:100%;"> 
+        <div style="width:100%;" *ngIf="haveCompany"> 
             <div class="design">
             <svg height="300" width="500" class="container">
               <polygon points="10,20 11.34,15 15,11.34 20,10 115,10 120,11.34 123.66,15 125,20 125,40 1000,40 1000,290 10,290 " style="fill:white;stroke:black;stroke-width:0" />
@@ -288,7 +288,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tagged" *ngIf="feed.tagId">
+                    <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
                       <mat-expansion-panel>
                         <mat-expansion-panel-header style="background-color: #6d7791;">
                           <mat-panel-title>

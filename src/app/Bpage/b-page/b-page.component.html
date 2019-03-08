@@ -13,7 +13,7 @@
           </div>
           <!-- /* ------------------mobile css------*/ -->
   <header>
-    <div class="card1">
+    <div class="card1" style="    min-height: 355px;">
       <!-- <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg"
           width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
           <g id="location" transform="translate(-486.5 -340.5)">
@@ -82,7 +82,7 @@
             </svg></span>
           <p>{{this.companyService.companyData.workingHours}}</p>
         </div>
-        <div *ngIf="editworkingHours">
+        <div *ngIf="editworkingHours" class="time_input">
           <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours>
           <button type="submit" (click)="onEditBpage('workingHours', workingHours)">Save</button>
         </div>
@@ -96,7 +96,7 @@
             </svg></span>
           <a target="_blank" href="http://{{this.companyService.companyData.website}}">{{this.companyService.companyData.website}}</a>
         </div>
-        <div *ngIf="editwebsite">
+        <div *ngIf="editwebsite" class="website_input">
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
           <button type="submit" (click)="onEditBpage('website',website)">Save</button>
         </div>
@@ -261,7 +261,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tagged" *ngIf="feed.tagId">
+                <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
                   <mat-expansion-panel>
                     <mat-expansion-panel-header style="background-color: #6d7791;">
                       <mat-panel-title>
@@ -536,7 +536,7 @@
         </ng-template>
 
       </div>
-      <div class="no_product" *ngIf="!this.companyImage.length">
+      <div class="no_product_1" *ngIf="!this.companyImage.length">
           <div class="no_product_left">
 
             </div>
@@ -591,8 +591,22 @@
   </div>
   <div class="body" *ngIf="this.type === 'product'">
     <div class="infoSection3">
-      <div *ngIf="!products">
-        <h1>No Products Found</h1>
+      <div *ngIf="!products.length" class="no_product_dummy"> 
+        <div class="no_product_found">
+          <div class="no_product_left">
+
+            </div>
+            <div class="no_product_right">
+              <h3>No Product Listed!</h3>
+              <div class="hq_info" style="text-align:right;">
+                <button  type="button"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                </button>
+              </div>
+             </div>
+           
+        </div>
       </div>
 
 
@@ -743,7 +757,7 @@
 <legend *ngIf="this.showAll[ip]" class="arrow_product"><span (click)="onShowAllProduct(ip)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg> </span></legend>
 
       </fieldset>
-      <div class="add_new_product">
+      <div class="add_new_product" *ngIf="products.length">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
     </div>
