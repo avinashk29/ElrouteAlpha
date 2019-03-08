@@ -1,11 +1,12 @@
 <app-header></app-header>
 
+<app-side-nav></app-side-nav>
 <app-user-overview></app-user-overview>
 <div class="bookmark_overview">
 <section>
     <h2>Bookmarks</h2>
     <app-header3></app-header3>
-    <div *ngIf="result">
+    <div *ngIf="result.length">
     <div class="listing" *ngFor="let r of result">
         <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
         <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->

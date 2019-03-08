@@ -34,6 +34,7 @@ id;
   ngOnInit() {
 
 this.productService.getOneProduct(this.id).subscribe(res => {
+  console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;

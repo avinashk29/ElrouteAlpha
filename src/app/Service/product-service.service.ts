@@ -60,10 +60,12 @@ updateGroup(data){
   getFeedById(id){
     return this.http.get('http://localhost:8080/api/product/feed/'+id)
   }
-//   sendData(this.value) {
-//     this.empDetailSubject.next(value);
-//     console.log(this.empDetailSubject)
-// }
-
-
+  sendData(value) {
+    this.empDetailSubject.next(value);
+    console.log(this.empDetailSubject)
+}
+getData()
+{
+  return this.empDetailSubject.asObservable();
+}
 }

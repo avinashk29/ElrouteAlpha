@@ -40,6 +40,11 @@ export class ProductFormComponent implements OnInit {
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private userService:UserService,
     private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
       this.companyId =  this.storage.get('companyId');
+      this.productService.changedata.subscribe(res=>{
+
+        this.companyName=res;
+      })
+    
      }
 
   ngOnInit() {
@@ -60,12 +65,13 @@ export class ProductFormComponent implements OnInit {
     });
     this.productService.token = this.storage.get('token');
     this.setProductInfo();
+    // this.companyService.GetoneCompany(this.companyid).subscribe(res=>{
+    //   this.companyName=JSON.parse(res['_body']).companyName;
+    // })
   }
   onImagePick(event, name) {
     this.companyid=this.storage.get('companyId')
-    this.companyService.GetoneCompany(this.companyid).subscribe(res=>{
-      this.companyName=JSON.parse(res['_body']).companyName;
-    })
+  
     const file = <File>event.target.files[0];
     this.productForm.patchValue({Image: file});
     this.productForm.get('Image').updateValueAndValidity();
@@ -139,8 +145,11 @@ export class ProductFormComponent implements OnInit {
 
 
   onSubmit() {
+  
      this.productForm.value.companyName=this.companyName;
+     console.log(this.productForm.value.companyName)
       this.productService.addProduct(this.productForm.value).subscribe(res => {
+        console.log(JSON.parse(res['_body']))
         this.productService.productData = JSON.parse(res['_body']);
         // this.userService.sendData(res);
         this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});

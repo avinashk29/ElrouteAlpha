@@ -8,14 +8,14 @@
                     <img src="../../../assets/images/logo.png">
                  </div> 
                  <div class="company_name">
-                    <h2> Larsen And Turbo Pvt.Ltd.</h2>
+                    <h2>{{this.productService.productData.companyName}}</h2>
                   </div> 
              </div> 
              <div class="header_right">
                 <ul>
-                    <li>Info</li>
-                    <li>Product</li>
-                    <li>Contact</li>
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'info'}">Info</li>
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'product'}">Product</li>
+                    <li routerLink="/companyPage/{{this.productService.productData.creator}}" [queryParams] = "{urltype: 'contact'}">Contact</li>
                  </ul> 
              </div>  
         </div>

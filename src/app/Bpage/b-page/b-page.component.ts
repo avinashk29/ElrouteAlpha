@@ -105,6 +105,7 @@ this.follows.token=this.storage.get('token');
           console.log( JSON.parse(res['_body']));
           this.companyFollowers= JSON.parse(res['_body']).followers.length;
           console.log(this.companyFollowers)
+          this.productService.sendData(this.companyService.companyData.companyName);
           this.setSection();
 
 

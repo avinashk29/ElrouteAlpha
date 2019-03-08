@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
     private productService:ProductServiceService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
     ){
-      this.token=this.storage.get('token');
-      console.log(this.token)
+      // this.token=this.storage.get('token');
+      // console.log(this.token)
       }
 ngOnInit(){
   this.userService.userData={};
