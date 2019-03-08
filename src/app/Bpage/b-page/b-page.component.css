@@ -569,7 +569,7 @@ category_btn {
 
 .feed_show_img img {
   width: 100%;
-  margin-top: -18%;
+  margin-top: -14%;
   height: 36vh;
   border-radius: 10px;
 }
@@ -710,7 +710,7 @@ category_btn {
 
 .feed_img img {
   width: 100%;
-  height: 50vh;
+  /* height: 50vh; */
 
 }
 
@@ -1139,6 +1139,32 @@ mat-panel-title h4 {
   border-radius: 3px;
   margin-bottom: 2%;
 }
+.time_input button
+{
+  display: block;
+  text-align: center;
+  width: 20%;
+  border-radius: 5px;
+  background-color: #74eb74;
+  color: white;
+  box-shadow: 0px 0px 0px 0px #5555;
+
+}
+.website_input button
+{
+  display: block;
+  text-align: center;
+  width: 20%;
+  border-radius: 5px;
+  background-color: #74eb74;
+  color: white;
+  box-shadow: 0px 0px 0px 0px #5555;
+
+}
+.no_product_dummy
+{
+  text-align:center;     margin: 0 auto;width: 50%;
+}
 .no_product
 {
   height: 25vh;
@@ -1146,7 +1172,7 @@ mat-panel-title h4 {
   border: solid 1px gray;
   border-radius: 20px;
   margin: 0 auto; width: 50%;
-  margin-top: 7%;
+  margin-top: 8%;
   align-items: center;
 }
 .no_product_left
@@ -1161,6 +1187,16 @@ mat-panel-title h4 {
   margin-left: 4%;
   width: 55%;
   text-align: center;
+}
+.no_product_1
+{
+  height: 25vh;
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 20px;
+  margin: 0 auto; width: 50%;
+  margin-top: 4%;
+  align-items: center;
 }
 .no_contact
 {
@@ -1196,6 +1232,18 @@ mat-panel-title h4 {
   width: 55%;
   text-align: center;
 }
+.no_product_found
+{
+  height: 25vh;
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 20px;
+  margin: 0 auto; width: 100%;
+  margin-bottom: 4%;
+  margin-top: 7%;
+  align-items: center;
+}
+
 
 @media screen and (max-width:700px) {
 

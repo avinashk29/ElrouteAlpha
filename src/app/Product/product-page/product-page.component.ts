@@ -35,6 +35,7 @@ id;
 
 this.productService.getOneProduct(this.id).subscribe(res => {
   this.productService.productData = JSON.parse(res['_body']);
+  console.log(this.productService.productData);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{
@@ -44,6 +45,7 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
     
 this.productService.getFeedById(this.id).subscribe(res=>{
+  console.log(JSON.parse(res['_body'])[0]);
 this.feedResult=JSON.parse(res['_body']);
 console.log(JSON.parse(res['_body']));
 console.log(this.feedResult.length);
