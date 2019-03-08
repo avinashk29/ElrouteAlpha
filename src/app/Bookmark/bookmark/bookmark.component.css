@@ -253,7 +253,7 @@ section{
   display: flex;
   border: solid 1px gray;
   border-radius: 20px;
-  margin: 0 auto; 
+  margin: 0 auto;
   width: 100%;
   margin-top: 4%;
   align-items: center;
@@ -272,7 +272,12 @@ section{
   width: 55%;
   text-align: center;
 }
-
+.b_page_btn button
+{
+  border: none;
+  background-color: transparent;
+  margin-top: 2%;
+}
 @media screen and (max-width:700px) {
 section {
   width: 90%;
@@ -282,7 +287,7 @@ section {
 .Card {
   width: 100%;
 
-  
+
 }
 .no_product_dummy {
   width: 100%;
@@ -294,11 +299,11 @@ section {
 @media screen and  (min-width:767px)and (max-width:1024px){
   .Card {
     width: 47%;
-    
+
 }
 .bookmark_overview {
   width: 85%;
   margin-left: 11%;
- 
+
 }
 }

@@ -1026,6 +1026,7 @@ mat-panel-title h4 {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 2%;
+
   margin-top: 2%;
 }
 
@@ -1037,6 +1038,7 @@ mat-panel-title h4 {
   display: flex;
   width: 80%;
   margin: 0 auto;
+  flex-wrap: wrap;
   margin-top: 2%;
 }
 
@@ -1045,9 +1047,15 @@ mat-panel-title h4 {
   box-shadow: 0px 3px 10px #5555;
   height: 175px;
   padding-top: 1%;
+  margin-bottom: 2%;
   margin-left: 2%;
 }
-
+.companyEmail_box{
+  border: solid 1px gray;
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 5%;
+}
 .company_email {
   display: flex;
   width: 50%;
@@ -1056,13 +1064,14 @@ mat-panel-title h4 {
 }
 
 .company_email p {
-  width: 15%;
+  width: 25%;
   color: #0A9AB1;
 }
 
 .company_email1 {
   text-align: center;
 }
+
 
 .company_email1 h2 {
   margin-top: auto;
@@ -1071,22 +1080,32 @@ mat-panel-title h4 {
 }
 
 .company_address {
-  width: 80%;
+  width: 77%;
+  box-shadow: 0px 3px 10px #5555;
   margin: 0 auto;
+  padding: 0px 0px 10px 0;
   display: flex;
 }
 
 .google_map {
-  background-color: red;
-  height: 500px;
-  width: 47%;
-  font-size: 25px;
-  color: wheat;
+
+  width: 40%;
+  font-size: 22px;
+  margin-left: 5%;
+
+}
+.google_map p {
+display: flex;
+margin-bottom: auto;
+margin-top: auto;
+ }
+.google_map span {
+  margin: 10px 15px 0 0;
 }
 
 .complete_address {
-  font-size: 30px;
-  width: 34%;
+  font-size: 25px;
+  width: 60%;
   margin-left: 5%;
   margin-bottom: auto;
   margin-top: auto;
@@ -1827,13 +1846,13 @@ label {
   outline: none;
   width: 100%;
   border: navajowhite;
-  height: 30vh;
+  height: 50vh;
   font-size: 39px;
 }
 
 .infoImg img {
   width: 100%;
-  height: 30vh;
+  height: 50vh;
 }
 
 .infoContent h3 {
@@ -1866,6 +1885,7 @@ label {
   /* background-color: aqua; */
   margin-top: 40px;
   display: flex;
+  box-shadow: 0px 1px 3px 0px #5555;
   /* height: 40vh;  */
 }
 
@@ -1906,8 +1926,8 @@ label {
 }
 
 .content {
-  width: 40%;
-  box-shadow: 0px 0px 5px #5555;
+  width: 45%;
+  /* box-shadow: 0px 0px 5px #5555; */
 }
 
 .Sectioncontent {
@@ -2089,14 +2109,14 @@ label {
 .items img {
   margin-right: 60px;
   width: 100%;
-  height: 300px;
+  height: 280px;
 
 }
 
 .items {
   min-width: 26%;
   margin: 0px 10px;
-  height: 40vh;
+  height: 42vh;
 
 
 }
@@ -2449,7 +2469,7 @@ label {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
+  height: 99%;
   width: 100%;
   opacity: 0;
   transition: .5s ease;
@@ -2565,7 +2585,7 @@ input[type="file"] {
 }
 
 .content_img {
-  width: 67%;
+  width: 55%;
   height: 35vh;
 }
 
