@@ -25,7 +25,15 @@
 /* ------------------mobile css------*/
 
 
-
+#container_1{
+  width:55%;
+  height: 30vh; 
+}
+.b_page_btn
+{
+  margin-top: 1%;
+  margin-left: 1%;
+}
 section {
   width: 90%;
   margin: 0 auto;
@@ -331,6 +339,8 @@ fieldset
 {
   border: none;
   outline: none;
+  background-color: transparent;
+
   /* float:right; */
 }
 .delete_product svg
@@ -343,6 +353,8 @@ fieldset
 {
   border: none;
   outline: none;
+  background-color: transparent;
+
   /* float:right; */
 }
 .add_product svg
@@ -1308,7 +1320,7 @@ margin-top: auto;
   section {
     width: 95%;
     margin: 0 auto;
-    margin-top: 26%;
+    margin-top: 12%;
   }
 
   .followBtn button {
@@ -1452,6 +1464,8 @@ margin-top: auto;
 
   .Card {
     width: 100% ! important;
+    margin-bottom: 3% !important;
+    margin-right: 0 !important;
   }
 
   .infoSectonCard {
@@ -1473,6 +1487,7 @@ margin-top: auto;
 
   .content {
     width: 100% ! important;
+    margin-left:-5% !important;
   }
 
   /* .Card {
@@ -1489,6 +1504,11 @@ margin-top: auto;
     width: 100% ! important;
     height: 20% ! important;
   }
+  .infoImg button{
+
+    height: 20vh !important;
+   
+}
 
   .infoContent p {
     width: 100% ! important;
@@ -1619,6 +1639,37 @@ margin-top: auto;
   width: 100%;
 
 }
+.productCard, .ServiceCard {
+
+  overflow: hidden;
+  height: 150px !important;
+
+}
+.productContent .content .productName h2, .ServiceContent .content .ServiceName h2 {
+
+  font-size: 18px !important;
+
+}
+#container_1 {
+  width: 100% !important;
+}
+.category_1{
+ 
+  padding: 10px 10px 22px 0 !important;
+}
+.tabClicked  {
+ color: gray;
+ box-shadow: none;;
+  /* background-color: red; */
+}
+.tabClicked {
+  border: none;
+  width: 22%;
+  font-size: 13px;
+  height: 0;
+
+
+}
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
@@ -1739,7 +1790,7 @@ margin-top: auto;
     width: 40%;
   }
 
-  .headerImg[_ngcontent-c1] {
+  .headerImg{
     width: 100%;
 
     display: flex;

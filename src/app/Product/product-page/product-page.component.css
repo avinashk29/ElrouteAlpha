@@ -39,6 +39,7 @@
 
       box-shadow: 0 5px 5px rgba(25,25,25,0.2);
       background-color: white;
+      height: 40vh;
 }
 
 .service2 p img
@@ -58,10 +59,14 @@
     float: right;
 
 }
+.service2_img
+{
+  padding: 20px 0;
+}
 
 .service2_img img
 {
-
+height: 40vh;
    width:100%;
     box-shadow: 0 5px 5px rgba(25,25,25,0.2);
 
@@ -201,7 +206,7 @@ section{
     height: 490px;
     display: block;
     margin-right: auto;
-    border: 1px solid #cccccc;
+    /* border: 1px solid #cccccc; */
   }
   /* .authorInfo{
   width: 100%;
@@ -504,6 +509,7 @@ section{
   width: 85%;
   border-bottom: solid 1px;
   display: flex;
+
 }
   .header_left
   {
@@ -548,6 +554,14 @@ section{
         width: 97%;
         margin: 0 auto;
         margin-top: 5%;
+      }
+      .header
+      {
+        margin-top: 10%;
+        border: solid 1px gray;
+        padding: 5px 3px 0px 10px;
+
+        width: 90%;
       }
       .feed{
         width: 100%;
@@ -623,6 +637,22 @@ section{
     height: 25px;
     border-radius: 15px;
     font-size: 10px;
+}
+.company_name
+{
+  display: none;
+}
+.header_right[_ngcontent-c3] ul li{
+  font-size: 14px;
+ 
+}
+.company_logo {
+  width: 100%;
+  margin-left: 2%;
+}
+.header_right
+{
+  margin-right: 2%
 }
  }
  @media screen and (min-width: 767px) and (max-width: 1024px){

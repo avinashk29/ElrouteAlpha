@@ -23,7 +23,7 @@
 <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="password" name="password" [ngClass]="{'error': !signupForm.get('password').valid && signupForm.get('password').touched }" ></li>
 <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
     <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
-    <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 18px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>
+    <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 12px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>
   </div></li>
 </ul>
 <button type="submit">Sign Up</button>
@@ -37,7 +37,7 @@
       <img src="../../../assets/images/new-google-logo-2015.png">
     </div>
     <div class="social_icon" (click) = "signInWithLinkedIN()">
-        <img src="../../../assets/images/square-linkedin-512.png">
+        <img src="../../../assets/images/square-linkedin-512.png" id="linkdin_img">
     </div>
   </div>
   <div class="login-link">
