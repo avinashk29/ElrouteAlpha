@@ -88,7 +88,7 @@
 .company
 {
     display: flex;
-
+    align-items: center;
 }
 .company_logo
 {
@@ -122,14 +122,13 @@ border: solid 5px white;
      */
      font-family: Segoe UI, Bold;
  margin-bottom: auto;
- font-weight: 500;
- margin-top: auto;
+ font-weight: 700;
+ margin-top: -10px;
  text-align: center;
- font-size: 16px;
- color: rgb(75, 73, 73);
+ font-size: 17px;
 }
 .user_name p {
-    font-family: Segoe UI, Semibold;
+    font-family: 'Segoe UI', Semibold;
  font-size: 10px;
  margin-bottom: auto;
  margin-top: auto;
@@ -152,7 +151,7 @@ border: solid 5px white;
 {
  box-shadow: 0 3px 6px 0px rgba(25, 25, 25, 0.2);
  margin: 0 auto;
- width: 80%;
+ width: 70%;
  padding: 10px;
  border-radius: 10px;
  margin-top: -3%;
@@ -172,8 +171,8 @@ border: solid 5px white;
  margin-top: auto;
  margin-bottom: auto;
  width: 100%;
- font-size: 15px;
- font-family:Segoe UI, Bold;
+ font-size: 13px;
+ font-family: 'Segoe UI', Bold;
 }
 .user_following p
 {
@@ -192,7 +191,7 @@ border: solid 5px white;
 .company
 {
  display: flex;
-
+ align-items: center;
 
 }
 .company_logo
@@ -204,8 +203,8 @@ border: solid 5px white;
 }
 .company_logo img
 {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 }
 .company_name
 {
@@ -406,7 +405,7 @@ border: solid 5px white;
 .about_feed1 {
  color: #707070;
  margin: 5px 12px auto;
- width:94%; 
+ width:94%;
  text-align: justify;
  font-size: 12px;
  line-height: 20px;
@@ -443,7 +442,7 @@ border: solid 5px white;
 .add_media_tag h2
 {
     font-weight: 400;
- font-size: 15px;
+ font-size: 12px;
  margin-bottom: auto;
  margin-top: auto;
  cursor: pointer;
@@ -459,7 +458,7 @@ border: solid 5px white;
 {
  margin-bottom: auto;
  margin-top: auto;
- font-size: 15px;
+ font-size: 12px;
  font-weight: 400;
  cursor: pointer;
 }
@@ -474,7 +473,7 @@ border: solid 5px white;
     font-weight: 400;
  margin-bottom: auto;
  margin-top: auto;
- font-size: 15px;
+ font-size: 12px;
  cursor: pointer;
 }
 .post
@@ -926,12 +925,12 @@ mat-panel-title h4 {
  font-size: 11px;
  }
  .about_feed {
-   
+
     width: 100%;
 }
 .post{
     width: 40%;
-  
+
 }
 .content_1
 {
@@ -1074,7 +1073,7 @@ mat-panel-title h4 {
     width: 100%;
 }
 .add_media_box{
-   
+
     margin: -7px 0;
     width: 97%;
 
@@ -1086,9 +1085,9 @@ mat-panel-title h4 {
 
 /*----------*/
 .about_feed1 {
-   
+
     width: 88%;
-  
+
 }
 .about_feed1 textarea {
     
@@ -1111,7 +1110,7 @@ mat-panel-title h4 {
  margin: 0 auto;
  height: 100px;
  margin: 6px 0;
- font-size: 20px;
+ font-size: 15px;
  text-align: start;
  outline: none;
  background-color:#fafafb;
@@ -1321,7 +1320,7 @@ width: 100%;
   margin: 0 auto;
   /* background-color: #151517; */
   box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2);
-    
+
   margin-top: 7%;
   /* display: flex;
   align-items: center; */
@@ -1396,15 +1395,15 @@ width: 100%;
 
         .about_feed1 {
             width: 90%;
-           
+
         }
         .add_media_box {
-            
+
             width: 98%;
         }
         .add_media1 {
-       
+
             margin-right: 4%;
-           
+
         }
     }

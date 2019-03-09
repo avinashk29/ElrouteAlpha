@@ -5,7 +5,8 @@ body
 {
   padding: 0;
   margin: 0;
-  font-family: cursive;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  color:#323233 !important;
 }
 .mat-dialog-container{
   padding: 0px !important;
@@ -22,4 +23,14 @@ body
   width: 100% !important;
 
 }
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Segoe UI', Bold;
+  color: #4B4949!important;
+}
+p{
+  color: #707070;
+  font-family: 'Segoe UI',  Regular!important;
+  font-size: 12px;
+  line-height: 20px;
 }
