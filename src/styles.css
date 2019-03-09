@@ -12,3 +12,14 @@ body
   border-radius: none !important ;
 
 }
+.cdk-overlay-pane
+{
+  width: 40% !important
+}
+@media screen and (min-width: 200px) and (max-width: 700px) {
+.cdk-overlay-pane
+{
+  width: 100% !important;
+
+}
+}

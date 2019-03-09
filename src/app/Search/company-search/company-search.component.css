@@ -219,6 +219,15 @@ section{
 {
   display: none;
 }
+.result_not_found
+{
+  width: 85%;
+  margin: 0 auto;
+}
+.result_not_found img
+{
+width: 100%;
+}
 @media screen and (max-width: 700px){
   section{
     width: 95%;
@@ -230,7 +239,7 @@ section{
     width: 100%;
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 30px;
+    border-radius: 13px;
  
 
 }
@@ -264,6 +273,14 @@ section{
   height: 25px;
   border: none;
   border-radius: 10px;
+}
+.result_not_found
+{
+  width: 95%;
+}
+.result_not_found img
+{
+width: 100%;
 }
 
 }

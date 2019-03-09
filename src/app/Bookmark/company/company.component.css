@@ -205,6 +205,17 @@ section{
 {
   width: 100%;
 }
+.listing{
+  width: 100%;
+
+  margin: 10px;
+
+}
+.companyCard{
+
+  border-radius: 12px;
+
+}
 }
 @media screen and (min-width: 767px) and (max-width: 1024px){
   section{
@@ -218,11 +229,12 @@ section{
     margin-left: 5%;
     margin-top: 20px;
 }
+
 .companyCard {
   width: 100%;
   margin: 0 auto;
   border: 1px solid #ccc;
-  border-radius: 30px;
+  border-radius: 12px;
   float: left;
   margin-top: 40px;
 

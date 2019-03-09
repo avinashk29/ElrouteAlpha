@@ -58,3 +58,19 @@ button
     padding: 8px;
     width: 15%;
 }
+
+@media screen and (min-width: 200px) and (max-width: 700px) {
+    .group_name input {
+        width: 50%;
+        border: solid 1px gray;
+    }
+    .group_name label {
+        font-size: 20px;
+    }
+.product_name_img{
+
+    width: 93% !important;
+    overflow-y: scroll;
+  
+  }
+}

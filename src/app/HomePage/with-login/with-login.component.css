@@ -937,6 +937,18 @@ mat-panel-title h4 {
 {
     width:100% !important;
 }
+.about_feed1 textarea {
+    width: 93% !important;
+   
+    
+        height: 80px !important;
+    }
+
+
+.add_media1 {
+  
+    margin-right: 4%;
+}
 }
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
@@ -1078,6 +1090,12 @@ mat-panel-title h4 {
     width: 88%;
   
 }
+.about_feed1 textarea {
+    
+   
+    
+        height: 75px !important;
+    }
 }
 
 @media screen and (min-width: 700px) and (max-width: 1440px) {

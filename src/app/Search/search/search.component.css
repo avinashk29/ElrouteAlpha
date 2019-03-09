@@ -308,6 +308,15 @@ font-size: 13px;
 .mob-cards{
   display: none;
 }
+.result_not_found
+{
+  width: 85%;
+  margin: 0 auto;
+}
+.result_not_found img
+{
+width: 100%;
+}
 @media screen and (max-width: 700px){
 .listing{display: none;}
 .mob-cards{
@@ -315,6 +324,14 @@ font-size: 13px;
 flex-wrap: wrap;
 padding-top: 21px;
 
+}
+.result_not_found
+{
+  width: 95%;
+}
+.result_not_found img
+{
+width: 100%;
 }
 
 }

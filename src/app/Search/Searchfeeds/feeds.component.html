@@ -3,7 +3,7 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section>
-    <div *ngIf = "!feedResult.length">
+    <div *ngIf = "!feedResult.length" class="result_not_found">
         <img src = "../../../assets/images/result_not_found.png">
       </div>
   <div class="results" *ngFor="let feed of feedResult; let i=index">
