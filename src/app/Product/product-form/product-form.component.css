@@ -1,3 +1,11 @@
+h1
+{
+  font-size: 27px;
+}
+h2
+{
+  font-size: 25px;
+}
 section{
   display: table;
   width: 80%;
@@ -107,14 +115,15 @@ margin-left: 20px;
 }
   .product_cancel
   {
-    margin-top: 30px;
-    width: 30%;
+    margin-top: 35px;
+    width: 25% !important;
     height: 40px;
     color: white;
     font-size: 20px;
     background-color: red;
     border: none;
     margin: 10px 15px 0 0;
+    margin-bottom: 2%;
   }
 
 /* button[type= "submit"]{

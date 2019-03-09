@@ -46,12 +46,12 @@
                       <input type="text" placeholder="Enter Field Name " style="width: 42%" formControlName="fieldName">
                       <input type="text" placeholder="Enter Field Name " style="width: 42%; margin-left: 7.55555%"
                         formControlName="fieldDes">
-                      <button (click)="deleteField(productinfo.controls.fields, j)">
+                      <button (click)="deleteField(productinfo.controls.fields, j)" class="product_cancel">
                         Delete
                       </button>
                     </div>
                   </div>
-                  <button type="button" (click)="addNewField(productinfo.controls.fields)">Add More</button>
+                  <button type="button" class="product_submit" (click)="addNewField(productinfo.controls.fields)">Add More</button>
                 </div>
               </div>
             </div>

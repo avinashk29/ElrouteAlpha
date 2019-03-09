@@ -549,6 +549,10 @@ section{
     margin: 0px 0px 0px 40px;
 
   }
+  .activate
+  {
+    color: gray !important; 
+  }
   @media screen and (max-width: 700px){
     section{
         width: 97%;
@@ -557,7 +561,7 @@ section{
       }
       .header
       {
-        margin-top: 10%;
+        margin-top: 12%;
         border: solid 1px gray;
         padding: 5px 3px 0px 10px;
 
@@ -642,8 +646,8 @@ section{
 {
   display: none;
 }
-.header_right[_ngcontent-c3] ul li{
-  font-size: 14px;
+.header_right ul li{
+  font-size: 16px;
  
 }
 .company_logo {

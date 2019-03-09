@@ -52,7 +52,7 @@ header {
   height: 100%;
   width: 35%;
   /* height: fit-content; */
-  box-shadow: 0px 1px 7px #5555;
+  box-shadow: -3px 8px 16px -9px #5555;;
 }
 
 .card {
@@ -182,7 +182,7 @@ header {
   width: 100%;
   height: 256PX;
   display: flex;
-  box-shadow: 0px 1px 7px #5555;
+  box-shadow: 0px 8px 16px -9px #5555;;
 }
 
 .headerImg button {
@@ -1470,11 +1470,12 @@ margin-top: auto;
 
   .infoSectonCard {
     display: block ! important;
+    width: 100% !important;
   }
 
   .infoSectonCard img {
     width: 100% ! important;
-    background-color: beige;
+    /* background-color: beige; */
   }
 
   .infoSectonCard img:hover {
@@ -1488,8 +1489,13 @@ margin-top: auto;
   .content {
     width: 100% ! important;
     margin-left:-5% !important;
+    margin-top: 13%;
   }
+.infoSectonCard img {
 
+  height: 95% !important;
+  /* margin-right: 5% */
+}
   /* .Card {
     display: none ! important;
   } */
@@ -1657,9 +1663,9 @@ margin-top: auto;
  
   padding: 10px 10px 22px 0 !important;
 }
-.tabClicked  {
- color: gray;
- box-shadow: none;;
+.tabClicked h4 {
+ color: gray !important;
+ box-shadow: none !important;
   /* background-color: red; */
 }
 .tabClicked {
@@ -1669,6 +1675,10 @@ margin-top: auto;
   height: 0;
 
 
+}
+.no_product_dummy {
+  
+  width: 90%;
 }
 }
 
@@ -1960,7 +1970,7 @@ label {
 
 .infoSectonCard img {
   width: 100%;
-  background-color: beige;
+  /* background-color: beige; */
   height: 100%;
   /* margin-right: 5% */
 }
