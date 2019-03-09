@@ -174,6 +174,7 @@ header {
   width: 100%;
   height: 256PX;
   display: flex;
+  box-shadow: 0px 1px 7px #5555;
 }
 
 .headerImg button {
@@ -1611,7 +1612,7 @@ margin-top: auto;
 
 .content_img {
   width: 100% !important;
-  height: 35vh;
+  height: 300px;
 }
 .no_contact {
 
@@ -1848,6 +1849,9 @@ label {
   border: navajowhite;
   height: 50vh;
   font-size: 39px;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(68,68,68,1);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(68,68,68,1);
+  box-shadow: 0px 0px 4px 0px rgba(68,68,68,1);
 }
 
 .infoImg img {
@@ -1881,7 +1885,8 @@ label {
 }
 
 .infoSectonCard {
-  width: 100%;
+  width: 85%;
+  margin: 0 auto;
   /* background-color: aqua; */
   margin-top: 40px;
   display: flex;
@@ -1928,10 +1933,12 @@ label {
 .content {
   width: 45%;
   /* box-shadow: 0px 0px 5px #5555; */
+  height: 300px;
+  overflow-y: scroll;
 }
 
 .Sectioncontent {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   height: 100%;
 }
@@ -2586,7 +2593,7 @@ input[type="file"] {
 
 .content_img {
   width: 55%;
-  height: 35vh;
+  height: 300px;
 }
 
 .certification {
@@ -2614,7 +2621,7 @@ input[type="file"] {
 }
 
 .user_profile h2 {
-  font-size: 22px;
+  font-size: 26px;
   margin-top: auto;
   font-weight: 500;
   margin-bottom: 3%
@@ -2734,4 +2741,11 @@ mat-expansion-panel-header{
   margin-top: -40px;
   background-color: #fff;
   /* border: 1px solid #333333; */
+}
+.content::-webkit-scrollbar { width: 0 !important }
+.Sectioncontent a{
+float: right;
+text-decoration: none;
+color: #0077B5;
+margin-bottom: 20px;
 }

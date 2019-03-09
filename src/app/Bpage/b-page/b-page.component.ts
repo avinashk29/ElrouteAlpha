@@ -220,7 +220,8 @@ console.log(this.companyService.companyData.companyLogo);
       this._fb.group({
         sectionTitle: [''],
         sectionContent: [''],
-        sectionImage: []
+        sectionImage: [],
+        sectionLink: ['']
       })
     );
   }
@@ -234,8 +235,8 @@ console.log(this.companyService.companyData.companyLogo);
         this._fb.group({
           sectionImage: x.sectionImage,
           sectionTitle: x.sectionTitle,
-          sectionContent: x.sectionContent
-
+          sectionContent: x.sectionContent,
+          sectionLink: x.sectionLink
 
         })
       );
@@ -383,30 +384,30 @@ this.four = true;
       formData.append(key, content.value);
       console.log(content.value);
     }
-    // this.companyService.UpdateCompany(formData).subscribe(res => {
-    //   this.companyService.companyData.website = JSON.parse(res['_body']).website;
-    //   this.companyService.companyData.workingHours = JSON.parse(
-    //     res['_body']
-    //   ).workingHours;
-    //   this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
-    //   this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
-    //   this.router.navigate(['/companyPage/' + this.comapnyId], {
-    //     queryParams: { urltype: 'edit' }
-    //   });
-    //   if (this.type === 'info') {
-    //     this.router.navigate(['/companyPage/' + this.comapnyId], {
-    //       queryParams: { urltype: 'info' }
-    //     });
-    //   } else {
-    //     this.router.navigate(['/companyPage/' + this.comapnyId], {
-    //       queryParams: { urltype: 'default' }
-    //     });
-    //   }
-    // });
-    // this.editwebsite = false;
-    // this.editworkingHours = false;
-    // this.editshortIntro = false;
-    // this.editSocialLinks = false;
+    this.companyService.UpdateCompany(formData).subscribe(res => {
+      this.companyService.companyData.website = JSON.parse(res['_body']).website;
+      this.companyService.companyData.workingHours = JSON.parse(
+        res['_body']
+      ).workingHours;
+      this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
+      this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
+      this.router.navigate(['/companyPage/' + this.comapnyId], {
+        queryParams: { urltype: 'edit' }
+      });
+      if (this.type === 'info') {
+        this.router.navigate(['/companyPage/' + this.comapnyId], {
+          queryParams: { urltype: 'info' }
+        });
+      } else {
+        this.router.navigate(['/companyPage/' + this.comapnyId], {
+          queryParams: { urltype: 'default' }
+        });
+      }
+    });
+    this.editwebsite = false;
+    this.editworkingHours = false;
+    this.editshortIntro = false;
+    this.editSocialLinks = false;
 
   }
 
