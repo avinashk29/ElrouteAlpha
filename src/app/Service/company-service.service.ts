@@ -9,7 +9,9 @@ export class CompanyServiceService {
 
  companyData;
  section;
-  companyFollowers=[]
+ contact;
+  companyFollowers=[];
+  id;
   constructor(
     private http: Http,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService

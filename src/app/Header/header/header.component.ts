@@ -49,8 +49,10 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
   onLogout() {
+    this.router.navigate(['/']);
     this.storage.remove('token');
     this.storage.remove('companyId');
-    this.router.navigate(['/']);
+
+  
   }
 }

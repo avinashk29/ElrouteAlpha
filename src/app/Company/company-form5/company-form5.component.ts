@@ -23,6 +23,9 @@ companyForm: FormGroup;
           zipCode: [ ],
           landLine: [ ],
           mobile: [],
+          // mobileCode:['+91'],
+          // cityCode:['0141'],
+          // Code:['+91'],
           contactDevision: this._fb.array([this.addDevision()])
     });
     this.companyId = this.storage.get('companyId');
@@ -40,6 +43,7 @@ companyForm: FormGroup;
     return <FormArray>this.companyForm.get('contactDevision');
   }
   onSubmit() {
+    
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
     });
     this.notification.success('B Face Updated');

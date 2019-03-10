@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit {
 
         this.storage.set('token', res.headers.get('x-auth'));
          this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
+         
         this.userService.userData = JSON.parse(res['_body']);
-        this.router.navigate(['/Dashboard']);
+       
         this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
+        this.router.navigate(['/Dashboard']);
     }, error =>{
       this.notification.error(error._body);
       console.log(error._body);

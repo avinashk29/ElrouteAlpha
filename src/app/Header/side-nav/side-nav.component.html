@@ -1,11 +1,11 @@
-<div class="menu2" *ngIf="haveCompany">
+<div class="menu2" *ngIf="companyId ">
   <span class="menu" (click)="onToggle()" style="margin-left: 10px;position: fixed; z-index: 999999 ">
     <div class="menuBar"></div>
     <div class="menuBar"></div>
     <div class="menuBar"></div>
   </span>
 </div>
-<aside class="keep" [ngClass]="{'width': toggle}" style="position:fixed" *ngIf="haveCompany">
+<aside class="keep" [ngClass]="{'width': toggle}" style="position:fixed" *ngIf="companyId">
 
 
   <ul>

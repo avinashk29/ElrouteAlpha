@@ -17,6 +17,7 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
+import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -37,6 +38,7 @@ export class BPageComponent implements OnInit {
   certification = [];
   companyFollowers = [];
   products = [];
+  contact = [];
   comapnyId;
   mycompanyId;
   type;
@@ -90,7 +92,8 @@ export class BPageComponent implements OnInit {
       facebook: [''],
       linkedin: [''],
       gmail: [''],
-      section: this._fb.array([])
+      section: this._fb.array([]),
+
     });
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
@@ -103,9 +106,9 @@ this.follows.token=this.storage.get('token');
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           console.log( JSON.parse(res['_body']));
-          this.companyFollowers= JSON.parse(res['_body']).followers.length;
-          console.log(this.companyFollowers)
-          this.productService.sendData(this.companyService.companyData.companyName);
+          this.companyFollowers = JSON.parse(res['_body']).followers.length;
+          this.contact = JSON.parse(res['_body']).contact;
+          console.log(this.companyFollowers);
           this.setSection();
 
 
@@ -115,7 +118,7 @@ this.follows.token=this.storage.get('token');
             this.two = false;
             this.three = true;
             this.four = false;
-
+            this.one = false;
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
@@ -133,6 +136,7 @@ this.follows.token=this.storage.get('token');
       this.two = true;
       this.three = false;
       this.four = false;
+      this.one = false;
       this.type = 'info';
 
     }
@@ -141,6 +145,7 @@ this.follows.token=this.storage.get('token');
       this.two = false;
       this.three = false;
       this.four = true;
+      this.one = false;
     }
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -151,7 +156,10 @@ this.follows.token=this.storage.get('token');
   }
 
   ngOnInit() {
-
+    if(!this.companyService.companyData.companyLogo){
+      this.companyService.companyData.companyLogo='';
+    }
+console.log(this.companyService.companyData.companyLogo);
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
@@ -235,6 +243,10 @@ this.follows.token=this.storage.get('token');
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'default' }
     });
+    this.one = true;
+    this.two = false;
+this.three = false;
+this.four = false;
   }
   onDelete(index) {
     const control = <FormArray>this.BForm.controls.section;
@@ -293,7 +305,7 @@ this.follows.token=this.storage.get('token');
             ).certification;
           });
         this.spinner.hide();
-      }else{
+      } else {
         this.companyImage.push(url);
         let companyImage = new FormGroup({
           companyImage: new FormControl(this.companyImage)
@@ -307,7 +319,7 @@ this.follows.token=this.storage.get('token');
           });
         this.spinner.hide();
       }
-    })
+    });
 
   }
 
@@ -324,6 +336,7 @@ this.follows.token=this.storage.get('token');
     this.two = true;
 this.three = false;
 this.four = false;
+this.one = false;
     this.type = 'info';
 
   }
@@ -334,6 +347,7 @@ this.four = false;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
     });
+    this.one = false;
     this.two = false;
 this.three = true;
 this.four = false;
@@ -343,6 +357,7 @@ this.four = false;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'contact' }
     });
+    this.one = false;
     this.two = false;
 this.three = false;
 this.four = true;
@@ -462,30 +477,56 @@ this.four = true;
       });
   }
   onAddproductTogroup(key) {
+    this.router.navigate(['/companyPage/' + this.comapnyId], {
+      queryParams: { edit: 'true'}
+    });
 console.log(key);
 this.productService.key = key;
 const dialogConfig = new MatDialogConfig();
 dialogConfig.autoFocus = true;
-dialogConfig.width = '30%';
+dialogConfig.width = '80%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
-  onRemoveproduct(id, ip , key) {
-    console.log(key);
-    console.log(this.products[ip].sortedProducts);
-    this.products[ip].sortedProducts.splice(id, 1);
-    console.log(this.products[ip].sortedProducts);
+  onRemoveproduct(id) {
+    this.productService.groupProductdelete(id).subscribe(res => {
+      this.ngZone.run(() => {
+        this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+          this.products =  JSON.parse(res1['_body']);
+      //      this.spinner.hide();
+        });
+      });
+      console.log(res);
+      // this.spinner.hide();
+    });
   }
 onDeletegroup(name) {
+  this.spinner.show();
   this.productService.token = this.storage.get('token');
   console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
   // console.log(JSON.parse(res['_body']));
+  this.ngZone.run(() => {
+    this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+      this.products =  JSON.parse(res1['_body']);
+       this.spinner.hide();
+    });
+  });
 });
+
 }
 
 onShowAllProduct(index){
   console.log(this.showAll[index])
   console.log(index)
   this.showAll[index]= !this.showAll[index]
+}
+onAddContact() {
+  this.router.navigate(['/companyPage/' + this.comapnyId], {
+    queryParams: { edit: 'true'}
+  });
+  const dialogConfig = new MatDialogConfig();
+// dialogConfig.autoFocus = true;
+dialogConfig.width = '48%';
+  this.dialog.open(CompanyContactComponent, dialogConfig);
 }
 }

@@ -30,7 +30,7 @@ fresult
   }
   onSearchCompany(word) {
    
-    return this.http.get('http://localhost:8080/api/searchCompany/'+ word);
+    return this.http.get('http://localhost:8080/api/searchCompany/'+ word+'/1');
      
   }
   onSearchFeed(word , page) {

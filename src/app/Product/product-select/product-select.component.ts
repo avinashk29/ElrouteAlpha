@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ProductServiceService } from 'src/app/Service/product-service.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { FormControl, FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-product-select',
   templateUrl: './product-select.component.html',
@@ -16,7 +19,10 @@ GroupForm = new FormGroup({
   groupName: new FormControl(''),
   products: new FormControl('')
 });
-  constructor(public productService: ProductServiceService, @Inject(LOCAL_STORAGE) public storage: WebStorageService) { }
+  constructor(public productService: ProductServiceService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
+   public router: Router,
+   private spinner: Ng4LoadingSpinnerService,
+   public dialogRef: MatDialogRef <ProductSelectComponent>) { }
 
   ngOnInit() {
     this.key = this.productService.key;
@@ -33,7 +39,7 @@ GroupForm = new FormGroup({
         }
       }
 
-    
+
     });
   }
 
@@ -68,6 +74,7 @@ GroupForm = new FormGroup({
 
   }
   onSubmit() {
+    this.spinner.show();
     this.productService.token = this.storage.get('token');
     if (this.productService.key) {
       this.GroupForm.value.groupName = this.productService.key;
@@ -82,8 +89,16 @@ if (!this.productService.key) {
   this.GroupForm.value.products = this.selectedProduct;
   console.log(this.GroupForm.value);
   this.productService.groupProduct(this.GroupForm.value).subscribe(res => {
+    console.log(res);
     console.log(JSON.parse(res['_body']));
+    this.router.navigate(['/companyPage/' + this.companyId], {
+      queryParams: { urltype: 'product'}
+
+    });
+    this.spinner.hide();
   });
 }
+
+this.dialogRef.close(ProductSelectComponent);
    }
 }

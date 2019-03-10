@@ -1,0 +1,60 @@
+.group_name
+{
+    margin-top: 1%;
+    padding: 10px;
+}
+.group_name label
+{
+    font-size: 25px;
+}
+.group_name input
+{
+    width: 35%;
+    font-size: 15px;
+    padding: 10px;
+    margin-left: 1%;
+}
+.product_name_img 
+{
+    display: flex;
+    border: solid 1px gray;
+    margin: 10px;
+    width: 31%;
+    flex-wrap: wrap;
+    height: 100px;
+}
+.product_name_img img
+{
+    width: 100px;
+    height: 100px;
+}
+.show_group_product
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.product_name
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.product_name h4
+{
+    /* margin: 10px; */
+    margin-bottom: auto;
+    margin-top: auto;
+}
+button
+{
+    float: right;
+    margin-right: 4%;
+    font-size: 18px;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    border: none;
+    background-color: #46e246;
+    color: white;
+    padding: 8px;
+    width: 15%;
+}

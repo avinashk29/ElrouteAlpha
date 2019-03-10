@@ -6,7 +6,7 @@
   margin-left: 7%;
   margin-top: 2%;
   /* position: absolute; */
-  height: 100vh;
+  /* height: 100vh; */
   /* background-color: red;   */
 }
 section{
@@ -17,16 +17,22 @@ section{
   height: fit-content;
   /* background-color: red;   */
 }
+.company_card
+{
+  display: flex;
+  flex-wrap: wrap;
+}
 .listing{
-  width: 100%;
-  /* height: fit-content;
-  min-height: 80vh; */
+  width: 47%;
+
+  margin: 10px;
+
 }
 .companyCard{
-  width: 48%;
+  width: 100%;
   margin: 0 auto;
   border: 1px solid #ccc;
-  border-radius: 30px;
+  border-radius: 12px;
   float: left;
   margin-top: 2%;
   margin-bottom: 1%;

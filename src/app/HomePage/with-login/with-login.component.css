@@ -390,6 +390,7 @@ border: solid 5px white;
 .add_media
 {
  display: flex;
+ padding: 10px 21px 0 0px;
 }
 
 .add_media2
@@ -397,7 +398,8 @@ border: solid 5px white;
  width: 68%;
  /* text-align: right; */
  margin-right: 2%;
- padding: 10px;
+ align-items: center;
+ /* padding: 10px; */
  display: flex;
 
 }
@@ -414,7 +416,7 @@ border: solid 5px white;
 .add_media_box {
  /* padding: 15px 26px; */
 
- background-color: #F5F5F5;
+ /* background-color: #F5F5F5; */
  width: 100%;
 }
 
@@ -464,6 +466,7 @@ border: solid 5px white;
 .tag_product{
  width: 65%;
  text-align: center;
+ border-right: solid #8991a2;
  cursor: pointer;
 }
 .tag_product h2
@@ -478,7 +481,8 @@ border: solid 5px white;
 {
     width: 35%;
  display: flex;
- padding: 3px 0;
+ /* padding: 3px 0; */
+ align-items: center;
 }
 .imagepreview
 {
@@ -626,9 +630,10 @@ border: solid 5px white;
 .add_btn
 {
 
- border-left: solid #8991a2;
- margin: 10px;
+ /* border-left: solid #8991a2;
+ margin: 10px 19px 0 3px; */
  cursor: pointer;
+ margin: auto;;
 }
 .add_btn button
 {
@@ -637,7 +642,7 @@ border: solid 5px white;
  width: 100%;
  background-color: #42445b;
  color: #ffffff;
- margin: 10px 7px;
+ margin: 15px 7px;
  font-weight: 600;
  height: 25px;
  border-radius: 4px;
@@ -1185,7 +1190,7 @@ input[type="file"]
 .feed_img img
 {
 width: 100%;
-height: 50vh;
+/* height: 50vh; */
 
 }
 .tagged_product

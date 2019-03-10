@@ -1,0 +1,29 @@
+<div class="cross" (click) = "Onclose()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"/></svg>
+</div>
+<fieldset>
+
+  <legend>Contact Details</legend>
+      <form [formGroup] = "contactForm" (ngSubmit) = "onSubmit()">
+
+          <div formArrayName = "contact" >
+
+              <div *ngFor="let contact of contactForm.get('contact').controls; let i=index" >
+                  <div [formGroupName]="i">
+                    <!-- <button (click) = "onDelete(i)" *ngIf="this.companyService.companyData.contact.length !== 0">Remove</button> -->
+                     <input type="text" formControlName = "divisionName" placeholder="Division Name" required =  "required">
+                     <input type="text" formControlName = "divisionEmail" required = "required" placeholder="Divsion Email" style="margin-left: 2%">
+                     <span style="margin-left: 10px;" *ngIf="this.companyService.companyData.contact.length !== 0" (click) = "onDelete(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-14v-4h14v4z"/></svg>
+                     </span>
+                  </div>
+                  </div>
+                  <button type="submit" class="save">Save</button>
+                  <button class="add" type="button" (click) = " addContact()" *ngIf="this.companyService.companyData.contact.length !== 0">Add Contact</button>
+
+
+          </div>
+
+        </form>
+
+</fieldset>
