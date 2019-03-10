@@ -85,7 +85,7 @@ section{
      border-radius: 10px;
   }
   .price input{
-  width: 34%;
+  width: 30%;
   height: 35px;
   margin-left: 20px;
   }
@@ -103,4 +103,27 @@ section{
   }
   input , textarea{
     padding: 0 0 0 10px;
+  }
+  .product_submit
+  {
+    margin-top: 30px;
+    width: 30%;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    background-color: #45eb45;
+    border: none;
+    margin: 10px 15px 0 0;
+  }
+  .product_cancel
+  {
+    margin-top: 35px;
+    width: 25% !important;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    background-color: red;
+    border: none;
+    margin: 10px 15px 0 0;
+    margin-bottom: 2%;
   }

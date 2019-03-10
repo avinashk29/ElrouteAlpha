@@ -216,6 +216,10 @@ input#search-bar:focus:-ms-placeholder {
 .slider__indicator--active {
  opacity: 0.3;
 }
+#slider input
+{ 
+ display: none;
+}
 .home_bgimg
 {
  background-image: url("/assets/images/backimg.jpg");
@@ -302,7 +306,7 @@ input#search-bar:focus:-ms-placeholder {
  margin: 0 auto;
  width: 70%;
 
- margin-top: 3%;
+ margin-top: 10%;
 }
 .header_text h2
 {
@@ -1193,7 +1197,7 @@ color: white;
 .img1 h3 {
 
  text-align: inherit;
- font-size: 17px;
+ font-size: 14px;
  padding: 31% 0;
 
 }
@@ -1288,7 +1292,7 @@ color: white;
  padding: 10px;
 
 }
-.b_face_1[_ngcontent-c1] {
+.b_face_1{
  display: block;
  margin: 0 auto;
  width: 95%;
@@ -1317,7 +1321,7 @@ color: white;
  margin-bottom: 5%;
 
 }
-.benifites[_ngcontent-c1] {
+.benifites {
  display: block;
 
 }
@@ -1622,10 +1626,10 @@ color: white;
  padding: 24px;
 
 }
-.b_face_1[_ngcontent-c1] {
- display: block;
- margin: 0 auto;
- width: 95%;
+.b_face_1 {
+  display: flex;
+  margin: 0 auto;
+  width: 95%;
 }
 .b_face{
  margin: 0 auto;
@@ -1659,7 +1663,7 @@ color: white;
  margin-bottom: 5%;
 
 }
-.benifites[_ngcontent-c1] {
+.benifites {
  display: block;
 
 }

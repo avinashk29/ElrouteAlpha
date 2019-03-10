@@ -46,7 +46,7 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
     
 this.productService.getFeedById(this.id).subscribe(res=>{
-  console.log(JSON.parse(res['_body'])[0]);
+  console.log(JSON.parse(res['_body']));
 this.feedResult=JSON.parse(res['_body']);
 console.log(JSON.parse(res['_body']));
 console.log(this.feedResult.length);

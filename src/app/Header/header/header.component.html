@@ -9,7 +9,7 @@
 
       </div>
       <ul class="main-nav">
-        
+
         <li *ngIf="!this.UserService.userData.userName" (click)="openDialog()"  style="display: flex; align-items: center">
            <h3 style="margin-top: 15px; cursor: pointer"> Login & Signup</h3>
         </li>
@@ -19,7 +19,7 @@
             <div class="user_img" routerLink="/bookmark">
               <img src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage">
               <img src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage">
-              <p >{{this.UserService.userData.userName}}</p>
+              <p>{{this.UserService.userData.userName}}</p>
             </div>
             <!-- <img src="assets/images/user.png">  -->
             <span style="margin-left: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" (click)="onLogout()">
