@@ -8,7 +8,7 @@ import { FollowService } from 'src/app/Service/follow-service.service';
   styleUrls: ['./onefollower.component.css']
 })
 export class OnefollowerComponent implements OnInit {
-  follower = [''];
+  follower;
   constructor(public user: UserService,
     public followService: FollowService) {
       this.user.getOneUser(this.followService.followerId).subscribe(res => {

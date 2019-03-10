@@ -28,7 +28,7 @@
         </div>
         <div>
           <div class="category" formArrayName="productInfo">
-            <div *ngFor="let productinfo of productForm.get('productInfo').controls ; let i = index;">
+            <div *ngFor="let productinfo of productForm.get('productInfo')['controls'] ; let i = index;">
               <button (click)="deleteProductInfo(i)">delete product info</button>
               <div [formGroupName]="i">
                 <input list="category" placeholder="Product Specification" formControlName="productSpecification">

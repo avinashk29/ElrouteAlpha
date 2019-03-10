@@ -5,10 +5,10 @@
         <div class="header">
             <div class="header_left">
                 <div class="company_logo">
-                    <img src="../../../assets/images/logo.png">
+                    <img src="{{this.productService.productData.companyLogo}}">
                  </div>
                  <div class="company_name">
-                    <h2> Larsen And Turbo Pvt.Ltd.</h2>
+                    <h2>{{this.productService.productData.companyName}}</h2>
                   </div>
              </div>
              <div class="header_right">
@@ -25,7 +25,7 @@
               <div class="product_1">
                     <li><a href="#">{{this.productService.productData.industry}}</a></li>
                     <li style="border-left:solid 1px gray;margin-left: 10px;"><a href="#">&nbsp;&nbsp;{{this.productService.productData.category}}</a></li>
-                    <li style="float:right;">{{Time | date:'medium'}}</li>
+                    <!-- <li style="float:right;">{{Time | date:'medium'}}</li> -->
               </div>
               <div style="clear:both;"></div>
               <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;">{{this.productService.productData.productName}}</h2>

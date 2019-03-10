@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "./assets/fonts";
+/* @import "./assets/fonts"; */
 @font-face {
   font-family: 'Segoe UI';
-  src: url('./assets/fonts/Segoe\ UI.ttf'),url('./assets/fonts/Segoe\ UI\ Bold.ttf'),url('./assets/fonts/Segoe\ UI\ Bold\ Italic.ttf'),url('./assets/fonts/Segoe\ UI\ Italic.ttf');
+  src: url('./assets/fonts/SegoeUI.ttf'),url('./assets/fonts/SegoeUIBold.ttf'),url('./assets/fonts/SegoeUIBoldItalic.ttf'),url('./assets/fonts/SegoeUIItalic.ttf');
 }
 body
 {
