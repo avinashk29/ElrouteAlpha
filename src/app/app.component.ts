@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
     ){
       this.token=this.storage.get('token');
-    // this.companyId =  this.storage.get('companyId');
+
+      // this.companyId =  this.storage.get('companyId');
     // console.log(this.companyId);
     
       }
