@@ -19,11 +19,14 @@
                  <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.industry}}</p>
                  <p style="line-height: 3px;margin-bottom: 10px;">{{feed.location}}</p>
                 </div>
-                <div class="b_page_btn">
+                <div class="b_page_btn" *ngIf = "this.token">
                     <button  (click)= " onBookmark(i,feed._id)" *ngIf = "!this.productId[i].bookm else bloading">Bookmark</button>
                     <ng-template #bloading>
                         <button (click)="OndeleteBookmark(i,feed._id)" >Unbookmark</button>
                     </ng-template>
+                  </div>
+                  <div class="b_page_btn" *ngIf = "!this.token">
+                    <button  (click)= "openLogin()">Bookmark</button>
                   </div>
                 </div>
                 <div class="followBtn">

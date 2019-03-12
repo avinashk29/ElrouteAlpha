@@ -8,7 +8,8 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { JAN } from '@angular/material';
 
-
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
 @Component({
   selector: 'app-company-search',
   templateUrl: './company-search.component.html',
@@ -16,11 +17,14 @@ import { JAN } from '@angular/material';
 })
 export class CompanySearchComponent implements OnInit {
 
-  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,private bookmarkService:BookmarkServices, private router:Router,public search: SearchService,private companyService:CompanyServiceService,private userService:UserService,private route:ActivatedRoute,public follows:FollowService) { }
+  constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,private bookmarkService:BookmarkServices,
+   private router:Router,public search: SearchService,private companyService:CompanyServiceService,private userService:UserService,
+   private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog) { }
   panelOpenState = false;
   word;
   id;
-  cresult
+  cresult;
+  token;
   notlogin = true;
   unbookmarked = true;
   haveFollow = true;
@@ -31,47 +35,57 @@ export class CompanySearchComponent implements OnInit {
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
     this.follows.token = this.storage.get('token');
+    this.token = this.storage.get('token');
    this.word = this.route.snapshot.paramMap.get('word');
    this.page = this.route.snapshot.paramMap.get('page');
-    this.userService.getUserData().subscribe(res => {
-      this.userInfo = JSON.parse(res['_body']).following;
-       this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-      this.search.onSearchCompany(this.word).subscribe(res1=>{
-      console.log(res1);
-        this.result = JSON.parse(res1['_body']);
-        this.cresult=JSON.parse(res1['_body'])[0]
-          var number=this.cresult.length
-        this.search.setOption(number)
-        this.id=JSON.parse(res1['_body'])[0][0];
-    
-         //Addition/Deletion method for Follow//
-         for(let i = 0; i < this.userInfo.length; i++) {
-          for(let j = 0;j < this.cresult.length; j++) {
-               if(this.userInfo[i] == this.cresult[j]._id) {
-                this.cresult[j].follow=true;
-               } else  {
-                // this.cresult[j].follow=false;
-               }
-           }      
-     }
-            //Addition/Deletion method for Bookmarks//
-        for(let i = 0; i < this.userBookmark.length; i++) {
-          for(let j = 0;j < this.cresult.length; j++) {
-               if(this.userBookmark[i] == this.cresult[j]._id) {
-                this.cresult[j].bookm=true;
-               } else  {
-                // this.cresult[j].bookm=false;
-               }
-           }      
-     }
-    
-      });
- })
+if(this.token){
+  this.userService.getUserData().subscribe(res => {
+    this.userInfo = JSON.parse(res['_body']).following;
+     this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
+    this.search.onSearchCompany(this.word).subscribe(res1=>{
+    console.log(res1);
+      this.result = JSON.parse(res1['_body']);
+      this.cresult=JSON.parse(res1['_body'])[0]
+        var number=this.cresult.length
+      this.search.setOption(number)
+      this.id=JSON.parse(res1['_body'])[0][0];
 
- 
+       //Addition/Deletion method for Follow//
+       for(let i = 0; i < this.userInfo.length; i++) {
+        for(let j = 0;j < this.cresult.length; j++) {
+             if(this.userInfo[i] == this.cresult[j]._id) {
+              this.cresult[j].follow=true;
+             } else  {
+              // this.cresult[j].follow=false;
+             }
+         }
+   }
+          //Addition/Deletion method for Bookmarks//
+      for(let i = 0; i < this.userBookmark.length; i++) {
+        for(let j = 0;j < this.cresult.length; j++) {
+             if(this.userBookmark[i] == this.cresult[j]._id) {
+              this.cresult[j].bookm=true;
+             } else  {
+              // this.cresult[j].bookm=false;
+             }
+         }
+   }
+
+    });
+})
+} else {
+  this.search.onSearchCompany(this.word).subscribe(res1 => {
+   console.log(JSON.parse(res1['_body'])[0]);
+    this.result = JSON.parse(res1['_body']);
+    this.cresult = JSON.parse(res1['_body'])[0];
+
+    });
+}
+
+
   }
 
- 
+
   onfollow(i,id){
     this.cresult[i].follow=true;
     this.follows.addFollow(id).subscribe(res=>{
@@ -85,7 +99,7 @@ export class CompanySearchComponent implements OnInit {
  companyBookmark(i,id){
   this.cresult[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
-      
+
      });
  }
  deletecompanyBookmark(i,id){
@@ -93,6 +107,12 @@ export class CompanySearchComponent implements OnInit {
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
   });
  }
+ openLogin() {
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '30%';
+  this.dialog.open(LoginComponent, dialogConfig);
+}
 //  GotoBpage(id){
 //    this.router.navigate(['/companyPage/'+this.id]);
 //  }

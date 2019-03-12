@@ -9,26 +9,43 @@
       </div>
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
+<<<<<<< HEAD
   <div class="logo"  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">
+=======
+  <div class="logo">
+>>>>>>> 144ca2cc7375ae43ac37c4bf4e059a38deefb76f
    <img src="{{r.companyLogo}}">
   </div>
   <div class="companyInfo">
     <div class="follow">
+<<<<<<< HEAD
     <h1  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">{{r.companyName}}</h1>
     <div class="b_page_btn">
+=======
+    <h1>{{r.companyName}}</h1>
+    <div class="b_page_btn" *ngIf="this.token">
+>>>>>>> 144ca2cc7375ae43ac37c4bf4e059a38deefb76f
             <button  (click)= "companyBookmark(i ,r._id)"  *ngIf = "!this.cresult[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
             <ng-template #bloading>
                 <button (click)="deletecompanyBookmark(i,r._id)"><span><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span></button>
             </ng-template>
           </div>
+
+          <div class="b_page_btn" *ngIf="!this.token">
+            <button  (click)= " openLogin()"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
+          </div>
       </div>
     <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
-    <div class="b_page_btn1">
+    <div class="b_page_btn1" *ngIf="this.token">
         <button  (click)="onunfollow(i,r._id)"  *ngIf = "this.cresult[i].follow else loading">Following</button>
 
         <ng-template #loading>
             <button (click)="onfollow(i,r._id)" >Follow</button>
         </ng-template>
+      </div>
+      <div class="b_page_btn1" *ngIf="!this.token">
+            <button (click)="openLogin()" >Follow</button>
+
       </div>
   </div>
 
@@ -38,7 +55,7 @@
 
 </div>
 <div class="discription">
-  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  <p>{{r.shortBio}}</p>
 </div>
 <mat-accordion  class="des">
 
@@ -51,7 +68,7 @@
       </mat-expansion-panel-header>
       <div class="speci_1"  >
         <div class="speci_details">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>{{r.shortBio}}</p>
 
         </div>
         </div>
@@ -61,7 +78,11 @@
 <div class="cardFooter">
 <div class="icons">
     <span><img src="assets/images/google_icon.png"></span>
+<<<<<<< HEAD
     <span  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'contact'}"><img src="assets/images/contact1.png"></span>
+=======
+    <span><img src="assets/images/contact1.png" routerLink = "/companyPage/{{r._id}}" [queryParams]= "{ urltype: 'contact' }"></span>
+>>>>>>> 144ca2cc7375ae43ac37c4bf4e059a38deefb76f
 </div>
 </div>
 </div>
