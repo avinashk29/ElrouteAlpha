@@ -73,9 +73,7 @@ productResult=[]
   });
 
       }
-    if (this.token != null) {
-      this.notlogin = false;
-    }
+
   }
 unbookmark(id) {
   this.unbookmarked = true;

@@ -16,15 +16,13 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section class="fullscreen">
-  <div *ngIf = "!productResult.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
-  </div>
+
 <div class="listing" *ngFor="let result of productResult; let i = index;">
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null" >
 
   <div>
-    <div class="productCard" *ngIf="result._id != null" >
+    <div class="productCard">
       <div class="productImage">
 
 
@@ -74,41 +72,6 @@
         </div>
           </div>
         <!-- <--------------------------------------------------------------------Service Card------------------------------------------------------------------------->
-        <div class="ServiceCard" *ngIf="result.type == 2 && result._id != null" >
-
-            <div class="ServiceContent">
-            <div class="content">
-            <div class="ServiceCategory">
-            <h6>{{result.catogory}}</h6>
-            </div>
-            <div class="ServiceName">
-              <h2>{{result.serviceName}}</h2>
-              <h5>{{result.company}}</h5>
-              <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 8px">Device</span><span style= "padding-left: 8px">Country</span></small>
-            </div>
-            <div class="discription" style="margin-top:30px;">
-            <p>{{result.shortDescription}}</p>
-            </div>
-            <div class="tags">
-
-            </div>
-            <div class="other-info">
-              <div class="price">
-              <h4>{{result.minPrice}}</h4>
-            </div>
-            <div class="hits">
-              <p>24,354 hits</p>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="ServiceImage">
-                <div class="bookmark" (click)="serviceBookmark(result.id)">
-
-                </div>
-                <img src="https://picsum.photos/200/300/?random">
-              </div>
-              </div>
   </div>
 </div>
 </div>
@@ -116,16 +79,26 @@
 </div>
 </section>
 
-<div class="mob-cards">
-    <div class="card-wrapper">
+<div class="mob-cards" *ngFor="let result of productResult; let i = index;">
+    <div class="card-wrapper" *ngIf="result !== null">
         <div class="header">
             <div class="header-content" style="width:95%; display: flex">
               <h5 style="width:50%;">Product</h5>
-              <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
-          </div>
-          <div class="header-content" style="width:95%; display: flex" *ngIf="false">
-              <h5 style="width:50%;">Service</h5>
-              <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
+             <div *ngIf="this.token">
+
+              <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Bookmark</h5>
+
+
+              <ng-template #bloadingmob >
+                  <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)="deleteProductBookmark(i,result._id)" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Unbookmark</h5>
+            </ng-template>
+             </div>
+             <div *ngIf="!this.token">
+
+                <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "openLogin()">Bookmark</h5>
+
+               </div>
+
           </div>
         </div>
 
@@ -144,33 +117,8 @@
     </div>
 
 </div>
+</div>
 
-<div class="card-wrapper">
-    <div class="header">
-        <div class="header-content" style="width:95%; display: flex">
-          <h5 style="width:50%;">Product</h5>
-          <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
-      </div>
-      <div class="header-content" style="width:95%; display: flex" *ngIf="false">
-          <h5 style="width:50%;">Service</h5>
-          <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" >Bookmark</h5>
-      </div>
-    </div>
-
-  <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
-
-  <div class="main-content">
-    <div class="content-details">
-      <p>Something is here Some of the contnet</p>
-    </div>
+<div *ngIf = "!productResult.length" class="result_not_found">
+    <img src = "../../../assets/images/result_not_found.png">
   </div>
-  <div class="footer">
-    <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
-      <h6 style="width:35%;">Price</h6>
-      <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
-  </div>
-</div>
-
-</div>
-</div>
-
