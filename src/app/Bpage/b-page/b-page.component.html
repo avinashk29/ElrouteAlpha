@@ -1,5 +1,6 @@
 <app-header></app-header>
 
+<app-side-nav></app-side-nav>
 <section [formGroup]="BForm" (ngSubmit)="onSubmit()">
     <!-- ------------------mobile--- -->
     <div class="header_mobile">
@@ -462,6 +463,7 @@
               <p>{{section.sectionContent}}</p>
               <a href="{{section.sectionLink}}" target="blank">{{section.sectionLink}}</a>
             </div>
+            
           </div>
           <div class="content_img" *ngIf="x%2!=0">
             <img src="{{section.sectionImage}}">
@@ -802,7 +804,7 @@
 
     <div class="comapany_contact" *ngIf="contact.length">
             <h2>Company Divisions</h2>
-            <button class="addContact" (click) = "onAddContact()" style="float: right"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
+            <button  *ngIf="myCompany" class="addContact" (click) = "onAddContact()" style="float: right"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
 
     </div>
   <div class="company_details" *ngIf="contact.length">

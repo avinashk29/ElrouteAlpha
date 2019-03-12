@@ -8,7 +8,7 @@
 
           <div formArrayName = "contact" >
 
-              <div *ngFor="let contact of contactForm.get('contact').controls; let i=index" >
+              <div *ngFor="let contact of contactForm.get('contact')['controls']; let i=index" >
                   <div [formGroupName]="i">
                     <!-- <button (click) = "onDelete(i)" *ngIf="this.companyService.companyData.contact.length !== 0">Remove</button> -->
                      <input type="text" formControlName = "divisionName" placeholder="Division Name" required =  "required">

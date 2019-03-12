@@ -3,6 +3,7 @@ import { LOCAL_STORAGE,WebStorageService } from 'angular-webstorage-service';
 import { ProductServiceService } from 'src/app/Service/product-service.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { CompanyServiceService } from 'src/app/Service/company-service.service';
 
 
 @Component({
@@ -19,8 +20,8 @@ export class ProductListingComponent implements OnInit {
   group =false;
   selectedProduct = [];
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService,
-  private productService:ProductServiceService,private router:Router) {
-    this.companyid=this.storage.get('companyId')
+  private productService:ProductServiceService,private router:Router,private companyService:CompanyServiceService) {
+    this.companyid=this.storage.get('companyId');
    }
 GroupForm = new FormGroup({
   groupName: new FormControl(''),

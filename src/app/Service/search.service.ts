@@ -10,28 +10,28 @@ export class SearchService {
 searchResult: [];
 feedResult: [];
 searchValue;
-postBookmark
-presult
-fresult
+postBookmark;
+presult;
+fresult;
  data={}
   constructor(public http: Http, public router: Router,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
 
-   
-  
-  setOption(value) {      
-     this.data = value;  
+
+
+  setOption(value) {
+     this.data = value;
      this.fresult=value
-   }  
-   getOption() {  
-     return this.data
-   }  
+   }
+   getOption() {
+     return this.data;
+   }
   onSearch(word , page) {
-    return this.http.get('http://localhost:8080/api/search/' + word + '/' + page )
+    return this.http.get('http://localhost:8080/api/search/' + word + '/' + page);
   }
   onSearchCompany(word) {
-   
-    return this.http.get('http://localhost:8080/api/searchCompany/'+ word+'/1');
-     
+
+    return this.http.get('http://localhost:8080/api/searchCompany/' + word + '/1');
+
   }
   onSearchFeed(word , page) {
     return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);

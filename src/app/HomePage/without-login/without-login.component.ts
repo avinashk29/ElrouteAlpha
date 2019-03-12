@@ -58,6 +58,7 @@ export class WithoutLoginComponent implements OnInit {
     this.searchService.onSearch(name, formData.page);
     this.searchService.searchValue = formData;
     this.router.navigate(["/Result/" + name + "/" + formData.page]);
+
   }
   OnSendrequest() {
     if(!this.contactFrom.value.Email){

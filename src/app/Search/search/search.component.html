@@ -38,11 +38,15 @@
         <div class="content">
 
         <div class="productCategory">
-            <div class="b_page_btn">
+            <div class="b_page_btn" *ngIf = "this.token">
                 <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
                 <ng-template #bloading>
                     <button (click)="deleteProductBookmark(i,result._id)"><span><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span></button>
                 </ng-template>
+              </div>
+              <div class="b_page_btn" *ngIf = "!this.token">
+                <button  (click)= "openLogin()"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
+
               </div>
         <h6>{{result.category}}</h6>
         </div>
