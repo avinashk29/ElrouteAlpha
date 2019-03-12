@@ -4,9 +4,7 @@
 <app-s-page-header></app-s-page-header>
 <section>
 <div class="listing">
-    <div *ngIf = "!result.length" class="result_not_found">
-        <img src = "../../../assets/images/result_not_found.png">
-      </div>
+
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
   <div class="logo"  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">
@@ -68,6 +66,9 @@
   </mat-accordion>
 <div class="cardFooter">
 <div class="icons">
+
+    <span ><img src="assets/images/google_icon.png"></span>
+
     <span><img src="assets/images/google_icon.png"></span>
     <span  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'contact'}"><img src="assets/images/contact1.png"></span>
 </div>
@@ -82,3 +83,6 @@
 
 </section>
 
+<div *ngIf = "!result.length" class="result_not_found">
+    <img src = "../../../assets/images/result_not_found.png">
+  </div>
