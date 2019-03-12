@@ -26,12 +26,11 @@ fresult
      return this.data
    }  
   onSearch(word , page) {
-    return this.http.get('http://localhost:8080/api/search/' + word + '/' + page )
+    return this.http.get('http://localhost:8080/api/search/'+ word + '/' + page)
   }
   onSearchCompany(word) {
-   
     return this.http.get('http://localhost:8080/api/searchCompany/'+ word+'/1');
-     
+    
   }
   onSearchFeed(word , page) {
     return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);

@@ -9,12 +9,12 @@
       </div>
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
-  <div class="logo">
-   <img src="r.companyLogo">
+  <div class="logo"  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">
+   <img src="{{r.companyLogo}}">
   </div>
   <div class="companyInfo">
     <div class="follow">
-    <h1>{{r.companyName}}</h1>
+    <h1  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">{{r.companyName}}</h1>
     <div class="b_page_btn">
             <button  (click)= "companyBookmark(i ,r._id)"  *ngIf = "!this.cresult[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span></button>
             <ng-template #bloading>
@@ -61,7 +61,7 @@
 <div class="cardFooter">
 <div class="icons">
     <span><img src="assets/images/google_icon.png"></span>
-    <span><img src="assets/images/contact1.png"></span>
+    <span  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'contact'}"><img src="assets/images/contact1.png"></span>
 </div>
 </div>
 </div>

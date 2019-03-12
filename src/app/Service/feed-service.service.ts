@@ -27,4 +27,9 @@ export class FeedService {
         headers.append('x-auth', this.token);
         return this.http.get('http://localhost:8080/api/feed',{headers:headers});
     }
+    getFeedById(id){
+        const headers = new Headers();
+        headers.append('x-auth', this.token);
+        return this.http.get('http://localhost:8080/api/post/'+id,{headers:headers});
+    }
 }

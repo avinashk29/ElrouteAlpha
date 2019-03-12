@@ -43,6 +43,7 @@ export class BPageComponent implements OnInit {
   mycompanyId;
   type;
   feeds = [];
+  feedById=[];
   shortbioEdit = false;
   noFeeds = false;
   myCompany = false;
@@ -64,6 +65,8 @@ export class BPageComponent implements OnInit {
   limit;
   time1;
   time2;
+  postBookmark=[];
+  productBookmark=[];
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
@@ -124,8 +127,21 @@ this.follows.token=this.storage.get('token');
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
+              console.log(this.products.length)
               console.log(typeof(this.products));
               console.log(JSON.parse(res['_body']));
+              this.userService.getUserData().subscribe(res2=>{
+                this.productBookmark=JSON.parse(res2['_body']).bookmarks.product;
+                for(let i = 0; i < this.productBookmark.length; i++) {
+                  for(let j = 0;j < this.products.length; j++) {
+                       if(this.productBookmark[i] == this.products[j]._id) {
+                        this.products[j].bookm=true;
+                       } else  {
+                        // this.cresult[j].bookm=false;
+                       }
+                   }      
+                  }
+              })
             });
           }
 
@@ -182,14 +198,14 @@ console.log(this.companyService.companyData.companyLogo);
         this.type = paramas.urltype;
       });
 
-    this.feedService.GetFeed().subscribe(res => {
-      this.feeds = JSON.parse(res['_body']);
-      if (!this.feeds.length) {
-        this.noFeeds = true;
-      }
-    });
+   
+    this.feedService.getFeedById(this.comapnyId).subscribe(res=>{
+      this.feedById=JSON.parse(res['_body']);
+      console.log(this.feedById)
+    })
     // ------------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
+      this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
       this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
       for (let i = 0; i < this.userBookmark.length; i++) {
         if (this.comapnyId === this.userBookmark[i]) {
@@ -198,6 +214,21 @@ console.log(this.companyService.companyData.companyLogo);
           this.bookmark = false;
         }
       }
+
+      // ----------------------bookmark at feed-------------
+      this.feedService.GetFeed().subscribe(res => {
+        this.feeds = JSON.parse(res['_body']);
+        console.log(this.feeds)
+        for(let i = 0; i < this.postBookmark.length; i++) {
+          for(let j = 0;j < this.feeds.length; j++) {
+               if(this.postBookmark[i] == this.feeds[j]._id) {
+                this.feeds[j].bookm=true;
+               } else  {
+                // this.cresult[j].bookm=false;
+               }
+           }      
+     }
+      });
     });
     if (this.type === 'product') {
       this.type = 'product';
@@ -539,5 +570,32 @@ onAddContact() {
 // dialogConfig.autoFocus = true;
 dialogConfig.width = '48%';
   this.dialog.open(CompanyContactComponent, dialogConfig);
+}
+addFeedBookmark(i,id){
+  this.feeds[i].bookm=true;
+  this.bookmarkService.addPostBookmark(id).subscribe(res=>{
+    console.log(res)
+   
+  });
+}
+removeFeedBookmark(i,id){
+  this.feeds[i].bookm=false;
+  this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
+    console.log(res)
+  });
+}
+addProductBookmark(i,id){
+  this.products[i].bookm=true;
+  console.log(id)
+  this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
+    console.log(res)
+   
+  });
+}
+removeProductBookmark(i,id){
+  this.products[i].bookm=false;
+  this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
+    console.log(res)
+  });
 }
 }

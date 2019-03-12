@@ -209,46 +209,42 @@
 
 
         <section>
-          <div class="feedCards" *ngIf="feeds">
-
-            <div class="main_feed_card" *ngFor="let feedElement of feeds; let i = index">
-              <div class="feed1" *ngIf="feedElement.length>0">
-                <div *ngFor="let feed of feedElement">
+          <div class="feedCards" *ngIf="feeds.length">
+            <div class="main_feed_card" *ngFor="let feedElement of feeds; let i = index"> 
                   <div class="feed_content">
                     <div class="feed_header">
                       <div class="feed_logo">
-                        <img src="{{feed.companyLogo}}">
+                        <img src="{{feedElement.companyLogo}}">
                       </div>
                       <div class="feed_name">
-                        <h4>{{feed.companyName}}</h4>
+                        <h4>{{feedElement.companyName}}</h4>
                         <p>Service</p>
                         <h6>India</h6>
                       </div>
                       <div class="feed_following">
-                        <button (click)="onunfollow(i,feed.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
+                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
                               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;" viewBox="0 0 30.043 36.42">
                               <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0"
                                 transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51"
                                 stroke-linecap="round" stroke-width="3" />
                             </svg></span></button>
                         <ng-template #loading>
-                          <button (click)="onfollow(i,feed.admin)">Follow</button>
+                          <button (click)="onfollow(i,feedElement.admin)">Follow</button>
                         </ng-template>
 
                       </div>
                     </div>
                     <div class="feed_img">
                       <div class="container1">
-                        <img src="{{feed.Image}}">
+                        <img src="{{feedElement.Image}}">
                         <div class="overlay1">
                           <div class="feed_text">
-                            <p>{{feed.content}}</p>
-                            <a targert="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
+                            <p>{{feedElement.content}}</p>
+                            <a targert="_blank" href="http://{{feedElement.link}}">{{feed.link}}</a>
                           </div>
                           <div class="bookmark_share">
                             <div class="bookmark">
-
-                              <span>
+                              <span (click)="addFeedBookmark(i,feedElement._id)"     *ngIf="!this.result[i].bookm else load">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                                   <g id="bookmark" fill="green">
                                     <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -257,14 +253,12 @@
                                       stroke="none" fill="#fff" />
                                   </g>
                                 </svg>
-
                               </span>
                               <p>28</p>
-
                             </div>
                             <ng-template #load>
                               <div class="bookmark">
-                                <span>
+                                <span (click)="removeFeedbookmark(i,feedElement._id)">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                                     <g id="bookmark" fill="red">
                                       <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -289,7 +283,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
+                    <div class="tagged" *ngIf="feedElement.tagId" style="margin-top: -4px;">
                       <mat-expansion-panel>
                         <mat-expansion-panel-header style="background-color: #6d7791;">
                           <mat-panel-title>
@@ -299,20 +293,19 @@
                         <div class="tagged_product">
                           <div class="tagged_product_img">
 
-                            <img src="assets/images/henna-powder.jpg">
+                            <img src="{{feedElement.productImage}}">
                           </div>
                           <div class="tagged_product_text">
-                            <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
-                            <p>{{feed.pr}}</p>
-
+                            <h2 routerLink="/product-page/{{feedElement.tagId}}">{{feedElement.productName}}</h2>
+                            <p>{{feedElement.shortDescription}}</p>
                           </div>
                         </div>
                       </mat-expansion-panel>
                     </div>
                   </div>
-                </div>
+                <!-- </div> -->
 
-              </div>
+              <!-- </div> -->
             </div>
           </div>
 

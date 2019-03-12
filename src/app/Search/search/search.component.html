@@ -27,12 +27,9 @@
     <div class="productCard" *ngIf="result._id != null" >
       <div class="productImage">
 
-
-
-
           <div class="productCard">
         <div class="productImage">
-          <img src="{{result.Image}}">
+          <img src="{{result.Image}}"  routerLink = "/product-page/{{result._id}}" style="cursor:pointer">
         </div>
         <div class="productContent" >
         <div class="content">
@@ -53,7 +50,7 @@
           <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{result.industry}}</span><span style= "padding-left: 8px">Country</span></small>
         </div>
         <div class="discription" style="margin-top:30px;">
-        <p>{{result.shortDescription}}</p>
+        <p>{{(result.shortDescription | slice:0:250) +' ...'}}</p>
         </div>
         <div class="tags">
 

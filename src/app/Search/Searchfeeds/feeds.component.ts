@@ -26,6 +26,8 @@ page;
      this.UserService.getUserData().subscribe(res=>{
     this.userInfo=JSON.parse(res['_body']).bookmarks.post;
     this.search.onSearchFeed(this.word , this.page).subscribe(res1=>{
+console.log(JSON.parse(res1['_body']));
+      
       this.feedResult=JSON.parse(res1['_body']);
         this.productId=JSON.parse(res1['_body']);
         for(let i = 0; i < this.userInfo.length; i++) {
