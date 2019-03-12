@@ -12,10 +12,89 @@
         </div>
 
           </div>
+          <div class="header_responsive">
+              <div class="headerImg_1">
+                  <!-- <div class="img" [ngStyle]="{'background-image':getUrl(), 'background-size' : 'contain'}"> </div> -->
+                     <div class="img" [ngStyle] = "{'background-image' : 'url(' + this.companyService.companyData.coverImage + ')'}"></div> 
+              </div>
+              <div class="card_mobile">
+          <div class="card_mobile_1">
+              <div class="logoheader_mobile">
+              <img src="{{this.companyService.companyData.companyLogo}}">
+              </div>
+              <div class="user_profile_mobile">
+                  <h2>{{this.companyService.companyData.companyName}}</h2>
+                  <p>{{this.companyService.companyData.industry}}</p>
+  
+                       <div class="follow-btn_mobile" *ngIf = "!myCompany">
+                      <button (click)="onfollow()"  *ngIf="!Follower"> FOLLOW</button>
+                      <button (click)="onunfollow()"  *ngIf="Follower">  UNFOLLOW</button>
+                      <span>{{this.companyFollowers}}</span>
+                  </div>
+                  <div class="follow-btn_mobile" *ngIf = "myCompany">
+                      <button (click) = "EditBpage()">Edit</button>
+  
+                  </div>
+                </div>
+             </div>
+             <hr style="margin:0 auto; width:91%; margin-bottom: 4%;    margin-top: -2%;">
+         
+          <div class="extraInfo_mobile">
+            <div class="time_website">
+              <div class="time_mobile">
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                      <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z" />
+                    </svg></span>
+                  <p>{{this.companyService.companyData.workingHours}}</p>
+                </div>
+                <div class="location_mobile">
+                    <h1><svg xmlns="http://www.w3.org/2000/svg"
+                      width="24" height="20" viewBox="0 0 16.464 27.259" style="margin:0px 5px 0 0;">
+                      <g id="location" transform="translate(-486.5 -340.5)">
+                        <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z"
+                          transform="translate(487.5 341.5)" fill="#fff" stroke="#bcbccb" stroke-width="2" />
+                        <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(490.988 345.299)" fill="#bcbccb" stroke="#bcbccb"
+                          stroke-width="2">
+                          <circle cx="3.778" cy="3.778" r="3.778" stroke="none" />
+                          <circle cx="3.778" cy="3.778" r="2.778" fill="none" />
+                        </g>
+                      </g>
+                     </svg>{{this.companyService.companyData.country}}</h1>
+                  </div>
+            </div>
+                <div class="website_mobile">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                        <path d="M13.144 8.171c-.035-.066.342-.102.409-.102.074.009-.196.452-.409.102zm-2.152-3.072l.108-.031c.064.055-.072.095-.051.136.086.155.021.248.008.332-.014.085-.104.048-.149.093-.053.066.258.075.262.085.011.033-.375.089-.304.171.096.136.824-.195.708-.176.225-.113.029-.125-.097-.19-.043-.215-.079-.547-.213-.68l.088-.102c-.206-.299-.36.362-.36.362zm13.008 6.901c0 6.627-5.373 12-12 12-6.628 0-12-5.373-12-12s5.372-12 12-12c6.627 0 12 5.373 12 12zm-8.31-5.371c-.006-.146-.19-.284-.382-.031-.135.174-.111.439-.184.557-.104.175.567.339.567.174.025-.277.732-.063.87-.025.248.069.643-.226.211-.381-.355-.13-.542-.269-.574-.523 0 0 .188-.176.106-.166-.218.027-.614.786-.614.395zm6.296 5.371c0-1.035-.177-2.08-.357-2.632-.058-.174-.189-.312-.359-.378-.256-.1-1.337.597-1.5.254-.107-.229-.324.146-.572.008-.12-.066-.454-.515-.605-.46-.309.111.474.964.688 1.076.201-.152.852-.465.992-.038.268.804-.737 1.685-1.251 2.149-.768.694-.624-.449-1.147-.852-.275-.211-.272-.66-.55-.815-.124-.07-.693-.725-.688-.813l-.017.166c-.094.071-.294-.268-.315-.321 0 .295.48.765.639 1.001.271.405.416.995.748 1.326.178.178.858.914 1.035.898.193-.017.803-.458.911-.433.644.152-1.516 3.205-1.721 3.583-.169.317.138 1.101.113 1.476-.029.433-.37.573-.693.809-.346.253-.265.745-.556.925-.517.318-.889 1.353-1.623 1.348-.216-.001-1.14.36-1.261.007-.094-.256-.22-.45-.353-.703-.13-.248-.015-.505-.173-.724-.109-.152-.475-.497-.508-.677-.002-.155.117-.626.28-.708.229-.117.044-.458.016-.656-.048-.354-.267-.646-.53-.851-.389-.299-.188-.537-.097-.964 0-.204-.124-.472-.398-.392-.564.164-.393-.44-.804-.413-.296.021-.538.209-.813.292-.346.104-.7-.082-1.042-.125-1.407-.178-1.866-1.786-1.499-2.946.037-.19-.114-.542-.048-.689.158-.352.48-.747.762-1.014.158-.15.361-.112.547-.229.287-.181.291-.553.572-.781.4-.325.946-.318 1.468-.388.278-.037 1.336-.266 1.503-.06 0 .038.191.604-.019.572.433.023 1.05.749 1.461.579.211-.088.134-.736.567-.423.262.188 1.436.272 1.68.069.15-.124.234-.93.052-1.021.116.115-.611.124-.679.098-.12-.044-.232.114-.425.025.116.055-.646-.354-.218-.667-.179.131-.346-.037-.539.107-.133.108.062.18-.128.274-.302.153-.53-.525-.644-.602-.116-.076-1.014-.706-.77-.295l.789.785c-.039.025-.207-.286-.207-.059.053-.135.02.579-.104.347-.055-.089.09-.139.006-.268 0-.085-.228-.168-.272-.226-.125-.155-.457-.497-.637-.579-.05-.023-.764.087-.824.11-.07.098-.13.201-.179.311-.148.055-.287.126-.419.214l-.157.353c-.068.061-.765.291-.769.3.029-.075-.487-.171-.453-.321.038-.165.213-.68.168-.868-.048-.197 1.074.284 1.146-.235.029-.225.046-.487-.313-.525.068.008.695-.246.799-.36.146-.168.481-.442.724-.442.284 0 .223-.413.354-.615.131.053-.07.376.087.507-.01-.103.445.057.489.033.104-.054.684-.022.594-.294-.1-.277.051-.195.181-.253-.022.009.34-.619.402-.413-.043-.212-.421.074-.553.063-.305-.024-.176-.52-.061-.665.089-.115-.243-.256-.247-.036-.006.329-.312.627-.241 1.064.108.659-.735-.159-.809-.114-.28.17-.509-.214-.364-.444.148-.235.505-.224.652-.476.104-.178.225-.385.385-.52.535-.449.683-.09 1.216-.041.521.048.176.124.104.324-.069.19.286.258.409.099.07-.092.229-.323.298-.494.089-.222.901-.197.334-.536-.374-.223-2.004-.672-3.096-.672-.236 0-.401.263-.581.412-.356.295-1.268.874-1.775.698-.519-.179-1.63.66-1.808.666-.065.004.004-.634.358-.681-.153.023 1.247-.707 1.209-.859-.046-.18-2.799.822-2.676 1.023.059.092.299.092-.016.294-.18.109-.372.801-.541.801-.505.221-.537-.435-1.099.409l-.894.36c-1.328 1.411-2.247 3.198-2.58 5.183-.013.079.334.226.379.28.112.134.112.712.167.901.138.478.479.744.74 1.179.154.259.41.914.329 1.186.108-.178 1.07.815 1.246 1.022.414.487.733 1.077.061 1.559-.217.156.33 1.129.048 1.368l-.361.093c-.356.219-.195.756.021.982 1.818 1.901 4.38 3.087 7.22 3.087 5.517 0 9.989-4.472 9.989-9.989zm-11.507-6.357c.125-.055.293-.053.311-.22.015-.148.044-.046.08-.1.035-.053-.067-.138-.11-.146-.064-.014-.108.069-.149.104l-.072.019-.068.087.008.048-.087.106c-.085.084.002.139.087.102z" />
+                      </svg></span>
+                    <a target="_blank" href="http://{{this.companyService.companyData.website}}">{{this.companyService.companyData.website}}</a>
+                  </div>
+        
+          </div>
+          <div class="links_mobile">
+            <div class="social_mobile">
+              <div class="facebook_mobile">
+                 <a target="_blank" href="http://{{this.companyService.companyData.facebook}}"> <img src="../../../assets/images/fb.png" ></a>
+                  </div>
+                  <div class="linkdin_mobile">
+                    <a target="_blank" href="http://{{this.companyService.companyData.linkdin}}"> <img src="../../../assets/images/linkdin.png" ></a>
+                      </div>
+         </div>
+         <div class="bookmar_mobile">
+         
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 10.975v13.025l-6-5.269-6 5.269v-24h6.816c-.553.576-1.004 1.251-1.316 2h-3.5v17.582l4-3.512 4 3.512v-8.763c.805.19 1.379.203 2 .156zm4-6.475c0 2.485-2.018 4.5-4.5 4.5-2.484 0-4.5-2.015-4.5-4.5s2.016-4.5 4.5-4.5c2.482 0 4.5 2.015 4.5 4.5zm-2-.5h-2v-2h-1v2h-2v1h2v2h1v-2h2v-1z"/></svg></span>
+   
+          </div> 
+
+           </div> 
+        </div>
+  
+        </div>
+
+
           <!-- /* ------------------mobile css------*/ -->
   <header>
     <div class="card1" style="    min-height: 355px;">
-      <!-- <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg"
+      <h1 style="margin: 0 auto;width: 97%;     display: flex;padding-top: 10px;font-size: 100%;"><svg xmlns="http://www.w3.org/2000/svg"
           width="16.464" height="27.259" viewBox="0 0 16.464 27.259">
           <g id="location" transform="translate(-486.5 -340.5)">
             <path id="Union_12" data-name="Union 12" d="M1.174,11.729A7.817,7.817,0,0,1,0,7.585,7.415,7.415,0,0,1,7.232,0a7.415,7.415,0,0,1,7.232,7.585,7.817,7.817,0,0,1-1.173,4.143L7.323,24Z"
@@ -26,7 +105,7 @@
               <circle cx="3.778" cy="3.778" r="2.778" fill="none" />
             </g>
           </g>
-        </svg><span style="margin-left:10px;">{{country}}</span></h1> -->
+         </svg><span style="margin-left:10px;">{{this.companyService.companyData.country}}</span></h1>
       <div class="card">
         <div class="logoheader">
           <div class="container_logo">
@@ -102,14 +181,14 @@
         </div>
         <div *ngIf="editwebsite" class="website_input">
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
-          <button type="submit" (click)="onEditBpage('website',website)">Save</button>
-        </div>
-        <div class="social">
-          <div class="social_media">
-        <div class="facebook social">
+          <button type="submit" (click)="onEditBpage('website',website)">Save</button> <div class="facebook social">
 
           <img src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" (click)="likedinEdit=false" *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
           <a href="{{this.companyService.companyData.facebook}}" *ngIf="this.companyService.companyData.facebook"><img src="../../../assets/images/fb.png" ></a>
+        </div>
+        <div class="social">
+          <div class="social_media">
+       
 
 <div class="social_links" *ngIf="editSocialLinks" style="margin-top: 60px">
     <input type="text" placeholder="Enter Your FaceBook link" formControlName="facebook" #facebook>
@@ -203,8 +282,14 @@
               <p *ngIf="!this.companyService.companyData.shortIntro"><i>All business,large and smaall,new or established ,struggle
                   to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize
                   yourself is less than 400 characters.</i></p>
-              <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{this.companyService.companyData.shortIntro}}</p>
+         
             </div>
+            <div class="short_bio_content" style="background-color: transparent;">
+                <!-- <p *ngIf="!this.companyService.companyData.shortIntro">All business,large and smaall,new or established ,struggle
+                    to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize
+                    yourself is less than 400 characters.</p> -->
+                <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{(this.companyService.companyData.shortIntro | slice:0:300)+'...'}}</p>
+              </div>
             <div class="bio_btn" *ngIf="myCompany">
               <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24">
@@ -220,7 +305,12 @@
         </div>
         <div class="category_1">
           <h6>CATEGORY</h6>
-          <h5>{{this.companyService.companyData.category}}</h5>
+          <h6>Main Product</h6>
+          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
+          <h6>Main Market</h6>
+          <h5 *ngIf="this.companyService.companyData.mainMarket">{{this.companyService.companyData.mainMarket}}</h5>
+          <h6>Sepciality</h6>
+          <h5 *ngIf="this.companyService.companyData.specialities">{{this.companyService.companyData.specialities}}</h5>
           <div class="category_btn" *ngIf="myCompany">
             <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24">
@@ -230,6 +320,50 @@
 
 
       </div>
+      <!-- <div>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header style="background-color: #6d7791;">
+
+              <mat-panel-title>
+                <h4 style="  color: #fff">Tagged Products</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="otherInfocard">
+                <div class="infoCard">
+                  <div class="hq info">
+                    <label>HEADquarters</label>
+                    <h3>{{this.companyService.companyData.city}} , {{this.companyService.companyData.country}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.yearEstd">
+                    <label>year estd.</label>
+                    <h3>{{this.companyService.companyData.yearEstd}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.companySize">
+                    <label>size</label>
+                    <h3>{{this.companyService.companyData.companySize}}</h3>
+                  </div>
+                  <div class="add info" *ngIf="this.companyService.companyData.address ">
+                    <label>office address</label>
+                    <h3>{{this.companyService.companyData.address }}</h3>
+                  </div>
+                  <div class="revenu info" style="border-bottom:none">
+                    <div *ngIf="this.companyService.companyData.totalRevenue">
+                      <label>Total Revenue</label>
+                      <h3>{{this.companyService.companyData.totalRevenue}}</h3>
+                    </div>
+                    <div class="hq_info" *ngIf="myCompany">
+                      <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                      </button>
+                    </div>
+                  </div>
+        
+              
+                </div>
+              </div>
+          </mat-expansion-panel>
+      </div> -->
       
       <div class="feedCards" *ngIf="feeds && myCompany">
         <div class="main_feed_card" *ngFor="let feed of feeds; let i = index">

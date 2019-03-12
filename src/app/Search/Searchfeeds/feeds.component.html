@@ -63,8 +63,8 @@
                                 </div>
                                 <div class="feed_name">
                                   <h4>{{feed.companyName}}</h4>
-                                  <p>Service</p>
-                                  <h6>India</h6>
+                                  <!-- <p>Service</p> -->
+                                  <!-- <h6>India</h6> -->
                                 </div>
                               </div>
                               <div class="feed_img">
@@ -87,7 +87,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
+                              <div class="tagged" *ngIf="feed.productImage && feed.productName" style="margin-top: -4px;">
                                 <mat-expansion-panel>
                                   <mat-expansion-panel-header style="background-color: #6d7791;">
                                     <mat-panel-title>
@@ -95,13 +95,14 @@
                                     </mat-panel-title>
                                   </mat-expansion-panel-header>
                                   <div class="tagged_product">
+                                    
                                     <div class="tagged_product_img">
                 
                                       <img src="{{feed.productImage}}">
                                     </div>
                                     <div class="tagged_product_text">
                                       <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
-                                      <p>{{feed.productDescription}}</p>
+                                      <p>{{feed.shortDescription}}</p>
                                     </div>
                                   </div>
                                 </mat-expansion-panel>

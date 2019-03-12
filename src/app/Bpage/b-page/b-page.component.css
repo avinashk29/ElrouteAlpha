@@ -21,7 +21,146 @@
   margin: 0;
 }
 
+.img
+{
+  height: 20vh;
+}
+.img img
+{
+  width: 100%;
+  height: 100%;
+}
+.logoheader_mobile
+{
+  padding: 15px 12px;
+}
+.logoheader_mobile img {
+  width: 60px;
+  box-shadow: 0px 1px 2px 0px #5555;
+  height: 60px;
 
+}
+.user_profile_mobile
+{
+  margin-top: 4%;
+  margin-left: 2%;
+
+}
+.user_profile_mobile h2
+{
+margin-bottom: auto;
+margin-top: auto;
+font-size: 15px;
+}
+.user_profile_mobile p
+{
+  font-size: 12px;
+margin-bottom: auto;
+margin-top: auto;
+}
+
+.follow-btn_mobile {
+ 
+  display: flex;
+ margin-top: 9%;
+}
+
+.follow-btn_mobile button {
+  cursor: pointer;
+  height: 20px;
+  /* width: 42%; */
+  border: none;
+  color: #fff;
+  background-color: #333333;
+  font-size: 12px;
+}
+.card_mobile {
+  box-shadow: 0px 0px 1px #5555;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+.card_mobile_1 {
+  /* box-shadow: 0px 3px 10px #5555; */
+  display: flex;
+  width: 100%;
+  margin-top: -1%;
+}
+.time_website
+{
+  display: flex;
+  margin: 0 auto;
+  width: 85%;
+}
+.time_mobile
+{
+  width: 100%;
+  display: flex;
+}
+.time_mobile p
+{
+  margin-bottom: auto;
+  margin-top: auto;
+  line-height: 0;
+  margin-top: 9px;
+  margin-left: 4%;
+}
+.website_mobile
+{
+  display: flex;
+  margin: 0 auto;
+  width: 85%;
+}
+.website_mobile a {
+  margin-left: 2%;
+  font-size: 12px;
+
+
+}
+.location_mobile
+{
+  margin-right: 2%;
+}
+.location_mobile h1
+{
+  margin: 0 auto;width: 97%;     display: flex;padding-top: 0px;font-size: 13px;;
+}
+.extraInfo_mobile
+{
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 5px 2px #fff, 0 5px 0px rgba(0,0,0, .35);
+}
+.social_mobile
+{
+  display: flex;
+  width: 88%;
+}
+.facebook_mobile img
+{
+  width: 35px;
+  height: 35px;
+  margin: 0 20px 0 0px;
+}
+.linkdin_mobile
+{
+  margin-top: 2%;
+}
+.linkdin_mobile img
+{
+  width: 25px;
+  height: 25px;
+}
+.links_mobile
+{
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 2%;
+}
+.bookmar_mobile
+{
+  margin-top: 2%;
+}
 /* ------------------mobile css------*/
 
 
@@ -251,17 +390,17 @@ header {
   height: 130px;
 }
 
-.img {
+/* .img {
   width: 100%;
   height: 100%;
-  /* background-color: darkgreen;
- background-image: linear-gradient(to right, gold 30%, transparent 80%); */
+  background-color: darkgreen;
+ background-image: linear-gradient(to right, gold 30%, transparent 80%);
 }
 
 .img img {
   width: 100%;
   height: 100%;
-}
+} */
 
 .tabs {
   width: 100%;
@@ -481,10 +620,12 @@ fieldset
 }
 
 .category_1 {
+  border-bottom: 1px solid;
   margin-top: 8%;
   box-shadow: 0px 1px 7px #5555;
   height: 14vh;
   padding: 10px 10px;
+ 
 }
 
 .category_1 h5 {
@@ -2541,7 +2682,7 @@ label {
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 
 
 
