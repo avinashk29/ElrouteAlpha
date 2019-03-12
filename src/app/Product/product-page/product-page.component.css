@@ -5,13 +5,22 @@
     margin: 0 auto;
     width: 85%;
 }
+.product_page_header
+{
+
+  width: 100%;
+}
 .product
 {
+
     padding: 10px 20px;
-    background-color: #f5f2f2;
+    /* background-color: #f5f2f2; */
     width: 35%;
     float: left;
+    margin-top: 4%;
+   
     position: fixed;
+    box-shadow: 0 5px 5px rgba(25,25,25,0.2);
 }
 .product_1
 {
@@ -35,7 +44,7 @@
 .service2
 {
 
-    padding: 0 24px 48px 20px;
+    padding: 0 24px 70px 20px;
 
       box-shadow: 0 5px 5px rgba(25,25,25,0.2);
       background-color: white;
@@ -59,9 +68,14 @@
     float: right;
 
 }
-.service2_img
+/* .service2_img
 {
   padding: 20px 0;
+} */
+.b_page_btn
+{
+  text-align: right;
+  padding-top: 2%;
 }
 
 .service2_img img
@@ -93,10 +107,11 @@ height: 40vh;
 .contact
 {
     text-align: right;
+    margin-bottom: auto;
 }
 .contact span
 {
-    font-size:20px;
+    font-size:18px;
     margin-left:20px;
     border:solid 1px gray;
     padding: 0px 15px;
@@ -107,14 +122,14 @@ height: 40vh;
 .contact img
 {
     position: absolute;
-    width: 45px;
-    margin: -9px -9px;
+    width: 40px;
+    margin: -9px -4px;
 }
 .USA_1 li
 {
     color: #707070;
     display: inline;
-    font-size:150%;
+    font-size:18px;
 }
 .Description_box
 {
@@ -148,7 +163,7 @@ height: 40vh;
 .des_box p
 {
     color: #707070;
-    font-size: 20px;
+    font-size: 12px;
     border-top: solid 1px gray;
 
     padding : 20px 0 30px;
@@ -312,7 +327,10 @@ section{
     font-weight: 100;
   } */ 
 
-
+.mat_box
+{
+   margin-top: -11px;
+}
 .main_feed_card {
   margin: 0 auto;
   width: 100%;
@@ -505,10 +523,15 @@ section{
 }
 .header
 {
-  margin:0 auto;
-  width: 85%;
+  margin: 0 auto;
+  width: 90%;
   border-bottom: solid 1px;
   display: flex;
+  z-index: 999;
+  background-color: white;
+  margin-top: -12px;
+  left: 7%;
+  position: fixed
 
 }
   .header_left

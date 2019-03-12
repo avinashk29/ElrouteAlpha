@@ -23,114 +23,201 @@ section{
   margin-left: 5%;
   margin-top: 20px;
 }
-.authorInfo{
-width: 100%;
-display: flex;
+.main_feed_card {
+  margin: 0 auto;
+  width: 54%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
-.details{
-  width: 70%;
-  height: auto;
+
+.feed1 {
   display: flex;
 }
-.logo{
-  width: 20%;
-  height: 100%;
-  background-color: black;
-}
-.logo img{
+
+.feed_content {
+  border-radius: 10px;
   width: 100%;
-  height: 100%;
+  /* box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2); */
+  box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
+
 }
-.details h1{
-  margin: 0;
-  padding: 5px 0 0 15px;
+
+.feed_header {
+  display: flex;
+}
+
+.feed_logo {
+  width: 18%;
+  padding: 5px 5px;
+}
+
+.feed_logo img {
+  width: 60px;
+  padding: 5px 4px 0px 3px;
+  height: 60px;
+}
+
+.feed_name {
+  width: 90%;
+  margin-top: 4%;
+  margin: 9px 9px;
+
+}
+
+.feed_name h4 {
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+.feed_name p {
+  margin-bottom: auto;
+  margin-top: auto;
+  font-size: 13px;
+}
+
+.feed_name h6 {
+  margin-bottom: auto;
+  margin-top: auto;
   font-weight: 500;
+}
+
+.feed_following {
+  margin-top: 4%;
+  /* width: 20%; */
+  margin-right: 2%;
+}
+
+.feed_following button {
+  background-color: lightgreen;
+  border: none;
+  display: flex;
+  color: white;
+  width: 100%;
+  height: 5vh;
+  font-weight: 900;
+  border-radius: 10px;
+  outline: none;
+}
+
+.feed_following p {
+  margin-bottom: auto;
+  margin-top: auto;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.feed_img img {
+  width: 100%;
+  /* height: 50vh; */
+
+}
+
+.tagged_product {
+  display: flex;
+  align-items: center;
+
+}
+
+.tagged_product_img {
+  width: 55%;
+  padding: 0px 20px 0 0;
+}
+
+.tagged_product_img img {
+  width: 100%;
+  border: solid 1px gray;
+  /* padding: 9px; */
+}
+.tagged_product_text
+{
+  width: 100%;
+}
+
+.container1 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: rgba(0, 0, 0, 0.8);
+
+}
+
+.container1 img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.container1:hover .overlay1 {
+  opacity: 1;
+}
+
+.container1:hover img {
+  transform: scale(1.2);
+}
+
+.feed_text {
+  margin: 0 auto;
+  width: 85%;
+  padding-top: 8%;
+}
+
+
+.feed_text p {
+  color: white;
+  font-size: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+  padding: 18px;
+}
+
+.feed_text a {
+  color: #78aece;
+  text-decoration: none;
+  padding: 22px;
   font-size: 20px;
 }
-.details p{
-  padding: 0px 0 0 15px !important;
-  font-size: 10px;
-}
-.feedInfo {
-  width: 95%;
-  margin: 0 auto;
-  height: 15%;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-  border-radius: 5px 5px 0 0;
-  margin-top: 20px;
-}
-.feedInfo p{
-  font-size: 12px;
-  margin: 0;
-  margin-top: 5px;
-  margin-bottom: 30px;
-  width: 95%;
-  margin: 0 auto;
-  padding-top: 10px;
-}
-.followBtn{
-  width: 25%;
-  height: auto;
-  float: right;
-  text-align: right;
-}
-.followBtn button{
-  width: 95%;
-  margin-top: 10px;
-  background-color: green;
-  color: #ffffff;
-  font-weight: 600;
-  height: 25px;
-  border-radius: 15px;
-  border:none;
-  margin-left: 10px;
-}
-.followBtn p{
-  align-items: baseline;
-  text-align: right;
-  margin-right: 10px;
-  margin-bottom:  0;
-  font-size: 10px;
-}
-.feed-img{
-  width: 100%;
-  height: 60%;
-}
-.feed-img img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-}
-.feed-share{
-  width: 100%;
-  height: 7%;
-  /* background-color: burlywood; */
-  display: block;
+
+.bookmark_share {
   display: flex;
-}
-.feed-share img
-{
-  width: 4%;
-  margin-left: 1%;
+  padding-top: 15%;
+  margin: 0 auto;
+  width: 77%;
 
 }
-.tagged{
+
+.bookmark_feed {
+  display: flex;
   width: 100%;
-  height: 7%;
-}
-mat-expansion-panel{
-  border-radius: 0 !important;
-
 }
 
-.tagged mat-expansion-panel-header{
-  height: 35px !important;
-  color: #ffffff !important;
+.bookmark_feed span {
+  margin: 0px 8px 0 0;
 }
-mat-panel-title h4{
-  margin: 0;
-  font-size: 14px;
-  font-weight: 100;
+
+.bookmark_feed p {
+  color: white;
+  font-size: 22px;
+  margin-bottom: auto;
+  margin-top: auto;
+  padding: 10px;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 0 0 0 !important;
 }
 .no_product_dummy
 {

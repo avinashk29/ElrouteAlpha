@@ -50,11 +50,69 @@
                               </mat-panel-title>
                             </mat-expansion-panel-header>
                           </mat-expansion-panel>
-                     </div>
+                     </div> -->
+                     <div class="main_feed_card" >
+                        <div class="feed1" *ngFor="let feed of feedResult; let i=index">
+                          <div style="width: 100%;">
+                            <div class="feed_content">
+                              <div class="feed_header">
+                                <div class="feed_logo">
+                                  <img src="{{feed.companyLogo}}">
+                                </div>
+                                <div class="feed_name">
+                                  <h4>{{feed.companyName}}</h4>
+                                  <p>Service</p>
+                                  <h6>India</h6>
+                                </div>
+                              </div>
+                              <div class="feed_img">
+                                <div class="container1">
+                                  <img src="{{feed.Image}}">
+                                  <div class="overlay1">
+                                    <div class="feed_text">
+                                      <p>{{feed.content}}</p>
+                                      <!-- <p>Watch our first episode</p> -->
+                                      <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
+                                    </div>
+                                    <div class="bookmark_share">
+                                      <div class="share_feed">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
+                                            <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
+                                              transform="translate(-1181.904 -755.425)" fill="#fff" />
+                                          </svg></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
+                                <mat-expansion-panel>
+                                  <mat-expansion-panel-header style="background-color: #6d7791;">
+                                    <mat-panel-title>
+                                      <h4 style="  color: #fff">Tagged Products</h4>
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <div class="tagged_product">
+                                    <div class="tagged_product_img">
+
+                                      <img src="{{feed.productImage}}">
+                                    </div>
+                                    <div class="tagged_product_text">
+                                      <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
+                                      <p>{{feed.productDescription}}</p>
+                                    </div>
+                                  </div>
+                                </mat-expansion-panel>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
              </div>
      </div>
-  </div>
+   </div>
 </section>
+
 
 <div *ngIf = "!feedResult.length" class="result_not_found">
     <img src = "../../../assets/images/result_not_found.png">

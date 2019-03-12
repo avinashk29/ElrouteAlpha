@@ -5,7 +5,7 @@
     <!-- ------------------mobile--- -->
     <div class="header_mobile">
         <div class="headerElements">
-            <div class="elements" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}"><h4>Timeline</h4></div>
+            <div class="elements" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}"><h4>TimeLine</h4></div>
         <div class="elements" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>Info</h4></div>
         <div class="elements" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>Product</h4></div>
         <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>Contact</h4></div>
@@ -177,7 +177,7 @@
       </div>
       <div class="tabs">
           <div class="tab" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}">
-              <h1>Timeline</h1>
+              <h1>TIMELINE</h1>
             </div>
         <div class="tab" (click)="showTwo()"  [ngClass]="{'tabClicked': two}">
           <h1>INFO</h1>
@@ -230,7 +230,8 @@
 
 
       </div>
-      <div class="feedCards" *ngIf="feeds">
+      
+      <div class="feedCards" *ngIf="feeds && myCompany">
         <div class="main_feed_card" *ngFor="let feed of feeds; let i = index">
           <div class="feed1">
             <div style="width: 100%;">
@@ -255,19 +256,49 @@
                         <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                       </div>
                       <div class="bookmark_share">
-                        <div class="share_feed">
-                          <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
-                              <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
-                                transform="translate(-1181.904 -755.425)" fill="#fff" />
-                            </svg></span>
+                          <div class="bookmark">
+                            <span (click)=addFeedBookmark(i,feed._id)  *ngIf = "!this.feeds[i].bookm else load">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                <g id="bookmark" fill="green">
+                                  <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                    stroke="none" />
+                                  <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                    stroke="none" fill="#fff" />
+                                </g>
+                              </svg>
+                            </span>
+                            <p>28</p>
+                          </div>
+                          <ng-template #load>
+                            <div class="bookmark">
+                              <span (click)="removeFeedBookmark(i,feed._id)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                  <g id="bookmark" fill="red">
+                                    <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                      stroke="none" />
+                                    <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                      stroke="none" fill="#fff" />
+                                  </g>
+                                </svg>
+                                <p>28</p>
+                              </span>
+
+                            </div>
+                          </ng-template>
+                          <div class="share">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
+                                <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
+                                  transform="translate(-1181.904 -755.425)" fill="#fff" />
+                              </svg></span>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
                   <mat-expansion-panel>
                     <mat-expansion-panel-header style="background-color: #6d7791;">
+
                       <mat-panel-title>
                         <h4 style="  color: #fff">Tagged Products</h4>
                       </mat-panel-title>
@@ -314,7 +345,96 @@
           </div>
         </div>
     </div>
+    
 
+    <!-- getting feed by companyID -->
+    
+      <div class="feedCards" *ngIf="feedById && !myCompany">
+        <div class="main_feed_card" *ngFor="let feed of feedById; let i = index">
+          <div class="feed1">
+            <div style="width: 100%;">
+              <div class="feed_content">
+                <div class="feed_header">
+                  <div class="feed_logo">
+                    <img src="{{this.companyService.companyData.companyLogo}}">
+                  </div>
+                  <div class="feed_name">
+                    <h4>{{this.companyService.companyData.companyName}}</h4>
+                    <p>Service</p>
+                    <h6>India</h6>
+                  </div>
+                </div>
+                <div class="feed_img">
+                  <div class="container1">
+                    <img src="{{feed.Image}}">
+                    <div class="overlay1">
+                      <div class="feed_text">
+                        <p>{{feed.content}}</p>
+                        <!-- <p>Watch our first episode</p> -->
+                        <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
+                      </div>
+                      <div class="bookmark_share">
+                        <div class="share_feed">
+                          <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
+                              <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
+                                transform="translate(-1181.904 -755.425)" fill="#fff" />
+                            </svg></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header style="background-color: #6d7791;">
+                      <mat-panel-title>
+                        <h4 style="  color: #fff">Tagged Products</h4>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="tagged_product">
+                      <div class="tagged_product_img">
+  
+                        <img src="{{feed.productImage}}">
+                      </div>
+                      <div class="tagged_product_text">
+                        <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
+                        <p>{{feed.productDescription}}</p>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="feeds" *ngIf="!feeds.length">
+          <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
+          <div class="default_feed">
+            <div class="feed_show">
+              <div class="feed_show_img">
+                <img src="assets/images/Group1.png">
+              </div>
+              <div class="feed_show_content">
+                <div class="feed_show_content1">
+                  <h4>Elroute your way to business!</h4>
+                  <p>We give you a platform to showcase what your company has got and how ypur're better than tha other
+                    in your category</p>
+                  <p>Add your feeds here to attract more and more business and level up your game</p>
+  
+                </div>
+                <button type="button" routerLink="/Dashboard"><span *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24">
+                      <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    <!-- end of getting feed by companyID -->
       <div class="otherInfocard">
         <div class="infoCard">
           <div class="hq info">
@@ -334,8 +454,10 @@
             <h3>{{this.companyService.companyData.address }}</h3>
           </div>
           <div class="revenu info" style="border-bottom:none">
-            <label>Total Revenue</label>
-            <h3></h3>
+            <div *ngIf="this.companyService.companyData.totalRevenue">
+              <label>Total Revenue</label>
+              <h3>{{this.companyService.companyData.totalRevenue}}</h3>
+            </div>
             <div class="hq_info" *ngIf="myCompany">
               <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24">
@@ -714,7 +836,7 @@
 
 <div style="display: flex;flex-wrap: wrap;">
 
-<div class="Card" *ngFor="let product of group.sortedProducts;let j=index" [ngStyle]="{'display':(j >= 2&&!this.showAll[ip]) ? 'none' : 'block' }">
+<div class="Card" *ngFor="let product of group.sortedProducts;let j=index" [ngStyle]="{'display':(j >= 2 && !this.showAll[ip]) ? 'none' : 'block' }">
 
     <div class="container">
 <div class="productCard">
@@ -722,12 +844,12 @@
     <div class="productImage">
       <img src="{{product.Image}}">
     </div>
-    <div class="b_page_btn">
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
-          <!-- <ng-template #bloading> -->
-              <!-- <button><span><svg xmlns="http://www.w3.org/2000/svg" style="fill:green;" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span></button> -->
-          <!-- </ng-template> -->
-        </div>
+    <!-- <div class="b_page_btn">
+        <span (click)="addProductBookmark(j,product._id)" *ngIf="!this.products[ip].bookm else bloading"><svg xmlns="http://www.w3.org/2000/svg" style="fill:green" width="24" height="24" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg></span>
+          <ng-template #bloading> 
+            <span (click)="removeProductBookmark(j,product._id)"><svg xmlns="http://www.w3.org/2000/svg" style="fill:red" width="24" height="24" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg></span>
+         </ng-template> 
+        </div> -->
     <div class="productContent">
       
       <div class="content">
@@ -784,7 +906,7 @@
 
   <div class="body1" *ngIf="this.type === 'contact'">
 
-      <div class="no_contact" *ngIf="!contact.length">
+      <div class="no_contact" *ngIf="!contact.length && myCompany">
           <div class="no_contact_left">
               <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg></p>
             </div>
@@ -804,7 +926,11 @@
 
     <div class="comapany_contact" *ngIf="contact.length">
             <h2>Company Divisions</h2>
+<<<<<<< HEAD
+            <button class="addContact" (click) = "onAddContact()" style="float: right" *ngIf="myCompany"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
+=======
             <button  *ngIf="myCompany" class="addContact" (click) = "onAddContact()" style="float: right"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
+>>>>>>> 144ca2cc7375ae43ac37c4bf4e059a38deefb76f
 
     </div>
   <div class="company_details" *ngIf="contact.length">

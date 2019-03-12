@@ -75,6 +75,7 @@ import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginP
 import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 import { ProductSelectComponent } from './Product/product-select/product-select.component';
 import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
+import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst.component';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -142,6 +143,7 @@ export function provideConfig() {
     OnefollowerComponent,
     ProductSelectComponent,
     CompanyContactComponent,
+    TradeCatalystComponent,
 
   ],
   imports: [
@@ -169,6 +171,7 @@ export function provideConfig() {
     LoginComponent,
     EditComponent,
     FeedComponent,
+    TradeCatalystComponent,
     OnefollowerComponent,
     ProductSelectComponent,
     CompanyContactComponent
