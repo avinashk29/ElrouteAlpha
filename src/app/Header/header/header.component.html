@@ -3,6 +3,7 @@
   <div class="head">
     <header class="header">
       <div class="logo" routerLink="/Dashboard"><img src="../../../assets/images/elroute_logo .png"></div>
+      <div class="logo_mob" routerLink="/Dashboard"><img src="../../../assets/images/logo.jpeg"></div>
       <div class="search" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
 
         <input type="search" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
@@ -45,7 +46,8 @@
           <img src="../../../assets/images/search.png"  (click)="showSearchbar = true">
       </div>
       <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
-          <input type="search"  placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+          <input type="text"  placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+          <img src="../../../assets/images/cross.png" (click)="showSearchbar = false">
         </form>
     </header>
 

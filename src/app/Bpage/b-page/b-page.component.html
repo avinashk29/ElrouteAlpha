@@ -5,7 +5,7 @@
     <!-- ------------------mobile--- -->
     <div class="header_mobile">
         <div class="headerElements">
-            <div class="elements" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}"><h4>TimeLine</h4></div>
+            <div class="elements" (click)="gotoTimeline()"><img src="{{this.companyService.companyData.companyLogo}}"></div>
         <div class="elements" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>Info</h4></div>
         <div class="elements" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>Product</h4></div>
         <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>Contact</h4></div>

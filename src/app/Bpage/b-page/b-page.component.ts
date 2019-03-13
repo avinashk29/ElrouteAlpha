@@ -110,7 +110,7 @@ this.follows.token=this.storage.get('token');
           this.companyService.companyData = JSON.parse(res['_body']);
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
-          console.log( JSON.parse(res['_body']));
+
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.contact = JSON.parse(res['_body']).contact;
           console.log(this.companyFollowers);
@@ -139,7 +139,7 @@ this.follows.token=this.storage.get('token');
                        } else  {
                         // this.cresult[j].bookm=false;
                        }
-                   }      
+                   }
                   }
               })
             });
@@ -198,11 +198,11 @@ console.log(this.companyService.companyData.companyLogo);
         this.type = paramas.urltype;
       });
 
-   
+
     this.feedService.getFeedById(this.comapnyId).subscribe(res=>{
-      this.feedById=JSON.parse(res['_body']);
-      console.log(this.feedById)
-    })
+      // this.feedById=JSON.parse(res['_body']);
+      // console.log(JSON.parse(res['_body']))
+    });
     // ------------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
@@ -218,7 +218,7 @@ console.log(this.companyService.companyData.companyLogo);
       // ----------------------bookmark at feed-------------
       this.feedService.GetFeed().subscribe(res => {
         this.feeds = JSON.parse(res['_body']);
-        console.log(this.feeds)
+        //
         for(let i = 0; i < this.postBookmark.length; i++) {
           for(let j = 0;j < this.feeds.length; j++) {
                if(this.postBookmark[i] == this.feeds[j]._id) {
@@ -226,7 +226,7 @@ console.log(this.companyService.companyData.companyLogo);
                } else  {
                 // this.cresult[j].bookm=false;
                }
-           }      
+           }
      }
       });
     });
@@ -575,7 +575,7 @@ addFeedBookmark(i,id){
   this.feeds[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
     console.log(res)
-   
+
   });
 }
 removeFeedBookmark(i,id){
@@ -589,7 +589,7 @@ addProductBookmark(i,id){
   console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
     console.log(res)
-   
+
   });
 }
 removeProductBookmark(i,id){
