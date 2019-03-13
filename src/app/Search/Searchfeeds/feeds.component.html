@@ -87,21 +87,27 @@
                                   </div>
                                 </div>
                               </div>
+<<<<<<< HEAD
                               <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
                                 <mat-expansion-panel *ngIf="feed.tagId">
+=======
+                              <div class="tagged" *ngIf="feed.productImage && feed.productName" style="margin-top: -4px;">
+                                <mat-expansion-panel>
+>>>>>>> 924e3aa085c15ac425729dae253b9ac6c38539e0
                                   <mat-expansion-panel-header style="background-color: #6d7791;">
                                     <mat-panel-title>
                                       <h4 style="  color: #fff">Tagged Products</h4>
                                     </mat-panel-title>
                                   </mat-expansion-panel-header>
                                   <div class="tagged_product">
+
                                     <div class="tagged_product_img">
 
                                       <img src="{{feed.productImage}}">
                                     </div>
                                     <div class="tagged_product_text">
                                       <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
-                                      <p>{{feed.productDescription}}</p>
+                                      <p>{{feed.shortDescription}}</p>
                                     </div>
                                   </div>
                                 </mat-expansion-panel>

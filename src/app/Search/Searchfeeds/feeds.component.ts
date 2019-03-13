@@ -33,6 +33,7 @@ if(this.token){
  this.userInfo=JSON.parse(res['_body']).bookmarks.post;
  this.search.onSearchFeed(this.word , this.page).subscribe(res1=>{
    this.feedResult=JSON.parse(res1['_body']);
+   console.log(this.feedResult)
      this.productId=JSON.parse(res1['_body']);
      for(let i = 0; i < this.userInfo.length; i++) {
        for(let j = 0;j < this.productId.length; j++) {
@@ -53,6 +54,7 @@ if(this.token){
 } else {
   this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
     this.feedResult = JSON.parse(res1['_body']);
+    console.log(this.feedResult)
       this.productId = JSON.parse(res1['_body']);
       console.log(JSON.parse(res1['_body']));
 
