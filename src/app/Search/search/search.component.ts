@@ -38,13 +38,13 @@ productResult=[]
     this.token =  this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-    console.log(this.word , this.page);
+    //console.log(this.word , this.page);
       if(this.token) {
         this.userService.getUserData().subscribe(res=>{
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
-            console.log(JSON.parse(response['_body']));
+            //console.log(JSON.parse(response['_body']));
             this.productResult=JSON.parse(response['_body']);
             this.productId=JSON.parse(response['_body']);
             this.bookmarkService.productBookmark=JSON.parse(response['_body']);
@@ -67,7 +67,7 @@ productResult=[]
       } else {
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
-            console.log(JSON.parse(response['_body']));
+            //console.log(JSON.parse(response['_body']));
             this.productResult=JSON.parse(response['_body']);
             this.productId=JSON.parse(response['_body']);
   });

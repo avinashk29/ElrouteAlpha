@@ -60,7 +60,7 @@ BookmarkResult(){
 // removeProduct() {
 //     const headers = new Headers();
 //     headers.append('x-auth', this.token);
-//     console.log(this.token);
+//     //console.log(this.token);
 //     return this.http.patch('http://www.elroute.co.in/bookmark/product', {headers: headers});
 // }
     getBookmarkProduct() {

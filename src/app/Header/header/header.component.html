@@ -2,7 +2,7 @@
 <div class="head">
   <div class="head">
     <header class="header">
-      <div class="logo" routerLink="/Dashboard"><img src="../../../assets/images/elroute_logo .png"></div>
+      <div class="logo" routerLink="/Dashboard"><img src="../../../assets/images/elroute_logo .png" alt="elroute_logo"></div>
       <div class="search" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
 
         <input type="search" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
@@ -30,8 +30,8 @@
           <div class="user">
 
             <div class="user_img" routerLink="/bookmark">
-              <img src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage">
-              <img src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage">
+              <img src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage"  alt="user_image"> 
+              <img src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage" alt="user_logo">
               <p>{{this.UserService.userData.userName}}</p>
             </div>
             <!-- <img src="assets/images/user.png">  -->
@@ -42,7 +42,7 @@
 
       </ul>
       <div class="searchIcon">
-          <img src="../../../assets/images/search.png"  (click)="showSearchbar = true">
+          <img src="../../../assets/images/search.png"  (click)="showSearchbar = true" alt="search_icon"> 
       </div>
       <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
           <input type="search"  placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">

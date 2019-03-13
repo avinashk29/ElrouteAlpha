@@ -14,8 +14,8 @@
                 </div>
                 <div class="follower_img">
                     <div class="follower_img1">
-                        <img src="{{this.userService.userData.userImage}}" *ngIf="this.userService.userData.userImage">
-                        <img src="../../../assets/images/user.png" *ngIf="!this.userService.userData.userImage">
+                        <img alt="follower" src="{{this.userService.userData.userImage}}" *ngIf="this.userService.userData.userImage">
+                        <img alt="follower" src="../../../assets/images/user.png" *ngIf="!this.userService.userData.userImage">
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
 
         <div class="following_nub" *ngIf="haveCompany">
             <div class="user_img">
-                <img src="assets/images/following.png">
+                <img alt="user_overview" src="assets/images/following.png">
             </div>
             <div class="following_nub1">
                 <span>{{userFollowing}}</span>
@@ -89,8 +89,8 @@
             <!-- <button routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}" *ngIf = "haveCompany">Go To B-Page</button> -->
             <div class="company" *ngIf = "haveCompany">
               <div class="company_logo">
-                  <img src="{{companyLogo}}" *ngIf="companyLogo" routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}">
-                  <img src="../../../assets/images/user.png" *ngIf="!companyLogo" routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}">
+                  <img alt="user_overview" src="{{companyLogo}}" *ngIf="companyLogo" routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}">
+                  <img alt="user_overview" src="../../../assets/images/user.png" *ngIf="!companyLogo" routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}">
               </div>
               <div class="company_name">
                   <h4 style="color: skyblue; text-align: center;" routerLink = "/companyPage/{{haveCompany}}"  [queryParams] = "{urltype: 'default'}">{{companyName}}</h4>
@@ -109,7 +109,7 @@
            </div>
            <div class="follower_img">
               <div class="follower_img1">
-                <img src="assets/images/user.png">
+                <img alt="user_overview" src="assets/images/user.png">
               </div>
            </div>
           <div style="clear:both"></div>
@@ -123,7 +123,7 @@
             <div class="follower_company">
                   <div class="company">
                     <div class="company_logo">
-                          <img src="assets/images/user.png">
+                          <img alt="user_overview" src="assets/images/user.png">
                     </div>
                     <div class="company_name">
                         <h4>{{companyName}}</h4>
@@ -135,16 +135,16 @@
             </div>
             <div class="follwers_links1">
                     <div class="facebook">
-                      <img src="assets/images/fb.png">
+                      <img alt="user_overview" src="assets/images/fb.png">
                      </div>
                      <div class="google">
                         <div class="facebook">
-                            <img src="assets/images/fb.png">
+                            <img alt="user_overview" src="assets/images/fb.png">
                            </div>
                       </div>
                       <div class="linkdin">
                           <div class="facebook">
-                              <img src="assets/images/fb.png">
+                              <img alt="user_overview" src="assets/images/fb.png">
                              </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
 
       <div class="following_nub">
           <div class="user_img">
-              <img src="assets/images/following.png">
+              <img alt="user_overview" src="assets/images/following.png">
           </div>
           <div class="following_nub1">
               <span>{{userFollowing}}</span>{{this.userService.userData.following}}

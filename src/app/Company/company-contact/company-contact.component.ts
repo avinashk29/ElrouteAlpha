@@ -27,7 +27,7 @@ companyId = this.storage.get('companyId');
      if (!this.companyService.companyData.contact.length){
                this.addContact();
      }
-  console.log(this.companyService.companyData.contact);
+  //console.log(this.companyService.companyData.contact);
 
   }
   addContact() {
@@ -59,7 +59,7 @@ setContact() {
 onSubmit() {
   if(this.contactForm.valid) {
     this.companyService.UpdateCompany(this.contactForm.value).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      //console.log(JSON.parse(res['_body']));
       this.dialogref.close(CompanyContactComponent);
       this.router.navigate(['/companyPage/' + this.companyId], {
         queryParams: { urltype: 'contact' }
@@ -73,9 +73,9 @@ onDelete(index) {
   const control = <FormArray>this.contactForm.controls.contact;
   control.removeAt(index);
   this.companyService.UpdateCompany(this.contactForm.value).subscribe(res => {
-    console.log(JSON.parse(res['_body']));
+    //console.log(JSON.parse(res['_body']));
   });
-  console.log(this.contactForm.value);
+  //console.log(this.contactForm.value);
 }
 Onclose(){
   this.dialogref.close(CompanyContactComponent);

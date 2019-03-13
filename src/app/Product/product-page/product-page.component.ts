@@ -21,12 +21,12 @@ export class ProductPageComponent implements OnInit {
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
    public route: ActivatedRoute, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
     this.id = this.route.snapshot.paramMap.get('_id');
-    console.log(this.id);
+    //console.log(this.id);
   this.productService.token = this.storage.get('token');
   this.feedService.token=this.storage.get('token');
   this.bookmarkService.token=this.storage.get('token')
   this.mycompany=this.storage.get('companyId');
-  console.log(this.mycompany)
+  //console.log(this.mycompany)
   }
   panelOpenState = false;
 id;
@@ -34,9 +34,9 @@ id;
   ngOnInit() {
 
 this.productService.getOneProduct(this.id).subscribe(res => {
-  console.log(JSON.parse(res['_body']))
+  //console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
-  console.log(this.productService.productData);
+  //console.log(this.productService.productData);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{
@@ -46,10 +46,10 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
     
 this.productService.getFeedById(this.id).subscribe(res=>{
-  console.log(JSON.parse(res['_body']));
+  //console.log(JSON.parse(res['_body']));
 this.feedResult=JSON.parse(res['_body']);
-console.log(JSON.parse(res['_body']));
-console.log(this.feedResult.length);
+//console.log(JSON.parse(res['_body']));
+//console.log(this.feedResult.length);
 })
 this.UserService.getUserData().subscribe(res=>{
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       this.token=this.storage.get('token');
 
       // this.companyId =  this.storage.get('companyId');
-    // console.log(this.companyId);
+    // //console.log(this.companyId);
     
       }
 ngOnInit(){

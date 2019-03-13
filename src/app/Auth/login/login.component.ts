@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/Dashboard']);
     }, error =>{
       this.notification.error(error._body);
-      console.log(error._body);
+      //console.log(error._body);
     });
 
       
