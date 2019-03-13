@@ -54,6 +54,7 @@ if(this.token){
   this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
     this.feedResult = JSON.parse(res1['_body']);
       this.productId = JSON.parse(res1['_body']);
+      console.log(JSON.parse(res1['_body']));
 
   });
 }

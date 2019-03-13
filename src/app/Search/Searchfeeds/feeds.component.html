@@ -3,11 +3,13 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section>
-
-  <div class="results" *ngFor="let feed of feedResult; let i=index">
-     <div class="feedResult" *ngIf = "feed !== null">
-        <div class="feed">
-            <div class="authorInfo" >
+    <div *ngIf = "!feedResult.length" class="result_not_found">
+        <img src = "../../../assets/images/result_not_found.png">
+      </div>
+  <!-- <div class="results" *ngFor="let feed of feedResult; let i=index">
+     <div class="feedResult" *ngIf = "feed !== null">-->
+        <!-- <div class="feed">  -->
+            <!-- <div class="authorInfo" >
                 <div class="details">
                   <div class="logo">
                     <img src= "{{feed.companyLogo}}">
@@ -54,13 +56,13 @@
                      <div class="main_feed_card" >
                         <div class="feed1" *ngFor="let feed of feedResult; let i=index">
                           <div style="width: 100%;">
-                            <div class="feed_content">
+                            <div class="feed_content" *ngIf="feed !== null">
                               <div class="feed_header">
                                 <div class="feed_logo">
                                   <img src="{{feed.companyLogo}}">
                                 </div>
                                 <div class="feed_name">
-                                  <h4>{{feed.companyName}}</h4>
+                                  <h4 routerLink = "/companyPage/{{feed.admin}}" [queryParams]="{urlType: 'default'}">{{feed.companyName}}</h4>
                                   <p>Service</p>
                                   <h6>India</h6>
                                 </div>
@@ -86,7 +88,7 @@
                                 </div>
                               </div>
                               <div class="tagged" *ngIf="feed.tagId" style="margin-top: -4px;">
-                                <mat-expansion-panel>
+                                <mat-expansion-panel *ngIf="feed.tagId">
                                   <mat-expansion-panel-header style="background-color: #6d7791;">
                                     <mat-panel-title>
                                       <h4 style="  color: #fff">Tagged Products</h4>
@@ -108,12 +110,8 @@
                           </div>
                         </div>
                       </div>
-             </div>
-     </div>
-   </div>
+             <!-- </div> -->
+     <!-- </div> -->
+  <!-- </div> -->
 </section>
 
-
-<div *ngIf = "!feedResult.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
-  </div>

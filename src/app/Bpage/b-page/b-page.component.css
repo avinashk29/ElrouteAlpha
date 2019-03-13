@@ -27,7 +27,7 @@
 
 #container_1{
   width:55%;
-  height: 30vh; 
+  height: 30vh;
 }
 .b_page_btn
 {
@@ -1513,7 +1513,7 @@ margin-top: auto;
   .infoImg button{
 
     height: 20vh !important;
-   
+
 }
 
   .infoContent p {
@@ -1660,7 +1660,7 @@ margin-top: auto;
   width: 100% !important;
 }
 .category_1{
- 
+
   padding: 10px 10px 22px 0 !important;
 }
 .tabClicked h4 {
@@ -1677,8 +1677,16 @@ margin-top: auto;
 
 }
 .no_product_dummy {
-  
+
   width: 90%;
+}
+.header_mobile{
+  width: 100%;
+  margin-left: -10px;
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+}
+section{
+  margin-top: 5%;
 }
 }
 

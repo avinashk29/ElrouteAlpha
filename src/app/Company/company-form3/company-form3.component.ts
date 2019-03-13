@@ -19,9 +19,9 @@ export class CompanyForm3Component implements OnInit {
      yearEstd: new FormControl(),
    city: new FormControl(''),
      shortIntro: new FormControl(''),
-     workingHours:new FormControl('')
+     workingHours: new FormControl(''),
+     linkedin: new FormControl('')
 
-  
     }) ;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public companyService: CompanyServiceService, public router: Router, public notification: ToastrService) {
@@ -40,6 +40,6 @@ export class CompanyForm3Component implements OnInit {
   onSubmit() {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
     });
-    this.notification.success('B Face Updated');
+
   }
 }
