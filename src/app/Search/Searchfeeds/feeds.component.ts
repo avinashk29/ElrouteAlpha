@@ -56,6 +56,7 @@ if(this.token){
     this.feedResult = JSON.parse(res1['_body']);
     console.log(this.feedResult)
       this.productId = JSON.parse(res1['_body']);
+      console.log(JSON.parse(res1['_body']));
 
   });
 }

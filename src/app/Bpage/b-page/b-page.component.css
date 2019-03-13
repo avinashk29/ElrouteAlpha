@@ -60,9 +60,9 @@ margin-top: auto;
 }
 
 .follow-btn_mobile {
- 
+
   display: flex;
- margin-top: 9%;
+ margin-top: 4%;
 }
 
 .follow-btn_mobile button {
@@ -70,6 +70,8 @@ margin-top: auto;
   height: 20px;
   /* width: 42%; */
   border: none;
+  margin: 0px 10px 0 0;
+
   color: #fff;
   background-color: #333333;
   font-size: 12px;
@@ -166,7 +168,7 @@ margin-top: auto;
 
 #container_1{
   width:55%;
-  height: 30vh; 
+  height: 30vh;
 }
 .b_page_btn
 {
@@ -1205,7 +1207,7 @@ mat-panel-title h4 {
   margin-left: 2%;
 }
 .companyEmail_box{
-  border: solid 1px gray;
+  /* border: solid 1px gray; */
   margin: 0 auto;
   width: 90%;
   margin-top: 5%;
@@ -1220,6 +1222,7 @@ mat-panel-title h4 {
 .company_email p {
   width: 25%;
   color: #0A9AB1;
+  font-size:20px;
 }
 
 .company_email1 {
@@ -1654,7 +1657,7 @@ margin-top: auto;
   .infoImg button{
 
     height: 20vh !important;
-   
+
 }
 
   .infoContent p {
@@ -1691,7 +1694,7 @@ margin-top: auto;
   .company_email p {
     width: 21%;
     color: #0A9AB1;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .company_email1 {
@@ -1712,7 +1715,7 @@ margin-top: auto;
 
   .google_map {
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
   }
 
   .complete_address {
@@ -1801,7 +1804,7 @@ margin-top: auto;
   width: 100% !important;
 }
 .category_1{
- 
+
   padding: 10px 10px 22px 0 !important;
 }
 .tabClicked h4 {
@@ -1818,8 +1821,26 @@ margin-top: auto;
 
 }
 .no_product_dummy {
-  
+
   width: 90%;
+}
+.header_mobile{
+  width: 100%;
+  margin-left: -10px;
+  box-shadow: 0 6px 0 #fff, 0 10px 6px rgba(0,0,0, .35);
+  margin-bottom: 20px;
+  height: 24px;
+  border: none;
+  /* border-top: 10px solid #ccc; */
+}
+section{
+  margin-top: 5%;
+}
+.elements img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: -5px;
 }
 }
 
@@ -2508,7 +2529,7 @@ label {
   width: 100%;
   font-weight: 100;
   font-size: 25px;
-
+  text-align: right;
   margin-bottom: 1%;
   color: rgb(30, 28, 28);
   padding-top: 3px;

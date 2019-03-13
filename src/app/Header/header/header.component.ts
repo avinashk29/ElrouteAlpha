@@ -12,6 +12,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  showSearchbar = false;
   constructor(
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
     private router: Router,
@@ -48,11 +49,5 @@ export class HeaderComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(LoginComponent, dialogConfig);
   }
-  onLogout() {
-    this.router.navigate(['/']);
-    this.storage.remove('token');
-    this.storage.remove('companyId');
 
-  
-  }
 }

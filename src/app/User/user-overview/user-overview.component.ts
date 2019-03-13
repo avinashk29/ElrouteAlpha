@@ -25,6 +25,7 @@ export class UserOverviewComponent implements OnInit{
   subscription;
   userImage;
 companyLogo;
+userFollowing;
   constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute) {
@@ -32,6 +33,8 @@ companyLogo;
     this.companyName = this.companyService.companyData.companyName;
     this.userService.getUserData().subscribe(res => {
       this.userService.userData = JSON.parse(res['_body']);
+this.userFollowing=JSON.parse(res['_body']).following.length;
+   console.log(this.userFollowing)
 
 });
     if (this.haveCompany) {

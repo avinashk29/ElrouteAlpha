@@ -1,9 +1,6 @@
-<app-header></app-header>
 
-<app-s-page-header-search></app-s-page-header-search>
-<app-s-page-header></app-s-page-header>
-<section>
 
+<<<<<<< HEAD
   <div class="results" *ngFor="let feed of feedResult; let i=index">
      <div class="feedResult" *ngIf = "feed !== null">
         <div class="feed">
@@ -124,26 +121,6 @@
                                   <div class="tagged_product">
                                     
                                     <div class="tagged_product_img">
+=======
+>>>>>>> bc2844a0bad04649db45ad85217a35b5b3bbb9e2
 
-                                      <img src="{{feed.productImage}}">
-                                    </div>
-                                    <div class="tagged_product_text">
-                                      <h2 routerLink="/product-page/{{feed.tagId}}">{{feed.productName}}</h2>
-                                      <p>{{feed.shortDescription}}</p>
-                                    </div>
-                                  </div>
-                                </mat-expansion-panel>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-             </div>
-     </div>
-   </div>
-</section>
-
-
-<div *ngIf = "!feedResult.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
-  </div>
