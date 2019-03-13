@@ -620,11 +620,11 @@ fieldset
 }
 
 .category_1 {
-  border-bottom: 1px solid;
+  /* border-bottom: 1px solid; */
   margin-top: 8%;
-  box-shadow: 0px 1px 7px #5555;
-  height: 14vh;
-  padding: 10px 10px;
+  /* box-shadow: 0px 1px 7px #5555; */
+  /* height: 14vh; */
+  /* padding: 10px 10px; */
  
 }
 
@@ -653,7 +653,7 @@ category_btn {
   width: 40px;
   border: none;
   margin-top: 3%;
-  float: right;
+  /* float: right; */
 
 }
 
@@ -933,7 +933,7 @@ category_btn {
 
 .feed_text p {
   color: white;
-  font-size: 20px;
+  font-size: 14px;
   margin-bottom: auto;
   margin-top: auto;
   padding: 18px;
@@ -1998,7 +1998,14 @@ margin-top: auto;
     width: 30% !important;
   }
 }
-
+.otherInfocard_1 {
+  /* height: 10vh; */
+  /* width: 30%; */
+  padding: 10px;
+  box-shadow: 0px 1px 7px #5555;
+  /* height: 235px; */
+  height: fit-content;
+}
 .otherInfocard {
   /* height: 10vh; */
   width: 30%;
@@ -2028,6 +2035,8 @@ label {
   margin-top: 5px;
   margin-bottom: 0;
   padding-bottom: 5px;
+  font-size: 15px;
+
   font-weight: 500;
   color: black;
 }
@@ -2447,11 +2456,17 @@ label {
 }
 
 .bookmark {
-  width: 1%;
+  width: 100%;
   height: 3%;
-  background-color: red;
-  position: absolute;
+  /* background-color: red; */
+  /* position: absolute; */
   margin-left: 10%;
+      display: flex;
+}
+.bookmark p{
+  color: white !important;
+  margin-left: 4%;
+
 }
 
 .productImage img,
