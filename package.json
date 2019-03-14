@@ -30,6 +30,7 @@
     "ng2-sticky-nav": "^0.1.0",
     "ng4-loading-spinner": "^1.2.3",
     "ng4-social-login": "^1.4.2",
+    "ng6-social-button": "^1.0.5",
     "ngx-spinner": "^7.0.0",
     "ngx-toastr": "^9.1.1",
     "rxjs": "^6.3.3",

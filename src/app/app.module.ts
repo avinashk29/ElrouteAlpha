@@ -72,10 +72,15 @@ import { CompanyForm5Component } from './Company/company-form5/company-form5.com
 import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
+import {
+  Ng6SocialButtonModule,
+  SocialServiceConfig
+} from 'ng6-social-button';
 import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 import { ProductSelectComponent } from './Product/product-select/product-select.component';
 import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
 import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst.component';
+import { FeedShareComponent } from './Post-feed/feed-share/feed-share.component';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -91,6 +96,14 @@ const config = new AuthServiceConfig([
 }
 ], false);
 export function provideConfig() {
+  return config;
+}
+
+export function getAuthServiceConfigs() {
+  let config = new SocialServiceConfig()
+      .addFacebook('307465413244657')
+      .addGoogle('349477484566-r02ikt755q39t0gkg5lomu8cqag1as6n.apps.googleusercontent.com')
+      .addLinkedIn('81dtr1bi4w9s9g');
   return config;
 }
 
@@ -144,6 +157,7 @@ export function provideConfig() {
     ProductSelectComponent,
     CompanyContactComponent,
     TradeCatalystComponent,
+    FeedShareComponent,
 
   ],
   imports: [
@@ -163,6 +177,7 @@ export function provideConfig() {
     MatCardModule,
     // StickyNavModule,
     ScrollDispatchModule,
+    Ng6SocialButtonModule,
     ToastrModule.forRoot()
 
   ],
@@ -174,10 +189,12 @@ export function provideConfig() {
     TradeCatalystComponent,
     OnefollowerComponent,
     ProductSelectComponent,
-    CompanyContactComponent
+    CompanyContactComponent,
+    FeedShareComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
-     SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig}],
+     SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig},{provide: SocialServiceConfig,
+      useFactory: getAuthServiceConfigs}],
   bootstrap: [AppComponent],
 
 })

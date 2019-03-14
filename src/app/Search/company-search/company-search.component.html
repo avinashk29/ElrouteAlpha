@@ -3,6 +3,9 @@
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
 <section>
+    <div  class="result_not_found" *ngIf="this.noResult">
+        <img src = "../../../assets/images/result_not_found.png">
+      </div>
 <div class="listing">
 
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
@@ -74,15 +77,9 @@
 </div>
 </div>
 </div>
-<div *ngIf="!result">
-  <img src="../../../assets/images/result_not_found.png">
-
-</div>
 
 </div>
 
 </section>
 
-<div *ngIf = "!result.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
-  </div>
+

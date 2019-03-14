@@ -11,7 +11,8 @@ import { FollowService } from 'src/app/Service/follow-service.service';
 })
 export class CompanyComponent implements OnInit {
 userInfo=[];
-userBookmark=[]
+userBookmark=[];
+noResult = false;
   constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private userService:UserService,private follows:FollowService) { }
 result=[]
   ngOnInit() {

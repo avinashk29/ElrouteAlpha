@@ -9,7 +9,7 @@ export class FeedService {
     tagId;
     productName;
     productImage;
-    productDescription
+    productDescription;
     constructor(public http: Http) {}
     AddFeed(feed) {
       const headers = new Headers();
@@ -21,7 +21,7 @@ export class FeedService {
         headers.append('x-auth', this.token);
         return this.http.get('http://localhost:8080/api/post',{headers:headers})
     }
-  
+
     getCompanyFeed(){
         const headers = new Headers();
         headers.append('x-auth', this.token);
@@ -31,5 +31,10 @@ export class FeedService {
         const headers = new Headers();
         headers.append('x-auth', this.token);
         return this.http.get('http://localhost:8080/api/post/'+id,{headers:headers});
+    }
+        deletePost(id){
+        const headers = new Headers();
+        headers.append('x-auth',this.token);
+        return this.http.delete('http://localhost:8080/api/post/' + id, {headers:headers});
     }
 }

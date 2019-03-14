@@ -497,7 +497,8 @@
     }
     .company_logo img {
         border-radius: 100%;
-        width: 100%;
+        width: 50px;
+        height: 50px;
     }
     .company_name {
         margin-left: 4%;

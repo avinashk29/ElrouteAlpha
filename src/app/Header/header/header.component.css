@@ -150,6 +150,12 @@ color: white;
   {
     display: none;
   }
+  .withoutCompany img{
+    width: 25% !important;
+    margin-left: 0% !important;
+    position: absolute!important;
+    left: 10px !important;
+  }
   .logo_mob{
     display: block;
   }
@@ -157,6 +163,9 @@ color: white;
 
     height: 43px;
 
+  }
+  .login{
+    display: none;
   }
   .user_img[_ngcontent-c3] img{
     width: 35px;
@@ -245,7 +254,6 @@ justify-content: center;
   position: absolute;
   width: 100%;
  right: 0;
- margin-bottom: 200px;
  transition-duration: .5s;
  transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
 }
