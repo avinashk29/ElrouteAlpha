@@ -15,9 +15,9 @@ export class CompanyForm3Component implements OnInit {
      website: new FormControl(''),
      facebook: new FormControl(''),
      companyType: new FormControl(''),
-     companySize: new FormControl(),
+     companySize: new FormControl(''),
      yearEstd: new FormControl(),
-   city: new FormControl(''),
+     city: new FormControl(''),
      shortIntro: new FormControl(''),
      workingHours: new FormControl(''),
      linkedin: new FormControl('')
@@ -39,6 +39,7 @@ export class CompanyForm3Component implements OnInit {
 
   onSubmit() {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
+      console.log(JSON.parse(res['_body']));
     });
 
   }

@@ -30,7 +30,7 @@ export class CompanyForm4Component implements OnInit {
     });
   }
   onSubmit() {
-    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {});
+    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {console.log(JSON.parse(res['_body']))});
     this.notification.success('B Face Updated');
   }
 

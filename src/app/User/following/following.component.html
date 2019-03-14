@@ -3,13 +3,12 @@
 <div class="following_title">
     <h1> Following</h1>
 </div>
-<div class="user_following" *ngIf="followings">
-    <div class="follow_search" >
-    </div>
+<div class="user_following">
+  
     <div class="following"  *ngFor="let following of followings let i = index">
         <div class="following_1">
             <div class="following_image">
-                <img src="{{following.companyLogo}}">
+                <img alt="following" src="{{following.companyLogo}}">
             </div>
             <div class="following_name">
                 <h2 (click)="gotoBpage(following._id)"> {{ following.companyName }}</h2>
@@ -30,16 +29,15 @@
         </ng-template>
             </div>
             <div class="following_icon1">
-             <a target="_blank" href="http://{{following.website}}"><img src="assets/images/google_icon.png"></a>
+             <a target="_blank" href="http://{{following.website}}"><img alt="following" src="assets/images/google_icon.png"></a>
 
             </div>
             <div class="following_icon1">
-                <img src="assets/images/contact1.png">
+                <img alt="following" src="assets/images/contact1.png">
 
             </div>
         </div>
     </div>
-  
     </div>
     <div *ngIf="!followings.length" style="text-align: center;"><h2>You Are Not Following Any Company!</h2></div>
 

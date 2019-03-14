@@ -27,7 +27,7 @@
 
           <div class="productCard">
         <div class="productImage">
-          <img src="{{result.Image}}"  routerLink = "/product-page/{{result._id}}" style="cursor:pointer">
+          <img alt="with-login" src="{{result.Image}}"  routerLink = "/product-page/{{result._id}}" style="cursor:pointer">
         </div>
         <div class="productContent" >
         <div class="content">
@@ -76,7 +76,53 @@
 </div>
 </div>
 </section>
+<<<<<<< HEAD
   <div  class="result_not_found" *ngIf="noResult">
     <img src = "../../../assets/images/result_not_found.png">
+=======
+
+<div class="mob-cards" *ngFor="let result of productResult; let i = index;">
+    <div class="card-wrapper" *ngIf="result !== null">
+        <div class="header">
+            <div class="header-content" style="width:95%; display: flex">
+              <h5 style="width:50%;">Product</h5>
+             <div *ngIf="this.token">
+
+              <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Bookmark</h5>
+
+
+              <ng-template #bloadingmob >
+                  <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)="deleteProductBookmark(i,result._id)" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Unbookmark</h5>
+            </ng-template>
+             </div>
+             <div *ngIf="!this.token">
+
+                <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "openLogin()">Bookmark</h5>
+
+               </div>
+
+          </div>
+        </div>
+
+      <div class="img-banner"><img alt="with-login" src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
+
+      <div class="main-content">
+        <div class="content-details">
+          <p>Something is here Some of the contnet</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
+          <h6 style="width:35%;">Price</h6>
+          <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
+      </div>
+    </div>
+
+</div>
+</div>
+
+<div *ngIf = "!productResult.length" class="result_not_found">
+    <img alt="with-login" src = "../../../assets/images/result_not_found.png">
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
   </div>
 

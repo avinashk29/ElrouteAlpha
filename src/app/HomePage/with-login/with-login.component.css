@@ -291,6 +291,7 @@ border: solid 5px white;
  margin-bottom: 4%;
  padding: 0px 0px 13px;
  margin-top: 10%;
+ margin-left: 1%;
 
 }
 .feed_show
@@ -867,7 +868,8 @@ mat-panel-title h4 {
  .dashboard
  {
 
-    width: 95%;
+    width: 100%;
+    box-shadow: none;
 
  }
     .user
@@ -881,7 +883,7 @@ mat-panel-title h4 {
  .with_login {
  width: 100%;
  margin: 0px;
- padding-top: 18%;
+ padding-top: 0;
  }
  .feeds {
     width: 96%;
@@ -890,7 +892,7 @@ mat-panel-title h4 {
 
  }
  .add_media h2 {
- font-size: 15px;
+ font-size: 12px;
  margin-top: -5px;
  }
  .add_media span {
@@ -1038,7 +1040,7 @@ mat-panel-title h4 {
 .feed_name {
     width: 50%;
     margin-top: 4%;
-    margin: 9px 0px;
+    margin: 9px 9px;
 }
 .feed_following  {
 
@@ -1159,7 +1161,7 @@ input[type="file"]
 {
  width: 90%;
  margin-top: 4%;
- margin: 9px 0px;
+ margin: 9px 9px;
 
 }
 .feed_name h4
@@ -1211,22 +1213,26 @@ width: 100%;
 /* height: 50vh; */
 
 }
-.tagged_product
-{
- display: flex;
-
-}
-.tagged_product_img
-{
- width: 40%;
- padding: 10px;
-}
-.tagged_product_img img
-{
- width: 80%;
- border: solid 1px gray;
- padding: 9px;
-}
+.tagged_product {
+    display: flex;
+    align-items: center;
+  
+  }
+  
+  .tagged_product_img {
+    width: 55%;
+    padding: 0px 20px 0 0;
+  }
+  
+  .tagged_product_img img {
+    width: 100%;
+    border: solid 1px gray;
+    /* padding: 9px; */
+  }
+  .tagged_product_text
+  {
+      width: 100%;
+  }
 .container1 {
  position: relative;
  width: 100%;
@@ -1274,7 +1280,7 @@ width: 100%;
 {
     font-family: Segoe UI, Regular;
  color: white;
- font-size: 12px;
+ font-size: 14px;
  margin-bottom: auto;
  margin-top: auto;
  padding: 18px;
@@ -1290,27 +1296,26 @@ width: 100%;
 {
  display: flex;
  padding-top: 15%;
- margin: 0 auto;
- width: 77%;
+ /* margin: 0 auto;
+ width: 77%; */
 
 }
-.bookmark
-{
- display: flex;
- width: 100%;
-}
-.bookmark span
-{
- margin: 0px 8px 0 0;
-}
-.bookmark p
-{
- color: white;
- font-size: 22px;
- margin-bottom: auto;
- margin-top: auto;
- padding: 10px;
-}
+.share {
+    margin-right: 10%;
+  }
+.bookmark {
+    width: 100%;
+    height: 3%;
+    /* background-color: red; */
+    /* position: absolute; */
+    margin-left: 10%;
+        display: flex;
+  }
+  .bookmark p{
+    color: white !important;
+    margin-left: 4%;
+  
+  }
 .mat-expansion-panel-body
 {
  padding: 0 0 0 0 !important;

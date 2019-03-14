@@ -147,9 +147,9 @@ export class ProductFormComponent implements OnInit {
   onSubmit() {
   
      this.productForm.value.companyName=this.companyName;
-     console.log(this.productForm.value.companyName)
+     //console.log(this.productForm.value.companyName)
       this.productService.addProduct(this.productForm.value).subscribe(res => {
-        console.log(JSON.parse(res['_body']))
+        //console.log(JSON.parse(res['_body']))
         this.productService.productData = JSON.parse(res['_body']);
         // this.userService.sendData(res);
         this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});

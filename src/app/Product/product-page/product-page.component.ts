@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { FeedService } from 'src/app/Service/feed-service.service';
@@ -19,14 +19,18 @@ export class ProductPageComponent implements OnInit {
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
+   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
+   this.router.events.subscribe((event:NavigationEnd) =>{
+     window.scrollTo(0,0);
+   });
+   
     this.id = this.route.snapshot.paramMap.get('_id');
-    console.log(this.id);
+    //console.log(this.id);
   this.productService.token = this.storage.get('token');
   this.feedService.token=this.storage.get('token');
   this.bookmarkService.token=this.storage.get('token')
   this.mycompany=this.storage.get('companyId');
-  console.log(this.mycompany)
+  //console.log(this.mycompany)
   }
   panelOpenState = false;
 id;
@@ -34,9 +38,9 @@ id;
   ngOnInit() {
 
 this.productService.getOneProduct(this.id).subscribe(res => {
-  console.log(JSON.parse(res['_body']))
+  //console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
-  console.log(this.productService.productData);
+  //console.log(this.productService.productData);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{
@@ -46,10 +50,10 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
     
 this.productService.getFeedById(this.id).subscribe(res=>{
-  console.log(JSON.parse(res['_body']));
+  //console.log(JSON.parse(res['_body']));
 this.feedResult=JSON.parse(res['_body']);
-console.log(JSON.parse(res['_body']));
-console.log(this.feedResult.length);
+//console.log(JSON.parse(res['_body']));
+//console.log(this.feedResult.length);
 })
 this.UserService.getUserData().subscribe(res=>{
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;

@@ -33,6 +33,7 @@ if(this.token){
  this.userInfo=JSON.parse(res['_body']).bookmarks.post;
  this.search.onSearchFeed(this.word , this.page).subscribe(res1=>{
    this.feedResult=JSON.parse(res1['_body']);
+
    console.log(this.feedResult)
      this.productId=JSON.parse(res1['_body']);
      for(let i = 0; i < this.userInfo.length; i++) {
@@ -54,9 +55,9 @@ if(this.token){
 } else {
   this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
     this.feedResult = JSON.parse(res1['_body']);
-    console.log(this.feedResult)
+    //console.log(this.feedResult)
       this.productId = JSON.parse(res1['_body']);
-      console.log(JSON.parse(res1['_body']));
+      //console.log(JSON.parse(res1['_body']));
 
   });
 }
@@ -67,7 +68,7 @@ if(this.token){
       });
   }
 
-    onBookmark(i,id) {
+  onBookmark(i,id) {
       this.productId[i].bookm=true;
       this.bookmarkService.addPostBookmark(id).subscribe(res => {
       });

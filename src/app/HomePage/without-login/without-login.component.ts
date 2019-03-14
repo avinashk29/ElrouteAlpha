@@ -58,7 +58,7 @@ export class WithoutLoginComponent implements OnInit {
   onSearch(name) {
     const formData = this.searchForm.value;
     this.searchService.onSearch(name, formData.page).subscribe(res=>{
-      console.log(res)
+      //console.log(res)
     });
     this.searchService.searchValue = formData;
     this.router.navigate(["/Result/" + name + "/" + formData.page]);

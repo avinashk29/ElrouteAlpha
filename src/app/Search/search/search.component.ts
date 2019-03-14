@@ -39,13 +39,17 @@ noResult = false;
     this.token =  this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-    console.log(this.word , this.page);
+    //console.log(this.word , this.page);
       if(this.token) {
         this.userService.getUserData().subscribe(res=>{
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
+<<<<<<< HEAD
             // console.log(JSON.parse(response['_body']));
+=======
+            //console.log(JSON.parse(response['_body']));
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
             this.productResult=JSON.parse(response['_body']);
             if(!this.productResult.length){
               this.noResult = true;
@@ -71,7 +75,7 @@ noResult = false;
       } else {
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
-            console.log(JSON.parse(response['_body']));
+            //console.log(JSON.parse(response['_body']));
             this.productResult=JSON.parse(response['_body']);
             this.productId=JSON.parse(response['_body']);
             if(!this.productResult.length){

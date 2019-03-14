@@ -19,7 +19,7 @@ result=[]
     this.bookmarkService.token = this.storage.get('token');
     this.follows.token=this.storage.get('token');
     this.userService.getUserData().subscribe(res=>{
-      console.log(res)
+      //console.log(res)
       this.userInfo=JSON.parse(res['_body']).following;
       this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
       this.bookmarkService.getBookmarkCompany().subscribe(res1 => {

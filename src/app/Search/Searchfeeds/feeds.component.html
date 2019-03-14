@@ -1,6 +1,131 @@
+<app-header></app-header>
 
+<app-s-page-header-search></app-s-page-header-search>
+<app-s-page-header></app-s-page-header>
+<section>
 
+  <div class="results" *ngFor="let feed of feedResult; let i=index">
+     <div class="feedResult" *ngIf = "feed !== null">
+        <div class="feed">
+            <!-- <div class="authorInfo" >
+                <div class="details">
+                  <div class="logo">
+                    <img src= "{{feed.companyLogo}}">
+                  </div>
+                  <div class="info">
+                 <h1 (click)="GotoBpage(feed.admin)">{{feed.companyName}}</h1>
+                 <p style="line-height: 0px;margin-bottom: 12px;margin-top: 5px;">{{feed.industry}}</p>
+                 <p style="line-height: 3px;margin-bottom: 10px;">{{feed.location}}</p>
+                </div>
+                <div class="b_page_btn" *ngIf = "this.token">
+                    <button  (click)= " onBookmark(i,feed._id)" *ngIf = "!this.productId[i].bookm else bloading">Bookmark</button>
+                    <ng-template #bloading>
+                        <button (click)="OndeleteBookmark(i,feed._id)" >Unbookmark</button>
+                    </ng-template>
+                  </div>
+                  <div class="b_page_btn" *ngIf = "!this.token">
+                    <button  (click)= "openLogin()">Bookmark</button>
+                  </div>
+                </div>
+                <div class="followBtn">
+                 <button (click)="follow(feed._id)">Follow<span><svg xmlns="http://www.w3.org/2000/svg" width="20%" height="50%" fill="currentColor" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                 <p></p>
+                </div>
+                </div>
+                <div class="feedInfo">
+                  <p>{{feed.content}} </p>
+                </div>
+                <div class="feed-img">
+                <img src="{{feed.Image}}">
+                </div>
+                <div class="feed-share">
+                    <p  style="padding: 4px; margin: 0; display: flex;width: 100%;" (click)="onBookmark(feed._id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/ ></svg><span><b style="margin-left: 5px;">{{feed.Bookmarks}}</b></span></p>
+                    <p style=" padding: 0; margin:4px 0;     margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z"/></svg></p>
+                    </div>
+                    <div class="tagged">
+                        <mat-expansion-panel style="background-color:white;">
+                            <mat-expansion-panel-header style="background-color: #6E7892;">
+                              <mat-panel-title >
+                               <h4 style="  color: #fff">Tagged Products</h4>
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                          </mat-expansion-panel>
+                     </div> -->
+                     <div class="main_feed_card" >
+                        <div class="feed1" *ngFor="let feed of feedResult; let i=index">
+                          <div style="width: 100%;">
+                            <div class="feed_content">
+                              <div class="feed_header">
+                                <div class="feed_logo">
+                                  <img src="{{feed.companyLogo}}">
+                                </div>
+                                <div class="feed_name">
+                                  <h4 routerLink="/companyPage/{{feed.admin}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{feed.companyName}}</h4>
+                                  <!-- <p>Service</p> -->
+                                  <!-- <h6>India</h6> -->
+                                </div>
+                              </div>
+                              <div class="feed_img">
+                                <div class="container1">
+                                  <img src="{{feed.Image}}">
+                                  <div class="overlay1">
+                                    <div class="feed_text">
+                                      <p>{{feed.content}}</p>
+                                      <!-- <p>Watch our first episode</p> -->
+                                      <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
+                                    </div>
+                                    <div class="bookmark_share">
+                                        <div class="bookmark">
+                                            <span   (click)="onBookmark(i,feed._id)" *ngIf="!this.productId[i].bookm else load">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                                <g id="bookmark">
+                                                  <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                                    stroke="none" />
+                                                  <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                                    stroke="none" fill="#fff" />
+                                                </g>
+                                              </svg>
+                                            </span>
+                                            <p>28</p>
+                                          </div>
+                                          <ng-template #load>
+                                            <div class="bookmark_1">
+                                              <span  (click)="OndeleteBookmark(i,feed._id)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                                  <g id="bookmark" fill="white">
+                                                    <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                                      stroke="none" />
+                                                    <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                                      stroke="none" fill="#fff" />
+                                                  </g>
+                                                </svg>
+                                                <!-- <p>28</p> -->
+                                              </span>
+                
+                                            </div>
+                                          </ng-template>
+                                      <div class="share_feed">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
+                                            <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
+                                              transform="translate(-1181.904 -755.425)" fill="#fff" />
+                                          </svg></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="tagged" *ngIf="feed.productImage && feed.productName" style="margin-top: -4px;">
+                                <mat-expansion-panel>
+                                  <mat-expansion-panel-header style="background-color: #6d7791;">
+                                    <mat-panel-title>
+                                      <h4 style="  color: #fff">Tagged Products</h4>
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <div class="tagged_product">
+                                    
+                                    <div class="tagged_product_img">
 
+<<<<<<< HEAD
 <app-header></app-header>
 
 <app-s-page-header-search></app-s-page-header-search>
@@ -128,6 +253,8 @@
 
                                     <div class="tagged_product_img">
 
+=======
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
                                       <img src="{{feed.productImage}}">
                                     </div>
                                     <div class="tagged_product_text">
@@ -149,4 +276,8 @@
 
 <div *ngIf = "!feedResult.length" class="result_not_found">
     <img src = "../../../assets/images/result_not_found.png">
+<<<<<<< HEAD
     </div>
+=======
+    </div>
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import { AuthServiceService } from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -43,7 +43,10 @@ export class WithLoginComponent implements OnInit {
   product = [];
   userFollow;
   companyFollowers;
-  feedBookmark
+  feedBookmark;
+  url;
+  allBookmarks=[];
+  allFollow=[]
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -60,7 +63,11 @@ export class WithLoginComponent implements OnInit {
     public notification: ToastrService,
     private spinner:Ng4LoadingSpinnerService,
     private bookmarkService:BookmarkServices
-  ) {}
+  ) {
+    this.router.events.subscribe((event:NavigationEnd) =>{
+      window.scrollTo(0,0);
+    });
+    }
   show = false;
   ngOnInit() {
     this.imgupload.token = this.storage.get("token");
@@ -69,8 +76,9 @@ export class WithLoginComponent implements OnInit {
     this.bookmarkService.token=this.storage.get('token');
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
-      console.log(JSON.parse(res['_body']))
+      //console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);
       if (this.result) {
         this.pId = JSON.parse(res['_body'])[0]._id;
@@ -80,16 +88,17 @@ export class WithLoginComponent implements OnInit {
             .subscribe(res1 => {});
         }
       }
-      if (!this.feeds.length) {
-        this.noFeeds = true;
-      }
+    
       this.userService.getUserData().subscribe(res1 => {
+        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        this.allFollow=JSON.parse(res1['_body']).following.length;
+        // console.log(this.allFollow);
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
         this.userFollow = JSON.parse(res1["_body"]).following;
         for (let i = 0; i < this.userFollow.length; i++) {
           for (let j = 0; j < this.result.length; j++) {
             if (this.userFollow[i] === this.result[j].admin) {
-              this.result[i].follow=true;
+              this.result[j].follow=true;
             } else {
             }
           }
@@ -98,7 +107,7 @@ export class WithLoginComponent implements OnInit {
       for (let i = 0; i < this.feedBookmark.length; i++) {
         for (let j = 0; j < this.result.length; j++) {
           if (this.feedBookmark[i] === this.result[j]._id) {
-            this.result[i].bookm=true;
+            this.result[j].bookm=true;
           } else {
           }
         }
@@ -128,15 +137,15 @@ export class WithLoginComponent implements OnInit {
       this.spinner.show();
      this.imageService.uploadImg(fdata).subscribe(res=>{
        const formdata=new FormData();
-       const url=res['_body'];
-       formdata.append(name,url);
+       this.url=res['_body'];
+       formdata.append(name,this.url);
        if(name==='userImage'){
         this.userService.editUser(formdata).subscribe(res=>{
           this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
           // this.spinner.hide();
           });
        }else{
-        this.feedImage=url;
+        this.feedImage=this.url;
         // this.spinner.hide();
        }
        this.spinner.hide();
@@ -147,11 +156,15 @@ export class WithLoginComponent implements OnInit {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
+      console.log(this.feed.value)
     if (!this.feed.value.Image) {
-        this.notification.warning('Please Add Image!');
-    } else {
+        this.notification.warning('Image or content is missing!');
+    }else if(!this.feed.value.content) {
+      this.notification.warning('Image or content is missing!');
+    
+    }else{
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
-        console.log(res)
+        //console.log(res)
       });
       this.feed.reset();
       this.imagePreview=null;
@@ -188,6 +201,7 @@ export class WithLoginComponent implements OnInit {
     this.followers.Unfollow(id).subscribe(res => {});
   }
  addFeedBookmark(i, id) {
+   console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
       console.log(JSON.parse(res['_body']));
@@ -195,6 +209,7 @@ export class WithLoginComponent implements OnInit {
   }
   removeFeedbookmark(i, id) {
     this.result[i].bookm = false;
+    console.log(id)
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });

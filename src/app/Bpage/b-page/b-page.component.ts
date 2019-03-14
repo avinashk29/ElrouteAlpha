@@ -539,6 +539,8 @@ if(confirm('Are you sure you want to remove the product from group')) {
         this.products =  JSON.parse(res1['_body']);
     //      this.spinner.hide();
       });
+      //console.log(res);
+      // this.spinner.hide();
     });
     //console.log(res);
     // this.spinner.hide();
@@ -549,6 +551,7 @@ onDeletegroup(name) {
 if (confirm('Are you sure you want to remove the group')){
   this.spinner.show();
   this.productService.token = this.storage.get('token');
+  //console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
   // //console.log(JSON.parse(res['_body']));
   this.ngZone.run(() => {
@@ -577,16 +580,16 @@ dialogConfig.width = '48%';
   this.dialog.open(CompanyContactComponent, dialogConfig);
 }
 addFeedBookmark(i,id){
-  this.feeds[i].bookm=true;
+  this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-    console.log(res)
+    console.log(JSON.parse(res['_body']))
 
   });
 }
 removeFeedBookmark(i,id){
-  this.feeds[i].bookm=false;
+  this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-    //console.log(res)
+    console.log(JSON.parse(res['_body']))
   });
 }
 addProductBookmark(i,id){

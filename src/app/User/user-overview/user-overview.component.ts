@@ -34,7 +34,7 @@ userFollowing;
     this.userService.getUserData().subscribe(res => {
       this.userService.userData = JSON.parse(res['_body']);
 this.userFollowing=JSON.parse(res['_body']).following.length;
-   console.log(this.userFollowing)
+   //console.log(this.userFollowing)
 
 });
     if (this.haveCompany) {

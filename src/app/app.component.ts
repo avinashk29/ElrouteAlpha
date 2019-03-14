@@ -26,10 +26,10 @@ export class AppComponent implements OnInit {
     
       }
 ngOnInit(){
+  
   this.userService.userData={};
   this.companyService.companyData={};
   this.productService.productData={};
- 
     this.userService.getUserData().subscribe(res1 => {
       this.userService.userData = JSON.parse(res1['_body']);
       this.userService.bookmark =

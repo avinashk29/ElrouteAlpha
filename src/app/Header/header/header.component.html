@@ -31,13 +31,21 @@
             <!-- <form id="demo-2">
                 <input type="search" placeholder="Search">
               </form> -->
+              
 
           <div class="user">
 
+<<<<<<< HEAD
             <div class="user_img">
               <img  routerLink="/bookmark" src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage">
               <img  routerLink="/bookmark" src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage">
               <p >{{this.UserService.userData.userName}}</p>
+=======
+            <div class="user_img" routerLink="/bookmark">
+              <img src="{{this.UserService.userData.userImage}}" *ngIf="this.UserService.userData.userImage"  alt="user_image"> 
+              <img src="../../../assets/images/user.png" *ngIf="!this.UserService.userData.userImage" alt="user_logo">
+              <p>{{this.UserService.userData.userName}}</p>
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
             </div>
             <!-- <img src="assets/images/user.png">  -->
             <span  class="logout" style="margin-left: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" (click)="onLogout()">
@@ -46,12 +54,19 @@
         </li>
 
       </ul>
+     
       <div class="searchIcon">
-          <img src="../../../assets/images/search.png"  (click)="showSearchbar = true">
+          <img src="../../../assets/images/search.png"  (click)="showSearchbar = true" alt="search_icon"> 
       </div>
+<<<<<<< HEAD
 <div>
         <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
           <input type="text" style="color: black" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+=======
+     
+      <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
+          <input type="text"  placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
           <img src="../../../assets/images/cross.png" (click)="showSearchbar = false">
         </form>
 </div>
