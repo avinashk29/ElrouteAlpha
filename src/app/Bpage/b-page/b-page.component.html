@@ -291,9 +291,12 @@
                 <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{(this.companyService.companyData.shortIntro | slice:0:300)+'...'}}</p>
               </div>
             <div class="bio_btn" *ngIf="myCompany">
-              <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg"
+              <button type="button" (click)="editshortIntro = true" *ngIf="!this.companyService.companyData.shortIntro"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add bio</button>
+                    <button type="button" (click)="editshortIntro = true" *ngIf="this.companyService.companyData.shortIntro"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      width="15" height="15" style="fill:white;padding: 1px 29px 0px 4px;" viewBox="0 0 24 24">
+                      <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Edit bio</button>
             </div>
           </div>
         </div>

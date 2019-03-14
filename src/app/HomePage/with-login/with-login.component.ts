@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { HomepageService } from '../homepage.service';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import { AuthServiceService } from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -63,8 +63,11 @@ export class WithLoginComponent implements OnInit {
     public notification: ToastrService,
     private spinner:Ng4LoadingSpinnerService,
     private bookmarkService:BookmarkServices
-  ) {this.allFollow=this.userService.userData.following;
-      console.log(this.allFollow)}
+  ) {
+    this.router.events.subscribe((event:NavigationEnd) =>{
+      window.scrollTo(0,0);
+    });
+    }
   show = false;
   ngOnInit() {
     this.imgupload.token = this.storage.get("token");
@@ -86,9 +89,9 @@ export class WithLoginComponent implements OnInit {
       }
     
       this.userService.getUserData().subscribe(res1 => {
-        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        // this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
-        console.log(this.allFollow);
+        // console.log(this.allFollow);
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
         this.userFollow = JSON.parse(res1["_body"]).following;
         for (let i = 0; i < this.userFollow.length; i++) {

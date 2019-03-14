@@ -60,11 +60,11 @@
                 <li><img src="assets/images/tags.png"   alt="image not found"><span>tag5</span></li> -->
               </div>
               <p class="contact">
-                  <img src="assets/images/contact.png" alt="image not found"><span>Contact</span>
+                  <img src="assets/images/contact.png" alt="image not found"><span  routerLink="/companyPage/{{this.productService.productData.creator}}" routerLinkActive="activate" [queryParams] = "{urltype: 'contact'}">Contact</span>
               </p>
-              <div class="USA_1">
-                  <li>USD:{{this.productService.productData.MaxPrice}}</li>
-                  <li style="margin-left:20px;" class="moq">MOQ:{{this.productService.productData.Moq}}</li>
+              <div class="USA_1" *ngIf="this.productService.productData.minPrice">
+                  <li>USD:{{(this.productService.productData.minPrice) +'-'+ (this.productService.productData.maxPrice)}}</li>
+                  <li style="margin-left:20px;" class="moq">MOQ:{{this.productService.productData.moq}}</li>
             </div>
         </div>
        </div>

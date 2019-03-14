@@ -105,6 +105,7 @@ export class BPageComponent implements OnInit {
 this.bookmarkService.token=this.storage.get('token')
 this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
+        window.scrollTo(0,0);
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData = JSON.parse(res['_body']);

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 import {ProductServiceService} from '../../Service/product-service.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { FeedService } from 'src/app/Service/feed-service.service';
@@ -19,7 +19,11 @@ export class ProductPageComponent implements OnInit {
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
+   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
+   this.router.events.subscribe((event:NavigationEnd) =>{
+     window.scrollTo(0,0);
+   });
+   
     this.id = this.route.snapshot.paramMap.get('_id');
     console.log(this.id);
   this.productService.token = this.storage.get('token');
