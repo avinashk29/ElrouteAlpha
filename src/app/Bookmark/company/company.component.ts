@@ -23,7 +23,7 @@ result=[]
       this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
       this.bookmarkService.getBookmarkCompany().subscribe(res1 => {
         this.result=JSON.parse(res1['_body']);
-        //console.log(JSON.parse(res1['_body']))
+        console.log(JSON.parse(res1['_body']))
 
           //Addition/Deletion method for Follow//
           for(let i = 0; i < this.userInfo.length; i++) {

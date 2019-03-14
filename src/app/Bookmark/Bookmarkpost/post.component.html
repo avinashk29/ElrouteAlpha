@@ -16,7 +16,7 @@
                   <img alt="Bookmark" src="{{feed.companyLogo}}">
                 </div>
                 <div class="feed_name">
-                  <h4>{{feed.companyName}}</h4>
+                  <h4 routerLink="/companyPage/{{feed.admin}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{feed.companyName}}</h4>
                   <p>Service</p>
                   <h6>India</h6>
                 </div>

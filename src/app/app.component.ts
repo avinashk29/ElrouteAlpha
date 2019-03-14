@@ -32,10 +32,10 @@ ngOnInit(){
   this.productService.productData={};
     this.userService.getUserData().subscribe(res1 => {
       this.userService.userData = JSON.parse(res1['_body']);
-      // this.userService.bookmark =
-      //  JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
-      // + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
-      //  this.userService.following = JSON.parse(res1['_body']).following.length;
+      this.userService.bookmark =
+       JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
+      + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
+       this.userService.following = JSON.parse(res1['_body']).following.length;
   
     });
    

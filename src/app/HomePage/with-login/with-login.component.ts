@@ -78,6 +78,7 @@ export class WithLoginComponent implements OnInit {
     this.feedService.getCompanyFeed().subscribe(res => {
       //console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);
       if (this.result) {
         this.pId = JSON.parse(res['_body'])[0]._id;
@@ -89,7 +90,7 @@ export class WithLoginComponent implements OnInit {
       }
     
       this.userService.getUserData().subscribe(res1 => {
-        // this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
         // console.log(this.allFollow);
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
@@ -97,7 +98,7 @@ export class WithLoginComponent implements OnInit {
         for (let i = 0; i < this.userFollow.length; i++) {
           for (let j = 0; j < this.result.length; j++) {
             if (this.userFollow[i] === this.result[j].admin) {
-              this.result[i].follow=true;
+              this.result[j].follow=true;
             } else {
             }
           }
@@ -106,7 +107,7 @@ export class WithLoginComponent implements OnInit {
       for (let i = 0; i < this.feedBookmark.length; i++) {
         for (let j = 0; j < this.result.length; j++) {
           if (this.feedBookmark[i] === this.result[j]._id) {
-            this.result[i].bookm=true;
+            this.result[j].bookm=true;
           } else {
           }
         }
@@ -155,9 +156,13 @@ export class WithLoginComponent implements OnInit {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-    if (!this.url) {
-        this.notification.warning('Please Add Image!');
-    } else {
+      console.log(this.feed.value)
+    if (!this.feed.value.Image) {
+        this.notification.warning('Image or content is missing!');
+    }else if(!this.feed.value.content) {
+      this.notification.warning('Image or content is missing!');
+    
+    }else{
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
         //console.log(res)
       });
@@ -196,15 +201,17 @@ export class WithLoginComponent implements OnInit {
     this.followers.Unfollow(id).subscribe(res => {});
   }
  addFeedBookmark(i, id) {
+   console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
-      //console.log(JSON.parse(res['_body']));
+      console.log(JSON.parse(res['_body']));
     });
   }
   removeFeedbookmark(i, id) {
     this.result[i].bookm = false;
+    console.log(id)
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
-      //console.log(JSON.parse(res['_body']));
+      console.log(JSON.parse(res['_body']));
     });
   }
 }

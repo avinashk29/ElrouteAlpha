@@ -202,11 +202,10 @@ this.follows.token=this.storage.get('token');
       });
 
 
-    this.feedService.getFeedById(this.comapnyId).subscribe(res=>{
-      this.feedById=JSON.parse(res['_body']);
-      console.log(JSON.parse(res['_body']))
-    });
-    // ------------------------------------------bookmark at Bpage------------------- //
+    this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+      this.feedById=JSON.parse(res1['_body']);
+      console.log(JSON.parse(res1['_body']))
+    //----------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
       this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
@@ -219,20 +218,17 @@ this.follows.token=this.storage.get('token');
       }
 
       // ----------------------bookmark at feed-------------
-      this.feedService.GetFeed().subscribe(res => {
-        this.feeds = JSON.parse(res['_body']);
-        //
-        for(let i = 0; i < this.postBookmark.length; i++) {
-          for(let j = 0;j < this.feeds.length; j++) {
-               if(this.postBookmark[i] == this.feeds[j]._id) {
-                this.feeds[j].bookm=true;
-               } else  {
-                // this.cresult[j].bookm=false;
-               }
-           }
-     }
-      });
+      for(let i = 0; i < this.postBookmark.length; i++) {
+        for(let j = 0;j < this.feedById.length; j++) {
+             if(this.postBookmark[i] == this.feedById[j]._id) {
+              this.feedById[j].bookm=true;
+             } else  {
+              // this.cresult[j].bookm=false;
+             }
+         }
+   }
     });
+  });
     if (this.type === 'product') {
       this.type = 'product';
       this.ngZone.run(() => {
@@ -575,16 +571,16 @@ dialogConfig.width = '48%';
   this.dialog.open(CompanyContactComponent, dialogConfig);
 }
 addFeedBookmark(i,id){
-  this.feeds[i].bookm=true;
+  this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-    console.log(res)
+    console.log(JSON.parse(res['_body']))
 
   });
 }
 removeFeedBookmark(i,id){
-  this.feeds[i].bookm=false;
+  this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-    //console.log(res)
+    console.log(JSON.parse(res['_body']))
   });
 }
 addProductBookmark(i,id){
