@@ -68,13 +68,13 @@ section{
     margin-top: 20px;
   }
   .category input{
-    width: 100%;
+    width: 95%;
     height: 35px;
   }
 
   .category textarea{
     margin-top: 20px;
-    width: 100%;
+    width: 95%;
     height: 20vh;
   }
   .category button{
@@ -82,7 +82,8 @@ section{
      margin-top: 5px;
      height: 35px;
      border: none;
-     border-radius: 10px;
+     margin-bottom: 2%;
+     /* border-radius: 10px; */
   }
   .price input{
   width: 30%;
@@ -107,10 +108,10 @@ section{
   .product_submit
   {
     margin-top: 30px;
-    width: 30%;
+    /* width: 30%; */
     height: 40px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     background-color: #45eb45;
     border: none;
     margin: 10px 15px 0 0;
@@ -121,9 +122,37 @@ section{
     width: 25% !important;
     height: 40px;
     color: white;
-    font-size: 20px;
-    background-color: red;
+    font-size: 15px;
     border: none;
-    margin: 10px 15px 0 0;
+    margin: 10px -17px 0 10px;
     margin-bottom: 2%;
   }
+  .product_cancel svg
+  {
+    fill: red;
+  }
+  .delete_product
+{
+  display: flex;
+}
+.product_speci
+{
+  margin-top: 4%;
+}
+.remove_product
+{
+  float: right;
+  position: relative;
+  border: none;
+  top: -20px;
+  width: 0% ! important;
+  background-color: transparent;
+  left: -19px;
+  outline: none;
+
+}
+.remove_product svg
+{
+ fill: #795548;
+}
+

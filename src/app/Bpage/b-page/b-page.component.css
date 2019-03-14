@@ -510,6 +510,7 @@ fieldset
 }
 .add_new_product button
 {
+  margin: 0px 10px 0 0;
   font-size: 15px;
   border: none;
   background-color: #65e665;
@@ -946,7 +947,8 @@ category_btn {
 .feed_text a {
   color: #78aece;
   text-decoration: none;
-  padding: 22px;
+  padding: 22px 16px;
+
   font-size: 20px;
 }
 
@@ -1245,7 +1247,7 @@ mat-panel-title h4 {
   width: 77%;
   box-shadow: 0px 2px 5px #5555;
   margin: 0 auto;
-  padding: 0px 0px 10px 0;
+  padding: 20px 0px 30px 0;
   display: flex;
 }
 
@@ -1679,7 +1681,7 @@ height: 24px;
   .content {
     width: 100% ! important;
     margin-left:-2% !important;
-    margin-top: 13%;
+    /* margin-top: 13%; */
   }
 .infoSectonCard img {
 
@@ -1716,14 +1718,15 @@ height: 24px;
   }
 
   .company_details {
-    display: flex;
+    display: block;
+    text-align: center;
     width: 100%;
     margin: 0 auto;
     margin-top: 2%;
   }
 
   .company_details1 {
-    width: 47%;
+    width: 95%;
     box-shadow: 0px 3px 10px #5555;
     height: 131px;
     padding-top: 1%;
@@ -1733,6 +1736,7 @@ height: 24px;
   .company_email {
     display: flex;
     width: 92%;
+    text-align: left !important;
     MARGIN: 0 AUTO;
     font-size: 28px;
   }
@@ -1744,14 +1748,17 @@ height: 24px;
   }
 
   .company_email1 {
-    width: 83%;
+    width: 53%;
     MARGIN: 0 AUTO;
   }
 
   .company_email1 h2 {
     font-size: 14px;
-    text-align: center;
+    /* text-align: center; */
   }
+  .company_email1{
+    text-align: left;
+}
 
   .company_address {
     width: 94%;
@@ -1811,7 +1818,16 @@ height: 24px;
     margin: 0px 30px !important;
     height: 40vh;
   }
+  .items1 {
+    min-width: 80% !important;
+    margin: 0px 30px !important;
+   
+  }
+  /* .overlay1{
 
+    width: 900px !important;
+ 
+} */
   .items img {
 
     width: 100% !important;
@@ -1828,12 +1844,15 @@ height: 24px;
 
 .content_img {
   width: 100% !important;
-  height: 300px;
+  height: 250px !important;
 }
 .no_contact {
 
   width: 100%;
 
+}
+.Sectioncontent a {
+  margin-top: -6%;
 }
 .productCard, .ServiceCard {
 
@@ -1935,7 +1954,7 @@ section{
   }
 
   section {
-    width: 95%;
+    width: 91%;
     margin-left: 9%;
     margin-top: 8%;
   }
@@ -2167,7 +2186,7 @@ label {
   width: 85%;
   margin: 0 auto;
   /* background-color: aqua; */
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   box-shadow: 0px 1px 3px 0px #5555;
   /* height: 40vh;  */
@@ -2220,6 +2239,7 @@ label {
   width: 80%;
   margin: 0 auto;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .Sectioncontent input {

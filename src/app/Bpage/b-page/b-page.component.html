@@ -278,9 +278,19 @@
     </div>
   </header>
 
-  <div class="body" *ngIf="this.type === 'default'">
-    <div class="infoSection1">
+  <div class="body" *ngIf="this.type === 'default'" style="display: block;" >
+
+  
+      
+ 
+        <div class="add_new_product" style="text-align: right;    padding-top: 1%;    margin-top: 0%;">
+            <button routerLink="/Dashboard">Add New Feed</button>
+        </div>
+
+        <div class="infoSection1">
+      
       <div class="section1">
+         
         <div class="shortBio">
           <div class="bio" *ngIf="!editshortIntro">
             <h2>Short Bio</h2>
@@ -792,7 +802,8 @@
           </div> -->
         </div>
       </div>
-    </div>
+      </div>
+  
   </div>
   <div class="body" *ngIf="this.type === 'info'">
     <div class="infoSection2">
@@ -1013,10 +1024,10 @@
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev >
-          <img alt="B-page" src="../../../assets/images/left-arrow.png" *ngIf="this.companyImage.length > 2">
+          <img alt="B-page" src="../../../assets/images/left-arrow.png" >
         </ng-template>
         <ng-template #next >
-          <img alt="B-page" src="../../../assets/images/right-arrow.png" *ngIf="this.companyImage.length > 2">
+          <img alt="B-page" src="../../../assets/images/right-arrow.png" >
         </ng-template>
         <ng-template #item2 let-item>
           <div class="items1">
@@ -1213,6 +1224,9 @@
       </fieldset>
       <div class="add_new_product" *ngIf="products.length">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
+        </div>
+        <div class="add_new_product">
+            <button *ngIf="myCompany" routerLink="/product" >Add new Product</button>
         </div>
     </div>
 

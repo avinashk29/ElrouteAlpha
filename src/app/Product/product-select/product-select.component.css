@@ -61,7 +61,7 @@ button
 
 @media screen and (min-width: 200px) and (max-width: 700px) {
     .group_name input {
-        width: 50%;
+        width: 48%;
         border: solid 1px gray;
     }
     .group_name label {
@@ -73,4 +73,9 @@ button
     overflow-y: scroll;
   
   }
+  button
+{
+
+    width: 32%;
+}
 }
