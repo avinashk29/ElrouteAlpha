@@ -5,7 +5,7 @@
     <!-- ------------------mobile--- -->
     <div class="header_mobile">
         <div class="headerElements">
-            <div class="elements" (click)="gotoTimeline()" [ngClass]="{'tabClicked': one}"><h4>TimeLine</h4></div>
+            <div class="elements" (click)="gotoTimeline()"><img src="{{this.companyService.companyData.companyLogo}}"></div>
         <div class="elements" (click)="showTwo()" [ngClass]="{'tabClicked': two}"><h4>Info</h4></div>
         <div class="elements" (click)="showThree()" [ngClass]="{'tabClicked': three}"><h4>Product</h4></div>
         <div class="elements"  (click)="showFour()" [ngClass]="{'tabClicked': four}"><h4>Contact</h4></div>
@@ -133,14 +133,14 @@
         <div class="user_profile">
           <h2>{{this.companyService.companyData.companyName }}</h2>
           <p>{{this.companyService.companyData.industry}}</p>
-          <div class="follow-btn" *ngIf="!myCompany">
+          <div class="follow-btn" *ngIf="!myCompany && this.token">
             <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
             <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
-            <span>
-              <!-- <p> {{this.companyService.companyData.followers}}</p> -->
-              <!-- <p>{{this.companyFollowers}}</p> -->
-            </span>
+              <span>{{this.companyFollowers}}</span>
 
+          </div>
+          <div class="follow-btn" *ngIf="!myCompany && !this.token">
+            <button (click)="opneLogin()"> FOLLOW</button>
           </div>
           <div class="follow-btn" *ngIf="myCompany">
             <button (click)="EditBpage()">Edit</button>
@@ -288,7 +288,7 @@
                 <!-- <p *ngIf="!this.companyService.companyData.shortIntro">All business,large and smaall,new or established ,struggle
                     to write about themselves.Let's see how well you can describe yourself to the outer world. Summarize
                     yourself is less than 400 characters.</p> -->
-                <p *ngIf="this.companyService.companyData.shortIntro" style="text-align: center">{{(this.companyService.companyData.shortIntro | slice:0:300)+'...'}}</p>
+                <p *ngIf="this.companyService.companyData.shortIntro">{{(this.companyService.companyData.shortIntro | slice:0:300)+'...'}}</p>
               </div>
             <div class="bio_btn" *ngIf="myCompany">
               <button type="button" (click)="editshortIntro = true" ><span><svg xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +304,14 @@
 
         </div>
         <div class="category_1">
+
+          <!-- <h6>CATEGORY</h6>
+          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h5>
+=======
           <h6>CATEGORY</h6>
+          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
+          <h5 *ngIf="this.companyService.companyData.specilities">{{this.companyService.companyData.specialities}}</h5>
+          <h5 *ngIf="this.companyService.companyData.mainMarket">{{this.companyService.companyData.mainMarket}}</h5>
           <h6>Main Product</h6>
           <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
           <h6>Main Market</h6>
@@ -315,7 +322,35 @@
             <button role="button"  routerLink="/company-form4" aria-label="false"><span><svg xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24">
                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
-          </div>
+          </div> -->
+          <div class="otherInfocard_1">
+              <div class="infoCard">
+                <div class="hq info">
+                  <label>CATEGORY</label>
+                  <h3 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h3>
+                </div>
+                <div class="estd info" *ngIf="this.companyService.companyData.mainProduct">
+                  <label>Main Product</label>
+                  <h3>{{this.companyService.companyData.mainProduct}}</h3>
+                </div>
+                <div class="estd info" *ngIf="this.companyService.companyData.mainMarket">
+                  <label>Main Market</label>
+                  <h3>{{this.companyService.companyData.mainMarket}}</h3>
+                </div>
+                <div class="add info" *ngIf="this.companyService.companyData.specialities">
+                  <label>Sepciality</label>
+                  <h3>{{this.companyService.companyData.specialities}}</h3>
+                </div>
+                <div class="revenu info" style="border-bottom:none">
+                
+                  <div class="hq_info" *ngIf="myCompany">
+                      <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
+                    </div>
+                </div>
+              </div>
+            </div>
         </div>
 
 
@@ -364,9 +399,9 @@
               </div>
           </mat-expansion-panel>
       </div> -->
-
-      <div class="feedCards" *ngIf="feeds && myCompany">
-        <div class="main_feed_card" *ngFor="let feed of feeds; let i = index">
+<!-- 
+      <div class="feedCards" *ngIf=" this.feedById.length">
+        <div class="main_feed_card" *ngFor="let feed of feedById; let i = index">
           <div class="feed1">
             <div style="width: 100%;">
               <div class="feed_content">
@@ -386,12 +421,12 @@
                     <div class="overlay1">
                       <div class="feed_text">
                         <p>{{feed.content}}</p>
-                        <!-- <p>Watch our first episode</p> -->
+                         <p>Watch our first episode</p>
                         <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                       </div>
-                      <div class="bookmark_share">
+                      <div class="bookmark_share" *ngIf = "this.token" > 
                           <div class="bookmark">
-                            <span (click)=addFeedBookmark(i,feed._id)  *ngIf = "!this.feeds[i].bookm else load">
+                            <span >
                               <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                                 <g fill="green">
                                   <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -404,17 +439,17 @@
                             <p>28</p>
                           </div>
                           <ng-template #load>
-                            <div class="bookmark">
+                            <div class="bookmark_1">
                               <span (click)="removeFeedBookmark(i,feed._id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
-                                  <g id="bookmark" fill="red">
+                                  <g id="bookmark" fill="transparent">
                                     <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                                       stroke="none" />
                                     <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
                                       stroke="none" fill="#fff" />
                                   </g>
                                 </svg>
-                                <p>28</p>
+                                 <p>28</p> 
                               </span>
 
                             </div>
@@ -425,6 +460,23 @@
                                   transform="translate(-1181.904 -755.425)" fill="#fff" />
                               </svg></span>
                           </div>
+                        </div>
+                        <div class="bookmark_share" *ngIf = "!this.token" > 
+                          <div class="bookmark">
+                            <span (click)="opneLogin()"  *ngIf = "!this.feeds[i].bookm else load">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                <g fill="green">
+                                  <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                    stroke="none" />
+                                  <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                    stroke="none" fill="#fff" />
+                                </g>
+                              </svg>
+                            </span>
+                            <p>28</p>
+                          </div>
+
+
                         </div>
                     </div>
                   </div>
@@ -454,9 +506,9 @@
           </div>
         </div>
 
-
-        <div class="feeds" *ngIf="!feeds.length">
-          <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
+ 
+        <div class="feeds" *ngIf="!this.feedById.length">
+          <<h1 style="text-align: center">No Feeds To Show</h1> 
           <div class="default_feed">
             <div class="feed_show">
               <div class="feed_show_img">
@@ -480,10 +532,10 @@
         </div>
     </div>
 
-
+  -->
     <!-- getting feed by companyID -->
 
-      <div class="feedCards" *ngIf="feedById && !myCompany">
+      <div class="feedCards" *ngIf="feedById">
         <div class="main_feed_card" *ngFor="let feed of feedById; let i = index">
           <div class="feed1">
             <div style="width: 100%;">
@@ -543,7 +595,7 @@
         </div>
 
 
-        <div class="feeds" *ngIf="!feeds.length">
+        <div class="feeds" *ngIf="!feedById.length">
           <!-- <h1 style="text-align: center">No Feeds To Show</h1> -->
           <div class="default_feed">
             <div class="feed_show">
@@ -662,10 +714,12 @@
 
       <div *ngIf="sectionEdit">
         <div formArrayName="section" *ngFor="let section of BForm.get('section').controls; let i=index">
+          <div style="text-align: right;">
           <button (click)="onDelete(i)" class="remove_division"><span *ngIf="myCompany"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24">
                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
               </svg></span>Remove section</button>
+            </div>
           <div class="infoSectonCard" [formGroupName]="i">
             <div class="content" >
               <div class="Sectioncontent">
@@ -830,8 +884,8 @@
 
         <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
           [$item]="item2"></div>
-        <ng-template #prev *ngIf="this.companyImage.length > 2" >
-          <img alt="B-page" src="../../../assets/images/left-arrow.png">
+        <ng-template #prev >
+          <img alt="B-page" src="../../../assets/images/left-arrow.png" *ngIf="this.companyImage.length > 2">
         </ng-template>
         <ng-template #next >
           <img alt="B-page" src="../../../assets/images/right-arrow.png" *ngIf="this.companyImage.length > 2">
@@ -1060,11 +1114,7 @@
 
     <div class="comapany_contact" *ngIf="contact.length">
             <h2>Company Divisions</h2>
-<<<<<<< HEAD
-            <button class="addContact" (click) = "onAddContact()" style="float: right" *ngIf="myCompany"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
-=======
             <button  *ngIf="myCompany" class="addContact" (click) = "onAddContact()" style="float: right"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></button>
->>>>>>> 144ca2cc7375ae43ac37c4bf4e059a38deefb76f
 
     </div>
   <div class="company_details" *ngIf="contact.length">

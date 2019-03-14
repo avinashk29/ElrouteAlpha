@@ -312,6 +312,7 @@ input#search-bar:focus:-ms-placeholder {
 {
  text-align: center;
  font-size: 32px;
+ color:white !important;
  font-weight: 400;
 }
 .header_img
@@ -426,7 +427,7 @@ transition-duration: 1s;
  text-align: center;
  font-size: 20px;
  font-weight: 500;
- color: white;
+ color: white !important;
  padding: 42% 0;
 }
 
@@ -475,7 +476,7 @@ transition-duration: 1s;
  text-align: center;
  font-size: 20px;
  font-weight: 500;
- color: white;
+ color: white !important;
  padding: 42% 0;
 }
 .img2:hover .hover_2
@@ -517,7 +518,7 @@ transition-duration: 1s;
 }
 .hover_3 h3
 {
-color: white;
+color: white !important;
  text-align: center;
  font-size: 20px;
  font-weight: 500;
@@ -637,6 +638,10 @@ color: white;
  left:auto;
  right:50px;
 } */
+.test h2
+{
+  display: none;
+}
 
 .b_face_card
 {
@@ -1072,6 +1077,14 @@ color: white;
 }
 
 @media screen and (min-width:200px) and (max-width:400px) {
+  .test h2
+  {
+    display: block;
+    color: white !important;
+    padding: 4%;
+    text-align: center;
+
+  }
  .HomePage
  {
 
@@ -1171,7 +1184,7 @@ color: white;
  /* position: relative; */
  padding-top: 2%;
  padding: 29px 0px 10px 0;
- bottom: -67%;
+ bottom: -90%;
  left: 0%;
  background-image: linear-gradient(180deg, #384251, #63748b);
 
@@ -1405,6 +1418,14 @@ color: white;
 }
 }
 @media screen and (min-width:401px) and (max-width:700px) {
+  .test h2
+  {
+    display: block;
+    color: white !important;
+    text-align: center;
+    padding: 4%;
+    
+  }
 .HomePage
  {
 
@@ -1504,7 +1525,7 @@ color: white;
  padding-top: 3%;
  left: 0%;
  background-image: linear-gradient(180deg, #384251, #63748b);
- height: 65vh;
+ height: 70vh;
  bottom: -21px;
  }
 
@@ -1857,7 +1878,7 @@ color: white;
  .img2 h3 {
 
  font-size: 18px;
- font-weight: 600;
+ font-weight: 500;
  }
  .img3 {
 
@@ -2064,7 +2085,7 @@ color: white;
  .img2 h3 {
 
  font-size: 18px;
- font-weight: 600;
+ font-weight: 500;
  }
  .img3 {
  /* width: 33%; */

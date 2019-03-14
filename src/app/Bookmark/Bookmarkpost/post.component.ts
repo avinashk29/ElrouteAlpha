@@ -16,6 +16,7 @@ post=[];
     this.bookmarkService.token = this.storage.get('token');
     this.bookmarkService.getBookmarkPost().subscribe(res => {
       this.post=JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
     });
     
   }

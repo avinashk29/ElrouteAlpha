@@ -18,6 +18,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
 import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -67,6 +68,7 @@ export class BPageComponent implements OnInit {
   time2;
   postBookmark=[];
   productBookmark=[];
+  token;
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
@@ -103,6 +105,7 @@ export class BPageComponent implements OnInit {
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
 this.bookmarkService.token=this.storage.get('token')
+this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         this.type = paramas.urltype;
@@ -110,7 +113,6 @@ this.follows.token=this.storage.get('token');
           this.companyService.companyData = JSON.parse(res['_body']);
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
-          //console.log( JSON.parse(res['_body']));
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.contact = JSON.parse(res['_body']).contact;
           //console.log(this.companyFollowers);
@@ -139,7 +141,7 @@ this.follows.token=this.storage.get('token');
                        } else  {
                         // this.cresult[j].bookm=false;
                        }
-                   }      
+                   }
                   }
               })
             });
@@ -198,11 +200,11 @@ this.follows.token=this.storage.get('token');
         this.type = paramas.urltype;
       });
 
-   
+
     this.feedService.getFeedById(this.comapnyId).subscribe(res=>{
       this.feedById=JSON.parse(res['_body']);
-      //console.log(this.feedById)
-    })
+      console.log(JSON.parse(res['_body']))
+    });
     // ------------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
@@ -218,7 +220,7 @@ this.follows.token=this.storage.get('token');
       // ----------------------bookmark at feed-------------
       this.feedService.GetFeed().subscribe(res => {
         this.feeds = JSON.parse(res['_body']);
-        //console.log(this.feeds)
+        //
         for(let i = 0; i < this.postBookmark.length; i++) {
           for(let j = 0;j < this.feeds.length; j++) {
                if(this.postBookmark[i] == this.feeds[j]._id) {
@@ -226,7 +228,7 @@ this.follows.token=this.storage.get('token');
                } else  {
                 // this.cresult[j].bookm=false;
                }
-           }      
+           }
      }
       });
     });
@@ -574,8 +576,8 @@ dialogConfig.width = '48%';
 addFeedBookmark(i,id){
   this.feeds[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-    //console.log(res)
-   
+    console.log(res)
+
   });
 }
 removeFeedBookmark(i,id){
@@ -588,8 +590,8 @@ addProductBookmark(i,id){
   this.products[i].bookm=true;
   //console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
-    //console.log(res)
-   
+    console.log(res)
+
   });
 }
 removeProductBookmark(i,id){
@@ -597,5 +599,11 @@ removeProductBookmark(i,id){
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
     //console.log(res)
   });
+}
+opneLogin(){
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '30%';
+  this.dialog.open(LoginComponent, dialogConfig);
 }
 }

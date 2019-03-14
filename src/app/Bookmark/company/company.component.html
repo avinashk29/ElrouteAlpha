@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="discription">
-      <p>{{r.shortIntro}}</p>
+      <p>{{(r.shortIntro | slice:0:300)+'...'}}</p>
     </div>
     <mat-accordion  class="des">
 
