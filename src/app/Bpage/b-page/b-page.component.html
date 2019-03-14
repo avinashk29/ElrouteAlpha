@@ -276,7 +276,7 @@
       <div class="section1">
         <div class="shortBio">
           <div class="bio" *ngIf="!editshortIntro">
-            <h2>SHORT BIO</h2>
+            <h2>Short Bio</h2>
             <!-- <p>{{shortIntro}}</p> -->
             <div class="short_bio_content">
               <p *ngIf="!this.companyService.companyData.shortIntro"><i>All business,large and smaall,new or established ,struggle
@@ -303,27 +303,8 @@
           <button type="submit" (click)="onEditBpage('shortIntro',shortIntro)" >Save</button>
 
         </div>
-        <div class="category_1">
+        <div class="category_1" id="cate_1">
 
-          <!-- <h6>CATEGORY</h6>
-          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h5>
-=======
-          <h6>CATEGORY</h6>
-          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
-          <h5 *ngIf="this.companyService.companyData.specilities">{{this.companyService.companyData.specialities}}</h5>
-          <h5 *ngIf="this.companyService.companyData.mainMarket">{{this.companyService.companyData.mainMarket}}</h5>
-          <h6>Main Product</h6>
-          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
-          <h6>Main Market</h6>
-          <h5 *ngIf="this.companyService.companyData.mainMarket">{{this.companyService.companyData.mainMarket}}</h5>
-          <h6>Sepciality</h6>
-          <h5 *ngIf="this.companyService.companyData.specialities">{{this.companyService.companyData.specialities}}</h5>
->>>>>>> 924e3aa085c15ac425729dae253b9ac6c38539e0
-          <div class="category_btn" *ngIf="myCompany">
-            <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
-                  width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
-          </div> -->
           <div class="otherInfocard_1">
               <div class="infoCard">
                 <div class="hq info">
@@ -353,9 +334,103 @@
               </div>
             </div>
         </div>
-
+      
 
       </div>
+      <div class="tagged"  style="margin-top: 6%;" id="otherinfo_mobile">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header >
+
+              <mat-panel-title>
+                <h4 style="color: black;font-size:15px;">Category</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="category_1">
+
+                <div class="otherInfocard_1">
+                    <div class="infoCard">
+                      <div class="hq info">
+                        <label>CATEGORY</label>
+                        <h3 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h3>
+                      </div>
+                      <div class="estd info" *ngIf="this.companyService.companyData.mainProduct">
+                        <label>Main Product</label>
+                        <h3>{{this.companyService.companyData.mainProduct}}</h3>
+                      </div>
+                      <div class="estd info" *ngIf="this.companyService.companyData.mainMarket">
+                        <label>Main Market</label>
+                        <h3>{{this.companyService.companyData.mainMarket}}</h3>
+                      </div>
+                      <div class="add info" *ngIf="this.companyService.companyData.specialities">
+                        <label>Sepciality</label>
+                        <h3>{{this.companyService.companyData.specialities}}</h3>
+                      </div>
+                      <div class="revenu info" style="border-bottom:none">
+                      
+                        <div class="hq_info" *ngIf="myCompany">
+                            <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24" viewBox="0 0 24 24">
+                                  <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </mat-expansion-panel>
+        </div>
+      <div class="tagged"  style="margin-top: -4px;" id="otherinfo_mobile">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header >
+
+              <mat-panel-title>
+                <h4 style="  color: black;font-size:15px;">Company Details</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="otherInfocard">
+                <div class="infoCard">
+                  <div class="hq info">
+                    <label>HEADquarters</label>
+                    <h3>{{this.companyService.companyData.city}} , {{this.companyService.companyData.country}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.yearEstd">
+                    <label>year estd.</label>
+                    <h3>{{this.companyService.companyData.yearEstd}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.companySize">
+                    <label>size</label>
+                    <h3>{{this.companyService.companyData.companySize}}</h3>
+                  </div>
+                  <div class="add info" *ngIf="this.companyService.companyData.address ">
+                    <label>office address</label>
+                    <h3>{{this.companyService.companyData.address }}</h3>
+                  </div>
+                  <div class="revenu info" style="border-bottom:none">
+                    <div *ngIf="this.companyService.companyData.totalRevenue">
+                      <label>Total Revenue</label>
+                      <h3>{{this.companyService.companyData.totalRevenue}}</h3>
+                    </div>
+                    <div class="hq_info" *ngIf="myCompany">
+                      <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                      </button>
+                    </div>
+                  </div>
+        
+                  <!-- <div class="hq_info" *ngIf="!this.companyService.companyData.country">
+                    <div class="hq_info_content_">
+                      <p>It's time you share your company's whereabouts with the business world.</p>
+                      <h4 style="font-weight:400;">Add your Company's basic details here.</h4>
+                    </div>
+                    <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                          width="24" height="24" viewBox="0 0 24 24">
+                          <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                    </button>
+                  </div> -->
+                </div>
+              </div>
+          </mat-expansion-panel>
+        </div>
       <!-- <div>
         <mat-expansion-panel>
             <mat-expansion-panel-header style="background-color: #6d7791;">
@@ -605,7 +680,7 @@
     </div>
 
     <!-- end of getting feed by companyID -->
-      <div class="otherInfocard">
+      <div class="otherInfocard" id="cate_1">
         <div class="infoCard">
           <div class="hq info">
             <label>HEADquarters</label>

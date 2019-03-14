@@ -1104,7 +1104,7 @@ category_btn {
 
 .tagged {
   width: 100%;
-  height: 7%;
+  /* height: 7%; */
 }
 
 mat-expansion-panel {
@@ -1419,10 +1419,28 @@ margin-top: auto;
   margin-top: 7%;
   align-items: center;
 }
+#otherinfo_mobile
+{
+  display: none;
+}
+
 
 
 @media screen and (max-width:700px) {
+  #cate_1
+  {
+    display: none;
+  }
 
+  #otherinfo_mobile
+{
+  display: block;
+  margin-bottom: 8%;
+}
+.bio h2
+{
+  font-size: 15px;
+}
   .company_industry,
   .login_user {
     display: none;
@@ -1591,7 +1609,7 @@ margin-top: auto;
 
   .feedCards {
     width: 100%;
-    margin-top: 14%;
+    /* margin-top: 14%; */
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
@@ -1603,7 +1621,16 @@ margin-top: auto;
 } */
   .otherInfocard {
     width: 100% ! important;
-    margin-top: 16%;
+    /* margin-top: 16%; */
+    box-shadow: none !important;
+  }
+  .otherInfocard_1 {
+    /* height: 10vh; */
+    /* width: 30%; */
+    padding: 10px;
+    box-shadow: none !important;
+   
+    height: fit-content;
   }
 
   .Card {
@@ -1805,7 +1832,8 @@ margin-top: auto;
 }
 .category_1{
 
-  padding: 10px 10px 22px 0 !important;
+  /* padding: 10px 10px 22px 0 !important; */
+  margin-top: 0 !important
 }
 .tabClicked h4 {
  color: gray !important;

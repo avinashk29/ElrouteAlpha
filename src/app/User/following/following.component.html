@@ -3,9 +3,8 @@
 <div class="following_title">
     <h1> Following</h1>
 </div>
-<div class="user_following" *ngIf="followings">
-    <div class="follow_search" >
-    </div>
+<div class="user_following">
+  
     <div class="following"  *ngFor="let following of followings let i = index">
         <div class="following_1">
             <div class="following_image">
@@ -39,7 +38,6 @@
             </div>
         </div>
     </div>
-  
     </div>
     <div *ngIf="!followings.length" style="text-align: center;"><h2>You Are Not Following Any Company!</h2></div>
 
