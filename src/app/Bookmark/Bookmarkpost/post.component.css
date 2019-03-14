@@ -207,9 +207,12 @@ section{
 .bookmark_share {
   display: flex;
   padding-top: 15%;
-  margin: 0 auto;
-  width: 77%;
+  /* margin: 0 auto;
+  width: 77%; */
 
+}
+.share_feed {
+  margin-right: 10%;
 }
 
 .bookmark_feed {

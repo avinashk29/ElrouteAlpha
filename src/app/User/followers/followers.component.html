@@ -5,7 +5,7 @@
 <div class="followers" *ngIf="followers">
 <div class="card" *ngFor="let follower of followers">
 <div class="image" (click) = "Openpopup(follower._id)">
-<img src="{{follower.userImage}}">
+<img alt="followers" src="{{follower.userImage}}">
 </div>
 <div class="info">
 <div class="content">

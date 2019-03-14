@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
       // this.productId = route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(params => params.productId).subscribe(params => {
         this.productService.productId = params.productId;
-        console.log('working');
+        //console.log('working');
 
         this.productService.getOneProduct(this.productService.productId).subscribe(res => {
 
@@ -117,12 +117,12 @@ export class ProductComponent implements OnInit {
     if (this.productForm.valid) {
       const productData = this.productForm.value;
       this.productService.UpdateProduct(productData , this.productService.productId).subscribe(res => {
-          console.log(res);
+          //console.log(res);
           this.notification.success('Product Updated');
           this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
       });
 } else {
-      this.notification.error('Enter Valid Deatils');
+      this.notification.error('Enter Valid Details');
     }
   }
 

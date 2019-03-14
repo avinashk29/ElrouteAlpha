@@ -8,7 +8,7 @@
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
   <div class="logo"  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">
-   <img src="{{r.companyLogo}}">
+   <img alt="with-login" src="{{r.companyLogo}}">
   </div>
   <div class="companyInfo">
     <div class="follow">
@@ -67,15 +67,15 @@
 <div class="cardFooter">
 <div class="icons">
 
-    <span ><img src="assets/images/google_icon.png"></span>
+    <span ><img alt="with-login" src="assets/images/google_icon.png"></span>
 
-    <span><img src="assets/images/google_icon.png"></span>
-    <span  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'contact'}"><img src="assets/images/contact1.png"></span>
+    <span><img alt="with-login" src="assets/images/google_icon.png"></span>
+    <span  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'contact'}"><img alt="with-login" src="assets/images/contact1.png"></span>
 </div>
 </div>
 </div>
 <div *ngIf="!result">
-  <img src="../../../assets/images/result_not_found.png">
+  <img alt="with-login" src="../../../assets/images/result_not_found.png">
 
 </div>
 
@@ -84,5 +84,5 @@
 </section>
 
 <div *ngIf = "!result.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
+    <img alt="with-login" src = "../../../assets/images/result_not_found.png">
   </div>

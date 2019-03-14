@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     
       }
 ngOnInit(){
+  
   this.userService.userData={};
   this.companyService.companyData={};
   this.productService.productData={};

@@ -18,6 +18,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
 import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -67,6 +68,7 @@ export class BPageComponent implements OnInit {
   time2;
   postBookmark=[];
   productBookmark=[];
+  token;
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
@@ -103,6 +105,7 @@ export class BPageComponent implements OnInit {
 
     this.comapnyId = this.route.snapshot.paramMap.get('id');
 this.bookmarkService.token=this.storage.get('token')
+this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
         window.scrollTo(0,0);
@@ -111,10 +114,9 @@ this.follows.token=this.storage.get('token');
           this.companyService.companyData = JSON.parse(res['_body']);
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
-
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.contact = JSON.parse(res['_body']).contact;
-          console.log(this.companyFollowers);
+          //console.log(this.companyFollowers);
           this.setSection();
 
 
@@ -128,9 +130,9 @@ this.follows.token=this.storage.get('token');
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
-              console.log(this.products.length)
-              console.log(typeof(this.products));
-              console.log(JSON.parse(res['_body']));
+              //console.log(this.products.length)
+              //console.log(typeof(this.products));
+              //console.log(JSON.parse(res['_body']));
               this.userService.getUserData().subscribe(res2=>{
                 this.productBookmark=JSON.parse(res2['_body']).bookmarks.product;
                 for(let i = 0; i < this.productBookmark.length; i++) {
@@ -178,7 +180,7 @@ this.follows.token=this.storage.get('token');
     if(!this.companyService.companyData.companyLogo){
       this.companyService.companyData.companyLogo='';
     }
-console.log(this.companyService.companyData.companyLogo);
+//console.log(this.companyService.companyData.companyLogo);
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
@@ -201,8 +203,8 @@ console.log(this.companyService.companyData.companyLogo);
 
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res=>{
-      // this.feedById=JSON.parse(res['_body']);
-      // console.log(JSON.parse(res['_body']))
+      this.feedById=JSON.parse(res['_body']);
+      console.log(JSON.parse(res['_body']))
     });
     // ------------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
@@ -239,7 +241,7 @@ console.log(this.companyService.companyData.companyLogo);
           for(let i=0;i<this.products.length;i++){
             this.showAll.push(false);
           }
-          console.log(JSON.parse(res['_body']));
+          //console.log(JSON.parse(res['_body']));
         });
       });
  this.limit = 2;
@@ -292,7 +294,7 @@ this.four = false;
     this.bioEdit = !this.bioEdit;
   }
   onsectionImagePick(event, name, index) {
-    console.log(event)
+    //console.log(event)
     this.file = <File>event.target.files[0];
     const fdata = new FormData();
     fdata.append(name, this.file);
@@ -406,15 +408,15 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
   onEditBpage(key, content: HTMLInputElement) {
-    // console.log(content);
+    // //console.log(content);
     const formData = new FormData();
     formData.append(key, content.value);
-    console.log(content.value);
-    console.log(this.time1);
+    //console.log(content.value);
+    //console.log(this.time1);
     if (key === 'workingHours') {
       content.value = this.time1 + '-' + this.time2;
       formData.append(key, content.value);
-      console.log(content.value);
+      //console.log(content.value);
     }
     this.companyService.UpdateCompany(formData).subscribe(res => {
       this.companyService.companyData.website = JSON.parse(res['_body']).website;
@@ -445,11 +447,11 @@ this.four = true;
 
   onfollow() {
     this.Follower = true;
-    console.log(this.comapnyId)
+    //console.log(this.comapnyId)
     this.follows.addFollow(this.comapnyId).subscribe(res => {
       //  this.companyService.companyData.followers;
-      console.log(this.companyFollowers.length)
-       console.log(res)
+      //console.log(this.companyFollowers.length)
+       //console.log(res)
        });
 
   }
@@ -457,8 +459,8 @@ this.four = true;
     this.Follower = false;
     this.follows.Unfollow(this.comapnyId).subscribe(res => {
     // this.companyService.companyData.followers;
-    console.log(this.companyFollowers.length);
-    console.log(res)
+    //console.log(this.companyFollowers.length);
+    //console.log(res)
     });
   }
 
@@ -473,7 +475,7 @@ this.four = true;
   }
   onadeleteImg(item) {
         const i = this.certification.indexOf(item);
-        console.log(i)
+        //console.log(i)
         if(confirm('Are you sure you want to delete')){
           this.certification.splice(i, 1);
           let certiForm = new FormGroup({
@@ -523,7 +525,7 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { edit: 'true'}
     });
-console.log(key);
+//console.log(key);
 this.productService.key = key;
 const dialogConfig = new MatDialogConfig();
 dialogConfig.autoFocus = true;
@@ -538,16 +540,16 @@ this.dialog.open(ProductSelectComponent, dialogConfig);
       //      this.spinner.hide();
         });
       });
-      console.log(res);
+      //console.log(res);
       // this.spinner.hide();
     });
   }
 onDeletegroup(name) {
   this.spinner.show();
   this.productService.token = this.storage.get('token');
-  console.log(name);
+  //console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
-  // console.log(JSON.parse(res['_body']));
+  // //console.log(JSON.parse(res['_body']));
   this.ngZone.run(() => {
     this.productService.getProduct(this.comapnyId).subscribe(res1 => {
       this.products =  JSON.parse(res1['_body']);
@@ -559,8 +561,8 @@ this.productService.deletegroup(name).subscribe(res => {
 }
 
 onShowAllProduct(index){
-  console.log(this.showAll[index])
-  console.log(index)
+  //console.log(this.showAll[index])
+  //console.log(index)
   this.showAll[index]= !this.showAll[index]
 }
 onAddContact() {
@@ -582,12 +584,12 @@ addFeedBookmark(i,id){
 removeFeedBookmark(i,id){
   this.feeds[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-    console.log(res)
+    //console.log(res)
   });
 }
 addProductBookmark(i,id){
   this.products[i].bookm=true;
-  console.log(id)
+  //console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
     console.log(res)
 
@@ -596,7 +598,13 @@ addProductBookmark(i,id){
 removeProductBookmark(i,id){
   this.products[i].bookm=false;
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-    console.log(res)
+    //console.log(res)
   });
+}
+opneLogin(){
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '30%';
+  this.dialog.open(LoginComponent, dialogConfig);
 }
 }

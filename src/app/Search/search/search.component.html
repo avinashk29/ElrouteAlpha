@@ -27,7 +27,7 @@
 
           <div class="productCard">
         <div class="productImage">
-          <img src="{{result.Image}}"  routerLink = "/product-page/{{result._id}}" style="cursor:pointer">
+          <img alt="with-login" src="{{result.Image}}"  routerLink = "/product-page/{{result._id}}" style="cursor:pointer">
         </div>
         <div class="productContent" >
         <div class="content">
@@ -99,7 +99,7 @@
           </div>
         </div>
 
-      <div class="img-banner"><img src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
+      <div class="img-banner"><img alt="with-login" src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
 
       <div class="main-content">
         <div class="content-details">
@@ -117,5 +117,5 @@
 </div>
 
 <div *ngIf = "!productResult.length" class="result_not_found">
-    <img src = "../../../assets/images/result_not_found.png">
+    <img alt="with-login" src = "../../../assets/images/result_not_found.png">
   </div>

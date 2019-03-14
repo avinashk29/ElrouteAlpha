@@ -76,6 +76,8 @@ import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 import { ProductSelectComponent } from './Product/product-select/product-select.component';
 import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
 import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -163,7 +165,8 @@ export function provideConfig() {
     MatCardModule,
     // StickyNavModule,
     ScrollDispatchModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   entryComponents: [

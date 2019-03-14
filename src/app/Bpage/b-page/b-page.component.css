@@ -464,6 +464,7 @@ fieldset
   margin-top: 2%;
    margin-bottom: 2%;
   width: 100%;
+  word-break: break-word;
 }
 
 .arrow_product
@@ -557,7 +558,8 @@ fieldset
   margin: 0 auto;
   width: 90%;
   margin: 19px 9px 0;
-  line-height: 28px;
+  line-height: 22px;
+  text-align: justify;
 
 }
 
@@ -951,9 +953,12 @@ category_btn {
 .bookmark_share {
   display: flex;
   padding-top: 15%;
-  margin: 0 auto;
-  width: 77%;
+  /* margin: 0 auto;
+  width: 77%; */
 
+}
+.share_feed {
+  margin-right: 10%;
 }
 
 .bookmark_feed {
@@ -1238,7 +1243,7 @@ mat-panel-title h4 {
 
 .company_address {
   width: 77%;
-  box-shadow: 0px 3px 10px #5555;
+  box-shadow: 0px 2px 5px #5555;
   margin: 0 auto;
   padding: 0px 0px 10px 0;
   display: flex;
@@ -1427,6 +1432,20 @@ margin-top: auto;
 
 
 @media screen and (max-width:700px) {
+  .infoSection3 {
+  
+    width: 100% !important;
+    
+}
+  .productImage, .ServiceImage {
+   
+    width: 45% !important;
+}
+  .bookmar_mobile span > svg
+  {
+width: 24px;
+height: 24px;
+  }
   #cate_1
   {
     display: none;
@@ -1435,7 +1454,7 @@ margin-top: auto;
   #otherinfo_mobile
 {
   display: block;
-  margin-bottom: 8%;
+  margin-bottom: 4%;
 }
 .bio h2
 {
@@ -1659,7 +1678,7 @@ margin-top: auto;
 
   .content {
     width: 100% ! important;
-    margin-left:-5% !important;
+    margin-left:-2% !important;
     margin-top: 13%;
   }
 .infoSectonCard img {
@@ -2148,7 +2167,7 @@ label {
   width: 85%;
   margin: 0 auto;
   /* background-color: aqua; */
-  margin-top: 40px;
+  margin-top: 10px;
   display: flex;
   box-shadow: 0px 1px 3px 0px #5555;
   /* height: 40vh;  */
@@ -2194,7 +2213,7 @@ label {
   width: 45%;
   /* box-shadow: 0px 0px 5px #5555; */
   height: 300px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .Sectioncontent {
@@ -2261,7 +2280,7 @@ label {
   font-size: 15px !important;
   border: solid 1px gainsboro !important;
   border-radius: 40px !important;
-  float: right;
+  /* float: right; */
   margin-top: 3%;
   padding: 7px;
   margin-bottom: 1%;
@@ -2384,6 +2403,8 @@ label {
   min-width: 26%;
   margin: 0px 10px;
   height: 42vh;
+  width: 10%;
+  /* margin: 0 auto; */
 
 
 }
@@ -2392,6 +2413,7 @@ label {
   min-width: 50%;
   margin: 0px 10px;
   height: 45vh;
+  width: 10%;
 
 
 }
@@ -2629,7 +2651,7 @@ label {
 
 
 .price {
-  width: 30%;
+  width: 45%;
 }
 
 .hits {

@@ -532,9 +532,12 @@ section{
 .bookmark_share {
   display: flex;
   padding-top: 15%;
-  margin: 0 auto;
-  width: 77%;
+  /* margin: 0 auto;
+  width: 77%; */
 
+}
+.share_feed {
+  margin-right: 10%;
 }
 
 .bookmark_feed {
@@ -786,6 +789,11 @@ section{
 .header_right
 {
   margin-right: 2%
+}
+.b_page_btn span > svg
+{
+width: 24px;
+height: 24px;
 }
  }
  @media screen and (min-width: 767px) and (max-width: 1024px){

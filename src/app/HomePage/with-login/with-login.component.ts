@@ -76,7 +76,7 @@ export class WithLoginComponent implements OnInit {
     this.bookmarkService.token=this.storage.get('token');
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
-      console.log(JSON.parse(res['_body']))
+      //console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
       this.result = JSON.parse(res['_body']);
       if (this.result) {
@@ -159,7 +159,7 @@ export class WithLoginComponent implements OnInit {
         this.notification.warning('Please Add Image!');
     } else {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
-        console.log(res)
+        //console.log(res)
       });
       this.feed.reset();
       this.imagePreview=null;
@@ -198,13 +198,13 @@ export class WithLoginComponent implements OnInit {
  addFeedBookmark(i, id) {
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      //console.log(JSON.parse(res['_body']));
     });
   }
   removeFeedbookmark(i, id) {
     this.result[i].bookm = false;
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      //console.log(JSON.parse(res['_body']));
     });
   }
 }

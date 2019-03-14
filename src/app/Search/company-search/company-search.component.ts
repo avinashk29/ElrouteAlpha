@@ -43,7 +43,7 @@ if(this.token){
     this.userInfo = JSON.parse(res['_body']).following;
      this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
     this.search.onSearchCompany(this.word).subscribe(res1=>{
-    console.log(res1);
+    //console.log(res1);
       this.result = JSON.parse(res1['_body']);
       this.cresult=JSON.parse(res1['_body'])[0]
         var number=this.cresult.length
@@ -75,7 +75,7 @@ if(this.token){
 })
 } else {
   this.search.onSearchCompany(this.word).subscribe(res1 => {
-   console.log(JSON.parse(res1['_body'])[0]);
+   //console.log(JSON.parse(res1['_body'])[0]);
     this.result = JSON.parse(res1['_body']);
     this.cresult = JSON.parse(res1['_body'])[0];
 

@@ -324,8 +324,8 @@ mat-panel-title h4{
 .bookmark_share {
   display: flex;
   padding-top: 15%;
-  margin: 0 auto;
-  width: 77%;
+  /* margin: 0 auto;
+  width: 77%; */
 
 }
 
@@ -333,7 +333,9 @@ mat-panel-title h4{
   display: flex;
   width: 100%;
 }
-
+.share_feed {
+  margin-right: 10%;
+}
 .bookmark_feed span {
   margin: 0px 8px 0 0;
 }
