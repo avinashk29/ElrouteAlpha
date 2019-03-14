@@ -81,7 +81,14 @@
          </div>
          <div class="bookmar_mobile">
 
-                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 10.975v13.025l-6-5.269-6 5.269v-24h6.816c-.553.576-1.004 1.251-1.316 2h-3.5v17.582l4-3.512 4 3.512v-8.763c.805.19 1.379.203 2 .156zm4-6.475c0 2.485-2.018 4.5-4.5 4.5-2.484 0-4.5-2.015-4.5-4.5s2.016-4.5 4.5-4.5c2.482 0 4.5 2.015 4.5 4.5zm-2-.5h-2v-2h-1v2h-2v1h2v2h1v-2h2v-1z"/></svg></span>
+                <span>    <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                  <g id="bookmark" fill="transparent">
+                    <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                      stroke="none" />
+                    <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                      stroke="none" fill="gray" />
+                  </g>
+                </svg></span>
 
           </div>
 
@@ -276,7 +283,7 @@
       <div class="section1">
         <div class="shortBio">
           <div class="bio" *ngIf="!editshortIntro">
-            <h2>SHORT BIO</h2>
+            <h2>Short Bio</h2>
             <!-- <p>{{shortIntro}}</p> -->
             <div class="short_bio_content">
               <p *ngIf="!this.companyService.companyData.shortIntro"><i>All business,large and smaall,new or established ,struggle
@@ -303,12 +310,7 @@
           <button type="submit" (click)="onEditBpage('shortIntro',shortIntro)" >Save</button>
 
         </div>
-        <div class="category_1">
-
           <!-- <h6>CATEGORY</h6>
-          <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h5>
-=======
-          <h6>CATEGORY</h6>
           <h5 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.mainProduct}}</h5>
           <h5 *ngIf="this.companyService.companyData.specilities">{{this.companyService.companyData.specialities}}</h5>
           <h5 *ngIf="this.companyService.companyData.mainMarket">{{this.companyService.companyData.mainMarket}}</h5>
@@ -323,6 +325,9 @@
                   width="24" height="24" viewBox="0 0 24 24">
                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
           </div> -->
+
+        <div class="category_1" id="cate_1">
+
           <div class="otherInfocard_1">
               <div class="infoCard">
                 <div class="hq info">
@@ -352,9 +357,103 @@
               </div>
             </div>
         </div>
-
+      
 
       </div>
+      <div class="tagged"  style="margin-top: 4%;" id="otherinfo_mobile">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header >
+
+              <mat-panel-title>
+                <h4 style="color: black;font-size:15px;">Market Details</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="category_1">
+
+                <div class="otherInfocard_1">
+                    <div class="infoCard">
+                      <div class="hq info">
+                        <label>CATEGORY</label>
+                        <h3 *ngIf="this.companyService.companyData.mainProduct">{{this.companyService.companyData.category}}</h3>
+                      </div>
+                      <div class="estd info" *ngIf="this.companyService.companyData.mainProduct">
+                        <label>Main Product</label>
+                        <h3>{{this.companyService.companyData.mainProduct}}</h3>
+                      </div>
+                      <div class="estd info" *ngIf="this.companyService.companyData.mainMarket">
+                        <label>Main Market</label>
+                        <h3>{{this.companyService.companyData.mainMarket}}</h3>
+                      </div>
+                      <div class="add info" *ngIf="this.companyService.companyData.specialities">
+                        <label>Sepciality</label>
+                        <h3>{{this.companyService.companyData.specialities}}</h3>
+                      </div>
+                      <div class="revenu info" style="border-bottom:none">
+                      
+                        <div class="hq_info" *ngIf="myCompany">
+                            <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24" viewBox="0 0 24 24">
+                                  <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </mat-expansion-panel>
+        </div>
+      <div class="tagged"  style="margin-top: -4px;" id="otherinfo_mobile">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header >
+
+              <mat-panel-title>
+                <h4 style="  color: black;font-size:15px;">Company Details</h4>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="otherInfocard">
+                <div class="infoCard">
+                  <div class="hq info">
+                    <label>HEADquarters</label>
+                    <h3>{{this.companyService.companyData.city}} , {{this.companyService.companyData.country}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.yearEstd">
+                    <label>year estd.</label>
+                    <h3>{{this.companyService.companyData.yearEstd}}</h3>
+                  </div>
+                  <div class="estd info" *ngIf="this.companyService.companyData.companySize">
+                    <label>size</label>
+                    <h3>{{this.companyService.companyData.companySize}}</h3>
+                  </div>
+                  <div class="add info" *ngIf="this.companyService.companyData.address ">
+                    <label>office address</label>
+                    <h3>{{this.companyService.companyData.address }}</h3>
+                  </div>
+                  <div class="revenu info" style="border-bottom:none">
+                    <div *ngIf="this.companyService.companyData.totalRevenue">
+                      <label>Total Revenue</label>
+                      <h3>{{this.companyService.companyData.totalRevenue}}</h3>
+                    </div>
+                    <div class="hq_info" *ngIf="myCompany">
+                      <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                      </button>
+                    </div>
+                  </div>
+        
+                  <!-- <div class="hq_info" *ngIf="!this.companyService.companyData.country">
+                    <div class="hq_info_content_">
+                      <p>It's time you share your company's whereabouts with the business world.</p>
+                      <h4 style="font-weight:400;">Add your Company's basic details here.</h4>
+                    </div>
+                    <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                          width="24" height="24" viewBox="0 0 24 24">
+                          <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
+                    </button>
+                  </div> -->
+                </div>
+              </div>
+          </mat-expansion-panel>
+        </div>
       <!-- <div>
         <mat-expansion-panel>
             <mat-expansion-panel-header style="background-color: #6d7791;">
@@ -560,6 +659,35 @@
                         <a target="_blank" href="http://{{feed.link}}" aria-label="false">{{feed.link}}</a>
                       </div>
                       <div class="bookmark_share">
+                          <div class="bookmark">
+                              <span >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                  <g fill="white">
+                                    <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                      stroke="none" />
+                                    <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                      stroke="none" fill="#fff" />
+                                  </g>
+                                </svg>
+                              </span>
+                              <p>28</p>
+                            </div>
+                            <ng-template #load>
+                              <div class="bookmark_1">
+                                <span (click)="removeFeedBookmark(i,feed._id)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                    <g id="bookmark" fill="transparent">
+                                      <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+                                        stroke="none" />
+                                      <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                        stroke="none" fill="#fff" />
+                                    </g>
+                                  </svg>
+                                   <p>28</p> 
+                                </span>
+  
+                              </div>
+                            </ng-template>
                         <div class="share_feed">
                           <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
                               <path  d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
@@ -621,7 +749,7 @@
     </div>
 
     <!-- end of getting feed by companyID -->
-      <div class="otherInfocard">
+      <div class="otherInfocard" id="cate_1">
         <div class="infoCard">
           <div class="hq info">
             <label>HEADquarters</label>

@@ -464,6 +464,7 @@ fieldset
   margin-top: 2%;
    margin-bottom: 2%;
   width: 100%;
+  word-break: break-word;
 }
 
 .arrow_product
@@ -952,9 +953,12 @@ category_btn {
 .bookmark_share {
   display: flex;
   padding-top: 15%;
-  margin: 0 auto;
-  width: 77%;
+  /* margin: 0 auto;
+  width: 77%; */
 
+}
+.share_feed {
+  margin-right: 10%;
 }
 
 .bookmark_feed {
@@ -1105,7 +1109,7 @@ category_btn {
 
 .tagged {
   width: 100%;
-  height: 7%;
+  /* height: 7%; */
 }
 
 mat-expansion-panel {
@@ -1239,7 +1243,7 @@ mat-panel-title h4 {
 
 .company_address {
   width: 77%;
-  box-shadow: 0px 3px 10px #5555;
+  box-shadow: 0px 2px 5px #5555;
   margin: 0 auto;
   padding: 0px 0px 10px 0;
   display: flex;
@@ -1420,10 +1424,42 @@ margin-top: auto;
   margin-top: 7%;
   align-items: center;
 }
+#otherinfo_mobile
+{
+  display: none;
+}
+
 
 
 @media screen and (max-width:700px) {
+  .infoSection3 {
+  
+    width: 100% !important;
+    
+}
+  .productImage, .ServiceImage {
+   
+    width: 45% !important;
+}
+  .bookmar_mobile span > svg
+  {
+width: 24px;
+height: 24px;
+  }
+  #cate_1
+  {
+    display: none;
+  }
 
+  #otherinfo_mobile
+{
+  display: block;
+  margin-bottom: 4%;
+}
+.bio h2
+{
+  font-size: 15px;
+}
   .company_industry,
   .login_user {
     display: none;
@@ -1592,7 +1628,7 @@ margin-top: auto;
 
   .feedCards {
     width: 100%;
-    margin-top: 14%;
+    /* margin-top: 14%; */
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
@@ -1604,7 +1640,16 @@ margin-top: auto;
 } */
   .otherInfocard {
     width: 100% ! important;
-    margin-top: 16%;
+    /* margin-top: 16%; */
+    box-shadow: none !important;
+  }
+  .otherInfocard_1 {
+    /* height: 10vh; */
+    /* width: 30%; */
+    padding: 10px;
+    box-shadow: none !important;
+   
+    height: fit-content;
   }
 
   .Card {
@@ -1633,7 +1678,7 @@ margin-top: auto;
 
   .content {
     width: 100% ! important;
-    margin-left:-5% !important;
+    margin-left:-2% !important;
     margin-top: 13%;
   }
 .infoSectonCard img {
@@ -1806,7 +1851,8 @@ margin-top: auto;
 }
 .category_1{
 
-  padding: 10px 10px 22px 0 !important;
+  /* padding: 10px 10px 22px 0 !important; */
+  margin-top: 0 !important
 }
 .tabClicked h4 {
  color: gray !important;
@@ -2167,7 +2213,7 @@ label {
   width: 45%;
   /* box-shadow: 0px 0px 5px #5555; */
   height: 300px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .Sectioncontent {
@@ -2605,7 +2651,7 @@ label {
 
 
 .price {
-  width: 30%;
+  width: 45%;
 }
 
 .hits {

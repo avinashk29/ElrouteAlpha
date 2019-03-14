@@ -43,7 +43,10 @@ export class WithLoginComponent implements OnInit {
   product = [];
   userFollow;
   companyFollowers;
-  feedBookmark
+  feedBookmark;
+  url;
+  allBookmarks=[];
+  allFollow=[]
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -60,7 +63,8 @@ export class WithLoginComponent implements OnInit {
     public notification: ToastrService,
     private spinner:Ng4LoadingSpinnerService,
     private bookmarkService:BookmarkServices
-  ) {}
+  ) {this.allFollow=this.userService.userData.following;
+      console.log(this.allFollow)}
   show = false;
   ngOnInit() {
     this.imgupload.token = this.storage.get("token");
@@ -80,10 +84,11 @@ export class WithLoginComponent implements OnInit {
             .subscribe(res1 => {});
         }
       }
-      if (!this.feeds.length) {
-        this.noFeeds = true;
-      }
+    
       this.userService.getUserData().subscribe(res1 => {
+        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        this.allFollow=JSON.parse(res1['_body']).following.length;
+        console.log(this.allFollow);
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
         this.userFollow = JSON.parse(res1["_body"]).following;
         for (let i = 0; i < this.userFollow.length; i++) {
@@ -128,15 +133,15 @@ export class WithLoginComponent implements OnInit {
       this.spinner.show();
      this.imageService.uploadImg(fdata).subscribe(res=>{
        const formdata=new FormData();
-       const url=res['_body'];
-       formdata.append(name,url);
+       this.url=res['_body'];
+       formdata.append(name,this.url);
        if(name==='userImage'){
         this.userService.editUser(formdata).subscribe(res=>{
           this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
           // this.spinner.hide();
           });
        }else{
-        this.feedImage=url;
+        this.feedImage=this.url;
         // this.spinner.hide();
        }
        this.spinner.hide();
@@ -147,7 +152,7 @@ export class WithLoginComponent implements OnInit {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-    if (!this.feed.value.Image) {
+    if (!this.url) {
         this.notification.warning('Please Add Image!');
     } else {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {

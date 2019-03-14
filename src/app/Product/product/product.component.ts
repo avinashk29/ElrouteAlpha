@@ -122,7 +122,7 @@ export class ProductComponent implements OnInit {
           this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
       });
 } else {
-      this.notification.error('Enter Valid Deatils');
+      this.notification.error('Enter Valid Details');
     }
   }
 
