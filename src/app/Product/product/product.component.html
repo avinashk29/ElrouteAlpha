@@ -24,12 +24,17 @@
         <div class="discription">
           <h2>Description</h2>
           <textarea placeholder="Short Description" formControlName="shortDescription" minlength="20" maxlength="200"></textarea>
-          <div class="chips"></div>
+          <!-- <div class="chips"></div> -->
         </div>
         <div>
           <div class="category" formArrayName="productInfo">
             <div *ngFor="let productinfo of productForm.get('productInfo')['controls'] ; let i = index;">
-              <button (click)="deleteProductInfo(i)">delete product info</button>
+              <!-- <button (click)="deleteProductInfo(i)" class="product_submit">delete product info</button> -->
+              <div class="product_speci">
+                  <button (click)="deleteProductInfo(i)" class="remove_product" ><span> <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.5 16.084l-1.403 1.416-4.09-4.096-4.102 4.096-1.405-1.405 4.093-4.092-4.093-4.098 1.405-1.405 4.088 4.089 4.091-4.089 1.416 1.403-4.092 4.087 4.092 4.094z"/></svg></span></button>
+                </div>
+              <fieldset>
+                <legend>Product Specification</legend>
               <div [formGroupName]="i">
                 <input list="category" placeholder="Product Specification" formControlName="productSpecification">
                 <datalist id="category">
@@ -42,21 +47,24 @@
                 <textarea placeholder="Specification Content" formControlName="specificationContent"></textarea>
                 <div class="fields" style="width: 100%;margin-top: 5px" formArrayName="fields">
                   <div *ngFor="let field of productinfo.get('fields').controls; let j = index; ">
-                    <div [formGroupName]="j">
+                    <div [formGroupName]="j" class="delete_product">
                       <input type="text" placeholder="Enter Field Name " style="width: 40%" formControlName="fieldName">
                       <input type="text" placeholder="Enter Field Name " style="width: 40%; margin-left: 7.55555%"
                         formControlName="fieldDes">
-                      <button (click)="deleteField(productinfo.controls.fields, j)" class="product_cancel">
-                        Delete
-                      </button>
+                    
+                        <span (click)="deleteField(productinfo.controls.fields, j)" class="product_cancel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-14v-4h14v4z"/></svg>
+                          </span>
+                      
                     </div>
                   </div>
                   <button type="button" (click)="addNewField(productinfo.controls.fields)" class="product_submit">Add More</button>
                 </div>
               </div>
+            </fieldset>
             </div>
           </div>
-          <button type="button" style="float:right;" (click)="addProductInfo()" class="product_submit">Apply</button>
+          <button type="button" (click)="addProductInfo()" class="product_submit">Add More Product Info Field</button>
         </div>
         <div class="otherSection">
           <div class="price" style="margin-top:60px;">

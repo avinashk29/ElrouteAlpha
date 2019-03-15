@@ -21,12 +21,12 @@
                                </div>
 </div>
 <div *ngIf="group">
-    <form  [formGroup] = "GroupForm" (ngSubmit) = "onSubmit()">
+    <!-- <form  [formGroup] = "GroupForm" (ngSubmit) = "onSubmit()">
   <h1 style="text-align:center">Group Products</h1>
   <input type="text" placeholder="Enter Group Name" formControlName = "groupName">
   <button type="submit">Submit</button>
     </form>
-    <button type="button" (click) = "group = false"  *ngIf="group">Cancel</button>
+    <button type="button" (click) = "group = false"  *ngIf="group">Cancel</button> -->
     <div class="edit_product" *ngFor="let r of  this.selectedProduct; let i = index">
       {{r}}
         <div class="card">

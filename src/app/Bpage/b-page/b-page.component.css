@@ -289,7 +289,11 @@ header {
   width: 100%;
   margin-bottom: 20px;
   display: flex;
+<<<<<<< HEAD
   justify-content: space-between;
+=======
+  /* justify-content: space-between; */
+>>>>>>> 2d61d17b47c62dcea98dfaa26fa4a66c19b1b992
 }
 
 .social_links {
@@ -1822,6 +1826,7 @@ height: 24px;
 
   }
   /* .overlay1{
+
     width: 900px !important;
 
 } */
@@ -1904,6 +1909,10 @@ section{
   height: 30px;
   border-radius: 50%;
   margin-top: -5px;
+}
+#edit_section_overlay
+{
+  height: 100% !important;
 }
 }
 
@@ -2781,7 +2790,11 @@ label {
   bottom: 0;
   left: 0;
   right: 0;
+<<<<<<< HEAD
   height: 99%;
+=======
+  height: 100%;
+>>>>>>> 2d61d17b47c62dcea98dfaa26fa4a66c19b1b992
   width: 100%;
   opacity: 0;
   transition: .5s ease;
@@ -2805,6 +2818,10 @@ label {
   border: none;
   color: white;
   ;
+}
+#edit_section_overlay
+{
+  height: 300px;
 }
 
 .change_section_image svg {
@@ -2974,6 +2991,25 @@ input[type="file"] {
   float: right;
   margin-right: 3%;
 }
+.facebook_social
+{
+  width: 15%;
+}
+.facebook_social img
+{
+  width: 50px;
+  height: 50px;
+}
+.linkedin_social
+{
+  width: 15%;
+  margin-top: 1%;
+}
+.linkedin_social img
+{
+  width: 40px !important;
+  height: 40px !important;
+}
 @media screen and (min-width: 768px) and (max-width: 1366px) {
   .with_login {
     width: 85%;
@@ -2984,7 +3020,7 @@ input[type="file"] {
   width: 30%;
 }
 .social {
-  width: 100%;
+  /* width: 100%; */
   margin-right: 5%;
 }
 .social img{
