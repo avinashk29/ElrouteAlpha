@@ -88,8 +88,7 @@ if(this.token) {
 });
 } else {
   this.search.onSearchCompany(this.word).subscribe(res1 => {
-    console.log(res1);
-   console.log(JSON.parse(res1['_body'])[0]);
+   //console.log(JSON.parse(res1['_body'])[0]);
     this.result = JSON.parse(res1['_body']);
     this.cresult = JSON.parse(res1['_body'])[0];
     if (!this.result.length) {

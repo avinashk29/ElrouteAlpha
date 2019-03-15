@@ -21,6 +21,7 @@ import { CompanyContactComponent } from 'src/app/Company/company-contact/company
 import { LoginComponent } from 'src/app/Auth/login/login.component';
 
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
+// import { type } from 'os';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -100,7 +101,9 @@ export class BPageComponent implements OnInit {
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
-      workingHours: [''],
+      
+      openAt:[],
+      closeAt:[],
       shortIntro: [],
       facebook: [''],
       linkedin: [''],
@@ -118,6 +121,27 @@ this.follows.token=this.storage.get('token');
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData = JSON.parse(res['_body']);
+        //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
+        //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
+            
+        //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
+        //     console.log(this.companyService.companyData.closeAt );
+        //   }
+        //   else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
+        //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
+        //     console.log(this.companyService.companyData.closeAt );
+        //   }
+        
+        //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
+        //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
+            
+        //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
+        //     console.log(this.companyService.companyData.openAt );
+        //   }
+        //   else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
+        //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
+        //     console.log(this.companyService.companyData)
+        //   }
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
@@ -428,9 +452,34 @@ this.four = true;
     }
     this.companyService.UpdateCompany(formData).subscribe(res => {
       this.companyService.companyData.website = JSON.parse(res['_body']).website;
-      this.companyService.companyData.workingHours = JSON.parse(
+      this.companyService.companyData.openAt = JSON.parse(
         res['_body']
-      ).workingHours;
+      ).openAt;
+      this.companyService.companyData.closeAt = JSON.parse(
+        res['_body']
+      ).closeAt;
+
+    //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
+    //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
+        
+    //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
+    //     console.log(this.companyService.companyData.closeAt );
+    //   }
+    //   else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
+    //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
+    //     console.log(this.companyService.companyData.closeAt );
+    //   }
+    
+    //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
+    //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
+        
+    //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
+    //     console.log(this.companyService.companyData.openAt );
+    //   }
+    //   else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
+    //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
+    //     console.log(this.companyService.companyData)
+    //   }
       this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
       this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
       this.router.navigate(['/companyPage/' + this.comapnyId], {
@@ -636,6 +685,64 @@ onDeletePost(id) {
     // dialogConfig.autoFocus = true;
     dialogConfig.width = '48%';
       this.dialog.open(FeedShareComponent, dialogConfig);
+  }
+
+
+
+
+  //  on edit time
+
+  onEditTime(){
+    // console.log(this.BForm.value.time1);
+    // console.log(this.BForm.value.time2);
+  //   if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)<'12'){
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' AM'; 
+  //   }
+  //   else if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)>='12'){
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' PM'; 
+  //   }
+  //  else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)<'12'){
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' AM'; 
+  //   }
+  //   else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)>='12'){
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' PM'; 
+  //   }
+    
+  // if(Number(this.BForm.value.closeAt.substring(0,2))>=12){
+  //   this.BForm.value.closeAt  = (Number(this.BForm.value.closeAt.substring(0,2))-12)+this.BForm.value.closeAt.substring(2,5);
+    
+  //   this.BForm.value.closeAt = this.BForm.value.closeAt+' PM'
+  //   console.log(this.BForm.value.closeAt );
+  // }
+  // else{
+  //   this.BForm.value.closeAt = this.BForm.value.closeAt+' AM'
+  //   console.log(this.BForm.value.closeAt );
+  // }
+
+  // if(Number(this.BForm.value.openAt.substring(0,2))>=12){
+  //   this.BForm.value.openAt  = (Number(this.BForm.value.openAt.substring(0,2))-12)+this.BForm.value.openAt.substring(2,5);
+    
+  //   this.BForm.value.openAt = this.BForm.value.openAt+' PM'
+  //   console.log(this.BForm.value.openAt );
+  // }
+  // else{
+  //   this.BForm.value.openAt = this.BForm.value.openAt+' AM'
+  //   console.log(this.BForm.value.openAt );
+  // }
+    // console.log(this.BForm.value.workingHours);
+    const formData = new FormData();
+    formData.append('openAt', this.BForm.value.openAt );
+    formData.append('closeAt', this.BForm.value.closeAt );
+    this.companyService.UpdateCompany(formData).subscribe(res => {
+      this.companyService.companyData.openAt = JSON.parse(
+        res['_body']
+      ).openAt;
+      this.companyService.companyData.closeAt = JSON.parse(
+        res['_body']
+      ).closeAt;   
+
+    
+    });
   }
 
 }

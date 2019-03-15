@@ -43,7 +43,7 @@
             <!-- <img src="assets/images/user.png">  -->
             <span  class="logout" style="margin-left: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" (click)="onLogout()">
                 <path d="M14 12h-4v-12h4v12zm4.213-10.246l-1.213 1.599c2.984 1.732 5 4.955 5 8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z" /></svg></span>
-          </div>
+         </div> 
         </li>
 
       </ul>
@@ -51,12 +51,12 @@
       <div class="searchIcon">
           <img src="../../../assets/images/search.png"  (click)="showSearchbar = true" alt="search_icon"> 
       </div>
-<div>
-        <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
-          <input type="text" style="color: black" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+     
+      <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
+          <input type="text"  placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
           <img src="../../../assets/images/cross.png" (click)="showSearchbar = false">
         </form>
-</div>
+
     </header>
 
   </div>

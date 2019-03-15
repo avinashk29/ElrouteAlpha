@@ -54,12 +54,20 @@
                                      </div>
                                 </li>
                                 <div class="working_hours">
-                                        <label style="width:42%"> Working Hours</label>
+                                        <label style="width:66%"> Working Hours</label>
                                         <label> Headquarters</label>
+                                        
+                                       
+                                                <!-- <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours> -->
+                                            
+                                            
                                    </div>
                                 <li>
                                     <div class="working_hours">
-                                        <input type="number" formControlName="workingHours" class="workinghours">
+                                        <!-- <input type="number" formControlName="workingHours" class="workinghours"> -->
+                                        <input type="time"     formControlName="openAt" trim  class="openAt" />
+                                      
+                                        <input type="time"   formControlName="closeAt" class="closeAt" />
                                         <input type="text" formControlName="city" class="companySize">
 
                                     </div>

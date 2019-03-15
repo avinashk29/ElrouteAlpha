@@ -45,7 +45,7 @@
                   <span> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                       <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z" />
                     </svg></span>
-                  <p>{{this.companyService.companyData.workingHours}}</p>
+                  <p>{{this.companyService.companyData.openAt|hrFormat}} -  {{this.companyService.companyData.closeAt|hrFormat}}</p>
                 </div>
                 <div class="location_mobile">
                     <h1><svg xmlns="http://www.w3.org/2000/svg"
@@ -158,23 +158,23 @@
       </div>
       <div class="extraInfo">
         <!-- <p>9 A.M. - 5 P.M.</p> -->
-        <button type="button" *ngIf="!this.companyService.companyData.workingHours && !editworkingHours && myCompany " (click)="editworkingHours = true"><span><svg
+        <button type="button" *ngIf="!this.companyService.companyData.openAt && !editworkingHours && myCompany " (click)="editworkingHours = true"><span><svg
               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;"
               viewBox="0 0 24 24">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span>Add Your Working Hours</button>
         <!-- <p>{{website}}</p> -->
-        <div class="time" *ngIf="this.companyService.companyData.workingHours && !editworkingHours">
+        <div class="time" *ngIf="this.companyService.companyData.openAt && !editworkingHours">
           <span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
               <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z" />
             </svg></span>
-          <p>{{this.companyService.companyData.workingHours}}</p>
+          <p>{{this.companyService.companyData.openAt|hrFormat}} -  {{this.companyService.companyData.closeAt|hrFormat}}</p>
         </div>
         <div *ngIf="editworkingHours" class="time_input">
-          <input type="time" placeholder="Enter Working Hours" [(ngModel)] = "time1" formControlName="workingHours" trim #workingHours />
+          <input type="time" placeholder="Enter Working Hours"   formControlName="openAt" trim  />
 
-          <input type="time" placeholder="Enter Working Hours" [(ngModel)] = "time2" formControlName="workingHours" trim #workingHours />
+          <input type="time" placeholder="Enter Working Hours"  formControlName="closeAt" trim  />
           <!-- <input type="number" placeholder="Enter Working Hours" formControlName="workingHours" trim #workingHours> -->
-          <button type="submit" (click)="onEditBpage('workingHours', workingHours)">Save</button>
+          <button type="submit" (click)="onEditTime()">Save</button>
         </div>
         <button type="button" *ngIf="!this.companyService.companyData.website && !editwebsite && myCompany" (click)="editwebsite = true"><span><svg
               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="fill:gray;padding: 1px 29px 0px 4px;"
@@ -189,11 +189,11 @@
         <div *ngIf="editwebsite" class="website_input">
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
           <button type="submit" (click)="onEditBpage('website',website)">Save</button>
-           <div class="facebook social">
+           <!-- <div class="facebook_social" >
 
           <img alt="B-page" src="../../../assets/images/fb.png"  (click)="editSocialLinks=true" (click)="likedinEdit=false" *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
           <a href="{{this.companyService.companyData.facebook}}" *ngIf="this.companyService.companyData.facebook"><img alt="B-page" src="../../../assets/images/fb.png" ></a>
-        </div>
+        </div> -->
 
 
 
@@ -209,7 +209,7 @@
 </div>
 </div>
 <div class="social">
-    <div class="facebook social">
+    <div class="facebook_social">
 
         <img alt="B-page" src="../../../assets/images/facebook_logos_PNG19753.png" style="height: 37px; margin-top: 5px; width: 37px" (click)="likedinEdit=false" (click)="editSocialLinks=true"  *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
         <a href="{{this.companyService.companyData.facebook}}" style="height: 37px; margin-top: 5px; width: 37px" *ngIf= "this.companyService.companyData.facebook"><img alt="B-page" src="../../../assets/images/facebook_logos_PNG19753.png"></a>
@@ -221,7 +221,7 @@
         </div>
         </div>
 
-<div class="linkedin social">
+<div class="linkedin_social">
 
 <img alt="B-page" src="../../../assets/images/circularLinkedin.png" style="height: 37px; margin-top: 5px; width: 37px" (click)="likedinEdit=true" (click)="editSocialLinks=false"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
 <a href="{{this.companyService.companyData.linkedin}}" style="height: 37px; margin-top: 5px; width: 37px" *ngIf= "this.companyService.companyData.linkedin"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
@@ -282,7 +282,10 @@
     </div>
   </header>
 
-  <div class="body" *ngIf="this.type === 'default'">
+  <div class="body" *ngIf="this.type === 'default'" style="display: block;">
+      <div class="add_new_product" style="text-align: right;    padding-top: 1%;    margin-top: 0%;">
+          <button routerLink="/Dashboard">Add New Feed</button>
+      </div>
     <div class="infoSection1">
       <div class="section1">
         <div class="shortBio">
@@ -677,7 +680,7 @@
                                   </g>
                                 </svg>
                               </span>
-                              <p>28 {{feed._id}}</p>
+                              <!-- <p>28 {{feed._id}}</p> -->
                             </div>
                             <ng-template #load>
                               <div class="bookmark_1">
@@ -690,7 +693,7 @@
                                         stroke="none" fill="#fff" />
                                     </g>
                                   </svg>
-                                   <p>28</p>
+                                   <!-- <p>28</p> -->
                                 </span>
 
                               </div>
@@ -872,7 +875,7 @@
               <!-- {{section}} -->
 
               <img src="{{BForm.controls.section.value[i].sectionImage}}" alt="section_image">
-              <div class="overlay" *ngIf="myCompany">
+              <div class="overlay" *ngIf="myCompany"id="edit_section_overlay">
                 <input type="file" #sectionpicker (change)="onsectionImagePick($event,'sectionImage',i)" class="picker"
                   style="display: hidden;" visbility="hidden">
                 <button type="button" (click)="sectionpicker.click()" class="change_section_image">Change
@@ -907,7 +910,7 @@
           <div class="content" *ngIf="x%2!=0">
             <div class="Sectioncontent">
               <h2>{{section.sectionTitle}}</h2>
-              <p>{{section.sectionContent}}</p>
+              <p style="text-align: justify;">{{section.sectionContent}}</p>
               <a href="{{section.sectionLink}}" target="blank">{{section.sectionLink}}</a>
             </div>
 
@@ -921,7 +924,7 @@
         <div class="content" *ngIf="x%2===0">
           <div class="Sectioncontent">
             <h2>{{section.sectionTitle}}</h2>
-            <p>{{section.sectionContent}}</p>
+            <p style="text-align: justify;">{{section.sectionContent}}</p>
             <a href="{{section.sectionLink}}" target="blank">{{section.sectionLink}}</a>
           </div>
         </div>
@@ -1236,6 +1239,9 @@
       </fieldset>
       <div class="add_new_product" *ngIf="products.length">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
+        </div>
+        <div class="add_new_product">
+            <button *ngIf="myCompany" routerLink="/product" >Add new Product</button>
         </div>
     </div>
 
