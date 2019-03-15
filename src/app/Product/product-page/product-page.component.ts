@@ -16,6 +16,7 @@ export class ProductPageComponent implements OnInit {
   bookmark
   mycompany
   creatorId
+  userFeed
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -50,21 +51,52 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
     
 this.productService.getFeedById(this.id).subscribe(res=>{
-  //console.log(JSON.parse(res['_body']));
 this.feedResult=JSON.parse(res['_body']);
-//console.log(JSON.parse(res['_body']));
-//console.log(this.feedResult.length);
-})
 this.UserService.getUserData().subscribe(res=>{
+  this.userFeed=JSON.parse(res['_body']).bookmarks.post;
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
+  //bookmark for single product
   for(let i=0;i<this.userBookmark.length;i++){
     if(this.id==this.userBookmark[i]){
       this.bookmark=false;
     }
   }
-});
-
+  //bookmark of feed on productpage
+  for (let i = 0; i < this.userFeed.length; i++) {
+    for (let j = 0; j < this.feedResult.length; j++) {
+      if (this.userFeed[i] === this.feedResult[j]._id) {
+        this.feedResult[j].bookm=true;
+      } else {
+      }
+    }
   }
+});
+});
+  }
+  // this.UserService.getUserData().subscribe(res=>{
+  //   this.userInfo=JSON.parse(res['_body']).bookmarks.post;
+  //   this.search.onSearchFeed(this.word , this.page).subscribe(res1=>{
+  //     this.feedResult=JSON.parse(res1['_body']);
+   
+  //     console.log(this.feedResult)
+  //       this.productId=JSON.parse(res1['_body']);
+  //       for(let i = 0; i < this.userInfo.length; i++) {
+  //         for(let j = 0;j < this.productId.length; j++) {
+  //              if(this.productId[j]==null){
+   
+  //              }else{
+  //               if(this.userInfo[i] == this.productId[j]._id) {
+  //                this.productId[j].bookm=true;
+  //               } else  {
+  //                // this.productId[j].bookm=true;
+  //               }
+  //              }
+  //          }
+  //    }
+   
+  //   });
+  //  })
+
   addProductBookmark(){
     this.bookmark=false
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
@@ -76,5 +108,17 @@ this.UserService.getUserData().subscribe(res=>{
     this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
     })
   }
+ addFeedBookmark(i,id){
+  this.feedResult[i].bookm=true;
+  this.bookmarkService.addPostBookmark(id).subscribe(res=>{
+    console.log(res)
+  })
 
+}
+removeFeedBookmark(i,id){
+  this.feedResult[i].bookm=false;
+this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
+  console.log(res)
+})
+}
 }

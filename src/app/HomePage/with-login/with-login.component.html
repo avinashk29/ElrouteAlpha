@@ -222,7 +222,7 @@
                         <!-- <h6>India</h6> -->
                       </div>
                       <div class="feed_following">
-                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="!this.result[i].follow else loading">Following<span><svg
+                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
                               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;" viewBox="0 0 30.043 36.42">
                               <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0"
                                 transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51"

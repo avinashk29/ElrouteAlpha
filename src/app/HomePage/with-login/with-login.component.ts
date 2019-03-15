@@ -204,7 +204,7 @@ export class WithLoginComponent implements OnInit {
    console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      console.log(JSON.parse(res['_body']).bookmarks.length);
     });
   }
   removeFeedbookmark(i, id) {
