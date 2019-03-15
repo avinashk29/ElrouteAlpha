@@ -83,7 +83,7 @@ import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst
 import { FeedShareComponent } from './Post-feed/feed-share/feed-share.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-<<<<<<< HEAD
+import { HrFormatPipe } from './hr-format.pipe';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 // const config = new AuthServiceConfig([
 // {
@@ -102,27 +102,6 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 // export function provideConfig() {
 //   return config;
 // }
-=======
-import { HrFormatPipe } from './hr-format.pipe';
-
-const config = new AuthServiceConfig([
-{
-  id: GoogleLoginProvider.PROVIDER_ID,
-  provider: new GoogleLoginProvider('349477484566-r02ikt755q39t0gkg5lomu8cqag1as6n.apps.googleusercontent.com')
-},
-{
-  id: FacebookLoginProvider.PROVIDER_ID,
-  provider: new FacebookLoginProvider('307465413244657')
-},
-{
-  id: LinkedinLoginProvider.PROVIDER_ID,
-  provider: new LinkedinLoginProvider('81dtr1bi4w9s9g')
-}
-], false);
-export function provideConfig() {
-  return config;
-}
->>>>>>> 2d61d17b47c62dcea98dfaa26fa4a66c19b1b992
 
 export function getAuthServiceConfigs() {
   let config = new SocialServiceConfig()
@@ -184,7 +163,7 @@ export function getAuthServiceConfigs() {
     TradeCatalystComponent,
     FeedShareComponent,
     HrFormatPipe,
-    
+
 
   ],
   imports: [
