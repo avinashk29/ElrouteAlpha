@@ -622,10 +622,15 @@ onDeletePost(id) {
     });
   }
   }
-  onSharepost(i){
+  onSharepost(i, admin) {
+    console.log(i);
+    console.log(admin);
+    this.feedService.postId = i;
+    this.feedService.postadmin = admin;
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
-    dialogConfig.width = '48%';
+
+    dialogConfig.width = '20%';
       this.dialog.open(FeedShareComponent, dialogConfig);
   }
 

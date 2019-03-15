@@ -76,10 +76,6 @@
 </div>
 </div>
 </section>
-<<<<<<< HEAD
-  <div  class="result_not_found" *ngIf="noResult">
-    <img src = "../../../assets/images/result_not_found.png">
-=======
 
 <div class="mob-cards" *ngFor="let result of productResult; let i = index;">
     <div class="card-wrapper" *ngIf="result !== null">
@@ -123,6 +119,5 @@
 
 <div *ngIf = "!productResult.length" class="result_not_found">
     <img alt="with-login" src = "../../../assets/images/result_not_found.png">
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
   </div>
 

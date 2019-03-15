@@ -29,17 +29,11 @@
 <button type="submit">Sign Up</button>
   </form>
   <span class="other_option"><h6>Or you can Sign up with the following</h6></span>
-  <div class="social_icon_signup">
-    <div class="social_icon" (click) = "signInWithFB()">
-      <img src="../../../assets/images/facebook_logos_PNG19753.png">
-    </div>
-    <div class="social_icon" (click) = "signInWithGoogle()">
-      <img src="../../../assets/images/new-google-logo-2015.png">
-    </div>
-    <div class="social_icon" (click) = "signInWithLinkedIN()">
-        <img src="../../../assets/images/square-linkedin-512.png" id="linkdin_img">
-    </div>
-  </div>
+  <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button>
+
+  <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
+
+  <!-- <linkedin-login-button (socialUser)="getSocialUser($event)"></linkedin-login-button> -->
   <div class="login-link">
     <h4>Already have a Account?<span style="color:cadetblue; margin-left: 5px;cursor: pointer;" (click)="openLogin()" >Sign In</span></h4>
   </div>
