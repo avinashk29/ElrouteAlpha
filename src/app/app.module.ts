@@ -80,12 +80,11 @@ import { OnefollowerComponent } from './User/onefollower/onefollower.component';
 import { ProductSelectComponent } from './Product/product-select/product-select.component';
 import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
 import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst.component';
-<<<<<<< HEAD
 import { FeedShareComponent } from './Post-feed/feed-share/feed-share.component';
-=======
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
+import { HrFormatPipe } from './hr-format.pipe';
+
 const config = new AuthServiceConfig([
 {
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -163,6 +162,8 @@ export function getAuthServiceConfigs() {
     CompanyContactComponent,
     TradeCatalystComponent,
     FeedShareComponent,
+    HrFormatPipe,
+    
 
   ],
   imports: [
@@ -182,13 +183,9 @@ export function getAuthServiceConfigs() {
     MatCardModule,
     // StickyNavModule,
     ScrollDispatchModule,
-<<<<<<< HEAD
     Ng6SocialButtonModule,
-    ToastrModule.forRoot()
-=======
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
 
   ],
   entryComponents: [

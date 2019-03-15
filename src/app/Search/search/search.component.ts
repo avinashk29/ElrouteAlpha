@@ -45,11 +45,7 @@ noResult = false;
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
-<<<<<<< HEAD
-            // console.log(JSON.parse(response['_body']));
-=======
             //console.log(JSON.parse(response['_body']));
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
             this.productResult=JSON.parse(response['_body']);
             if(!this.productResult.length){
               this.noResult = true;

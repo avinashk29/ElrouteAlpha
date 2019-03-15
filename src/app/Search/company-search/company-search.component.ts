@@ -46,13 +46,8 @@ if(this.token) {
 
     this.userInfo = JSON.parse(res['_body']).following;
      this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-<<<<<<< HEAD
-    this.search.onSearchCompany(this.word).subscribe(res1 => {
-      console.log('i am here')
-=======
     this.search.onSearchCompany(this.word).subscribe(res1=>{
     //console.log(res1);
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
       this.result = JSON.parse(res1['_body']);
       this.cresult = JSON.parse(res1['_body'])[0];
       console.log(this.cresult);
@@ -93,12 +88,7 @@ if(this.token) {
 });
 } else {
   this.search.onSearchCompany(this.word).subscribe(res1 => {
-<<<<<<< HEAD
-    console.log(res1);
-   console.log(JSON.parse(res1['_body'])[0]);
-=======
    //console.log(JSON.parse(res1['_body'])[0]);
->>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
     this.result = JSON.parse(res1['_body']);
     this.cresult = JSON.parse(res1['_body'])[0];
     if (!this.result.length) {
