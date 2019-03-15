@@ -170,10 +170,13 @@ this.follows.token=this.storage.get('token');
                 for(let i = 0; i < this.userbookm.length; i++) {
                   console.log(this.userbookm[i])
                   for(let j = 0;j < this.shotedProduct.length; j++) {
-                       if(this.userbookm[i] == this.shotedProduct[j]._id) {
+                    if(!this.shotedProduct[i] && !this.userbookm[i]){
+
+                    }
+                     else if(this.userbookm[i] === this.shotedProduct[j]._id) {
                         this.shotedProduct[j].bookm=true;
-                       } else  {
-                        // this.cresult[j].bookm=false;
+                       }else{
+
                        }
                    }
                   }
@@ -680,10 +683,15 @@ onDeletePost(id) {
     });
   }
   }
-  onSharepost(i){
+  onSharepost(i, admin) {
+    console.log(i);
+    console.log(admin);
+    this.feedService.postId = i;
+    this.feedService.postadmin = admin;
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
-    dialogConfig.width = '48%';
+
+    dialogConfig.width = '20%';
       this.dialog.open(FeedShareComponent, dialogConfig);
   }
 

@@ -10,6 +10,8 @@ export class FeedService {
     productName;
     productImage;
     productDescription;
+    postId;
+    postadmin;
     constructor(public http: Http) {}
     AddFeed(feed) {
       const headers = new Headers();
@@ -28,7 +30,7 @@ export class FeedService {
         return this.http.get('http://localhost:8080/api/feed',{headers:headers});
     }
     getFeedById(id){
-    
+
         return this.http.get('http://localhost:8080/api/post/'+id);
     }
         deletePost(id){
