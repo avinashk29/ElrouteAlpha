@@ -13,6 +13,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 })
 export class HeaderComponent implements OnInit {
   showSearchbar = false;
+  companyId;
   constructor(
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
     private router: Router,
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
   });
   ngOnInit() {
     // this.UserService.token = this.storage.get('token');
+        this.companyId = this.storage.get('companyId');
   }
   onSearch(event) {
     const formData = this.searchForm.value;

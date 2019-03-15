@@ -19,12 +19,15 @@ import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
 import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
+
+import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
   styleUrls: ['./b-page.component.css']
 })
 export class BPageComponent implements OnInit {
+
   sectionEdit = false;
   one = true;
   two = false;
@@ -529,18 +532,23 @@ dialogConfig.width = '80%';
 this.dialog.open(ProductSelectComponent, dialogConfig);
   }
   onRemoveproduct(id) {
-    this.productService.groupProductdelete(id).subscribe(res => {
-      this.ngZone.run(() => {
-        this.productService.getProduct(this.comapnyId).subscribe(res1 => {
-          this.products =  JSON.parse(res1['_body']);
-      //      this.spinner.hide();
-        });
+if(confirm('Are you sure you want to remove the product from group')) {
+  this.productService.groupProductdelete(id).subscribe(res => {
+    this.ngZone.run(() => {
+      this.productService.getProduct(this.comapnyId).subscribe(res1 => {
+        this.products =  JSON.parse(res1['_body']);
+    //      this.spinner.hide();
       });
       //console.log(res);
       // this.spinner.hide();
     });
+    //console.log(res);
+    // this.spinner.hide();
+  });
+}
   }
 onDeletegroup(name) {
+if (confirm('Are you sure you want to remove the group')){
   this.spinner.show();
   this.productService.token = this.storage.get('token');
   //console.log(name);
@@ -553,6 +561,7 @@ this.productService.deletegroup(name).subscribe(res => {
     });
   });
 });
+}
 
 }
 
@@ -603,4 +612,21 @@ opneLogin(){
   dialogConfig.width = '30%';
   this.dialog.open(LoginComponent, dialogConfig);
 }
+onDeletePost(id) {
+  if (confirm('Are you sure you want to delete the post')) {
+    this.feedById.splice(id , 1);
+    this.feedService.deletePost(id).subscribe(res => {
+
+      console.log(JSON.parse(res['_body']));
+
+    });
+  }
+  }
+  onSharepost(i){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.autoFocus = true;
+    dialogConfig.width = '48%';
+      this.dialog.open(FeedShareComponent, dialogConfig);
+  }
+
 }

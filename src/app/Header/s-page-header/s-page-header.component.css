@@ -1,11 +1,11 @@
 header{
   border: solid 1px gray;
-  border-top:none; 
+  border-top:none;
   border-right: none;
   border-left: none;
   margin-top: -14px;
 }
-.activate 
+.activate
 {
     color: black !important;
 }
@@ -31,7 +31,7 @@ header{
 .s_page_header_link
 {
     width: 100%;
-  
+
 
 }
 .s_page_header_link span
@@ -44,7 +44,7 @@ header{
     font-size: 29px;
     text-decoration: none;
     color: #707070;
-    
+
 }
 .s_page_details
 {
@@ -90,17 +90,20 @@ header{
     /* .s_page_header{
         display: none;
     } */
+    .s_page_header{
+      width: 90%;
+    }
     .s_page_links h3
 {
 
     font-size: 20px;
- 
+
 }
     .s_page_links a
 {
 
     font-size: 20px;
-   
+
 }
 header{
 
@@ -110,14 +113,14 @@ header{
   @media screen and (min-width: 700px) and (max-width: 1024px){
     .s_page_links1 h3
     {
-    
+
         font-size: 20px;
-     
+
     }
         .s_page_links a
     {
-    
+
         font-size: 20px;
-       
+
     }
   }

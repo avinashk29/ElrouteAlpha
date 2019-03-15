@@ -23,8 +23,9 @@ page;
 len;
 productId=[]
 unbookmarked = true;
-userBookmark=[]
-productResult=[]
+userBookmark=[];
+productResult=[];
+noResult = false;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
@@ -44,8 +45,15 @@ productResult=[]
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
           this.search.onSearch(this.word,this.page).subscribe(response => {
 
+<<<<<<< HEAD
+            // console.log(JSON.parse(response['_body']));
+=======
             //console.log(JSON.parse(response['_body']));
+>>>>>>> 9c6fb9c97aad6c1815cf60ee9486212ddf6ae2c1
             this.productResult=JSON.parse(response['_body']);
+            if(!this.productResult.length){
+              this.noResult = true;
+            }
             this.productId=JSON.parse(response['_body']);
             this.bookmarkService.productBookmark=JSON.parse(response['_body']);
                     for(let i = 0; i < this.userBookmark.length; i++) {
@@ -70,6 +78,9 @@ productResult=[]
             //console.log(JSON.parse(response['_body']));
             this.productResult=JSON.parse(response['_body']);
             this.productId=JSON.parse(response['_body']);
+            if(!this.productResult.length){
+              this.noResult = true;
+            }
   });
 
       }

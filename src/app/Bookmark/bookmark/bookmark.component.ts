@@ -14,14 +14,15 @@ export class BookmarkComponent implements OnInit {
   bookmark=[]
   userBookmark=[]
   productResult=[]
-  productId
+  productId;
+  noResult = false;
   constructor(public bookmarkService:BookmarkServices,
     private userService:UserService,
-    @Inject(LOCAL_STORAGE) public storage:WebStorageService) { 
+    @Inject(LOCAL_STORAGE) public storage:WebStorageService) {
 
     this.bookmarkService.token = this.storage.get('token');
-  
-    
+
+
 
   }
 
@@ -31,6 +32,10 @@ export class BookmarkComponent implements OnInit {
       this.bookmarkService.getBookmarkProduct().subscribe(response=>{
         this.product=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
+        console.log(this.product);
+        if(!this.product.length){
+           this.noResult = true;
+        }
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
                 for(let i = 0; i < this.userBookmark.length; i++) {
                   for(let j = 0;j < this.productId.length; j++) {
@@ -43,12 +48,12 @@ export class BookmarkComponent implements OnInit {
                          // this.productId[j].bookm=true;
                         }
                        }
-                   }      
+                   }
              }
-              
-      })
-    })
-   
+
+      });
+    });
+
   }
 
   addProductBookmark(i,id){

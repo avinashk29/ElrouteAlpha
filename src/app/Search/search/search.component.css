@@ -318,11 +318,22 @@ font-size: 13px;
 width: 100%;
 }
 @media screen and (max-width: 700px){
-.listing{display: none;}
-.mob-cards{
-  display:flex;
-flex-wrap: wrap;
-padding-top: 21px;
+  section{
+    width: 90%;
+  }
+.listing{
+width: 100%;
+margin-right: 0px;
+}
+.productCard, .ServiceCard {
+
+  overflow: hidden;
+  height: 150px !important;
+
+}
+.productContent .content .productName h2, .ServiceContent .content .ServiceName h2 {
+
+  font-size: 18px !important;
 
 }
 .result_not_found
@@ -356,17 +367,17 @@ width: 100%;
   width: 35%;
   box-shadow: 0px 1px 7px #5555;
  }
- 
+
  .card {
   display: flex;
   width: 100%;
   margin-top: 1%;
   margin: 0 auto;
  }
- 
+
  .card h1 {
   text-align: center;
   font-size: 35px;
   font-weight: 400;
  }
- 
+
