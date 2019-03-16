@@ -71,7 +71,7 @@ import { CompanyForm4Component } from './Company/company-form4/company-form4.com
 import { CompanyForm5Component } from './Company/company-form5/company-form5.component';
 import { EditSideNavComponent } from './Header/edit-side-nav/edit-side-nav.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
+// import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider, FacebookLoginProvider, LinkedinLoginProvider} from 'ng4-social-login';
 import {
   Ng6SocialButtonModule,
   SocialServiceConfig
@@ -84,24 +84,24 @@ import { FeedShareComponent } from './Post-feed/feed-share/feed-share.component'
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HrFormatPipe } from './hr-format.pipe';
-
-const config = new AuthServiceConfig([
-{
-  id: GoogleLoginProvider.PROVIDER_ID,
-  provider: new GoogleLoginProvider('349477484566-r02ikt755q39t0gkg5lomu8cqag1as6n.apps.googleusercontent.com')
-},
-{
-  id: FacebookLoginProvider.PROVIDER_ID,
-  provider: new FacebookLoginProvider('307465413244657')
-},
-{
-  id: LinkedinLoginProvider.PROVIDER_ID,
-  provider: new LinkedinLoginProvider('81dtr1bi4w9s9g')
-}
-], false);
-export function provideConfig() {
-  return config;
-}
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+// const config = new AuthServiceConfig([
+// {
+//   id: GoogleLoginProvider.PROVIDER_ID,
+//   provider: new GoogleLoginProvider('349477484566-r02ikt755q39t0gkg5lomu8cqag1as6n.apps.googleusercontent.com')
+// },
+// {
+//   id: FacebookLoginProvider.PROVIDER_ID,
+//   provider: new FacebookLoginProvider('307465413244657')
+// },
+// {
+//   id: LinkedinLoginProvider.PROVIDER_ID,
+//   provider: new LinkedinLoginProvider('81dtr1bi4w9s9g')
+// }
+// ], false);
+// export function provideConfig() {
+//   return config;
+// }
 
 export function getAuthServiceConfigs() {
   let config = new SocialServiceConfig()
@@ -163,7 +163,7 @@ export function getAuthServiceConfigs() {
     TradeCatalystComponent,
     FeedShareComponent,
     HrFormatPipe,
-    
+
 
   ],
   imports: [
@@ -178,7 +178,8 @@ export function getAuthServiceConfigs() {
     MatExpansionModule,
     MatTabsModule,
     Ng2CarouselamosModule,
-    SocialLoginModule,
+    // SocialLoginModule,
+    JwSocialButtonsModule,
     Ng4LoadingSpinnerModule.forRoot(),
     MatCardModule,
     // StickyNavModule,
@@ -200,7 +201,7 @@ export function getAuthServiceConfigs() {
     FeedShareComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
-     SearchService, CompanyGuardService,{ provide: AuthServiceConfig,useFactory: provideConfig},{provide: SocialServiceConfig,
+     SearchService, CompanyGuardService, {provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs}],
   bootstrap: [AppComponent],
 

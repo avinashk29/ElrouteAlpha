@@ -16,6 +16,7 @@ import { ProductServiceService } from '../../Service/product-service.service';
 import { ToastrService } from "ngx-toastr";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
+import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -88,7 +89,7 @@ export class WithLoginComponent implements OnInit {
             .subscribe(res1 => {});
         }
       }
-    
+
       this.userService.getUserData().subscribe(res1 => {
         this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
@@ -161,7 +162,7 @@ export class WithLoginComponent implements OnInit {
         this.notification.warning('Image or content is missing!');
     }else if(!this.feed.value.content) {
       this.notification.warning('Image or content is missing!');
-    
+
     }else{
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
         //console.log(res)
@@ -204,7 +205,7 @@ export class WithLoginComponent implements OnInit {
    console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      console.log(JSON.parse(res['_body']).bookmarks.length);
     });
   }
   removeFeedbookmark(i, id) {
@@ -213,5 +214,16 @@ export class WithLoginComponent implements OnInit {
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
+  }
+  onSharepost(i, admin) {
+    console.log(i);
+    console.log(admin);
+    this.feedService.postId = i;
+    this.feedService.postadmin = admin;
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.autoFocus = true;
+
+      dialogConfig.width = '20%';
+      this.dialog.open(FeedShareComponent, dialogConfig);
   }
 }
