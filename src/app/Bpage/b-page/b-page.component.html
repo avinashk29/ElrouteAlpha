@@ -298,7 +298,7 @@
 
   <div class="body" *ngIf="this.type === 'default'" style="display: block;">
       <div class="add_new_product" style="text-align: right;    padding-top: 1%;    margin-top: 0%;">
-          <button routerLink="/Dashboard">Add New Feed</button>
+          <button routerLink="/Dashboard" *ngIf="myCompany"> Add New Feed</button>
       </div>
     <div class="infoSection1">
       <div class="section1">
