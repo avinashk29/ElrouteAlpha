@@ -101,7 +101,7 @@ export class BPageComponent implements OnInit {
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
-      
+
       openAt:[],
       closeAt:[],
       shortIntro: [],
@@ -123,7 +123,7 @@ this.follows.token=this.storage.get('token');
           this.companyService.companyData = JSON.parse(res['_body']);
         //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
         //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
-            
+
         //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
         //     console.log(this.companyService.companyData.closeAt );
         //   }
@@ -131,10 +131,10 @@ this.follows.token=this.storage.get('token');
         //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
         //     console.log(this.companyService.companyData.closeAt );
         //   }
-        
+
         //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
         //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
-            
+
         //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
         //     console.log(this.companyService.companyData.openAt );
         //   }
@@ -464,7 +464,7 @@ this.four = true;
 
     //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
     //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
-        
+
     //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
     //     console.log(this.companyService.companyData.closeAt );
     //   }
@@ -472,10 +472,10 @@ this.four = true;
     //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
     //     console.log(this.companyService.companyData.closeAt );
     //   }
-    
+
     //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
     //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
-        
+
     //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
     //     console.log(this.companyService.companyData.openAt );
     //   }
@@ -683,11 +683,12 @@ onDeletePost(id) {
     });
   }
   }
-  onSharepost(i, admin) {
+  onSharepost(i, admin, image) {
     console.log(i);
-    console.log(admin);
+    console.log(image);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
+    this.feedService.postImage = image;
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
 
@@ -704,21 +705,21 @@ onDeletePost(id) {
     // console.log(this.BForm.value.time1);
     // console.log(this.BForm.value.time2);
   //   if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)<'12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' AM'; 
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' AM';
   //   }
   //   else if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)>='12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' PM'; 
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' PM';
   //   }
   //  else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)<'12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' AM'; 
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' AM';
   //   }
   //   else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)>='12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' PM'; 
+  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' PM';
   //   }
-    
+
   // if(Number(this.BForm.value.closeAt.substring(0,2))>=12){
   //   this.BForm.value.closeAt  = (Number(this.BForm.value.closeAt.substring(0,2))-12)+this.BForm.value.closeAt.substring(2,5);
-    
+
   //   this.BForm.value.closeAt = this.BForm.value.closeAt+' PM'
   //   console.log(this.BForm.value.closeAt );
   // }
@@ -729,7 +730,7 @@ onDeletePost(id) {
 
   // if(Number(this.BForm.value.openAt.substring(0,2))>=12){
   //   this.BForm.value.openAt  = (Number(this.BForm.value.openAt.substring(0,2))-12)+this.BForm.value.openAt.substring(2,5);
-    
+
   //   this.BForm.value.openAt = this.BForm.value.openAt+' PM'
   //   console.log(this.BForm.value.openAt );
   // }
@@ -747,9 +748,9 @@ onDeletePost(id) {
       ).openAt;
       this.companyService.companyData.closeAt = JSON.parse(
         res['_body']
-      ).closeAt;   
+      ).closeAt;
 
-    
+
     });
   }
 
