@@ -153,6 +153,7 @@ section{
 }
 .discription{
   font-size: 12px;
+  word-break: break-all;
 }
 .productContent .content .productCategory h6 ,.ServiceContent .content .ServiceCategory h6 {
   float: right;

@@ -275,6 +275,7 @@ font-size: 13px;
   display: flex;
   position: relative;
 }
+.edit_product::-webkit-scrollbar { width: 0 !important }
 .card
 {
   width: 36%;

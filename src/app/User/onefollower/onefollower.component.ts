@@ -13,6 +13,7 @@ export class OnefollowerComponent implements OnInit {
     public followService: FollowService) {
       this.user.getOneUser(this.followService.followerId).subscribe(res => {
         this.follower = JSON.parse(res['_body']);
+        console.log(JSON.parse(res['_body']))
       });
     }
 
