@@ -73,6 +73,9 @@ export class BPageComponent implements OnInit {
   postBookmark=[];
   productBookmark=[];
   token;
+  userbookm=[];
+  Bproduct=[]
+  shotedProduct
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
@@ -157,17 +160,23 @@ this.follows.token=this.storage.get('token');
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
-              //console.log(this.products.length)
-              //console.log(typeof(this.products));
-              //console.log(JSON.parse(res['_body']));
+              console.log(this.products.length)
+              // this.Bproduct=JSON.parse(res['_body'])[0].shotedProduct;
+              console.log(this.Bproduct);
+              this.shotedProduct=(JSON.parse(res['_body'])[0].sortedProducts);
               this.userService.getUserData().subscribe(res2=>{
-                this.productBookmark=JSON.parse(res2['_body']).bookmarks.product;
-                for(let i = 0; i < this.productBookmark.length; i++) {
-                  for(let j = 0;j < this.products.length; j++) {
-                       if(this.productBookmark[i] == this.products[j]._id) {
-                        this.products[j].bookm=true;
-                       } else  {
-                        // this.cresult[j].bookm=false;
+                this.userbookm=JSON.parse(res2['_body']).bookmarks.product;
+                console.log(this.userbookm.length)
+                for(let i = 0; i < this.userbookm.length; i++) {
+                  console.log(this.userbookm[i])
+                  for(let j = 0;j < this.shotedProduct.length; j++) {
+                    if(!this.shotedProduct[i] && !this.userbookm[i]){
+
+                    }
+                     else if(this.userbookm[i] === this.shotedProduct[j]._id) {
+                        this.shotedProduct[j].bookm=true;
+                       }else{
+
                        }
                    }
                   }
@@ -259,14 +268,17 @@ this.follows.token=this.storage.get('token');
     if (this.type === 'product') {
       this.type = 'product';
       this.ngZone.run(() => {
+        this.userService.getUserData().subscribe(res1=>{
+          this.productBookmark=JSON.parse(res1['_body']).bookmarks.product;
         this.productService.getProduct(this.comapnyId).subscribe(res => {
           this.products =  JSON.parse(res['_body']);
           for(let i=0;i<this.products.length;i++){
             this.showAll.push(false);
           }
-          //console.log(JSON.parse(res['_body']));
+          
         });
       });
+    });
  this.limit = 2;
     }
   }
@@ -642,17 +654,17 @@ removeFeedBookmark(i,id){
   });
 }
 addProductBookmark(i,id){
-  this.products[i].bookm=true;
-  //console.log(id)
+  this.shotedProduct[i].bookm=true;
+  console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
     console.log(res)
 
   });
 }
 removeProductBookmark(i,id){
-  this.products[i].bookm=false;
+  this.shotedProduct[i].bookm=false;
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-    //console.log(res)
+    console.log(res)
   });
 }
 opneLogin(){

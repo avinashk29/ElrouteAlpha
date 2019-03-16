@@ -119,13 +119,13 @@
           </div>
         </div>
 
-        <div style="width:100%;" *ngIf="haveCompany">
-            <div class="design">
-            <svg height="300" width="500" class="container">
+        <!-- <div style="width:100%;" *ngIf="haveCompany"> -->
+            <!-- <div class="design"> -->
+            <!-- <svg height="300" width="500" class="container">
               <polygon points="10,20 11.34,15 15,11.34 20,10 115,10 120,11.34 123.66,15 125,20 125,40 1000,40 1000,290 10,290 " style="fill:white;stroke:black;stroke-width:0" />
 
             </svg>
-            </div >
+            </div > -->
 
             <div class="content_1">
                 <p class="add_feed" *ngIf="haveCompany">Add Feed</p>
@@ -204,7 +204,7 @@
                   </div>
                 </form>
             </div>
-            </div>
+            <!-- </div> -->
 
 
 
@@ -221,7 +221,18 @@
                         <!-- <p>Service</p> -->
                         <!-- <h6>India</h6> -->
                       </div>
+                      <div class="feed_following">
+                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
+                              xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;" viewBox="0 0 30.043 36.42">
+                              <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0"
+                                transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51"
+                                stroke-linecap="round" stroke-width="3" />
+                            </svg></span></button>
+                        <ng-template #loading>
+                          <button (click)="onfollow(i,feedElement.admin)">Follow</button>
+                        </ng-template>
 
+                      </div> 
                     </div>
                     <div class="feed_img">
                       <div class="container1">
@@ -326,7 +337,7 @@
         </div>
       </div>
 
-    </div>
+    
 
 
 

@@ -34,7 +34,7 @@
 
         <div class="productCategory">
           <div class="b_page_btn" *ngIf = "this.token">
-            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+            <button  (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
               <g id="bookmark" fill="transparent">
                 <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                   stroke="none" />
@@ -43,7 +43,7 @@
               </g>
             </svg></span></button>
             <ng-template #bloading>
-                <button (click)="deleteProductBookmark(i,result._id)"><span><svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                <button (click)="deleteProductBookmark(i,result._id)"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
                   <g id="bookmark" fill="gray">
                     <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                       stroke="none" />
@@ -92,7 +92,7 @@
 </section>
 
 <div class="mob-cards" *ngFor="let result of productResult; let i = index;">
-    <div class="card-wrapper" *ngIf="result !== null">
+    <div class="card-wrapper">
         <div class="header">
             <div class="header-content" style="width:95%; display: flex">
               <h5 style="width:50%;">Product</h5>

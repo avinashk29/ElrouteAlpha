@@ -51,10 +51,9 @@ noResult = false;
               this.noResult = true;
             }
             this.productId=JSON.parse(response['_body']);
-            this.bookmarkService.productBookmark=JSON.parse(response['_body']);
                     for(let i = 0; i < this.userBookmark.length; i++) {
                       for(let j = 0;j < this.productId.length; j++) {
-                           if(this.productId[j]==null){
+                           if(this.productId[j]===null){
 
                            }else{
                             if(this.userBookmark[i] == this.productId[j]._id) {
