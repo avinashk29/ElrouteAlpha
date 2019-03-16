@@ -1896,7 +1896,7 @@ section{
  border-radius: 50%;
  margin-top: -5px;
 }
-}
+
 
 @media screen and (min-width: 767px) and (max-width: 1024px) {
 
@@ -2038,7 +2038,7 @@ section{
 
     width: 30% !important;
   }
-}
+
 .otherInfocard_1 {
   /* height: 10vh; */
   /* width: 30%; */
