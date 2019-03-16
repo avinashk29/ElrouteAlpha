@@ -19,10 +19,13 @@ export class CompanyForm3Component implements OnInit {
      yearEstd: new FormControl(),
      city: new FormControl(''),
      shortIntro: new FormControl(''),
-     workingHours: new FormControl(''),
-     linkedin: new FormControl('')
+     
+     linkedin: new FormControl(''),
+     openAt:new FormControl(''),
+     closeAt:new FormControl(''),
 
     }) ;
+    
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
    public companyService: CompanyServiceService, public router: Router, public notification: ToastrService) {
   }
@@ -41,6 +44,46 @@ export class CompanyForm3Component implements OnInit {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
       console.log(JSON.parse(res['_body']));
     });
+  
+      // console.log(this.BForm.value.workingHours);
+      const formData = new FormData();
+      formData.append('openAt', this.companyForm.value.openAt );
+      formData.append('closeAt', this.companyForm.value.closeAt );
+      this.companyService.UpdateCompany(formData).subscribe(res => {
+        this.companyService.companyData.openAt = JSON.parse(
+          res['_body']
+        ).openAt;
+        this.companyService.companyData.closeAt = JSON.parse(
+          res['_body']
+        ).closeAt;   
+
+
+
+
+        if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
+          this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
+          
+          this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
+          console.log(this.companyService.companyData.closeAt );
+        }
+        else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
+         this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
+          console.log(this.companyService.companyData.closeAt );
+        }
+      
+       else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
+         this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
+          
+         this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
+          console.log(this.companyService.companyData.openAt );
+        }
+        else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
+         this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
+          console.log(this.companyService.companyData)
+        
+        }
+
+      });
 
   }
 }

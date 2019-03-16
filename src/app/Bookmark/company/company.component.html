@@ -12,10 +12,17 @@
     <div class="companyCard" >
     <div class="cardHeader">
       <div class="logo">
-       <img alt="company" src="{{r.companyLogo}}}">
+       <img alt="company" src="{{r.companyLogo}}">
       </div>
       <div class="companyInfo">
-        <h1 routerLink="/companyPage/{{r._id}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{r.companyName}} </h1><span   class="b1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>{{r.followers.length}}</span>
+        <h1 routerLink="/companyPage/{{r._id}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{r.companyName}} </h1><span  style="display: flex;"  class="b1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
+          <g id="bookmark" fill="transparent">
+            <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+              stroke="none" />
+            <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+              stroke="none" fill="gray" />
+          </g>
+        </svg>{{r.followers.length}}</span>
         <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">{{r.industry}}</span></p>
         <!-- <button>Follow</button> <span style="margin-left:20px;">24,567 followers</span> -->
       </div>

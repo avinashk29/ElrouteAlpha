@@ -119,13 +119,13 @@
           </div>
         </div>
 
-        <div style="width:100%;" *ngIf="haveCompany">
-            <div class="design">
-            <svg height="300" width="500" class="container">
+        <!-- <div style="width:100%;" *ngIf="haveCompany"> -->
+            <!-- <div class="design"> -->
+            <!-- <svg height="300" width="500" class="container">
               <polygon points="10,20 11.34,15 15,11.34 20,10 115,10 120,11.34 123.66,15 125,20 125,40 1000,40 1000,290 10,290 " style="fill:white;stroke:black;stroke-width:0" />
 
             </svg>
-            </div >
+            </div > -->
 
             <div class="content_1">
                 <p class="add_feed" *ngIf="haveCompany">Add Feed</p>
@@ -204,14 +204,14 @@
                   </div>
                 </form>
             </div>
-            </div>
+            <!-- </div> -->
 
 
 
         <section>
           <div class="feedCards" *ngIf="feeds.length">
             <div class="main_feed_card" *ngFor="let feedElement of feeds; let i = index">
-                  <div class="feed_content">
+                  <div class="feed_content" id = "{{feedElement._id}}">
                     <div class="feed_header">
                       <div class="feed_logo">
                         <img alt="with-login" src="{{feedElement.companyLogo}}">
@@ -222,7 +222,7 @@
                         <!-- <h6>India</h6> -->
                       </div>
                       <div class="feed_following">
-                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="!this.result[i].follow else loading">Following<span><svg
+                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
                               xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;" viewBox="0 0 30.043 36.42">
                               <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0"
                                 transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51"
@@ -232,7 +232,7 @@
                           <button (click)="onfollow(i,feedElement.admin)">Follow</button>
                         </ng-template>
 
-                      </div>
+                      </div> 
                     </div>
                     <div class="feed_img">
                       <div class="container1">
@@ -244,10 +244,10 @@
                           </div>
                           <div class="bookmark_share">
                             <div class="bookmark">
-                             
+
                               <span (click)="addFeedBookmark(i,feedElement._id)"  *ngIf="!this.result[i].bookm else load">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
-                                  <g id="bookmark">
+                                  <g id="bookmark" fill="transparent">
                                     <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                                       stroke="none" />
                                     <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
@@ -255,7 +255,7 @@
                                   </g>
                                 </svg>
                               </span>
-                              <p>28  {{feedElement._id}}</p>
+                              <!-- <p>28  {{feedElement._id}}</p> -->
                             </div>
                             <ng-template #load>
                               <div class="bookmark_1">
@@ -274,7 +274,7 @@
 
                               </div>
                             </ng-template>
-                            <div class="share">
+                            <div class="share"(click)="onSharepost(feedElement._id,feedElement.admin)">
                               <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
                                   <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
                                     transform="translate(-1181.904 -755.425)" fill="#fff" />
@@ -337,7 +337,7 @@
         </div>
       </div>
 
-    </div>
+    
 
 
 

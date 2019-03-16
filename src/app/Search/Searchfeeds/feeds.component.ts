@@ -7,6 +7,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from 'src/app/Service/user-services.service';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
+import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
+import { FeedService } from 'src/app/Service/feed-service.service';
 @Component({
   selector: 'app-feeds',
   templateUrl: './feeds.component.html',
@@ -20,7 +22,8 @@ export class FeedsSearchComponent implements OnInit {
   token;
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
    public bookmarkService: BookmarkServices,private router:Router,
-   public follows: FollowService,private UserService:UserService, public route: ActivatedRoute,  public dialog: MatDialog) { }
+   public follows: FollowService,private UserService:UserService, public route: ActivatedRoute,  public dialog: MatDialog,
+    public feedService: FeedService) { }
 word;
 page;
   ngOnInit() {
@@ -55,9 +58,9 @@ if(this.token){
 } else {
   this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
     this.feedResult = JSON.parse(res1['_body']);
-    //console.log(this.feedResult)
+    console.log(this.feedResult)
       this.productId = JSON.parse(res1['_body']);
-      //console.log(JSON.parse(res1['_body']));
+      console.log(JSON.parse(res1['_body']));
 
   });
 }
@@ -87,5 +90,16 @@ if(this.token){
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(LoginComponent, dialogConfig);
+  }
+  onSharepost(i, admin) {
+    console.log(i);
+    console.log(admin);
+    this.feedService.postId = i;
+    this.feedService.postadmin = admin;
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.autoFocus = true;
+
+      dialogConfig.width = '20%';
+      this.dialog.open(FeedShareComponent, dialogConfig);
   }
 }

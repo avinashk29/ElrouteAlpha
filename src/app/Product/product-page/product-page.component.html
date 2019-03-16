@@ -127,7 +127,7 @@
 
   <div class="main_feed_card">
 
-    <div class="feed1" *ngFor="let feed of feedResult">
+    <div class="feed1" *ngFor="let feed of feedResult;let i=index">
 
       <div style="width: 100%;    margin-bottom: 5%;">
         <div class="feed_content">
@@ -152,7 +152,7 @@
                 </div>
                 <div class="bookmark_share">
                     <div class="bookmark">
-                        <span>
+                        <span (click)="addFeedBookmark(i,feed._id)" *ngIf="!this.feedResult[i].bookm else load">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                             <g id="bookmark" fill="white">
                               <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -166,7 +166,7 @@
                       </div>
                     <ng-template #load>
                         <div class="bookmark_1">
-                          <span>
+                          <span (click)="removeFeedBookmark(i,feed._id)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                               <g id="bookmark" fill="transparent">
                                 <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"

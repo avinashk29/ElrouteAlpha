@@ -20,7 +20,7 @@
 }
 .product_detalis
 {
-    padding-top:1%;
+    padding-top:2%;
     margin-left: 5%;
     margin: 0 auto;
     width: 85%;
@@ -155,6 +155,7 @@ height: 40vh;
 {
   position: relative;
   left: 49%;
+  top: 30px;
     width: 48%;
     float: left;
    /* margin-left:2%; */
