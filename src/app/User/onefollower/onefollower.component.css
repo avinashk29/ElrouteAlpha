@@ -114,9 +114,13 @@ margin-bottom: auto; */
 
 .follower_img1 img {
   border-radius: 100%;
-  width: 20%;
+  width: 90px;
   border: solid 5px white;
   margin-top: 26px;
+  position: absolute;
+  top: 26px;
+  height: 90px;
+
 }
 
 .follower_name {
@@ -216,11 +220,11 @@ margin-bottom: auto; */
       border: solid 5px gray;
   }
   .follower_img1 img {
-      border-radius: 100%;
-      width: 44%;
-      border: slo;
-      border: solid 5px white;
-      margin-top: 35px;
+    border-radius: 100%;
+    width: 60px;
+    border: slo;
+    border: solid 5px white;
+    margin-top: 43px;
   }
   .follower_des p {
       margin: 0 auto;
@@ -278,10 +282,12 @@ margin-bottom: auto; */
       width: 20%;
   }
   .follower_img1 img {
-      border-radius: 100%;
-      border: solid 5px white;
-      margin-top: 26px;
-      width: 50%;
+    border-radius: 100%;
+    border: solid 5px white;
+    margin-top: 44px;
+    width: 60px;
+    height: 60px;
+    left: -10px;
   }
   .card {
       width: 29%;
