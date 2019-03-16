@@ -1909,8 +1909,8 @@ section{
 {
   height: 100% !important;
 }
-}
 
+}
 @media screen and (min-width: 767px) and (max-width: 1024px) {
 
   header {
@@ -3074,10 +3074,13 @@ mat-expansion-panel-header{
   background-color: #fff;
   /* border: 1px solid #333333; */
 }
-.content::-webkit-scrollbar { width: 0 !important }
+.Sectioncontent::-webkit-scrollbar { width: 0 !important }
 .Sectioncontent a{
 float: right;
 text-decoration: none;
 color: #0077B5;
 margin-bottom: 20px;
 }
+/* .Sectioncontent::-webkit-scrollbar {
+  display: none;
+} */

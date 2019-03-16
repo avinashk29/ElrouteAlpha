@@ -77,7 +77,7 @@ export class WithLoginComponent implements OnInit {
     this.bookmarkService.token=this.storage.get('token');
     this.haveCompany = this.storage.get("companyId");
     this.feedService.getCompanyFeed().subscribe(res => {
-      //console.log(JSON.parse(res['_body']))
+      console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
       console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);

@@ -51,12 +51,11 @@
       <div class="searchIcon">
           <img src="../../../assets/images/search.png"  (click)="showSearchbar = true" alt="search_icon">
       </div>
-<div>
+
         <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
           <input type="text" style="color: black" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
           <img src="../../../assets/images/cross.png" (click)="showSearchbar = false">
         </form>
-</div>
     </header>
 
   </div>

@@ -155,14 +155,15 @@ input , textarea{
   float: right;
   position: relative;
   border: none;
-  top: -20px;
+  top: -10.5px;
   width: 0% ! important;
   background-color: transparent;
-  left: -19px;
+  left: -19.3px;
   outline: none;
 
 }
 .remove_product svg
 {
- fill: #795548;
+  background-color:white;
+ fill: #ef0707;
 }

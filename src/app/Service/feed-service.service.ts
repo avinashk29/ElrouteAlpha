@@ -12,6 +12,7 @@ export class FeedService {
     productDescription;
     postId;
     postadmin;
+    postImage;
     constructor(public http: Http) {}
     AddFeed(feed) {
       const headers = new Headers();
