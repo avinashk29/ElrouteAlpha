@@ -11,12 +11,15 @@ export class OnefollowerComponent implements OnInit {
   follower;
   constructor(public user: UserService,
     public followService: FollowService) {
-      this.user.getOneUser(this.followService.followerId).subscribe(res => {
-        this.follower = JSON.parse(res['_body']);
-      });
+     
     }
 
   ngOnInit() {
+    console.log(this.followService.followerId);
+    this.user.getOneUser(this.followService.followerId).subscribe(res => {
+      console.log(res);
+      this.follower = JSON.parse(res['_body']);
+    });
   }
 
 }

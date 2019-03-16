@@ -8,8 +8,8 @@ import { FeedService } from 'src/app/Service/feed-service.service';
 })
 export class FeedShareComponent implements OnInit {
 url = `https://elroute.com/companyPage/${this.feedService.postadmin+'?urltype=default#'+this.feedService.postId}`;
-// text = `test is working`;
-// imageUrl = 'http://jasonwatmore.com/_content/images/jason.jpg';
+text = `test is working`;
+imageUrl = 'http://jasonwatmore.com/_content/images/jason.jpg';
   constructor(private router: Router, public feedService: FeedService) {
 // this.router.navigate(['/companyPage' + this.feedService.postadmin], {queryParams: {urltype: 'default'}});
    }
