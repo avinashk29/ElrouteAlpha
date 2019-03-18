@@ -281,7 +281,7 @@ section{
 }
 @media screen and (max-width:700px) {
 section {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -292,6 +292,16 @@ section {
 }
 .no_product_dummy {
   width: 100%;
+}
+.b_page_btn svg
+ {
+   width: 24px;
+   height: 24px;
+ }
+ .productCard, .ServiceCard {
+   
+  overflow: hidden;
+  height: 150px !important;
 }
 }
 

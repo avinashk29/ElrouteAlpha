@@ -28,3 +28,63 @@ a
 .activate{
   background-color: #b5a8a840;
 }
+.header
+{
+  display: none;
+}
+
+
+/*---------------------------------- Mobile css ------------------------*/
+
+.header{
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  /* display: flex; */
+}
+.headerElements{
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.elements{
+  /* width: 12%; */
+  /* margin: 0px 25px 0 0; */
+  height: 100%;
+  outline: none;
+}
+.elements h4{
+  margin: 0;
+}
+
+@media screen and (max-width:700px){
+  .tabs
+  {
+    display: none;
+  }
+  .elements{
+       height: 100%;
+
+    font-size: 13px;
+
+  }
+  .header
+{
+  display: block;
+  width: 90%;
+}
+.activate{
+  box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0,.35);
+  background-color: transparent;
+  padding: 8px;
+}
+}
+@media screen and  (min-width:767px)and (max-width:1024px){
+  .elements{
+    width: 18%;
+    height: 100%;
+  }
+}
+/*---------------------------------- Mobile css ------------------------*/

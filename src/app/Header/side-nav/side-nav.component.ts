@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {UserService} from '../../Service/user-services.service';
 import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { Router } from '@angular/router';
+declare var $ :any;
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -16,7 +17,7 @@ toggle = false;
 companyId;
 haveCompany = false;
   ngOnInit() {
-
+      
   }
   onToggle() {
 this.toggle = !this.toggle;

@@ -46,7 +46,7 @@
       <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px"></span><span style= "padding-left: 8px">{{p.country}}</span></small>
     </div>
     <div class="discription" style="margin-top:30px;">
-    <p>{{p.shortDescription}}</p>
+    <p>{{(p.shortDescription  | slice:0:250) +' ...'}}</p>
     </div>
     <!-- <div class="tags">
 

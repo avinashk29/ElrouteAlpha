@@ -22,13 +22,18 @@
 }
 .activate
 {
-  color: red !important;
+  box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0, .35);
+  padding: 3px 9px 4px 10px;
 }
 @media screen and (max-width:700px){
   .elements{
     width: 40%;
     height: 100%;
     font-size: 13px;
+  }
+  .header{
+    width: 90%;
+    
   }
 }
 @media screen and  (min-width:767px)and (max-width:1024px){

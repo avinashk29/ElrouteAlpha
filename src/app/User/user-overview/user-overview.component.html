@@ -106,10 +106,30 @@
       <div class="follower_user">
           <div class="follower_location">
             <span>{{this.userService.userData.location}}</span>
+            <input type="file" #filepicker (change)="uploadUserImage($event,'userImage')" style="display: none">
+         
+              <span class="point" (click)="filepicker.click()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+                  <g id="edit" transform="translate(-546.942 -212.818)">
+                    <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="white"
+                      stroke-linecap="round">
+                      <path d="M 4.564501762390137 23.57025909423828 L 2.000001668930054 23.57025909423828 C 0.7405316233634949 23.57025909423828 0.6362316012382507 23.1402587890625 0.6362316012382507 22.66120910644531 L 0.4999915957450867 1.996699571609497 C 0.5000016093254089 1.172899603843689 1.172901630401611 0.4999995529651642 2.000001668930054 0.4999995529651642 L 4.564501762390137 0.4999995529651642 C 5.3916015625 0.4999995529651642 6.064501762390137 1.172899603843689 6.064501762390137 1.999999523162842 L 5.883201599121094 22.78681945800781 C 5.883181571960449 23.271240234375 5.718381404876709 23.36581993103027 5.639171600341797 23.41127967834473 C 5.393641471862793 23.55218887329102 4.935871601104736 23.57025909423828 4.564501762390137 23.57025909423828 Z"
+                        stroke="none" />
+                      <path d="M 2.000001430511475 1 C 1.449577808380127 1 1.001590251922607 1.447044372558594 1.000005722045898 1.997102737426758 L 1.136211395263672 22.65461921691895 L 1.136231422424316 22.65790939331055 L 1.136231422424316 22.66120910644531 C 1.136231422424316 22.7505989074707 1.1446213722229 22.90604972839355 1.200821399688721 22.9427604675293 C 1.259501457214355 22.98110008239746 1.454841613769531 23.07025909423828 2.000001430511475 23.07025909423828 L 4.564501762390137 23.07025909423828 C 5.097259998321533 23.07025909423828 5.295174598693848 23.01947402954102 5.364688396453857 22.99041175842285 C 5.372547626495361 22.9588737487793 5.383181571960449 22.89670181274414 5.383181571960449 22.79117965698242 L 5.383181571960449 22.78681945800781 L 5.383221626281738 22.7824592590332 L 5.56449556350708 1.996555328369141 C 5.562639236450195 1.446727752685547 5.114757537841797 1 4.564501762390137 1 L 2.000001430511475 1 M 2.000001430511475 0 L 4.564501762390137 0 C 5.669071674346924 0 6.564501762390137 0.8954296112060547 6.564501762390137 2 L 6.383181571960449 22.79117965698242 C 6.383181571960449 23.89575004577637 5.669071674346924 24.07025909423828 4.564501762390137 24.07025909423828 L 2.000001430511475 24.07025909423828 C 0.8954315185546875 24.07025909423828 0.1362314224243164 23.76577949523926 0.1362314224243164 22.66120910644531 L 1.430511474609375e-06 2 C 1.430511474609375e-06 0.8954296112060547 0.8954315185546875 0 2.000001430511475 0 Z"
+                        stroke="none" fill="#a5a4bf" />
+                    </g>
+                    <path id="Path_359" data-name="Path 359" d="M2090.028-116.6l-.076.285-1.961,5.688,2.394-1.061,3.525-1.446"
+                      transform="translate(-1540.202 347)" fill="none" stroke="#a5a4bf" stroke-width="1" />
+                    <path id="Path_361" data-name="Path 361" d="M2088.635-112.306l.683.817Z" transform="translate(-1540 347)"
+                      fill="none" stroke="red" d="M5 20 l215 0" stroke-width="1" />
+                  </g>
+                </svg>
+              </span>
+         
            </div>
            <div class="follower_img">
               <div class="follower_img1">
-                <img alt="user_overview" src="assets/images/user.png">
+                <img *ngIf="!userService.userData.userImage" alt="user_overview" src="assets/images/user.png">
+                <img *ngIf="userService.userData.userImage" alt="user_overview" src="{{userService.userData.userImage}}">
               </div>
            </div>
           <div style="clear:both"></div>
@@ -121,19 +141,19 @@
                 <p>{{this.userService.userData.shortBio}}</p>
             </div>
             <div class="follower_company">
-                  <div class="company">
+                  <!-- <div class="company">
                     <div class="company_logo">
                           <img alt="user_overview" src="assets/images/user.png">
                     </div>
                     <div class="company_name">
                         <h4>{{companyName}}</h4>
                   </div>
-                </div>
+                </div> -->
                     <div class="followBtn">
                         <button>Following</button>
                     </div>
             </div>
-            <div class="follwers_links1">
+            <!-- <div class="follwers_links1">
                     <div class="facebook">
                       <img alt="user_overview" src="assets/images/fb.png">
                      </div>
@@ -147,7 +167,7 @@
                               <img alt="user_overview" src="assets/images/fb.png">
                              </div>
                         </div>
-                    </div>
+                    </div> -->
     </div>
 
     </div>
@@ -162,7 +182,7 @@
 
           </div>
           <div class="following_btn">
-              <button (click)="manageFollowing()">Mange</button>
+              <button (click)="manageFollowing()">Manage</button>
           </div>
 
       </div>
