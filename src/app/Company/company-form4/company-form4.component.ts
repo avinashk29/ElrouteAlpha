@@ -21,7 +21,7 @@ export class CompanyForm4Component implements OnInit {
     specialities: new FormControl(''),
     mainMarket: new FormControl (''),
     hsCode: new FormControl(''),
-    revenu: new  FormControl()
+    totalRevenue: new  FormControl()
     }) ;
   ngOnInit() {
     this.companyId = this.storage.get('companyId');
