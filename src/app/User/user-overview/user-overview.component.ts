@@ -33,6 +33,7 @@ userFollowing;
     this.companyName = this.companyService.companyData.companyName;
     this.userService.getUserData().subscribe(res => {
       this.userService.userData = JSON.parse(res['_body']);
+      this.shortBio=     JSON.parse(res['_body']).shortBio;
 this.userFollowing=JSON.parse(res['_body']).following.length;
    //console.log(this.userFollowing)
 
@@ -68,6 +69,7 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
     this.dialog.open(EditComponent, dialogConfig);
 
   }
+  shortBio;
   editBio(){
     this.bioEdit = !this.bioEdit;
 
@@ -77,7 +79,7 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
       shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
-        this.userService.userData.shortBio= JSON.parse(res['_body']).shortBio;
+        // this.shortBio= JSON.parse(res['_body']).shortBio;
     })
     this.bioEdit = !this.bioEdit;
     this.router.navigate(['/bookmark']);
