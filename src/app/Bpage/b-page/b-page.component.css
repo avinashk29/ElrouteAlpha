@@ -1706,6 +1706,11 @@ margin-top: auto;
 
 
 @media screen and (max-width:700px) {
+  .b_page_btn svg
+  {
+    width: 24px;
+    height: 24px;
+  }
   .infoSection3 {
 
     width: 100% !important;
@@ -3344,13 +3349,13 @@ input[type="file"] {
 }
 .linkedin_social
 {
-  width: 15%;
+  width: 75%;
   margin-top: 1%;
 }
 .linkedin_social img
 {
-  width: 40px !important;
-  height: 40px !important;
+  width: 30px !important;
+  height: 30px !important;
 }
 @media screen and (min-width: 768px) and (max-width: 1366px) {
   .with_login {
