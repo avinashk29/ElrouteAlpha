@@ -19,7 +19,8 @@ import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { ProductSelectComponent } from 'src/app/Product/product-select/product-select.component';
 import { CompanyContactComponent } from 'src/app/Company/company-contact/company-contact.component';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
-
+import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
+import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 // import { type } from 'os';
 @Component({
@@ -28,7 +29,7 @@ import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.comp
   styleUrls: ['./b-page.component.css']
 })
 export class BPageComponent implements OnInit {
-
+  companyName;
   sectionEdit = false;
   one = true;
   two = false;
@@ -58,6 +59,7 @@ export class BPageComponent implements OnInit {
   editshortIntro = false;
   imagePreview;
   section = [];
+  url;
   socialLink = [];
   companyImage = [];
   bioEdit = false;
@@ -75,12 +77,27 @@ export class BPageComponent implements OnInit {
   token;
   userbookm=[];
   Bproduct=[]
+  haveCompany;
+  // file=[];
+  // imagePreview;
+  // feeds = [];
+  // noFeeds = true;
+  addLink = false;
+  feedImage;
+  companyLogo;
+  feed = new FormGroup({
+    content: new FormControl(''),
+    Image: new FormControl(''),
+    tagId: new FormControl(),
+    link: new FormControl(''),
+  });
   shotedProduct
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
     products: new FormControl('')
   });
+  
   constructor(
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public companyService: CompanyServiceService,
@@ -92,10 +109,12 @@ export class BPageComponent implements OnInit {
     private follows: FollowService,
     private bookmarkService: BookmarkServices,
     private imgUpload: ImageUploadService,
+    private imageService: ImageUploadService,
     private _fb: FormBuilder,
     private spinner: Ng4LoadingSpinnerService,
     public ngZone: NgZone,
     public dialog: MatDialog,
+    public notification: ToastrService,
   ) {
 
     this.BForm = this._fb.group({
@@ -281,6 +300,7 @@ this.follows.token=this.storage.get('token');
     });
  this.limit = 2;
     }
+ 
   }
   onAddSection() {
     this.sectionEdit = true;
@@ -392,6 +412,7 @@ this.four = false;
         this.spinner.hide();
       }
     });
+
 
   }
 
@@ -752,6 +773,68 @@ onDeletePost(id) {
 
 
     });
+  }
+  uploadUserImage(event,name){
+    this.file = <File>event.target.files[0];
+   if(name === 'Image'){
+     const reader =new FileReader();
+     reader.onload=()=>{
+       this.imagePreview=reader.result;
+     };
+     reader.readAsDataURL(this.file);
+   }
+    const fdata = new FormData();
+     fdata.append(name,this.file);
+     this.spinner.show();
+    this.imageService.uploadImg(fdata).subscribe(res=>{
+      const formdata=new FormData();
+      this.url=res['_body'];
+      formdata.append(name,this.url);
+      if(name==='userImage'){
+       this.userService.editUser(formdata).subscribe(res=>{
+         this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
+         // this.spinner.hide();
+         });
+      }else{
+       this.feedImage=this.url;
+       // this.spinner.hide();
+      }
+      this.spinner.hide();
+    })
+ }
+  onAddpost() {
+    this.addLink = false;
+    this.feed.value.tagId = this.feedService.tagId;
+      this.feed.value.Image = this.feedImage;
+      console.log(this.feed.value)
+    if (!this.feed.value.Image) {
+        this.notification.warning('Image or content is missing!');
+    }else if(!this.feed.value.content) {
+      this.notification.warning('Image or content is missing!');
+
+    }else{
+      this.feedService.AddFeed(this.feed.value).subscribe(res => {
+        //console.log(res)
+      });
+      this.feed.reset();
+      this.imagePreview=null;
+      this.feedService.productName = null;
+      this.feedService.productName = null;
+      this.feedService.productDescription = null;
+      this.notification.success('Post Added!');
+    }
+
+  }
+  closeTaggedProduct(){
+    this.feedService.productName = null;
+    this.feedService.productName = null;
+    this.feedService.productDescription = null;
+  }
+  tagFeed() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+    this.dialog.open(FeedComponent, dialogConfig);
   }
 
 }

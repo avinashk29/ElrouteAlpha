@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { UserService } from 'src/app/Service/user-services.service';
+import { UserService } from '../../Service/user-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { EditComponent } from '../Edit/edit.component';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ImageUploadService } from '../../Service/imageupload-service.service';
 
 @Component({
   selector: 'app-user-overview',
@@ -18,9 +19,13 @@ export class UserOverviewComponent implements OnInit{
   companyName;
   companyId;
   userBio;
+  file;
+  url;
   bioEdit = false;
   saveChanges = true;
   bioForm;
+  feedImage;
+  imagePreview;
   companyFollowers = [];
   subscription;
   userImage;
@@ -28,7 +33,8 @@ companyLogo;
 userFollowing;
   constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
-     public dialog: MatDialog , public route: ActivatedRoute) {
+     public dialog: MatDialog , public route: ActivatedRoute,private imageService: ImageUploadService) {
+      
     this.haveCompany = this.storage.get('companyId');
     this.companyName = this.companyService.companyData.companyName;
     this.userService.getUserData().subscribe(res => {
@@ -82,5 +88,34 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
     this.bioEdit = !this.bioEdit;
     this.router.navigate(['/bookmark']);
   }
+  uploadUserImage(event,name){
+    this.file = <File>event.target.files[0];
+   if(name === 'Image'){
+     const reader =new FileReader();
+     reader.onload=()=>{
+       this.imagePreview=reader.result;
+     };
+     reader.readAsDataURL(this.file);
+   }
+    const fdata = new FormData();
+     fdata.append(name,this.file);
+    //  this.spinner.show();
+    
+    this.imageService.uploadImg(fdata).subscribe(res=>{
+      const formdata=new FormData();
+      this.url=res['_body'];
+      formdata.append(name,this.url);
+      if(name==='userImage'){
+       this.userService.editUser(formdata).subscribe(res=>{
+         this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
+         // this.spinner.hide();
+         });
+      }else{
+       this.feedImage=this.url;
+       // this.spinner.hide();
+      }
+      // this.spinner.hide();
+    })
+ }
 
 }
