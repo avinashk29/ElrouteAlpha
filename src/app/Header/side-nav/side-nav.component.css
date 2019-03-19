@@ -98,6 +98,8 @@ aside.width {
     transition: .5s ease-in-out;
 }
 
+
+
 /*  */
 @-webkit-keyframes blinker {
   from {opacity: 1.0;}

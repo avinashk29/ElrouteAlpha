@@ -1,5 +1,9 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 /* ------------------mobile css------*/
+.header_responsive {
+  display: none;
+}
+
 .header_mobile{
   width: 94%;
   border: 1px solid #ccc;
@@ -182,6 +186,7 @@ section {
   margin-left: 7%;
 }
 
+/*------------------------------------ heaer csss ----------------*/
 header {
   width: 100%;
   display: flex;
@@ -209,7 +214,7 @@ header {
   font-weight: 400;
 }
 
-.iandl {
+/* .iandl {
   width: 60%;
   margin: 0 auto;
   display: flex;
@@ -219,7 +224,7 @@ header {
   width: 48%;
   text-align: center;
   margin: 0;
-}
+} */
 
 .follow-btn {
   margin-top: 30px;
@@ -392,16 +397,7 @@ header {
   height: 130px;
 }
 
-/* .img {
-  width: 100%;
-  height: 100%;
-  background-color: darkgreen;
- background-image: linear-gradient(to right, gold 30%, transparent 80%);
-}
-.img img {
-  width: 100%;
-  height: 100%;
-} */
+
 
 .tabs {
   width: 100%;
@@ -423,8 +419,7 @@ header {
 .tabClicked  {
   height: 120px;
   box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0, .35);
-  /* transition: heigh  .5s ease-in-out; */
-  /* background-color: red; */
+
 }
 
 .tab h1 {
@@ -432,14 +427,16 @@ header {
   font-size: 25px;
   font-weight: 500;
 }
+/*------------------------------------ header csss end ----------------*/
+
+/*----------------------------------Timeline css ----------------*/
 
 .body {
   width: 100%;
   display: flex;
   height: fit-content;
   box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2);
-  /* margin-top: 2%; */
-  /* margin-top: 50px; */
+
 }
 
 .infoSection1 {
@@ -482,7 +479,7 @@ fieldset
   outline: none;
   background-color: transparent;
 
-  /* float:right; */
+ 
 }
 .delete_product svg
 {
@@ -496,7 +493,7 @@ fieldset
   outline: none;
   background-color: transparent;
 
-  /* float:right; */
+ 
 }
 .add_product svg
 {
@@ -541,7 +538,7 @@ fieldset
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  /* background: rgba(0, 0, 0, 0.8); */
+ 
 
 }
 .container:hover .overlay_remove_product {
@@ -624,11 +621,9 @@ fieldset
 }
 
 .category_1 {
-  /* border-bottom: 1px solid; */
+ 
   margin-top: 8%;
-  /* box-shadow: 0px 1px 7px #5555; */
-  /* height: 14vh; */
-  /* padding: 10px 10px; */
+
 
 }
 
@@ -657,7 +652,7 @@ category_btn {
   width: 40px;
   border: none;
   margin-top: 3%;
-  /* float: right; */
+
 
 }
 
@@ -685,14 +680,13 @@ category_btn {
   font-size: 15px;
   padding: 9px 22px;
   height: 20px;
-  /* background-color: #8890A4; */
-  /* box-shadow: 0px 0px 2px 1px rgba(24, 24, 7, 0.2); */
+
   box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0, .35);
   color:gray;
 }
 
 .about_feed {
-/* margin: 5px 10px; */
+
 box-shadow: 0px 1px 6px 0px rgba(25, 25, 25, 0.2);
 width: 100%;
 
@@ -706,10 +700,10 @@ padding: 10px 21px 0 0px;
 .add_media2
 {
 width: 68%;
-/* text-align: right; */
+
 margin-right: 2%;
 align-items: center;
-/* padding: 10px; */
+
 display: flex;
 
 }
@@ -1193,7 +1187,7 @@ z-index: 1;
 .feed_text {
   margin: 0 auto;
   width: 85%;
-  padding-top: 8%;
+  padding-top: 6%;
 }
 
 
@@ -1391,9 +1385,6 @@ mat-panel-title h4 {
   font-weight: 100;
 }
 
-.header_responsive {
-  display: none;
-}
 
 .mob-cards {
   flex-wrap: wrap;
@@ -1439,6 +1430,8 @@ mat-panel-title h4 {
   font-weight: 500;
   padding: 5px;
 }
+
+/* ------------------------------timeline css end----------------------------------------- */
 
 .body1 {
   box-shadow: 0px 3px 10px #5555;
@@ -2240,7 +2233,7 @@ section{
 }
 .headerImg {
 
-  height: 20vh;
+  height: 22vh;
 
 }
 .change_cover{
@@ -2955,7 +2948,7 @@ label {
   margin: 0;
   width: 100%;
   font-weight: 100;
-  font-size: 25px;
+  font-size: 24px;
   text-align: right;
   margin-bottom: 1%;
   color: rgb(30, 28, 28);
@@ -3063,39 +3056,7 @@ label {
   margin: 13px 0
 }
 
-/*---------------Dummy Card------------*/
 
-/* .dummy_product
-  {
-    display: flex;
-    border: solid 1px gray;
-    margin: 0 auto;
-    width: 35%;
-    margin-top: 2%;
-  }
-.dummy_product_img
-{
-  height: 20vh;
-    width: 23%;
-    background-color: gray;
-}
-.dummy_product_text
-{
-  margin-left: 2%;
-  margin-bottom: auto;
-  margin-top: auto;
-}
-.dummy_product_text h3
-{
-  margin-bottom: auto;
-  margin-top: auto;
-  text-align: center;
-  font-weight: 500;
-} */
-
-
-
-/*---------------Dummy Card------------*/
 
 .container {
   position: relative;
@@ -3401,14 +3362,6 @@ transition-duration: .5s;
   margin-left: -60px;
 }
 
-/* .tabClicked
-{
-  height: 50px;
-  transition: .5s;
-} */
-/* .mat-expansion-panel:not([class*=mat-elevation-z]){
-  height: 200px !important;
-} */
 mat-expansion-panel-header{
   height: 230px !important;
 }

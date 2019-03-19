@@ -17,7 +17,7 @@ toggle = false;
 companyId;
 haveCompany = false;
   ngOnInit() {
-      
+  
   }
   onToggle() {
 this.toggle = !this.toggle;

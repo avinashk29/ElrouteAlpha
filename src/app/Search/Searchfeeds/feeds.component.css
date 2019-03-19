@@ -177,11 +177,20 @@ section{
 .container1:hover img {
   transform: scale(1.2);
 }
+.feed_center
+{
+  display: flex;
+}
+.feed_center_1
+{
+  width: 100%;
+}
+
 
 .feed_text {
   margin: 0 auto;
   width: 85%;
-  padding-top: 8%;
+  padding-top: 6%;
 }
 
 

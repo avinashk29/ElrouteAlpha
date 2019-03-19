@@ -1075,6 +1075,38 @@ color: white !important;
  width: 100%;
  position:absolute; left:0; bottom:0;
 }
+@media screen and (min-width:200px) and (max-width:335px) {
+  .img1 {
+    width: 90px !important;
+    height: 90px !important;
+        margin: 0px 20px 0 !important; 
+
+   }
+   .img2 {
+    width: 90px !important;
+    height: 90px !important;
+    margin: 0px 20px 0 !important;
+
+   }
+   .img3 {
+    width: 90px !important;
+    height: 90px !important;
+    margin: 0px 100px 0 !important;
+
+   }
+   .images{
+ 
+    top: 18% !important;
+    padding: 1px 0px 10px 0 !important;
+
+    height: 58vh !important;
+
+ 
+}
+.section4 {
+  margin-top: 10% !important;
+}
+}
 
 @media screen and (min-width:200px) and (max-width:400px) {
   .test h2
