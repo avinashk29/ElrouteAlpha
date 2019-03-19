@@ -599,7 +599,7 @@ border: solid 5px white;
 }
 .category1 img
 {
- width: 80%;
+ width: 100%;
  margin-top: 10%;
 }
 .category_text
@@ -608,15 +608,32 @@ border: solid 5px white;
 }
 .category_text h2
 {
- margin-bottom: auto;
+ 
  color: rgb(75, 73, 73);
- font-size: 22px;
- font-weight: 500;
+ font-size: 20px;
+ margin-bottom: 1%;
+ font-weight: 600;
 }
 .category_text p
 {
  font-size: 12px;
  margin: 8px 5px;
+
+}
+.category_text button
+{
+    
+    background-color: rgb(56, 67, 79);
+    border: none;
+    outline: none;
+    width: 70%;
+    color: white;
+    font-size: 14px;
+    margin-top: 3%;
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0px 2px 10px 0px #5555;
+    margin-bottom: 8%;
 
 }
 .logout_btn
@@ -1294,7 +1311,7 @@ width: 100%;
 {
  color: #78aece;
  text-decoration: none;
- padding: 22px 16px;
+ padding: 0 16px;
 
  font-size: 20px;
 }

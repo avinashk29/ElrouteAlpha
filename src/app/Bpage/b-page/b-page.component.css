@@ -1202,7 +1202,7 @@ z-index: 1;
 .feed_text a {
   color: #78aece;
   text-decoration: none;
-  padding: 22px 16px;
+  padding: 0 16px;
 
   font-size: 20px;
 }
@@ -2952,6 +2952,7 @@ label {
   text-align: right;
   margin-bottom: 1%;
   color: rgb(30, 28, 28);
+  cursor: pointer;
   padding-top: 3px;
   justify-content: flex-end;
   display: flex
@@ -3302,19 +3303,23 @@ input[type="file"] {
 .facebook_social
 {
   width: 15%;
+  
 }
 .facebook_social img
 {
+  cursor:pointer;
   width: 50px;
   height: 50px;
 }
 .linkedin_social
 {
   width: 75%;
+  
   margin-top: 1%;
 }
 .linkedin_social img
 {
+  cursor:pointer;
   width: 30px !important;
   height: 30px !important;
 }

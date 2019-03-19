@@ -12,7 +12,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { ProductServiceService } from '../../Service/product-service.service';
-
+import{TradeCatalystComponent} from 'src/app/HomePage/trade-catalyst/trade-catalyst.component';
 import { ToastrService } from "ngx-toastr";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
@@ -225,5 +225,11 @@ export class WithLoginComponent implements OnInit {
 
       dialogConfig.width = '20%';
       this.dialog.open(FeedShareComponent, dialogConfig);
+  }
+  openTradeCatalyst(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.dialog.open(TradeCatalystComponent,dialogConfig);
   }
 }

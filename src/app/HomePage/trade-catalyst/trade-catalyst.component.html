@@ -1,6 +1,6 @@
 <div class="sigup-form">
   <h3>
-      Trade-Catalysts Form
+      Chosse Your Trade-Catalysts 
   </h3>
   <form [formGroup]="enquiryDetails" (ngSubmit)="onSubmit()" >
     <ul>
@@ -8,7 +8,9 @@
 <li class="form-elements"><input type="text" placeholder="PHONE" formControlName= "phone" name="phone" ></li>
 <li class="form-elements"><input type="email" placeholder="EMAIL" formControlName= "email" name="email"></li>
 </ul>
+<div class="go">
 <button type="submit">Go</button>
+</div>
   </form>
   <!-- <span class="other_option"><h6>Or you can Sign In with the following</h6></span>
   <div class="social_icon_signup">
