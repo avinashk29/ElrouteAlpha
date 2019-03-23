@@ -53,10 +53,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    this.router.navigate(['/']);
-    this.storage.remove('token');
-    this.storage.remove('companyId');
-
-
+    if (confirm('Are you sure you want to logout')) {
+      this.router.navigate(['/']);
+      this.storage.remove('token');
+      this.storage.remove('companyId');
+    }
   }
 }

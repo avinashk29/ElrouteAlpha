@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { UserService } from 'src/app/Service/user-services.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-bookmark',
@@ -18,7 +19,7 @@ export class BookmarkComponent implements OnInit {
   noResult = false;
   constructor(public bookmarkService:BookmarkServices,
     private userService:UserService,
-    @Inject(LOCAL_STORAGE) public storage:WebStorageService) {
+    @Inject(LOCAL_STORAGE) public storage:WebStorageService, public notifcation: ToastrService) {
 
     this.bookmarkService.token = this.storage.get('token');
 
@@ -59,11 +60,14 @@ export class BookmarkComponent implements OnInit {
   addProductBookmark(i,id){
     this.productId[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
+      this.notifcation.success('Bookmark');
+
     })
   }
   deleteProductBookmark(i,id){
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
+      this.notifcation.success('UnBookmark');
     })
   }
 

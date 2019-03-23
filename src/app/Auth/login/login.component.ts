@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,8 +16,8 @@ import { SocialUser } from 'ng6-social-button/lib/entities';
 })
 export class LoginComponent implements OnInit {
   login = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
   });
   error = true;
   bpage = false;
@@ -42,23 +42,28 @@ export class LoginComponent implements OnInit {
     this.dialog.open(SignupComponent, dialogConfig);
   }
    onSubmit() {
-    this.dialogRef.close(LoginComponent);
-    const loginValues = this.login.value;
-    this.authService.login(loginValues).subscribe( res => {
+if (this.login.valid) {
+  this.dialogRef.close(LoginComponent);
+  const loginValues = this.login.value;
+  this.authService.login(loginValues).subscribe( res => {
 
-        this.storage.set('token', res.headers.get('x-auth'));
-         this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
+      this.storage.set('token', res.headers.get('x-auth'));
+       this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
 
-        this.userService.userData = JSON.parse(res['_body']);
+      this.userService.userData = JSON.parse(res['_body']);
 
-        this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
-        this.router.navigate(['/Dashboard']);
-    }, error =>{
-      this.notification.error(error._body);
-      //console.log(error._body);
-    });
+      this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
+      this.router.navigate(['/Dashboard']);
+  }, error =>{
+    this.notification.error(error._body);
+    //console.log(error._body);
+  });
+}
 
 
+  }
+  closeLogin() {
+    this.dialogRef.close();
   }
   getSocialUser(socialUser) {
     console.log(socialUser);

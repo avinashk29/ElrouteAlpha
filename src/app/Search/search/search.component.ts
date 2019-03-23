@@ -8,6 +8,7 @@ import { UserService} from '../../Service/user-services.service';
 import { ProductServiceService } from 'src/app/Service/product-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -29,7 +30,8 @@ noResult = false;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
- public route: ActivatedRoute, public companyService: CompanyServiceService,private router:Router
+ public route: ActivatedRoute, public companyService: CompanyServiceService,private router:Router,
+ public notification: ToastrService
  ) {
 
   }
@@ -100,6 +102,7 @@ showProduct(id) {
 }
 bookmark(id) {
   this.bookmarkService.addPostBookmark(id).subscribe(res =>{
+
   });
   this.unbookmarked = false;
   }
@@ -107,11 +110,13 @@ bookmark(id) {
   addProductBookmark(i,id){
     this.productId[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
-    })
+      this.notification.success('Bookmark');
+    });
   }
   deleteProductBookmark(i,id){
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
+      this.notification.success('UnBookmark');
     })
   }
   gotoProductPage(id){

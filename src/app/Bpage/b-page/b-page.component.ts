@@ -97,7 +97,7 @@ export class BPageComponent implements OnInit {
     groupName: new FormControl(''),
     products: new FormControl('')
   });
-  
+
   constructor(
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public companyService: CompanyServiceService,
@@ -294,13 +294,13 @@ this.follows.token=this.storage.get('token');
           for(let i=0;i<this.products.length;i++){
             this.showAll.push(false);
           }
-          
+
         });
       });
     });
  this.limit = 2;
     }
- 
+
   }
   onAddSection() {
     this.sectionEdit = true;
@@ -343,6 +343,7 @@ this.four = false;
   onDelete(index) {
     const control = <FormArray>this.BForm.controls.section;
     control.removeAt(index);
+    this.notification.success('Section Deleted');
   }
 
   editbio() {
@@ -533,12 +534,14 @@ this.four = true;
       //  this.companyService.companyData.followers;
       //console.log(this.companyFollowers.length)
        //console.log(res)
+       this.notification.success('Following');
        });
 
   }
   onunfollow() {
     this.Follower = false;
     this.follows.Unfollow(this.comapnyId).subscribe(res => {
+      this.notification.success('Unfollow');
     // this.companyService.companyData.followers;
     //console.log(this.companyFollowers.length);
     //console.log(res)
@@ -565,6 +568,7 @@ this.four = true;
           this.companyService
             .UpdateCompany(certiForm.value)
             .subscribe(response => {
+              this.notification.success('Certificate Deleted');
               this.companyService.companyData.certification = JSON.parse(
                 response['_body']
               ).certification;
@@ -582,6 +586,7 @@ this.four = true;
           this.companyService
             .UpdateCompany(companyImage.value)
             .subscribe(response => {
+              this.notification.success('Company Image Deleted');
               this.companyService.companyData.companyImage = JSON.parse(
                 response['_body']
               ).companyImage;
@@ -593,6 +598,7 @@ this.four = true;
   addBookmark(id) {
     this.bookmark = true;
     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
+      this.notification.success('Bookmark');
     });
   }
   removeBookmark(id) {
@@ -600,6 +606,7 @@ this.four = true;
     this.bookmarkService
       .DeleteBookmarkCompany(id)
       .subscribe(res => {
+        this.notification.success('UnBookmark');
       });
   }
   onAddproductTogroup(key) {
@@ -616,6 +623,7 @@ this.dialog.open(ProductSelectComponent, dialogConfig);
   onRemoveproduct(id) {
 if(confirm('Are you sure you want to remove the product from group')) {
   this.productService.groupProductdelete(id).subscribe(res => {
+    this.notification.success('Product Removed From Group');
     this.ngZone.run(() => {
       this.productService.getProduct(this.comapnyId).subscribe(res1 => {
         this.products =  JSON.parse(res1['_body']);
@@ -635,6 +643,7 @@ if (confirm('Are you sure you want to remove the group')){
   this.productService.token = this.storage.get('token');
   //console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
+  this.notification.success('Group Deleted');
   // //console.log(JSON.parse(res['_body']));
   this.ngZone.run(() => {
     this.productService.getProduct(this.comapnyId).subscribe(res1 => {
@@ -647,7 +656,7 @@ this.productService.deletegroup(name).subscribe(res => {
 
 }
 
-onShowAllProduct(index){
+onShowAllProduct(index) {
   //console.log(this.showAll[index])
   //console.log(index)
   this.showAll[index]= !this.showAll[index]
@@ -665,12 +674,13 @@ addFeedBookmark(i,id){
   this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
     console.log(JSON.parse(res['_body']))
-
+    this.notification.success('Bookmark');
   });
 }
 removeFeedBookmark(i,id){
   this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
+    this.notification.success('UnBookmark');
     console.log(JSON.parse(res['_body']))
   });
 }
@@ -679,13 +689,14 @@ addProductBookmark(i,id){
   console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
     console.log(res)
-
+    this.notification.success('Bookmark');
   });
 }
 removeProductBookmark(i,id){
   this.shotedProduct[i].bookm=false;
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
     console.log(res)
+    this.notification.success('UnBookmark');
   });
 }
 opneLogin(){
@@ -700,6 +711,7 @@ onDeletePost(id) {
     this.feedService.deletePost(id).subscribe(res => {
 
       console.log(JSON.parse(res['_body']));
+      this.notification.success('Post Deleted');
 
     });
   }

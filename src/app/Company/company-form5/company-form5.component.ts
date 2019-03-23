@@ -43,9 +43,10 @@ companyForm: FormGroup;
     return <FormArray>this.companyForm.get('contactDevision');
   }
   onSubmit() {
-    
-    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
-    });
     this.notification.success('B Face Updated');
+    this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
+
+    });
+
   }
 }

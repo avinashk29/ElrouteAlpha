@@ -41,9 +41,10 @@ export class CompanyForm2Component implements OnInit {
 
   onSubmit() {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
+      this.notification.success('B Face Updated');
     });
 
-    this.notification.success('B Face Updated');
+
 
   }
 

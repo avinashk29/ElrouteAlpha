@@ -76,6 +76,12 @@ input{
   width: 32%;
   margin-left: 5px;
 }
+.error{
+  border: 1px solid red;
+}
+.errorMsg{
+  font-size: 10px;
+}
 .social_icon img{
   width: 50PX;
   height: 50PX;

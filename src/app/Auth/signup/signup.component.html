@@ -2,14 +2,18 @@
   <h2>
     SIGN UP
   </h2>
+
   <p>Register and step into the business world</p>
   <form [formGroup]= "signupForm" (ngSubmit)="onSubmit()" >
     <ul>
    <li>
   <div class="first-field">
     <div class="Uname">
-    <input type="text" placeholder="NAME" formControlName="userName" name="userName" [ngClass]="{'error': !signupForm.get('userName').valid && signupForm.get('userName').touched }">
+    <input type="text" placeholder="NAME" formControlName="userName" pattern="^[a-z0-9_-]$" name="userName" [ngClass]="{'error': !signupForm.get('userName').valid && signupForm.get('userName').touched }">
     <!-- <span *ngIf="!signupForm.get('UserName').valid && signupForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span> -->
+    <!-- <div *ngIf="!signupForm.get('userName').errors?.pattern">
+      User name not valid.
+    </div> -->
     </div>
     <div class="Ulocation">
       <select formControlName="location" name="location" [ngClass]="{'error': !signupForm.get('location').valid && signupForm.get('location').touched }">
@@ -18,11 +22,13 @@
     </div>
   </div>
 </li>
-<li class="form-elements"><input type="text" placeholder="TITLE"  formControlName="title" name="title" [ngClass]="{'error': !signupForm.get('title').valid && signupForm.get('title').touched }"></li>
+<li class="form-elements"><input type="text" placeholder="TITLE"   formControlName="title" name="title" [ngClass]="{'error': !signupForm.get('title').valid && signupForm.get('title').touched }"></li>
+
+
 <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName="email" name="email" [ngClass]="{'error': !signupForm.get('email').valid && signupForm.get('email').touched }" ></li>
 <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName="password" name="password" [ngClass]="{'error': !signupForm.get('password').valid && signupForm.get('password').touched }" ></li>
 <li><div class="terms" style="display: flex; width: 100%;margin-top: 20px;margin-left: -50px; ">
-    <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%">
+    <input type="checkbox" style="height: 2vh; padding: 0; margin: 0;width: 10%"  formControlName = "checkbox">
     <p  style=" padding: 0; margin: 0;;width: 90%; font-size: 12px;" >I accept the <span style="color:cadetblue"> Terms of Use & Privacy Policy </span></p>
   </div></li>
 </ul>

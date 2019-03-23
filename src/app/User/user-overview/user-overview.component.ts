@@ -34,7 +34,7 @@ userFollowing;
   constructor(public userService: UserService, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
   private router: Router, public companyService: CompanyServiceService ,
      public dialog: MatDialog , public route: ActivatedRoute,private imageService: ImageUploadService) {
-      
+
     this.haveCompany = this.storage.get('companyId');
     this.companyName = this.companyService.companyData.companyName;
     this.userService.getUserData().subscribe(res => {
@@ -85,8 +85,8 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
       shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
-        // this.shortBio= JSON.parse(res['_body']).shortBio;
-    })
+         this.shortBio= JSON.parse(res['_body']).shortBio;
+    });
     this.bioEdit = !this.bioEdit;
     this.router.navigate(['/bookmark']);
   }
@@ -102,7 +102,7 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
     const fdata = new FormData();
      fdata.append(name,this.file);
     //  this.spinner.show();
-    
+
     this.imageService.uploadImg(fdata).subscribe(res=>{
       const formdata=new FormData();
       this.url=res['_body'];

@@ -3,6 +3,7 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { UserService } from 'src/app/Service/user-services.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-company',
@@ -13,7 +14,8 @@ export class CompanyComponent implements OnInit {
 userInfo=[];
 userBookmark=[];
 noResult = false;
-  constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService,private userService:UserService,private follows:FollowService) { }
+  constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
+  private userService:UserService,private follows:FollowService, public notifcation: ToastrService) { }
 result=[]
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
@@ -54,23 +56,26 @@ result=[]
 
   onfollow(i,id){
     this.result[i].follow=true;
-    this.follows.addFollow(id).subscribe(res=>{
-           })
+    this.follows.addFollow(id).subscribe(res => {
+this.notifcation.success('Following');
+           });
   }
   onunfollow(i,id){
     this.result[i].follow=false;
-    this.follows.Unfollow(id).subscribe(res=>{
-           })
+    this.follows.Unfollow(id).subscribe(res => {
+      this.notifcation.success('Unfollowing');
+           });
   }
  companyBookmark(i,id){
   this.result[i].bookm=true;
-     this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
-
+     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
+      this.notifcation.success('Bookmark');
      });
  }
  deletecompanyBookmark(i,id){
   this.result[i].bookm=false;
-  this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
+  this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
+    this.notifcation.success('UnBookmark');
   });
  }
 }

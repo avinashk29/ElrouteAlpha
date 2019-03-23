@@ -91,7 +91,8 @@ export class WithLoginComponent implements OnInit {
       }
 
       this.userService.getUserData().subscribe(res1 => {
-        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length + JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
+        JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
         // console.log(this.allFollow);
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
@@ -199,13 +200,17 @@ export class WithLoginComponent implements OnInit {
   }
   onunfollow(i, id) {
     this.result[i].follow = false;
-    this.followers.Unfollow(id).subscribe(res => {});
+    this.followers.Unfollow(id).subscribe(res => {
+      this.notification.success('Unfollow')
+    });
+
   }
  addFeedBookmark(i, id) {
    console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
       console.log(JSON.parse(res['_body']).bookmarks.length);
+      this.notification.success('Feed Bookmark');
     });
   }
   removeFeedbookmark(i, id) {
@@ -213,6 +218,7 @@ export class WithLoginComponent implements OnInit {
     console.log(id)
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       console.log(JSON.parse(res['_body']));
+      this.notification.success('Feed Unbookmark');
     });
   }
   onSharepost(i, admin) {

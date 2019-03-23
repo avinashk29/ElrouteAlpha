@@ -30,7 +30,8 @@ export class SignupComponent implements OnInit {
     location: new FormControl('India', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     title: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    password: new FormControl('', [Validators.required]),
+    checkbox: new FormControl('', [Validators.required])
   });
   constructor(
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
@@ -63,6 +64,9 @@ export class SignupComponent implements OnInit {
     dialogConfig.width = '30%';
     this.dialog.open(LoginComponent, dialogConfig);
   }
+closeLogin() {
+  this.dialogRef.close();
+}
 
   // signInWithSocial(serviceProvider):void{
   //   this.authService1.signIn(serviceProvider.PROVIDER_ID).then(userData => {

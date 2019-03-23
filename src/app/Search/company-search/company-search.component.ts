@@ -10,6 +10,7 @@ import { JAN } from '@angular/material';
 
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-company-search',
   templateUrl: './company-search.component.html',
@@ -32,7 +33,7 @@ export class CompanySearchComponent implements OnInit {
   userBookmark = [];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,private bookmarkService:BookmarkServices,
    private router:Router,public search: SearchService,private companyService:CompanyServiceService,private userService:UserService,
-   private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog) { }
+   private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog, public notification: ToastrService) { }
 
 
   ngOnInit() {
@@ -104,22 +105,26 @@ if(this.token) {
   onfollow(i,id){
     this.cresult[i].follow=true;
     this.follows.addFollow(id).subscribe(res=>{
-           })
+      this.notification.success('Following');
+           });
   }
   onunfollow(i,id){
     this.cresult[i].follow=false;
     this.follows.Unfollow(id).subscribe(res=>{
-           })
+      this.notification.success('Unfollow');
+           });
   }
  companyBookmark(i,id){
   this.cresult[i].bookm=true;
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
+      this.notification.success('Company Bookmark');
 
      });
  }
  deletecompanyBookmark(i,id){
   this.cresult[i].bookm=false;
-  this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res=>{
+  this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
+    this.notification.success('Company Unbookmark');
   });
  }
  openLogin() {

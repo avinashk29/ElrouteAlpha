@@ -9,6 +9,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 import { FeedService } from 'src/app/Service/feed-service.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-feeds',
   templateUrl: './feeds.component.html',
@@ -23,7 +24,7 @@ export class FeedsSearchComponent implements OnInit {
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
    public bookmarkService: BookmarkServices,private router:Router,
    public follows: FollowService,private UserService:UserService, public route: ActivatedRoute,  public dialog: MatDialog,
-    public feedService: FeedService) { }
+    public feedService: FeedService, public notification: ToastrService) { }
 word;
 page;
   ngOnInit() {
@@ -68,17 +69,20 @@ if(this.token){
 
   follow(id) {
       this.follows.addFollow(id).subscribe(res => {
+        this.notification.success('Following');
       });
   }
 
   onBookmark(i,id) {
       this.productId[i].bookm=true;
       this.bookmarkService.addPostBookmark(id).subscribe(res => {
+        this.notification.success('Bookmark');
       });
    }
    OndeleteBookmark(i,id){
     this.productId[i].bookm=false;
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
+      this.notification.success('UnBookmark');
     });
    }
 
