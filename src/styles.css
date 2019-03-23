@@ -27,10 +27,16 @@ body
   overflow-y: scroll;
 
 }
+button ,p , img ,svg , h1 , h2 , h3 , h4
+{
+  outline: none;
+}
 button
 {
   cursor: pointer;
+  outline: none;
 }
+
 .cdk-overlay-pane::-webkit-scrollbar { width: 0 !important }
 @media screen and (min-width: 200px) and (max-width: 700px) {
 .cdk-overlay-pane

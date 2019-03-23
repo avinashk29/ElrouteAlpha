@@ -8,17 +8,23 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class TradeCatalystComponent implements OnInit {
 
+
   enquiryDetails=new FormGroup({
     name:new FormControl(''),
     phone:new FormControl(''),
     email:new FormControl(''),
 
   })
-  constructor() { }
+  constructor() {  
+    
+    
+  }
 
   ngOnInit() {
   }
   onSubmit(){
     
+    
   }
+  
 }

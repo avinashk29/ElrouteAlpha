@@ -1,6 +1,6 @@
 
-
-              <form (submit)="getProduct()" *ngIf= "this.products">
+<div *ngIf="this.products.length"> 
+              <form (submit)="getProduct()">
                     <div class="tag_product">
                       <div class="tag">
                         <div class="heading">
@@ -11,7 +11,7 @@
                            <input list="product" [(ngModel)]="product_id" name="product_id" autocomplete="off" placeholder="Product">
                          <datalist id ="product"  >
                         <div *ngFor = "let product of products; let i = index">
-                       <option  value="{{i}}">{{product.productName}}</option>
+                       <option value="{{i}}">{{product.productName}}</option>
                     </div>
                   </datalist>
 
@@ -22,6 +22,7 @@
                        </div>
                      </div>
               </form>
-<div *ngIf= "!this.products">
+</div>
+<div *ngIf= "!products.length">
   <h1 style="text-align: center">No Product Created</h1>
 </div>
