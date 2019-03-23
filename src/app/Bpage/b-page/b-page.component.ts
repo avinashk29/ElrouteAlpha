@@ -136,31 +136,11 @@ this.bookmarkService.token=this.storage.get('token')
 this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
-        window.scrollTo(0,0);
+        
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData = JSON.parse(res['_body']);
-        //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
-        //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
-
-        //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
-        //     console.log(this.companyService.companyData.closeAt );
-        //   }
-        //   else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
-        //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
-        //     console.log(this.companyService.companyData.closeAt );
-        //   }
-
-        //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
-        //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
-
-        //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
-        //     console.log(this.companyService.companyData.openAt );
-        //   }
-        //   else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
-        //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
-        //     console.log(this.companyService.companyData)
-        //   }
+     
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
@@ -208,7 +188,7 @@ this.follows.token=this.storage.get('token');
 
     this.mycompanyId = this.storage.get('companyId');
 
-    if (this.type === 'info') {
+   if (this.type === 'info') {
       this.two = true;
       this.three = false;
       this.four = false;
@@ -216,7 +196,7 @@ this.follows.token=this.storage.get('token');
       this.type = 'info';
 
     }
-    if (this.type === 'contact') {
+     if (this.type === 'contact') {
       this.type = 'contact  ';
       this.two = false;
       this.three = false;
@@ -259,7 +239,7 @@ this.follows.token=this.storage.get('token');
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
       this.feedById=JSON.parse(res1['_body']);
-      console.log(JSON.parse(res1['_body']))
+      // console.log(JSON.parse(res1['_body']))
     //----------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
