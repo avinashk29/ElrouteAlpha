@@ -27,6 +27,10 @@ body
   overflow-y: scroll;
 
 }
+button
+{
+  cursor: pointer;
+}
 .cdk-overlay-pane::-webkit-scrollbar { width: 0 !important }
 @media screen and (min-width: 200px) and (max-width: 700px) {
 .cdk-overlay-pane

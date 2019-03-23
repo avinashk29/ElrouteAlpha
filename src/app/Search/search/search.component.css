@@ -181,7 +181,8 @@ section{
   font-size: 25px;
   padding-top: 3px;
   justify-content: flex-end;
-    display: flex
+    display: flex;
+    cursor: pointer;
 }
 .productContent .content .productName h5 ,.ServiceContent .content .ServiceName h5{
   margin: 0;

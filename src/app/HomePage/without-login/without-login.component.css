@@ -1007,6 +1007,7 @@ color: white !important;
 }
 .section7_4_1
 {
+  cursor: pointer;
  width: 50%;
  box-shadow: 0px 1px 5px 0px #5555;
  margin: 0px 28px;
@@ -1276,7 +1277,7 @@ color: white !important;
  float: left;
  border-radius: 100px;
  text-align: center;
- margin-left: 35%;
+ margin-left: 32%;
 }
 .img3 img {
  width: 90px;

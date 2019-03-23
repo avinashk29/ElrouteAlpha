@@ -96,6 +96,7 @@
 {
   text-align: right;
   padding-top: 2%;
+  cursor: pointer;
 }
 
 .service2_img img
@@ -136,6 +137,7 @@ height: 40vh;
     border:solid 1px gray;
     padding: 0px 15px;
     color:#707070;
+    cursor: pointer;
     border-radius: 8px;
 
 }
@@ -515,7 +517,7 @@ section{
 .feed_text a {
   color: #78aece;
   text-decoration: none;
-  padding: 22px;
+  padding: 0 16px;
   font-size: 20px;
 }
 .bookmark {
@@ -564,17 +566,19 @@ section{
   width: 90%;
   border-bottom: solid 1px;
   display: flex;
-  z-index: 999;
+  z-index: 9;
   background-color: white;
-  /* margin-top: -12px; */
   left: 7%;
-  position: fixed
+  top: 7%;
+  height: 62px;
+  position: fixed;
 
 }
   .header_left
   {
     display: flex;
     width: 100%;
+    margin-top: 1%;
   }
   .company_logo
   {
@@ -592,6 +596,10 @@ section{
     font-weight: 400;
     margin-top: auto;
   }
+  .header_right
+  {
+    margin-top: 1%;
+  }
   .header_right ul
   {
 
@@ -607,6 +615,7 @@ section{
   {
     font-size: 25px;
     margin: 0px 0px 0px 40px;
+    cursor: pointer;
 
   }
   .activate

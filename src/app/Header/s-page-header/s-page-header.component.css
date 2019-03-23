@@ -22,6 +22,7 @@ header{
     margin-top: auto;
     /* padding-top: 6%; */
     font-size: 29px;
+    cursor: pointer;
     color: #707070;
     font-weight: 400;
 }
