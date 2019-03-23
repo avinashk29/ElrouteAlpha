@@ -4,7 +4,17 @@
   </h3>
   <form [formGroup]="enquiryDetails" (ngSubmit)="onSubmit()" >
     <ul>
-<li class="form-elements"><input type="text" placeholder="NAME" formControlName= "name" name="name" ></li>
+<li class="form-elements">
+<select>
+<option>Branding Experts</option>
+<option>Digital Marketing Experts</option>
+<option>Content Marketing Experts</option>
+<option> Other</option>
+
+
+  </select>
+
+</li>
 <li class="form-elements"><input type="text" placeholder="PHONE" formControlName= "phone" name="phone" ></li>
 <li class="form-elements"><input type="email" placeholder="EMAIL" formControlName= "email" name="email"></li>
 </ul>

@@ -24,7 +24,7 @@
                   <img alt="Bookmark" src="{{feed.Image}}">
                   <div class="overlay1">
                     <div class="feed_text">
-                      <p>{{feed.content}}</p>
+                      <p>{{(feed.content | slice:0:180)+'...'}}</p>
                       <!-- <p>Watch our first episode</p> -->
                       <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                     </div>

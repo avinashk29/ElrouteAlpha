@@ -370,8 +370,8 @@ header {
 
 .logoheader button {
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   outline: none;
   /* height: 16vh; */
   background-color: #e3e3e3;
@@ -1649,7 +1649,7 @@ margin-top: auto;
 }
 .no_contact_left
 {
-  height: 25vh;
+  /* height: 25vh; */
   width:35%;
   /* background-color: gray; */
   border-radius: 16px 0px 0px 16px;
@@ -1696,9 +1696,19 @@ margin-top: auto;
   height: 60px;
   font-size: 10px;
 }
+.not_infoimg
+{
+  height:40vh ;
+  width: 100%;
+}
 
 
 @media screen and (max-width:700px) {
+  .not_infoimg
+{
+  height:22vh ;
+  width: 100%;
+}
   .b_page_btn svg
   {
     width: 24px;

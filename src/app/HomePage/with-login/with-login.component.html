@@ -239,7 +239,7 @@
                         <img alt="with-login" src="{{feedElement.Image}}">
                         <div class="overlay1">
                           <div class="feed_text">
-                            <p>{{feedElement.content}}</p>
+                            <p>{{(feedElement.content | slice:0:180)+'...'}}</p>
                             <a targert="_blank" href="http://{{feedElement.link}}">{{feedElement.link}}</a>
                           </div>
                           <div class="bookmark_share">

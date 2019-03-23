@@ -21,8 +21,8 @@ productName;
     this.product.token = this.storage.get('token');
     this.product.getAllProduct(this.id).subscribe(res => {
       //console.log(JSON.parse(res['_body']));
-      this.products = JSON.parse(res['_body'])
-    })
+      this.products = JSON.parse(res['_body']);
+    });
   }
   getProduct(){
   this.feed.tagId = this.products[this.product_id]._id;
