@@ -159,7 +159,7 @@ this.follows.token=this.storage.get('token');
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
-              console.log(this.products.length)
+              console.log(this.products)
               // this.Bproduct=JSON.parse(res['_body'])[0].shotedProduct;
               console.log(this.Bproduct);
               this.shotedProduct=(JSON.parse(res['_body'])[0].sortedProducts);

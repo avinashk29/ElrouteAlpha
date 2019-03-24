@@ -1251,93 +1251,7 @@
 
 
       <fieldset *ngFor="let group of products; let ip = index">
-
-          <!-- <h4 style="  color: #333">  {{group.key}}</h4>
-
-          <button (click)="onAddproductTogroup(group.key)" *ngIf="myCompany">Add Product</button>
-          <button (click)="onDeletegroup(group.key)" *ngIf="myCompany">Delete Group</button>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-
-
-                      </mat-panel-title>
-                      <div style="display: flex;flex-wrap: wrap;">
-                          <div class="Card" *ngFor="let product of group.sortedProducts | slice:0:limit; let i = index">
-                              <button (click)="onRemoveproduct(product._id , ip , group.key)" *ngIf="myCompany">Remove</button>
-                            <div class="productCard">
-
-                              <div class="productImage">
-                                <img src="{{product.Image}}">
-                              </div>
-                              <div class="productContent">
-                                <div class="content">
-                                  <div class="productCategory">
-                                    <h6>{{product.category}}</h6>
-                                  </div>
-                                  <div class="productName">
-                                    <h2 routerLink="/product-page/{{product._id}}">{{product.productName}}</h2>
-                                    <h5>{{product.companyName}}</h5>
-                                    <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span
-                                        style="padding-left: 8px">Country</span></small>
-                                  </div>
-                                  <div class="discription" style="margin-top:30px;">
-                                    <p>{{product.shortDescription}}</p>
-                                  </div>
-                                  <div class="tags">
-
-                                  </div>
-                                  <div class="other-info">
-                                    <div class="price">
-                                      <h4>{{product.price}} {{product.minPrice}}</h4>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-                    </mat-expansion-panel-header>
-      <div style="display: flex;flex-wrap: wrap;">
-      <div class="Card" *ngFor="let product of group.sortedProducts | slice:2:group.sortedProducts.length; let i = index">
-          <button  (click)="onRemoveproduct(product._id , ip,  group.key)" *ngIf="myCompany">Remove</button>
-        <div class="productCard">
-
-          <div class="productImage">
-            <img src="{{product.Image}}">
-          </div>
-          <div class="productContent">
-            <div class="content">
-              <div class="productCategory">
-                <h6>{{product.category}}</h6>
-              </div>
-              <div class="productName">
-                <h2 routerLink="/product-page/{{product._id}}">{{product.productName}}</h2>
-                <h5>{{product.companyName}}</h5>
-                <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px">{{product.category}}</span><span
-                    style="padding-left: 8px">Country</span></small>
-              </div>
-              <div class="discription" style="margin-top:30px;">
-                <p>{{product.shortDescription}}</p>
-              </div>
-              <div class="tags">
-
-              </div>
-              <div class="other-info">
-                <div class="price">
-                  <h4>{{product.price}} {{product.minPrice}}</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </mat-expansion-panel>
---->
-<legend style="  color: #333">  {{group.key|uppercase}}</legend>
+<legend style="color: #333">  {{group.key|uppercase}}</legend>
 <div class="add_delete" >
 <button (click)="onAddproductTogroup(group.key)" class="add_product" *ngIf="myCompany && group.key!=='others' "><span> <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2c1.695 1.942 2.371 3 4 3h13v17h-24v-20h7zm4 5c-2.339 0-3.537-1.388-4.917-3h-4.083v16h20v-13h-11zm2 6h3v2h-3v3h-2v-3h-3v-2h3v-3h2v3z"/></svg> </span></button>
 <button (click)="onDeletegroup(group.key)" class="delete_product" *ngIf="myCompany && group.key!=='others'"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6l3 18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/></svg></span></button>
@@ -1419,7 +1333,7 @@
 <legend *ngIf="this.showAll[ip]" class="arrow_product"><span (click)="onShowAllProduct(ip)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg> </span></legend>
 
       </fieldset>
-      <div class="add_new_product" *ngIf="products.length">
+      <div class="add_new_product" *ngIf="products">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
         <div class="add_new_product">
