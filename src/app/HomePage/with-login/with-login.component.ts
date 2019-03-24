@@ -196,12 +196,21 @@ export class WithLoginComponent implements OnInit {
   }
   onfollow(i, id) {
     this.result[i].follow = true;
-    this.followers.addFollow(id).subscribe(res => {});
+    this.followers.addFollow(id).subscribe(res => {
+      this.notification.success('Follow')
+      this.userService.getUserData().subscribe(res1 => {
+        this.userService.following = JSON.parse(res1['_body']).following.length;
+        });
+
+    });
   }
   onunfollow(i, id) {
     this.result[i].follow = false;
     this.followers.Unfollow(id).subscribe(res => {
       this.notification.success('Unfollow')
+      this.userService.getUserData().subscribe(res1 => {
+        this.userService.following = JSON.parse(res1['_body']).following.length;
+        });
     });
 
   }
@@ -209,16 +218,24 @@ export class WithLoginComponent implements OnInit {
    console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']).bookmarks.length);
+      this.userService.getUserData().subscribe(res1 => {
+        this.userService.bookmark =  JSON.parse(res1['_body']).bookmarks.post.length +
+          JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        });
       this.notification.success('Feed Bookmark');
+
     });
   }
   removeFeedbookmark(i, id) {
     this.result[i].bookm = false;
     console.log(id)
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+      this.userService.getUserData().subscribe(res1 => {
+        this.userService.bookmark =  JSON.parse(res1['_body']).bookmarks.post.length +
+          JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
+        });
       this.notification.success('Feed Unbookmark');
+
     });
   }
   onSharepost(i, admin) {

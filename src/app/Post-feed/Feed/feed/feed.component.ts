@@ -10,7 +10,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 })
 export class FeedComponent implements OnInit {
 id;
-products;
+products = [];
 product_id;
 productName;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService, public product: ProductServiceService,
@@ -22,6 +22,7 @@ productName;
     this.product.getAllProduct(this.id).subscribe(res => {
       //console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body']);
+      // console.log(this.products);
     });
   }
   getProduct(){
