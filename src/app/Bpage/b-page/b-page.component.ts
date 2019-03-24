@@ -136,11 +136,11 @@ this.bookmarkService.token=this.storage.get('token')
 this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
-        
+
         this.type = paramas.urltype;
         this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
           this.companyService.companyData = JSON.parse(res['_body']);
-     
+
           this.certification = JSON.parse(res['_body']).certification;
           this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
@@ -687,10 +687,10 @@ opneLogin(){
 }
 onDeletePost(id) {
   if (confirm('Are you sure you want to delete the post')) {
-    this.feedById.splice(id , 1);
-    this.feedService.deletePost(id).subscribe(res => {
+    const i = this.feedById.indexOf(id);
+    this.feedById.splice(i , 1);
 
-      console.log(JSON.parse(res['_body']));
+    this.feedService.deletePost(id).subscribe(res => {
       this.notification.success('Post Deleted');
 
     });

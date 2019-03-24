@@ -85,6 +85,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HrFormatPipe } from './hr-format.pipe';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { InfoComponent } from './Bpage/info/info.component';
+
 // const config = new AuthServiceConfig([
 // {
 //   id: GoogleLoginProvider.PROVIDER_ID,
@@ -163,6 +165,8 @@ export function getAuthServiceConfigs() {
     TradeCatalystComponent,
     FeedShareComponent,
     HrFormatPipe,
+    InfoComponent,
+
 
 
   ],

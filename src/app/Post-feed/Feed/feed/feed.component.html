@@ -1,5 +1,5 @@
 
-<div *ngIf="this.products.length"> 
+<div *ngIf="this.products.length">
               <form (submit)="getProduct()">
                     <div class="tag_product">
                       <div class="tag">
@@ -11,7 +11,7 @@
                            <input list="product" [(ngModel)]="product_id" name="product_id" autocomplete="off" placeholder="Product">
                          <datalist id ="product"  >
                         <div *ngFor = "let product of products; let i = index">
-                       <option value="{{i}}">{{product.productName}}</option>
+                       <option value="{{i}}" >{{product.productName}}
                     </div>
                   </datalist>
 

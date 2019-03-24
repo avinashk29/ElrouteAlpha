@@ -26,16 +26,19 @@ GroupForm = new FormGroup({
 
   ngOnInit() {
     this.key = this.productService.key;
+    console.log(this.key);
     this.companyId = this.storage.get('companyId');
-    //console.log(this.productService.key);
+    console.log(this.productService.key);
     this.productService.token = this.storage.get('token');
     this.productService.getProduct(this.companyId).subscribe(res => {
       this.productService.productData = JSON.parse(res['_body']);
+      console.log(this.productService.productData);
       // // this.results = this.productService.productData;
       for(let i=0;i<this.productService.productData.length;i++){
         if(this.productService.productData[i].key==='others'){
           //console.log(JSON.parse(res['_body'])[i].sortedProducts);
           this.products = JSON.parse(res['_body'])[i].sortedProducts;
+          console.log(this.products);
         }
       }
 
@@ -91,14 +94,15 @@ if (!this.productService.key) {
   this.productService.groupProduct(this.GroupForm.value).subscribe(res => {
     //console.log(res);
     //console.log(JSON.parse(res['_body']));
-    this.router.navigate(['/companyPage/' + this.companyId], {
-      queryParams: { urltype: 'product'}
 
-    });
     this.spinner.hide();
   });
 }
 
 this.dialogRef.close(ProductSelectComponent);
+this.router.navigate(['/companyPage/' + this.companyId], {
+  queryParams: { urltype: 'product'}
+
+});
    }
 }
