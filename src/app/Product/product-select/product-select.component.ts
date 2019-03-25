@@ -105,4 +105,7 @@ this.router.navigate(['/companyPage/' + this.companyId], {
 
 });
    }
+   closeLogin() {
+    this.dialogRef.close();
+  }
 }

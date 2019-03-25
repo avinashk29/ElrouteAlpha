@@ -159,6 +159,7 @@ border: solid 5px white;
 }
 .user_following
 {
+    outline: none;
  display: flex;
  margin: 0 auto;
  width: 84%;
@@ -1317,8 +1318,11 @@ width: 100%;
 }
 .bookmark_share
 {
- display: flex;
- padding-top: 15%;
+    display: flex;
+    padding-top: 15%;
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
  /* margin: 0 auto;
  width: 77%; */
 

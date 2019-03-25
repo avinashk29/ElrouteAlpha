@@ -41,4 +41,7 @@ onEdit() {
   });
 
 }
+onClose(){
+  this.dialogRef.close();
+}
 }

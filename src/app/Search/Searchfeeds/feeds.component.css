@@ -223,7 +223,10 @@ section{
 }
 .bookmark_share {
   display: flex;
-  padding-top: 15%;
+    padding-top: 15%;
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
   /* margin: 0 auto;
   width: 77%; */
 
@@ -253,7 +256,7 @@ section{
 }
 .result_not_found
 {
-  width: 85%;
+  width: 60%;
   margin: 0 auto;
 }
 .result_not_found img

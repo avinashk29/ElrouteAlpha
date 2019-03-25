@@ -95,4 +95,36 @@
   .errorMsg{
     font-size: 10px;
   }
+  .remove_product
+  {
+    float: right;
+    position: relative;
+    border: none;
+    top: 3.5px;
+    width: 0% ! important;
+    background-color: transparent;
+    margin-top: -20px !important;
+    left: -6.3px;
+    outline: none;
+  
+  }
+  .remove_product svg
+  {
+    background-color:white;
+   /* fill: #ef0707; */
+   width: 18px;
+  }
+  .edit_save
+  {
+    width: 35% !important;
+    margin: 4px 12px;
+    background-color: #34c334;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    height: 35px !important;
+    border-radius: 6px !important;
+    border: none;
+    font-size: 12px;
+  }
   

@@ -65,3 +65,21 @@
     height: 4vh;
     margin-right: 3%;
 }
+.remove_product
+{
+  float: right;
+  position: relative;
+  border: none;
+  top: 3.5px;
+  width: 0% ! important;
+  background-color: transparent;
+  left: -24.3px;
+  outline: none;
+
+}
+.remove_product svg
+{
+  background-color:white;
+ /* fill: #ef0707; */
+ width: 18px;
+}

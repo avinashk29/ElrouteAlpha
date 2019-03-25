@@ -843,7 +843,7 @@
                         <!-- <p>Watch our first episode</p> -->
                         <a target="_blank" href="http://{{feed.link}}" aria-label="false">{{feed.link}}</a>
                       </div>
-                      <div class="bookmark_share" *ngIf="!myCompany">
+                      <div class="bookmark_share" >
                           <div class="bookmark">
                               <span (click)="addFeedBookmark(i,feed._id)" *ngIf="!this.feedById[i].bookm else load">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
