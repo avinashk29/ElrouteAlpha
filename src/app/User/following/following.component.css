@@ -77,8 +77,7 @@
 
 .following_bookmark {
     width: 15%;
-    margin-top: auto;
-    margin-bottom: auto;
+    align-items:center;
     margin-left: 30px;
     display: flex;
 }
