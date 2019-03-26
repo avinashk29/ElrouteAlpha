@@ -843,7 +843,7 @@
                         <!-- <p>Watch our first episode</p> -->
                         <a target="_blank" href="http://{{feed.link}}" aria-label="false">{{feed.link}}</a>
                       </div>
-                      <div class="bookmark_share" *ngIf="!myCompany">
+                      <div class="bookmark_share" >
                           <div class="bookmark">
                               <span (click)="addFeedBookmark(i,feed._id)" *ngIf="!this.feedById[i].bookm else load">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
@@ -1331,7 +1331,7 @@
 <legend *ngIf="this.showAll[ip]" class="arrow_product"><span (click)="onShowAllProduct(ip)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg> </span></legend>
 
       </fieldset>
-      <div class="add_new_product" *ngIf="products.length">
+      <div class="add_new_product" *ngIf="products">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
         <div class="add_new_product">

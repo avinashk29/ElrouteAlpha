@@ -58,6 +58,25 @@ button
     padding: 8px;
     width: 15%;
 }
+.remove_product
+{
+  float: right;
+  position: relative;
+  border: none;
+  top: 3.5px;
+  width: 0% ! important;
+  background-color: transparent;
+  /* left: -24.3px; */
+  margin-bottom: 0;
+  outline: none;
+
+}
+.remove_product svg
+{
+  background-color:white;
+ /* fill: #ef0707; */
+ width: 18px;
+}
 
 @media screen and (min-width: 200px) and (max-width: 700px) {
     .group_name input {

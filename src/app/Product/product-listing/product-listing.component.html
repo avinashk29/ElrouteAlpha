@@ -70,7 +70,7 @@
     </app-product>
     <app-product-form *ngIf= "showForm">
     </app-product-form>
-    <div style="text-align: center;margin-top: -16%;margin-left: 7%;">
+    <div class="cancel_button">
     <button type="submit" *ngIf = "showEdit" class="product_cancel" routerLink = "/product" (click) = "showEdit = false"> Cancel</button>
     <button type="submit" *ngIf= "showForm" class="product_cancel" routerLink = "/product" (click) = "!showForm = false">Cancel</button>
 </div>

@@ -9,7 +9,7 @@
         <div class="profile">
             <div class="follower_user">
                 <div class="follower_location">
-                        <span (click) = "openDialog()" style="float:left;margin:11px;"> <svg  xmlns="http://www.w3.org/2000/svg" width="24" style="fill:aliceblue;" height="24" viewBox="0 0 24 24" ><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
+                        <span (click) = "openDialog()" style="float:left;margin:11px; cursor: pointer;"> <svg  xmlns="http://www.w3.org/2000/svg" width="24" style="fill:aliceblue;" height="24" viewBox="0 0 24 24" ><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
                     <span style="padding-top:10px;">{{this.userService.userData.location}}</span>
                 </div>
                 <div class="follower_img">
@@ -29,7 +29,7 @@
         <div class="Bio">
             <div class="Bio_heading">
                 <p> BIO</p>
-                <span (click)= "editBio()" style="float:right"  class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
+                <span (click)= "editBio()" style="float:right;cursor: pointer;"  class="bio_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18.311 2.828l2.862 2.861-15.033 15.032-3.583.722.723-3.584 15.031-15.031zm0-2.828l-16.873 16.872-1.438 7.127 7.127-1.437 16.874-16.873-5.69-5.689z"/></svg></span>
             </div>
 
             <div class="follower_des" *ngIf="!bioEdit">
@@ -98,9 +98,11 @@
           </div>
         </div>
     </div>
+    
 
 </div>
 <!------------------------------------MObile code---------------------------->
+
 <section>
     <div class="follower_box">
       <div class="follower_user">
@@ -203,3 +205,9 @@
     <!------------------------------------MObile code End---------------------------->
 
     </div>
+
+
+
+
+
+

@@ -166,6 +166,7 @@ section{
 
 }
 .productContent .content .productName h2 , .ServiceContent .content .ServiceName h2{
+  cursor: pointer;
   margin: 0;
   width: 100%;
   font-weight: 100;
@@ -300,8 +301,11 @@ section {
  }
  .productCard, .ServiceCard {
    
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 150px !important;
+}
+.productContent {
+overflow: scroll;
 }
 }
 
