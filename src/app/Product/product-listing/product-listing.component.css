@@ -212,6 +212,8 @@ padding-top: 10%;
 {
   text-align: center;margin-top: -16%;margin-left: 7%;
 }
+  .product_details::-webkit-scrollbar { width: 0 !important }  
+  .rightSection::-webkit-scrollbar { width: 0 !important }  
 
 
 @media screen and (max-width: 700px){

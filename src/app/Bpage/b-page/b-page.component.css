@@ -2623,6 +2623,7 @@ mat-expansion-panel-header{
 }
 
 .Sectioncontent::-webkit-scrollbar { width: 0 !important }
+.productContent::-webkit-scrollbar { width: 0 !important }  
 .Sectioncontent a{
 float: right;
 text-decoration: none;
