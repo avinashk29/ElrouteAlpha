@@ -511,9 +511,11 @@ this.four = true;
     this.Follower = true;
     //console.log(this.comapnyId)
     this.follows.addFollow(this.comapnyId).subscribe(res => {
-      //  this.companyService.companyData.followers;
-      //console.log(this.companyFollowers.length)
-       //console.log(res)
+      this.companyService.GetoneCompany(this.comapnyId).subscribe(res1 => {
+        this.companyFollowers = JSON.parse(res1['_body']).followers.length;
+
+
+      });
        this.notification.success('Following');
        });
 
@@ -521,10 +523,10 @@ this.four = true;
   onunfollow() {
     this.Follower = false;
     this.follows.Unfollow(this.comapnyId).subscribe(res => {
+      this.companyService.GetoneCompany(this.comapnyId).subscribe(res1 => {
+        this.companyFollowers = JSON.parse(res1['_body']).followers.length;
+  });
       this.notification.success('Unfollow');
-    // this.companyService.companyData.followers;
-    //console.log(this.companyFollowers.length);
-    //console.log(res)
     });
   }
 

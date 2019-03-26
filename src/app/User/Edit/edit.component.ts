@@ -33,10 +33,10 @@ export class EditComponent implements OnInit {
 
   }
 onEdit() {
-
-  const formData = this.editForm.value;
-  this.userService.editUser(formData).subscribe(res => {
+   const formData = this.editForm.value;
+   this.userService.editUser(formData).subscribe(res => {
      this.userService.userData = JSON.parse(res['_body']);
+     this.userService.userData.following = JSON.parse(res['_body']).following.length;
      this.dialogRef.close(EditComponent);
   });
 

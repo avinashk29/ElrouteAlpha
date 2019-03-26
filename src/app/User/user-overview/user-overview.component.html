@@ -33,10 +33,10 @@
             </div>
 
             <div class="follower_des" *ngIf="!bioEdit">
-                <p style="text-align: center; font-size: 16px" >{{shortBio}} </p>
+                <p style="text-align: center; font-size: 16px" >{{this.userService.userData.shortBio}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
-                    <textarea formControlName= "shortBio" value="{{shortBio}}"></textarea>
+                    <textarea formControlName= "shortBio" value="{{this.userService.userData.shortBio}}"></textarea>
                     <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
             </div>
             <!-- <div class="follower_company">
@@ -77,7 +77,7 @@
                 <img alt="user_overview" src="assets/images/following.png">
             </div>
             <div class="following_nub1">
-                <span>{{userFollowing}}</span>
+                <span>{{this.userService.userData.following}}</span>
             </div>
             <div class="following_btn">
                 <button (click)="manageFollowing()">Manage</button>
@@ -107,7 +107,7 @@
           <div class="follower_location">
             <span>{{this.userService.userData.location}}</span>
             <input type="file" #filepicker (change)="uploadUserImage($event,'userImage')" style="display: none">
-         
+
               <span class="point" (click)="filepicker.click()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
                   <g id="edit" transform="translate(-546.942 -212.818)">
                     <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="white"
@@ -124,7 +124,7 @@
                   </g>
                 </svg>
               </span>
-         
+
            </div>
            <div class="follower_img">
               <div class="follower_img1">
@@ -178,7 +178,7 @@
               <img alt="user_overview" src="assets/images/following.png">
           </div>
           <div class="following_nub1">
-              <span>{{userFollowing}}</span>
+              <span>>{{this.userService.userData.following}}</span>
 
           </div>
           <div class="following_btn">
