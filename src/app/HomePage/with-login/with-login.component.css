@@ -265,7 +265,7 @@ border: solid 5px white;
 /*-------------------------------------------------------- user profile css end------------------------------------------------------------------- */
 
 
-/*---------------------------------------------------------------- Add feed Meida Box css end-------------------------------------------------------------------- */
+/*---------------------------------------------------------------- Add feed Meida Box css -------------------------------------------------------------------- */
 .default_feed
 {
  border: solid 1px gainsboro;
@@ -563,7 +563,37 @@ margin-bottom: 5%;
  {
  color:white !important;
  }
+ .add_btn
+{
+
+ /* border-left: solid #8991a2;
+ margin: 10px 19px 0 3px; */
+ cursor: pointer;
+ margin: auto;;
+}
+.add_btn button
+{
+
+ width: 100%;
+ background-color: #42445b;
+ color: #ffffff;
+ margin: 15px 7px;
+ font-weight: 600;
+ height: 25px;
+ border-radius: 4px;
+ outline: none;
+ border: none;
+ 
+
+}
+.content_1{
+
+    margin-bottom: 14%;
+
+    }
  /*--------------------------------------------------------- Add feed Meida Box css end------------------------------------------------------------------------ */
+
+ /*-------------------------------------------------------------- category_box css--------------------------------------------- */
  .category_box
  {
  right: 11%;
@@ -628,43 +658,8 @@ margin-bottom: 5%;
     margin-bottom: 8%;
 
 }
-.logout_btn
-{
- width: 45%;
- margin: 4px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- border: none;
- /* margin-left: 10px; */
- float: right;
-}
-.add_btn
-{
 
- /* border-left: solid #8991a2;
- margin: 10px 19px 0 3px; */
- cursor: pointer;
- margin: auto;;
-}
-.add_btn button
-{
- /* width: 15%; */
- /* margin: 4px; */
- width: 100%;
- background-color: #42445b;
- color: #ffffff;
- margin: 15px 7px;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- outline: none;
- border: none;
- /* margin-left: 10px; */
- /* float: right; */
-}
+/*-------------------------------------------------------------- category_box css end--------------------------------------------- */
 
 .add_media1
 {
@@ -672,48 +667,7 @@ margin-bottom: 5%;
  margin-right: 0;
  padding: 10px;
 }
-/* border: 1px solid #cccccc;
- .search-bar{
- width: 95%;
- display: flex;
-} */
 
-
-/* .search-container {
- width: 80%;
- display: flex;
- margin: 0 auto;
- margin-top: 120px;
- z-index: -1;
-}
-
-
-input#search-bar {
- margin: 0 auto;
- width: 100%;
- height: 13vh;
- padding: 0px 45px;
- font-size: 3rem;
- border: 1px solid #D0CFCE;
- outline: none;
- border-radius: 20px 0 0 20px;
- outline: none;
-}
-input#search-bar:focus {
- transition: 0.35s ease;
-}
-input#search-bar:focus::-webkit-input-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-}
-input#search-bar:focus::-moz-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-}
-input#search-bar:focus:-ms-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-} */
 
 section {
  /* width: 65%; */
@@ -729,153 +683,6 @@ section {
  border: 1px solid #cccccc;
 }
 
-.authorInfo {
- width: 100%;
- display: flex;
-}
-
-.details {
- width: 70%;
- height: auto;
- display: flex;
-}
-
-.logo {
- width: 20%;
- height: 100%;
- background-color: black;
-}
-
-.logo img {
- width: 100%;
- height: 100%;
-}
-
-.details h1 {
- margin: 0;
- padding: 5px 0 0 15px;
- font-weight: 500;
- font-size: 20px;
-}
-
-.details p {
- padding: 0px 0 0 15px !important;
- font-size: 10px;
-}
-
-.feedInfo {
- width: 95%;
- margin: 0 auto;
- height: 15%;
- box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
- border-radius: 5px 5px 0 0;
- margin-top: 20px;
-}
-
-.feedInfo p {
- font-size: 12px;
- margin: 0;
- margin-top: 5px;
- margin-bottom: 30px;
- width: 95%;
- margin: 0 auto;
- padding-top: 10px;
-}
-
-.followBtn {
- width: 25%;
- height: auto;
- float: right;
- text-align: right;
-}
-
-.followBtn button {
- width: 95%;
- margin-top: 10px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 15px;
- outline: none;
- border: none;
- margin-left: 10px;
-}
-
-.followBtn p {
- align-items: baseline;
- text-align: right;
- margin-right: 10px;
- margin-bottom: 0;
- font-size: 10px;
-}
-
-.feed-img {
- width: 100%;
- height: 60%;
-}
-
-.feed-img img {
- width: 100%;
- height: 100%;
- background-size: cover;
-}
-
-.feed-share {
- width: 100%;
- height: 7%;
- /* background-color: burlywood; */
- display: block;
- padding-top: 1%;
- display: flex;
-}
-.feed-share img
-{
- width: 4%;
- margin-left: 1%;
-
-}
-
-
-
-.tagged {
- width: 100%;
- height: 7%;
- margin-top: -4px;
-}
-
-mat-expansion-panel {
- border-radius: 0 !important;
-
-}
-
-
-
-.tagged mat-expansion-panel-header {
- height: 35px !important;
- color: #ffffff !important;
-}
-
-mat-panel-title h4 {
- margin: 0;
- font-size: 14px;
- font-weight: 100;
-}
-.logout_btn
-{
-
- width: 45%;
- margin: 4px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- border: none;
- /* margin-left: 10px; */
- float: right;
-
-}
 
 @media screen and (max-width:700px) {
  .dashboard
@@ -1137,6 +944,7 @@ input[type="file"]
  display:none;
 }
 
+/* ----------------------------------------------------------------Feed Card Css ---------------------------------------------------------------*/
 .main_feed_card
 {
  margin: 0 auto;
@@ -1349,6 +1157,8 @@ width: 100%;
   /* display: flex;
   align-items: center; */
 }
+/* ----------------------------------------------------------------Feed Card Css ---------------------------------------------------------------*/
+
 .content{
   width: 90%;
   height: 80%;
@@ -1390,47 +1200,9 @@ width: 100%;
 }
 
 
-.design{
-    /* background-color:black; */
-    top:0px;
-    width:100%;
-    }
-    .content_1{
-    /* position:absolute;
-  top:10px;
-    z-index:10;
-
-    height:290px;
-    width:88%; */
-    margin-bottom: 14%;
-
-    }
-    .container{
-      filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
-    }
-    .shape{
-      -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      clip-path: polygon(80% 0%, 0% 100%, 100% 100%);
-      background:red;
-      width:100px;
-      height:100px;
-      /*transform: rotate(30deg);      */
-    }
-    @media screen and (min-width: 1025px) and (max-width: 1200px) {
 
 
-        .about_feed1 {
-            width: 90%;
 
-        }
-        .add_media_box {
 
-            width: 98%;
-        }
-        .add_media1 {
 
-            margin-right: 4%;
-
-        }
-    }
 

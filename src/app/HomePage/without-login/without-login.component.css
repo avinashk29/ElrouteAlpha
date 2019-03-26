@@ -331,7 +331,7 @@ input#search-bar:focus:-ms-placeholder {
 }
 #section_2
 {
- height: 80vh;
+ height: 65vh;
  margin-bottom: 2%;
 
 }
@@ -638,7 +638,7 @@ color: white !important;
  left:auto;
  right:50px;
 } */
-.test h2
+.images h2
 {
   display: none;
 }
@@ -1076,6 +1076,11 @@ color: white !important;
  width: 100%;
  position:absolute; left:0; bottom:0;
 }
+#images_mobile
+{
+  display: none
+}
+
 @media screen and (min-width:200px) and (max-width:335px) {
   .img1 {
     width: 90px !important;
@@ -1100,17 +1105,25 @@ color: white !important;
     top: 18% !important;
     padding: 1px 0px 10px 0 !important;
 
-    height: 58vh !important;
+       height: fit-content;
 
  
 }
 .section4 {
   margin-top: 10% !important;
 }
+#images_mobile
+{
+  display: block;
+}
 }
 
 @media screen and (min-width:200px) and (max-width:400px) {
-  .test h2
+  #images_mobile
+{
+  display: block;
+}
+  .images h2
   {
     display: block;
     color: white !important;
@@ -1269,6 +1282,11 @@ color: white !important;
  padding: 31% 0;
 
 }
+.test_3
+{
+  display: flex;
+  justify-content: center;
+}
 .img3{
  width: 100px;
  height: 100px;
@@ -1277,7 +1295,7 @@ color: white !important;
  float: left;
  border-radius: 100px;
  text-align: center;
- margin-left: 32%;
+ /* margin-left: 32%; */
 }
 .img3 img {
  width: 90px;
@@ -1449,9 +1467,39 @@ color: white !important;
  font-size: 15px;
 
 }
+.all_images_1
+{
+  display: flex;
+  justify-content: center;
+}
+#images_web
+{
+  display: none;
+}
 }
 @media screen and (min-width:401px) and (max-width:700px) {
-  .test h2
+  #images_mobile
+{
+  display: block;
+  height: fit-content;
+  padding: 10px;
+
+}
+.all_images_1
+{
+  display: flex;
+  justify-content: center;
+}
+#images_web
+{
+  display: none;
+}
+.test_3
+{
+  display: flex;
+  justify-content: center;
+}
+  .images h2
   {
     display: block;
     color: white !important;
@@ -1527,7 +1575,7 @@ color: white !important;
 
 
 #section_2 {
- height: 80vh;
+  height: -webkit-fill-available;
  margin-bottom: 2%;
 }
 .section2 {
@@ -1558,7 +1606,7 @@ color: white !important;
  padding-top: 3%;
  left: 0%;
  background-image: linear-gradient(180deg, #384251, #63748b);
- height: 70vh;
+ height: -webkit-fill-available;
  bottom: -21px;
  }
 
@@ -1566,13 +1614,13 @@ color: white !important;
 
 .img1 {
 
- float: left;
+ float: right;
 
  margin: 0px 10px;
  border-radius: 100px;
  text-align: center;
 }
-.img1 img {
+.img1  {
 
  width: 100px;
  height: 100px;
@@ -1581,7 +1629,7 @@ color: white !important;
 .img1 h3 {
 
  text-align: inherit;
- font-size: 17px;
+ font-size: 15px;
 
 }
 .img2 {
@@ -1592,7 +1640,7 @@ color: white !important;
  border-radius: 100px;
  float: left;
 }
-.img2 img {
+.img2{
 
  width: 100px;
  height: 100px;
@@ -1601,7 +1649,7 @@ color: white !important;
 .img2 h3 {
 
  text-align: inherit;
- font-size: 17px;
+ font-size: 15px;
 
 }
 .img3{
@@ -1610,9 +1658,9 @@ color: white !important;
  float:left;
  border-radius: 100px;
  text-align: center;
- margin-left:30%;
+ /* margin-left:30%; */
 }
-.img3 img {
+.img3  {
 
  width: 100px;
  height: 100px;
@@ -1621,13 +1669,14 @@ color: white !important;
 .img3 h3 {
 
  text-align: center;
- font-size: 17px;
+ font-size: 15px;
 
 }
 .section4 {
  margin: 0 auto;
  width: 90%;
  margin-bottom: 20%;
+ margin-top: 5%;
 }
 .user_need_email li {
  display: flex;
@@ -1681,7 +1730,7 @@ color: white !important;
 
 }
 .b_face_1 {
-  display: flex;
+  display: block  ;
   margin: 0 auto;
   width: 95%;
 }
