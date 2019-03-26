@@ -36,21 +36,23 @@ userFollowing;
      public dialog: MatDialog , public route: ActivatedRoute,private imageService: ImageUploadService) {
 
     this.haveCompany = this.storage.get('companyId');
-    this.companyName = this.companyService.companyData.companyName;
-    this.userService.getUserData().subscribe(res => {
-      this.userService.userData = JSON.parse(res['_body']);
-      this.shortBio=     JSON.parse(res['_body']).shortBio;
-this.userFollowing=JSON.parse(res['_body']).following.length;
-   //console.log(this.userFollowing)
-
-});
     if (this.haveCompany) {
       this.companyService.GetoneCompany(this.haveCompany).subscribe(res => {
+        this.companyService.companyData = JSON.parse(res['_body'])
         this.companyName = JSON.parse(res['_body']).companyName;
          this.companyFollowers = JSON.parse(res['_body']).followers.length;
          this.companyLogo = JSON.parse(res['_body']).companyLogo;
         });
     }
+    this.userService.getUserData().subscribe(res => {
+
+      this.userService.userData = JSON.parse(res['_body']);
+      // this.userService.userData.shortBio=     JSON.parse(res['_body']).shortBio;
+ this.userService.userData.following =JSON.parse(res['_body']).following.length;
+
+
+});
+
     this.bioForm = new FormGroup({
       shortBio: new FormControl ('')
     });
@@ -85,7 +87,7 @@ this.userFollowing=JSON.parse(res['_body']).following.length;
       shortBio: this.bioForm.value.shortBio
     });
     this.userService.editUser(this.bioForm.value).subscribe(res => {
-         this.shortBio= JSON.parse(res['_body']).shortBio;
+      this.userService.userData.shortBio= JSON.parse(res['_body']).shortBio;
     });
     this.bioEdit = !this.bioEdit;
     this.router.navigate(['/bookmark']);
