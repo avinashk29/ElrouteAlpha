@@ -13,7 +13,8 @@
    <li>
   <div class="first-field">
     <div class="Uname">
-    <input type="text" placeholder="NAME" formControlName="userName" pattern="^[a-z0-9_-]$" name="userName" [ngClass]="{'error': !signupForm.get('userName').valid && signupForm.get('userName').touched }">
+      
+    <input type="text" placeholder="NAME" formControlName="userName" pattern= "[a-zA-Z0-9_ ]+" name="userName" [ngClass]="{'error': !signupForm.get('userName').valid && signupForm.get('userName').touched }">
     <!-- <span *ngIf="!signupForm.get('UserName').valid && signupForm.get('UserName').touched" class="errorMsg"><p>Please Enter Company</p></span> -->
     <!-- <div *ngIf="!signupForm.get('userName').errors?.pattern">
       User name not valid.

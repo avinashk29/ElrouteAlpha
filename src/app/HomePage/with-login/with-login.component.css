@@ -14,6 +14,8 @@
  display: flex;
  justify-content: space-between;
 }
+
+/* ----------------------------------------------------------user profile ----------------------------------------------------------------------*/
 .user
 {
  /* position: fixed; */
@@ -58,28 +60,8 @@
  margin: 3px 7px;
 
 }
-.tag_close
-{
-    text-align: right;
-    margin-right: 3%;
-    padding: 10px;
-    color: black;
-    font-size: 18px;
-}
-/* .user_img
-{
- margin: 0 auto;
- width: 50%;
- text-align: center;
-}
-.user_img img
-{
- width: 80px;
- height: 80px;
- border-radius: 100px;
 
- margin-top: 50%;
-} */
+
 .follower_img {
  margin: 0 auto;
  width: 35%;
@@ -118,8 +100,7 @@ border: solid 5px white;
  margin-top: 19%;
 }
 .user_name h2 {
-    /* font-f: Segoe UI, Bold;f
-     */
+   
      font-family: Segoe UI, Bold;
  margin-bottom: auto;
  font-weight: 700;
@@ -272,22 +253,31 @@ border: solid 5px white;
  margin-top: 10%;
  outline: none;
 }
+.tag_close
+{
+    text-align: right;
+    margin-right: 3%;
+    padding: 10px;
+    color: black;
+    font-size: 18px;
+}
+
+/*-------------------------------------------------------- user profile css end------------------------------------------------------------------- */
+
+
+/*---------------------------------------------------------------- Add feed Meida Box css end-------------------------------------------------------------------- */
 .default_feed
 {
  border: solid 1px gainsboro;
  width: 100%;
  height: 70vh;
  display: block;
-
- box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
- /* margin-right: 4%;
- margin-left: 8%; */
- margin-bottom: 5%;
+box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+margin-bottom: 5%;
 }
 .feedCards {
  width: 100%;
- /* margin-right: 5%;
- margin-left: 5%; */
+
  /* box-shadow: 0px 1px 8px 1px rgba(25, 25, 25, 0.2); */
  margin-bottom: 4%;
  padding: 0px 0px 13px;
@@ -573,6 +563,7 @@ border: solid 5px white;
  {
  color:white !important;
  }
+ /*--------------------------------------------------------- Add feed Meida Box css end------------------------------------------------------------------------ */
  .category_box
  {
  right: 11%;
