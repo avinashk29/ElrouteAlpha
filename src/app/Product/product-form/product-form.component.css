@@ -110,7 +110,7 @@ margin-left: 20px;
   height: 40px;
   color: white;
   font-size: 15px;
-  background-color: #45eb45;
+  background-color: #38434f;
   border: none;
   margin: 10px 15px 0 0;
 }
@@ -144,7 +144,7 @@ input , textarea{
 }
 .product_cancel svg
 {
-  fill: red;
+  fill: #38434f;
 }
 .product_speci
 {
@@ -165,5 +165,5 @@ input , textarea{
 .remove_product svg
 {
   background-color:white;
- fill: #ef0707;
+ fill: #38434f;
 }

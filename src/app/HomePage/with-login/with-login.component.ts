@@ -81,7 +81,7 @@ export class WithLoginComponent implements OnInit {
       this.feeds = JSON.parse(res['_body']);
       // console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);
-      if (this.result) {
+      if (this.result.length>0) {
         this.pId = JSON.parse(res['_body'])[0]._id;
         for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
           this.productService

@@ -4,124 +4,129 @@
 <!-- <div class="main_heading"><h2>Listed Products</h2></div> -->
 <section>
 
-<div class="leftSection">
+    <div class="leftSection">
 
-<div  *ngIf= "!showForm">
-                <div class="category" *ngIf= "!showEdit">
+        <div *ngIf="!showForm">
+            <div class="category" *ngIf="!showEdit">
 
-                                   <div class="category_btn1">
-                                           <!-- <button typ="button">Add product</button> -->
-                                           <div class="productAddbutton"><button (click) = "showForm = true" (click) = "showEdit = false" *ngIf="!group"  >ADD Product</button></div>
+                <div class="category_btn1">
+                    <!-- <button typ="button">Add product</button> -->
+                    <div class="productAddbutton"><button (click)="showForm = true" (click)="showEdit = false" *ngIf="!group">ADD
+                            Product</button></div>
 
-                                   </div>
-                                   <!-- <div class="category_btn2">
+                </div>
+                <!-- <div class="category_btn2">
                                            <button typ="button" (click) = "group = true" (click) = "showForm = false" (click) = "showEdit = false">Group product</button>
                                    </div> -->
 
-                               </div>
-</div>
-<div *ngIf="group">
-    <!-- <form  [formGroup] = "GroupForm" (ngSubmit) = "onSubmit()">
+            </div>
+        </div>
+        <div *ngIf="group">
+            <!-- <form  [formGroup] = "GroupForm" (ngSubmit) = "onSubmit()">
   <h1 style="text-align:center">Group Products</h1>
   <input type="text" placeholder="Enter Group Name" formControlName = "groupName">
   <button type="submit">Submit</button>
     </form>
     <button type="button" (click) = "group = false"  *ngIf="group">Cancel</button> -->
-    <div class="edit_product" *ngFor="let r of  this.selectedProduct; let i = index">
-      {{r}}
-        <div class="card">
+            <div class="edit_product" *ngFor="let r of  this.selectedProduct; let i = index">
+                {{r}}
+                <div class="card">
 
                     <!-- <div class="edit_btn">
                             <button type="button">Edit</button>
                      </div>    -->
-                     <div class="product_img">
-                            <img src="{{r.Image}}">
-                            <div class="edit_btn">
-                                    <button type="button" *ngIf="!group" (click)="editProduct(r._id)" (click) = "showEdit = true" (click) = "showForm = false">Edit</button>
-                             </div>
+                    <div class="product_img">
+                        <img src="{{r.Image}}">
+                        <div class="edit_btn">
+                            <button type="button" *ngIf="!group" (click)="editProduct(r._id)" (click)="showEdit = true"
+                                (click)="showForm = false">Edit</button>fasdfasdfdasfsaf
                         </div>
+                    </div>
 
 
-        </div>
-            <div class="product_details">
-                <input type="checkbox" *ngIf="group" (click)=getGroupproduct(r._id,i)>
+                </div>
+                <div class="product_details">
+                    <input type="checkbox" *ngIf="group" (click)=getGroupproduct(r._id,i)>
                     <p style="text-align:right;">{{r.category}}</p>
-                      <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
-                      <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
-                     <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
-                     <p style="text-align:right;">{{r.industry}}</p>
-                     <p>{{r.shortDescription}}</p>
-                     <div class="tags">
-                            <h5>Price</h5>
-                            <div class="tags1">
-                                   <!-- <span>tags</span> -->
-                             </div>
+                    <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
+                    <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
+                    <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
+                    <p style="text-align:right;">{{r.industry}}</p>
+                    <p>{{r.shortDescription}}</p>
+                    <div class="tags">
+                        <h5>Price</h5>
+                        <div class="tags1">
+                            <!-- <span>tags</span> -->
                         </div>
-             </div>
+                    </div>
+                </div>
 
 
 
 
 
 
-</div>
-  </div>
-    <app-product *ngIf = "showEdit">
-    </app-product>
-    <app-product-form *ngIf= "showForm">
-    </app-product-form>
-    <div class="cancel_button">
-    <button type="submit" *ngIf = "showEdit" class="product_cancel" routerLink = "/product" (click) = "showEdit = false"> Cancel</button>
-    <button type="submit" *ngIf= "showForm" class="product_cancel" routerLink = "/product" (click) = "!showForm = false">Cancel</button>
-</div>
-</div>
+            </div>
+        </div>
+        <app-product *ngIf="showEdit">
+        </app-product>
+        <app-product-form *ngIf="showForm">
+        </app-product-form>
+        <div class="cancel_button">
+            <button type="submit" *ngIf="showEdit" class="product_cancel" routerLink="/product" (click)="showEdit = false">
+                Cancel</button>
+            <button type="submit" *ngIf="showForm" class="product_cancel" routerLink="/product" (click)="!showForm = false">Cancel</button>
+        </div>
+    </div>
 
-<div class="rightSection">
-       <div class="edit_heading"><h2>Edit Product</h2></div>
-       <div class="rightSection1">
-<div *ngFor = "let groups of results">
-    <div class="edit_product" *ngFor="let r of  groups.sortedProducts; let i = index">
-        <div class="card">
+    <div class="rightSection">
+        <div class="edit_heading">
+            <h2>Edit Product</h2>
+        </div>
+        <div class="rightSection1">
+            <div *ngFor="let groups of results">
+                <div class="edit_product" *ngFor="let r of  groups.sortedProducts; let i = index">
+                    <div class="card">
 
-                    <!-- <div class="edit_btn">
+                        <!-- <div class="edit_btn">
                             <button type="button">Edit</button>
                      </div>    -->
-                     <div class="product_img">
+                        <div class="product_img">
                             <img src="{{r.Image}}">
                             <div class="edit_btn">
-                                    <button type="button" *ngIf="!group" (click)="editProduct(r._id)" (click) = "showEdit = true" (click) = "showForm = false">Edit</button>
-                             </div>
+                                <button type="button" *ngIf="!group" (click)="editProduct(r._id)" (click)="showEdit = true"
+                                    (click)="showForm = false">Edit</button>
+                            </div>
                         </div>
 
 
-        </div>
-            <div class="product_details">
-                <input type="checkbox" *ngIf="group" (click)=getGroupproduct(r._id,i)>
-                    <p style="text-align:right;">{{r.category}}</p>
-                      <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
-                      <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
-                     <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
-                     <p style="text-align:right;">{{r.industry}}</p>
-                     <p>{{r.shortDescription}}</p>
-                     <div class="tags">
+                    </div>
+                    <div class="product_details">
+                        <input type="checkbox" *ngIf="group" (click)=getGroupproduct(r._id,i)>
+                        <p style="text-align:right;">{{r.category}}</p>
+                        <h4 routerLink="/product-page/{{r._id}}">{{r.productName}}</h4>
+                        <!-- <h2>Acer Aspire ES-574G 57T1</h2> -->
+                        <!-- <h5>Acer Aspire ES-574G 57T1</h5> -->
+                        <p style="text-align:right;">{{r.industry}}</p>
+                        <p>{{r.shortDescription}}</p>
+                        <div class="tags">
                             <h5>Price</h5>
                             <div class="tags1">
-                                   <!-- <span>tags</span> -->
-                             </div>
+                                <!-- <span>tags</span> -->
+                            </div>
                         </div>
-             </div>
+                    </div>
 
 
 
 
 
 
-</div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <div>
 
 </div>
-
