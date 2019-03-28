@@ -57,6 +57,9 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/']);
       this.storage.remove('token');
       this.storage.remove('companyId');
+      this.UserService.userData = " ";
+      console.log(this.UserService.userData )
+    
     }
   }
 }

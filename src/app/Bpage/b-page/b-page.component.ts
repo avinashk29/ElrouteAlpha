@@ -22,6 +22,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
+import { PARAMETERS } from '@angular/core/src/util/decorators';
 // import { type } from 'os';
 @Component({
   selector: 'app-b-page',
@@ -135,6 +136,25 @@ export class BPageComponent implements OnInit {
 this.bookmarkService.token=this.storage.get('token')
 this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
+// this.route.params.filter(params=> params.id).subscribe(id=>{
+//   this.comapnyId=id.id;
+//   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+//     this.companyService.companyData = JSON.parse(res['_body']);
+    
+//     if (this.comapnyId === this.mycompanyId) {
+//       this.myCompany = true;
+//     } else {
+//       this.myCompany = false;
+//     }
+// })
+
+// this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+//   ngZone.run(()=>{
+
+//     this.feedById=JSON.parse(res1['_body']);
+//   })
+// })
+// })
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
 
         this.type = paramas.urltype;

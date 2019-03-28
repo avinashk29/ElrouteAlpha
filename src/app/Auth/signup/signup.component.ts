@@ -68,47 +68,6 @@ closeLogin() {
   this.dialogRef.close();
 }
 
-  // signInWithSocial(serviceProvider):void{
-  //   this.authService1.signIn(serviceProvider.PROVIDER_ID).then(userData => {
-  //     this.user = userData;
-  //     this.signupForm.value.userName = userData.name;
-  //     this.signupForm.value.email = userData.email;
-  //     this.authService.signup(this.signupForm.value).subscribe(res => {
-  //       this.error = false;
-  //       this.storage.set('token', res.headers.get('x-auth'));
-  //       this.authService.token = this.storage.get('token');
-  //       this.dialogRef.close(SignupComponent);
-  //       this.userService.userData = JSON.parse(res['_body']);
-
-  //       if (!this.bpage) {
-  //         this.router.navigate(['/Dashboard']);
-  //       } else {
-  //         this.router.navigate(['/B-page']);
-  //       }
-  //       this.notification.success('Sign Up Successful');
-  //     });
-  //   });
-  // }
-
-  // signInWithGoogle(): void {
-  //   let serviceProvider = GoogleLoginProvider;
-  //   this.signInWithSocial(serviceProvider);
-  // }
-
-  // signInWithLinkedIN(): void {
-  //   let serviceProvider = LinkedinLoginProvider;
-  //   this.signInWithSocial(serviceProvider);
-  // }
-
-
-  // signInWithFB(): void {
-  //   this.authService1
-  //     .signIn(FacebookLoginProvider.PROVIDER_ID)
-  //     .then(userData => {
-  //       this.user = userData;
-  //     });
-  // }
-
 
   onSubmit() {
     this.error = true;
