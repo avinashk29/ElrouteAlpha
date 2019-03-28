@@ -284,7 +284,8 @@
 }
 
 .following_btn button {
-    background-color: black;
+    /* background-color: black; */
+    background-color: rgb(56, 67, 79);
     color: white;
     border: none;
     height: 39%;
@@ -448,7 +449,7 @@
     .follower_img1 {
         position: absolute;
         bottom: -151px;
-        left: 13%;
+        left: 17%;
         width: 30%;
     }
     .follower_img1 img {

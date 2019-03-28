@@ -18,13 +18,12 @@
 /* ----------------------------------------------------------user profile ----------------------------------------------------------------------*/
 .user
 {
- /* position: fixed; */
- /* margin-top: 10%; */
+
  left: 11%;
  position: fixed;
  width: 18%;
  z-index: 1;
- /* margin-top: 10%; */
+
 }
 .login_user {
  width: 100%;
@@ -199,7 +198,7 @@ border: solid 5px white;
  margin-top: auto;
  font-size: 12px;
  color:rgb(50, 50, 51);
- /* padding: 8px;; */
+ 
 }
 .user_company_details hr
 {
@@ -245,7 +244,8 @@ border: solid 5px white;
 .company_edit_btn button{
     cursor: pointer;
  border-radius: 3px;
- background-color: #323233;
+
+ background-color: rgb(56, 67, 79);
  color: white;
  width: 30%;
  padding: 4px;
@@ -265,7 +265,7 @@ border: solid 5px white;
 /*-------------------------------------------------------- user profile css end------------------------------------------------------------------- */
 
 
-/*---------------------------------------------------------------- Add feed Meida Box css end-------------------------------------------------------------------- */
+/*---------------------------------------------------------------- Add feed Meida Box css -------------------------------------------------------------------- */
 .default_feed
 {
  border: solid 1px gainsboro;
@@ -370,7 +370,7 @@ margin-bottom: 5%;
     font-size: 15px;
     padding: 9px 22px;
     height: 20px;
-    /* background-color: #8890A4; */
+
     /* box-shadow: 0px 0px 2px 1px rgba(24, 24, 7, 0.2); */
     box-shadow: 0 6px 0 #fff, 0 1px 6px rgba(0,0,0, .35);
     color:gray;
@@ -392,10 +392,10 @@ margin-bottom: 5%;
 .add_media2
 {
  width: 68%;
- /* text-align: right; */
+
  margin-right: 2%;
  align-items: center;
- /* padding: 10px; */
+
  display: flex;
 
 }
@@ -410,23 +410,18 @@ margin-bottom: 5%;
 }
 
 .add_media_box {
- /* padding: 15px 26px; */
 
- /* background-color: #F5F5F5; */
  width: 100%;
 }
 
 .add_media h2 {
- /* font-size: 27px;
- color: #707070;
- margin-top: -10px;
- /* float: left; */
+
  font-weight: 500;
-} */
+} 
 
 .add_media span {
  font-size: 12px;
- /* float: right; */
+
  color: #707070;
 }
 .add_media_tag
@@ -477,7 +472,7 @@ margin-bottom: 5%;
 {
     width: 35%;
  display: flex;
- /* padding: 3px 0; */
+
  align-items: center;
 }
 .imagepreview
@@ -563,7 +558,35 @@ margin-bottom: 5%;
  {
  color:white !important;
  }
+ .add_btn
+{
+
+ cursor: pointer;
+ margin: auto;;
+}
+.add_btn button
+{
+
+ width: 100%;
+ background-color: #42445b;
+ color: #ffffff;
+ margin: 15px 7px;
+ font-weight: 600;
+ height: 25px;
+ border-radius: 4px;
+ outline: none;
+ border: none;
+ 
+
+}
+.content_1{
+
+    margin-bottom: 14%;
+
+    }
  /*--------------------------------------------------------- Add feed Meida Box css end------------------------------------------------------------------------ */
+
+ /*-------------------------------------------------------------- category_box css--------------------------------------------- */
  .category_box
  {
  right: 11%;
@@ -628,43 +651,8 @@ margin-bottom: 5%;
     margin-bottom: 8%;
 
 }
-.logout_btn
-{
- width: 45%;
- margin: 4px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- border: none;
- /* margin-left: 10px; */
- float: right;
-}
-.add_btn
-{
 
- /* border-left: solid #8991a2;
- margin: 10px 19px 0 3px; */
- cursor: pointer;
- margin: auto;;
-}
-.add_btn button
-{
- /* width: 15%; */
- /* margin: 4px; */
- width: 100%;
- background-color: #42445b;
- color: #ffffff;
- margin: 15px 7px;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- outline: none;
- border: none;
- /* margin-left: 10px; */
- /* float: right; */
-}
+/*-------------------------------------------------------------- category_box css end--------------------------------------------- */
 
 .add_media1
 {
@@ -672,51 +660,10 @@ margin-bottom: 5%;
  margin-right: 0;
  padding: 10px;
 }
-/* border: 1px solid #cccccc;
- .search-bar{
- width: 95%;
- display: flex;
-} */
 
-
-/* .search-container {
- width: 80%;
- display: flex;
- margin: 0 auto;
- margin-top: 120px;
- z-index: -1;
-}
-
-
-input#search-bar {
- margin: 0 auto;
- width: 100%;
- height: 13vh;
- padding: 0px 45px;
- font-size: 3rem;
- border: 1px solid #D0CFCE;
- outline: none;
- border-radius: 20px 0 0 20px;
- outline: none;
-}
-input#search-bar:focus {
- transition: 0.35s ease;
-}
-input#search-bar:focus::-webkit-input-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-}
-input#search-bar:focus::-moz-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-}
-input#search-bar:focus:-ms-placeholder {
- transition: opacity 0.45s ease;
- opacity: 0;
-} */
 
 section {
- /* width: 65%; */
+
  margin: 0 auto;
  margin-top: -10%;
 }
@@ -729,396 +676,10 @@ section {
  border: 1px solid #cccccc;
 }
 
-.authorInfo {
- width: 100%;
- display: flex;
-}
-
-.details {
- width: 70%;
- height: auto;
- display: flex;
-}
-
-.logo {
- width: 20%;
- height: 100%;
- background-color: black;
-}
-
-.logo img {
- width: 100%;
- height: 100%;
-}
-
-.details h1 {
- margin: 0;
- padding: 5px 0 0 15px;
- font-weight: 500;
- font-size: 20px;
-}
-
-.details p {
- padding: 0px 0 0 15px !important;
- font-size: 10px;
-}
-
-.feedInfo {
- width: 95%;
- margin: 0 auto;
- height: 15%;
- box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
- border-radius: 5px 5px 0 0;
- margin-top: 20px;
-}
-
-.feedInfo p {
- font-size: 12px;
- margin: 0;
- margin-top: 5px;
- margin-bottom: 30px;
- width: 95%;
- margin: 0 auto;
- padding-top: 10px;
-}
-
-.followBtn {
- width: 25%;
- height: auto;
- float: right;
- text-align: right;
-}
-
-.followBtn button {
- width: 95%;
- margin-top: 10px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 15px;
- outline: none;
- border: none;
- margin-left: 10px;
-}
-
-.followBtn p {
- align-items: baseline;
- text-align: right;
- margin-right: 10px;
- margin-bottom: 0;
- font-size: 10px;
-}
-
-.feed-img {
- width: 100%;
- height: 60%;
-}
-
-.feed-img img {
- width: 100%;
- height: 100%;
- background-size: cover;
-}
-
-.feed-share {
- width: 100%;
- height: 7%;
- /* background-color: burlywood; */
- display: block;
- padding-top: 1%;
- display: flex;
-}
-.feed-share img
-{
- width: 4%;
- margin-left: 1%;
-
-}
+            
 
 
 
-.tagged {
- width: 100%;
- height: 7%;
- margin-top: -4px;
-}
-
-mat-expansion-panel {
- border-radius: 0 !important;
-
-}
-
-
-
-.tagged mat-expansion-panel-header {
- height: 35px !important;
- color: #ffffff !important;
-}
-
-mat-panel-title h4 {
- margin: 0;
- font-size: 14px;
- font-weight: 100;
-}
-.logout_btn
-{
-
- width: 45%;
- margin: 4px;
- background-color: green;
- color: #ffffff;
- font-weight: 600;
- height: 25px;
- border-radius: 4px;
- border: none;
- /* margin-left: 10px; */
- float: right;
-
-}
-
-@media screen and (max-width:700px) {
- .dashboard
- {
-
-    width: 100%;
-    box-shadow: none;
-
- }
-    .user
- {
-     display: none;
- }
-    .company_industry,
- .login_user {
- display: none;
- }
- .with_login {
- width: 100%;
- margin: 0px;
- padding-top: 7%;
- }
- .feeds {
-    width: 96%;
-    padding: 0px;
-    left: 2%;
-
- }
- .add_media h2 {
- font-size: 12px;
- margin-top: -5px;
- }
- .add_media span {
- font-size: 10px;
- }
- .add_feed {
-    font-size: 12px;
-    width: 20%;
-
-
- }
- section {
- width: 95%;
- }
- .followBtn button {
- width: 100%;
- font-size: 8px;
- outline: none;
- }
- .followBtn p {
- margin-right: 0;
- }
- .details h1 {
- font-size: 15px;
- }
- .details p {
- font-size: 8px;
- }
- .feedInfo p {
- font-size: 10px;
- line-height: 15px;
- }
- mat-panel-title h4 {
- font-size: 11px;
- }
- .about_feed {
-    box-shadow: 0px 1px 1px 0px rgba(25, 25, 25, 0.2);
-    width: 100%;
-}
-.post{
-    width: 40%;
-
-}
-.content_1
-{
-    width:100% !important;
-}
-.about_feed1 textarea {
-    width: 93% !important;
-
-
-        height: 80px !important;
-    }
-
-
-.add_media1 {
-
-    margin-right: 4%;
-}
-}
-
-@media screen and (min-width: 767px) and (max-width: 1024px) {
- .login_user {
- width: 100%;
- }
- .with_login {
- margin: 0 auto;
- width: 75%;
- padding-top: 9%;
- margin-left: 10%;
- }
-
- .company_industry {
- width: 100%;
- }
- .feeds {
- width: 50%;
- padding: 0px;
- }
- .add_media h2 {
- font-size: 15px;
- /* margin-top: -5px; */
- }
- .add_media span {
- font-size: 10px;
- }
- .add_feed {
- font-size: 15px;
- width: 25%;
- }
- section {
- width: 95%;
- }
- .followBtn button {
- width: 100%;
- font-size: 8px;
- outline: none;
- }
- .followBtn p {
- margin-right: 0;
- }
- .details h1 {
- font-size: 15px;
- }
- .details p {
- font-size: 8px;
- }
- .feedInfo p {
- font-size: 10px;
- line-height: 15px;
- }
- mat-panel-title h4 {
- font-size: 11px;
- }
-
- /*------------------*/
- .follower_img {
-    margin: 0 auto;
-    width: 40%;
-}
-.follower_img1 img {
-
-    width: 50px;
-    height: 50px;
-
-}
-.follower_img1 {
-    position: absolute;
-    bottom: -28px;
-    width: 100%;
-}
-
-.user_name h2
-{
-    font-size: 19px;
-}
-.feed_logo img {
-    width: 45px !important;
-    height: 45px !important;
-}
-.feed_name h4  {
-    margin-bottom: auto;
-    font-size: 11px;
-    margin-top: auto;
-}
-.feed_name {
-    width: 50%;
-    margin-top: 4%;
-    margin: 9px 9px;
-}
-.feed_following  {
-
-    width: 30% !important;
-
-}
-.feed_following button {
-
-    font-size: 11px;
-
-}
-.user{
-
-    width: 20%;
-
-}
-.company_logo img{
-    width: 40px;
-    height: 40px;
-}
-.company_name h2{
-
-    padding: 0  px;
-    cursor: pointer;
-}
-.feeds {
-
-    left: 23%;
-}
-
-.about_feed {
-    margin: 0 10px;
-    width: 100%;
-}
-.add_media_box{
-
-    margin: -7px 0;
-    width: 97%;
-
-}
-.content_1
-{
-    width:100% !important;
-}
-
-/*----------*/
-.about_feed1 {
-
-    width: 88%;
-
-}
-.about_feed1 textarea {
-
-
-
-        height: 75px !important;
-    }
-}
-
-@media screen and (min-width: 700px) and (max-width: 1440px) {
- .with_login {
- width: 85%;
- }
-}
 .add_media1 input[type = "file"]{
  display: none;
 }
@@ -1137,6 +698,7 @@ input[type="file"]
  display:none;
 }
 
+/* ----------------------------------------------------------------Feed Card Css ---------------------------------------------------------------*/
 .main_feed_card
 {
  margin: 0 auto;
@@ -1247,6 +809,10 @@ width: 100%;
   {
       width: 100%;
   }
+  .tagged_product_text h2
+{
+cursor: pointer;
+}
 .container1 {
  position: relative;
  width: 100%;
@@ -1314,8 +880,7 @@ width: 100%;
     position: absolute;
     width: 100%;
     bottom: 30px;
- /* margin: 0 auto;
- width: 77%; */
+
 
 }
 .share {
@@ -1324,8 +889,7 @@ width: 100%;
 .bookmark {
     width: 100%;
     height: 3%;
-    /* background-color: red; */
-    /* position: absolute; */
+
     margin-left: 10%;
         display: flex;
   }
@@ -1342,13 +906,12 @@ width: 100%;
   width: 95%;
   height: fit-content;
   margin: 0 auto;
-  /* background-color: #151517; */
+ 
   box-shadow: 0px 3px 6px 0px rgba(25, 25, 25, 0.2);
 
-  /* margin-top: 7%; */
-  /* display: flex;
-  align-items: center; */
 }
+/* ----------------------------------------------------------------Feed Card Css end ---------------------------------------------------------------*/
+
 .content{
   width: 90%;
   height: 80%;
@@ -1360,7 +923,7 @@ width: 100%;
 .product_img{
   width: 30%;
   height: 100%;
-  /* background-color: yellow; */
+
 }
 .product_img img{
   width: 100%;
@@ -1389,48 +952,251 @@ width: 100%;
   margin-bottom: 0;
 }
 
-
-.design{
-    /* background-color:black; */
-    top:0px;
-    width:100%;
+@media screen and (max-width:700px) {
+    .dashboard
+    {
+   
+       width: 100%;
+       box-shadow: none;
+   
     }
-    .content_1{
-    /* position:absolute;
-  top:10px;
-    z-index:10;
-
-    height:290px;
-    width:88%; */
-    margin-bottom: 14%;
-
+       .user
+    {
+        display: none;
     }
-    .container{
-      filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+       .company_industry,
+    .login_user {
+    display: none;
     }
-    .shape{
-      -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      clip-path: polygon(80% 0%, 0% 100%, 100% 100%);
-      background:red;
-      width:100px;
-      height:100px;
-      /*transform: rotate(30deg);      */
+    .with_login {
+    width: 100%;
+    margin: 0px;
+    padding-top: 7%;
     }
-    @media screen and (min-width: 1025px) and (max-width: 1200px) {
-
-
-        .about_feed1 {
-            width: 90%;
-
-        }
-        .add_media_box {
-
-            width: 98%;
-        }
-        .add_media1 {
-
-            margin-right: 4%;
-
-        }
+    .feeds {
+       width: 96%;
+       padding: 0px;
+       left: 2%;
+   
     }
+    .add_media h2 {
+    font-size: 12px;
+    margin-top: -5px;
+    }
+    .add_media span {
+    font-size: 10px;
+    }
+    .add_feed {
+       font-size: 12px;
+       width: 20%;
+   
+   
+    }
+    section {
+    width: 95%;
+    }
+    .followBtn button {
+    width: 100%;
+    font-size: 8px;
+    outline: none;
+    }
+    .followBtn p {
+    margin-right: 0;
+    }
+    .details h1 {
+    font-size: 15px;
+    }
+    .details p {
+    font-size: 8px;
+    }
+    .feedInfo p {
+    font-size: 10px;
+    line-height: 15px;
+    }
+    mat-panel-title h4 {
+    font-size: 11px;
+    }
+    .about_feed {
+       box-shadow: 0px 1px 1px 0px rgba(25, 25, 25, 0.2);
+       width: 100%;
+   }
+   .post{
+       width: 40%;
+   
+   }
+   .content_1
+   {
+       width:100% !important;
+   }
+   .about_feed1 textarea {
+       width: 93% !important;
+   
+   
+           height: 80px !important;
+       }
+   
+   
+   .add_media1 {
+   
+       margin-right: 4%;
+   }
+   }
+   
+   @media screen and (min-width: 767px) and (max-width: 1024px) {
+    .login_user {
+    width: 100%;
+    }
+    .with_login {
+    margin: 0 auto;
+    width: 75%;
+    padding-top: 9%;
+    margin-left: 10%;
+    }
+   
+    .company_industry {
+    width: 100%;
+    }
+    .feeds {
+    width: 50%;
+    padding: 0px;
+    }
+    .add_media h2 {
+    font-size: 15px;
+   
+    }
+    .add_media span {
+    font-size: 10px;
+    }
+    .add_feed {
+    font-size: 15px;
+    width: 25%;
+    }
+    section {
+    width: 95%;
+    }
+    .followBtn button {
+    width: 100%;
+    font-size: 8px;
+    outline: none;
+    }
+    .followBtn p {
+    margin-right: 0;
+    }
+    .details h1 {
+    font-size: 15px;
+    }
+    .details p {
+    font-size: 8px;
+    }
+    .feedInfo p {
+    font-size: 10px;
+    line-height: 15px;
+    }
+    mat-panel-title h4 {
+    font-size: 11px;
+    }
+   
+    /*------------------*/
+    .follower_img {
+       margin: 0 auto;
+       width: 40%;
+   }
+   .follower_img1 img {
+   
+       width: 50px;
+       height: 50px;
+   
+   }
+   .follower_img1 {
+       position: absolute;
+       bottom: -28px;
+       width: 100%;
+   }
+   
+   .user_name h2
+   {
+       font-size: 19px;
+   }
+   .feed_logo img {
+       width: 45px !important;
+       height: 45px !important;
+   }
+   .feed_name h4  {
+       margin-bottom: auto;
+       font-size: 11px;
+       margin-top: auto;
+   }
+   .feed_name {
+       width: 50%;
+       margin-top: 4%;
+       margin: 9px 9px;
+   }
+   .feed_following  {
+   
+       width: 30% !important;
+   
+   }
+   .feed_following button {
+   
+       font-size: 11px;
+   
+   }
+   .user{
+   
+       width: 20%;
+   
+   }
+   .company_logo img{
+       width: 40px;
+       height: 40px;
+   }
+   .company_name h2{
+   
+       padding: 0  px;
+       cursor: pointer;
+   }
+   .feeds {
+   
+       left: 23%;
+   }
+   
+   .about_feed {
+       margin: 0 10px;
+       width: 100%;
+   }
+   .add_media_box{
+   
+       margin: -7px 0;
+       width: 97%;
+   
+   }
+   .content_1
+   {
+       width:100% !important;
+   }
+   
+   /*----------*/
+   .about_feed1 {
+   
+       width: 88%;
+   
+   }
+   .about_feed1 textarea {
+   
+   
+   
+           height: 75px !important;
+       }
+   }
+
+@media screen and (min-width: 700px) and (max-width: 1440px) {
+    .with_login {
+    width: 85%;
+    }
+   }
+
+
+
+
+
 

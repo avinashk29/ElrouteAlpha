@@ -14,16 +14,20 @@
           <img alt="with-login" src="../../assets/images/elroute_logo .png">
           <p>"Build Business Relationships like Never Before ”</p>
         </div>
-        <div class="sign_up_btn">
+        <div class="sign_up_btn" id="sign_up_btn_web">
           <button type="button" class="btn1" (click)="openDialog()">Get Started</button>
           <button type="button" class="btn2" (click)="openLogin()">Sign In</button>
         </div>
 
-      </div>
+      </div>  
       <div class="header_text">
         <h2>Elroute is an innovative B2B Platform that helps you showcase your business’ story with an easy-to-use
           B-Face.</h2>
       </div>
+      <div class="sign_up_btn" id="sign_up_btn_mobile">
+          <button type="button" class="btn1_mobile" (click)="openDialog()">Get Started</button>
+          <button type="button" class="btn2_mobile" (click)="openLogin()">Sign In</button>
+        </div>
       <div class="header_img">
         <img alt="with-login" src="assets/images/Group.png">
       </div>
@@ -44,9 +48,10 @@
         </div>
 
       </div>
-      <div class="images">
+      <div class="images" id="images_web">
+       
         <div class="test">
-<h2>Top  Categories </h2>
+
           <div class="img1" (click)="onSearch('Weed')">
 
             <div class="hover_1">
@@ -74,6 +79,43 @@
           </div>
         </div>
       </div>
+
+      <div class="images" id="images_mobile">
+          <h2>Top  Categories </h2>
+          <div class="all_images">
+            <div class="all_images_1">
+        <div class="test">
+
+          <div class="img1" (click)="onSearch('Weed')">
+
+            <div class="hover_1">
+              <h3>Rugs & Luxury Textiles</h3>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="test">
+          <div class="img2" (click)="onSearch('Gems & Jewellry')">
+            <!-- <img src="assets/images/gems.jpg"> -->
+            <div class="hover_2">
+              <h3>Gems & Jewellery</h3>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="test_3 ">
+          <div class="img3" (click)="onSearch('Bearings')">
+            <!-- <img src="assets/images/bearings.jpg"> -->
+            <div class="hover_3">
+              <h3>Handicrafts</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      
 
     </div>
 

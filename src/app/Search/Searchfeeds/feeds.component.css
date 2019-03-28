@@ -142,6 +142,10 @@ section{
 {
   width: 100%;
 }
+.tagged_product_text h2
+{
+cursor: pointer;
+}
 
 .container1 {
   position: relative;
