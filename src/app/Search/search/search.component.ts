@@ -49,6 +49,7 @@ noResult = false;
 
             console.log(JSON.parse(response['_body']));
             this.productResult=JSON.parse(response['_body']);
+            this.search.productResultLength = this.productResult.length;
             if(!this.productResult.length){
               this.noResult = true;
             }

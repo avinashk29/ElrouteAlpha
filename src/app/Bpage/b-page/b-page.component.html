@@ -282,7 +282,7 @@
 
         <div class="social_links" *ngIf="editSocialLinks" style="margin-top: 60px">
         <input type="text" placeholder="Enter Your Facebook link" formControlName="facebook" #facebook>
-        <button type="submit" (click)="onEditBpage('facebook', facebook)" (click)="editSocialLinks=false"> Add Facebook Profile</button>
+        <button type="submit" (click)="onEditBpage('facebook', facebook)" (click)="editSocialLinks=false" class="add_face_link"> Add Facebook Profile</button>
         </div>
         </div>
 
@@ -293,7 +293,7 @@
 <!-- <button type="submit" (click)="onEditBpage('linkedin', linkedin)">Save</button> -->
 <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
 <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
-<button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" > Add Linkedin  Profile</button>
+<button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link" > Add Linkedin  Profile</button>
 </div>
 </div>
 <div class="social_bookmark" *ngIf="!myCompany">

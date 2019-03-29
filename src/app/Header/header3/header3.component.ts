@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/Service/search.service';
 
 @Component({
   selector: 'app-header3',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Header3Component implements OnInit {
 
-  constructor() { }
+  constructor(public searchService: SearchService) { }
 
   ngOnInit() {
+    console.log(this.searchService.feedResultLength);
   }
 
 }

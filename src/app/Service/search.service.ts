@@ -14,6 +14,9 @@ postBookmark;
 presult;
 fresult;
  data={}
+ feedResultLength;
+ productResultLength;
+ companyResultLength;
   constructor(public http: Http, public router: Router,@Inject(LOCAL_STORAGE) public storage:WebStorageService) { }
 
 

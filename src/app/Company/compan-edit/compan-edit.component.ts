@@ -95,6 +95,6 @@ export class CompanEditComponent implements OnInit {
     this.router.navigate(["/companyPage/" + this.Id], {
       queryParams: { urltype: "default" }
     });
-    
+
   }
 }

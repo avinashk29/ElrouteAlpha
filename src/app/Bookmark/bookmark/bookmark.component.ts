@@ -57,14 +57,14 @@ export class BookmarkComponent implements OnInit {
 
   }
 
-  addProductBookmark(i,id){
+  deleteProductBookmark(i,id){
     this.productId[i].bookm=true;
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
       this.notifcation.success('Bookmark');
 
     })
   }
-  deleteProductBookmark(i,id){
+  addProductBookmark(i,id){
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       this.notifcation.success('UnBookmark');
