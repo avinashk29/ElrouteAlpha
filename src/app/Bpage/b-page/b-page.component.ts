@@ -136,25 +136,25 @@ export class BPageComponent implements OnInit {
 this.bookmarkService.token=this.storage.get('token')
 this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
-// this.route.params.filter(params=> params.id).subscribe(id=>{
-//   this.comapnyId=id.id;
-//   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
-//     this.companyService.companyData = JSON.parse(res['_body']);
+this.route.params.filter(params=> params.id).subscribe(id=>{
+  this.comapnyId=id.id;
+  this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+    this.companyService.companyData = JSON.parse(res['_body']);
     
-//     if (this.comapnyId === this.mycompanyId) {
-//       this.myCompany = true;
-//     } else {
-//       this.myCompany = false;
-//     }
-// })
+    if (this.comapnyId === this.mycompanyId) {
+      this.myCompany = true;
+    } else {
+      this.myCompany = false;
+    }
+})
 
-// this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
-//   ngZone.run(()=>{
+this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+  ngZone.run(()=>{
 
-//     this.feedById=JSON.parse(res1['_body']);
-//   })
-// })
-// })
+    this.feedById=JSON.parse(res1['_body']);
+  })
+})
+})
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
 
         this.type = paramas.urltype;
@@ -828,7 +828,34 @@ onDeletePost(id) {
 
     }else{
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
-        //console.log(res)
+      // console.log(JSON.parse(res['_body']));
+      this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+        this.feedById=JSON.parse(res1['_body']);
+        // console.log(JSON.parse(res1['_body']))
+      //----------------------------------------bookmark at Bpage------------------- //
+      this.userService.getUserData().subscribe(res => {
+        this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
+        this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
+        for (let i = 0; i < this.userBookmark.length; i++) {
+          if (this.comapnyId === this.userBookmark[i]) {
+            this.bookmark = true;
+          } else {
+            this.bookmark = false;
+          }
+        }
+  
+        // ----------------------bookmark at feed-------------
+        for(let i = 0; i < this.postBookmark.length; i++) {
+          for(let j = 0;j < this.feedById.length; j++) {
+               if(this.postBookmark[i] == this.feedById[j]._id) {
+                this.feedById[j].bookm=true;
+               } else  {
+                // this.cresult[j].bookm=false;
+               }
+           }
+     }
+      });
+    });
       });
       this.feed.reset();
       this.imagePreview=null;

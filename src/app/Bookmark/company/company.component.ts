@@ -72,12 +72,16 @@ this.notifcation.success('Following');
       this.notifcation.success('Bookmark');
      });
  }
- deletecompanyBookmark(i,id){
+ deletecompanyBookmark(id){
   if (confirm('Are you sure you want to delete the post')){
-  this.result[i].bookm=false;
+  // this.result[i].bookm=false;
+  console.log(id);
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
-    this.notifcation.success('UnBookmark');
+    this.bookmarkService.getBookmarkCompany().subscribe(response => {
+      this.result=JSON.parse(response['_body']);
   });
+});
  }
 }
 }
+

@@ -90,11 +90,16 @@ export class WithLoginComponent implements OnInit {
         }
       }
 
+  
       this.userService.getUserData().subscribe(res1 => {
         this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
         JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
         // console.log(this.allFollow);
+        this.userService.bookmark =
+        JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
+       + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
+        this.userService.following = JSON.parse(res1['_body']).following.length;
         this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
         this.userFollow = JSON.parse(res1["_body"]).following;
         for (let i = 0; i < this.userFollow.length; i++) {

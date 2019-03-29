@@ -20,5 +20,13 @@ post=[];
     });
     
   }
-
+onUnbookmark(id){
+  console.log(id);
+  this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
+    this.bookmarkService.getBookmarkPost().subscribe(res => {
+      this.post=JSON.parse(res['_body']);
+      // console.log(JSON.parse(res['_body']))
+    });
+  })
+}
 }
