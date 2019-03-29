@@ -13,7 +13,7 @@
                         <div class="form">
                            <input list="product" [(ngModel)]="product_id" name="product_id" autocomplete="off" placeholder="Product">
                          <datalist id ="product"  >
-                        <div *ngFor = "let product of products; let i = index">
+                        <div *ngFor = "let product of products; let i = index" style="overflow: scroll;">
                        <option value="{{i}}" >{{product.productName}}
                     </div>
                   </datalist>

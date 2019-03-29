@@ -1133,7 +1133,7 @@ z-index: 1;
 
 .tagged_product_img {
   width: 55%;
-  padding: 0px 20px 0 0;
+  padding: 20px 20px 0 0;
 }
 
 .tagged_product_img img {
@@ -1484,7 +1484,13 @@ mat-panel-title h4 {
   height: 150px;
   outline: none;
   border-color: gray;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+}
+.infoSectonCard textarea::placeholder {
+
+
+  
+
 }
 
 .infoSectonCard_links {
@@ -1508,7 +1514,7 @@ mat-panel-title h4 {
 .Sectioncontent input {
   width: 70%;
   height: 8%;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: solid 1px gray;
   margin-top: 5%;
 }
@@ -3406,4 +3412,7 @@ height: 24px;
   .with_login {
     width: 85%;
   }
+}
+.error{
+  border: 1px solid red;
 }

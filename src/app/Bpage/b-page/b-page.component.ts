@@ -10,7 +10,7 @@ import { ProductServiceService } from '../../Service/product-service.service';
 import { FeedService } from '../../Service/feed-service.service';
 import 'rxjs/add/operator/filter';
 import { UserService } from '../../Service/user-services.service';
-import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
@@ -22,6 +22,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
+
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 // import { type } from 'os';
 @Component({
@@ -307,9 +308,9 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
     const control = <FormArray>this.BForm.controls.section;
     control.push(
       this._fb.group({
-        sectionTitle: [''],
-        sectionContent: [''],
-        sectionImage: [],
+        sectionTitle: ['', Validators.required],
+        sectionContent: ['', Validators.required],
+        sectionImage: [Validators.required],
         sectionLink: ['']
       })
     );
@@ -320,6 +321,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
       control.removeAt(0);
     }
     this.companyService.companyData.section.forEach(x => {
+      // x.clearValidators()
       control.push(
         this._fb.group({
           sectionImage: x.sectionImage,
@@ -341,10 +343,12 @@ this.three = false;
 this.four = false;
   }
   onDelete(index) {
+    if (confirm('Are you sure you want to delete the section?')){
     const control = <FormArray>this.BForm.controls.section;
     control.removeAt(index);
     this.notification.success('Section Deleted');
   }
+}
 
   editbio() {
     this.bioEdit = !this.bioEdit;
@@ -551,13 +555,19 @@ this.four = true;
   }
 
   onSubmit() {
-    this.sectionEdit = false;
-    const sectionForm = new FormGroup({
-      section: new FormControl(this.BForm.value.section)
-    });
-    this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
-      this.companyService.companyData.section = JSON.parse(res['_body']).section;
-    });
+    if (this.BForm.controls.section.valid){
+      this.sectionEdit = false;
+      const sectionForm = new FormGroup({
+        section: new FormControl(this.BForm.value.section)
+      });
+      this.companyService.UpdateCompany(sectionForm.value).subscribe(res => {
+        this.companyService.companyData.section = JSON.parse(res['_body']).section;
+        this.notification.success("Section Added");
+      });
+    } else {
+      this.notification.error("Enter complete details")
+    }
+
   }
   onadeleteImg(item) {
         const i = this.certification.indexOf(item);

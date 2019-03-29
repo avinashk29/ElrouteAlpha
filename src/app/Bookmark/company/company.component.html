@@ -19,7 +19,7 @@
         <h1 routerLink="/companyPage/{{r._id}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{r.companyName}} </h1>
         
         
-        <span (click) = "deletecompanyBookmark(r._id)"  style="display: flex;"  class="b1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
+        <span (click) = "deletecompanyBookmark(r._id)"  style="display: flex; cursor: pointer;"  class="b1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
           <g id="bookmark" fill="gray" >
             <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
               stroke="none" />

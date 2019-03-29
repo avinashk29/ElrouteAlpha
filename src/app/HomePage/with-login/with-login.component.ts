@@ -5,7 +5,7 @@ import { HomepageService } from '../homepage.service';
 import { Router,NavigationEnd } from '@angular/router';
 import { AuthServiceService } from '../../Auth/auth-service.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FeedService } from '../../Service/feed-service.service';
 import { CompanyServiceService } from '../../Service/company-service.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
@@ -33,8 +33,8 @@ export class WithLoginComponent implements OnInit {
   feedImage;
   companyLogo;
   feed = new FormGroup({
-    content: new FormControl(''),
-    Image: new FormControl(''),
+    content: new FormControl('', [Validators.required]),
+    Image: new FormControl('', [Validators.required]),
     tagId: new FormControl(),
     link: new FormControl(''),
   });
@@ -164,11 +164,8 @@ export class WithLoginComponent implements OnInit {
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
       console.log(this.feed.value)
-    if (!this.feed.value.Image) {
+    if (!this.feed.valid) {
         this.notification.warning('Image or content is missing!');
-    }else if(!this.feed.value.content) {
-      this.notification.warning('Image or content is missing!');
-
     }else{
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
         //console.log(res)
@@ -202,7 +199,7 @@ export class WithLoginComponent implements OnInit {
   onfollow(i, id) {
     this.result[i].follow = true;
     this.followers.addFollow(id).subscribe(res => {
-      this.notification.success('Follow')
+      this.notification.success('Following')
       this.userService.getUserData().subscribe(res1 => {
         this.userService.following = JSON.parse(res1['_body']).following.length;
         });
@@ -212,7 +209,7 @@ export class WithLoginComponent implements OnInit {
   onunfollow(i, id) {
     this.result[i].follow = false;
     this.followers.Unfollow(id).subscribe(res => {
-      this.notification.success('Unfollow')
+      this.notification.success('Unfollowed')
       this.userService.getUserData().subscribe(res1 => {
         this.userService.following = JSON.parse(res1['_body']).following.length;
         });
@@ -227,7 +224,7 @@ export class WithLoginComponent implements OnInit {
         this.userService.bookmark =  JSON.parse(res1['_body']).bookmarks.post.length +
           JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         });
-      this.notification.success('Feed Bookmark');
+      this.notification.success('Feed Bookmarked');
 
     });
   }
@@ -239,7 +236,7 @@ export class WithLoginComponent implements OnInit {
         this.userService.bookmark =  JSON.parse(res1['_body']).bookmarks.post.length +
           JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         });
-      this.notification.success('Feed Unbookmark');
+      this.notification.success('Feed Unbookmarked');
 
     });
   }

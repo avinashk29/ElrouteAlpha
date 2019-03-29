@@ -123,6 +123,7 @@ section{
 .icons img
 {
   width: 80%;
+  cursor: pointer;
 }
 .icons p{
   margin: 0;
