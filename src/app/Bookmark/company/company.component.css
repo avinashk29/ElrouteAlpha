@@ -62,6 +62,7 @@ section{
   margin: 0;
   padding: 5px 0 0 0;
   cursor: pointer;
+  margin-bottom: 4px;
   font-size: 20px;
 }
 .companyInfo button{
@@ -97,9 +98,11 @@ section{
   margin-bottom: auto;
 }
 .cardFooter{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  margin-top: 6%;
   display: flex;
+  justify-content: flex-end;
 }
 .tags{
   width: 80%;

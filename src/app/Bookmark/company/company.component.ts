@@ -73,9 +73,11 @@ this.notifcation.success('Following');
      });
  }
  deletecompanyBookmark(i,id){
+  if (confirm('Are you sure you want to delete the post')){
   this.result[i].bookm=false;
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
     this.notifcation.success('UnBookmark');
   });
  }
+}
 }

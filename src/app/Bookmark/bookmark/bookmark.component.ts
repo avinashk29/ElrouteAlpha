@@ -65,10 +65,11 @@ export class BookmarkComponent implements OnInit {
     })
   }
   deleteProductBookmark(i,id){
+    if (confirm('Are you sure you want to delete the post')){
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       this.notifcation.success('UnBookmark');
     })
   }
-
+  }
 }
