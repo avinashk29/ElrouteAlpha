@@ -28,8 +28,8 @@
                       <!-- <p>Watch our first episode</p> -->
                       <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
                     </div>
-                    <div class="bookmark_share">
-                        <div class="bookmark">
+                    <div class="bookmark_share" (click)="onUnbookmark(feed._id)"> 
+                        <div class="bookmark"> 
                             <span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
                                 <g id="bookmark" fill="white">

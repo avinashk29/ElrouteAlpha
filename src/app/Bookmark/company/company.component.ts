@@ -72,10 +72,13 @@ this.notifcation.success('Following');
       this.notifcation.success('Bookmark');
      });
  }
- deletecompanyBookmark(i,id){
-  this.result[i].bookm=false;
+ deletecompanyBookmark(id){
+  // this.result[i].bookm=false;
+  console.log(id);
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
-    this.notifcation.success('UnBookmark');
+    this.bookmarkService.getBookmarkCompany().subscribe(response => {
+      this.result=JSON.parse(response['_body']);
   });
+});
  }
 }
