@@ -720,6 +720,34 @@ onDeletePost(id) {
     this.feedById.splice(i , 1);
 
     this.feedService.deletePost(id).subscribe(res => {
+      this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+        this.feedById=JSON.parse(res1['_body']);
+        console.log(JSON.parse(res1['_body']))
+      //----------------------------------------bookmark at Bpage------------------- //
+      this.userService.getUserData().subscribe(res => {
+        this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
+        this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
+        for (let i = 0; i < this.userBookmark.length; i++) {
+          if (this.comapnyId === this.userBookmark[i]) {
+            this.bookmark = true;
+          } else {
+            this.bookmark = false;
+          }
+        }
+
+        // ----------------------bookmark at feed-------------
+        for(let i = 0; i < this.postBookmark.length; i++) {
+          for(let j = 0;j < this.feedById.length; j++) {
+               if(this.postBookmark[i] == this.feedById[j]._id) {
+                this.feedById[j].bookm=true;
+               } else  {
+                // this.cresult[j].bookm=false;
+               }
+           }
+     }
+      });
+    });
+
       this.notification.success('Post Deleted');
 
     });
