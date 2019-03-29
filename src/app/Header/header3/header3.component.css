@@ -16,9 +16,11 @@
   margin: 0px 25px 0 0;
   height: 100%;
   outline: none;
+  cursor: pointer;
 }
 .elements h4{
   margin: 0;
+
 }
 .activate
 {

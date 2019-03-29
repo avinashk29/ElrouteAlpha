@@ -77,7 +77,8 @@ margin-top: auto;
   margin: 0px 10px 0 0;
 
   color: #fff;
-  background-color: #333333;
+  /* background-color: #333333; */
+  background-color: rgb(56, 67, 79);
   font-size: 12px;
 }
 .card_mobile {
@@ -237,7 +238,8 @@ header {
   width: 42%;
   border: none;
   color: #fff;
-  background-color: #333333;
+  /* background-color: #333333; */
+  background-color: rgb(56, 67, 79);
   font-size: 16px;
 }
 
@@ -504,6 +506,11 @@ header {
   box-shadow: 0px 0px 0px 0px #5555;
 
 }
+.add_face_link
+{
+  width: 100px !important;
+  background-color: #42445b !important;
+}
 
 
 /*------------------------------------ header csss end ----------------*/
@@ -558,7 +565,8 @@ header {
 .bio_btn button {
 
 
-  background-color: black;
+  /* background-color: black; */
+  background-color: rgb(56, 67, 79);
   color: white;
   font-size: 15px;
   width: 49%;
@@ -568,6 +576,9 @@ header {
   margin-top: 8%;
   margin-bottom: 8px;
   margin-right: 2%;
+}
+.bio_btn {
+  cursor: pointer;
 }
 
 .short_bio_content {
@@ -1139,6 +1150,10 @@ z-index: 1;
 {
   width: 100%;
 }
+.tagged_product_text h2
+{
+cursor: pointer;
+}
 
 .container1 {
   position: relative;
@@ -1461,7 +1476,7 @@ mat-panel-title h4 {
 .infoSectonCard img {
   width: 100%;
   /* background-color: beige; */
-  height: 100%;
+  height: 300px;
   /* margin-right: 5% */
 }
 
@@ -1849,6 +1864,7 @@ margin-top: auto;
   background-color: #fff;
   /* border: 1px solid #333333; */
 }
+/*-------------------------------------------------------------------------- Dummy Contact Card -----------------------------------------------*/
 .no_contact
 {
   height: 25vh;
@@ -1883,6 +1899,8 @@ margin-top: auto;
   width: 55%;
   text-align: center;
 }
+/*-------------------------------------------------------------------------- Dummy Contact Card  end-----------------------------------------------*/
+
 /*------------------------------------------------------- contact page css end---------------------------- */
 
 
@@ -1901,7 +1919,7 @@ margin-top: auto;
   margin: 0 auto;
   flex-wrap: wrap;
 }
-
+/*----------------------------------------------------- product card -----------------------------------------------------------------------------*/
 .Card {
   width: 47%;
   /* height: 15rem; */
@@ -2074,7 +2092,7 @@ overflow: scroll;
   margin: 0;
   float: right;
 }
-
+/*----------------------------------------------------- product card end   -----------------------------------------------------------------------------*/
 .ServiceContent {
   width: 65%;
   height: 100%;
@@ -2105,6 +2123,10 @@ fieldset
 {
   margin-right: 3%;
   float:right;
+}
+.arrow_product svg
+{
+  cursor: pointer;
 }
 .add_delete
 {
@@ -2147,7 +2169,8 @@ fieldset
   margin: 0px 10px 0 0;
   font-size: 15px;
   border: none;
-  background-color: #65e665;
+  /* background-color: #65e665; */
+  background-color: rgb(56, 67, 79);
   color: white;
   padding: 10px;
 }
@@ -2454,7 +2477,8 @@ label {
 .edit_bio button {
   width: 10%;
   margin: 4px 12px;
-  background-color: #34c334;
+  /* background-color: #34c334; */
+  background-color: rgb(56, 67, 79);
   color: #ffffff;
   font-weight: 600;
   height: 25px;
@@ -2474,11 +2498,13 @@ label {
 }
 
 .edit_dummy_text button {
-  background-color: #2fb22f;
+  /* background-color: #2fb22f; */
+  background-color: rgb(56, 67, 79);
   width: 25%;
   border: none;
   font-size: 15px;
   color: white;
+  padding: 5px;
   border-radius: 5px;
   margin-top: 2%
 }

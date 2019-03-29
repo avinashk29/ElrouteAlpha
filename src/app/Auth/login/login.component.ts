@@ -46,7 +46,7 @@ if (this.login.valid) {
   this.dialogRef.close(LoginComponent);
   const loginValues = this.login.value;
   this.authService.login(loginValues).subscribe( res => {
-
+console.log(res)
       this.storage.set('token', res.headers.get('x-auth'));
        this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
 

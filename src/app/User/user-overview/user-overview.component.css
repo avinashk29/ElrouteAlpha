@@ -150,7 +150,7 @@
     width: 80%;
     margin: 0 auto;
 }
-.bio_save
+/* .bio_save
 {
     width: 36%;
     margin: 4px 12px;
@@ -164,7 +164,7 @@
     font-size: 12px;
     display: flex;
 
-}
+} */
 .Bio_heading
 {
     display: flex;
@@ -186,9 +186,12 @@
     background-color: #34c334;
     color: #ffffff;
     font-weight: 600;
-    height: 25px;
+    /* height: 25px; */
+    padding: 8px;
+    text-align: center;
     border-radius: 13px;
     border: none;
+    align-items: center;
     float: right;
     font-size: 12px;
     display: flex;
@@ -284,7 +287,8 @@
 }
 
 .following_btn button {
-    background-color: black;
+    /* background-color: black; */
+    background-color: rgb(56, 67, 79);
     color: white;
     border: none;
     height: 39%;
@@ -448,7 +452,7 @@
     .follower_img1 {
         position: absolute;
         bottom: -151px;
-        left: 13%;
+        left: 17%;
         width: 30%;
     }
     .follower_img1 img {

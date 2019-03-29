@@ -6,7 +6,8 @@
 <div class="user_following">
   
     <div class="following"  *ngFor="let following of followings let i = index">
-        <div class="following_1">
+        <div class="following_1" *ngIf="following.admin != null">
+            <!-- {{following.admin}} -->
             <div class="following_image">
                 <img alt="following" src="{{following.companyLogo}}">
             </div>
