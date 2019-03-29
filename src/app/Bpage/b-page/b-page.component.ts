@@ -93,13 +93,13 @@ export class BPageComponent implements OnInit {
     tagId: new FormControl(),
     link: new FormControl(''),
   });
-  shotedProduct
+  shotedProduct;
   BForm: FormGroup;
   GroupForm = new FormGroup({
     groupName: new FormControl(''),
     products: new FormControl('')
   });
-
+  subscription;
   constructor(
     @Inject(LOCAL_STORAGE) private storage: WebStorageService,
     public companyService: CompanyServiceService,
@@ -117,14 +117,21 @@ export class BPageComponent implements OnInit {
     public ngZone: NgZone,
     public dialog: MatDialog,
     public notification: ToastrService,
+
   ) {
+    this.comapnyId = this.route.snapshot.paramMap.get('id');
+this.subscription = this.router.events.subscribe( () => {
+  this.comapnyId = this.route.snapshot.paramMap.get('id');
+  console.log(this.comapnyId);
+
+});
 
     this.BForm = this._fb.group({
       website: [''],
       Image: [''],
 
-      openAt:[],
-      closeAt:[],
+      openAt: [],
+      closeAt: [],
       shortIntro: [],
       facebook: [''],
       linkedin: [''],
@@ -133,7 +140,7 @@ export class BPageComponent implements OnInit {
 
     });
 
-    this.comapnyId = this.route.snapshot.paramMap.get('id');
+    // this.comapnyId = this.route.snapshot.paramMap.get('id');
 this.bookmarkService.token=this.storage.get('token')
 this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');

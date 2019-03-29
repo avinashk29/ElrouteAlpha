@@ -310,6 +310,11 @@ header {
 {
   margin-top: 3%;
 }
+.add_face_link
+{
+  width: 100px !important;
+  background-color: #42445b !important;
+}
 
 .card-left {
   width: 65%;
@@ -433,7 +438,7 @@ header {
 .facebook_social
 {
   width: 15%;
-  
+
 }
 .facebook_social img
 {
@@ -445,7 +450,7 @@ header {
 .linkedin_social
 {
   width: 75%;
-  
+
   margin-top: 1%;
 }
 .linkedin_social img
@@ -618,7 +623,7 @@ header {
 }
 
 .category_1 {
- 
+
   margin-top: 8%;
 
 
@@ -878,7 +883,7 @@ z-index: 1;
 .about_feed1 textarea {
   width: 93% !important;
   margin-top: 4%;
-  
+
       height: 80px !important;
   }
 .add_btn button {
@@ -910,7 +915,7 @@ z-index: 1;
   /* margin-top: 7%; */
   /* display: flex;
   align-items: center; */
-} 
+}
 .content_post_feed{
   width: 90%;
   height: 80%;
@@ -1392,7 +1397,7 @@ mat-panel-title h4 {
 /* -------------------------------------------------------------timeline css end--------------------------------------------------------------------- */
 
 
-/* <-------------------------------------------------------------info page css-------------------------------------------------------------------> */ 
+/* <-------------------------------------------------------------info page css-------------------------------------------------------------------> */
 
 .infoSection2 {
   width: 95%;
@@ -2140,7 +2145,7 @@ fieldset
   outline: none;
   background-color: transparent;
 
- 
+
 }
 .delete_product svg
 {
@@ -2154,7 +2159,7 @@ fieldset
   outline: none;
   background-color: transparent;
 
- 
+
 }
 .add_product svg
 {
@@ -2200,7 +2205,7 @@ fieldset
   width: 100%;
   opacity: 0;
   transition: .5s ease;
- 
+
 
 }
 .container:hover .overlay_remove_product {
@@ -2655,7 +2660,7 @@ mat-expansion-panel-header{
 }
 
 .Sectioncontent::-webkit-scrollbar { width: 0 !important }
-.productContent::-webkit-scrollbar { width: 0 !important }  
+.productContent::-webkit-scrollbar { width: 0 !important }
 .Sectioncontent a{
 float: right;
 text-decoration: none;
@@ -3115,9 +3120,9 @@ height: 24px;
   width: 30% !important;
 }
 .Sectioncontent {
-  
+
   margin-top: 8% !important;
-  
+
 }
 .Sectioncontent a {
   margin-top: -6%;
@@ -3226,7 +3231,7 @@ height: 24px;
 }
 .change_cover  svg
 {
-  
+
   margin: 0px 6px 0 0;
   fill: white;
   height: 12px;
@@ -3413,6 +3418,9 @@ height: 24px;
     width: 85%;
   }
 }
+<<<<<<< HEAD
 .error{
   border: 1px solid red;
 }
+=======
+>>>>>>> cf82758c946977b3e1c93e1431f2d089f8d598e7

@@ -240,7 +240,7 @@
         <div *ngIf="editwebsite" class="website_input">
           <input type="text" placeholder="Enter Website" formControlName="website" trim #website>
           <button type="submit" (click)="onEditBpage('website',website)">Save</button>
-       
+
 
 
 
@@ -367,7 +367,7 @@
   </header>
 
   <div class="body" *ngIf="this.type === 'default'" >
-  
+
     <div class="infoSection1">
       <div class="section1">
         <div class="shortBio">
@@ -381,7 +381,7 @@
 
             </div>
             <div class="short_bio_content" style="background-color: transparent;">
-      
+
                 <p *ngIf="this.companyService.companyData.shortIntro">{{(this.companyService.companyData.shortIntro | slice:0:300)+'...'}}</p>
               </div>
             <div class="bio_btn" *ngIf="myCompany">
@@ -531,7 +531,7 @@
 
               <form [formGroup]="feed" (ngSubmit)="onAddpost()">
                 <div class="about_feed">
-              
+
                   <div class="about_feed1">
                     <!-- <input type="texta" placeholder="Write your post here" formControlName = "Content"> -->
                     <textarea placeholder="Write your post here" formControlName="content" required></textarea>
@@ -751,7 +751,7 @@
             </div>
           </div>
 
-      
+
         </div>
       </div>
     </div>
@@ -1155,7 +1155,7 @@
               </div>
               <div class="no_contact_right">
                 <h3> Contact Details are not available</h3>
-              
+
                </div>
 
           </div>

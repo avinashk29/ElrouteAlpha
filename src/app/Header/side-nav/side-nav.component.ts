@@ -17,16 +17,17 @@ toggle = false;
 companyId;
 haveCompany = false;
   ngOnInit() {
-  
+
   }
   onToggle() {
 this.toggle = !this.toggle;
   }
   onLogout() {
-    this.router.navigate(['/']);
-    this.storage.remove('token');
-    this.storage.remove('companyId');
-
-
-  }
+    if (confirm('Are you sure you want to logout')) {
+      this.router.navigate(['/']);
+      this.storage.remove('token');
+      this.storage.remove('companyId');
+      this.userService.userData = ' ';
+    }
+ }
 }

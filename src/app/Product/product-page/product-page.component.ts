@@ -24,7 +24,7 @@ export class ProductPageComponent implements OnInit {
    this.router.events.subscribe((event:NavigationEnd) =>{
      window.scrollTo(0,0);
    });
-   
+
     this.id = this.route.snapshot.paramMap.get('_id');
     //console.log(this.id);
   this.productService.token = this.storage.get('token');
@@ -49,7 +49,7 @@ this.productService.getOneProduct(this.id).subscribe(res => {
   }
 });
 
-    
+
 this.productService.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
 this.UserService.getUserData().subscribe(res=>{
@@ -73,7 +73,7 @@ this.UserService.getUserData().subscribe(res=>{
 });
 });
   }
- 
+
 
   addProductBookmark(){
     this.bookmark=false

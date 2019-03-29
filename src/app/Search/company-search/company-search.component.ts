@@ -50,10 +50,11 @@ if(this.token) {
     this.search.onSearchCompany(this.word).subscribe(res1=>{
     console.log(JSON.parse(res1['_body']));
       this.result = JSON.parse(res1['_body']);
+      this.search.companyResultLength = this.result.length;
       this.cresult = JSON.parse(res1['_body'])[0];
       console.log(this.cresult);
 
-        var number=this.cresult.length
+        var number=this.cresult.length;
         if(!this.result.length) {
           this.noResult = true;
           console.log(this.cresult);
