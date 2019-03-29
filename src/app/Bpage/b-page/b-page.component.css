@@ -1138,7 +1138,7 @@ z-index: 1;
 
 .tagged_product_img {
   width: 55%;
-  padding: 0px 20px 0 0;
+  padding: 20px 20px 0 0;
 }
 
 .tagged_product_img img {
@@ -1489,7 +1489,13 @@ mat-panel-title h4 {
   height: 150px;
   outline: none;
   border-color: gray;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+}
+.infoSectonCard textarea::placeholder {
+
+
+  
+
 }
 
 .infoSectonCard_links {
@@ -1513,7 +1519,7 @@ mat-panel-title h4 {
 .Sectioncontent input {
   width: 70%;
   height: 8%;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: solid 1px gray;
   margin-top: 5%;
 }
@@ -3412,3 +3418,9 @@ height: 24px;
     width: 85%;
   }
 }
+<<<<<<< HEAD
+.error{
+  border: 1px solid red;
+}
+=======
+>>>>>>> cf82758c946977b3e1c93e1431f2d089f8d598e7

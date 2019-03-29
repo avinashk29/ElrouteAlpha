@@ -21,6 +21,7 @@ post=[];
     
   }
 onUnbookmark(id){
+  if (confirm('Are you sure you want to unbookmark the feed?')){
   console.log(id);
   this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
     this.bookmarkService.getBookmarkPost().subscribe(res => {
@@ -28,5 +29,6 @@ onUnbookmark(id){
       // console.log(JSON.parse(res['_body']))
     });
   })
+}
 }
 }

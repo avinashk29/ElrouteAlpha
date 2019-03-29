@@ -6,10 +6,10 @@
         <div class="header">
             <div class="header_left">
                 <div class="company_logo">
-                    <img src="{{this.productService.productData.companyLogo}}">
+                    <img src="{{this.productService.productData.companyLogo}}"  routerLink="/companyPage/{{this.productService.productData.creator}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">
                  </div>
                  <div class="company_name">
-                    <h2>{{this.productService.productData.companyName}}</h2>
+                    <h2 routerLink="/companyPage/{{this.productService.productData.creator}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{this.productService.productData.companyName}}</h2>
                   </div>
              </div>
              <div class="header_right">

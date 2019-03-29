@@ -454,7 +454,7 @@ section{
 
 .tagged_product_img {
   width: 55%;
-  padding: 8px 20px 0 0;
+  padding: 20px 20px 0 0;
 }
 
 .tagged_product_img img {
@@ -598,9 +598,11 @@ cursor: pointer;
   .company_logo img
   {
     width: 100%;
+    cursor: pointer;
   }
   .company_name h2
   {
+    cursor: pointer;
     margin-bottom: auto;
     font-weight: 400;
     margin-top: auto;
