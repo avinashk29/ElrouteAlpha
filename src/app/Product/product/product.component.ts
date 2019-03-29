@@ -114,16 +114,13 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.productForm.valid) {
       const productData = this.productForm.value;
       this.productService.UpdateProduct(productData , this.productService.productId).subscribe(res => {
           //console.log(res);
           this.notification.success('Product Updated');
           this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
       });
-} else {
-      this.notification.error('Enter Valid Details');
-    }
+
   }
 
   onImagePick(event, name) {

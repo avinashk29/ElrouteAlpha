@@ -147,7 +147,7 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
   this.comapnyId=id.id;
   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
     this.companyService.companyData = JSON.parse(res['_body']);
-    
+
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
     } else {
@@ -266,7 +266,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
       this.feedById=JSON.parse(res1['_body']);
-      // console.log(JSON.parse(res1['_body']))
+      console.log(JSON.parse(res1['_body']))
     //----------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
@@ -471,7 +471,7 @@ this.four = true;
   GotoBpage() {
     this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
-  onEditBpage(key, content: HTMLInputElement) {
+   onEditBpage(key, content: HTMLInputElement) {
     // //console.log(content);
     const formData = new FormData();
     formData.append(key, content.value);
@@ -850,7 +850,7 @@ onDeletePost(id) {
             this.bookmark = false;
           }
         }
-  
+
         // ----------------------bookmark at feed-------------
         for(let i = 0; i < this.postBookmark.length; i++) {
           for(let j = 0;j < this.feedById.length; j++) {

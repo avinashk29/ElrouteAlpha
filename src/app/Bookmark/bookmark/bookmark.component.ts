@@ -57,19 +57,15 @@ export class BookmarkComponent implements OnInit {
 
   }
 
-  deleteProductBookmark(i,id){
-    this.productId[i].bookm=true;
-    this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
-      this.notifcation.success('Bookmark');
+  // deleteProductBookmark(i,id){
+  //   this.productId[i].bookm=true;
+  //   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
+  //     this.notifcation.success('Bookmark');
 
-    })
-  }
-<<<<<<< HEAD
-  addProductBookmark(i,id){
-=======
+  //   })
+  // }
   deleteProductBookmark(i,id){
     if (confirm('Are you sure you want to delete the post')){
->>>>>>> ea262564f8fa97a7edd9c7c71f4c4bce8102a101
     this.productId[i].bookm=false;
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       this.notifcation.success('UnBookmark');
@@ -96,7 +92,7 @@ export class BookmarkComponent implements OnInit {
              }
 
       });
-    })
+    });
   }
   }
 }

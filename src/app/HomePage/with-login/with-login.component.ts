@@ -81,6 +81,7 @@ export class WithLoginComponent implements OnInit {
       this.feeds = JSON.parse(res['_body']);
       // console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);
+      console.log(this.result);
       if (this.result.length>0) {
         this.pId = JSON.parse(res['_body'])[0]._id;
         for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
@@ -90,7 +91,7 @@ export class WithLoginComponent implements OnInit {
         }
       }
 
-  
+
       this.userService.getUserData().subscribe(res1 => {
         this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
         JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
