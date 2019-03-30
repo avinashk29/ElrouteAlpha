@@ -2,6 +2,11 @@
 
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
+<div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+    
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div [hidden]="loading" class="router-output">
 <section>
 
   <div class="results" *ngFor="let feed of feedResult; let i=index">
@@ -104,4 +109,6 @@
 
 <div *ngIf = "!feedResult.length" class="result_not_found">
     <img src = "../../../assets/images/result_not_found.png">
+    </div>
+
     </div>

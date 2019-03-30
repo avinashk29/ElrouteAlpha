@@ -1,16 +1,17 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, AfterViewInit } from '@angular/core';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import {UserService} from 'src/app/Service/user-services.service'
-import {Router} from '@angular/router'
+import {Router, NavigationStart, NavigationEnd, NavigationCancel} from '@angular/router'
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-following',
   templateUrl: './following.component.html',
   styleUrls: ['./following.component.css']
 })
-export class FollowingComponent implements OnInit {
+export class FollowingComponent implements OnInit{
 
   
 
@@ -24,11 +25,29 @@ export class FollowingComponent implements OnInit {
   result = [];
   userInfo = [];
   userBookmark = [];
-  constructor(@Inject(LOCAL_STORAGE) private storage:WebStorageService,private router:Router,private following:FollowService,private bookmarkService:BookmarkServices,private companyService:CompanyServiceService,private userService:UserService,public follows:FollowService) { 
+  constructor(@Inject(LOCAL_STORAGE) private storage:WebStorageService,
   
+  private router:Router,private following:FollowService,private bookmarkService:BookmarkServices,private companyService:CompanyServiceService,private userService:UserService,public follows:FollowService) { 
+    this.loading = true;
    }
-
+loading;
+  //  ngAfterViewInit() {
+  //   this.router.events
+  //       .subscribe((event) => {
+  //           if(event instanceof NavigationStart) {
+  //               this.loading = true;
+  //           }
+  //           else if (
+  //               event instanceof NavigationEnd || 
+  //               event instanceof NavigationCancel
+  //               ) {
+  //               this.loading = false;
+  //           }
+  //       });
+// }
   ngOnInit() {
+    this.loading=true;
+    
     this.following.token=this.storage.get('token');
     this.bookmarkService.token=this.storage.get('token');
    
@@ -52,8 +71,12 @@ this.following.getFollowing().subscribe(res1=>{
       }
   
     }
+    // this.spinner.hide();
+    this.loading=false;
   })
 })
+
+// this.loading=false;
   }
 
   onfollow(i,id){

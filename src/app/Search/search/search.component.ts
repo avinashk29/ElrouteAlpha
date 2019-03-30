@@ -9,6 +9,7 @@ import { ProductServiceService } from 'src/app/Service/product-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -27,15 +28,54 @@ unbookmarked = true;
 userBookmark=[];
 productResult=[];
 noResult = false;
+loading;
+unfilteredproductResult;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
  public search: SearchService, private bookmarkService: BookmarkServices,
  public dialog: MatDialog, public userService: UserService, public product: ProductServiceService,
  public route: ActivatedRoute, public companyService: CompanyServiceService,private router:Router,
  public notification: ToastrService
  ) {
+  this.loading=true;
+  this.route.params.subscribe(params=>{
+    // console.log(params.word);
+    this.loading=true;
+    this.search.onSearch(params.word,params.page).subscribe(response => {
+      this.loading=true;
+      
+      this.unfilteredproductResult=JSON.parse(response['_body']).searchResult;
+      this.productResult=this.unfilteredproductResult.filter(el=>{
+        return el !=null;
+              })
+        console.log(this.productResult)
+      // this.search.productResultLength = this.productResult.length;
+      if(!this.productResult.length){
+        this.noResult = true;
+      }
+      this.productId=this.productResult;
+      if(this.token){
+              for(let i = 0; i < this.userBookmark.length; i++) {
+                for(let j = 0;j < this.productId.length; j++) {
+                     if(this.productId[j]===null){
 
+                     }else{
+                      if(this.userBookmark[i] == this.productId[j]._id) {
+                       this.productId[j].bookm=true;
+                      } else  {
+                       // this.productId[j].bookm=true;
+                      }
+                     }
+                 }
+                
+           }
+          }
+           this.loading=false;
+    });
+  });
   }
+  
   ngOnInit() {
+    this.loading=true;
     this.bookmarkService.token = this.storage.get('token');
     this.product.token = this.storage.get('token');
     this.token =  this.storage.get('token');
@@ -45,43 +85,12 @@ noResult = false;
       if(this.token) {
         this.userService.getUserData().subscribe(res=>{
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
-          this.search.onSearch(this.word,this.page).subscribe(response => {
-
-            console.log(JSON.parse(response['_body']));
-            this.productResult=JSON.parse(response['_body']);
-            this.search.productResultLength = this.productResult.length;
-            if(!this.productResult.length){
-              this.noResult = true;
-            }
-            this.productId=JSON.parse(response['_body']);
-                    for(let i = 0; i < this.userBookmark.length; i++) {
-                      for(let j = 0;j < this.productId.length; j++) {
-                           if(this.productId[j]===null){
-
-                           }else{
-                            if(this.userBookmark[i] == this.productId[j]._id) {
-                             this.productId[j].bookm=true;
-                            } else  {
-                             // this.productId[j].bookm=true;
-                            }
-                           }
-                       }
-                 }
-
-          });
+         
+          
         });
-      } else {
-          this.search.onSearch(this.word,this.page).subscribe(response => {
-
-            //console.log(JSON.parse(response['_body']));
-            this.productResult=JSON.parse(response['_body']);
-            this.productId=JSON.parse(response['_body']);
-            if(!this.productResult.length){
-              this.noResult = true;
-            }
-  });
-
-      }
+        
+       
+      } 
 
   }
 unbookmark(id) {

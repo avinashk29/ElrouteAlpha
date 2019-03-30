@@ -87,6 +87,9 @@ import { HrFormatPipe } from './hr-format.pipe';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { InfoComponent } from './Bpage/info/info.component';
 
+
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 // const config = new AuthServiceConfig([
 // {
 //   id: GoogleLoginProvider.PROVIDER_ID,
@@ -171,6 +174,7 @@ export function getAuthServiceConfigs() {
 
   ],
   imports: [
+    MatProgressSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -186,6 +190,7 @@ export function getAuthServiceConfigs() {
     JwSocialButtonsModule,
     Ng4LoadingSpinnerModule.forRoot(),
     MatCardModule,
+    MatProgressBarModule,
     // StickyNavModule,
     ScrollDispatchModule,
     Ng6SocialButtonModule,

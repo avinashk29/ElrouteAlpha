@@ -1,23 +1,17 @@
-<!-- <app-header></app-header>
-<div class="search-bar">
-  <div class="search-container">
-      <input type="search" id="search-bar" placeholder="SEARCH">
 
-      <button>S</button>
-
-    <button class="toggleBtn" style="margin-left: 40px;"><h1>Show</h1></button>
-  </div>
-</div>
-<div *ngIf="false" class="filter">
-</div>
-<app-tab-header></app-tab-header> -->
 <app-header></app-header>
 
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
+<div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+    <!-- <h2>Loading...</h2> -->
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div [hidden]="loading" class="router-output">
 <section class="fullscreen">
 
 <div class="listing" *ngFor="let result of productResult; let i = index;">
+ 
   <!-- <--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
 <div class="Card" *ngIf="result != null"  >
 
@@ -90,48 +84,12 @@
 </div>
 </div>
 </section>
-
-<div class="mob-cards" *ngFor="let result of productResult; let i = index;">
-    <div class="card-wrapper">
-        <div class="header">
-            <div class="header-content" style="width:95%; display: flex">
-              <h5 style="width:50%;">Product</h5>
-             <div *ngIf="this.token">
-
-              <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Bookmark</h5>
+  
 
 
-              <ng-template #bloadingmob >
-                  <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)="deleteProductBookmark(i,result._id)" (click)= "addProductBookmark(i ,result._id)"  *ngIf = "!this.productId[i].bookm else bloadingmob" >Unbookmark</h5>
-            </ng-template>
-             </div>
-             <div *ngIf="!this.token">
-
-                <h5  style="float:right;justify-content: flex-end; display: flex; width: 50%; text-align: right" (click)= "openLogin()">Bookmark</h5>
-
-               </div>
-
-          </div>
-        </div>
-
-      <div class="img-banner"><img alt="with-login" src="https://images.unsplash.com/photo-1543872981-578a0310c83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"></div>
-
-      <div class="main-content">
-        <div class="content-details">
-          <p>Something is here Some of the contnet</p>
-        </div>
-      </div>
-      <div class="footer">
-        <div class="footer-content" style="width:95%; border-top:1px solid #ccc; display: flex">
-          <h6 style="width:35%;">Price</h6>
-          <h6  style="float:right;justify-content: flex-end; display: flex; width: 65%; text-align: right" >23,445 hits</h6>
-      </div>
-    </div>
-
-</div>
-</div>
 
 <div *ngIf = "!productResult.length" class="result_not_found">
     <img alt="with-login" src = "../../../assets/images/result_not_found.png">
   </div>
 
+</div>

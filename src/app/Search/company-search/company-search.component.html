@@ -2,6 +2,12 @@
 
 <app-s-page-header-search></app-s-page-header-search>
 <app-s-page-header></app-s-page-header>
+<div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+    
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div [hidden]="loading" class="router-output">
+
 <section>
     <div  class="result_not_found" *ngIf="this.noResult">
         <img src = "../../../assets/images/result_not_found.png">
@@ -104,9 +110,9 @@
 </div> -->
 
 </div>
-<div *ngIf = "!result.length" class="result_not_found">
+<!-- <div *ngIf = "!result.length" class="result_not_found">
   <img alt="with-login" src = "../../../assets/images/result_not_found.png">
-</div>
+</div> -->
 
 </section>  
-
+  </div>

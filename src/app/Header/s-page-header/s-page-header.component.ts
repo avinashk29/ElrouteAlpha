@@ -14,11 +14,15 @@ word;
 page;
 pagecounter;
   constructor(public route: ActivatedRoute,public search:SearchService) {
-    this.word = this.route.snapshot.paramMap.get('word');
-    this.page = this.route.snapshot.paramMap.get('page');
-    this.search.onSearch(this.word , this.page).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
-    });
+    
+    this.route.params.subscribe(params=>{
+      this.word=params.word;
+      this.page=params.page;
+      this.search.onSearch(this.word , this.page).subscribe(res => {
+        console.log(JSON.parse(res['_body']));
+      });
+    })
+   
 
   }
 
