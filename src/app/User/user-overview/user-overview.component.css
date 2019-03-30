@@ -4,7 +4,7 @@
   margin: 0 auto;
   width: 90%;
   margin-left: 7%;
-  margin-top: 7%;
+  /* margin-top: 7%; */
     /* height: 345px; */
 }
 .bookmark_overview {
@@ -183,18 +183,18 @@
 .bio_save {
     width: 38%;
     margin: 4px 12px;
-    background-color: #34c334;
+    background-color: rgb(56, 67, 79);
     color: #ffffff;
     font-weight: 600;
     /* height: 25px; */
     padding: 8px;
     text-align: center;
-    border-radius: 13px;
+   
     border: none;
-    align-items: center;
+
     float: right;
     font-size: 12px;
-    display: flex;
+   
 }
 
 .Bio_heading {

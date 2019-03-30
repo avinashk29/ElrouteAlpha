@@ -1,3 +1,12 @@
+.trade
+{
+  width: 89%;
+  background-color: rgba(214, 214, 213, 0.3);
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
+  border-radius: 5px;
+  max-width: 100%;
+  padding: 20px;
+}
 .sigup-form{
   /* border: 10px solid #cccccc; */
   padding: 20px;
@@ -36,8 +45,10 @@ li input{
 input{
   height: 5vh;
   /* padding: 0 20px; */
-  width: 99%;
+  width: 100%;
   outline: none;
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.16);
+    border: none;
 }
 .form-elements input::placeholder
 {
@@ -128,6 +139,8 @@ select
   padding: 0 20px;
   width: 100%;
   outline: none;
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.16);
+    border: none;
 }
 .remove_product
 {
@@ -143,7 +156,7 @@ outline: none;
 }
 .remove_product svg
 {
-background-color:white;
+
 /* fill: #ef0707; */
 width: 18px;
 }

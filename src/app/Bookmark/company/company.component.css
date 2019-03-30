@@ -255,6 +255,10 @@ section{
   margin-left: 1%;
 
 }
+.listing {
+  width: 100%;
+  margin: 10px;
+}
 }
 input{
   width: 100%;

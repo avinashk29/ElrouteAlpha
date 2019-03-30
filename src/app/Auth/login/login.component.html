@@ -5,18 +5,24 @@
     <h2>
       SIGN IN
     </h2>
+    <div class="lognwith_links">
+    <google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
+    </div>
+    <div class="login-divider"><div class="login-line"></div><b>or</b><div class="login-line"></div></div>
     <form [formGroup]="login" (ngSubmit)="onSubmit()" >
       <ul>
   <li class="form-elements"><input type="email" placeholder="EMAIL ADDRESS" formControlName= "email" name="email" [ngClass]="{'error': !login.get('email').valid && login.get('email').touched}"></li>
   <li class="form-elements"><input type="password" placeholder="PASSWORD" formControlName= "password" name="password" [ngClass]="{'error': !login.get('password').valid && login.get('password').touched}"></li>
   </ul>
-  <button class="sign_in">Sign In</button>
+  <div class="sign_in">
+  <button>Sign In</button>
+  </div>
     </form>
-    <span class="other_option"><h6>Or you can Sign In with the following</h6></span>
+    <!-- <span class="other_option"><h6>Or you can Sign In with the following</h6></span> -->
     
     <!-- <facebook-login-button  (socialUser)="getSocialUser($event)"></facebook-login-button> -->
 
-<google-login-button (socialUser)="getSocialUser($event)"></google-login-button>
+<!-- <google-login-button (socialUser)="getSocialUser($event)"></google-login-button> -->
 
 <!-- <linkedin-login-button (socialUser)="getSocialUser($event)"></linkedin-login-button> -->
     <div class="login-link">

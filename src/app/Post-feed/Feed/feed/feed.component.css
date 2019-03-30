@@ -1,7 +1,11 @@
 .tag
 {
-    width: 96%;
-    padding: 10px;
+    width: 93%;
+    background-color: rgba(214, 214, 213, 0.3);
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
+    border-radius: 5px;
+    max-width: 100%;
+    padding: 20px;
     
 }
 .heading
@@ -14,6 +18,7 @@
 }
 .heading h2
 {
+    text-align: center;
     font-size: 30px;
     width: 100%;
     margin-bottom: auto;
@@ -34,9 +39,12 @@
 }
 .form input
 {
-    width: 96%;
-    height: 4vh;
-    margin-bottom: 4%;
+    height: 5vh;
+    padding: 0 20px;
+    width: 93%;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.16);
+    border: none;
+    outline: none;
 }
 .form input::placeholder
 {
@@ -56,30 +64,30 @@
 }
 .tag_btn button
 {
-    background-color: rgb(59, 134, 255);
+    background-color: rgb(56, 67, 79);
     width: 15%;
     font-size: 15px;
     color: white;
     border: none;
-    border-radius: 5px;
+    margin-top: 3%;
     height: 4vh;
     margin-right: 3%;
 }
 .remove_product
 {
-  float: right;
-  position: relative;
-  border: none;
-  top: 3.5px;
-  width: 0% ! important;
-  background-color: transparent;
-  left: -24.3px;
-  outline: none;
+    float: right;
+    position: relative;
+    border: none;
+    top: 6.5px;
+    width: 0% ! important;
+    background-color: transparent;
+    left: -25.3px;
+    outline: none;
 
 }
 .remove_product svg
 {
-  background-color:white;
+  
  /* fill: #ef0707; */
  width: 18px;
 }

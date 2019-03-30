@@ -37,7 +37,7 @@
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
                     <textarea formControlName= "shortBio" value="{{this.userService.userData.shortBio}}"></textarea>
-                    <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Save Changes</button>
+                    <button type="submit" (click) = "addBio()" style="z-index: 12;" class="bio_save">Update</button>
             </div>
             <!-- <div class="follower_company">
                 <div class="company" *ngIf = "haveCompany">

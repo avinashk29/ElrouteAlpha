@@ -13,15 +13,16 @@
                         <div class="form">
                            <input list="product" [(ngModel)]="product_id" name="product_id" autocomplete="off" placeholder="Product">
                          <datalist id ="product"  >
-                        <div *ngFor = "let product of products; let i = index" style="overflow: scroll;">
+                        <div *ngFor = "let product of products; let i = index">
                        <option value="{{i}}" >{{product.productName}}
                     </div>
                   </datalist>
 
                         </div>
                         <div class="tag_btn">
-                          <button type="submit">Tag</button>
+                          <button type="submit" (click)="closeLogin(i)" >Tag</button>
                          </div>
+                         
                        </div>
                      </div>
               </form>
