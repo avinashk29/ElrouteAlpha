@@ -93,6 +93,7 @@ export class WithLoginComponent implements OnInit {
 
 
       this.userService.getUserData().subscribe(res1 => {
+        this.userService.userData = JSON.parse(res1['_body']);
         this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
         JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;

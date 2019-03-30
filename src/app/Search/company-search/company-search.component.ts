@@ -31,9 +31,58 @@ export class CompanySearchComponent implements OnInit {
   result = [];
   userInfo = [];
   userBookmark = [];
+  unfilteredresult;
+  loading;
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,private bookmarkService:BookmarkServices,
    private router:Router,public search: SearchService,private companyService:CompanyServiceService,private userService:UserService,
-   private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog, public notification: ToastrService) { }
+   private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog, public notification: ToastrService) { 
+    this.route.params.subscribe(params=>{
+      this.loading=true;
+      this.search.onSearchCompany(params.word).subscribe(res1=>{
+        this.unfilteredresult = JSON.parse(res1['_body']).searchResult;
+       this.result = this.unfilteredresult.filter(el=>{
+ return el !=null;
+       })
+      //  console.log(this.result)
+      if(this.result.length>0){
+       this.cresult = this.result[0];
+       this.id=this.result[0][0];
+      }
+
+       var number=this.cresult.length;
+       if(!this.result.length) {
+         this.noResult = true;
+       ;
+       }
+
+     this.search.setOption(number)
+     
+if(this.token){
+      //Addition/Deletion method for Follow//
+      for(let i = 0; i < this.userInfo.length; i++) {
+       for(let j = 0;j < this.cresult.length; j++) {
+            if(this.userInfo[i] == this.cresult[j]._id) {
+             this.cresult[j].follow=true;
+            } else  {
+             // this.cresult[j].follow=false;
+            }
+        }
+  }
+         //Addition/Deletion method for Bookmarks//
+     for(let i = 0; i < this.userBookmark.length; i++) {
+       for(let j = 0;j < this.cresult.length; j++) {
+            if(this.userBookmark[i] == this.cresult[j]._id) {
+             this.cresult[j].bookm=true;
+            } else  {
+             // this.cresult[j].bookm=false;
+            }
+        }
+  }
+}
+this.loading=false;
+      })
+    })
+   }
 
 
   ngOnInit() {
@@ -47,56 +96,9 @@ if(this.token) {
 
     this.userInfo = JSON.parse(res['_body']).following;
      this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
-    this.search.onSearchCompany(this.word).subscribe(res1=>{
-    console.log(JSON.parse(res1['_body']));
-      this.result = JSON.parse(res1['_body']);
-      this.search.companyResultLength = this.result.length;
-      this.cresult = JSON.parse(res1['_body'])[0];
-      console.log(this.cresult);
-
-        var number=this.cresult.length;
-        if(!this.result.length) {
-          this.noResult = true;
-          console.log(this.cresult);
-          console.log(this.noResult);
-        }
-
-      this.search.setOption(number)
-      this.id=JSON.parse(res1['_body'])[0][0];
-
-       //Addition/Deletion method for Follow//
-       for(let i = 0; i < this.userInfo.length; i++) {
-        for(let j = 0;j < this.cresult.length; j++) {
-             if(this.userInfo[i] == this.cresult[j]._id) {
-              this.cresult[j].follow=true;
-             } else  {
-              // this.cresult[j].follow=false;
-             }
-         }
-   }
-          //Addition/Deletion method for Bookmarks//
-      for(let i = 0; i < this.userBookmark.length; i++) {
-        for(let j = 0;j < this.cresult.length; j++) {
-             if(this.userBookmark[i] == this.cresult[j]._id) {
-              this.cresult[j].bookm=true;
-             } else  {
-              // this.cresult[j].bookm=false;
-             }
-         }
-   }
-
-    });
-
-});
-} else {
-  this.search.onSearchCompany(this.word).subscribe(res1 => {
-   //console.log(JSON.parse(res1['_body'])[0]);
-    this.result = JSON.parse(res1['_body']);
-    this.cresult = JSON.parse(res1['_body'])[0];
-    if (!this.result.length) {
-      this.noResult = true;
-      console.log(this.noResult);
-    }
+  
+    
+    
     });
 }
 

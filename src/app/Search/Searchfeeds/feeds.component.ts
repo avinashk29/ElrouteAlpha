@@ -21,10 +21,43 @@ export class FeedsSearchComponent implements OnInit {
   productId;
   feedResult = [];
   token;
+  loading;
+  unfilteredFeedResult;
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
    public bookmarkService: BookmarkServices,private router:Router,
    public follows: FollowService,private UserService:UserService, public route: ActivatedRoute,  public dialog: MatDialog,
-    public feedService: FeedService, public notification: ToastrService) { }
+    public feedService: FeedService, public notification: ToastrService) {
+      this.route.params.subscribe(params=>{
+        // console.log(params.word);
+        this.loading=true;
+      this.search.onSearchFeed(params.word , params.page).subscribe(res1 => {
+        this.unfilteredFeedResult = JSON.parse(res1['_body']).searchResult;
+        this.feedResult= this.unfilteredFeedResult.filter(function (el) {
+          return el != null;
+        });
+        console.log(this.feedResult)
+          this.productId = this.feedResult;
+   
+    if(this.token){
+      
+      for (let i = 0; i < this.userInfo.length; i++) {
+        for (let j = 0; j < this.productId.length; j++) {
+             if (this.productId[j] == null) {
+ 
+             } else {
+              if (this.userInfo[i] == this.productId[j]._id) {
+               this.productId[j].bookm=true;
+              } else  {
+               // this.productId[j].bookm=true;
+              }
+             }
+         }
+   }
+    }
+    this.loading=false;
+      });
+    });
+     }
 word;
 page;
   ngOnInit() {
@@ -34,38 +67,10 @@ page;
 if(this.token){
   this.bookmarkService.token = this.storage.get('token');
   this.UserService.getUserData().subscribe(res => {
- this.userInfo=JSON.parse(res['_body']).bookmarks.post;
- this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
-   this.feedResult = JSON.parse(res1['_body']);
-   this.search.feedResultLength = this.feedResult.length;
+ this.userInfo=JSON.parse(res['_body']).bookmarks.post;});
+ 
+} 
 
-    console.log(this.feedResult)
-     this.productId=JSON.parse(res1['_body']);
-     for (let i = 0; i < this.userInfo.length; i++) {
-       for (let j = 0; j < this.productId.length; j++) {
-            if (this.productId[j] == null) {
-
-            } else {
-             if (this.userInfo[i] == this.productId[j]._id) {
-              this.productId[j].bookm=true;
-             } else  {
-              // this.productId[j].bookm=true;
-             }
-            }
-        }
-  }
-
- });
-});
-} else {
-  this.search.onSearchFeed(this.word , this.page).subscribe(res1 => {
-    this.feedResult = JSON.parse(res1['_body']);
-    console.log(this.feedResult)
-      this.productId = JSON.parse(res1['_body']);
-      console.log(JSON.parse(res1['_body']));
-
-  });
-}
   }
 
   follow(id) {

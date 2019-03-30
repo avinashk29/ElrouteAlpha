@@ -1,5 +1,13 @@
 
 <app-header></app-header>
+<div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+        <!-- <h2>Loading...</h2> -->
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+
+
+      <div [hidden]="loading" class="router-output">
+         
 <div class="following_title">
     <h1> Following</h1>
 </div>
@@ -81,3 +89,4 @@
         </div>
         </section>
         
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SearchService } from '../../Service/search.service';
 import { UserService } from 'src/app/Service/user-services.service';
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
     public searchService: SearchService,
     public UserService: UserService,
     public dialog: MatDialog,
+    private route:ActivatedRoute
   ) {}
   searchForm = new FormGroup({
     word: new FormControl(''),
@@ -28,6 +29,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     // this.UserService.token = this.storage.get('token');
         this.companyId = this.storage.get('companyId');
+        this.UserService.getUserData().subscribe(res=>{
+          this.UserService.userData = JSON.parse(res['_body']);
+        })
 
   }
   onSearch(event) {
@@ -38,12 +42,27 @@ export class HeaderComponent implements OnInit {
         this.searchForm.value.page
       );
       this.searchService.searchValue = formData;
+      console.log(this.router.url)
+      var path = this.router.url;
+      var paths = path.split('/');
+      console.log(paths)
+      // if(paths[0].toLocale)
+      if(paths[1].indexOf('result')>-1){
+        this.router.navigate([
+          '/'+paths[1] +'/' +
+            this.searchForm.value.word +
+            '/' +
+            this.searchForm.value.page
+        ]);
+      }
+      else{
       this.router.navigate([
-        '/Result/' +
+        '/productresults/' +
           this.searchForm.value.word +
           '/' +
           this.searchForm.value.page
       ]);
+    }
     }
   }
   openDialog() {

@@ -3428,3 +3428,6 @@ height: 24px;
     width: 85%;
   }
 }
+.error{
+  border: 1px solid red;
+}
