@@ -4,6 +4,7 @@ import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { UserService } from 'src/app/Service/user-services.service';
 import { FollowService } from 'src/app/Service/follow-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-company',
@@ -14,19 +15,20 @@ export class CompanyComponent implements OnInit {
 userInfo=[];
 userBookmark=[];
 noResult = false;
+loading
   constructor(public bookmarkService: BookmarkServices, @Inject(LOCAL_STORAGE) public storage: WebStorageService,
-  private userService:UserService,private follows:FollowService, public notifcation: ToastrService) { }
+  private userService:UserService,private follows:FollowService, public notifcation: ToastrService) { this.loading=true; }
 result=[]
   ngOnInit() {
     this.bookmarkService.token = this.storage.get('token');
     this.follows.token=this.storage.get('token');
     this.userService.getUserData().subscribe(res=>{
-      //console.log(res)
+      // console.log(res)
       this.userInfo=JSON.parse(res['_body']).following;
       this.userBookmark=JSON.parse(res['_body']).bookmarks.company;
       this.bookmarkService.getBookmarkCompany().subscribe(res1 => {
         this.result=JSON.parse(res1['_body']);
-        console.log(JSON.parse(res1['_body']))
+      // console.log(JSON.parse(res1['_body']))
 
           //Addition/Deletion method for Follow//
           for(let i = 0; i < this.userInfo.length; i++) {
@@ -48,6 +50,7 @@ result=[]
                  }
              }
        }
+       this.loading=false;
    });
 
     })
@@ -75,7 +78,7 @@ this.notifcation.success('Following');
  deletecompanyBookmark(id){
   if (confirm('Are you sure you want to unbookmark the company?')){
   // this.result[i].bookm=false;
-  console.log(id);
+// console.log(id);
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
     this.bookmarkService.getBookmarkCompany().subscribe(response => {
       this.result=JSON.parse(response['_body']);

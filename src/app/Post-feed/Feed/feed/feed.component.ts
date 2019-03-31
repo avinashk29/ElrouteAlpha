@@ -20,7 +20,7 @@ productName;
    this.id = this.storage.get('companyId');
     this.product.token = this.storage.get('token');
     this.product.getAllProduct(this.id).subscribe(res => {
-      //console.log(JSON.parse(res['_body']));
+      // console.log(JSON.parse(res['_body']));
       this.products = JSON.parse(res['_body']);
       // console.log(this.products);
     });

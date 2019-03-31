@@ -26,12 +26,12 @@ export class ProductPageComponent implements OnInit {
    });
 
     this.id = this.route.snapshot.paramMap.get('_id');
-    //console.log(this.id);
+    // console.log(this.id);
   this.productService.token = this.storage.get('token');
   this.feedService.token=this.storage.get('token');
   this.bookmarkService.token=this.storage.get('token')
   this.mycompany=this.storage.get('companyId');
-  //console.log(this.mycompany)
+  // console.log(this.mycompany)
   }
   panelOpenState = false;
 id;
@@ -39,9 +39,9 @@ id;
   ngOnInit() {
 
 this.productService.getOneProduct(this.id).subscribe(res => {
-  //console.log(JSON.parse(res['_body']))
+  // console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
-  //console.log(this.productService.productData);
+  // console.log(this.productService.productData);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{
@@ -89,14 +89,14 @@ this.UserService.getUserData().subscribe(res=>{
  addFeedBookmark(i,id){
   this.feedResult[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-    console.log(res)
+  // console.log(res)
   })
 
 }
 removeFeedBookmark(i,id){
   this.feedResult[i].bookm=false;
 this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-  console.log(res)
+// console.log(res)
 })
 }
 }

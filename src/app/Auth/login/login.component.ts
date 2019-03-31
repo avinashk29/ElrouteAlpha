@@ -46,8 +46,9 @@ if (this.login.valid) {
   this.dialogRef.close(LoginComponent);
   const loginValues = this.login.value;
   this.authService.login(loginValues).subscribe( res => {
-console.log(res)
-      this.storage.set('token', res.headers.get('x-auth'));
+console.log(this.storage)
+// this.storage.remove;
+this.storage.set('token', res.headers.get('x-auth'));
        this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
 
       this.userService.userData = JSON.parse(res['_body']);
@@ -56,7 +57,7 @@ console.log(res)
       this.router.navigate(['/Dashboard']);
   }, error =>{
     this.notification.error(error._body);
-    //console.log(error._body);
+    // console.log(error._body);
   });
 }
 
@@ -66,14 +67,15 @@ console.log(res)
     this.dialogRef.close();
   }
   getSocialUser(socialUser) {
-    console.log(socialUser);
+  // console.log(socialUser);
     // this.login.value.userName = socialUser.name;
     this.login.value.email = socialUser.email;
     // this.login.value.password = socialUser.id;
     // this.login.value.password = socialUser.idToken;
 
-    console.log(this.login.value);
+  // console.log(this.login.value);
     this.authService.login(this.login.value).subscribe( res => {
+      // this.storage=null;
       this.storage.set('token', res.headers.get('x-auth'));
       this.storage.set('companyId', JSON.parse(res['_body']).Company_id);
 
@@ -81,7 +83,7 @@ console.log(res)
 
      this.notification.success('Welcome Back', JSON.parse(res['_body']).userName);
      this.router.navigate(['/Dashboard']);
-      console.log(res);
+    // console.log(res);
 
 
   });

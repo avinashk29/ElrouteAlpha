@@ -171,6 +171,7 @@ input[type="search"]{
 {
   font-weight: 400;
   font-size: 15px;
+  cursor: pointer;
   padding-top: 1%;
   margin-bottom: auto;
   margin-top: auto;

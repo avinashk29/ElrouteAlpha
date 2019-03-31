@@ -43,7 +43,7 @@ export class CompanyForm3Component implements OnInit {
   onSubmit() {
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
       this.notification.success('B Face Updated');
-      console.log(JSON.parse(res['_body']));
+    // console.log(JSON.parse(res['_body']));
     });
 
       // console.log(this.BForm.value.workingHours);
@@ -65,22 +65,22 @@ export class CompanyForm3Component implements OnInit {
           this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
 
           this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
-          console.log(this.companyService.companyData.closeAt );
+        // console.log(this.companyService.companyData.closeAt );
         }
         else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
          this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
-          console.log(this.companyService.companyData.closeAt );
+        // console.log(this.companyService.companyData.closeAt );
         }
 
        else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
          this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
 
          this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
-          console.log(this.companyService.companyData.openAt );
+        // console.log(this.companyService.companyData.openAt );
         }
         else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
          this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
-          console.log(this.companyService.companyData)
+        // console.log(this.companyService.companyData)
 
         }
 

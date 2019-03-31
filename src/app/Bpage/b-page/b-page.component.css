@@ -696,7 +696,7 @@ width: 100%;
 .add_media
 {
 display: flex;
-padding: 10px 21px 0 0px;
+padding: 10px 0px 0 0px;
 }
 
 .add_media2
@@ -881,18 +881,20 @@ width: 19%;
 z-index: 1;
 }
 .about_feed1 textarea {
-  width: 93% !important;
+  width: 100% !important;
   margin-top: 4%;
 
       height: 80px !important;
   }
-.add_btn button {
+.add_btn p {
   width: 100%;
   background-color: #42445b;
   color: #ffffff;
   margin: 15px 7px;
+  cursor: pointer;
   font-weight: 600;
   height: 25px;
+  text-align: center;
   border-radius: 4px;
   outline: none;
   border: none;
@@ -3238,6 +3240,18 @@ height: 24px;
   height: 12px;
   width: 12px;
 }
+.about_feed1 textarea {
+  width: 90% !important;
+
+  border: solid 1px gray;
+  
+}
+.add_media {
+  display: flex;
+  padding: 10px 21px 0 0px;
+}
+
+
 }
 @media screen and (min-width: 767px) and (max-width: 1024px) {
 

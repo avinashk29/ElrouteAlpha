@@ -67,6 +67,7 @@ section{
 .feed_name h4 {
   margin-bottom: auto;
   margin-top: auto;
+  cursor: pointer;
 }
 
 .feed_name p {

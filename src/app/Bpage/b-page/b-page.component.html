@@ -425,7 +425,7 @@
                 <div class="revenu info" style="border-bottom:none">
 
                   <div class="hq_info" *ngIf="myCompany">
-                      <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      <button type="button"  routerLink="/company-edit/market"><span><svg xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
                     </div>
@@ -469,7 +469,7 @@
                       <div class="revenu info" style="border-bottom:none">
 
                         <div class="hq_info" *ngIf="myCompany">
-                            <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <button type="button"  routerLink="/company-edit/market"><span><svg xmlns="http://www.w3.org/2000/svg"
                                   width="24" height="24" viewBox="0 0 24 24">
                                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
                           </div>
@@ -511,7 +511,7 @@
                       <h3>{{this.companyService.companyData.totalRevenue}}</h3>
                     </div>
                     <div class="hq_info" *ngIf="myCompany">
-                      <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      <button type="button"  routerLink="/company-edit/basic-details"><span><svg xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                       </button>
@@ -529,7 +529,7 @@
   <div class="content_1" *ngIf="myCompany">
               <p class="add_feed">Add Feed</p>
 
-              <form [formGroup]="feed" (ngSubmit)="onAddpost()">
+              <form [formGroup]="feed" >
                 <div class="about_feed">
 
                   <div class="about_feed1">
@@ -569,7 +569,7 @@
                         </div>
 
                         <div class="add_btn">
-                          <button type="submit">Post</button>
+                          <p  (click)="onAddpost()">Post</p>
                         </div>
                       </div>
                     </div>
@@ -601,6 +601,13 @@
                 </div>
               </form>
           </div>
+          <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+              <!-- <h2>Loading...</h2> -->
+              <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+            </div>
+      
+      
+            <div [hidden]="loading" class="router-output">
         <div class="main_feed_card" *ngFor="let feed of feedById; let i = index" id = "{{feed._id}}" >
           <div class="feed1" >
             <div style="width: 100%;">
@@ -693,6 +700,7 @@
             </div>
           </div>
         </div>
+            </div>
 
 
         <div class="feeds" *ngIf="!feedById.length && !myCompany">
@@ -744,7 +752,7 @@
               <h3>{{this.companyService.companyData.totalRevenue}}</h3>
             </div>
             <div class="hq_info" *ngIf="myCompany">
-              <button role="button"  routerLink="/company-form3" aria-label="false"><span><svg xmlns="http://www.w3.org/2000/svg"
+              <button role="button"  routerLink="/company-edit/basic-details" aria-label="false"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
               </button>

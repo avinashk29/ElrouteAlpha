@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="user_follower">
-          <div class="user_following" routerLink="/Following">
+          <div class="user_following" routerLink="/following">
             <h2>Following</h2>
 
                   <span style="color: #333">{{this.userService.following}}</span>
@@ -79,7 +79,7 @@
           </div>
           <hr />
           <div class="company_following">
-            <h2 routerLink="/Followers">Followers</h2>
+            <h2 routerLink="/company/followers">Followers</h2>
             <p>{{companyFollowers}}</p>
           </div>
           <!-- <div class="company_following">
@@ -201,7 +201,13 @@
             <!-- </div> -->
 
 
-
+            <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+                <!-- <h2>Loading...</h2> -->
+                <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+              </div>
+        
+        
+              <div [hidden]="loading" class="router-output">
         <section>
           <div class="feedCards" *ngIf="feeds.length">
             <div class="main_feed_card" *ngFor="let feedElement of feeds; let i = index">
@@ -212,8 +218,8 @@
                       </div>
                       <div class="feed_name">
                         <h4  routerLink="/companyPage/{{feedElement.admin}}" routerLinkActive="activate" [queryParams] = "{urltype: 'default'}">{{feedElement.companyName}}</h4>
-                        <!-- <p>Service</p> -->
-                        <!-- <h6>India</h6> -->
+                        <p>Service</p>
+                        <h6>India</h6>
                       </div>
                       <div class="feed_following">
                         <button (click)="onunfollow(i,feedElement.admin)" *ngIf="this.result[i].follow else loading">Following<span><svg
@@ -303,7 +309,9 @@
           </div>
 
         </section>
+        </div>
       </div>
+
       <div class="category_box">
         <div class="company_industry">
           <div class="explore_industry">

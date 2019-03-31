@@ -1,10 +1,16 @@
 <app-header></app-header>
 
 <app-user-overview></app-user-overview>
+
 <div class="bookmark_overview">
 <section>
     <h2>Bookmarks</h2>
     <app-header3></app-header3>
+    <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 40vh;">
+    
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div [hidden]="loading" class="router-output">
     <div *ngIf="result" class="company_card">
     <div class="listing" *ngFor="let r of result">
         <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
@@ -78,6 +84,8 @@
 
     </div>
     </div>
+  </div>
     </section>
 </div>
+
 

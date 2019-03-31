@@ -39,5 +39,9 @@ fresult;
   onSearchFeed(word , page) {
     return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);
   }
+  maxResult(word){
+  // console.log(word)
+    return this.http.get('http://localhost:8080/api/searchMax/' + word );
+  }
 
 }

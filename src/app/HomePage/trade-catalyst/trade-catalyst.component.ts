@@ -41,7 +41,7 @@ export class TradeCatalystComponent implements OnInit {
   onSubmit(){
     if (this.enquiryDetails.valid) {
       this.catalystService.onHireCatalyst(this.enquiryDetails.value).subscribe(res => {
-        console.log(res);
+      // console.log(res);
       });
       // console.log(this.enquiryDetails.value);
       this.notification.success('Hire Request Sent');

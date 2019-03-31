@@ -57,7 +57,7 @@ loading;
 
 this.following.getFollowing().subscribe(res1=>{
   this.followings=JSON.parse(res1['_body']);
-  console.log(this.followings);
+// console.log(this.followings);
   
   this.userService.getUserData().subscribe(res=>{
     this.userInfo=JSON.parse(res['_body']).following;

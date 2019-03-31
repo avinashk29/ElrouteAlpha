@@ -35,7 +35,7 @@ export class FeedsSearchComponent implements OnInit {
         this.feedResult= this.unfilteredFeedResult.filter(function (el) {
           return el != null;
         });
-        console.log(this.feedResult)
+      // console.log(this.feedResult)
           this.productId = this.feedResult;
    
     if(this.token){
@@ -102,8 +102,8 @@ if(this.token){
     this.dialog.open(LoginComponent, dialogConfig);
   }
   onSharepost(i, admin) {
-    console.log(i);
-    console.log(admin);
+  // console.log(i);
+  // console.log(admin);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
     const dialogConfig = new MatDialogConfig();

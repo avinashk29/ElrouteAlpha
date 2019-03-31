@@ -63,6 +63,7 @@ export class BPageComponent implements OnInit {
   section = [];
   url;
   socialLink = [];
+  loading;
   companyImage = [];
   bioEdit = false;
   userBookmark;
@@ -122,7 +123,7 @@ export class BPageComponent implements OnInit {
     this.comapnyId = this.route.snapshot.paramMap.get('id');
 this.subscription = this.router.events.subscribe( () => {
   this.comapnyId = this.route.snapshot.paramMap.get('id');
-  console.log(this.comapnyId);
+// console.log(this.comapnyId);
 
 });
 
@@ -155,11 +156,12 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
       this.myCompany = false;
     }
 })
-
+this.loading=true;
 this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
   ngZone.run(()=>{
 
     this.feedById=JSON.parse(res1['_body']);
+    this.loading=false;
   })
 })
 })
@@ -173,7 +175,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
           this.companyImage = JSON.parse(res['_body']).companyImage;
           this.companyFollowers = JSON.parse(res['_body']).followers.length;
           this.contact = JSON.parse(res['_body']).contact;
-          //console.log(this.companyFollowers);
+          // console.log(this.companyFollowers);
           this.setSection();
 
 
@@ -187,15 +189,15 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
-              console.log(this.products)
+            console.log(this.products)
               // this.Bproduct=JSON.parse(res['_body'])[0].shotedProduct;
-              console.log(this.Bproduct);
+            // console.log(this.Bproduct);
               this.shotedProduct=(JSON.parse(res['_body'])[0].sortedProducts);
               this.userService.getUserData().subscribe(res2=>{
                 this.userbookm=JSON.parse(res2['_body']).bookmarks.product;
-                console.log(this.userbookm.length)
+              // console.log(this.userbookm.length)
                 for(let i = 0; i < this.userbookm.length; i++) {
-                  console.log(this.userbookm[i])
+                // console.log(this.userbookm[i])
                   for(let j = 0;j < this.shotedProduct.length; j++) {
                     if(!this.shotedProduct[i] && !this.userbookm[i]){
 
@@ -243,7 +245,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
     if(!this.companyService.companyData.companyLogo){
       this.companyService.companyData.companyLogo='';
     }
-//console.log(this.companyService.companyData.companyLogo);
+// console.log(this.companyService.companyData.companyLogo);
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {
@@ -267,7 +269,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
       this.feedById=JSON.parse(res1['_body']);
-      console.log(JSON.parse(res1['_body']))
+    // console.log(JSON.parse(res1['_body']))
     //----------------------------------------bookmark at Bpage------------------- //
     this.userService.getUserData().subscribe(res => {
       this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
@@ -361,7 +363,7 @@ this.four = false;
     this.bioEdit = !this.bioEdit;
   }
   onsectionImagePick(event, name, index) {
-    //console.log(event)
+    // console.log(event)
     this.file = <File>event.target.files[0];
     const fdata = new FormData();
     fdata.append(name, this.file);
@@ -432,7 +434,7 @@ this.four = false;
     this.router.navigate(['/productEdit/' + id]);
   }
   EditBpage() {
-    this.router.navigate(['company-form2']);
+    this.router.navigate(['company-edit/general']);
   }
   showTwo() {
     this.router.navigate(['/companyPage/' + this.comapnyId], {
@@ -476,15 +478,15 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
    onEditBpage(key, content: HTMLInputElement) {
-    // //console.log(content);
+    // // console.log(content);
     const formData = new FormData();
     formData.append(key, content.value);
-    //console.log(content.value);
-    //console.log(this.time1);
+    // console.log(content.value);
+    // console.log(this.time1);
     if (key === 'workingHours') {
       content.value = this.time1 + '-' + this.time2;
       formData.append(key, content.value);
-      //console.log(content.value);
+      // console.log(content.value);
     }
     this.companyService.UpdateCompany(formData).subscribe(res => {
       this.companyService.companyData.website = JSON.parse(res['_body']).website;
@@ -495,27 +497,6 @@ this.four = true;
         res['_body']
       ).closeAt;
 
-    //   if(Number(this.companyService.companyData.closeAt.substring(0,2))>=12){
-    //     this.companyService.companyData.closeAt  = (Number(this.companyService.companyData.closeAt.substring(0,2))-12)+this.companyService.companyData.closeAt.substring(2,5);
-
-    //     this.companyService.companyData.closeAt = this.companyService.companyData.closeAt+' PM'
-    //     console.log(this.companyService.companyData.closeAt );
-    //   }
-    //   else if (Number(this.companyService.companyData.closeAt.substring(0,2))<12){
-    //    this.companyService.companyData.closeAt =this.companyService.companyData.closeAt+' AM'
-    //     console.log(this.companyService.companyData.closeAt );
-    //   }
-
-    //  else if(Number(this.companyService.companyData.openAt.substring(0,2))>=12){
-    //    this.companyService.companyData.openAt  = (Number(this.companyService.companyData.openAt.substring(0,2))-12)+this.companyService.companyData.openAt.substring(2,5);
-
-    //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' PM'
-    //     console.log(this.companyService.companyData.openAt );
-    //   }
-    //   else if (Number(this.companyService.companyData.openAt.substring(0,2))<12){
-    //    this.companyService.companyData.openAt =this.companyService.companyData.openAt+' AM'
-    //     console.log(this.companyService.companyData)
-    //   }
       this.companyService.companyData.socialLinks=JSON.parse(res['_body']).socialLinks;
       this.companyService.companyData.shortIntro = JSON.parse(res['_body']).shortIntro;
       this.router.navigate(['/companyPage/' + this.comapnyId], {
@@ -540,7 +521,7 @@ this.four = true;
 
   onfollow() {
     this.Follower = true;
-    //console.log(this.comapnyId)
+    // console.log(this.comapnyId)
     this.follows.addFollow(this.comapnyId).subscribe(res => {
       this.companyService.GetoneCompany(this.comapnyId).subscribe(res1 => {
         this.companyFollowers = JSON.parse(res1['_body']).followers.length;
@@ -562,6 +543,7 @@ this.four = true;
   }
 
   onSubmit() {
+  
     if (this.BForm.controls.section.valid){
       this.sectionEdit = false;
       const sectionForm = new FormGroup({
@@ -578,7 +560,7 @@ this.four = true;
   }
   onadeleteImg(item) {
         const i = this.certification.indexOf(item);
-        //console.log(i)
+        // console.log(i)
         if(confirm('Are you sure you want to delete')){
           this.certification.splice(i, 1);
           let certiForm = new FormGroup({
@@ -632,7 +614,7 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { edit: 'true'}
     });
-//console.log(key);
+// console.log(key);
 this.productService.key = key;
 const dialogConfig = new MatDialogConfig();
 dialogConfig.autoFocus = true;
@@ -648,10 +630,10 @@ if(confirm('Are you sure you want to remove the product from group')) {
         this.products =  JSON.parse(res1['_body']);
     //      this.spinner.hide();
       });
-      //console.log(res);
+      // console.log(res);
       // this.spinner.hide();
     });
-    //console.log(res);
+    // console.log(res);
     // this.spinner.hide();
   });
 }
@@ -660,10 +642,10 @@ onDeletegroup(name) {
 if (confirm('Are you sure you want to remove the group')){
   this.spinner.show();
   this.productService.token = this.storage.get('token');
-  //console.log(name);
+  // console.log(name);
 this.productService.deletegroup(name).subscribe(res => {
   this.notification.success('Group Deleted');
-  // //console.log(JSON.parse(res['_body']));
+  // // console.log(JSON.parse(res['_body']));
   this.ngZone.run(() => {
     this.productService.getProduct(this.comapnyId).subscribe(res1 => {
       this.products =  JSON.parse(res1['_body']);
@@ -676,8 +658,8 @@ this.productService.deletegroup(name).subscribe(res => {
 }
 
 onShowAllProduct(index) {
-  //console.log(this.showAll[index])
-  //console.log(index)
+  // console.log(this.showAll[index])
+  // console.log(index)
   this.showAll[index]= !this.showAll[index]
 }
 onAddContact() {
@@ -692,7 +674,7 @@ dialogConfig.width = '48%';
 addFeedBookmark(i,id){
   this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-    console.log(JSON.parse(res['_body']))
+  // console.log(JSON.parse(res['_body']))
     this.notification.success('Bookmark');
   });
 }
@@ -700,21 +682,21 @@ removeFeedBookmark(i,id){
   this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
     this.notification.success('UnBookmark');
-    console.log(JSON.parse(res['_body']))
+  // console.log(JSON.parse(res['_body']))
   });
 }
 addProductBookmark(i,id){
   this.shotedProduct[i].bookm=true;
-  console.log(id)
+// console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
-    console.log(res)
+  // console.log(res)
     this.notification.success('Bookmark');
   });
 }
 removeProductBookmark(i,id){
   this.shotedProduct[i].bookm=false;
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-    console.log(res)
+  // console.log(res)
     this.notification.success('UnBookmark');
   });
 }
@@ -732,7 +714,7 @@ onDeletePost(id) {
     this.feedService.deletePost(id).subscribe(res => {
       this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
         this.feedById=JSON.parse(res1['_body']);
-        console.log(JSON.parse(res1['_body']))
+      // console.log(JSON.parse(res1['_body']))
       //----------------------------------------bookmark at Bpage------------------- //
       this.userService.getUserData().subscribe(res => {
         this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
@@ -764,8 +746,8 @@ onDeletePost(id) {
   }
   }
   onSharepost(i, admin, image) {
-    console.log(i);
-    console.log(image);
+  // console.log(i);
+  // console.log(image);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
     this.feedService.postImage = image;
@@ -782,43 +764,6 @@ onDeletePost(id) {
   //  on edit time
 
   onEditTime(){
-    // console.log(this.BForm.value.time1);
-    // console.log(this.BForm.value.time2);
-  //   if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)<'12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' AM';
-  //   }
-  //   else if(this.BForm.value.time1.substring(0,2)<'12'|| this.BForm.value.time2.substring(0,2)>='12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' AM - '+this.BForm.value.time2+' PM';
-  //   }
-  //  else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)<'12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' AM';
-  //   }
-  //   else if(this.BForm.value.time1.substring(0,2)>='12'|| this.BForm.value.time2.substring(0,2)>='12'){
-  //     this.BForm.value.workingHours = this.BForm.value.time1 +' PM - '+this.BForm.value.time2+' PM';
-  //   }
-
-  // if(Number(this.BForm.value.closeAt.substring(0,2))>=12){
-  //   this.BForm.value.closeAt  = (Number(this.BForm.value.closeAt.substring(0,2))-12)+this.BForm.value.closeAt.substring(2,5);
-
-  //   this.BForm.value.closeAt = this.BForm.value.closeAt+' PM'
-  //   console.log(this.BForm.value.closeAt );
-  // }
-  // else{
-  //   this.BForm.value.closeAt = this.BForm.value.closeAt+' AM'
-  //   console.log(this.BForm.value.closeAt );
-  // }
-
-  // if(Number(this.BForm.value.openAt.substring(0,2))>=12){
-  //   this.BForm.value.openAt  = (Number(this.BForm.value.openAt.substring(0,2))-12)+this.BForm.value.openAt.substring(2,5);
-
-  //   this.BForm.value.openAt = this.BForm.value.openAt+' PM'
-  //   console.log(this.BForm.value.openAt );
-  // }
-  // else{
-  //   this.BForm.value.openAt = this.BForm.value.openAt+' AM'
-  //   console.log(this.BForm.value.openAt );
-  // }
-    // console.log(this.BForm.value.workingHours);
     const formData = new FormData();
     formData.append('openAt', this.BForm.value.openAt );
     formData.append('closeAt', this.BForm.value.closeAt );
@@ -865,13 +810,10 @@ onDeletePost(id) {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-      console.log(this.feed.value)
-    if (!this.feed.value.Image) {
-        this.notification.warning('Image or content is missing!');
-    }else if(!this.feed.value.content) {
-      this.notification.warning('Image or content is missing!');
-
-    }else{
+    // console.log(this.feed.value)
+   
+        
+    if (this.feed.value.Image&&this.feed.value.content) {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
       // console.log(JSON.parse(res['_body']));
       this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
@@ -909,8 +851,11 @@ onDeletePost(id) {
       this.feedService.productDescription = null;
       this.notification.success('Post Added!');
     }
-
-  }
+else{
+  this.notification.warning('Image or content is missing!');
+    }
+}
+  
   closeTaggedProduct(){
     this.feedService.productName = null;
     this.feedService.productName = null;

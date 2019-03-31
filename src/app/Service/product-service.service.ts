@@ -36,7 +36,7 @@ groupProduct(data){
 groupProductdelete(id){
   const headers = new Headers();
   headers.append('x-auth', this.token);
-  //console.log(id);
+  // console.log(id);
   return this.http.delete('http://localhost:8080/api/groupProduct/product/' + id,  {headers:headers});
 }
 deletegroup(data) {
@@ -47,7 +47,7 @@ deletegroup(data) {
 updateGroup(data){
   const headers = new Headers();
   headers.append('x-auth', this.token);
-  //console.log(data);
+  // console.log(data);
   return this.http.patch('http://localhost:8080/api/groupProduct/' , data,  {headers:headers});
 }
   getOneProduct(id){
@@ -68,7 +68,7 @@ updateGroup(data){
   }
   sendData(value) {
     this.empDetailSubject.next(value);
-    //console.log(this.empDetailSubject)
+    // console.log(this.empDetailSubject)
 }
 getData()
 {

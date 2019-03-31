@@ -25,7 +25,7 @@ export class FollowersComponent implements OnInit{
 followers = [];
 loading;
 // ngAfterViewInit() {
-//   console.log(this.loading)
+// // console.log(this.loading)
 //   this.router.events
 //       .subscribe((event) => {
 //           if(event instanceof NavigationStart) {
@@ -38,7 +38,7 @@ loading;
 //               this.loading = false;
 //           }
 //       });
-//       console.log(this.loading)
+//     // console.log(this.loading)
 // }
   ngOnInit() {
     

@@ -96,7 +96,7 @@ border: solid 5px white;
  margin: 0 auto;
  width: 50%;
  margin-bottom: 5%;
- margin-top: 19%;
+ margin-top: 23%;
 }
 .user_name h2 {
    
@@ -378,7 +378,7 @@ margin-bottom: 5%;
 
 .about_feed {
  /* margin: 5px 10px; */
- box-shadow: 0px 1px 1px 0px rgba(25, 25, 25, 0.2);
+ box-shadow: 0px 1px 6px 0px rgba(25, 25, 25, 0.2);
  width: 100%;
  MARGIN-BOTTOM: 8%;
 
@@ -957,7 +957,7 @@ cursor: pointer;
 @media screen and (max-width:700px) {
     .dashboard
     {
-   
+        margin-top: 4%;
        width: 100%;
        box-shadow: none;
    

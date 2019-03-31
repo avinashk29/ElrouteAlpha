@@ -92,6 +92,11 @@ section{
   justify-content: flex-end;
     display: flex
 }
+.productName h6
+{
+  margin-bottom: auto;
+  text-align: right;
+}
 .productContent .content .productName h5 ,.ServiceContent .content .ServiceName h5{
   margin: 0;
   font-weight: 100;

@@ -23,6 +23,7 @@ userData;
 
      getUserData(){
         const headers = new Headers();
+      // console.log(this.storage.get('token'))
         headers.append('x-auth', this.storage.get('token'));
         return this.http.get('http://localhost:8080/api/user', {headers: headers});
     }

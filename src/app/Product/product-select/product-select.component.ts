@@ -26,19 +26,19 @@ GroupForm = new FormGroup({
 
   ngOnInit() {
     this.key = this.productService.key;
-    console.log(this.key);
+  // console.log(this.key);
     this.companyId = this.storage.get('companyId');
-    console.log(this.productService.key);
+  // console.log(this.productService.key);
     this.productService.token = this.storage.get('token');
     this.productService.getProduct(this.companyId).subscribe(res => {
       this.productService.productData = JSON.parse(res['_body']);
-      console.log(this.productService.productData);
+    // console.log(this.productService.productData);
       // // this.results = this.productService.productData;
       for(let i=0;i<this.productService.productData.length;i++){
         if(this.productService.productData[i].key==='others'){
-          //console.log(JSON.parse(res['_body'])[i].sortedProducts);
+          // console.log(JSON.parse(res['_body'])[i].sortedProducts);
           this.products = JSON.parse(res['_body'])[i].sortedProducts;
-          console.log(this.products);
+        // console.log(this.products);
         }
       }
 
@@ -51,16 +51,16 @@ GroupForm = new FormGroup({
     var matched=false;
     if (this.selectedProduct.length) {
       for (let i = 0; i < this.selectedProduct.length; i++) {
-        // //console.log(this.selectedProduct[i]);
-        // //console.log(id);
+        // // console.log(this.selectedProduct[i]);
+        // // console.log(id);
         if ( this.selectedProduct[i] === id ) {
-          //console.log('same');
+          // console.log('same');
           const index = this.selectedProduct.indexOf(id);
-          //console.log(index);
+          // console.log(index);
          this.selectedProduct.splice(i, 1);
-          //console.log(this.selectedProduct);
+          // console.log(this.selectedProduct);
           matched = true;
-          //console.log('Product removed');
+          // console.log('Product removed');
           break;
         }
        }
@@ -68,11 +68,11 @@ GroupForm = new FormGroup({
 
           this.selectedProduct.push(id);
  }
-       //console.log(this.selectedProduct);
+       // console.log(this.selectedProduct);
          } else {
           this.selectedProduct.push(id);
-          //console.log(this.selectedProduct);
-          //console.log('Product added');
+          // console.log(this.selectedProduct);
+          // console.log('Product added');
          }
 
   }
@@ -82,18 +82,18 @@ GroupForm = new FormGroup({
     if (this.productService.key) {
       this.GroupForm.value.groupName = this.productService.key;
       this.GroupForm.value.products = this.selectedProduct;
-      //console.log(this.GroupForm.value);
+      // console.log(this.GroupForm.value);
       this.productService.updateGroup(this.GroupForm.value).subscribe(res => {
-        //console.log(res);
+        // console.log(res);
       });
     }
 
 if (!this.productService.key) {
   this.GroupForm.value.products = this.selectedProduct;
-  //console.log(this.GroupForm.value);
+  // console.log(this.GroupForm.value);
   this.productService.groupProduct(this.GroupForm.value).subscribe(res => {
-    //console.log(res);
-    //console.log(JSON.parse(res['_body']));
+    // console.log(res);
+    // console.log(JSON.parse(res['_body']));
 
     this.spinner.hide();
   });
