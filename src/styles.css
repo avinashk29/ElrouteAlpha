@@ -56,3 +56,6 @@ p{
   font-size: 12px;
   line-height: 20px;
 }
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #0b1301;
+}

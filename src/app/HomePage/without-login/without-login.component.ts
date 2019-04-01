@@ -57,9 +57,9 @@ export class WithoutLoginComponent implements OnInit {
   }
   onSearch(name) {
     const formData = this.searchForm.value;
-    
+
     this.searchService.searchValue = formData;
-    this.router.navigate(["/companyresults/" + name + "/" + formData.page]);
+    this.router.navigate(["/company-results/" + name + "/" + formData.page]);
 
   }
   OnSendrequest() {
