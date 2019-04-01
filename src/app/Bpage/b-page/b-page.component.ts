@@ -189,27 +189,34 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
             this.type = 'product';
             this.productService.getProduct(this.comapnyId).subscribe(res => {
               this.products =  JSON.parse(res['_body']);
-            console.log(this.products)
+            // console.log(this.products)
               // this.Bproduct=JSON.parse(res['_body'])[0].shotedProduct;
             // console.log(this.Bproduct);
               this.shotedProduct=(JSON.parse(res['_body'])[0].sortedProducts);
-              this.userService.getUserData().subscribe(res2=>{
+              // console.log(JSON.parse(res['_body'])[0].sortedProducts)
+
+
+              this.userService.getUserData().subscribe(res2 => {
                 this.userbookm=JSON.parse(res2['_body']).bookmarks.product;
               // console.log(this.userbookm.length)
-                for(let i = 0; i < this.userbookm.length; i++) {
-                // console.log(this.userbookm[i])
-                  for(let j = 0;j < this.shotedProduct.length; j++) {
-                    if(!this.shotedProduct[i] && !this.userbookm[i]){
+              // console.log(this.products);
+              for (let k = 0; k < this.products.length; k++) {
 
+                console.log(this.products[k].sortedProducts);
+                for (let i = 0; i < this.userbookm.length; i++) {
+                  console.log(this.userbookm[i]);
+                    for (let j = 0; j < this.products[k].sortedProducts.length; j++) {
+                       if (this.userbookm[i] === this.products[k].sortedProducts[j]._id) {
+                          this.products[k].sortedProducts[j].bookm = true;
+                        console.log('it has to be true');
+                         } else {
+                          this.products[k].sortedProducts[j].bookm = false;
+                         }
+                     }
                     }
-                     else if(this.userbookm[i] === this.shotedProduct[j]._id) {
-                        this.shotedProduct[j].bookm=true;
-                       }else{
+              }
 
-                       }
-                   }
-                  }
-              })
+              });
             });
           }
 
@@ -294,22 +301,6 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
    }
     });
   });
-    if (this.type === 'product') {
-      this.type = 'product';
-      this.ngZone.run(() => {
-        this.userService.getUserData().subscribe(res1=>{
-          this.productBookmark=JSON.parse(res1['_body']).bookmarks.product;
-        this.productService.getProduct(this.comapnyId).subscribe(res => {
-          this.products =  JSON.parse(res['_body']);
-          for(let i=0;i<this.products.length;i++){
-            this.showAll.push(false);
-          }
-
-        });
-      });
-    });
- this.limit = 2;
-    }
 
   }
   onAddSection() {
@@ -543,7 +534,7 @@ this.four = true;
   }
 
   onSubmit() {
-  
+
     if (this.BForm.controls.section.valid){
       this.sectionEdit = false;
       const sectionForm = new FormGroup({
@@ -598,12 +589,14 @@ this.four = true;
   }
   addBookmark(id) {
     this.bookmark = true;
+    console.log(id);
     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
       this.notification.success('Bookmark');
     });
   }
   removeBookmark(id) {
     this.bookmark = false;
+    console.log(id);
     this.bookmarkService
       .DeleteBookmarkCompany(id)
       .subscribe(res => {
@@ -686,7 +679,7 @@ removeFeedBookmark(i,id){
   });
 }
 addProductBookmark(i,id){
-  this.shotedProduct[i].bookm=true;
+  // this.shotedProduct[i].bookm=true;
 // console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
   // console.log(res)
@@ -694,7 +687,7 @@ addProductBookmark(i,id){
   });
 }
 removeProductBookmark(i,id){
-  this.shotedProduct[i].bookm=false;
+  // this.shotedProduct[i].bookm=false;
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
   // console.log(res)
     this.notification.success('UnBookmark');
@@ -811,8 +804,8 @@ onDeletePost(id) {
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
     // console.log(this.feed.value)
-   
-        
+
+
     if (this.feed.value.Image&&this.feed.value.content) {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
       // console.log(JSON.parse(res['_body']));
@@ -855,7 +848,7 @@ else{
   this.notification.warning('Image or content is missing!');
     }
 }
-  
+
   closeTaggedProduct(){
     this.feedService.productName = null;
     this.feedService.productName = null;
