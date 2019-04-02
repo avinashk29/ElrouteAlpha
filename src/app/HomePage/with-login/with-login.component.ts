@@ -47,7 +47,8 @@ export class WithLoginComponent implements OnInit {
   feedBookmark;
   url;
   allBookmarks=[];
-  allFollow=[]
+  allFollow=[];
+  loading;
   constructor(
     public userService: UserService,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService,
@@ -76,12 +77,13 @@ export class WithLoginComponent implements OnInit {
     this.followers.token=this.storage.get('token');
     this.bookmarkService.token=this.storage.get('token');
     this.haveCompany = this.storage.get("companyId");
+    this.loading=true;
     this.feedService.getCompanyFeed().subscribe(res => {
       // console.log(JSON.parse(res['_body']))
       this.feeds = JSON.parse(res['_body']);
       // console.log(JSON.parse(res['_body']))
       this.result = JSON.parse(res['_body']);
-      console.log(this.result);
+    // console.log(this.result);
       if (this.result.length>0) {
         this.pId = JSON.parse(res['_body'])[0]._id;
         for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
@@ -121,6 +123,7 @@ export class WithLoginComponent implements OnInit {
           }
         }
       }
+      this.loading=false;
       });
     });
     if (this.haveCompany) {
@@ -165,18 +168,16 @@ export class WithLoginComponent implements OnInit {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-      console.log(this.feed.value)
-    if (!this.feed.valid) {
-        this.notification.warning('Image or content is missing!');
-    }else{
+    // console.log(this.feed.value)
+    if (this.feed.value.Image&&this.feed.value.content) {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
-        //console.log(res)
+        // console.log(res)
         this.feedService.getCompanyFeed().subscribe(res => {
           // console.log(JSON.parse(res['_body']))
           this.feeds = JSON.parse(res['_body']);
           // console.log(JSON.parse(res['_body']))
           this.result = JSON.parse(res['_body']);
-          console.log(this.result);
+        // console.log(this.result);
           if (this.result.length>0) {
             this.pId = JSON.parse(res['_body'])[0]._id;
             for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
@@ -224,8 +225,13 @@ export class WithLoginComponent implements OnInit {
       this.feedService.productName = null;
       this.feedService.productDescription = null;
       this.notification.success('Post Added!');
+    
+   
     }
-
+    
+    else{
+      this.notification.warning('Image or content is missing!');
+  } 
   }
   closeTaggedProduct(){
     this.feedService.productName = null;
@@ -265,7 +271,7 @@ export class WithLoginComponent implements OnInit {
 
   }
  addFeedBookmark(i, id) {
-   console.log(id)
+ // console.log(id)
     this.result[i].bookm = true;
     this.bookmarkService.addPostBookmark(id).subscribe(res => {
       this.userService.getUserData().subscribe(res1 => {
@@ -278,7 +284,7 @@ export class WithLoginComponent implements OnInit {
   }
   removeFeedbookmark(i, id) {
     this.result[i].bookm = false;
-    console.log(id)
+  // console.log(id)
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       this.userService.getUserData().subscribe(res1 => {
         this.userService.bookmark =  JSON.parse(res1['_body']).bookmarks.post.length +
@@ -289,8 +295,8 @@ export class WithLoginComponent implements OnInit {
     });
   }
   onSharepost(i, admin) {
-    console.log(i);
-    console.log(admin);
+  // console.log(i);
+  // console.log(admin);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
     const dialogConfig = new MatDialogConfig();

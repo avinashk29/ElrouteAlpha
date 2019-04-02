@@ -11,7 +11,7 @@ export class Header3Component implements OnInit {
   constructor(public searchService: SearchService) { }
 
   ngOnInit() {
-    console.log(this.searchService.feedResultLength);
+  // console.log(this.searchService.feedResultLength);
   }
 
 }

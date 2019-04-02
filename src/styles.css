@@ -27,7 +27,7 @@ body
   overflow-y: scroll;
 
 }
-button ,p , img ,svg , h1 , h2 , h3 , h4
+button ,p , img,li ,svg , h1 , h2 , h3 , h4
 {
   outline: none;
 }
@@ -55,4 +55,7 @@ p{
   font-family: 'Segoe UI',  Regular!important;
   font-size: 12px;
   line-height: 20px;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #0b1301;
 }

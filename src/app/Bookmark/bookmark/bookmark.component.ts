@@ -3,6 +3,7 @@ import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { UserService } from 'src/app/Service/user-services.service';
 import { ToastrService } from 'ngx-toastr';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-bookmark',
@@ -16,14 +17,16 @@ export class BookmarkComponent implements OnInit {
   userBookmark=[]
   productResult=[]
   productId;
+  loading
   noResult = false;
   constructor(public bookmarkService:BookmarkServices,
     private userService:UserService,
     @Inject(LOCAL_STORAGE) public storage:WebStorageService, public notifcation: ToastrService) {
 
+
     this.bookmarkService.token = this.storage.get('token');
 
-
+    this.loading=true;
 
   }
 
@@ -33,7 +36,7 @@ export class BookmarkComponent implements OnInit {
       this.bookmarkService.getBookmarkProduct().subscribe(response=>{
         this.product=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
-        console.log(this.product);
+      // console.log(this.product);
         if(!this.product.length){
            this.noResult = true;
         }
@@ -51,7 +54,7 @@ export class BookmarkComponent implements OnInit {
                        }
                    }
              }
-
+             this.loading=false;
       });
     });
 
@@ -74,7 +77,7 @@ export class BookmarkComponent implements OnInit {
       this.bookmarkService.getBookmarkProduct().subscribe(response=>{
         this.product=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
-        console.log(this.product);
+      // console.log(this.product);
         if(!this.product.length){
            this.noResult = true;
         }

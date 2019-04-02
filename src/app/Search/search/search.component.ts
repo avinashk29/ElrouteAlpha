@@ -47,7 +47,7 @@ unfilteredproductResult;
       this.productResult=this.unfilteredproductResult.filter(el=>{
         return el !=null;
               })
-        console.log(this.productResult)
+      // console.log(this.productResult)
       // this.search.productResultLength = this.productResult.length;
       if(!this.productResult.length){
         this.noResult = true;
@@ -81,7 +81,7 @@ unfilteredproductResult;
     this.token =  this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-    //console.log(this.word , this.page);
+    // console.log(this.word , this.page);
       if(this.token) {
         this.userService.getUserData().subscribe(res=>{
           this.userBookmark=JSON.parse(res['_body']).bookmarks.product;

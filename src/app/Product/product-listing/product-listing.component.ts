@@ -32,7 +32,7 @@ GroupForm = new FormGroup({
     this.productService.getProduct(this.companyid).subscribe(res=>{
       this.productService.productData=JSON.parse(res['_body']);
       this.results = this.productService.productData;
-      //console.log(this.results);
+      // console.log(this.results);
     })
 
   }
@@ -44,16 +44,16 @@ GroupForm = new FormGroup({
     var matched=false;
     if(this.selectedProduct.length){
       for (let i = 0; i < this.selectedProduct.length; i++) {
-        // //console.log(this.selectedProduct[i]);
-        // //console.log(id);
+        // // console.log(this.selectedProduct[i]);
+        // // console.log(id);
         if ( this.selectedProduct[i] === id ) {
-          //console.log('same');
+          // console.log('same');
           const index = this.selectedProduct.indexOf(id);
-          //console.log(index);
+          // console.log(index);
          this.selectedProduct.splice(i, 1);
-          //console.log(this.selectedProduct);
+          // console.log(this.selectedProduct);
           matched = true;
-          //console.log('Product removed');
+          // console.log('Product removed');
           break;
         }
        }
@@ -61,18 +61,18 @@ GroupForm = new FormGroup({
 
           this.selectedProduct.push(id);
  }
-       //console.log(this.selectedProduct);
+       // console.log(this.selectedProduct);
          } else{
           this.selectedProduct.push(id);
-          //console.log(this.selectedProduct);
-          //console.log('Product added');
+          // console.log(this.selectedProduct);
+          // console.log('Product added');
          }
   }
   onSubmit(){
    this.productService.token = this.storage.get('token');
     this.GroupForm.value.products = this.selectedProduct;
     this.productService.groupProduct(this.GroupForm.value).subscribe(res => {
-      //console.log(JSON.parse(res['_body']));
+      // console.log(JSON.parse(res['_body']));
     });
   }
 }

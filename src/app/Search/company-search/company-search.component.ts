@@ -43,7 +43,7 @@ export class CompanySearchComponent implements OnInit {
        this.result = this.unfilteredresult.filter(el=>{
  return el !=null;
        })
-      //  console.log(this.result)
+      //// console.log(this.result)
       if(this.result.length>0){
        this.cresult = this.result[0];
        this.id=this.result[0][0];
@@ -52,11 +52,11 @@ export class CompanySearchComponent implements OnInit {
        var number=this.cresult.length;
        if(!this.result.length) {
          this.noResult = true;
-       ;
+       ;  
        }
 
      this.search.setOption(number)
-     
+     this.token = this.storage.get('token'); 
 if(this.token){
       //Addition/Deletion method for Follow//
       for(let i = 0; i < this.userInfo.length; i++) {

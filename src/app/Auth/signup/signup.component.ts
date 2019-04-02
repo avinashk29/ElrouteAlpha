@@ -95,18 +95,18 @@ closeLogin() {
 
   }
   getSocialUser(socialUser) {
-    console.log(socialUser);
+  // console.log(socialUser);
     this.signupForm.value.userName = socialUser.name;
     this.signupForm.value.email = socialUser.email;
     this.authService.signup(this.signupForm.value).subscribe(res => {
-      console.log(JSON.parse(res['_body']));
+    // console.log(JSON.parse(res['_body']));
       this.storage.set('token', res.headers.get('x-auth'));
       this.authService.token = this.storage.get('token');
-      console.log(socialUser.image);
+    // console.log(socialUser.image);
       const formData = new FormData();
       formData.append('userImage', socialUser.image);
       this.userService.editUser(formData).subscribe(res1 => {
-        console.log( JSON.parse(res1['_body']));
+      // console.log( JSON.parse(res1['_body']));
 
         this.userService.userData.userImage = JSON.parse(res1['_body']).userImage;
         this.dialogRef.close(SignupComponent);

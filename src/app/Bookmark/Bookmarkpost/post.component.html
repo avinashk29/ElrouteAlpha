@@ -1,10 +1,16 @@
 <app-header></app-header>
 <app-user-overview></app-user-overview>
+
 <div class="bookmark_overview">
 <section >
 
     <h2>Bookmarks</h2>
     <app-header3></app-header3>
+    <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 40vh;">
+    
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div [hidden]="loading" class="router-output">
     <div class="main_feed_card"  *ngFor="let feed of post">
         <div class="feed1">
           <div style="width: 100%;">
@@ -102,6 +108,7 @@
                </div>
           </div>
 
+    </div>
     </div>
 <!-- </div> -->
 </section>

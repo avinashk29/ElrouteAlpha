@@ -2,12 +2,17 @@
 <!--  -->
 
 <app-user-overview style="margin: 0 auto;width: 80%;"></app-user-overview>
+
 <div class="bookmark_overview">
 <section>
 <h2>Bookmarks</h2>
 <app-header3></app-header3>
 <!-- <input type="search" placeholder="Enter Product/Service to Search"> -->
-
+<div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 40vh;">
+    
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <div [hidden]="loading" class="router-output">
     <div class="listing">
      <!--------------------------------------------------------------------Product Card------------------------------------------------------------------------->
     <div class="Card" *ngFor="let p of  product; let i=index">
@@ -15,10 +20,8 @@
     <div class="productImage">
       <img src="{{p.Image}}">
     </div>
-    <div class="productContent" >
-    <div class="content">
     <div class="productCategory">
-        <div class="b_page_btn">
+        <div class="b_page_btn" style="padding: 5px;">
             <button  (click)= "addProductBookmark(i ,p._id)"  *ngIf = "!this.productId[i].bookm else bloading"><span> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
               <g id="bookmark" fill="transparent">
                 <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -39,9 +42,13 @@
                                          </svg></span></button>
             </ng-template>
           </div>
-    <h6>{{p.catogory}}</h6>
+   
     </div>
+    <div class="productContent" >
+    <div class="content">
+
     <div class="productName">
+        <h6>{{p.category}}</h6>
       <h2 routerLink = "/product-page/{{p._id}}">{{p.productName}}</h2>
       <small style="float:right"><span style="border-right:1px solid #cccccc; padding-right: 4px"></span><span style= "padding-left: 8px">{{p.country}}</span></small>
     </div>
@@ -119,8 +126,10 @@
 </div>
 
 </div>
+  </div>
 <!-- <div *ngIf="!product.length" style="text-align:center;"><h2>No Product Bookmarked yet!</h2></div> -->
 </section>
+
 </div>
 
 

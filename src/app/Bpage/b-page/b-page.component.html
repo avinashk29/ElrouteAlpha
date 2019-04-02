@@ -425,7 +425,7 @@
                 <div class="revenu info" style="border-bottom:none">
 
                   <div class="hq_info" *ngIf="myCompany">
-                      <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      <button type="button"  routerLink="/company-edit/market"><span><svg xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
                     </div>
@@ -469,7 +469,7 @@
                       <div class="revenu info" style="border-bottom:none">
 
                         <div class="hq_info" *ngIf="myCompany">
-                            <button type="button"  routerLink="/company-form4"><span><svg xmlns="http://www.w3.org/2000/svg"
+                            <button type="button"  routerLink="/company-edit/market"><span><svg xmlns="http://www.w3.org/2000/svg"
                                   width="24" height="24" viewBox="0 0 24 24">
                                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span></button>
                           </div>
@@ -511,7 +511,7 @@
                       <h3>{{this.companyService.companyData.totalRevenue}}</h3>
                     </div>
                     <div class="hq_info" *ngIf="myCompany">
-                      <button type="button"  routerLink="/company-form3"><span><svg xmlns="http://www.w3.org/2000/svg"
+                      <button type="button"  routerLink="/company-edit/basic-details"><span><svg xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
                       </button>
@@ -529,7 +529,7 @@
   <div class="content_1" *ngIf="myCompany">
               <p class="add_feed">Add Feed</p>
 
-              <form [formGroup]="feed" (ngSubmit)="onAddpost()">
+              <form [formGroup]="feed" >
                 <div class="about_feed">
 
                   <div class="about_feed1">
@@ -569,7 +569,7 @@
                         </div>
 
                         <div class="add_btn">
-                          <button type="submit">Post</button>
+                          <p  (click)="onAddpost()">Post</p>
                         </div>
                       </div>
                     </div>
@@ -601,6 +601,13 @@
                 </div>
               </form>
           </div>
+          <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 80vh;">
+              <!-- <h2>Loading...</h2> -->
+              <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+            </div>
+
+
+            <div [hidden]="loading" class="router-output">
         <div class="main_feed_card" *ngFor="let feed of feedById; let i = index" id = "{{feed._id}}" >
           <div class="feed1" >
             <div style="width: 100%;">
@@ -693,6 +700,7 @@
             </div>
           </div>
         </div>
+            </div>
 
 
         <div class="feeds" *ngIf="!feedById.length && !myCompany">
@@ -744,7 +752,7 @@
               <h3>{{this.companyService.companyData.totalRevenue}}</h3>
             </div>
             <div class="hq_info" *ngIf="myCompany">
-              <button role="button"  routerLink="/company-form3" aria-label="false"><span><svg xmlns="http://www.w3.org/2000/svg"
+              <button role="button"  routerLink="/company-edit/basic-details" aria-label="false"><span><svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" viewBox="0 0 24 24">
                     <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
               </button>
@@ -816,7 +824,7 @@
             <div class="content"  >
               <div class="Sectioncontent">
                 <!-- <button type="button" class="addTitle_division"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg></span>Add Section Title</button> -->
-              
+
                 <input type="text" formControlName="sectionTitle" placeholder="Section Title" >
                 <div *ngIf ="section.controls.sectionTitle.dirty">
                   <div *ngIf = "section.hasError('required','sectionTitle')">
@@ -839,7 +847,7 @@
               <!-- {{section}} -->
               <img src="../../../assets/images/dummy_bg.png" alt="section_image" *ngIf="!BForm.controls.section.value[i].sectionImage">
               <img src="{{BForm.controls.section.value[i].sectionImage}}" alt="section_image" *ngIf="BForm.controls.section.value[i].sectionImage">
-           
+
 
 
               <div class="overlay" *ngIf="myCompany"id="edit_section_overlay">
@@ -1055,8 +1063,9 @@
       <img alt="B-page" src="{{product.Image}}">
     </div>
     <div class="b_page_btn" *ngIf="!myCompany">
-        <span (click)="addProductBookmark(j,product._id)" *ngIf="!this.shotedProduct[j].bookm else bloading">  <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
-          <g id="bookmark" fill="gray">
+      <!-- {{product.bookm}} -->
+        <span (click)="addProductBookmark(j,product._id)" (click)="product.bookm = true" *ngIf="!product.bookm else bloading">  <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+          <g id="bookmark" fill="transparent">
             <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
               stroke="none" />
             <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
@@ -1064,8 +1073,8 @@
           </g>
         </svg></span>
           <ng-template #bloading>
-            <span (click)="removeProductBookmark(j,product._id)"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
-              <g id="bookmark" fill="transparent">
+            <span (click)="removeProductBookmark(j,product._id)" (click)="product.bookm = false"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+              <g id="bookmark"  fill="gray">
                 <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                   stroke="none" />
                 <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"

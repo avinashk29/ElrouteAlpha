@@ -28,29 +28,28 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
-  {path: 'productresults/:word/:page', component: SearchComponent},
-  {path: 'bookmark', component: BookmarkComponent},
-  {path: 'companyresults/:word/:page' , component: CompanySearchComponent},
+  {path: 'product-results/:word/:page', component: SearchComponent},
+  {path: 'bookmark', component: BookmarkComponent,canActivate: [AuthGuardService]},
+  {path: 'bookmark/product', component: BookmarkComponent,canActivate: [AuthGuardService]},
+  {path: 'company-results/:word/:page' , component: CompanySearchComponent},
   {path: 'B-page' , component: CompanyFormComponent},
-  {path: 'productForm' , component: ProductFormComponent},
+  {path: 'productForm' , component: ProductFormComponent,canActivate: [AuthGuardService]},
    {path: 'product-page/:_id' , component: ProductPageComponent},
-   {path: 'Followers', component: FollowersComponent , canActivate: [AuthGuardService]},
+   {path: 'company/followers', component: FollowersComponent },
    {path: 'servicePage', component: ServicePageComponent },
-   {path: 'Following' , component: FollowingComponent, canActivate: [AuthGuardService]},
-   {path: 'feedresults/:word/:page' , component: FeedsSearchComponent},
-   {path: 'companyBookmark' , component: CompanyComponent},
-    {path: 'post' , component: PostComponent},
+   {path: 'following' , component: FollowingComponent, canActivate: [AuthGuardService]},
+   {path: 'feed-results/:word/:page' , component: FeedsSearchComponent},
+   {path: 'bookmark/company' , component: CompanyComponent,canActivate: [AuthGuardService]},
+    {path: 'bookmark/feed' , component: PostComponent,canActivate: [AuthGuardService]},
     {path: 'companyPage/:id' , component: BPageComponent},
-    {path: 'editcompany', component: CompanEditComponent},
-    {path: 'productEdit/:id', component: ProductComponent},
-    {path: 'company-form2' , component: CompanyForm2Component},
-    {path: 'company-form3' , component: CompanyForm3Component},
-    {path: 'company-form4' , component: CompanyForm4Component},
-    {path: 'company-form5' , component: CompanyForm5Component},
-    {path: 'product', component: ProductListingComponent}
-
-
-  // {path: 'feed ' , component: fee}
+    {path: 'editcompany', component: CompanEditComponent,canActivate: [AuthGuardService]},
+    {path: 'productEdit/:id', component: ProductComponent,canActivate: [AuthGuardService]},
+    {path: 'company-edit/general' , component: CompanyForm2Component,canActivate: [AuthGuardService]},
+    {path: 'company-edit/basic-details' , component: CompanyForm3Component,canActivate: [AuthGuardService]},
+    {path: 'company-edit/market' , component: CompanyForm4Component,canActivate: [AuthGuardService]},
+    {path: 'company-edit/contact' , component: CompanyForm5Component,canActivate: [AuthGuardService]},
+    {path: 'product', component: ProductListingComponent,canActivate: [AuthGuardService]},
+   {path: '**' , redirectTo:'Dashboard'}
 ];
 
 @NgModule({
