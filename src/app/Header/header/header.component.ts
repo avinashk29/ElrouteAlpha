@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
       }
       else{
       this.router.navigate([
-        '/productresults/' +
+        '/product-results/' +
           this.searchForm.value.word +
           '/' +
           this.searchForm.value.page
