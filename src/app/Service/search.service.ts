@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http} from '@angular/http';
+import { Http, Headers} from '@angular/http';
 import {Router} from '@angular/router';
 import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { BehaviorSubject } from 'rxjs';
@@ -13,7 +13,8 @@ searchValue;
 postBookmark;
 presult;
 fresult;
- data={}
+ data={};
+ token;
  feedResultLength;
  productResultLength;
  companyResultLength;
@@ -29,10 +30,17 @@ fresult;
      return this.data;
    }
   onSearch(word , page) {
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/search/' + word + '/' + page, {headers:headers});}
     return this.http.get('http://localhost:8080/api/search/' + word + '/' + page);
   }
   onSearchCompany(word) {
-
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/searchCompany/' + word + '/1',{headers:headers});}
     return this.http.get('http://localhost:8080/api/searchCompany/' + word + '/1');
 
   }

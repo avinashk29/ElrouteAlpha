@@ -28,7 +28,14 @@ export class CompanyServiceService {
     return this.http.get('http://localhost:8080/api/company', {headers: headers});
   }
   // GetoneCompany  method is using to get one company using company id
+  token;
   GetoneCompany(id){
+    this.token =this.storage.get('token');
+    if(this.token){
+    const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/company/' + id,{headers:headers});
+  }
     return this.http.get('http://localhost:8080/api/company/' + id);
   }
 

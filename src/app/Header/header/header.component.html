@@ -7,7 +7,7 @@
       <div class="logo_mob withoutCompany" *ngIf="!this.companyId"><img  routerLink="/Dashboard" src="../../../assets/images/logo.jpeg"></div>
       <div class="search" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
 
-        <input type="search" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+        <input type="search" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)" >
 
 
       </div>
@@ -53,7 +53,7 @@
       </div>
 
         <form id="demo-2" *ngIf="showSearchbar" [formGroup]="searchForm" (ngSubmit)="onSearch($event)">
-          <input type="text" style="color: black" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)">
+          <input type="text" style="color: black" placeholder="Enter Product/Service to Search" formControlName="word" (keypress)="onSearch($event)" >
           <img src="../../../assets/images/cross.png" (click)="showSearchbar = false">
         </form>
     </header>

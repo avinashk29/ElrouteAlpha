@@ -9,6 +9,7 @@
     <div *ngIf="loading" class="loader" style="display:flex;justify-content:center;align-items:center;height: 40vh;">
     
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        
       </div>
       <div [hidden]="loading" class="router-output">
     <div *ngIf="result" class="company_card">
