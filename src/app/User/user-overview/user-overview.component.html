@@ -33,7 +33,7 @@
             </div>
 
             <div class="follower_des" *ngIf="!bioEdit">
-                <p style="text-align: center; font-size: 16px" >{{this.userService.userData.shortBio}} </p>
+                <p style="text-align: center; font-size: 16px" >{{(this.userService.userData.shortBio | slice:0:150)+'...'}} </p>
             </div>
             <div class="follower_des" *ngIf="bioEdit" [formGroup] = "bioForm" (ngSubmit) = "addBio()">
                     <textarea formControlName= "shortBio" value="{{this.userService.userData.shortBio}}"></textarea>

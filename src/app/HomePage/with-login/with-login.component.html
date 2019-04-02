@@ -47,7 +47,7 @@
               <p>{{this.userService.userData.title}}</p>
             </div>
             <div class="user_details">
-              <p>{{this.userService.userData.shortBio}}</p>
+              <p>{{(this.userService.userData.shortBio | slice:0:150)+'...'}}</p>
             </div>
 
           </div>
