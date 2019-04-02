@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit {
         this.companyId = this.storage.get('companyId');
         this.UserService.getUserData().subscribe(res=>{
           this.UserService.userData = JSON.parse(res['_body']);
-          // console.log(res)
         })
 
   }
@@ -43,32 +42,26 @@ export class HeaderComponent implements OnInit {
         this.searchForm.value.page
       );
       this.searchService.searchValue = formData;
-      // // console.log(this.router.url)
+      console.log(this.router.url)
       var path = this.router.url;
       var paths = path.split('/');
-      // // console.log(paths)
+      console.log(paths)
       // if(paths[0].toLocale)
       if(paths[1].indexOf('result')>-1){
         this.router.navigate([
-          '/'+paths[1]+'/' +
+          '/'+paths[1] +'/' +
             this.searchForm.value.word +
             '/' +
             this.searchForm.value.page
         ]);
       }
       else{
-        // console.log(this.searchForm.value.word)
-        this.searchService.maxResult( this.searchForm.value.word).subscribe(res=>{
-         var searchPath = res['_body'];
-        //  // console.log(searchPath);
-          this.router.navigate([
-            '/'+searchPath+'/' +
-              this.searchForm.value.word +
-              '/' +
-              this.searchForm.value.page
-          ]);
-        })
-     
+      this.router.navigate([
+        '/productresults/' +
+          this.searchForm.value.word +
+          '/' +
+          this.searchForm.value.page
+      ]);
     }
     }
   }
@@ -85,7 +78,7 @@ export class HeaderComponent implements OnInit {
       this.storage.remove('token');
       this.storage.remove('companyId');
       this.UserService.userData = " ";
-      // // console.log(this.UserService.userData )
+      console.log(this.UserService.userData )
     
     }
   }
