@@ -179,7 +179,7 @@
       
             <div *ngIf="logoLoading" class="loader" style="display:flex;justify-content:center;align-items:center;">
                 <!-- <h2>Loading...</h2> -->
-                <img alt="B-page" *ngIf="this.companyService.companyData.companyLogo" src="../../../assets/images/loading.gif">
+                <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
               </div>
         
         
