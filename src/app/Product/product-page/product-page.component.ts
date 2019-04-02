@@ -5,6 +5,7 @@ import {LOCAL_STORAGE , WebStorageService} from 'angular-webstorage-service';
 import { FeedService } from 'src/app/Service/feed-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { UserService } from 'src/app/Service/user-services.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -20,7 +21,7 @@ export class ProductPageComponent implements OnInit {
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService) {
+   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService, public notification: ToastrService) {
    this.router.events.subscribe((event:NavigationEnd) =>{
      window.scrollTo(0,0);
    });
@@ -56,18 +57,17 @@ this.UserService.getUserData().subscribe(res=>{
   this.userFeed=JSON.parse(res['_body']).bookmarks.post;
   this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
   //bookmark for single product
-  for(let i=0;i<this.userBookmark.length;i++){
-    if(this.id==this.userBookmark[i]){
-      this.bookmark=false;
-    }
-  }
+  // for(let i=0;i<this.userBookmark.length;i++){
+  //   if(this.id==this.userBookmark[i]){
+  //     this.bookmark=false;
+  //   }
+  // }
   //bookmark of feed on productpage
   for (let i = 0; i < this.userFeed.length; i++) {
     for (let j = 0; j < this.feedResult.length; j++) {
       if (this.userFeed[i] === this.feedResult[j]._id) {
         this.feedResult[j].bookm=true;
-      } else {
-      }
+      } 
     }
   }
 });
@@ -76,14 +76,30 @@ this.UserService.getUserData().subscribe(res=>{
 
 
   addProductBookmark(){
-    this.bookmark=false
+    // this.bookmark=false
+    this.productService.token = this.storage.get('token');
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
+      this.productService.getOneProduct(this.id).subscribe(response=>{
+        this.productService.productData.bookm = JSON.parse(response['_body']).bookm;
+        this.notification.success('product bookmarked')
+        // console.log()
+      });
+
     })
   }
 
   deleteProductBookmark(){
-    this.bookmark=true
+    // this.bookmark=true
+    
+    this.productService.token = this.storage.get('token');
     this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
+
+      
+      this.productService.getOneProduct(this.id).subscribe(response=>{
+        this.productService.productData.bookm = JSON.parse(response['_body']).bookm;
+        this.notification.success('product unbookmarked')
+      });
+      
     })
   }
  addFeedBookmark(i,id){
