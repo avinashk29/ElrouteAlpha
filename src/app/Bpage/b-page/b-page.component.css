@@ -3394,7 +3394,12 @@ height: 24px;
 
     height: 100px;
   }
-
+  .logoheader button {
+  
+    width: 100px;
+    height: 100px;
+    
+}
   .overlay_logo {
     height: 100px !important;
     width: 100px !important;

@@ -95,7 +95,7 @@
   <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false" *ngFor="let productinfo of this.productService.productData.productInfo let i = index" >
-    <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
+    <mat-expansion-panel-header  class="speci" style="background-color: #F5F5F5;">
       <mat-panel-title>
           <h2 >{{productinfo.productSpecification}}</h2>
 
