@@ -21,6 +21,11 @@ changedata=this.empDetailSubject.asObservable();
     return this.http.post('http://localhost:8080/api/product', product, {headers: headers});
   }
   getProduct(id) {
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/product/company/'+id,{headers: headers});
+    }
     return this.http.get('http://localhost:8080/api/product/company/'+id);
 
   }
@@ -51,6 +56,11 @@ updateGroup(data){
   return this.http.patch('http://localhost:8080/api/groupProduct/' , data,  {headers:headers});
 }
   getOneProduct(id){
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/product/'+id,{headers:headers});
+  }
     return this.http.get('http://localhost:8080/api/product/'+id);
   }
   UpdateProduct(product,id){
