@@ -38,12 +38,13 @@ export class CompanySearchComponent implements OnInit {
    private route:ActivatedRoute,public follows:FollowService, public dialog: MatDialog, public notification: ToastrService) { 
     this.route.params.subscribe(params=>{
       this.loading=true;
+      this.search.token=this.storage.get('token');
       this.search.onSearchCompany(params.word).subscribe(res1=>{
         this.unfilteredresult = JSON.parse(res1['_body']).searchResult;
        this.result = this.unfilteredresult.filter(el=>{
  return el !=null;
        })
-      //// console.log(this.result)
+      // console.log(this.result[0])
       if(this.result.length>0){
        this.cresult = this.result[0];
        this.id=this.result[0][0];
@@ -56,7 +57,7 @@ export class CompanySearchComponent implements OnInit {
        }
 
      this.search.setOption(number)
-     this.token = this.storage.get('token'); 
+    this.token = this.storage.get('token'); 
 if(this.token){
       //Addition/Deletion method for Follow//
       for(let i = 0; i < this.userInfo.length; i++) {
@@ -69,15 +70,7 @@ if(this.token){
         }
   }
          //Addition/Deletion method for Bookmarks//
-     for(let i = 0; i < this.userBookmark.length; i++) {
-       for(let j = 0;j < this.cresult.length; j++) {
-            if(this.userBookmark[i] == this.cresult[j]._id) {
-             this.cresult[j].bookm=true;
-            } else  {
-             // this.cresult[j].bookm=false;
-            }
-        }
-  }
+   
 }
 this.loading=false;
       })
@@ -95,7 +88,7 @@ if(this.token) {
   this.userService.getUserData().subscribe(res => {
 
     this.userInfo = JSON.parse(res['_body']).following;
-     this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
+    //  this.userBookmark =  JSON.parse(res['_body']).bookmarks.company;
   
     
     

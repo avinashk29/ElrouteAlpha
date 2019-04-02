@@ -40,6 +40,7 @@ unfilteredproductResult;
   this.route.params.subscribe(params=>{
     // console.log(params.word);
     this.loading=true;
+    this.search.token =this.storage.get('token');
     this.search.onSearch(params.word,params.page).subscribe(response => {
       this.loading=true;
       
@@ -53,22 +54,22 @@ unfilteredproductResult;
         this.noResult = true;
       }
       this.productId=this.productResult;
-      if(this.token){
-              for(let i = 0; i < this.userBookmark.length; i++) {
-                for(let j = 0;j < this.productId.length; j++) {
-                     if(this.productId[j]===null){
+      // if(this.token){
+      //         for(let i = 0; i < this.userBookmark.length; i++) {
+      //           for(let j = 0;j < this.productId.length; j++) {
+      //                if(this.productId[j]===null){
 
-                     }else{
-                      if(this.userBookmark[i] == this.productId[j]._id) {
-                       this.productId[j].bookm=true;
-                      } else  {
-                       // this.productId[j].bookm=true;
-                      }
-                     }
-                 }
+      //                }else{
+      //                 if(this.userBookmark[i] == this.productId[j]._id) {
+      //                  this.productId[j].bookm=true;
+      //                 } else  {
+      //                  // this.productId[j].bookm=true;
+      //                 }
+      //                }
+      //            }
                 
-           }
-          }
+      //      }
+      //     }
            this.loading=false;
     });
   });
@@ -79,6 +80,7 @@ unfilteredproductResult;
     this.bookmarkService.token = this.storage.get('token');
     this.product.token = this.storage.get('token');
     this.token =  this.storage.get('token');
+    this.search.token =this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
     // console.log(this.word , this.page);

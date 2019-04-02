@@ -27,6 +27,13 @@ export class HeaderComponent implements OnInit {
     page: new FormControl('1')
   });
   ngOnInit() {
+    this.route.params.subscribe(params=>{
+      this.searchForm.value.word=params.word;
+      this.searchForm.patchValue({
+        'word':params.word
+      })
+    })
+    
     // this.UserService.token = this.storage.get('token');
         this.companyId = this.storage.get('companyId');
         this.UserService.getUserData().subscribe(res=>{

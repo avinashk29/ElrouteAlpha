@@ -176,8 +176,18 @@
                 Add Your Logo</button>
             </div>
             <img alt="B-page" *ngIf="!this.companyService.companyData.companyLogo && !myCompany" src="{{../../../../../assets/images/user.png">
-            <img alt="B-page" *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
+      
+            <div *ngIf="logoLoading" class="loader" style="display:flex;justify-content:center;align-items:center;">
+                <!-- <h2>Loading...</h2> -->
+                <img alt="B-page" *ngIf="this.companyService.companyData.companyLogo" src="../../../assets/images/loading.gif">
+              </div>
+        
+        
+              <div [hidden]="logoLoading" class="router-output">
 
+
+            <img alt="B-page" *ngIf="this.companyService.companyData.companyLogo" src="{{this.companyService.companyData.companyLogo}}">
+              </div>
             <div class="overlay_logo" *ngIf="this.companyService.companyData.companyLogo && myCompany">
               <input type="file" #filePicker (change)="uploadCompanyImage($event,'companyLogo')" class="picker" style="display: hidden;"
                 visbility="hidden">
@@ -245,7 +255,7 @@
 
 
 <div class="social_bookmark">
-   <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!bookmark else load"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+   <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!this.companyService.companyData.bookm else load"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
     <g id="bookmark" fill="transparent">
       <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
         stroke="none" />
@@ -293,7 +303,7 @@
 </div>
 </div>
 <div class="social_bookmark" *ngIf="!myCompany">
-    <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!bookmark else load"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 20.236 37.863">
+    <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!this.companyService.companyData.bookm else load"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 20.236 37.863">
      <g id="bookmark" fill="transparent">
        <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
          stroke="none" />

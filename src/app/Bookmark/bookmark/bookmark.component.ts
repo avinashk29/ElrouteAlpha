@@ -41,19 +41,7 @@ export class BookmarkComponent implements OnInit {
            this.noResult = true;
         }
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
-                for(let i = 0; i < this.userBookmark.length; i++) {
-                  for(let j = 0;j < this.productId.length; j++) {
-                       if(this.productId[j]==null){
-
-                       }else{
-                        if(this.userBookmark[i] == this.productId[j]._id) {
-                         this.productId[j].bookm=true;
-                        } else  {
-                         // this.productId[j].bookm=true;
-                        }
-                       }
-                   }
-             }
+               
              this.loading=false;
       });
     });
@@ -77,24 +65,12 @@ export class BookmarkComponent implements OnInit {
       this.bookmarkService.getBookmarkProduct().subscribe(response=>{
         this.product=JSON.parse(response['_body']);
         this.productId=JSON.parse(response['_body']);
-      // console.log(this.product);
+      
         if(!this.product.length){
            this.noResult = true;
         }
         this.bookmarkService.productBookmark=JSON.parse(response['_body']);
-                for(let i = 0; i < this.userBookmark.length; i++) {
-                  for(let j = 0;j < this.productId.length; j++) {
-                       if(this.productId[j]==null){
-
-                       }else{
-                        if(this.userBookmark[i] == this.productId[j]._id) {
-                         this.productId[j].bookm=true;
-                        } else  {
-                         // this.productId[j].bookm=true;
-                        }
-                       }
-                   }
-             }
+                
 
       });
     });

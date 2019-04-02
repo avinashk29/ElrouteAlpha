@@ -41,15 +41,7 @@ result=[]
              }
        }
               //Addition/Deletion method for Bookmarks//
-          for(let i = 0; i < this.userBookmark.length; i++) {
-            for(let j = 0;j < this.result.length; j++) {
-                 if(this.userBookmark[i] == this.result[j]._id) {
-                  this.result[j].bookm=true;
-                 } else  {
-                  // this.cresult[j].bookm=false;
-                 }
-             }
-       }
+        
        this.loading=false;
    });
 

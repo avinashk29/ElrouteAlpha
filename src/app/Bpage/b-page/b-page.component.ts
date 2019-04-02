@@ -33,6 +33,7 @@ import { PARAMETERS } from '@angular/core/src/util/decorators';
 export class BPageComponent implements OnInit {
   companyName;
   sectionEdit = false;
+  logoLoading=false;
   one = true;
   two = false;
   three = false;
@@ -149,7 +150,7 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
   this.comapnyId=id.id;
   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
     this.companyService.companyData = JSON.parse(res['_body']);
-
+console.log(this.companyService.companyData.bookm)
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
     } else {
@@ -161,8 +162,9 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
   ngZone.run(()=>{
 
     this.feedById=JSON.parse(res1['_body']);
-    this.loading=false;
+  
   })
+  this.loading=false;
 })
 })
     this.route.queryParams.filter(paramas => paramas.urltype).subscribe(paramas => {
@@ -248,6 +250,8 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
 
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
+      console.log('i am was here')
+      this.loading=false;
       this.feedById=JSON.parse(res1['_body']);
     // console.log(JSON.parse(res1['_body']))
     //----------------------------------------bookmark at Bpage------------------- //
@@ -272,6 +276,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
              }
          }
    }
+   
     });
   });
 
@@ -347,10 +352,13 @@ this.four = false;
   }
 
   uploadCompanyImage(event,name){
+    if(name==='companyLogo'){
+      this.logoLoading=true;
+    }
     this.file=<File>event.target.files[0];
     const fdata=new FormData();
     fdata.append(name,this.file);
-    this.spinner.show();
+    // this.spinner.show();
     this.imgUpload.uploadImg(fdata).subscribe(res=>{
       const formdata=new FormData();
         const url=res['_body'];
@@ -360,7 +368,8 @@ this.four = false;
               this.companyService.companyData.companyLogo=JSON.parse(res['_body']).companyLogo;
               this.companyService.companyData.infoImage=JSON.parse(res['_body']).infoImage;
               this.companyService.companyData.coverImage=JSON.parse(res['_body']).coverImage;
-              this.spinner.hide();
+              // this.spinner.hide();
+              this.logoLoading=false;
           });
       }else if(name === 'certification'){
         this.certification.push(url);
@@ -564,7 +573,11 @@ this.four = true;
     this.bookmark = true;
     console.log(id);
     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
-      this.notification.success('Bookmark');
+     this.companyService.GetoneCompany(this.comapnyId).subscribe(response=>{
+      this.companyService.companyData.bookm = JSON.parse(
+        response['_body']
+      ).bookm;
+     })
     });
   }
   removeBookmark(id) {
@@ -573,6 +586,11 @@ this.four = true;
     this.bookmarkService
       .DeleteBookmarkCompany(id)
       .subscribe(res => {
+        this.companyService.GetoneCompany(this.comapnyId).subscribe(response=>{
+          this.companyService.companyData.bookm = JSON.parse(
+            response['_body']
+          ).bookm;
+         })
         this.notification.success('UnBookmark');
       });
   }
