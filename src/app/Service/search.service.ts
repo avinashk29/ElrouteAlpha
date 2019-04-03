@@ -45,6 +45,11 @@ fresult;
 
   }
   onSearchFeed(word , page) {
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page,{headers:headers});
+    }
     return this.http.get('http://localhost:8080/api/searchfeed/' + word + '/' + page);
   }
   maxResult(word){

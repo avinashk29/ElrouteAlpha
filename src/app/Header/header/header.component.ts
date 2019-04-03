@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       this.searchForm.value.word=params.word;
       this.searchForm.patchValue({
         'word':params.word
-      })
+      });
     })
     
     // this.UserService.token = this.storage.get('token');
@@ -63,12 +63,16 @@ export class HeaderComponent implements OnInit {
         ]);
       }
       else{
-      this.router.navigate([
-        '/product-results/' +
-          this.searchForm.value.word +
-          '/' +
-          this.searchForm.value.page
-      ]);
+        this.searchService.maxResult( this.searchForm.value.word).subscribe(res=>{
+          var searchPath = res['_body'];
+         //  // console.log(searchPath);
+           this.router.navigate([
+             '/'+searchPath+'/' +
+               this.searchForm.value.word +
+               '/' +
+               this.searchForm.value.page
+           ]);
+         })
     }
     }
   }

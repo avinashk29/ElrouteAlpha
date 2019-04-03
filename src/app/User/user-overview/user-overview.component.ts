@@ -47,7 +47,7 @@ userFollowing;
     this.userService.getUserData().subscribe(res => {
 
       this.userService.userData = JSON.parse(res['_body']);
-      // this.userService.userData.shortBio=     JSON.parse(res['_body']).shortBio;
+      
  this.userService.userData.following =JSON.parse(res['_body']).following.length;
 
 
@@ -62,13 +62,10 @@ userFollowing;
 
   }
   manageFollowing() {
-    this.router.navigate(['/Following'])
+    this.router.navigate(['/following'])
   }
   createBPage() {
     this.router.navigate(['/B-page'])
-  }
-  EditBpage(){
-    this.router.navigate(['/editcompany/' + this.haveCompany]);
   }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -103,7 +100,7 @@ userFollowing;
    }
     const fdata = new FormData();
      fdata.append(name,this.file);
-    //  this.spinner.show();
+    
 
     this.imageService.uploadImg(fdata).subscribe(res=>{
       const formdata=new FormData();
@@ -112,13 +109,13 @@ userFollowing;
       if(name==='userImage'){
        this.userService.editUser(formdata).subscribe(res=>{
          this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
-         // this.spinner.hide();
+      
          });
       }else{
        this.feedImage=this.url;
-       // this.spinner.hide();
+      
       }
-      // this.spinner.hide();
+      
     })
  }
 

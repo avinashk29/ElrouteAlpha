@@ -45,7 +45,7 @@ export class BPageComponent implements OnInit {
   file;
   uploadImages = false;
   certification = [];
-  companyFollowers = [];
+  companyFollowers;
   products = [];
   contact = [];
   comapnyId;
@@ -150,7 +150,7 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
   this.comapnyId=id.id;
   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
     this.companyService.companyData = JSON.parse(res['_body']);
-console.log(this.companyService.companyData.bookm)
+
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
     } else {
@@ -208,7 +208,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
       this.type = 'info';
 
     }
-     if (this.type === 'contact') {
+    else if (this.type === 'contact') {
       this.type = 'contact  ';
       this.two = false;
       this.three = false;
@@ -230,15 +230,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
 
     this.imgUpload.token = this.storage.get('token');
     this.feedService.token = this.storage.get('token');
-    this.userService.getUserData().subscribe(res => {
-      this.userInfo = JSON.parse(res['_body']).following;
-      for (let i = 0; i < this.userInfo.length; i++) {
-        if (this.comapnyId ===this.userInfo[i]) {
-          this.Follower = true;
-        } else {
-          this.Follower = false;
-        }
-      }
+    this.userService.getUserData().subscribe(res => {     
     });
     this.productService.token = this.storage.get('token');
     this.mycompanyId = this.storage.get('companyId');
@@ -250,35 +242,10 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
 
 
     this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
-      console.log('i am was here')
       this.loading=false;
       this.feedById=JSON.parse(res1['_body']);
-    // console.log(JSON.parse(res1['_body']))
-    //----------------------------------------bookmark at Bpage------------------- //
-    this.userService.getUserData().subscribe(res => {
-      this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
-      this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
-      for (let i = 0; i < this.userBookmark.length; i++) {
-        if (this.comapnyId === this.userBookmark[i]) {
-          this.bookmark = true;
-        } else {
-          this.bookmark = false;
-        }
-      }
-
-      // ----------------------bookmark at feed-------------
-      for(let i = 0; i < this.postBookmark.length; i++) {
-        for(let j = 0;j < this.feedById.length; j++) {
-             if(this.postBookmark[i] == this.feedById[j]._id) {
-              this.feedById[j].bookm=true;
-             } else  {
-              // this.cresult[j].bookm=false;
-             }
-         }
-   }
-   
     });
-  });
+  
 
   }
   onAddSection() {
@@ -332,11 +299,11 @@ this.four = false;
     this.bioEdit = !this.bioEdit;
   }
   onsectionImagePick(event, name, index) {
-    // console.log(event)
+    
     this.file = <File>event.target.files[0];
     const fdata = new FormData();
     fdata.append(name, this.file);
-    // this.spinner.show();
+    
     this.imgUpload.uploadImg(fdata).subscribe(res => {
       const updata = new FormData();
       const url = res['_body'];
@@ -346,9 +313,9 @@ this.four = false;
       this.setSection();
 
 
-      // this.spinner.hide();
+
     });
-    // control.value[index].sectionImage
+    
   }
 
   uploadCompanyImage(event,name){
@@ -358,7 +325,7 @@ this.four = false;
     this.file=<File>event.target.files[0];
     const fdata=new FormData();
     fdata.append(name,this.file);
-    // this.spinner.show();
+    
     this.imgUpload.uploadImg(fdata).subscribe(res=>{
       const formdata=new FormData();
         const url=res['_body'];
@@ -451,15 +418,15 @@ this.four = true;
     this.router.navigate(['/companyPage/' + this.comapnyId]);
   }
    onEditBpage(key, content: HTMLInputElement) {
-    // // console.log(content);
+    
     const formData = new FormData();
     formData.append(key, content.value);
-    // console.log(content.value);
-    // console.log(this.time1);
+    
+    
     if (key === 'workingHours') {
       content.value = this.time1 + '-' + this.time2;
       formData.append(key, content.value);
-      // console.log(content.value);
+      
     }
     this.companyService.UpdateCompany(formData).subscribe(res => {
       this.companyService.companyData.website = JSON.parse(res['_body']).website;
@@ -492,26 +459,23 @@ this.four = true;
 
   }
 
-  onfollow() {
-    this.Follower = true;
-    // console.log(this.comapnyId)
-    this.follows.addFollow(this.comapnyId).subscribe(res => {
-      this.companyService.GetoneCompany(this.comapnyId).subscribe(res1 => {
-        this.companyFollowers = JSON.parse(res1['_body']).followers.length;
-
-
-      });
-       this.notification.success('Following');
+  onfollow(id) {
+    
+    
+    this.follows.addFollow(id).subscribe(res => {
+      this.companyFollowers+=1;
+      this.companyService.companyData.follow=true;
+      
        });
 
   }
-  onunfollow() {
-    this.Follower = false;
-    this.follows.Unfollow(this.comapnyId).subscribe(res => {
-      this.companyService.GetoneCompany(this.comapnyId).subscribe(res1 => {
-        this.companyFollowers = JSON.parse(res1['_body']).followers.length;
-  });
-      this.notification.success('Unfollow');
+  onunfollow(id) {
+    
+    this.follows.Unfollow(id).subscribe(res => {
+        this.companyService.companyData.follow=false;
+        this.companyFollowers -=1;
+  
+      
     });
   }
 
@@ -533,7 +497,7 @@ this.four = true;
   }
   onadeleteImg(item) {
         const i = this.certification.indexOf(item);
-        // console.log(i)
+        
         if(confirm('Are you sure you want to delete')){
           this.certification.splice(i, 1);
           let certiForm = new FormGroup({
@@ -570,28 +534,22 @@ this.four = true;
 
   }
   addBookmark(id) {
-    this.bookmark = true;
-    console.log(id);
+    
+    
     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
-     this.companyService.GetoneCompany(this.comapnyId).subscribe(response=>{
-      this.companyService.companyData.bookm = JSON.parse(
-        response['_body']
-      ).bookm;
-     })
+      this.companyService.companyData.bookm = true;
+      this.notification.success('Bookmarked');
+     
     });
   }
   removeBookmark(id) {
-    this.bookmark = false;
-    console.log(id);
+    
+    
     this.bookmarkService
       .DeleteBookmarkCompany(id)
       .subscribe(res => {
-        this.companyService.GetoneCompany(this.comapnyId).subscribe(response=>{
-          this.companyService.companyData.bookm = JSON.parse(
-            response['_body']
-          ).bookm;
-         })
-        this.notification.success('UnBookmark');
+        this.companyService.companyData.bookm = false;
+        this.notification.success('UnBookmarked');
       });
   }
   onAddproductTogroup(key) {
@@ -612,13 +570,12 @@ if(confirm('Are you sure you want to remove the product from group')) {
     this.ngZone.run(() => {
       this.productService.getProduct(this.comapnyId).subscribe(res1 => {
         this.products =  JSON.parse(res1['_body']);
-    //      this.spinner.hide();
+    
       });
-      // console.log(res);
-      // this.spinner.hide();
+      
     });
-    // console.log(res);
-    // this.spinner.hide();
+    
+    
   });
 }
   }
@@ -626,10 +583,10 @@ onDeletegroup(name) {
 if (confirm('Are you sure you want to remove the group')){
   this.spinner.show();
   this.productService.token = this.storage.get('token');
-  // console.log(name);
+  
 this.productService.deletegroup(name).subscribe(res => {
   this.notification.success('Group Deleted');
-  // // console.log(JSON.parse(res['_body']));
+  
   this.ngZone.run(() => {
     this.productService.getProduct(this.comapnyId).subscribe(res1 => {
       this.products =  JSON.parse(res1['_body']);
@@ -642,8 +599,8 @@ this.productService.deletegroup(name).subscribe(res => {
 }
 
 onShowAllProduct(index) {
-  // console.log(this.showAll[index])
-  // console.log(index)
+  
+  
   this.showAll[index]= !this.showAll[index]
 }
 onAddContact() {
@@ -651,14 +608,14 @@ onAddContact() {
     queryParams: { edit: 'true'}
   });
   const dialogConfig = new MatDialogConfig();
-// dialogConfig.autoFocus = true;
+
 dialogConfig.width = '48%';
   this.dialog.open(CompanyContactComponent, dialogConfig);
 }
 addFeedBookmark(i,id){
   this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-  // console.log(JSON.parse(res['_body']))
+  
     this.notification.success('Bookmark');
   });
 }
@@ -666,11 +623,11 @@ removeFeedBookmark(i,id){
   this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
     this.notification.success('UnBookmark');
-  // console.log(JSON.parse(res['_body']))
+  
   });
 }
 addProductBookmark(i,id){
-  // this.shotedProduct[i].bookm=true;
+  
 // console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
   // console.log(res)
@@ -678,9 +635,9 @@ addProductBookmark(i,id){
   });
 }
 removeProductBookmark(i,id){
-  // this.shotedProduct[i].bookm=false;
+  
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-  // console.log(res)
+  
     this.notification.success('UnBookmark');
   });
 }
@@ -698,33 +655,10 @@ onDeletePost(id) {
     this.feedService.deletePost(id).subscribe(res => {
       this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
         this.feedById=JSON.parse(res1['_body']);
-      // console.log(JSON.parse(res1['_body']))
-      //----------------------------------------bookmark at Bpage------------------- //
-      this.userService.getUserData().subscribe(res => {
-        this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
-        this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
-        for (let i = 0; i < this.userBookmark.length; i++) {
-          if (this.comapnyId === this.userBookmark[i]) {
-            this.bookmark = true;
-          } else {
-            this.bookmark = false;
-          }
-        }
-
-        // ----------------------bookmark at feed-------------
-        for(let i = 0; i < this.postBookmark.length; i++) {
-          for(let j = 0;j < this.feedById.length; j++) {
-               if(this.postBookmark[i] == this.feedById[j]._id) {
-                this.feedById[j].bookm=true;
-               } else  {
-                // this.cresult[j].bookm=false;
-               }
-           }
-     }
-      });
+  
     });
 
-      this.notification.success('Post Deleted');
+      
 
     });
   }
@@ -781,11 +715,11 @@ onDeletePost(id) {
       if(name==='userImage'){
        this.userService.editUser(formdata).subscribe(res=>{
          this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
-         // this.spinner.hide();
+         
          });
       }else{
        this.feedImage=this.url;
-       // this.spinner.hide();
+       
       }
       this.spinner.hide();
     })
@@ -794,7 +728,7 @@ onDeletePost(id) {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-    // console.log(this.feed.value)
+    
 
 
     if (this.feed.value.Image&&this.feed.value.content) {
@@ -815,16 +749,7 @@ onDeletePost(id) {
           }
         }
 
-        // ----------------------bookmark at feed-------------
-        for(let i = 0; i < this.postBookmark.length; i++) {
-          for(let j = 0;j < this.feedById.length; j++) {
-               if(this.postBookmark[i] == this.feedById[j]._id) {
-                this.feedById[j].bookm=true;
-               } else  {
-                // this.cresult[j].bookm=false;
-               }
-           }
-     }
+      
       });
     });
       });

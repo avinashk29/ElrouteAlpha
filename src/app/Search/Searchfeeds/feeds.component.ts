@@ -22,38 +22,16 @@ export class FeedsSearchComponent implements OnInit {
   feedResult = [];
   token;
   loading;
-  unfilteredFeedResult;
+  
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService, public search: SearchService,
    public bookmarkService: BookmarkServices,private router:Router,
    public follows: FollowService,private UserService:UserService, public route: ActivatedRoute,  public dialog: MatDialog,
     public feedService: FeedService, public notification: ToastrService) {
       this.route.params.subscribe(params=>{
-        // console.log(params.word);
+        
         this.loading=true;
       this.search.onSearchFeed(params.word , params.page).subscribe(res1 => {
-        this.unfilteredFeedResult = JSON.parse(res1['_body']).searchResult;
-        this.feedResult= this.unfilteredFeedResult.filter(function (el) {
-          return el != null;
-        });
-      // console.log(this.feedResult)
-          this.productId = this.feedResult;
-   
-    if(this.token){
-      
-      for (let i = 0; i < this.userInfo.length; i++) {
-        for (let j = 0; j < this.productId.length; j++) {
-             if (this.productId[j] == null) {
- 
-             } else {
-              if (this.userInfo[i] == this.productId[j]._id) {
-               this.productId[j].bookm=true;
-              } else  {
-               // this.productId[j].bookm=true;
-              }
-             }
-         }
-   }
-    }
+        this.feedResult= JSON.parse(res1['_body']).searchResult;
     this.loading=false;
       });
     });
@@ -61,15 +39,11 @@ export class FeedsSearchComponent implements OnInit {
 word;
 page;
   ngOnInit() {
+    this.search.token =this.storage.get('token');
     this.token = this.storage.get('token');
     this.word = this.route.snapshot.paramMap.get('word');
     this.page = this.route.snapshot.paramMap.get('page');
-if(this.token){
-  this.bookmarkService.token = this.storage.get('token');
-  this.UserService.getUserData().subscribe(res => {
- this.userInfo=JSON.parse(res['_body']).bookmarks.post;});
  
-} 
 
   }
 
@@ -80,14 +54,16 @@ if(this.token){
   }
 
   onBookmark(i,id) {
-      this.productId[i].bookm=true;
+      
       this.bookmarkService.addPostBookmark(id).subscribe(res => {
+        this.feedResult[i].bookm=true;
         this.notification.success('Bookmark');
       });
    }
    OndeleteBookmark(i,id){
-    this.productId[i].bookm=false;
+    
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
+      this.feedResult[i].bookm=false;
       this.notification.success('UnBookmark');
     });
    }
@@ -102,12 +78,12 @@ if(this.token){
     this.dialog.open(LoginComponent, dialogConfig);
   }
   onSharepost(i, admin) {
-  // console.log(i);
-  // console.log(admin);
+  
+  
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.autoFocus = true;
+
 
       dialogConfig.width = '20%';
       this.dialog.open(FeedShareComponent, dialogConfig);
