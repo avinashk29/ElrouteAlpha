@@ -22,7 +22,7 @@
   outline: none;
 }
 .elements h4{
-  margin: 0;
+  /* margin: 0; */
 }
 
 .img
@@ -198,6 +198,7 @@ header {
 .card1 {
   height: 100%;
   width: 35%;
+  min-height: 355px;
   /* height: fit-content; */
   box-shadow: -3px 8px 16px -9px #5555;;
 }
@@ -2664,6 +2665,7 @@ mat-expansion-panel-header{
 
 .Sectioncontent::-webkit-scrollbar { width: 0 !important }
 .productContent::-webkit-scrollbar { width: 0 !important }
+
 .Sectioncontent a{
 float: right;
 text-decoration: none;
@@ -2825,7 +2827,7 @@ height: 24px;
   }
 
   .elements h4 {
-    margin: 0;
+    /* margin: 0; */
   }
 
   /* .headerImg {
@@ -3150,8 +3152,8 @@ height: 24px;
   margin-top: 0 !important
 }
 .tabClicked h4 {
- color: gray !important;
- box-shadow: none !important;
+ /* color: gray !important;
+ box-shadow: none !important; */
   /* background-color: red; */
 }
 .tabClicked {
@@ -3272,7 +3274,10 @@ height: 24px;
     margin-top: -2px;
     float: left;
   }
-
+  .user_profile h2 {
+    font-size: 20px;
+  
+}
   .company_industry {
     width: 25%;
   }
@@ -3297,12 +3302,14 @@ height: 24px;
   }
 .feedCards{
   width: 70% ;
+  margin-right: 2%;
+  margin-left: 2%;
 
 }
 
   section {
     width: 91%;
-    margin-left: 6%;
+    margin-left: 8%;
     margin-top: 8%;
   }
 
@@ -3333,7 +3340,7 @@ height: 24px;
   }
 
   .tab h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .extraInfo {
@@ -3407,11 +3414,20 @@ height: 24px;
   }
 
   .section1 {
-    width: 40%;
+    width: 50%;
   }
+  .otherInfocard {
+    width: 40%;
+    
+}
+.bio p {
+  font-size: 12px;
+ 
+}
 
   .card1 {
     width: 40%;
+    min-height: 0px;  
 
   }
 
@@ -3441,6 +3457,9 @@ height: 24px;
     width: 75%;
     
 }
+.facebook_social {
+  width: 20%;
+}
 }
 @media screen and (min-width: 768px) and (max-width: 1366px) {
   .with_login {
@@ -3450,3 +3469,8 @@ height: 24px;
 .error{
   border: 1px solid red;
 }
+.tabClicked h1{
+  margin-top: 45px !important;
+  transition-duration: .9s ;
+  color: #1ea01e
+  }

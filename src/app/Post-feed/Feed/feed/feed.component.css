@@ -1,11 +1,11 @@
 .tag
 {
-    width: 93%;
+    width: 95%;
     background-color: rgba(214, 214, 213, 0.3);
     box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
     border-radius: 5px;
     max-width: 100%;
-    padding: 20px;
+    padding: 19px;
     
 }
 .heading

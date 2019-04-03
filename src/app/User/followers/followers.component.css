@@ -210,6 +210,27 @@ section h2 {
 .follwers_links img {
     width: 100%;
 }
+.no_follower_dummy
+{
+  text-align:center;     margin: 0 auto;width: 50%;
+}
+
+.no_follower_img img
+{
+         width: 100px;
+}
+.no_follower_text
+{
+  text-align: center;
+}
+.no_follower_text h3
+{
+    margin-top: auto;
+    font-size: 25px;
+    /* color: gray !important; */
+}
+
+
 
 @media screen and (max-width:700px) {
     section {
@@ -271,7 +292,7 @@ section h2 {
 
 @media screen and (min-width:767px)and (max-width:1024px) {
     section {
-        width: 90%;
+        width: 80%;
         height: 100vh;
         margin: 0 auto;
         color: #111111;
@@ -293,7 +314,7 @@ section h2 {
         width: 50%;
     }
     .card {
-        width: 29%;
+        width: 35%;
         margin-right: 2%;
         height: 17%;
         margin-left: 2%;

@@ -115,6 +115,7 @@ margin-bottom: auto; */
 .follower_img1 img {
   border-radius: 100%;
   width: 90px;
+  left: 12px; 
   border: solid 5px white;
   margin-top: 26px;
   position: absolute;
@@ -160,7 +161,7 @@ margin-bottom: auto; */
 }
 
 .company {
-  width: 70%;
+  width: 100%;
   display: flex;
 }
 
@@ -170,11 +171,16 @@ margin-bottom: auto; */
 
 .company_logo img {
   border-radius: 100%;
-  width: 100%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
 
 .company_name {
   margin-left: 4%;
+}
+.company_name h4 {
+  cursor: pointer;
 }
 
 .followBtn {
@@ -298,5 +304,10 @@ margin-bottom: auto; */
       margin-top: 3%;
       box-shadow: 0px 2px 3px #5555;
   }
-  font-size: 13px;
+  .company_logo {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+ 
 }

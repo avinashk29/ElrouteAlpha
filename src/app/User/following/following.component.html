@@ -54,8 +54,21 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!followings.length" class="no_follower_dummy">
+            <div class="no_follower">
+                <div class="no_follower_img">
+                  <img src ="../../../assets/images/not-follower.png">
+                  </div>
+                  <div class="no_follower_text">
+                    
+                    <h3>You Are Not Following Any Company Yet!</h3>
+                   </div>
+              </div>
+            </div>
     </div>
-    <div *ngIf="!followings.length" style="text-align: center;"><h2>You Are Not Following Any Company!</h2></div>
+    <!-- <div *ngIf="!followings.length" style="text-align: center;"><h2>You Are Not Following Any Company!</h2></div>   -->
+
+ 
 
     <section>
 

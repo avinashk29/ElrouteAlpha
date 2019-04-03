@@ -25,7 +25,19 @@
     </div>
     </div>
     </div>
-    <div *ngIf="!followers.length" style="text-align:center;"><h2>No Followers Found!</h2></div>
+    <!-- <div *ngIf="!followers.length" style="text-align:center;"><h2>No Followers Found!</h2></div> -->
+
+    <div *ngIf="!followers.length" class="no_follower_dummy">
+      <div class="no_follower">
+          <div class="no_follower_img">
+            <img src ="../../../assets/images/not-follower.png">
+            </div>
+            <div class="no_follower_text">
+              
+              <h3>No Following Yet!</h3>
+             </div>
+        </div>
+      </div>
     </div>
     
     </section>

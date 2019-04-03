@@ -10,15 +10,15 @@
   <form [formGroup]="enquiryDetails" (ngSubmit)="onSubmit()" >
     <ul>
 <li class="form-elements">
-<select>
+<select (change) = "onOthers($event.target.value)">
 <option value="Branding Experts" >Branding Experts</option>
 <option value="Digital Marketing Experts">Digital Marketing Experts</option>
 <option value="Content Marketing Experts">Content Marketing Experts</option>
-<option value="Content Marketing Experts"> Other</option>
+<option value="other"> Other</option>
 
 
   </select>
-<input type="text"  (change) = "onOthers($event.target.value)" id="selectBox" formControlName = "name" *ngIf = "showText" class="other_text" placeholder="OTHER TRADE-CATALYSTS CATEGORY?">
+<input type="text"   id="selectBox" formControlName = "name" *ngIf = "showText" class="other_text" placeholder="OTHER TRADE-CATALYSTS CATEGORY?">
 </li>
 <li class="form-elements"><input type="number" placeholder="PHONE" formControlName= "mobile" name="phone" ></li>
 <li class="form-elements"><input type="email" placeholder="EMAIL" formControlName= "email" name="email"></li>

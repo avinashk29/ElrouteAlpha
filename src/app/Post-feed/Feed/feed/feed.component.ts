@@ -32,8 +32,7 @@ productName;
   this.feed.productDescription=this.products[this.product_id].shortDescription;
   this.dialogRef.close(FeedComponent);
 }
-closeLogin() {
-  this.dialogRef.close();
-}
+
+
 
 }

@@ -562,10 +562,15 @@
     .b_page_btn button {
         font-size: 20px;
     }
+    .profile {
+        width: 45%;
+        
+    }
     .following_btn button {
         font-size: 15px;
-        margin-top: 35%;
+        margin-left: -6px;
     }
+    
     .follower_img {
         margin: 0 auto;
         width: 40%;
@@ -581,9 +586,14 @@
         width: 60px;
         height: 60px;
     }
+    .Bio {
+     
+        width: 45%;
+     
+    }
     .bookmark_following {
         padding: 0px 0px;
-        width: 50%;
+        width: 40%;
     }
     /* .follower_img1[_ngcontent-c2] {
         position: absolute;
@@ -591,6 +601,10 @@
         left: 15%;
         width: 28%;
     } */
+    .company_name {
+        
+        font-size: 14px;
+    }
     .follower_location span {
 
         font-size: 12px;
