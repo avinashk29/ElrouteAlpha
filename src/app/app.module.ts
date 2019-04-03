@@ -81,7 +81,7 @@ import { ProductSelectComponent } from './Product/product-select/product-select.
 import { CompanyContactComponent } from './Company/company-contact/company-contact.component';
 import { TradeCatalystComponent } from './HomePage/trade-catalyst/trade-catalyst.component';
 import { FeedShareComponent } from './Post-feed/feed-share/feed-share.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HrFormatPipe } from './hr-format.pipe';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
@@ -195,7 +195,7 @@ export function getAuthServiceConfigs() {
     ScrollDispatchModule,
     Ng6SocialButtonModule,
     ToastrModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+   
 
   ],
   entryComponents: [

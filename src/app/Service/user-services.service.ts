@@ -11,8 +11,8 @@ export class UserService {
    
 userData;
    
-    following=[];
-    bookmark=[];
+    following;
+    bookmark;
      Image;
    
     constructor(public http: Http,

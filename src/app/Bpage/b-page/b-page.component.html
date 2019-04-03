@@ -66,8 +66,8 @@
                   <p>{{this.companyService.companyData.industry}}</p>
 
                        <div class="follow-btn_mobile" *ngIf = "!myCompany">
-                      <button (click)="onfollow()"  *ngIf="!Follower"> FOLLOW</button>
-                      <button (click)="onunfollow()"  *ngIf="Follower">  UNFOLLOW</button>
+                      <button (click)="onfollow(companyService.companyData._id)"  *ngIf="!companyService.companyData.follow"> Follow</button>
+                      <button (click)="onunfollow(companyService.companyData._id)"  *ngIf="companyService.companyData.follow">  Following</button>
                       <span>{{this.companyFollowers}}</span>
                   </div>
                   <div class="follow-btn_mobile" *ngIf = "myCompany">
@@ -202,8 +202,9 @@
           <h2>{{this.companyService.companyData.companyName }}</h2>
           <p>{{this.companyService.companyData.industry}}</p>
           <div class="follow-btn" *ngIf="!myCompany && this.token">
-            <button (click)="onfollow()" *ngIf="!Follower"> FOLLOW</button>
-            <button (click)="onunfollow()" *ngIf="Follower"> UNFOLLOW</button>
+            <button (click)="onfollow(companyService.companyData._id)"  *ngIf="!companyService.companyData.follow"> Follow</button>
+                      <button (click)="onunfollow(companyService.companyData._id)"  *ngIf="companyService.companyData.follow">  Following</button>
+                 
               <span>{{this.companyFollowers}}</span>
 
           </div>
@@ -253,8 +254,10 @@
 
 
 
+          
 
 <div class="social_bookmark">
+
    <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!this.companyService.companyData.bookm else load"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
     <g id="bookmark" fill="transparent">
       <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -276,6 +279,8 @@
   </svg></span>
 
   </ng-template>
+
+  
 
 </div>
 </div>
@@ -302,7 +307,15 @@
 <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
 </div>
 </div>
-<div class="social_bookmark" *ngIf="!myCompany">
+    <span *ngIf="!myCompany && !this.token"  (click)="opneLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+      <g id="bookmark" fill="transparent">
+          <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+          stroke="gray" fill="gray" />
+       
+      </g>
+    </svg></span>
+<div class="social_bookmark" *ngIf="!myCompany && this.token">
+
     <span (click)="addBookmark(this.companyService.companyData._id)"  *ngIf="!this.companyService.companyData.bookm else load"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 20.236 37.863">
      <g id="bookmark" fill="transparent">
        <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
@@ -645,18 +658,30 @@
                         <!-- <p>Watch our first episode</p> -->
                         <a target="_blank" href="http://{{feed.link}}" aria-label="false">{{feed.link}}</a>
                       </div>
+                      
                       <div class="bookmark_share" >
-                          <div class="bookmark">
-                              <span (click)="addFeedBookmark(i,feed._id)" *ngIf="!this.feedById[i].bookm else load">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863" style="cursor: pointer;">
-                                  <g id="bookmark" fill="transparent">
-                                    <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
-                                      stroke="none" />
-                                    <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
-                                      stroke="none" fill="#fff" />
-                                  </g>
-                                </svg>
-                              </span>
+
+                          <div class="bookmark" > 
+                              <span *ngIf="!myCompany && !this.token"  (click)="opneLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+                                <g id="bookmark" fill="transparent">
+                                
+                                  <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+                                    stroke="gray" fill="gray" />
+                                </g>
+                              </svg></span>
+<div *ngIf="!myCompany && this.token" >
+
+    <span (click)="addFeedBookmark(i,feed._id)" *ngIf="!feed.bookm else load">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863" style="cursor: pointer;">
+          <g id="bookmark" fill="transparent">
+            <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
+              stroke="none" />
+            <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"
+              stroke="none" fill="#fff" />
+          </g>
+        </svg>
+      </span>
+</div>
                               <!-- <p>28 {{feed._id}}</p> -->
                             </div>
                             <ng-template #load>
