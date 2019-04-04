@@ -38,7 +38,7 @@ export class ProductPageComponent implements OnInit {
 id;
 
   ngOnInit() {
-
+    this.productService.token = this.storage.get('token');
 this.productService.getOneProduct(this.id).subscribe(res => {
   // console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
@@ -53,24 +53,7 @@ this.productService.getOneProduct(this.id).subscribe(res => {
 
 this.productService.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
-this.UserService.getUserData().subscribe(res=>{
-  this.userFeed=JSON.parse(res['_body']).bookmarks.post;
-  this.userBookmark=JSON.parse(res['_body']).bookmarks.product;
-  //bookmark for single product
-  // for(let i=0;i<this.userBookmark.length;i++){
-  //   if(this.id==this.userBookmark[i]){
-  //     this.bookmark=false;
-  //   }
-  // }
-  //bookmark of feed on productpage
-  for (let i = 0; i < this.userFeed.length; i++) {
-    for (let j = 0; j < this.feedResult.length; j++) {
-      if (this.userFeed[i] === this.feedResult[j]._id) {
-        this.feedResult[j].bookm=true;
-      } 
-    }
-  }
-});
+
 });
   }
 
@@ -79,11 +62,11 @@ this.UserService.getUserData().subscribe(res=>{
     // this.bookmark=false
     this.productService.token = this.storage.get('token');
     this.bookmarkService.addProductBookmarks(this.id).subscribe(res=>{
-      this.productService.getOneProduct(this.id).subscribe(response=>{
-        this.productService.productData.bookm = JSON.parse(response['_body']).bookm;
-        this.notification.success('product bookmarked')
-        // console.log()
-      });
+      
+        this.productService.productData.bookm=true;
+        this.notification.success('Added to your product bookmark')
+      
+      
 
     })
   }
@@ -94,25 +77,23 @@ this.UserService.getUserData().subscribe(res=>{
     this.productService.token = this.storage.get('token');
     this.bookmarkService.DeleteProductBookmark(this.id).subscribe(res=>{
 
+      this.productService.productData.bookm=false
+        this.notification.success('Removed from your product bookmark')
       
-      this.productService.getOneProduct(this.id).subscribe(response=>{
-        this.productService.productData.bookm = JSON.parse(response['_body']).bookm;
-        this.notification.success('product unbookmarked')
-      });
       
     })
   }
  addFeedBookmark(i,id){
-  this.feedResult[i].bookm=true;
+  
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
-  // console.log(res)
+    this.feedResult[i].bookm=true;
   })
 
 }
 removeFeedBookmark(i,id){
-  this.feedResult[i].bookm=false;
+  
 this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-// console.log(res)
+  this.feedResult[i].bookm=false;
 })
 }
 }

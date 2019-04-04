@@ -48,7 +48,7 @@ userFollowing;
 
       this.userService.userData = JSON.parse(res['_body']);
       
- this.userService.userData.following =JSON.parse(res['_body']).following.length;
+//  this.userService.userData.following =JSON.parse(res['_body']).following.length;
 
 
 });
