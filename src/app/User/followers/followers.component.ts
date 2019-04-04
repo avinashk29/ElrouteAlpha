@@ -59,4 +59,13 @@ loading;
     this.dialog.open(OnefollowerComponent, dialogConfig);
 
   }
+  goToCompany(id) {
+  
+  
+      
+      this.router.navigate(['/companyPage/'+id],{queryParams:{ urltype: 'default'}} )  
+  
+    
+  } 
+  
 }

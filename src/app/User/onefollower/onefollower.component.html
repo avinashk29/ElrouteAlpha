@@ -18,15 +18,16 @@
               <p>{{follower.shortBio}}</p>
           </div>
           <div class="follower_company">
-                <div class="company">
-                  <div class="company_logo">
-                        <img alt="follower" src="{{follower.companyLogo}}" routerLink = "/companyPage/{{follower.Company_id}}"  [queryParams] = "{urltype: 'default'}">
+                <div class="company"  *ngIf="follower.Company_id">
+                  <div class="company_logo"(click)="goToCompany()" >
+                        <img alt="follower" *ngIf="this.follower.companyLogo" src="{{follower.companyLogo}}">
+                        <img alt="follower" *ngIf="!this.follower.companyLogo " src="../../../assets/images/user.png">
                   </div>
-                  <div class="company_name">
+                  <div class="company_name" >
                         {{follower.admin}}
-                      <h4 routerLink = "/companyPage/{{follower.Company_id}}"  [queryParams] = "{urltype: 'default'}"> {{follower.companyName}}</h4>
+                      <h4 (click)="goToCompany()"  > {{follower.companyName}}</h4>
                 </div>
-              </div>
+              </div>    
                   <!-- <div class="followBtn">
                       <button>Following</button>
                   </div> -->

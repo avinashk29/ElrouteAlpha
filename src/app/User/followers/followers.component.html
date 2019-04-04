@@ -11,7 +11,8 @@
     <div class="followers" *ngIf="followers">
     <div class="card" *ngFor="let follower of followers">
     <div class="image" (click) = "Openpopup(follower._id)">
-    <img alt="followers" src="{{follower.userImage}}">
+    <img alt="followers" *ngIf="this.follower.userImage" src="{{follower.userImage}}">
+    <img alt="followers" *ngIf="!this.follower.userImage" src=" ../../../assets/images/user.png">
     </div>
     <div class="info">
     <div class="content">
@@ -22,6 +23,9 @@
         <small>{{follower.title}}</small>
     
       </div>
+      <div class="com_name">
+        <h5 (click)="goToCompany(follower.Company_id)" >{{follower.companyName}}</h5>
+       </div> 
     </div>
     </div>
     </div>

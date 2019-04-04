@@ -2827,7 +2827,8 @@ height: 24px;
   }
 
   .elements h4 {
-    /* margin: 0; */
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   /* .headerImg {
