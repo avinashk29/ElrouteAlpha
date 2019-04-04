@@ -47,7 +47,7 @@
 
 .following_name {
     margin-left: 4%;
-    width: auto;
+    width: 30%;
     margin-bottom: auto;
     margin-top: auto;
     height: 56%;
@@ -91,7 +91,10 @@
     height: auto;
     float: right;
     text-align: left;
-    margin-top: 18%
+    /* margin-top: 18%
+     */
+     margin-top: auto;
+     margin-bottom: auto;
 }
 
 .followBtn button {
@@ -112,7 +115,9 @@
 .following_icon1 {
     width: 60%;
     margin: 0px 10px;
-    padding: 10px 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+
 }
 
 .following_icon1 img {

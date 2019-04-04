@@ -256,7 +256,7 @@ export class WithLoginComponent implements OnInit {
       this.feeds[i].bookm = true;  
         this.userService.bookmark +=1;  
     
-      this.notification.success('Feed Bookmarked');
+      this.notification.success('Added to your feed bookmark');
 
     });
   }
@@ -268,7 +268,7 @@ export class WithLoginComponent implements OnInit {
         this.userService.bookmark -=1;
       
         
-      this.notification.success('Feed Unbookmarked');
+      this.notification.success('Removed from your feed bookmark');
 
     });
   }

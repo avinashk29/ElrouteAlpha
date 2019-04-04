@@ -20,7 +20,14 @@
                 <img alt="following" src="{{following.companyLogo}}">
             </div>
             <div class="following_name">
-                <h2 (click)="gotoBpage(following._id)"> {{ following.companyName }}</h2>
+
+                  <h2 *ngIf = "following.companyName.length<18" (click)="gotoBpage(following._id)"> {{following.companyName}}</h2>
+                  <h2 *ngIf = "following.companyName.length >17" (click)="gotoBpage(following._id)"> {{(following.companyName |slice:0:12) +' ...'}}</h2>
+   
+                <!-- <ng-template #name> 
+                    <h2 (click)="gotoBpage(following._id)"> {{ (following.companyName | slice:0:15) + '...' }}</h2>
+                </ng-template> -->
+
                 <span style="border-right:solid 1px gray;padding: 0px 10px;">{{ following.category}}</span>
                 <span style="padding: 0px 10px;">{{following.industry}}</span>
             </div>
@@ -38,7 +45,7 @@
         </div>
         <div class="following_2">
             <div class="followBtn">
-                <button  (click)="onunfollow(i,following._id)"  *ngIf = "this.followings[i].follow else loading">Following</button>
+                <button  (click)="onunfollow(i,following._id)"  *ngIf = "following.follow else loading">Following</button>
 
              <ng-template #loading>
             <button (click)="onfollow(i,following._id)" >Follow</button>

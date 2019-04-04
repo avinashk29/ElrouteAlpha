@@ -74,6 +74,11 @@ updateGroup(data){
     return this.http.delete('http://localhost:8080/api/product/'+id,{headers: headers});
   }
   getFeedById(id){
+    if(this.token){
+      const headers = new Headers();
+    headers.append('x-auth', this.token);
+    return this.http.get('http://localhost:8080/api/product/feed/'+id,{headers:headers})
+  }
     return this.http.get('http://localhost:8080/api/product/feed/'+id)
   }
   sendData(value) {
