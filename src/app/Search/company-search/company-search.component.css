@@ -129,12 +129,14 @@ section{
 }
 .b_page_btn1 button{
   
-  border: solid 1px #707070;;
-  border-radius: 10px;
+  border: solid 1px #707070;
+  border-radius: 3px;
   color: #707070;
+  color: white;
   font-size: 16px;
-  font-weight: 700;
-  background-color: #F9FDFA;
+  background-color: rgb(56, 67, 79);
+  padding: 7px;
+
 }
 .b_page_btn button
 {
@@ -231,17 +233,21 @@ section{
 width: 100%;
 }
 @media screen and (max-width: 700px){
+  .router-output
+  {
+    width: 93%;
+  }
   section{
     width: 95%;
     margin: 0 auto;
-    margin-top: 30px;
+    
     padding-top: 7%;
   }
   .companyCard {
     width: 100%;
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 13px;
+    border-radius: 8px;
  
 
 }
@@ -271,10 +277,17 @@ width: 100%;
   display: none;
 }
 .companyInfo  button{
-  width: 27%;
-  height: 25px;
+  width: 50%;
+  padding: 3px;
+  margin-bottom: 4%;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+.logo img 
+{
+  width: 100px;
+  height: 100px;
+ 
 }
 .result_not_found
 {

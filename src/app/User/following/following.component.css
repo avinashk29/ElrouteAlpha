@@ -99,11 +99,11 @@
 
 .followBtn button {
     width: 90%;
-    background-color: green;
+    background-color: rgb(56, 67, 79);
     color: #ffffff;
     font-weight: 600;
     height: 30px;
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
     margin-left: 10px;
 }
@@ -245,61 +245,61 @@ section{
     {
       padding-top: 10%;
     }
-    .user_following
-      {
-        display:none;
-
-      }
+  
     section{
       width: 95%;
       margin: 0 auto;
       display: block;
     }
-    .companyCard {
+    .user_following {
+      
+      box-shadow:none;
       width: 100%;
-      margin: 0 auto;
-      border: 1px solid #ccc;
-      border-radius: 30px;
-      margin-top: 21px;
+      padding: 0;
+      
+  }
+  
+    .no_follower_dummy 
+    {
+
+      width: 100%;
+    }
+    .no_follower_img   img 
+    {
+      width: 70px;
+    }
+  .no_follower_text h3
+   {
+    
+    font-size: 15px;  
+    }
+   .following_image {
+      width: 24%;
+  }
+  .following_image img
+   {
+    width: 60px;
+    height: 60px;
+ 
+  }
+  .following_name
+   {
+    margin-left: 4%;
+    width: 45%;
+
+    margin-bottom: auto;
+        margin-top: 12%;
+    height: 100%;  
+  }
+  .following_name h2{
+  
+    font-size: 15px;
   
   }
-  .storyBtn {
+  .following_name span {
     display: none;
-  }
-  .companyInfo h1 {
-    float: left;
-    margin: 0;
-    padding: 5px 0 0 0;
-    font-size: 19px;
-  }
-  .b1{
-    margin-left: 13px;
-    font-size: 9px ! important;
-  }
-  .discription
-  {
-    display: none;
-  }
-  .des
-  {
-    display: block;
-  }
-  .cardFooter
-  {
-    display: none;
-  }
-  .companyInfo  button{
-    width: 27%;
-    height: 25px;
-    border: none;
-    border-radius: 10px;
-  }
-  .listing input{
-    width: 95%;
-    margin: 0 auto;
-    padding: 10px;
-    border:none;
-  }
+}
+
   }
   @media screen and (min-width: 767px)and (max-width: 1024px){
     .following_title

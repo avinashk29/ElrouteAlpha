@@ -538,7 +538,7 @@ this.four = true;
     
     this.bookmarkService.addCompanyBookmark(id).subscribe(res => {
       this.companyService.companyData.bookm = true;
-      this.notification.success('Bookmarked');
+      this.notification.success('Added to your company bookmark');
      
     });
   }
@@ -549,7 +549,7 @@ this.four = true;
       .DeleteBookmarkCompany(id)
       .subscribe(res => {
         this.companyService.companyData.bookm = false;
-        this.notification.success('UnBookmarked');
+        this.notification.success('Removed from your comapany bookmark');
       });
   }
   onAddproductTogroup(key) {
@@ -616,13 +616,13 @@ addFeedBookmark(i,id){
   this.feedById[i].bookm=true;
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
   
-    this.notification.success('Bookmark');
+    this.notification.success('Added to your company feed bookmark');
   });
 }
 removeFeedBookmark(i,id){
   this.feedById[i].bookm=false;
   this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
-    this.notification.success('UnBookmark');
+    this.notification.success('Removed from your company feed bookmark');
   
   });
 }
@@ -631,14 +631,14 @@ addProductBookmark(i,id){
 // console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
   // console.log(res)
-    this.notification.success('Bookmark');
+    this.notification.success('Added to your company product bookmark');
   });
 }
 removeProductBookmark(i,id){
   
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
   
-    this.notification.success('UnBookmark');
+    this.notification.success('Removed from your company product bookmark');
   });
 }
 opneLogin(){

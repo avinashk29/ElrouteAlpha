@@ -75,14 +75,14 @@ openLogin() {
     
     this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
       this.productResult[i].bookm=true;
-      this.notification.success('Bookmark');
+      this.notification.success('Added to your product bookmark');
     });
   }
   deleteProductBookmark(i,id){
     
     this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
       this.productResult[i].bookm=false;
-      this.notification.success('UnBookmark');
+      this.notification.success('Removed from your product bookmark');
     })
   }
   gotoProductPage(id){

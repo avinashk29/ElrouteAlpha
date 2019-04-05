@@ -387,7 +387,7 @@
     .followBtn button {
         width: 100%;
         margin-top: 10px;
-        background-color: #8cee53;
+        background-color: rgb(56, 67, 79);
         color: #ffffff;
         font-weight: 600;
         height: 25px;
@@ -517,7 +517,7 @@
     .followBtn button {
         width: 80%;
         margin-top: 10px;
-        background-color: #8cee53;
+        background-color: rgb(56, 67, 79);
         color: #ffffff;
         font-weight: 600;
         height: 25px;

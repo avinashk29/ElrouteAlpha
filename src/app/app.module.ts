@@ -59,6 +59,7 @@ import {CompanyServiceService} from './Service/company-service.service';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {ProductServiceService } from './Service/product-service.service';
 import { ToastrModule } from 'ngx-toastr';
+
 import {AuthGuardService} from './guards/auth-guard.service';
 import {CompanyGuardService} from './guards/company-guard.service';
 import {BookmarkServices} from './Service/bookmark-services.service';

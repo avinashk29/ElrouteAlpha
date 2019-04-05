@@ -75,14 +75,14 @@ export class CompanySearchComponent implements OnInit {
    
      this.bookmarkService.addCompanyBookmark(id).subscribe(res=>{
       this.result[0][i].bookm=true;
-      this.notification.success('Company Bookmark');
+      this.notification.success('Added to your company bookmark');
 
      });
  }
  deletecompanyBookmark(i,id){
   this.result[0][i].bookm=false;
   this.bookmarkService.DeleteBookmarkCompany(id).subscribe(res => {
-    this.notification.success('Company Unbookmark');
+    this.notification.success('Removed from your company bookmark');
   });
  }
  openLogin() {

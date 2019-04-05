@@ -17,7 +17,8 @@
 <div class="companyCard" *ngFor="let r of result[0]; let i=index">
 <div class="cardHeader">
   <div class="logo"  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">
-   <img alt="with-login" src="{{r.companyLogo}}">
+   <img alt="with-login" *ngIf="this.r.companyLogo" src="{{r.companyLogo}}">
+   <img alt="with-login" *ngIf="!this.r.companyLogo" src="../../../assets/images/company_default.png">
   </div>
   <div class="companyInfo">
     <div class="follow">
@@ -82,7 +83,7 @@
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
         <mat-panel-title>
-            <h2 >Description</h2>
+            <h2 style="font-size:15px;" >Description</h2>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="speci_1"  >

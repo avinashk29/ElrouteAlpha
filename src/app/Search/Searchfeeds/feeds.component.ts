@@ -57,14 +57,14 @@ page;
       
       this.bookmarkService.addPostBookmark(id).subscribe(res => {
         this.feedResult[i].bookm=true;
-        this.notification.success('Bookmark');
+        this.notification.success('Added to your product bookmark');
       });
    }
    OndeleteBookmark(i,id){
     
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       this.feedResult[i].bookm=false;
-      this.notification.success('UnBookmark');
+      this.notification.success('Removed from your product bookmark');
     });
    }
 

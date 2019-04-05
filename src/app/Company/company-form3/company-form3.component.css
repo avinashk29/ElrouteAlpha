@@ -89,7 +89,7 @@ li button{
   width: 20%;
   height: 38px;
   border: none;
-  background-color: #16b426;
+  background-color: rgb(56, 67, 79);
   color: floralwhite;
   font-size: 20px;
   font-weight: 500;
@@ -211,7 +211,7 @@ width:45%; float: right;
     /* float: right; */
     width: 35%;
     height: 30px;
-    background-color: #32CD32;
+    background-color: rgb(56, 67, 79);
     margin-bottom: 10px;
   }
   input::placeholder{
