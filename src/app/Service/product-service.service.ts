@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http , Headers} from '@angular/http';
 import { BehaviorSubject } from 'rxjs';
+import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,21 @@ productData;
 productId;
 value;
 key;
-
+products;
 private empDetailSubject = new BehaviorSubject(null);
 changedata=this.empDetailSubject.asObservable();
-  constructor(public http: Http) { }
+  constructor(public http: Http,
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService,
+    ) { }
   addProduct(product) {
     const headers = new Headers();
     headers.append('x-auth', this.token);
     return this.http.post('http://localhost:8080/api/product', product, {headers: headers});
   }
   getProduct(id) {
+    this.token = this.storage.get('token');
     if(this.token){
+      console.log('token sent')
       const headers = new Headers();
     headers.append('x-auth', this.token);
     return this.http.get('http://localhost:8080/api/product/company/'+id,{headers: headers});

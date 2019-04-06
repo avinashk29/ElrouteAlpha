@@ -91,6 +91,9 @@ import { InfoComponent } from './Bpage/info/info.component';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
+ 
 // const config = new AuthServiceConfig([
 // {
 //   id: GoogleLoginProvider.PROVIDER_ID,
@@ -176,6 +179,7 @@ export function getAuthServiceConfigs() {
   ],
   imports: [
     MatProgressSpinnerModule,
+    NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

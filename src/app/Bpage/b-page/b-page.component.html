@@ -1,3 +1,11 @@
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple">
+<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
 <app-header></app-header>
 
 
@@ -1061,7 +1069,7 @@
   </div>
   <div class="body" *ngIf="this.type === 'product'">
     <div class="infoSection3">
-      <div *ngIf="!products.length" class="no_product_dummy">
+      <div *ngIf="!productService.products.length" class="no_product_dummy">
         <div class="no_product_found">
           <div class="no_product_left">
 
@@ -1079,7 +1087,7 @@
         </div>
       </div>
 
-<fieldset *ngFor="let group of products; let ip = index">
+<fieldset *ngFor="let group of productService.products; let ip = index">
 <legend style="  color: #333">  {{group.key|uppercase}}</legend>
 <div class="add_delete" >
 <button (click)="onAddproductTogroup(group.key)" class="add_product" *ngIf="myCompany && group.key!=='others' "><span> <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M7 2c1.695 1.942 2.371 3 4 3h13v17h-24v-20h7zm4 5c-2.339 0-3.537-1.388-4.917-3h-4.083v16h20v-13h-11zm2 6h3v2h-3v3h-2v-3h-3v-2h3v-3h2v3z"/></svg> </span></button>
@@ -1098,8 +1106,8 @@
       <img alt="B-page" src="{{product.Image}}">
     </div>
     <div class="b_page_btn" *ngIf="!myCompany">
-      <!-- {{product.bookm}} -->
-        <span (click)="addProductBookmark(j,product._id)" (click)="product.bookm = true" *ngIf="!product.bookm else bloading">  <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+      
+        <span (click)="addProductBookmark(ip,j,product._id)"   *ngIf="!product.bookm else bloading">  <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
           <g id="bookmark" fill="transparent">
             <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
               stroke="none" />
@@ -1108,7 +1116,7 @@
           </g>
         </svg></span>
           <ng-template #bloading>
-            <span (click)="removeProductBookmark(j,product._id)" (click)="product.bookm = false"> <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
+            <span (click)="removeProductBookmark(ip,j,product._id)" > <svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
               <g id="bookmark"  fill="gray">
                 <path d="M6.745,0h6.745a6.539,6.539,0,0,1,6.745,6.311l-.043,31.553L10.1,27.3,0,37.863V6.311A6.539,6.539,0,0,1,6.745,0Z"
                   stroke="none" />
@@ -1163,10 +1171,10 @@
 <legend *ngIf="this.showAll[ip]" class="arrow_product"><span (click)="onShowAllProduct(ip)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.58l5.995 5.988-1.416 1.414-4.579-4.574-4.59 4.574-1.416-1.414 6.006-5.988z"/></svg> </span></legend>
 
       </fieldset>
-      <div class="add_new_product" *ngIf="products.length">
+      <div class="add_new_product" *ngIf="productService.products.length">
       <button *ngIf="myCompany" (click)="onAddproductTogroup()" >Add new group</button>
         </div>
-        <div class="add_new_product" *ngIf="products.length">
+        <div class="add_new_product" *ngIf="productService.products.length">
             <button *ngIf="myCompany" routerLink="/product" >Add new Product</button>
         </div>
     </div>

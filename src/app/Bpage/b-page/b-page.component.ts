@@ -23,6 +23,8 @@ import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 
+
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 // import { type } from 'os';
 @Component({
@@ -82,6 +84,7 @@ export class BPageComponent implements OnInit {
   userbookm=[];
   Bproduct=[]
   haveCompany;
+  feedImageLoading;
   // file=[];
   // imagePreview;
   // feeds = [];
@@ -115,7 +118,7 @@ export class BPageComponent implements OnInit {
     private imgUpload: ImageUploadService,
     private imageService: ImageUploadService,
     private _fb: FormBuilder,
-    private spinner: Ng4LoadingSpinnerService,
+    private spinner: NgxSpinnerService,
     public ngZone: NgZone,
     public dialog: MatDialog,
     public notification: ToastrService,
@@ -189,8 +192,9 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
             this.four = false;
             this.one = false;
             this.type = 'product';
+            console.log(this.comapnyId)
             this.productService.getProduct(this.comapnyId).subscribe(res => {
-              this.products =  JSON.parse(res['_body']);
+              this.productService.products =  JSON.parse(res['_body']);
            
             });
           }
@@ -224,6 +228,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
   }
 
   ngOnInit() {
+    this.productService.token = this.storage.get('token');
     if(!this.companyService.companyData.companyLogo){
       this.companyService.companyData.companyLogo='';
     }
@@ -232,7 +237,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
     this.feedService.token = this.storage.get('token');
     this.userService.getUserData().subscribe(res => {     
     });
-    this.productService.token = this.storage.get('token');
+    
     this.mycompanyId = this.storage.get('companyId');
     this.route.queryParams
       .filter(paramas => paramas.urltype)
@@ -388,8 +393,9 @@ this.one = false;
 
   }
   showThree() {
+    this.productService.token = this.storage.get('token');
     this.productService.getProduct(this.comapnyId).subscribe(res => {
-      this.products = JSON.parse(res['_body']);
+      this.productService.products= JSON.parse(res['_body']);
     });
     this.router.navigate(['/companyPage/' + this.comapnyId], {
       queryParams: { urltype: 'product' }
@@ -569,7 +575,7 @@ if(confirm('Are you sure you want to remove the product from group')) {
     this.notification.success('Product Removed From Group');
     this.ngZone.run(() => {
       this.productService.getProduct(this.comapnyId).subscribe(res1 => {
-        this.products =  JSON.parse(res1['_body']);
+        this.productService.products =  JSON.parse(res1['_body']);
     
       });
       
@@ -589,7 +595,7 @@ this.productService.deletegroup(name).subscribe(res => {
   
   this.ngZone.run(() => {
     this.productService.getProduct(this.comapnyId).subscribe(res1 => {
-      this.products =  JSON.parse(res1['_body']);
+      this.productService.products =  JSON.parse(res1['_body']);
        this.spinner.hide();
     });
   });
@@ -626,18 +632,19 @@ removeFeedBookmark(i,id){
   
   });
 }
-addProductBookmark(i,id){
+addProductBookmark(i,j,id){
   
 // console.log(id)
   this.bookmarkService.addProductBookmarks(id).subscribe(res=>{
   // console.log(res)
+  this.productService.products[i].sortedProducts[j].bookm=true;
     this.notification.success('Added to your company product bookmark');
   });
 }
-removeProductBookmark(i,id){
+removeProductBookmark(i,j,id){
   
   this.bookmarkService.DeleteProductBookmark(id).subscribe(res=>{
-  
+    this.productService.products[i].sortedProducts[j].bookm=false;
     this.notification.success('Removed from your company product bookmark');
   });
 }
@@ -717,11 +724,13 @@ onDeletePost(id) {
          this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
          
          });
-      }else{
+         this.spinner.hide();
+        }else{
        this.feedImage=this.url;
+       this.spinner.hide();
        
       }
-      this.spinner.hide();
+      
     })
  }
   onAddpost() {
@@ -738,19 +747,7 @@ onDeletePost(id) {
         this.feedById=JSON.parse(res1['_body']);
         // console.log(JSON.parse(res1['_body']))
       //----------------------------------------bookmark at Bpage------------------- //
-      this.userService.getUserData().subscribe(res => {
-        this.postBookmark=JSON.parse(res['_body']).bookmarks.post;
-        this.userBookmark = JSON.parse(res['_body']).bookmarks.company;
-        for (let i = 0; i < this.userBookmark.length; i++) {
-          if (this.comapnyId === this.userBookmark[i]) {
-            this.bookmark = true;
-          } else {
-            this.bookmark = false;
-          }
-        }
-
-      
-      });
+     
     });
       });
       this.feed.reset();

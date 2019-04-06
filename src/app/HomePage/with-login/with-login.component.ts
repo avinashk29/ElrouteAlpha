@@ -17,6 +17,7 @@ import { ToastrService } from "ngx-toastr";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -63,7 +64,7 @@ export class WithLoginComponent implements OnInit {
     public productService: ProductServiceService,
     private imageService: ImageUploadService,
     public notification: ToastrService,
-    private spinner:Ng4LoadingSpinnerService,
+    private spinner: NgxSpinnerService,
     private bookmarkService:BookmarkServices
   ) {
     this.router.events.subscribe((event:NavigationEnd) =>{
@@ -113,91 +114,61 @@ export class WithLoginComponent implements OnInit {
       });
     }
   }
+  feedImageLoading=false;
   uploadUserImage(event,name){
      this.file = <File>event.target.files[0];
-    if(name === 'Image'){
+ 
+     if(name === 'Image'){
       const reader =new FileReader();
       reader.onload=()=>{
         this.imagePreview=reader.result;
       };
       reader.readAsDataURL(this.file);
     }
+
+
      const fdata = new FormData();
       fdata.append(name,this.file);
       this.spinner.show();
-     this.imageService.uploadImg(fdata).subscribe(res=>{
+     this.imageService.uploadImg(fdata).subscribe(image=>{
        const formdata=new FormData();
-       this.url=res['_body'];
+       this.url=image['_body'];
        formdata.append(name,this.url);
        if(name==='userImage'){
         this.userService.editUser(formdata).subscribe(res=>{
           this.userService.userData.userImage=JSON.parse(res['_body']).userImage;
-          // this.spinner.hide();
+          this.spinner.hide();
           });
-       }else{
-        this.feedImage=this.url;
-        // this.spinner.hide();
        }
-       this.spinner.hide();
-     })
+       else{
+        this.feedImage=this.url;
+        this.feedImageLoading=false;
+        
+          this.spinner.hide();
+        
+        
+       }
+      
+     });
   }
 
   onAddpost() {
     this.addLink = false;
     this.feed.value.tagId = this.feedService.tagId;
       this.feed.value.Image = this.feedImage;
-    // console.log(this.feed.value)
+    
     if (this.feed.value.Image&&this.feed.value.content) {
       this.feedService.AddFeed(this.feed.value).subscribe(res => {
-        // console.log(res)
-        this.feedService.getCompanyFeed().subscribe(res => {
-          // console.log(JSON.parse(res['_body']))
-          this.feeds = JSON.parse(res['_body']);
-          // console.log(JSON.parse(res['_body']))
-          this.result = JSON.parse(res['_body']);
-        // console.log(this.result);
-          if (this.result.length>0) {
-            this.pId = JSON.parse(res['_body'])[0]._id;
-            for (let i = 0; i < JSON.parse(res['_body'])[0].length; i++) {
-              this.productService
-                .getOneProduct(JSON.parse(res['_body'])[0][i].tagId)
-                .subscribe(res1 => {});
-            }
-          }
+        
+        this.feedService.getCompanyFeed().subscribe(feed => {
+          
+          this.feeds = JSON.parse(feed['_body']);
+         
 
-
-          this.userService.getUserData().subscribe(res1 => {
-            this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
-            JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
-            this.allFollow=JSON.parse(res1['_body']).following.length;
-            // console.log(this.allFollow);
-            this.userService.bookmark =
-            JSON.parse(res1['_body']).bookmarks.company.length + JSON.parse(res1['_body']).bookmarks.post.length
-           + JSON.parse(res1['_body']).bookmarks.product.length + JSON.parse(res1['_body']).bookmarks.service.length;
-            this.userService.following = JSON.parse(res1['_body']).following.length;
-            this.feedBookmark=JSON.parse(res1['_body']).bookmarks.post;
-            this.userFollow = JSON.parse(res1["_body"]).following;
-            for (let i = 0; i < this.userFollow.length; i++) {
-              for (let j = 0; j < this.result.length; j++) {
-                if (this.userFollow[i] === this.result[j].admin) {
-                  this.result[j].follow=true;
-                } else {
-                }
-              }
-            }
-          //----------------------feedBookmark----------------/
-          for (let i = 0; i < this.feedBookmark.length; i++) {
-            for (let j = 0; j < this.result.length; j++) {
-              if (this.feedBookmark[i] === this.result[j]._id) {
-                this.result[j].bookm=true;
-              } else {
-              }
-            }
-          }
-          });
-        });
       });
+    });
       this.feed.reset();
+      this.feedImage=null;
       this.imagePreview=null;
       this.feedService.productName = null;
       this.feedService.productName = null;

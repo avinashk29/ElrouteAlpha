@@ -84,7 +84,7 @@ GroupForm = new FormGroup({
       this.GroupForm.value.products = this.selectedProduct;
       // console.log(this.GroupForm.value);
       this.productService.updateGroup(this.GroupForm.value).subscribe(res => {
-        // console.log(res);
+        console.log(res);
       });
     }
 
@@ -98,6 +98,10 @@ if (!this.productService.key) {
     this.spinner.hide();
   });
 }
+this.productService.getProduct(this.companyId).subscribe(res1 => {
+  this.productService.products =  JSON.parse(res1['_body']);
+
+});
 
 this.dialogRef.close(ProductSelectComponent);
 this.router.navigate(['/companyPage/' + this.companyId], {
