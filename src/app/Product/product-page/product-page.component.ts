@@ -79,7 +79,7 @@ this.feedResult=JSON.parse(res['_body']);
 
       this.productService.productData.bookm=false
         this.notification.success('Removed from your product bookmark')
-      
+        
       
     })
   }
