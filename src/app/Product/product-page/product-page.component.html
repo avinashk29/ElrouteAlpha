@@ -43,7 +43,7 @@
                     <!-- <li style="float:right;">{{Time | date:'medium'}}</li> -->
               </div>
               <div style="clear:both;"></div>
-              <h2 style="color: #707070; font-size: 30px;font-family: Segoe UI regular; font-weight: 400;    margin-bottom: auto;margin-top: auto;">{{this.productService.productData.productName  | uppercase}}</h2>
+              <h2 style="color: #707070; font-size: 25px;font-family: Segoe UI regular; font-weight: 400;    margin-bottom: auto;margin-top: auto;">{{this.productService.productData.productName  | uppercase}}</h2>
               <div class="service2">
                   <div class="b_page_btn">
                   <span  (click)= "addProductBookmark()"  *ngIf="!this.productService.productData.bookm  else load">  
@@ -127,7 +127,7 @@
   <div class="feed">
 
 
-  <div class="main_feed_card">
+  <div class="main_feed_card" *ngIf="feedResult">
 
     <div class="feed1" *ngFor="let feed of feedResult;let i=index">
 
@@ -199,8 +199,13 @@
   </div>
 
   </div>
+     
+
 
   </section>
+  <div class="no_feed_dummy" *ngIf="!feedResult.length">
+      <img src ="../../../assets/images/no_feed.png">
+     </div>
 </div>
      </div>
 

@@ -195,7 +195,12 @@ export function getAuthServiceConfigs() {
     // StickyNavModule,
     ScrollDispatchModule,
     Ng6SocialButtonModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      timeOut: 900,
+      extendedTimeOut: 100,
+
+    }),
    
 
   ],

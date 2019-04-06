@@ -95,3 +95,4 @@ export class CompanySearchComponent implements OnInit {
 //    this.router.navigate(['/companyPage/'+this.id]);
 //  }
 }
+

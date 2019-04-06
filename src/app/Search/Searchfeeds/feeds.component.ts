@@ -64,7 +64,7 @@ page;
     
     this.bookmarkService.DeletePostBookmark(id).subscribe(res => {
       this.feedResult[i].bookm=false;
-      this.notification.success('Removed from your product bookmark');
+      this.notification.success('Removed from your product bookmark ');
     });
    }
 
