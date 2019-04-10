@@ -11,17 +11,17 @@
                         </div>
 
                         <div class="form">
-                           <input list="product"  [(ngModel)]="product_id" name="product_id" autocomplete="off" placeholder="Product">
+                           <input list="product"  [(ngModel)]="product_name" name="product_name" autocomplete="off" placeholder="Product">
 
                          <datalist id ="product"  >
-                        <div *ngFor = "let product of products; let i = index">
-                       <option value="{{i}}" >{{product.productName}}
+                        <div *ngFor = "let product of products">
+                       <option value="{{product.productName}}" >
                     </div>
                   </datalist>
 
                         </div>
                         <div class="tag_btn">
-                          <button type="submit" [disabled] = "!product_id" >Tag</button>
+                          <button type="submit" [disabled] = "!product_name" >Tag</button>
                          </div>
                          
                        </div>

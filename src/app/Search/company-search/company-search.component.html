@@ -83,7 +83,7 @@
   <div class="icons">
 
       <!-- {{r.website}} -->
-          <span> <a target="_blank" href="http://{{r.website}}"><img alt="with-login" src="assets/images/google_icon.png"></a></span>
+          <span> <a target="_blank" (click)="goToLink(r.website)"><img alt="with-login" src="assets/images/google_icon.png"></a></span>
           <!-- {{r._id}} -->
           <span  routerLink="/companyPage/{{r._id}}" [queryParams] = "{urltype: 'contact'}"><img alt="with-login" src="assets/images/contact1.png"></span>
       </div>

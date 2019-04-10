@@ -94,5 +94,16 @@ export class CompanySearchComponent implements OnInit {
 //  GotoBpage(id){
 //    this.router.navigate(['/companyPage/'+this.id]);
 //  }
+
+
+goToLink(url: string){
+  url = url.trim();
+  if(url.indexOf('http')>-1){
+    window.open(url, "_blank");
+  }
+ else{
+  window.open('http://'+url, "_blank");
+ }
+}
 }
 
