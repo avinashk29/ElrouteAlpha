@@ -55,7 +55,7 @@
             </svg></span></button>
           </div>
       </div>
-    <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
+    <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">{{r.industry}}</span></p>
     <div class="b_page_btn1" *ngIf="this.token">
         <button  (click)="onunfollow(i,r._id)"  *ngIf = "r.follow else loading">Following</button>
 

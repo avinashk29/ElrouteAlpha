@@ -260,4 +260,13 @@ export class WithLoginComponent implements OnInit {
     dialogConfig.width = "30%";
     this.dialog.open(TradeCatalystComponent,dialogConfig);
   }
+  goToLink(url: string){
+    url = url.trim();
+    if(url.indexOf('http')>-1){
+      window.open(url, "_blank");
+    }
+   else{
+    window.open('http://'+url, "_blank");
+   }
+  }
 }

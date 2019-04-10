@@ -700,8 +700,9 @@ onDeletePost(id) {
         res['_body']
       ).closeAt;
 
-
+  
     });
+    this.editworkingHours=false;
   }
   uploadUserImage(event,name){
     this.file = <File>event.target.files[0];
@@ -773,5 +774,13 @@ else{
     dialogConfig.width = '50%';
     this.dialog.open(FeedComponent, dialogConfig);
   }
-
+  goToLink(url: string){
+    url = url.trim();
+    if(url.indexOf('http')>-1){
+      window.open(url, "_blank");
+    }
+   else{
+    window.open('http://'+url, "_blank");
+   }
+}
 }

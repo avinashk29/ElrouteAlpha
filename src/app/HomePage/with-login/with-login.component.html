@@ -179,7 +179,7 @@
                       </div>
 
                       <div class="input_link">
-                          <a target="_blank"  *ngIf="!addLink" href="http://{{this.feedService.productName}}"> <h3>{{this.feed.value.link}}</h3></a>
+                          <a target="_blank"  *ngIf="!addLink" class="website-highlight" (click)="goToLink(feed.value.link)"> <h3>{{this.feed.value.link}}</h3></a>
                         <input *ngIf="addLink" type="url" placeholder="Enter Link here" formControlName="link">
                         <button *ngIf="addLink" (click)="addLink = false">Save</button>
 
@@ -247,7 +247,7 @@
                         <div class="overlay1">
                           <div class="feed_text">
                             <p>{{(feedElement.content | slice:0:180)+'...'}}</p>
-                            <a targert="_blank" href="http://{{feedElement.link}}">{{feedElement.link}}</a>
+                            <a targert="_blank" class="website-highlight" (click)="goToLink(feedElement.link)">{{feedElement.link}}</a>
                           </div>
                           <div class="bookmark_share">
                             <div class="bookmark">

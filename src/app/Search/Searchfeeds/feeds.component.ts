@@ -88,4 +88,13 @@ page;
       dialogConfig.width = '20%';
       this.dialog.open(FeedShareComponent, dialogConfig);
   }
+  goToLink(url: string){
+    url = url.trim();
+    if(url.indexOf('http')>-1){
+      window.open(url, "_blank");
+    }
+   else{
+    window.open('http://'+url, "_blank");
+   }
+  }
 }

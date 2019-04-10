@@ -34,4 +34,13 @@ onUnbookmark(id){
   })
 }
 }
+goToLink(url: string){
+  url = url.trim();
+  if(url.indexOf('http')>-1){
+    window.open(url, "_blank");
+  }
+ else{
+  window.open('http://'+url, "_blank");
+ }
+}
 }

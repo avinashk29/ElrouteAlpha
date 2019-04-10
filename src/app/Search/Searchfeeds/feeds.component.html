@@ -35,7 +35,8 @@
                                     <div class="feed_text">
                                       <p>{{(feed.content | slice:0:180)+'...'}}</p>
                                       <!-- <p>Watch our first episode</p> -->
-                                      <a target="_blank" href="http://{{feed.link}}">{{feed.link}}</a>
+                                      
+                                      <a target="_blank" class="website-highlight" (click)="goToLink(feed.link)">{{feed.link}}</a>
                                     </div>
                                     <div class="bookmark_share">
                                         <div class="bookmark">

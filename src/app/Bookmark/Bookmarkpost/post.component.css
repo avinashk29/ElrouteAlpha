@@ -415,3 +415,9 @@ input{
   border:none;
   margin-left: 10px;
 }
+
+.website-highlight{
+  text-decoration: underline blue;
+  color: blue;
+  cursor: pointer;
+}

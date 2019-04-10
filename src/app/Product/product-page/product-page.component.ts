@@ -6,6 +6,8 @@ import { FeedService } from 'src/app/Service/feed-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { UserService } from 'src/app/Service/user-services.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -21,7 +23,7 @@ export class ProductPageComponent implements OnInit {
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService, public notification: ToastrService) {
+   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,public dialog: MatDialog,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService, public notification: ToastrService) {
    this.router.events.subscribe((event:NavigationEnd) =>{
      window.scrollTo(0,0);
    });
@@ -36,8 +38,9 @@ export class ProductPageComponent implements OnInit {
   }
   panelOpenState = false;
 id;
-
+token;
   ngOnInit() {
+    this.token =this.storage.get('token');
     this.productService.token = this.storage.get('token');
 this.productService.getOneProduct(this.id).subscribe(res => {
   // console.log(JSON.parse(res['_body']))
@@ -87,6 +90,7 @@ this.feedResult=JSON.parse(res['_body']);
   
   this.bookmarkService.addPostBookmark(id).subscribe(res=>{
     this.feedResult[i].bookm=true;
+    this.feedResult[i].bookmarks.push(id);
   })
 
 }
@@ -94,6 +98,24 @@ removeFeedBookmark(i,id){
   
 this.bookmarkService.DeletePostBookmark(id).subscribe(res=>{
   this.feedResult[i].bookm=false;
+  this.feedResult[i].bookmarks.pop(id);
+
 })
+}
+
+openLogin() {
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '30%';
+  this.dialog.open(LoginComponent, dialogConfig);
+}
+goToLink(url: string){
+  url = url.trim();
+  if(url.indexOf('http')>-1){
+    window.open(url, "_blank");
+  }
+ else{
+  window.open('http://'+url, "_blank");
+ }
 }
 }

@@ -38,7 +38,7 @@ export class CompanyServiceService {
   }
     return this.http.get('http://localhost:8080/api/company/' + id);
   }
-
+  
   // updatCompany method is using to update data of company in database*/
   UpdateCompany(company){
     const headers = new Headers();

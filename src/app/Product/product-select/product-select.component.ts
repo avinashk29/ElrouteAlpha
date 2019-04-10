@@ -103,6 +103,8 @@ this.productService.getProduct(this.companyId).subscribe(res1 => {
 
 });
 
+
+
 this.dialogRef.close(ProductSelectComponent);
 this.router.navigate(['/companyPage/' + this.companyId], {
   queryParams: { urltype: 'product'}
@@ -112,4 +114,6 @@ this.router.navigate(['/companyPage/' + this.companyId], {
    closeLogin() {
     this.dialogRef.close();
   }
+
+  
 }

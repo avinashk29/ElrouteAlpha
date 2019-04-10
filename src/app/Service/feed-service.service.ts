@@ -36,6 +36,7 @@ export class FeedService {
         return this.http.get('http://localhost:8080/api/post/'+id,{headers:headers});}
         return this.http.get('http://localhost:8080/api/post/'+id);
     }
+   
 
         deletePost(id){
         const headers = new Headers();

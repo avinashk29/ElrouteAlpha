@@ -24,7 +24,7 @@ changedata=this.empDetailSubject.asObservable();
     return this.http.post('http://localhost:8080/api/product', product, {headers: headers});
   }
   getProduct(id) {
-    this.token = this.storage.get('token');
+    this.token = this.storage.get('token')
     if(this.token){
       console.log('token sent')
       const headers = new Headers();
