@@ -22,7 +22,9 @@
   </div>
   <div class="companyInfo">
     <div class="follow">
+      <div>
     <h1  routerLink = "/companyPage/{{r._id}}" [queryParams]= "{urltype:'default'}">{{r.companyName}}</h1>
+    </div>
     <div class="b_page_btn" *ngIf="this.token">
             <button  (click)= "companyBookmark(i ,r._id)"  *ngIf = "!r.bookm else bloading"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20.236 37.863">
               <g id="bookmark" fill="transparent">
@@ -55,7 +57,7 @@
             </svg></span></button>
           </div>
       </div>
-    <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">Industry</span></p>
+    <p style="margin-top: auto;"><span style="padding: 0 10px 0 0;" >{{r.category}}</span> </p>
     <div class="b_page_btn1" *ngIf="this.token">
         <button  (click)="onunfollow(i,r._id)"  *ngIf = "r.follow else loading">Following</button>
 
@@ -75,7 +77,16 @@
 
 </div>
 <div class="discription">
+  <div>
   <p>{{(r.shortIntro | slice:0:250)+'...'}}</p>
+  </div>
+  <div class="icons">
+
+      <!-- {{r.website}} -->
+          <span> <a target="_blank" href="http://{{r.website}}"><img alt="with-login" src="assets/images/google_icon.png"></a></span>
+          <!-- {{r._id}} -->
+          <span  routerLink="/companyPage/{{r._id}}" [queryParams] = "{urltype: 'contact'}"><img alt="with-login" src="assets/images/contact1.png"></span>
+      </div>
 </div>
 <mat-accordion  class="des">
 
@@ -95,15 +106,9 @@
     </mat-expansion-panel>
 
   </mat-accordion>
-<div class="cardFooter">
-<div class="icons">
+<!-- <div class="cardFooter">
 
-<!-- {{r.website}} -->
-    <span> <a target="_blank" href="http://{{r.website}}"><img alt="with-login" src="assets/images/google_icon.png"></a></span>
-    <!-- {{r._id}} -->
-    <span  routerLink="/companyPage/{{r._id}}" [queryParams] = "{urltype: 'contact'}"><img alt="with-login" src="assets/images/contact1.png"></span>
-</div>
-</div>
+</div> -->
 </div>
 <!-- <div *ngIf="!result">
   <img alt="with-login" src="../../../assets/images/result_not_found.png">
