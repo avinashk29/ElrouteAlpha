@@ -151,7 +151,7 @@ section{
   /* box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5); */
   float:left;
   height: 40px;
-  margin: 0 30px 30px 0;
+  /* margin: 0 30px 30px 0; */
   position: relative;
   width: 40px;			
 
@@ -192,11 +192,14 @@ section{
 .follow
 {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .storyBtn{
   width: 30%;
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top: 1%;
+  margin-right: -2%;
 }
 .storyBtn button{
   width: 100%;
@@ -212,11 +215,14 @@ section{
 }
 
 .discription{
-  width: 94%;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 .discription p{
-  width: 80%;
+  margin: 0 auto;
+  width: 85%;
   color: #707070;
   font-weight: 600;
 }
@@ -244,15 +250,19 @@ section{
 .icons{
   
   display: flex;
+
+  
 }
-.icons span
+/* .icons span
 {
   margin: -9% 1% 1%;
-}
+} */
 .icons img
 {
-  width: 80%;
+  width: 40px;
+  margin: 10px;
   cursor: pointer;
+ 
 }
 .icons p{
   margin: 0;

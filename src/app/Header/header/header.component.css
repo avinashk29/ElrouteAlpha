@@ -65,7 +65,7 @@ a {
     margin-right: 2%;
 	}
   .main-nav{
-    margin-right: 60px
+    margin-right: 30px
   }
   .main-nav p{
     letter-spacing: 1px;
@@ -78,7 +78,7 @@ a {
     z-index: 11;
 	}
  .search{
-  width: 55%;
+  width: 48%;
   border: none;
   /* height: 7vh; */
   margin: 0 auto;
