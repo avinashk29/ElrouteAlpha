@@ -137,7 +137,7 @@ export class ProductComponent implements OnInit {
       this.imgupload.uploadImg(fdata).subscribe(res=>{
         const url=res['_body']
         this.productForm.patchValue({
-          Image: [url]
+          Image: url
         })
 
       })
