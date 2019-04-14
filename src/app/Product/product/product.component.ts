@@ -60,7 +60,7 @@ export class ProductComponent implements OnInit {
     this.productService.token = this.storage.get('token');
 
   }
-
+  
   addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
     control.push(
@@ -115,8 +115,9 @@ export class ProductComponent implements OnInit {
 
   onSubmit() {
       const productData = this.productForm.value;
+      console.log(this.productForm.value);
       this.productService.UpdateProduct(productData , this.productService.productId).subscribe(res => {
-          // console.log(res);
+          console.log(res);
           this.notification.success('Product Updated');
           this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
       });

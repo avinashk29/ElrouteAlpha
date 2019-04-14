@@ -53,7 +53,7 @@
               <h2>{{this.userService.userData.userName}}</h2>
               <p>{{this.userService.userData.title}}</p>
             </div>
-            <div class="user_details">
+            <div class="user_details" *ngIf="this.userService.userData.shortBio">
               <p>{{(this.userService.userData.shortBio | slice:0:150)+'...'}}</p>
             </div>
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WithoutLoginComponent } from './HomePage/without-login/without-login.component';
 import { WithLoginComponent } from './HomePage/with-login/with-login.component';
@@ -25,6 +25,7 @@ import {CompanyForm3Component} from './Company/company-form3/company-form3.compo
 import {CompanyForm4Component} from './Company/company-form4/company-form4.component';
 import {CompanyForm5Component} from './Company/company-form5/company-form5.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 const routes: Routes = [
   {path: '' , component: WithoutLoginComponent},
   {path: 'Dashboard' , component: WithLoginComponent, canActivate: [AuthGuardService]},
@@ -49,6 +50,7 @@ const routes: Routes = [
     {path: 'company-edit/market' , component: CompanyForm4Component,canActivate: [AuthGuardService]},
     {path: 'company-edit/contact' , component: CompanyForm5Component,canActivate: [AuthGuardService]},
     {path: 'product', component: ProductListingComponent,canActivate: [AuthGuardService]},
+    {path:'request-password-reset', component:ForgetPasswordComponent},
    {path: '**' , redirectTo:'Dashboard'}
 ];
 

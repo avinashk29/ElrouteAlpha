@@ -44,6 +44,7 @@
 </ul>
 <div class="sign_up">
 <button type="submit" >Sign Up</button>
+<a routerLink="request-password-reset" (click)="closeLogin()==true"><h6>Forget Password?</h6></a>
 </div>
   </form>
   <!-- <span class="other_option"><h6>Or you can Sign up with the following</h6></span> -->
@@ -54,5 +55,6 @@
   <!-- <linkedin-login-button (socialUser)="getSocialUser($event)"></linkedin-login-button> -->
   <div class="login-link">
     <h4>Already have a Account?<span style="color:cadetblue; margin-left: 5px;cursor: pointer;" (click)="openLogin()" >Sign In</span></h4>
+   
   </div>
 </div>
