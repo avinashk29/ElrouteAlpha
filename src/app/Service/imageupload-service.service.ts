@@ -13,7 +13,7 @@ export class ImageUploadService {
     file;
     image
 
-    constructor(private http:Http,private companyService:CompanyServiceService,private userService:UserService,private spinner:Ng4LoadingSpinnerService,private feedService:FeedService){}
+    constructor(private http:Http,){}
 
     uploadImg(image){
         return this.http.post('http://localhost:8080/api/imageupload',image);

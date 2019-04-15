@@ -88,7 +88,6 @@ import { HrFormatPipe } from './hr-format.pipe';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { InfoComponent } from './Bpage/info/info.component';
 
-
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -220,7 +219,7 @@ export function getAuthServiceConfigs() {
     FeedShareComponent
   ],
   providers: [CompanyServiceService, ProductServiceService, AuthGuardService, BookmarkServices , FeedService, FollowService,
-     SearchService, CompanyGuardService, {provide: SocialServiceConfig,
+     SearchService, CompanyGuardService,  {provide: SocialServiceConfig,
       useFactory: getAuthServiceConfigs}],
   bootstrap: [AppComponent],
 
