@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ForgetpasswordService } from 'src/app/Service/forgetpassword.service';
+import { MatDialogRef } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -21,11 +24,14 @@ export class ForgetPasswordComponent implements OnInit {
   otp=true;
   change=false;
 
-  constructor(private forgetpasswordService:ForgetpasswordService) { }
+  constructor(private forgetpasswordService:ForgetpasswordService,private router:Router,
+    public dialogRef: MatDialogRef<ForgetPasswordComponent>, private notification:ToastrService) { }
 
   ngOnInit() {
   }
-
+close(){
+this.dialogRef.close();
+}
   requestOtp(){
     this.otp=false;
     this.change=true;
@@ -36,13 +42,20 @@ export class ForgetPasswordComponent implements OnInit {
 
   }
   changePassword(){
-    console.log(this.requestPasswordForm.value)
+   if(this.restPassword.value.newPassword===this.restPassword.value.confirmNewPassword){
     const fdata=new FormData();
-    fdata.append('forgetpassword',this.restPassword.value.newPassword);
-    fdata.append('Otp',this.restPassword.value.opt);
+    fdata.append('password',this.restPassword.value.newPassword);
+    fdata.append('otp',this.restPassword.value.otp);
     this.forgetpasswordService.resetPassword(this.requestPasswordForm.value.email,fdata).subscribe(res=>{
-      console.log(res)
+      console.log(res);
+      this.notification.success('Your password has been changed.');
     })
+    this.dialogRef.close();
+   }else{
+    this.notification.error('Password not matched');
+   }
+  
+
   }
 
 }

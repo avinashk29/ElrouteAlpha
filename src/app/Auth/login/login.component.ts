@@ -9,6 +9,7 @@ import { SignupComponent } from '../signup/signup.component';
 import { UserService } from 'src/app/Service/user-services.service';
 import { SocialService } from 'ng6-social-button';
 import { SocialUser } from 'ng6-social-button/lib/entities';
+import {ForgetPasswordComponent} from '../forget-password/forget-password.component'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,6 +41,13 @@ export class LoginComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(SignupComponent, dialogConfig);
+  }
+  openForgetPassword(){
+    this.dialogRef.close(LoginComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
+    this.dialog.open(ForgetPasswordComponent, dialogConfig);
   }
    onSubmit() {
 if (this.login.valid) {

@@ -15,6 +15,7 @@ import {
   LinkedinLoginProvider,
   SocialUser
 } from 'ng4-social-login';
+import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -67,7 +68,13 @@ export class SignupComponent implements OnInit {
 closeLogin() {
   this.dialogRef.close();
 }
-
+openForgetPassword(){
+  this.dialogRef.close(SignupComponent);
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = '30%';
+  this.dialog.open(ForgetPasswordComponent, dialogConfig);
+}
 
   onSubmit() {
     this.error = true;
