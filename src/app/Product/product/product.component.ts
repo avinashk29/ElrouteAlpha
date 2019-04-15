@@ -60,28 +60,7 @@ export class ProductComponent implements OnInit {
     this.productService.token = this.storage.get('token');
 
   }
-  onImagePick(event, name) {
-    const file = <File>event.target.files[0];
-    this.productForm.patchValue({Image: file});
-    this.productForm.get('Image').updateValueAndValidity();
-    const reader = new FileReader();
-      reader.onload = () => {
-         this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
-    const fdata= new FormData();
-    fdata.append(name,file)
-      this.imgupload.uploadImg(fdata).subscribe(res=>{
-        console.log(res);
-        const url=res['_body']
-        this.productForm.patchValue({
-          Image: url
-        })
-
-      })
-
-
-   }
+  
   addProductInfo() {
     let control =  <FormArray>this.productForm.controls.productInfo;
     control.push(
@@ -145,5 +124,25 @@ export class ProductComponent implements OnInit {
 
   }
 
-  
+  onImagePick(event, name) {
+    const file = <File>event.target.files[0];
+    this.productForm.patchValue({Image: file});
+    this.productForm.get('Image').updateValueAndValidity();
+    const reader = new FileReader();
+      reader.onload = () => {
+         this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
+    const fdata= new FormData();
+    fdata.append(name,file)
+      this.imgupload.uploadImg(fdata).subscribe(res=>{
+        const url=res['_body']
+        this.productForm.patchValue({
+          Image: url
+        })
+
+      })
+
+
+   }
 }
