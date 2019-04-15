@@ -649,8 +649,8 @@ type="ball-scale-multiple">
                   </div>
                   <div class="feed_name">
                     <h4>{{this.companyService.companyData.companyName}}</h4>
-                    <p>Service</p>
-                    <h6>India</h6>
+                    <p>{{this.companyService.companyData.industry}}</p>
+                    <h6>{{this.companyService.companyData.country}}</h6>
                   </div>
                   <div style="text-align: right;margin-top: 4%;margin-right: 2%;">
                     <button (click)="onDeletePost(feed._id)" class="delete_product" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6l3 18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.316c0 .901.73 2 1.631 2h5.711z"/></svg></span></button>
