@@ -143,6 +143,17 @@ width:45%; float: right;
   width: 40% !important;
   margin: 0 16px 0 0;
 }
+.link{
+  display: flex;
+}
+.link input{
+  width: 70%;
+    border: 1px solid;
+}
+.link select{
+  border: 1px solid;
+  width: 30%;
+}
 @media screen and (max-width: 700px){
   .company_form_genral
   {

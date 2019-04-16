@@ -1,5 +1,5 @@
 import { Component, OnInit , Inject} from '@angular/core';
-import {FormGroup , FormControl} from '@angular/forms';
+import {FormGroup , FormControl, FormArray, FormBuilder} from '@angular/forms';
 import {CompanyServiceService} from '../../Service/company-service.service';
 import { Router } from '@angular/router';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -11,35 +11,65 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CompanyForm3Component implements OnInit {
   companyId;
-  companyForm = new FormGroup ({
-     website: new FormControl(''),
-     facebook: new FormControl(''),
-     companyType: new FormControl(''),
-     companySize: new FormControl(''),
-     yearEstd: new FormControl(),
-     city: new FormControl(''),
-     shortIntro: new FormControl(''),
-
-     linkedin: new FormControl(''),
-     openAt:new FormControl(''),
-     closeAt:new FormControl(''),
-
-    }) ;
-
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
+  companyForm: FormGroup;
+  links;
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private _fb: FormBuilder,
    public companyService: CompanyServiceService, public router: Router, public notification: ToastrService) {
   }
 
   ngOnInit() {
+    this.companyForm =  this._fb.group({
+      website: [''],
+      facebook: [''],
+      companyType: [''],
+      companySize: [''],
+      yearEstd:[],
+      city: [''],
+      shortIntro: [''],
+       links: this._fb.array([]),
+      linkedin: [''],
+      openAt:[''],
+      closeAt:[''],
+ 
+     }) ;
+
     // this.companyService.token = this.storage.get('token');
     this.companyId = this.storage.get('companyId');
     this.companyService.GetoneCompany(this.companyId).subscribe(res => {
       this.companyForm.patchValue(JSON.parse(res['_body']));
+      this.links = JSON.parse(res['_body']).links;
+      console.log(this.links)
+      this.setLink();
     });
 
 
   }
 
+  onAddLink(){
+    let control =  <FormArray>this.companyForm.controls.links;
+    control.push(
+      this._fb.group({
+        linkName:['instagram'],
+        linkValue:['']
+      })
+    )
+  }
+
+  setLink(){
+    let control =  <FormArray>this.companyForm.controls.links;
+    this.links.forEach(x=>{
+      control.push(this._fb.group({
+        linkName:x.linkName,
+        linkValue:x.linkValue
+      }))
+    })
+
+  }
+
+  deleteLink(index){
+    let control =  <FormArray>this.companyForm.controls.links;
+    control.removeAt(index)
+  }
   onSubmit() {
     this.companyForm.value.website= this.companyForm.value.website.trim();
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {

@@ -21,14 +21,28 @@
                                 <li>
                                 <input type="text" formControlName="website" class="website"  >
                                 </li>
-                                <label>Facebook</label>
-                                <li>
-                                <input type="text" formControlName="facebook" class="website">
+                               
+                                
+                                <label>Social and Commercial Links</label>
+                                
+                                 <span (click)="onAddLink()">Add  another Link</span>
+
+                                <div formArrayName="links">
+                                <div *ngFor="let link of companyForm.get('links')['controls'];let i = index" [formGroupName]="i" >
+                                <div class="link">
+                                    <li>
+                                <input type="text" formControlName="linkValue" >
                                 </li>
-                                <label>Linkedin</label>
-                                <li>
-                                <input type="text" formControlName="linkedin" class="website">
-                                </li>
+                                <select formControlName="linkName"> 
+                                        <option value="instagram">instagram</option>
+                                       <option value="facebook">facebook</option>
+                                      </select>
+                                     <button (click)=" deleteLink(i)">X</button>
+                                    </div>
+                        </div>
+                            </div>
+                        
+                        <!-- </div> -->
                                  <label> Company Type</label>
                                 <li>
                                     <input list="company-type" formControlName="companyType" class="company-type">
