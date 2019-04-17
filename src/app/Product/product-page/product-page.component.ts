@@ -8,6 +8,7 @@ import { UserService } from 'src/app/Service/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -23,7 +24,7 @@ export class ProductPageComponent implements OnInit {
   mybookmark;
   feedResult=[];
   constructor(@Inject(LOCAL_STORAGE) public storage: WebStorageService,
-   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,public dialog: MatDialog,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService, public notification: ToastrService) {
+   public route: ActivatedRoute, private router:Router, public productService: ProductServiceService,public dialog: MatDialog,private bookmarkService:BookmarkServices,private feedService:FeedService,private UserService:UserService, public notification: ToastrService,  public meta: Meta, public title: Title) {
    this.router.events.subscribe((event:NavigationEnd) =>{
      window.scrollTo(0,0);
    });
@@ -43,17 +44,20 @@ token;
     this.token =this.storage.get('token');
     this.productService.token = this.storage.get('token');
 this.productService.getOneProduct(this.id).subscribe(res => {
-  // console.log(JSON.parse(res['_body']))
+  console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
   // console.log(this.productService.productData);
+  this.meta.updateTag({ property: 'og:description', content: JSON.parse(res['_body']).shortDescription }); 
+  this.meta.updateTag({ property: 'og:url', content: window.location.href }); 
+  this.meta.updateTag({ property: 'og:image', content: JSON.parse(res['_body']).Image }); 
+  this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).productName})
+  this.title.setTitle(JSON.parse(res['_body']).productName);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{
     this.mybookmark=true;
   }
 });
-
-
 this.productService.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);
 

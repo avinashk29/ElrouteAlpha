@@ -243,11 +243,13 @@ export class WithLoginComponent implements OnInit {
 
     });
   }
-  onSharepost(i, admin) {
+  onSharepost(i, admin,image) {
   // console.log(i);
   // console.log(admin);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
+    this.feedService.postImage=image;
+    console.log(image)
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
 

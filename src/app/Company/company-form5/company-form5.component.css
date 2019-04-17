@@ -124,6 +124,7 @@ label
   background-color: rgb(56, 67, 79);
   color: floralwhite;
   font-size: 20px;
+  box-shadow: 0px 2px 10px 0px #5555;
   font-weight: 500;
   border-radius: 2px;
   margin-top: 4%;
