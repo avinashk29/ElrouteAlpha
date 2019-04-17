@@ -436,29 +436,35 @@ header {
   font-size: 25px;
   font-weight: 500;
 }
+.social_media_links
+{
+  display: flex;
+  width: 90%;
+  
+}
 .facebook_social
 {
-  width: 15%;
-
+  
+  margin: 0px 10px 0 0;
 }
 .facebook_social img
 {
   cursor:pointer;
-  width: 40px !important;
-  height: 40px !important;
-  margin-top: 6%;
+  width: 20px !important;
+  height: 20px !important;
+ 
 }
-.linkedin_social
+.links_social
 {
-  width: 75%;
-
-  margin-top: 1%;
+  
+  margin: 0px 10px 0 0;
+  
 }
-.linkedin_social img
+.links_social img
 {
   cursor:pointer;
-  width: 40px !important;
-  height: 40px !important;
+  width: 20px !important;
+  height: 20px !important;
 }
 .timeline_btn button {
   height: 28px;

@@ -293,28 +293,70 @@ type="ball-scale-multiple">
 </div>
 </div>
 <div class="social">
+  <div class="social_media_links">
     <div class="facebook_social">
 
-        <img alt="B-page" src="../../../assets/images/facebook_logos_PNG19753.png" style="height: 37px;  width: 37px" (click)="likedinEdit=false" (click)="editSocialLinks=true"  *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
+        <img alt="B-page" src="../../../assets/images/facebook_logos_PNG19753.png" style="height: 37px;  width: 37px"   *ngIf= "!editSocialLinks && !this.companyService.companyData.facebook && myCompany">
         <a target="_blank"  href="{{this.companyService.companyData.facebook}}" style="height: 37px; width: 37px" *ngIf= "this.companyService.companyData.facebook"><img alt="B-page" src="../../../assets/images/facebook_logos_PNG19753.png"></a>
 
 
-        <div class="social_links" *ngIf="editSocialLinks" style="margin-top: 60px">
+        <!-- <div class="social_links" *ngIf="editSocialLinks" style="margin-top: 60px">
         <input type="text" placeholder="Enter Your Facebook link" formControlName="facebook" #facebook>
         <button type="submit" (click)="onEditBpage('facebook', facebook)" (click)="editSocialLinks=false" class="add_face_link"> Add Facebook Profile</button>
-        </div>
+        </div> -->
         </div>
 
-<div class="linkedin_social">
+<div class="links_social">
 
-<img alt="B-page" src="../../../assets/images/circularLinkedin.png" style="height: 37px; width: 37px" (click)="likedinEdit=true" (click)="editSocialLinks=false"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+<img alt="B-page" src="../../../assets/images/circularLinkedin.png" style="height: 37px; width: 37px" *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
 <a target="_blank"  href="{{this.companyService.companyData.linkedin}}" style="height: 37px;width: 37px" *ngIf= "this.companyService.companyData.linkedin"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
 
-<div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
+<!-- <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
 <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
 <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
+</div> -->
 </div>
-</div>
+<div class="links_social">
+
+  <img alt="B-page" src="../../../assets/images/instagram.png" style="height: 37px; width: 37px"  *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+  <a target="_blank"  href="{{this.companyService.companyData.instagram}}" style="height: 37px;width: 37px" *ngIf= "this.companyService.companyData.instagram"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
+  
+  <!-- <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
+  <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
+  <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
+  </div> -->
+  </div>
+  <div class="links_social">
+
+      <img alt="B-page" src="../../../assets/images/Twitter.png" style="height: 37px; width: 37px" *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany" >
+      <a target="_blank"  href="{{this.companyService.companyData.twitter}}" style="height: 37px;width: 37px" *ngIf= "this.companyService.companyData.twitter"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
+      
+      <!-- <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
+      <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
+      <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
+      </div> -->
+      </div>
+      <div class="links_social">
+
+          <img alt="B-page" src="../../../assets/images/pinterest.png " style="height: 37px; width: 37px" *ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+          <a target="_blank"  href="{{this.companyService.companyData.pinterest}}" style="height: 37px;width: 37px" *ngIf= "this.companyService.companyData.pinterest"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
+          
+          <!-- <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
+          <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
+          <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
+          </div> -->
+          </div>
+          <div class="links_social">
+
+            <img alt="B-page" src="../../../assets/images/indiamart.jpg" style="height: 37px; width: 37px"*ngIf= "!likedinEdit && !this.companyService.companyData.linkedin && myCompany">
+            <a target="_blank"  href="{{this.companyService.companyData.indiamart}}" style="height: 37px;width: 37px" *ngIf= "this.companyService.companyData.indiamart"><img alt="B-page" src="../../../assets/images/circularLinkedin.png"></a>
+            
+            <!-- <div class="social_links" *ngIf="likedinEdit" style="margin-top: 60px">
+            <input type="text" placeholder="Enter Your linkedin link" formControlName="linkedin" #linkedin>
+            <button type="submit" (click)="onEditBpage('linkedin', linkedin)" (click)="likedinEdit=false" class="add_face_link"> Add Linkedin  Profile</button>
+            </div> -->
+            </div>
+  </div>
     <span *ngIf="!myCompany && !this.token"  (click)="opneLogin()"><svg xmlns="http://www.w3.org/2000/svg" width="20.236" height="37.863" viewBox="0 0 20.236 37.863">
       <g id="bookmark" fill="transparent">
           <path d="M 6.745473861694336 2 C 4.128812789916992 2 2.000003814697266 3.933700561523438 2.000003814697266 6.310550689697266 L 2.000003814697266 32.87657165527344 L 8.65113353729248 25.91854095458984 L 10.09687328338623 24.40608978271484 L 11.5426139831543 25.91854095458984 L 18.20048522949219 32.88362121582031 L 18.23642349243164 6.310550689697266 C 18.23642349243164 3.933700561523438 16.10761260986328 2 13.49095344543457 2 L 6.745473861694336 2 M 6.745473861694336 0 L 13.49095344543457 0 C 17.21637344360352 0 20.23642349243164 2.825328826904297 20.23642349243164 6.310550689697266 L 20.19375419616699 37.86328125 L 10.09687328338623 27.30051040649414 L 3.814697265625e-06 37.86328125 L 3.814697265625e-06 6.310550689697266 C 3.814697265625e-06 2.825328826904297 3.020053863525391 0 6.745473861694336 0 Z"

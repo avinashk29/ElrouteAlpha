@@ -27,6 +27,7 @@ import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.comp
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 // import { type } from 'os';
+
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -783,4 +784,8 @@ else{
     window.open('http://'+url, "_blank");
    }
 }
+
+
+
+  
 }

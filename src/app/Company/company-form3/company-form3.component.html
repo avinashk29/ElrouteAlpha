@@ -25,23 +25,29 @@
                                 
                                 <label>Social and Commercial Links</label>
                                 
-                                 <span (click)="onAddLink()">Add  another Link</span>
+                                 
 
-                                <div formArrayName="links">
-                                <div *ngFor="let link of companyForm.get('links')['controls'];let i = index" [formGroupName]="i" >
-                                <div class="link">
-                                    <li>
-                                <input type="text" formControlName="linkValue" >
-                                </li>
-                                <select formControlName="linkName"> 
-                                        <option value="instagram">instagram</option>
-                                       <option value="facebook">facebook</option>
-                                      </select>
-                                     <button (click)=" deleteLink(i)">X</button>
-                                    </div>
-                        </div>
+                    <div formArrayName="links" class="social_link_add">
+                                 <div *ngFor="let link of companyForm.get('links')['controls'];let i = index" [formGroupName]="i" >
+                                        <div class="link">
+                                           
+                                        <input type="text" formControlName="linkValue" >
+                                       
+                                        <select formControlName="linkName"> 
+                                                <option value="instagram">Instagram</option>
+                                            <option value="facebook">Facebook</option>
+                                            <option value="linkdin">Linkdin</option>
+                                            <option value="twitter">Twitter</option>
+                                            <option value="pinterest">Pinterest</option>
+                                            <option value="indiamart">Indiamart</option>
+                                        </select>
+                                            <span (click)=" deleteLink(i)" style="margin-left: 10px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24" style="fill:gray;"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg></span>
+                                            </div>
+                                 </div>
                             </div>
-                        
+                            <div class="add_another_link" *ngIf='companyForm.value.links.length <5'>
+                            <h4 (click)="onAddLink()"> + Add  another Link</h4>
+                        </div>
                         <!-- </div> -->
                                  <label> Company Type</label>
                                 <li>

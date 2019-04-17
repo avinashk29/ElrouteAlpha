@@ -5,7 +5,7 @@ section
 }
 label
 {
-  color: #aaa8a8;
+  color: black;
 }
 .company_form1{
 
@@ -52,6 +52,7 @@ a
 }
 .comapany_form
 {
+  background-color: rgba(214,214,213,.3);
   width: 100%;
   box-shadow: 0px 1px 5px 0px #5555;
   margin-left: 8%;
@@ -66,19 +67,27 @@ a
   list-style-type: none;
 }
 li{
-  margin-bottom: 40px;
+  margin-bottom: 5%;
+  margin-top: 2%;
   width: 100%;
 }
 input, select{
-  width: 80%;
-  height: 40px;
+  width: 85%;
+
+  height: 32px;
+  padding: 6px;
   border: none;
-  color: black;
+  color: #655b5b;
   outline: none;
   font-size: 15px;
-  border-bottom: 1px solid #333333;
+
   border-bottom-color: #aaa8a8;
-  background-color: transparent;
+
+  padding: 2px 20px;
+
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.16);
+  border: none;
+  outline: 0;
 }
 input::placeholder {
   color: black;
@@ -87,13 +96,13 @@ input::placeholder {
 
 li button{
   width: 20%;
-  height: 38px;
+padding: 7px;
   border: none;
   background-color: rgb(56, 67, 79);
   color: floralwhite;
   font-size: 20px;
   font-weight: 500;
-  border-radius: 7px;
+  border-radius: 2px;
 }
 li textarea{
   width: 80%;
@@ -145,16 +154,61 @@ width:45%; float: right;
 }
 .link{
   display: flex;
+  margin-bottom: 2%;
+  width: 80%;
 }
 .link input{
-  width: 70%;
-    border: 1px solid;
+  width: 100%;
+  border: 1px solid #dddfe2;
+ 
+
+  font-size: 13px;
+  height: 25px;
+  line-height: 16px;
+  padding: 0 8px;
+  vertical-align: middle;
 }
 .link select{
-  border: 1px solid;
-  width: 30%;
+  background-color: #f5f6f7;
+  border-color: #ccd0d5;
+  color: #4b4f56;
+  width: 35%;
+  margin-left: 8px;
+  height: 25px;
+  border: 1px solid #dddfe2;
+  border-radius: 2px;
+  box-sizing: content-box;
+  font-size: 12px;
+
+  font-weight: bold;
+
+  padding: 0 8px;
+ 
+}
+.link select > option
+{
+  line-height: 22px;
+}
+.social_link_add
+{
+  margin-top: 2%;
+}
+.add_another_link h4
+{
+  color: gray ! important;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 200;
+}
+.add_another_link h4:hover
+{
+  text-decoration: underline;
 }
 @media screen and (max-width: 700px){
+  .comapany_form {
+    margin-left: 0;
+    
+}
   .company_form_genral
   {
     display: block;
@@ -171,10 +225,6 @@ width:45%; float: right;
   }
   .form {
     width: 90%;
-    background-color: #fff;
-    /* position: absolute; */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin-left: -6%;
     margin-top: 3%;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   }
@@ -209,14 +259,9 @@ width:45%; float: right;
    color: #fff;
    font-size: 12px;
   }
-  input, select{
-    border:none;
-    border-bottom:1px solid #ccc;
-    
-    background-color: transparent;
-  }
+
   li{
-    margin-top: 40px;
+    margin-top: 3%;
   }
   li button{
     /* float: right; */
@@ -237,4 +282,12 @@ width:45%; float: right;
   width:100%; float: right;
   margin-bottom: 40px;
   }
+  .link {
+    
+    width: 100%;
+}
+li textarea {
+  width: 100%;
+;
+}
 }
