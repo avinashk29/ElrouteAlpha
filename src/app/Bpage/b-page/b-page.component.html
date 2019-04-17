@@ -411,7 +411,7 @@ type="ball-scale-multiple">
       <div class="headerImg" *ngIf="this.companyService.companyData.coverImage">
         <div class="container">
 
-          <img alt="B-page" src="{{this.companyService.companyData.coverImage}}">
+          <img   data-top="0"  data-left="0"  alt="B-page" src="{{this.companyService.companyData.coverImage}}">
           <div class="overlay" *ngIf="myCompany">
             <input type="file" #filePicker (change)="uploadCompanyImage($event,'coverImage')" class="picker" style="display: hidden;"
               visbility="hidden">
