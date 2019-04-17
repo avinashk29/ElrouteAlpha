@@ -11,6 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent implements OnInit {
+first;
+last;
+correct;
+correct2=true;
+passwordChange=false;
+otpIncorrect=false;
+errorEmail=false;
+correctEmail=false;
 
   requestPasswordForm=new FormGroup({
     email:new FormControl('',Validators.required)
@@ -25,38 +33,57 @@ export class ForgetPasswordComponent implements OnInit {
   change=false;
 
   constructor(private forgetpasswordService:ForgetpasswordService,private router:Router,
-    public dialogRef: MatDialogRef<ForgetPasswordComponent>, private notification:ToastrService) { }
+    public dialogRef: MatDialogRef<ForgetPasswordComponent>, private notification:ToastrService) { 
+  
+    }
 
   ngOnInit() {
+  
+  }
+  
+  matchPassword(newPassword,confirmNewPassword){
+    console.log(newPassword);
+    console.log(confirmNewPassword)
+    if(newPassword===confirmNewPassword){
+      console.log('done');
+      this.correct=true;
+      this.passwordChange=false;
+    }else{
+      console.log('error')
+      this.correct2=true;
+      this.passwordChange=true;
+      this.correct=false;
+    }
+   
   }
 close(){
 this.dialogRef.close();
 }
   requestOtp(){
-    this.otp=false;
-    this.change=true;
     this.forgetpasswordService.forgetPassword(this.requestPasswordForm.value).subscribe(res=>{
-      console.log(res);
+      if(res){
+        this.change=true;
+        this.otp=false;
+      }
+    },err=>{
+      this.errorEmail=true;
+      this.otp=true;
     })
 
 
   }
-  changePassword(){
-   if(this.restPassword.value.newPassword===this.restPassword.value.confirmNewPassword){
+  changePassword(){  
     const fdata=new FormData();
     fdata.append('password',this.restPassword.value.newPassword);
     fdata.append('otp',this.restPassword.value.otp);
     this.forgetpasswordService.resetPassword(this.requestPasswordForm.value.email,fdata).subscribe(res=>{
-      console.log(res);
-      this.notification.success('Your password has been changed.');
-    })
-    this.dialogRef.close();
-   }else{
-    this.notification.error('Password not matched');
-   }
-  
+      this.dialogRef.close();
+      this.notification.success('Password Updated!');
+    },err=>{
+    this.otpIncorrect=true;
+    });
+   
 
   }
-
 }
   
