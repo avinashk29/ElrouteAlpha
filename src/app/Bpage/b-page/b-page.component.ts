@@ -22,11 +22,10 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
-
-
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
-// import { type } from 'os';
+import { Title, Meta } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-b-page',
   templateUrl: './b-page.component.html',
@@ -122,6 +121,7 @@ export class BPageComponent implements OnInit {
     public ngZone: NgZone,
     public dialog: MatDialog,
     public notification: ToastrService,
+    public meta: Meta, public title: Title
 
   ) {
     this.comapnyId = this.route.snapshot.paramMap.get('id');
@@ -151,8 +151,17 @@ this.token = this.storage.get('token');
 this.follows.token=this.storage.get('token');
 this.route.params.filter(params=> params.id).subscribe(id=>{
   this.comapnyId=id.id;
+  console.log(this.companyService.companyData.url)
   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
+    console.log(JSON.parse(res['_body']));
     this.companyService.companyData = JSON.parse(res['_body']);
+
+    this.meta.updateTag({ property: 'og:description', content: JSON.parse(res['_body']).shortIntro }); 
+    this.meta.updateTag({ property: 'og:url', content: window.location.href }); 
+    this.meta.updateTag({ property: 'og:image', content: JSON.parse(res['_body']).companyLogo }); 
+    this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).companyName})
+    this.title.setTitle(JSON.parse(res['_body']).companyName);
+
 
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -226,6 +235,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
     }
 
   }
+ 
 
   ngOnInit() {
     this.productService.token = this.storage.get('token');

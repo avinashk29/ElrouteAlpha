@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http , Headers} from '@angular/http';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
+// import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root'
@@ -34,9 +35,9 @@ export class CompanyServiceService {
     if(this.token){
     const headers = new Headers();
     headers.append('x-auth', this.token);
-    return this.http.get('http://localhost:8080/api/company/' + id,{headers:headers});
+    return this.http.get('http://localhost:8080/api/company/'+ id,{headers:headers});
   }
-    return this.http.get('http://localhost:8080/api/company/' + id);
+    return this.http.get('http://localhost:8080/api/company/'+ id);
   }
   
   // updatCompany method is using to update data of company in database*/

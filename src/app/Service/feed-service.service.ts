@@ -13,6 +13,7 @@ export class FeedService {
     postId;
     postadmin;
     postImage;
+    feedContent;
     constructor(public http: Http) {}
     AddFeed(feed) {
       const headers = new Headers();
