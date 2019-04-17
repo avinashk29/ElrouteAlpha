@@ -4,11 +4,12 @@
   width: 100%;
   height: fit-content;
   padding: 10px;
+  background-color: rgba(214,214,213,.3);
 }
 .tab
 {
     CURSOR: POINTER;
-  border-bottom:solid 1px gray;
+  /* border-bottom:solid 1px gray; */
   padding: 10px 0;
 }
 .tab h3
@@ -26,7 +27,10 @@ a
   color:#777272;
 }
 .activate{
-  background-color: #b5a8a840;
+  background-color: #807c7c94;
+}
+.activate a{
+  color: white
 }
 .header
 {

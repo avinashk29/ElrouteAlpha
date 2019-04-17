@@ -49,7 +49,7 @@ export class CompanyForm3Component implements OnInit {
     let control =  <FormArray>this.companyForm.controls.links;
     control.push(
       this._fb.group({
-        linkName:['instagram'],
+        linkName:['Instagram'],
         linkValue:['']
       })
     )

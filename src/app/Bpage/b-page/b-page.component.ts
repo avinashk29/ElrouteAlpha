@@ -24,7 +24,8 @@ import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
-import { Title, Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
+// import { type } from 'os';
 
 @Component({
   selector: 'app-b-page',
@@ -91,6 +92,17 @@ export class BPageComponent implements OnInit {
   addLink = false;
   feedImage;
   companyLogo;
+  socialIcon={
+    "Facebook":'../../../../../assets/images/facebook.png',
+    "Instagram":'../../../../../assets/images/instagram.png',
+    "Alibaba":'../../../../../assets/images/alibaba.png',
+    "Tradeindia":'../../../../../assets/images/tradeindia.png',
+    "Indiamart":'../../../../../assets/images/indiamart.jpg',
+    "Twitter":'../../../../../assets/images/twitter.png',
+    "Pinterest":'../../../../../assets/images/pinterest.png',
+    "Linkedin":'../../../../../assets/images/linkedin.png'
+  };
+  links=[];
   feed = new FormGroup({
     content: new FormControl(''),
     Image: new FormControl(''),
@@ -154,14 +166,13 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
   console.log(this.companyService.companyData.url)
   this.companyService.GetoneCompany(this.comapnyId).subscribe(res => {
     console.log(JSON.parse(res['_body']));
+    this.links = JSON.parse(res['_body']).links;
     this.companyService.companyData = JSON.parse(res['_body']);
-
     this.meta.updateTag({ property: 'og:description', content: JSON.parse(res['_body']).shortIntro }); 
     this.meta.updateTag({ property: 'og:url', content: window.location.href }); 
     this.meta.updateTag({ property: 'og:image', content: JSON.parse(res['_body']).companyLogo }); 
     this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).companyName})
     this.title.setTitle(JSON.parse(res['_body']).companyName);
-
 
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
@@ -238,6 +249,7 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
  
 
   ngOnInit() {
+    console.log(this.socialIcon['Facebook'])
     this.productService.token = this.storage.get('token');
     if(!this.companyService.companyData.companyLogo){
       this.companyService.companyData.companyLogo='';
@@ -793,4 +805,8 @@ else{
     window.open('http://'+url, "_blank");
    }
 }
+
+
+
+  
 }

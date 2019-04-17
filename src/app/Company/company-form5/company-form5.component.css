@@ -4,7 +4,7 @@ section
 }
 label
 {
-  color: #aaa8a8;
+  color: black;
 }
 .company_form1{
 
@@ -45,6 +45,7 @@ label
 }
 .comapany_form
 {
+  background-color: rgba(214,214,213,.3);
   width: 100%;
   box-shadow: 0px 1px 5px 0px #5555;
   margin-left: 8%;
@@ -67,20 +68,28 @@ label
   }
 
   li {
+    margin-bottom: 5%;
+    margin-top: 2%;
     width: 100%;
   }
 
-  input,
-  select {
+  input, select {
     width: 100%;
-    height: 40px;
-    border: none;
-    color: black;
-    outline: none;
-    font-size: 15px;
-    border-bottom: 1px solid #333333;
-    margin-top: 28px;
-    border-color: #c7c7c7;
+
+
+  height: 28px;
+  padding: 6px;
+  border: none;
+  color: #655b5b;
+  outline: none;
+  font-size: 15px;
+
+  border-bottom-color: #aaa8a8;
+
+  padding: 2px 20px;
+
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.16);
+
   }
 
   input[type="file"] {
@@ -110,13 +119,13 @@ label
 
   li button {
     width: 20%;
-  height: 38px;
-  border: none;
+  padding: 7px;
+    border: none;
   background-color: rgb(56, 67, 79);
   color: floralwhite;
   font-size: 20px;
   font-weight: 500;
-  border-radius: 7px;
+  border-radius: 2px;
   margin-top: 4%;
   }
 
@@ -142,9 +151,20 @@ label
 
   .nub select {
     width: 22%;
-    margin: 28px 15px 0 0;
-    height: 43px;
-    padding: 0 !important
+ 
+    height: 32px;
+    padding: 0 !important;
+    margin: 0px 12px 0 0;
+ 
+    border: none;
+    color: #655b5b;
+    outline: none;
+    font-size: 15px;
+  
+    border-bottom-color: #aaa8a8;
+
+  
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.16);
   }
   .mob_nub {
     display: flex;
@@ -153,8 +173,8 @@ label
   }
   .mob_nub select{
     width: 13%;
-    margin: 28px 15px 0 0;
-    height: 43px;
+    margin: 0px 12px 0 0;
+    height: 32px;
     padding: 0 !important;
 }
 
@@ -183,12 +203,13 @@ label
       display: flex;
 
   }
-  .location label
-  {
-      margin-top:3%;
-  }
+
 
   @media screen and (max-width: 700px) {
+    .comapany_form {
+      margin-left: 0;
+      
+  }
     .company_form_genral
     {
       display: block;
@@ -209,10 +230,7 @@ label
     }
     .form {
       width: 90%;
-      background-color: #fff;
-      /* position: absolute; */
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-      margin-left: -6%;
+   
       margin-top: 3%;
       transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
@@ -292,11 +310,14 @@ label
     }
     .nub select {
         width: 35%;
-        margin: 28px 15px 0 0;
-        height: 43px;
+    
         padding: 0 !important;
         font-size: 11px;
     }
+    .mob_nub select {
+      width: 35%;
+      
+  }
   }
 
   @media screen and (min-width: 767px) and (max-width: 1024px) {

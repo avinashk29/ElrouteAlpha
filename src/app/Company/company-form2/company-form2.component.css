@@ -4,7 +4,7 @@ section
 }
 label
 {
-  color: #aaa8a8;
+  color: black;
 }
 .company_form1{
 
@@ -54,6 +54,7 @@ a
   width: 100%;
   box-shadow: 0px 1px 5px 0px #5555;
   margin-left: 8%;
+  background-color: rgba(214,214,213,.3);
 }
 .form{
   width: 100%;
@@ -64,18 +65,27 @@ a
   list-style-type: none;
 }
 li{
-  margin-bottom: 40px;
+  margin-bottom: 5%;
+  margin-top: 2%;
 
 }
 input, select{
-  width:80%;
+  width: 85%;
+
   height: 32px;
+  padding: 6px;
   border: none;
-  color: black;
+  color: #655b5b;
   outline: none;
   font-size: 15px;
-  border-bottom: 1px solid #333333;
+
   border-bottom-color: #aaa8a8;
+
+  padding: 2px 20px;
+
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.16);
+  border: none;
+  outline: 0;
 }
 input::placeholder {
   color: black;
@@ -93,13 +103,13 @@ ul li textarea::placeholder{
 }
 li button{
   width: 20%;
-  height: 38px;
+ padding:7px;
   border: none;
   background-color: rgb(56, 67, 79);
   color: floralwhite;
   font-size: 20px;
   font-weight: 500;
-  border-radius: 7px;
+  border-radius: 2px;
 }
 input[type = "file"]{
   visibility: hidden;
@@ -131,6 +141,10 @@ input[type = "file"]{
   float: right;
 }
 @media screen and (max-width: 700px){
+  .comapany_form {
+    margin-left: 0;
+    
+}
   .company_form_genral
 {
   display: block;
@@ -147,11 +161,7 @@ input[type = "file"]{
   }
   .form {
     width: 90%;
-    background-color: #fff;
-    /* position: absolute; */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin-left: -6%;
-    margin-top: 3%;
+ margin-top: 3%;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
 
@@ -208,7 +218,7 @@ input[type = "file"]{
     border-bottom:1px solid #ccc;
   }
   li{
-    margin-top: 40px;
+    margin-top: 3%;
   }
   li button{
     /* float: right; */
