@@ -12,6 +12,7 @@
 .tab
 {
     CURSOR: POINTER;
+    outline: none;
   /* border-bottom:solid 1px gray; */
   padding: 10px 0;
 }
@@ -31,7 +32,7 @@ a
   padding: 8px;
 }
 .activate{
-  background-color: #807c7c94;
+  background-color:  #000000cf;
 }
 .activate a{
   color: white

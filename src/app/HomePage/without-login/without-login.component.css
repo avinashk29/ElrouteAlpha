@@ -3,7 +3,7 @@
 
 .home_bgimg
 {
- background-image: url("/assets/images/backimg.jpg");
+ background-image: url("/assets/images/backimg2.jpg");
  height: 100vh;
  width: 100%;
  background-position: center;
@@ -18,7 +18,8 @@
  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
  color: #f1f1f1;
  width: 100%;
- height: 100vh; position:relative;
+ height: 670px;
+  position:relative;
  background-image: linear-gradient( rgba(20,28, 38, 0.5),rgba(75,82,91,0.9));
 }
 .HomePage_header
@@ -153,16 +154,16 @@
 }
 .section2
 {
- margin: 0 auto;
- width: 81%;
- border: solid 7px black;
- position: absolute;
- background-color: white;
- left: 9%;
- height: 60%;
- margin-top: -4%;
- padding-bottom: 1px;
- box-sizing: border-box;
+  margin: 0 auto;
+  width: 75.5%;
+  border: solid 7px black;
+  position: absolute;
+  background-color: white;
+  left: 12%;
+  height: 60%;
+  margin-top: -4%;
+  padding-bottom: 1px;
+  box-sizing: border-box; 
 }
 .section2_content
 {
@@ -419,6 +420,7 @@ color: white !important;
 .b_face_card_img
 {
   width: 100%;
+  height: 450px;
 }
 .b_face_card_img img
 {
@@ -599,6 +601,7 @@ color: white !important;
 .b_face_img img
 {
  width: 100%;
+ height: 450px;
 }
 .b_face_content
 {
@@ -692,7 +695,9 @@ color: white !important;
 }
 .benifites_btn button
 {
+  box-shadow: 0px 2px 10px 0px #5555;
  font-size: 19px;
+ border-radius: 4px;
  padding: 10px 4px 7px 10px;
  margin: 15px 0;
  border: none;
@@ -839,8 +844,11 @@ color: white !important;
 }
 .path
 {
- width: 100%;
- position:absolute; left:0; bottom:0;
+  position: absolute;
+  left: 50px;
+  margin: 0 auto;
+  bottom: -6px;
+  width: 92%;
 }
 #images_mobile
 {
@@ -1263,6 +1271,13 @@ color: white !important;
 {
   display: none;
 }
+.path {
+  position: absolute;
+  left: 0;
+
+  bottom: 0;
+  width: 100%;
+}
 }
 @media screen and (min-width:401px) and (max-width:700px) {
   #images_mobile
@@ -1644,6 +1659,13 @@ color: white !important;
   display: none;
 }
 
+.path {
+  position: absolute;
+  left: 0;
+
+  bottom: 0;
+  width: 100%;
+}
 }
 @media screen and (min-width:701px) and (max-width:1023px) {
  .header_text h2 {
@@ -1685,18 +1707,18 @@ color: white !important;
 }
  .header_img img
  {
- bottom: 45px;
+ bottom: 30px;
  width: 72%;
  }
  .section2{
- margin: 0 auto;
- width: 80%;
- border: solid 7px black;
- position: absolute;
- background-color: white;
- left: 9%;
- height: 60%;
- margin-top: -4%;
+  margin: 0 auto;
+  width: 76.5%;
+  border: solid 7px black;
+  position: absolute;
+  background-color: white;
+  left: 13%;
+  height: 60%;
+  margin-top: -3%;
  }
  .images{
  display: flex;
@@ -1978,14 +2000,14 @@ color: white !important;
  }
 
  .section2 {
- margin: 0 auto;
- width: 81%;
- border: solid 7px black;
- position: absolute;
- background-color: white;
- left: 9%;
- height: 60%;
- margin-top: -5%;
+  margin: 0 auto;
+  width: 75.5%;
+  border: solid 7px black;
+  position: absolute;
+  background-color: white;
+  left: 13%;
+  height: 60%;
+  margin-top: -4%;
  }
  .btn1 {
  background-color: white;
