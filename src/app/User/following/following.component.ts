@@ -5,6 +5,8 @@ import { CompanyServiceService } from 'src/app/Service/company-service.service';
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import {UserService} from 'src/app/Service/user-services.service'
 import {Router} from '@angular/router'
+// import *  from 'jquery';
+
 
 @Component({
   selector: 'app-following',
@@ -33,6 +35,7 @@ export class FollowingComponent implements OnInit{
 loading;
  
   ngOnInit() {
+   
     this.loading=true;
     
     this.following.token=this.storage.get('token');

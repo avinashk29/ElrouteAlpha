@@ -183,7 +183,7 @@
 .bio_save {
     width: 38%;
     margin: 4px 12px;
-    background-color: rgb(56, 67, 79);
+    background-color: black;
     color: #ffffff;
     font-weight: 600;
     /* height: 25px; */
@@ -288,7 +288,7 @@
 
 .following_btn button {
     /* background-color: black; */
-    background-color: rgb(56, 67, 79);
+    background-color: black;
     color: white;
     border: none;
     height: 39%;
