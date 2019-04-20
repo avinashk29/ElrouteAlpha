@@ -19,6 +19,8 @@ export class ProductFormComponent implements OnInit {
   productInfoForm: FormGroup;
   imagePreview;
   companyId;
+  buttonDisabled = false;
+  error;
   urltype;
   url;
   companyid
@@ -48,18 +50,19 @@ export class ProductFormComponent implements OnInit {
      }
 
   ngOnInit() {
+    this.buttonDisabled = true;
     this.imgupload.token=this.storage.get('token');
     this.productForm = this._fb.group({
       productName: ['', [Validators.required] ],
-     Image: [],
-     shortDescription: [''],
+     Image: [ [Validators.required]],
+     shortDescription: ['' , [Validators.required] ],
      productInfo: this._fb.array([]),
-     price: [''],
-     minPrice: [''],
-     maxPrice: [''],
-     moq: [''],
-     industry: [''],
-     category: [''],
+     price: ['' , [Validators.required] ],
+     minPrice: ['' , [Validators.required] ],
+     maxPrice: ['' , [Validators.required] ],
+     moq: ['' , [Validators.required] ],
+     industry: ['' , [Validators.required] ],
+     category: ['' , [Validators.required] ],
      tfCode: [''],
 
     });
@@ -146,9 +149,9 @@ export class ProductFormComponent implements OnInit {
 
 
   onSubmit() {
-  
      this.productForm.value.companyName=this.companyName;
      // console.log(this.productForm.value.companyName)
+     if(this.productForm.valid){
       this.productService.addProduct(this.productForm.value).subscribe(res => {
         // console.log(JSON.parse(res['_body']))
         this.productService.productData = JSON.parse(res['_body']);
@@ -156,7 +159,11 @@ export class ProductFormComponent implements OnInit {
         this.router.navigate(['/companyPage/' + this.companyId ], {queryParams: {urltype: 'product'}});
         this.notification.success('Product Added');
       });
-;
+     }else{
+       this.notification.error('Invalid Details or incomplete details');
+     }
+     
+
 
 
   }
