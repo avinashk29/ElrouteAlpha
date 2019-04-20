@@ -5,6 +5,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Router, ActivatedRoute } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product',
@@ -22,7 +23,9 @@ export class ProductComponent implements OnInit {
   url;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,
     private _fb: FormBuilder, public productService: ProductServiceService, private imgupload: ImageUploadService,
-     public router: Router, public notification: ToastrService, private route: ActivatedRoute, public ngZone: NgZone) {
+     public router: Router, public notification: ToastrService, private route: ActivatedRoute, public ngZone: NgZone,
+     public title:Title
+     ) {
       this.companyId =  this.storage.get('companyId');
       // this.productId = route.snapshot.paramMap.get('id');
       this.route.queryParams.filter(params => params.productId).subscribe(params => {
@@ -57,6 +60,8 @@ export class ProductComponent implements OnInit {
      }
 
   ngOnInit() {
+
+    this.title.setTitle('Edit Product');
     this.imgupload.token = this.storage.get('token');
     this.productService.token = this.storage.get('token');
 

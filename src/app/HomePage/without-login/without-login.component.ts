@@ -10,6 +10,7 @@ import { ToastrService } from "ngx-toastr";
 import {ForgetPasswordComponent} from 'src/app/Auth/forget-password/forget-password.component'
 // import {LandingPageComponent} from 'src/app/landing-page/landing-page.component'
 import{TradeCatalystComponent} from 'src/app/HomePage/trade-catalyst/trade-catalyst.component';
+import { Title } from "@angular/platform-browser";
 @Component({
   selector: "app-without-login",
   templateUrl: "./without-login.component.html",
@@ -24,7 +25,8 @@ export class WithoutLoginComponent implements OnInit {
     public notification: ToastrService,
     public searchService: SearchService,
     private router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public title:Title
   ) {}
 
   contactFrom = new FormGroup({
@@ -36,6 +38,8 @@ export class WithoutLoginComponent implements OnInit {
     page: new FormControl("1")
   });
   ngOnInit() {
+    this.title.setTitle('Elroute')
+
     this.token = this.storage.get("token");
     if (this.token) {
       this.router.navigate(["/Dashboard"]);

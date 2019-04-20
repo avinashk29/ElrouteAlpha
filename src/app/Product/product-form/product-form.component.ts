@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import { ImageUploadService } from 'src/app/Service/imageupload-service.service';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
 import { UserService } from 'src/app/Service/user-services.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-form',
@@ -40,7 +41,9 @@ export class ProductFormComponent implements OnInit {
     }
 ];
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private userService:UserService,
-    private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService) {
+    private _fb: FormBuilder,private companyService:CompanyServiceService, public productService: ProductServiceService,private imgupload:ImageUploadService, public router: Router, public notification: ToastrService,
+    public title:Title
+    ) {
       this.companyId =  this.storage.get('companyId');
       this.productService.changedata.subscribe(res=>{
 

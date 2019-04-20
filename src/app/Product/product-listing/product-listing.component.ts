@@ -4,6 +4,7 @@ import { ProductServiceService } from 'src/app/Service/product-service.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { CompanyServiceService } from 'src/app/Service/company-service.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class ProductListingComponent implements OnInit {
   group =false;
   selectedProduct = [];
   constructor( @Inject(LOCAL_STORAGE) public storage: WebStorageService,
-  private productService:ProductServiceService,private router:Router,private companyService:CompanyServiceService) {
+  private productService:ProductServiceService,private router:Router,private companyService:CompanyServiceService,
+  public title:Title
+  ) {
     this.companyid=this.storage.get('companyId');
    }
 GroupForm = new FormGroup({
@@ -28,6 +31,7 @@ GroupForm = new FormGroup({
   products: new FormControl('')
 });
   ngOnInit() {
+    this.title.setTitle('Product List')
     this.productService.token=this.storage.get('token');
     this.productService.getProduct(this.companyid).subscribe(res=>{
       this.productService.productData=JSON.parse(res['_body']);

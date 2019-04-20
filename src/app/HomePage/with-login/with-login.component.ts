@@ -18,6 +18,7 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { BookmarkServices } from 'src/app/Service/bookmark-services.service';
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-with-login',
   templateUrl: './with-login.component.html',
@@ -65,7 +66,8 @@ export class WithLoginComponent implements OnInit {
     private imageService: ImageUploadService,
     public notification: ToastrService,
     private spinner: NgxSpinnerService,
-    private bookmarkService:BookmarkServices
+    private bookmarkService:BookmarkServices,
+    public title:Title
   ) {
     this.router.events.subscribe((event:NavigationEnd) =>{
       window.scrollTo(0,0);
@@ -91,6 +93,7 @@ export class WithLoginComponent implements OnInit {
 
       this.userService.getUserData().subscribe(res1 => {
         this.userService.userData = JSON.parse(res1['_body']);
+        this.title.setTitle(this.userService.userData.userName);
         this.allBookmarks=JSON.parse(res1['_body']).bookmarks.post.length +
         JSON.parse(res1['_body']).bookmarks.product.length+JSON.parse(res1['_body']).bookmarks.company.length;
         this.allFollow=JSON.parse(res1['_body']).following.length;
@@ -243,12 +246,13 @@ export class WithLoginComponent implements OnInit {
 
     });
   }
-  onSharepost(i, admin,image) {
+  onSharepost(i, admin,image,content) {
   // console.log(i);
   // console.log(admin);
     this.feedService.postId = i;
     this.feedService.postadmin = admin;
     this.feedService.postImage=image;
+    this.feedService.feedContent=content;
     console.log(image)
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.autoFocus = true;
