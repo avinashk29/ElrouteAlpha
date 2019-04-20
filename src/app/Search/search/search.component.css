@@ -104,7 +104,7 @@ section{
   margin: 0;
   width: 100%;
   font-weight: 100;
-  font-size: 21px;
+  font-size: 19px;
   padding-top: 3px;
   justify-content: flex-end;
     display: flex;
@@ -120,26 +120,28 @@ section{
   font-size: 12px;
   text-align: right;
 }
-.tags{
-  width: 100%;
-  float: right;
-  background-color: azure;
-
+.tags h4{
+ margin-bottom: auto;
+ margin-top: auto;
+ font-size: 12px;
 }
 .other-info{
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  text-align: left;
+
 }
-.price{
+/* .price{
   width: 30%;
-}
+} */
 .hits {
   width: 70%;
 }
 .price h4{
   margin: 0;
   color: #25FE03;
-  font-size: 20px;
+  font-size: 12px;
 }
 .hits p{
   margin: 0;

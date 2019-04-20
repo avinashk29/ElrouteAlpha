@@ -41,6 +41,7 @@ unfilteredproductResult;
     this.loading=true;
     this.search.token =this.storage.get('token');
     this.search.onSearch(params.word,params.page).subscribe(response => {
+      console.log()
       this.loading=true;
       this.productResult=JSON.parse(response['_body']).searchResult;
            this.loading=false;

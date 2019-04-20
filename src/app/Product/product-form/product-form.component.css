@@ -161,3 +161,6 @@ input , textarea{
   background-color:white;
  fill: black;
 }
+.error{
+  border: 1px solid red;
+}
