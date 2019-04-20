@@ -34,7 +34,7 @@
               stroke="none" fill="gray" />
           </g>
         </svg>{{r.followers.length}}</span>
-        <p><span style="padding: 0 10px 0 0;border-right: 1px solid #ccc" >{{r.location}}</span> <span style="padding: 0 0 0 10px;">{{r.industry}}</span></p>
+        <p><span style="padding: 0 10px 0 0;" >{{r.location}}</span> <span>{{r.industry}}</span></p>
         <!-- <button>Follow</button> <span style="margin-left:20px;">24,567 followers</span> -->
       </div>
       <div class="storyBtn">
@@ -43,10 +43,17 @@
     </div>
     <div class="discription">
       <p>{{(r.shortIntro | slice:0:200)+'...'}}</p>
+      <div class="cardFooter">
+   
+        <div class="icons">
+            <span  (click)="goToLink(r.website)"><img alt="company" src="assets/images/google_icon.png"></span>
+            <span routerLink="/companyPage/{{r._id}}" [queryParams] = "{urltype: 'contact'}"><img alt="company"  src="assets/images/contact1.png"></span>
+        </div>
+        </div>
     </div>
     <mat-accordion  class="des">
 
-        <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+        <mat-expansion-panel (opened)="panelOpenState = true"
                              (closed)="panelOpenState = false">
           <mat-expansion-panel-header  class="speci" style="background-color:#F5F5F5;">
             <mat-panel-title>
@@ -55,22 +62,16 @@
           </mat-expansion-panel-header>
           <div class="speci_1"  >
             <div class="speci_details">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p>{{(r.shortIntro | slice:0:200)+'...'}}</p>
 
             </div>
 
 
           </div>
-        </mat-expansion-panel> -->
+        </mat-expansion-panel>
 
       </mat-accordion>
-    <div class="cardFooter">
-   
-    <div class="icons">
-        <span  (click)="goToLink(r.website)"><img alt="company" src="assets/images/google_icon.png"></span>
-        <span routerLink="/companyPage/{{r._id}}" [queryParams] = "{urltype: 'contact'}"><img alt="company"  src="assets/images/contact1.png"></span>
-    </div>
-    </div>
+ 
     </div>
     </div>
     <div *ngIf="!result.length" class="no_product_dummy">

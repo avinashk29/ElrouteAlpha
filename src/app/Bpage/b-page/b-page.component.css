@@ -187,6 +187,18 @@ section {
   margin-top: 5%;
   margin-left: 7%;
 }
+.links_social_mobile h4 {
+  padding: 5px;
+  font-size: 12px;
+  box-shadow: 0 0 3px 0 rgba(175, 175, 175, 0.85);
+  border: none;
+  margin-bottom: auto;
+  margin-top: auto;
+  outline: none;
+  cursor: pointer;
+  color: gray ! important;
+  font-weight: 500;
+}
 
 /*------------------------------------ heaer csss ----------------*/
 header {

@@ -267,7 +267,7 @@ width:45%; float: right;
   li button{
     /* float: right; */
     width: 35%;
-    height: 30px;
+    /* height: 30px; */
     background-color: rgb(56, 67, 79);
     margin-bottom: 10px;
   }

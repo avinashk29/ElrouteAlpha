@@ -284,10 +284,10 @@ label
   } */
     li button {
         /* float: right; */
-        width: 45%;
+        width: 35%;
         background-color: rgb(56, 67, 79);
         margin-bottom: 10px;
-        height: 38px;
+        /* height: 38px; */
         font-size: 15px;
     }
     input::placeholder {

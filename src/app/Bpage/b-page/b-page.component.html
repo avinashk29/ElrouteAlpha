@@ -118,14 +118,17 @@ type="ball-scale-multiple">
 
           </div>
           <div class="links_mobile">
-            <div class="social_mobile">
-              <div class="facebook_mobile">
-                 <a target="_blank" href="http://{{this.companyService.companyData.facebook}}"> <img alt="B-page" src="../../../assets/images/fb.png" ></a>
-                  </div>
-                  <div class="linkdin_mobile">
-                    <a target="_blank" href="http://{{this.companyService.companyData.linkdin}}"> <img alt="B-page" src="../../../assets/images/linkdin.png" ></a>
-                      </div>
-         </div>
+            <div class="social_media_links" style="margin-top: 6px;">
+   
+              <div class="links_social_mobile"  *ngIf="!links.length && myCompany" routerLink='/company-edit/basic-details' style=" outline: none;    margin-top: 3px; "  >
+                <h4> + Add Social and Commercial Link</h4>
+              </div>  
+            <div class="links_social" *ngFor="let link of companyService.companyData.links">
+            
+            <a target="_blank"  href="{{link.linkValue}}" style="height: 37px;width: 37px" ><img alt="B-page" src={{socialIcon[link.linkName]}} title={{link.linkName}}></a>
+            
+            </div>
+              </div>
          <div class="bookmar_mobile">
 
 
@@ -295,8 +298,8 @@ type="ball-scale-multiple">
 <div class="social">
   <div class="social_media_links">
    
-  <div class="links_social"  *ngIf="!links.length" routerLink='/company-edit/basic-details' style=" outline: none;"  >
-    <h4> + Add  Social and Commercial Link</h4>
+  <div class="links_social"  *ngIf="!links.length && myCompany" routerLink='/company-edit/basic-details' style=" outline: none;"  >
+    <h4> + Add Social and Commercial Link</h4>
   </div>  
 <div class="links_social" *ngFor="let link of companyService.companyData.links">
 
@@ -358,7 +361,7 @@ type="ball-scale-multiple">
               <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
           Cover Page</button>
       </div>
-      <div class="container">
+      <!-- <div class="container">
         <div class="row">
                       <div class="col-xs-12">
                         <label class="cabinet center-block">
@@ -370,7 +373,7 @@ type="ball-scale-multiple">
                         </label>
                       </div>
                     </div>
-      </div>
+      </div> -->
 
       
       <img alt="B-page" *ngIf="!this.companyService.companyData.coverImage && !myCompany" src="{{../../../../../assets/images/dummy_bg.png" style="height: 250px;width: 100%;">
@@ -798,26 +801,7 @@ type="ball-scale-multiple">
 
 
         <div class="feeds" *ngIf="!feedById.length && !myCompany">
-          <div class="default_feed">
-            <div class="feed_show">
-              <div class="feed_show_img">
-                <img alt="B-page" src="assets/images/Group1.png">
-              </div>
-              <div class="feed_show_content">
-                <div class="feed_show_content1">
-                  <h4>Elroute your way to business!</h4>
-                  <p>We give you a platform to showcase what your company has got and how ypur're better than tha other
-                    in your category</p>
-                  <p>Add your feeds here to attract more and more business and level up your game</p>
-
-                </div>
-                <button type="button" routerLink="/Dashboard" *ngIf="myCompany"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                      height="24" viewBox="0 0 24 24">
-                      <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg></span><br />
-                </button>
-              </div>
-            </div>
-          </div>
+  <img src ="../../../assets/images/no_feed.png" style="width: 100%;">
         </div>
     </div>
 
