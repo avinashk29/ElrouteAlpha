@@ -123,7 +123,7 @@ input{
   text-align: center;
 }
 .go button{
-  background-color: rgb(45, 61, 81);
+  background-color:black;
   border: none;
   color: white;
   cursor: pointer;

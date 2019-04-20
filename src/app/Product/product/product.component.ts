@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   productForm:  FormGroup;
   imagePreview;
   companyId;
+  
   productId;
   url;
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,

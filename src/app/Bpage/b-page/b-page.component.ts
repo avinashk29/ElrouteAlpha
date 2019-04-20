@@ -22,7 +22,8 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { FeedComponent } from 'src/app/Post-feed/Feed/feed/feed.component';
 import { ToastrService } from "ngx-toastr";
 import { FeedShareComponent } from 'src/app/Post-feed/feed-share/feed-share.component';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+declare var $:any;
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
@@ -387,8 +388,6 @@ this.four = false;
       this.companyService.companyData.section[index].sectionImage = url;
       this.setSection();
 
-
-
     });
     
   }
@@ -405,6 +404,7 @@ this.four = false;
       const formdata=new FormData();
         const url=res['_body'];
         formdata.append(name,url);
+      
       if(name==='companyLogo' || name==='coverImage' || name==='infoImage'){
           this.companyService.UpdateCompany(formdata).subscribe(res=>{
               this.companyService.companyData.companyLogo=JSON.parse(res['_body']).companyLogo;
