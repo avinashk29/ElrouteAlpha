@@ -171,8 +171,8 @@ this.route.params.filter(params=> params.id).subscribe(id=>{
     this.meta.updateTag({ property: 'og:description', content: JSON.parse(res['_body']).shortIntro }); 
     this.meta.updateTag({ property: 'og:url', content: window.location.href }); 
     this.meta.updateTag({ property: 'og:image', content: JSON.parse(res['_body']).companyLogo }); 
-    this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).companyName})
-    this.title.setTitle(JSON.parse(res['_body']).companyName);
+    this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).companyName+'|'+JSON.parse(res['_body']).city})
+    this.title.setTitle(JSON.parse(res['_body']).companyName +' | '+JSON.parse(res['_body']).city);
 
     if (this.comapnyId === this.mycompanyId) {
       this.myCompany = true;
