@@ -112,7 +112,7 @@ input , textarea{
   height: 40px;
   color: white;
   font-size: 15px;
-  background-color: #38434f;
+  background-color: black;
   border: none;
   margin: 10px 15px 0 0;
 }
@@ -129,7 +129,7 @@ input , textarea{
 }
 .product_cancel svg
 {
-  fill: #38434f;
+  fill: black;
 }
 .delete_product
 {

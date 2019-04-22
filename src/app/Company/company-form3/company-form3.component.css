@@ -98,11 +98,12 @@ li button{
   width: 20%;
 padding: 7px;
   border: none;
-  background-color: rgb(56, 67, 79);
+  background-color: black;
   color: floralwhite;
   font-size: 20px;
   font-weight: 500;
   border-radius: 2px;
+  box-shadow: 0px 2px 10px 0px #5555;
 }
 li textarea{
   width: 80%;
@@ -266,7 +267,7 @@ width:45%; float: right;
   li button{
     /* float: right; */
     width: 35%;
-    height: 30px;
+    /* height: 30px; */
     background-color: rgb(56, 67, 79);
     margin-bottom: 10px;
   }

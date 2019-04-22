@@ -10,7 +10,7 @@
         <div class="listingSection">
           <h2>Listing Details</h2>
           <label>Enter Product Name</label>
-          <input type="text" placeholder="Product Name" formControlName="productName">
+          <input type="text" placeholder="Product Name" formControlName="productName" [ngClass]="{'error': !productForm.get('productName').valid && productForm.get('productName').touched }">
           <div class="productImg">
             <div class="addButton">
               <input type="file" #imagePicker (change)="onImagePick($event,'image')">
@@ -23,7 +23,7 @@
         </div>
         <div class="discription">
           <h2>Description</h2>
-          <textarea placeholder="Short Description" formControlName="shortDescription"></textarea>
+          <textarea placeholder="Short Description" formControlName="shortDescription"  [ngClass]="{'error': !productForm.get('shortDescription').valid && productForm.get('shortDescription').touched }"></textarea>
 
         </div>
         <div>
@@ -36,7 +36,7 @@
               <fieldset>
                   <legend>Product Specification</legend>
               <div [formGroupName]="i">
-                <input list="category" placeholder="Product Specification" formControlName="productSpecification">
+                <input list="category" placeholder="Product Specification" formControlName="productSpecification"  >
                 <datalist id="category">
                   <option value="Category">
                   <option value="Category">
@@ -44,11 +44,11 @@
                   <option value="Category">
                   <option value="Category">
                 </datalist>
-                <textarea placeholder="Specification Content" formControlName="specificationContent"></textarea>
+                <textarea placeholder="Specification Content" formControlName="specificationContent"  ></textarea>
                 <div class="fields" style="width: 100%;margin-top: 5px" formArrayName="fields">
                   <div *ngFor="let field of productinfo.get('fields').controls; let j = index; ">
                     <div [formGroupName]="j" class="delete_product">
-                      <input type="text" placeholder="Enter Field Name " style="width: 42%" formControlName="fieldName">
+                      <input type="text" placeholder="Enter Field Name " style="width: 42%" formControlName="fieldName" >
                       <input type="text" placeholder="Enter Field Name " style="width: 42%; margin-left: 7.55555%"
                         formControlName="fieldDes">
                    
@@ -69,21 +69,21 @@
         </div>
         <div class="otherSection">
           <div class="price" style="margin-top:60px;">
-            <input list="price" placeholder="Price" style="width: 15%;height: 30px;margin-left: 0" formControlName="price">
+            <input list="price" placeholder="Price" style="width: 15%;height: 30px;margin-left: 0" formControlName="price"  [ngClass]="{'error': !productForm.get('price').valid && productForm.get('price').touched }">
             <datalist id="price">
               <option value="	INR">
               <option value="USD">
               <option value="	EUR">
 
             </datalist>
-            <input type="number" placeholder="min" formControlName="minPrice">
-            <input type="number" placeholder="max" formControlName="maxPrice">
+            <input type="number" placeholder="min" formControlName="minPrice"  [ngClass]="{'error': !productForm.get('minPrice').valid && productForm.get('minPrice').touched }">
+            <input type="number" placeholder="max" formControlName="maxPrice"  [ngClass]="{'error': !productForm.get('maxPrice').valid && productForm.get('maxPrice').touched }">
           </div>
           <div class="moq">
-            <input type="text" placeholder="MOQ" formControlName="moq">
+            <input type="text" placeholder="MOQ" formControlName="moq"  [ngClass]="{'error': !productForm.get('moq').valid && productForm.get('moq').touched }">
           </div>
           <div class="industry">
-            <input list="Industry" placeholder="Industry" formControlName="industry">
+            <input list="Industry" placeholder="Industry" formControlName="industry"  [ngClass]="{'error': !productForm.get('industry').valid && productForm.get('industry').touched }">
             <datalist id="Industry">
               <option value="Industry">
               <option value="Industry">
@@ -93,13 +93,13 @@
             </datalist>
           </div>
           <div class="proCategory">
-            <input type="text" placeholder="Category" formControlName="category">
+            <input type="text" placeholder="Category" formControlName="category"  [ngClass]="{'error': !productForm.get('category').valid && productForm.get('category').touched }">
           </div>
           <div class="Tf">
             <input type="text" placeholder="TF Code" formControlName="tfCode">
           </div>
         </div>
-        <button type="submit" class="product_submit" style="    width: 30%;" >Submit</button>
+        <button type="submit" class="product_submit" style="width: 30%;" >Submit</button>
        
       </form>
     </div>

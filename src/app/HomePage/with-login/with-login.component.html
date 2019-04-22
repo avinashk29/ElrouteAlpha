@@ -227,12 +227,7 @@
                         <h6>India</h6>
                       </div>
                       <div class="feed_following">
-                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="feedElement.follow else loading">Following<span><svg
-                              xmlns="http://www.w3.org/2000/svg" width="12" height="12" style="margin-left:3%;" viewBox="0 0 30.043 36.42">
-                              <path id="tick" d="M0,20.37s6.138,2.24,8.3,7.642C8.336,27.983,13.114,4.924,20.454,0"
-                                transform="translate(8.314 1.798) rotate(13)" fill="none" stroke="#2d3d51"
-                                stroke-linecap="round" stroke-width="3" />
-                            </svg></span></button>
+                        <button (click)="onunfollow(i,feedElement.admin)" *ngIf="feedElement.follow else loading">Following</button>
                         <ng-template #loading>
                           <button (click)="onfollow(i,feedElement.admin)">Follow</button>
                         </ng-template>
@@ -279,7 +274,7 @@
 
                               </div>
                             </ng-template>
-                            <div class="share"(click)="onSharepost(feedElement._id,feedElement.admin,feedElement.Image)">
+                            <div class="share"(click)="onSharepost(feedElement._id,feedElement.admin,feedElement.Image,feedElement.content)">
                               <span><svg xmlns="http://www.w3.org/2000/svg" width="35.661" height="21.811" viewBox="0 0 35.661 21.811">
                                   <path id="forward" d="M1181.9,776.814s6.211-16.571,20.823-14.648c0,0-.4-6.49,0-6.72s2.934,1.5,6.875,3.9,8.084,4.781,7.96,6.359-2.9,2.65-7.114,5.178-6.667,5.845-7.721,5.927,0-6.6,0-6.6-12.727-3.061-19.2,6.6C1181.957,777.766,1181.9,776.814,1181.9,776.814Z"
                                     transform="translate(-1181.904 -755.425)" fill="#fff" />
