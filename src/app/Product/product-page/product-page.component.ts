@@ -52,8 +52,8 @@ this.productService.getOneProduct(this.id).subscribe(res => {
   this.meta.updateTag({ property: 'og:description', content: JSON.parse(res['_body']).shortDescription }); 
   this.meta.updateTag({ property: 'og:url', content: window.location.href }); 
   this.meta.updateTag({ property: 'og:image', content: JSON.parse(res['_body']).Image }); 
-  this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).productName})
-  this.title.setTitle(JSON.parse(res['_body']).productName);
+  this.meta.updateTag({property:'og:title',content:JSON.parse(res['_body']).productName+'|'+JSON.parse(res['_body']).city});
+  this.title.setTitle(JSON.parse(res['_body']).productName+' | '+JSON.parse(res['_body']).city);
   if(JSON.parse(res['_body']).creator===this.mycompany){
     this.mybookmark=false;
   }else{

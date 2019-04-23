@@ -22,9 +22,7 @@
   height: 100%;
   outline: none;
 }
-.elements h4{
-  /* margin: 0; */
-}
+
 
 .img
 {
@@ -1529,12 +1527,7 @@ mat-panel-title h4 {
   border-color: gray;
   /* border-radius: 5px; */
 }
-.infoSectonCard textarea::placeholder {
 
-
-  
-
-}
 
 .infoSectonCard_links {
   float: right;
@@ -3197,11 +3190,7 @@ height: 24px;
   /* padding: 10px 10px 22px 0 !important; */
   margin-top: 0 !important
 }
-.tabClicked h4 {
- /* color: gray !important;
- box-shadow: none !important; */
-  /* background-color: red; */
-}
+
 .tabClicked {
   border: none;
   width: 22%;

@@ -3,6 +3,7 @@ import { UserService } from './Service/user-services.service';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
 import { CompanyServiceService } from './Service/company-service.service';
 import { ProductServiceService } from './Service/product-service.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,14 @@ import { ProductServiceService } from './Service/product-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'ElrouteAlpha';
+  // title = "World's Best B2B Platform - Showcase your Business Story Worldwide | Elroute";
   token;
   companyId;
   constructor(
     private userService: UserService,
     private companyService:CompanyServiceService,
     private productService:ProductServiceService,
+    public title:Title,
     @Inject(LOCAL_STORAGE) public storage: WebStorageService
     ){
       this.token=this.storage.get('token');
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
     
       }
 ngOnInit(){
+  this.title.setTitle("World's Best B2B Platform - Showcase your Business Story Worldwide | Elroute");
   
   this.userService.userData={};
   this.companyService.companyData={};
