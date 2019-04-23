@@ -92,6 +92,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ErrorPageComponent } from './error-page/error-page.component';
  
 // const config = new AuthServiceConfig([
 // {
@@ -172,6 +173,7 @@ export function getAuthServiceConfigs() {
     FeedShareComponent,
     HrFormatPipe,
     InfoComponent,
+    ErrorPageComponent,
 
 
 

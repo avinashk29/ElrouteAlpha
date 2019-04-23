@@ -558,6 +558,42 @@ cursor: pointer;
   {
     width: 100%;
   }
+/* ------------------------------------------------------error page css------------------------------------------------------------------ */
+
+.link
+{
+  
+  margin-top: -30px;
+}
+
+.error_page
+{
+  display: flex;
+  justify-content: center;
+}
+.error_text
+{
+  display: flex;
+  justify-content: center;
+}
+.error_button
+{
+  display: flex;
+  justify-content: center;
+}
+.error_button button{
+  background-color: black;
+  border: none;
+  font-weight: 600;
+  color: white;
+  padding: 8px;
+  border-radius: 2px;
+}
+/* ------------------------------------------------------error page css end------------------------------------------------------------------ */
+
+
+
+
   @media screen and (max-width: 700px){
     .header_mobile{
 

@@ -13,6 +13,9 @@
 fieldset{
   margin: 5px 10px 10px;
   border:  1px solid #333333;
+  background-color: rgba(214, 214, 213, 0.3);
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.16);
+    border-radius: 5px;
 }
 input{
   padding: 10px;
@@ -25,7 +28,7 @@ input{
   width: 20%;
   height: 35px;
   /* border-radius: 10px; */
-  background-color: #7FFF00;
+  background-color: black;
   border: none;
   font-size: 18px;
   color: #fff;

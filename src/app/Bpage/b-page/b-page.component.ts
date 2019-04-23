@@ -252,7 +252,9 @@ this.feedService.getFeedById(this.comapnyId).subscribe(res1=>{
  
 
   ngOnInit() {
+    
 // Start upload preview image
+
 // Start upload preview image
 
 

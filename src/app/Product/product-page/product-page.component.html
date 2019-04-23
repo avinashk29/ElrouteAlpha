@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-     <div>
-     
+     <div *ngIf="errorPage==false">
+    
        <div class="product_page_header">
        
         <div class="header">
@@ -249,10 +249,36 @@
 
 
   </section>
+
+
+
+
   <div class="no_feed_dummy" *ngIf="!feedResult.length">
       <img src ="../../../assets/images/no_feed.png">
      </div>
 </div>
+
      </div>
 
 
+
+<!----------------------------------------------------------- Error page ------------------------------------------------------------->
+
+
+
+
+<div class="link" *ngIf="errorPage==true">
+<div class="error_page">
+  <img src="../../../assets/images/error_page.png">
+  
+  </div>
+  <div class="error_text">
+      <h5> Unfortunately the page you are looking for has been moved or deleted</h5>
+   </div> 
+   <div class="error_button">
+      <button routerLink="/Dashboard"> GO TO HOMEPAGE</button>
+   </div>
+  </div>
+
+
+<!----------------------------------------------------------- Error Page End ------------------------------------------------------------->

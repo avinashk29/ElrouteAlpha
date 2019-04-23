@@ -19,7 +19,8 @@ export class ProductPageComponent implements OnInit {
   userBookmark;
   bookmark
   mycompany
-  creatorId
+  creatorId;
+  errorPage:Boolean;
   userFeed
   mybookmark;
   feedResult=[];
@@ -44,6 +45,7 @@ token;
     this.token =this.storage.get('token');
     this.productService.token = this.storage.get('token');
 this.productService.getOneProduct(this.id).subscribe(res => {
+  this.errorPage=false;
   console.log(JSON.parse(res['_body']))
   this.productService.productData = JSON.parse(res['_body']);
   // console.log(this.productService.productData);
@@ -57,6 +59,8 @@ this.productService.getOneProduct(this.id).subscribe(res => {
   }else{
     this.mybookmark=true;
   }
+},err=>{
+  this.errorPage=true;
 });
 this.productService.getFeedById(this.id).subscribe(res=>{
 this.feedResult=JSON.parse(res['_body']);

@@ -108,9 +108,9 @@
       <div class="follower_user">
           <div class="follower_location">
             <span>{{this.userService.userData.location}}</span>
-            <input type="file" #filepicker (change)="uploadUserImage($event,'userImage')" style="display: none">
+            
 
-              <span class="point" (click)="filepicker.click()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
+              <span class="point" (click) = "openDialog()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22.678 24.478">
                   <g id="edit" transform="translate(-546.942 -212.818)">
                     <g id="Path_360" data-name="Path 360" transform="translate(564.742 212.818) rotate(42)" fill="white"
                       stroke-linecap="round">
@@ -132,6 +132,10 @@
               <div class="follower_img1">
                 <img *ngIf="!userService.userData.userImage" alt="user_overview" src="assets/images/user.png">
                 <img *ngIf="userService.userData.userImage" alt="user_overview" src="{{userService.userData.userImage}}">
+                <div class="middle">
+                <span (click)="filepicker.click()">Edit Image</span>
+                <input type="file" #filepicker (change)="uploadUserImage($event,'userImage')" style="display: none">
+                </div>
               </div>
            </div>
           <div style="clear:both"></div>
