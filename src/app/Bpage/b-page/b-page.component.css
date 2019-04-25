@@ -1720,7 +1720,7 @@ mat-panel-title h4 {
 .items img {
   margin-right: 60px;
   width: 100%;
-  height: 280px;
+  height: 40vh;
 
 }
 
@@ -1729,16 +1729,18 @@ mat-panel-title h4 {
   margin: 0px 10px;
   height: 42vh;
   width: 10%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 
 
 }
 
 .items1 {
-  min-width: 50%;
+  min-width: 32%;
   margin: 0px 10px;
   height: 45vh;
-  width: 10%;
+  width: 25%;
+  margin: 0px auto;
+  padding: 0px 10px;
 
 
 }
@@ -3518,6 +3520,7 @@ height: 24px;
     color: blue;
     cursor: pointer;
   }
+
 
 
 

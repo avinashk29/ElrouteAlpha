@@ -1077,15 +1077,15 @@ type="ball-scale-multiple">
             Add Company Image</button>
         </div>
 
-        <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev" [$next]="next"
+        <div ng2-carouselamos class="slider-wrapper" [items]="this.companyService.companyData.companyImage" [width]="835" [$prev]="prev"   [$next]="next"
           [$item]="item2"></div>
         <ng-template #prev >
-          <img alt="B-page" src="../../../assets/images/left-arrow.png" *ngIf="this.companyImage.length > 2">
+          <img alt="B-page" src="../../../assets/images/left-arrow.png" *ngIf="this.companyImage.length > 3">
         </ng-template>
         <ng-template #next >
-          <img alt="B-page" src="../../../assets/images/right-arrow.png" *ngIf="this.companyImage.length > 2">
+          <img alt="B-page" src="../../../assets/images/right-arrow.png" *ngIf="this.companyImage.length > 3">
         </ng-template>
-        <ng-template #item2 let-item>
+        <ng-template #item2 let-item  style="display:flex;justify-content:center;">
           <div class="items1">
 
             <div class="container">
@@ -1284,9 +1284,9 @@ type="ball-scale-multiple">
                 <p *ngIf = "this.companyService.companyData.companyEmail"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg> </span>
                 <span>{{this.companyService.companyData.companyEmail}}</span>
                 </p>
-                <p *ngIf = "this.companyService.companyData.landLine"> <span><img alt="B-page" src="../../../assets/images/telephone.svg" style=" width: 27px;"></span><span>{{this.companyService.companyData.landLine}}</span></p>
+                <p *ngIf = "this.companyService.companyData.landLine"> <span><img alt="B-page" src="../../../assets/images/telephone.svg" style=" width: 27px;"></span><span>{{this.companyService.companyData.countryCode}}-{{this.companyService.companyData.cityCode}}-{{this.companyService.companyData.landLine}}</span></p>
                 <p *ngIf ="this.companyService.companyData.mobile"><span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg></span>
-                <span>{{this.companyService.companyData.mobile}}</span>
+                <span>{{this.companyService.companyData.mobileCountryCode}}-{{this.companyService.companyData.mobile}}</span>
 
                 </p>
               </div>

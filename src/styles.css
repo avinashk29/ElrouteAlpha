@@ -36,6 +36,11 @@ button
   cursor: pointer;
   outline: none;
 }
+/* .ng2-carouselamos
+{
+  display: flex;
+  justify-content: center;
+} */
 
 .cdk-overlay-pane::-webkit-scrollbar { width: 0 !important }
 @media screen and (min-width: 200px) and (max-width: 700px) {

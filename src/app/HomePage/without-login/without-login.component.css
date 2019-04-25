@@ -129,7 +129,7 @@ margin-left: 18px;
 
  margin-top: 4%;
 }
-.header_text h1
+.header_text h2
 {
  text-align: center;
  font-size: 32px;
@@ -979,9 +979,9 @@ color: white !important;
  width: 100%;
  margin-top: 10%;
 }
-.header_text h2{
+.header_text h2 {
 
- font-size: 13px;
+ font-size: 17px;
 }
 .header_img {
  margin: 0 auto;
@@ -1525,7 +1525,7 @@ color: white !important;
 .email_box button{
  background-color: rgb(45, 61, 81);
  cursor: pointer;
- width: 78%;
+ width: 25%;
  border: none;
  color: white;
  height: 6vh;
@@ -1673,7 +1673,7 @@ color: white !important;
 }
 }
 @media screen and (min-width:701px) and (max-width:1023px) {
- .header_text h1 {
+ .header_text h2 {
  text-align: center;
  font-size: 25px;
  font-weight: 400;

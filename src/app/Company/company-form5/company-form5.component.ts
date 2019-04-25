@@ -23,9 +23,9 @@ companyForm: FormGroup;
           zipCode: [ ],
           landLine: [ ],
           mobile: [],
-          // mobileCode:['+91'],
-          // cityCode:['0141'],
-          // Code:['+91'],
+          countryCode:['+91'],
+          cityCode:['141'],
+          mobileCountryCode:['+91'],
           contactDevision: this._fb.array([this.addDevision()])
     });
     this.companyId = this.storage.get('companyId');
@@ -43,6 +43,7 @@ companyForm: FormGroup;
     return <FormArray>this.companyForm.get('contactDevision');
   }
   onSubmit() {
+    // this.companyForm.value.landLine='+91141'+this.companyForm.value.landLine;
     this.notification.success('B Face Updated');
     this.companyService.UpdateCompany(this.companyForm.value).subscribe(res => {
 
