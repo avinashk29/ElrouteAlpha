@@ -167,7 +167,7 @@ margin-left: 18px;
   height: 60%;
   margin-top: -4%;
   padding-bottom: 1px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 .section2_content
 {
@@ -438,12 +438,12 @@ color: white !important;
  }
 .follower_img1 {
   position: absolute;
-  
+
   bottom: -75px;
   text-align: center;
   width: 100%;
  }
- 
+
  .follower_img1 img {
   border-radius: 100%;
   width: 150px;
@@ -482,7 +482,7 @@ color: white !important;
   color:#2491be;
   font-size: 25px;
  }
- .specialities_list 
+ .specialities_list
  {
    margin-top: 1%;
  }
@@ -867,7 +867,7 @@ color: white !important;
   .img1 {
     width: 90px !important;
     height: 90px !important;
-        margin: 0px 20px 0 !important; 
+        margin: 0px 20px 0 !important;
 
    }
    .img2 {
@@ -883,13 +883,13 @@ color: white !important;
 
    }
    .images{
- 
+
     top: 18% !important;
     padding: 1px 0px 10px 0 !important;
 
        height: fit-content;
 
- 
+
 }
 .section4 {
   margin-top: 10% !important;
@@ -1312,7 +1312,7 @@ color: white !important;
     color: white !important;
     text-align: center;
     padding: 4%;
-    
+
   }
 .HomePage
  {
@@ -1929,17 +1929,17 @@ color: white !important;
 .follower_img1 img {
   width: 100px;
   height: 100px;
-  
+
 }
 .b_face_card_name h2 {
  font-size: 20px;
 }
 .b_face_card_specialities {
- 
+
   width: 80%;
 }
 .b_face_card_specialities h2{
-  
+
   font-size: 20px;
 }
 .specialities_list li {
@@ -2076,3 +2076,53 @@ color: white !important;
 }
 }
 
+.b-cat{
+  width: 30%;
+
+  margin: 0 auto;
+  margin-top: 35px;
+}
+.b-cat button{
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #803666;
+  word-spacing: 1px;
+  letter-spacing: 2px;
+  /* width: 20%; */
+  box-shadow: 0 0 8px 0 rgba(17, 22, 26, 0.16), 0 4px 8px 0 rgba(17, 22, 26, 0.08), 0 8px 16px 0 rgba(17, 22, 26, 0.08);
+  border: none;
+  /* color: white; */
+  /* height: 6vh; */
+
+  font-weight: 500;
+  font-size: 35px;
+  /* box-shadow: 0px 1px 5px 0px #5555; */
+  /* float: right; */
+  /* margin-top: 5%; */
+}
+@media screen and (min-width:200px) and (max-width:500px) {
+  .b-cat{
+    width: 70%;
+
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .b-cat button{
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #803666;
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    box-shadow: 0 0 8px 0 rgba(17, 22, 26, 0.16), 0 4px 8px 0 rgba(17, 22, 26, 0.08), 0 8px 16px 0 rgba(17, 22, 26, 0.08);
+    border: none;
+
+
+    font-weight: 500;
+    font-size: 20px;
+
+  }
+}
